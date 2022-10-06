@@ -10,8 +10,10 @@ using System.Windows.Forms;
 
 namespace CompuStore
 {
+    using CompuStore.Database.Models;
     public partial class Form1 : Form
     {
+        
         public Form1()
         {
             InitializeComponent();
