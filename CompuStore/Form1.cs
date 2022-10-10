@@ -18,5 +18,11 @@ namespace CompuStore
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ImportData.ImportProduct import = new ImportData.ImportProduct();
+            import.ImportData();
+        }
     }
 }
