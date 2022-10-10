@@ -25,27 +25,27 @@ namespace CompuStore.Database.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<COLOR> COLOR { get; set; }
+        public virtual DbSet<COLOR> COLORs { get; set; }
         public virtual DbSet<COMMON_SPECS> COMMON_SPECS { get; set; }
         public virtual DbSet<COMMON_USER> COMMON_USER { get; set; }
-        public virtual DbSet<CUSTOMER> CUSTOMER { get; set; }
+        public virtual DbSet<CUSTOMER> CUSTOMERs { get; set; }
         public virtual DbSet<CHANGE_OR_REFUND_PRODUCT> CHANGE_OR_REFUND_PRODUCT { get; set; }
         public virtual DbSet<DETAIL_IMPORT_WAREHOUSE> DETAIL_IMPORT_WAREHOUSE { get; set; }
         public virtual DbSet<DETAIL_INVOICE> DETAIL_INVOICE { get; set; }
         public virtual DbSet<DETAIL_SPECS> DETAIL_SPECS { get; set; }
-        public virtual DbSet<DISPLAY_SPECS> DISPLAY_SPECS { get; set; }
-        public virtual DbSet<DISTRIBUTOR> DISTRIBUTOR { get; set; }
+        public virtual DbSet<DISTRIBUTOR> DISTRIBUTORs { get; set; }
         public virtual DbSet<IMPORT_WAREHOUSE> IMPORT_WAREHOUSE { get; set; }
-        public virtual DbSet<INFOR> INFOR { get; set; }
-        public virtual DbSet<INVOICE> INVOICE { get; set; }
+        public virtual DbSet<INFOR> INFORs { get; set; }
+        public virtual DbSet<INVOICE> INVOICEs { get; set; }
         public virtual DbSet<LINE_UP> LINE_UP { get; set; }
-        public virtual DbSet<PRODUCT> PRODUCT { get; set; }
-        public virtual DbSet<RANK> RANK { get; set; }
+        public virtual DbSet<PRODUCT> PRODUCTs { get; set; }
+        public virtual DbSet<RANK> RANKs { get; set; }
         public virtual DbSet<RECEIVE_WARRANTY> RECEIVE_WARRANTY { get; set; }
-        public virtual DbSet<STAFF> STAFF { get; set; }
-        public virtual DbSet<STAFFROLE> STAFFROLE { get; set; }
-        public virtual DbSet<STORE> STORE { get; set; }
+        public virtual DbSet<STAFF> STAFFs { get; set; }
+        public virtual DbSet<STAFFROLE> STAFFROLEs { get; set; }
+        public virtual DbSet<STORE> STOREs { get; set; }
         public virtual DbSet<UNIQUE_SPECS> UNIQUE_SPECS { get; set; }
-        public virtual DbSet<USERROLE> USERROLE { get; set; }
+        public virtual DbSet<USERROLE> USERROLEs { get; set; }
+        public virtual DbSet<DISPLAY_SPECS> DISPLAY_SPECS { get; set; }
     }
 }

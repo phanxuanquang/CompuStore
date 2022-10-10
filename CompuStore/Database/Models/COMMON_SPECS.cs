@@ -20,9 +20,9 @@ namespace CompuStore.Database.Models
             this.DETAIL_SPECS = new HashSet<DETAIL_SPECS>();
         }
     
-        public int COMMON_SPECS_NO { get; set; }
-        public string ID { get; set; }
-        public string ID_LINE_UP { get; set; }
+        public int ID { get; set; }
+        public string NAME_ID { get; set; }
+        public int ID_LINE_UP { get; set; }
         public string NAME { get; set; }
         public Nullable<int> QUANTITY { get; set; }
         public Nullable<System.DateTime> RELEASED_YEAR { get; set; }

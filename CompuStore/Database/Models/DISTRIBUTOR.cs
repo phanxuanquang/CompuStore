@@ -20,8 +20,8 @@ namespace CompuStore.Database.Models
             this.IMPORT_WAREHOUSE = new HashSet<IMPORT_WAREHOUSE>();
         }
     
-        public int DISTRIBUTOR_NO { get; set; }
-        public string ID { get; set; }
+        public int ID { get; set; }
+        public string NAME_ID { get; set; }
         public string NAME { get; set; }
         public string ADDRESS { get; set; }
         public string PHONE_NUMBER { get; set; }

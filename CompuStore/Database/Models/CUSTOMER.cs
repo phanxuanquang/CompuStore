@@ -17,18 +17,18 @@ namespace CompuStore.Database.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CUSTOMER()
         {
-            this.INVOICE = new HashSet<INVOICE>();
+            this.INVOICEs = new HashSet<INVOICE>();
         }
     
-        public int CUSTOMER_NO { get; set; }
-        public string ID { get; set; }
-        public string ID_INFOR { get; set; }
-        public string ID_RANK { get; set; }
+        public int ID { get; set; }
+        public string NAME_ID { get; set; }
+        public Nullable<int> ID_INFOR { get; set; }
+        public Nullable<int> ID_RANK { get; set; }
         public Nullable<int> PURCHASED_QUANTITY { get; set; }
     
         public virtual INFOR INFOR { get; set; }
         public virtual RANK RANK { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INVOICE> INVOICE { get; set; }
+        public virtual ICollection<INVOICE> INVOICEs { get; set; }
     }
 }

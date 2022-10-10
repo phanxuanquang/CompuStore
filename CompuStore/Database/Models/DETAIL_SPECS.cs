@@ -17,21 +17,21 @@ namespace CompuStore.Database.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public DETAIL_SPECS()
         {
-            this.PRODUCT = new HashSet<PRODUCT>();
+            this.PRODUCTs = new HashSet<PRODUCT>();
         }
     
-        public int DETAIL_SPECS_NO { get; set; }
-        public string ID { get; set; }
-        public string ID_COMMON_SPECS { get; set; }
-        public string ID_UNIQUE_SPECS { get; set; }
+        public int ID { get; set; }
+        public string NAME_ID { get; set; }
+        public int ID_COMMON_SPECS { get; set; }
+        public int ID_UNIQUE_SPECS { get; set; }
         public string COLOR_CODE { get; set; }
         public Nullable<int> QUANTITY { get; set; }
-        public Nullable<decimal> PRICE { get; set; }
+        public Nullable<double> PRICE { get; set; }
     
         public virtual COLOR COLOR { get; set; }
         public virtual COMMON_SPECS COMMON_SPECS { get; set; }
         public virtual UNIQUE_SPECS UNIQUE_SPECS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PRODUCT> PRODUCT { get; set; }
+        public virtual ICollection<PRODUCT> PRODUCTs { get; set; }
     }
 }

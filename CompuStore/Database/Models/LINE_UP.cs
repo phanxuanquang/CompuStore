@@ -20,11 +20,12 @@ namespace CompuStore.Database.Models
             this.COMMON_SPECS = new HashSet<COMMON_SPECS>();
         }
     
-        public string ID { get; set; }
+        public int ID { get; set; }
+        public string NAME_ID { get; set; }
         public string NAME { get; set; }
         public string MANUFACTURER { get; set; }
         public string COUNTRY { get; set; }
-        public Nullable<decimal> PROFIT_RATIO { get; set; }
+        public Nullable<double> PROFIT_RATIO { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMMON_SPECS> COMMON_SPECS { get; set; }

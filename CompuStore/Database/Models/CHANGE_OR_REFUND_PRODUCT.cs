@@ -14,11 +14,11 @@ namespace CompuStore.Database.Models
     
     public partial class CHANGE_OR_REFUND_PRODUCT
     {
-        public int CHANGE_OR_REFUND_PRODUCT_NO { get; set; }
-        public string ID { get; set; }
-        public string ID_HANDLING_STAFF { get; set; }
-        public string ID_WAREHOUSE_STAFF { get; set; }
-        public string ID_INVOICE { get; set; }
+        public int ID { get; set; }
+        public string NAME_ID { get; set; }
+        public int ID_HANDLING_STAFF { get; set; }
+        public int ID_WAREHOUSE_STAFF { get; set; }
+        public int ID_INVOICE { get; set; }
         public string SERIAL_ID { get; set; }
         public string REASON { get; set; }
         public Nullable<System.DateTime> RETURN_DATE { get; set; }

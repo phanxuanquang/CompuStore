@@ -18,19 +18,19 @@ namespace CompuStore.Database.Models
         public STORE()
         {
             this.IMPORT_WAREHOUSE = new HashSet<IMPORT_WAREHOUSE>();
-            this.INVOICE = new HashSet<INVOICE>();
+            this.INVOICEs = new HashSet<INVOICE>();
         }
     
-        public int STORE_NO { get; set; }
-        public string ID { get; set; }
-        public string ID_STAFF_MANAGER { get; set; }
+        public int ID { get; set; }
+        public string NAME_ID { get; set; }
+        public Nullable<int> ID_STAFF_MANAGER { get; set; }
         public string NAME { get; set; }
         public string ADDRESS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<IMPORT_WAREHOUSE> IMPORT_WAREHOUSE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INVOICE> INVOICE { get; set; }
+        public virtual ICollection<INVOICE> INVOICEs { get; set; }
         public virtual STAFF STAFF { get; set; }
     }
 }

@@ -14,10 +14,10 @@ namespace CompuStore.Database.Models
     
     public partial class RECEIVE_WARRANTY
     {
-        public int WARRANTY_NO { get; set; }
-        public string ID { get; set; }
-        public string ID_STAFF { get; set; }
-        public string ID_INVOICE { get; set; }
+        public int ID { get; set; }
+        public string NAME_ID { get; set; }
+        public int ID_STAFF { get; set; }
+        public int ID_INVOICE { get; set; }
         public string SERIAL_ID { get; set; }
         public string REASON_WARRANTY { get; set; }
         public Nullable<System.DateTime> RECEIVE_DATE { get; set; }

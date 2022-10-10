@@ -24,7 +24,7 @@ namespace CompuStore.Database.Models
         }
     
         public string SERIAL_ID { get; set; }
-        public string ID_DETAIL_SPECS { get; set; }
+        public int ID_DETAIL_SPECS { get; set; }
         public Nullable<bool> IN_WAREHOUSE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

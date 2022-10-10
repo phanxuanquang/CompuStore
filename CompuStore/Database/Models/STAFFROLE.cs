@@ -17,14 +17,14 @@ namespace CompuStore.Database.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public STAFFROLE()
         {
-            this.STAFF = new HashSet<STAFF>();
+            this.STAFFs = new HashSet<STAFF>();
         }
     
-        public int STAFFROLEE_NO { get; set; }
-        public string ID { get; set; }
+        public int ID { get; set; }
+        public string NAME_ID { get; set; }
         public string ROLE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<STAFF> STAFF { get; set; }
+        public virtual ICollection<STAFF> STAFFs { get; set; }
     }
 }

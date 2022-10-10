@@ -20,15 +20,15 @@ namespace CompuStore.Database.Models
             this.UNIQUE_SPECS = new HashSet<UNIQUE_SPECS>();
         }
     
-        public int DISPLAY_SPECS_NO { get; set; }
-        public string ID { get; set; }
+        public int ID { get; set; }
+        public string NAME_ID { get; set; }
         public string CODE_DISPLAY { get; set; }
         public string RESOLUTION { get; set; }
-        public Nullable<decimal> SIZE { get; set; }
+        public Nullable<double> SIZE { get; set; }
         public Nullable<int> BRIGHTNESS { get; set; }
         public string PANEL { get; set; }
         public string COLOR_SPACE { get; set; }
-        public Nullable<int> RefreshRate { get; set; }
+        public Nullable<int> REFRESH_RATE { get; set; }
         public Nullable<bool> IS_TOUCH_PANEL { get; set; }
         public string SCREEN_TYPE { get; set; }
         public string RATIO { get; set; }

@@ -32,7 +32,8 @@ namespace CompuStore.ImportData
 
         public string CPU;
         public string iGPU;
-        public string RAM;
+        //unit: GB
+        public int? RAM;
         public string TypeDrive;
         //unit: GB
         public int? DriveCapacity;
@@ -115,7 +116,14 @@ namespace CompuStore.ImportData
                     model.RatioPanel = split[14];
                     model.CPU = split[15];
                     model.iGPU = split[16];
-                    model.RAM = split[17];
+                    if (int.TryParse(split[17].Substring(0, split[17].Length - 2), out int ram))
+                    {
+                        model.RAM = ram;
+                    }
+                    else
+                    {
+                        model.RAM = null;
+                    }
                     model.TypeDrive = split[18];
                     if (int.TryParse(split[19].Substring(0, split[19].Length-2), out int driveCapacity))
                     {

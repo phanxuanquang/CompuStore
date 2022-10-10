@@ -17,14 +17,14 @@ namespace CompuStore.Database.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public RANK()
         {
-            this.CUSTOMER = new HashSet<CUSTOMER>();
+            this.CUSTOMERs = new HashSet<CUSTOMER>();
         }
     
-        public int RANK_NO { get; set; }
-        public string ID { get; set; }
+        public int ID { get; set; }
+        public string NAME_ID { get; set; }
         public string NAME { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CUSTOMER> CUSTOMER { get; set; }
+        public virtual ICollection<CUSTOMER> CUSTOMERs { get; set; }
     }
 }

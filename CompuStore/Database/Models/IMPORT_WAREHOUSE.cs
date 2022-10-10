@@ -20,12 +20,12 @@ namespace CompuStore.Database.Models
             this.DETAIL_IMPORT_WAREHOUSE = new HashSet<DETAIL_IMPORT_WAREHOUSE>();
         }
     
-        public int IMPORT_WAREHOUSE_NO { get; set; }
-        public string ID { get; set; }
-        public string ID_STORE { get; set; }
-        public string ID_STAFF { get; set; }
-        public string ID_DISTRIBUTOR { get; set; }
-        public decimal TOTAL { get; set; }
+        public int ID { get; set; }
+        public string NAME_ID { get; set; }
+        public int ID_STORE { get; set; }
+        public int ID_STAFF { get; set; }
+        public int ID_DISTRIBUTOR { get; set; }
+        public double TOTAL { get; set; }
         public Nullable<System.DateTime> IMPORT_DATE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

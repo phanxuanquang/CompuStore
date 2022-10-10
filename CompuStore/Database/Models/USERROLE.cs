@@ -20,8 +20,8 @@ namespace CompuStore.Database.Models
             this.COMMON_USER = new HashSet<COMMON_USER>();
         }
     
-        public int USERROLE_NO { get; set; }
-        public string ID { get; set; }
+        public int ID { get; set; }
+        public string NAME_ID { get; set; }
         public string ROLE { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -17,12 +17,12 @@ namespace CompuStore.Database.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public INFOR()
         {
-            this.CUSTOMER = new HashSet<CUSTOMER>();
-            this.STAFF = new HashSet<STAFF>();
+            this.CUSTOMERs = new HashSet<CUSTOMER>();
+            this.STAFFs = new HashSet<STAFF>();
         }
     
-        public int INFOR_NO { get; set; }
-        public string ID { get; set; }
+        public int ID { get; set; }
+        public string NAME_ID { get; set; }
         public string PHONE_NUMBER { get; set; }
         public string EMAIL { get; set; }
         public Nullable<bool> SEX { get; set; }
@@ -30,8 +30,8 @@ namespace CompuStore.Database.Models
         public string ADDRESS { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CUSTOMER> CUSTOMER { get; set; }
+        public virtual ICollection<CUSTOMER> CUSTOMERs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<STAFF> STAFF { get; set; }
+        public virtual ICollection<STAFF> STAFFs { get; set; }
     }
 }

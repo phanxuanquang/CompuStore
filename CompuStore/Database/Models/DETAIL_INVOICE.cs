@@ -14,9 +14,9 @@ namespace CompuStore.Database.Models
     
     public partial class DETAIL_INVOICE
     {
-        public string ID_INVOICE { get; set; }
+        public int ID_INVOICE { get; set; }
         public string SERIAL_ID { get; set; }
-        public decimal PRICE_PER_UNIT { get; set; }
+        public double PRICE_PER_UNIT { get; set; }
     
         public virtual INVOICE INVOICE { get; set; }
         public virtual PRODUCT PRODUCT { get; set; }

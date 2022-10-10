@@ -22,14 +22,14 @@ namespace CompuStore.Database.Models
             this.RECEIVE_WARRANTY = new HashSet<RECEIVE_WARRANTY>();
         }
     
-        public int INVOICE_NO { get; set; }
-        public string ID { get; set; }
-        public string ID_CUSTOMER { get; set; }
-        public string ID_STAFF { get; set; }
-        public string ID_STORE { get; set; }
-        public decimal TOTAL { get; set; }
+        public int ID { get; set; }
+        public string NAME_ID { get; set; }
+        public int ID_CUSTOMER { get; set; }
+        public Nullable<int> ID_STAFF { get; set; }
+        public Nullable<int> ID_STORE { get; set; }
+        public double TOTAL { get; set; }
         public Nullable<System.DateTime> INVOICE_DATE { get; set; }
-        public Nullable<decimal> VAT { get; set; }
+        public Nullable<double> VAT { get; set; }
     
         public virtual CUSTOMER CUSTOMER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

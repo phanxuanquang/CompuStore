@@ -14,10 +14,10 @@ namespace CompuStore.Database.Models
     
     public partial class COMMON_USER
     {
-        public int USER_NO { get; set; }
-        public string ID { get; set; }
-        public string ID_USERROLE { get; set; }
-        public string ID_STAFF { get; set; }
+        public int ID { get; set; }
+        public string NAME_ID { get; set; }
+        public int ID_USERROLE { get; set; }
+        public Nullable<int> ID_STAFF { get; set; }
         public string USERNAME { get; set; }
         public string PASSWORD { get; set; }
         public string DISPLAYNAME { get; set; }

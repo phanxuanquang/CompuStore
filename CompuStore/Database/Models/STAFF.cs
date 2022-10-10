@@ -21,15 +21,15 @@ namespace CompuStore.Database.Models
             this.CHANGE_OR_REFUND_PRODUCT = new HashSet<CHANGE_OR_REFUND_PRODUCT>();
             this.CHANGE_OR_REFUND_PRODUCT1 = new HashSet<CHANGE_OR_REFUND_PRODUCT>();
             this.IMPORT_WAREHOUSE = new HashSet<IMPORT_WAREHOUSE>();
-            this.INVOICE = new HashSet<INVOICE>();
+            this.INVOICEs = new HashSet<INVOICE>();
             this.RECEIVE_WARRANTY = new HashSet<RECEIVE_WARRANTY>();
-            this.STORE = new HashSet<STORE>();
+            this.STOREs = new HashSet<STORE>();
         }
     
-        public int STAFF_NO { get; set; }
-        public string ID { get; set; }
-        public string ID_INFOR { get; set; }
-        public string ID_STAFFROLE { get; set; }
+        public int ID { get; set; }
+        public string NAME_ID { get; set; }
+        public int ID_INFOR { get; set; }
+        public Nullable<int> ID_STAFFROLE { get; set; }
         public Nullable<int> WORKING_STATUS { get; set; }
         public Nullable<System.DateTime> STAFFDATE { get; set; }
     
@@ -43,11 +43,11 @@ namespace CompuStore.Database.Models
         public virtual ICollection<IMPORT_WAREHOUSE> IMPORT_WAREHOUSE { get; set; }
         public virtual INFOR INFOR { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<INVOICE> INVOICE { get; set; }
+        public virtual ICollection<INVOICE> INVOICEs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RECEIVE_WARRANTY> RECEIVE_WARRANTY { get; set; }
         public virtual STAFFROLE STAFFROLE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<STORE> STORE { get; set; }
+        public virtual ICollection<STORE> STOREs { get; set; }
     }
 }

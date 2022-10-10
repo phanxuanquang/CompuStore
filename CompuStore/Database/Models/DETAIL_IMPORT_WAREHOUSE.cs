@@ -14,9 +14,9 @@ namespace CompuStore.Database.Models
     
     public partial class DETAIL_IMPORT_WAREHOUSE
     {
-        public string ID_IMPORT_WAREHOUSE { get; set; }
+        public int ID_IMPORT_WAREHOUSE { get; set; }
         public string SERIAL_ID { get; set; }
-        public Nullable<decimal> PRICE_PER_UNIT { get; set; }
+        public Nullable<double> PRICE_PER_UNIT { get; set; }
     
         public virtual IMPORT_WAREHOUSE IMPORT_WAREHOUSE { get; set; }
         public virtual PRODUCT PRODUCT { get; set; }
