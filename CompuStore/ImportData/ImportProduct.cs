@@ -10,11 +10,8 @@ namespace CompuStore.ImportData
     using Database.Models;
     using System.Data.Entity;
     using System.Data.Entity.Validation;
-    using System.Data.SqlClient;
-    using System.Drawing;
-    using System.Drawing.Drawing2D;
     using System.Linq.Expressions;
-    using System.Runtime.Remoting.Contexts;
+    using System.Threading;
     using System.Windows.Forms;
 
     internal class ImportProduct
@@ -27,7 +24,7 @@ namespace CompuStore.ImportData
             instance = instance ?? new CompuStoreDBEntities();
         }
 
-        public void ImportData()
+        public ModelProduct[] GetCSV()
         {
             string[] x = File.ReadAllLines(template, Encoding.UTF8);
             ModelProduct[] products = new ModelProduct[x.Length];
@@ -36,19 +33,10 @@ namespace CompuStore.ImportData
                 ModelProduct.TryParse(x[index], out products[index]);
             }
 
-            //GetLineUp(products[3]);
-            //GetColor(products[1]);
-            //GetDislaySpecs(products[1]);
-            //GetCommonSpecs(products[1], GetLineUp(products[1]));
-            //GetUniqueSpecs(products[1], GetDislaySpecs(products[1]));
-
-            foreach (ModelProduct product in products)
-            {
-                InsertProduct(product);
-            }
+            return products;
         }
 
-        private TEntity GetData<TEntity>(DbSet<TEntity> tableTarget,
+        private async Task<TEntity> GetData<TEntity>(DbSet<TEntity> tableTarget,
             Expression<Func<TEntity, bool>> whereQuery, TEntity entity) where TEntity : class
         {
             TEntity find = tableTarget.Where(whereQuery).FirstOrDefault();
@@ -56,61 +44,41 @@ namespace CompuStore.ImportData
             if (find == null)
             {
                 tableTarget.Add(entity);
-                try
-                {
-                    // Your code...
-                    // Could also be before try if you know the exception occurs in SaveChanges
+                await instance.SaveChangesAsync();
 
-                    instance.SaveChanges();
-                }
-                catch (DbEntityValidationException e)
-                {
-                    foreach (var eve in e.EntityValidationErrors)
-                    {
-                        MessageBox.Show(string.Format("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                            eve.Entry.Entity.GetType().Name, eve.Entry.State));
-                        foreach (var ve in eve.ValidationErrors)
-                        {
-                            MessageBox.Show(string.Format("- Property: \"{0}\", Error: \"{1}\"",
-                                ve.PropertyName, ve.ErrorMessage));
-                        }
-                    }
-                    throw;
-                }
-                
                 find = entity;
             }
 
             return find;
         }
 
-        private LINE_UP GetLineUp(ModelProduct product)
+        private async Task<LINE_UP> GetLineUp(ModelProduct product)
         {
             if (product == null) return null;
 
-            return GetData(instance.LINE_UP,
+            return await GetData(instance.LINE_UP,
                 item => item.NAME == product.LineUp && item.MANUFACTURER == product.Manufacturer && item.COUNTRY == product.Country,
                 new LINE_UP { NAME = product.LineUp, MANUFACTURER = product.Manufacturer, COUNTRY = product.Country }
                 );
         }
 
-        private COLOR GetColor(ModelProduct product)
+        private async Task<COLOR> GetColor(ModelProduct product)
         {
             if (product == null) return null;
 
-            return GetData(instance.COLORs,
+            return await GetData(instance.COLORs,
                 item => item.COLOR_CODE == product.ColorCode && item.COLOR_NAME == product.ColorName,
                 new COLOR { COLOR_CODE = product.ColorCode, COLOR_NAME = product.ColorName }
                 );
         }
 
-        private DISPLAY_SPECS GetDislaySpecs(ModelProduct product)
+        private async Task<DISPLAY_SPECS> GetDislaySpecs(ModelProduct product)
         {
             if (product == null) return null;
 
             string resolution = string.Join("x", product.Resolution);
 
-            return GetData(instance.DISPLAY_SPECS,
+            return await GetData(instance.DISPLAY_SPECS,
                 item =>
                 item.CODE_DISPLAY == product.IdPanel ||
                 item.RESOLUTION == resolution &&
@@ -135,14 +103,14 @@ namespace CompuStore.ImportData
                 );
         }
 
-        private COMMON_SPECS GetCommonSpecs(ModelProduct product, LINE_UP lineup)
+        private async Task<COMMON_SPECS> GetCommonSpecs(ModelProduct product, LINE_UP lineup)
         {
             if (product == null || lineup == null) return null;
 
             string ports = string.Join("-", product.Ports);
             string dimensions = string.Join("x", product.SizeProduct);
 
-            return GetData(instance.COMMON_SPECS,
+            return await GetData(instance.COMMON_SPECS,
                 item =>
                 item.ID_LINE_UP == lineup.ID &&
                 item.NAME == product.NameProduct &&
@@ -167,13 +135,13 @@ namespace CompuStore.ImportData
                 );
         }
 
-        private UNIQUE_SPECS GetUniqueSpecs(ModelProduct product, DISPLAY_SPECS displaySpecs)
+        private async Task<UNIQUE_SPECS> GetUniqueSpecs(ModelProduct product, DISPLAY_SPECS displaySpecs)
         {
             if (product == null || displaySpecs == null) return null;
 
             string gpu = string.Join(" ", product.GPU);
 
-            return GetData(instance.UNIQUE_SPECS,
+            return await GetData(instance.UNIQUE_SPECS,
                 item =>
                 item.ID_DISPLAY_SPECS == displaySpecs.ID &&
                 item.CPU == product.CPU &&
@@ -196,11 +164,11 @@ namespace CompuStore.ImportData
                 );
         }
 
-        private DETAIL_SPECS GetDetailSpecs(ModelProduct product, COMMON_SPECS commonSpecs, UNIQUE_SPECS uniqueSpecs, COLOR color)
+        private async Task<DETAIL_SPECS> GetDetailSpecs(ModelProduct product, COMMON_SPECS commonSpecs, UNIQUE_SPECS uniqueSpecs, COLOR color)
         {
             if (product == null || commonSpecs == null || uniqueSpecs == null || color == null || color.COLOR_CODE == null) return null;
 
-            return GetData(instance.DETAIL_SPECS,
+            return await GetData(instance.DETAIL_SPECS,
                 item =>
                 item.ID_COMMON_SPECS == commonSpecs.ID &&
                 item.ID_UNIQUE_SPECS == uniqueSpecs.ID &&
@@ -210,25 +178,25 @@ namespace CompuStore.ImportData
                 );
         }
 
-        private PRODUCT InsertProduct(ModelProduct product)
+        public async Task<PRODUCT> InsertProduct(ModelProduct product)
         {
             if (product == null) return null;
 
             PRODUCT dbProduct = new PRODUCT();
 
-            LINE_UP lineup = GetLineUp(product);
-            DISPLAY_SPECS displaySpecs = GetDislaySpecs(product);
-            COLOR color = GetColor(product);
-            COMMON_SPECS commonSpecs = GetCommonSpecs(product, lineup);
-            UNIQUE_SPECS uniqueSpecs = GetUniqueSpecs(product, displaySpecs);
-            DETAIL_SPECS detailSpecs = GetDetailSpecs(product, commonSpecs, uniqueSpecs, color);
+            LINE_UP lineup = await GetLineUp(product);
+            DISPLAY_SPECS displaySpecs = await GetDislaySpecs(product);
+            COLOR color = await GetColor(product);
+            COMMON_SPECS commonSpecs = await GetCommonSpecs(product, lineup);
+            UNIQUE_SPECS uniqueSpecs = await GetUniqueSpecs(product, displaySpecs);
+            DETAIL_SPECS detailSpecs = await GetDetailSpecs(product, commonSpecs, uniqueSpecs, color);
 
             dbProduct.SERIAL_ID = product.Serial;
             dbProduct.ID_DETAIL_SPECS = detailSpecs.ID;
             dbProduct.IN_WAREHOUSE = true;
 
             instance.PRODUCTs.Add(dbProduct);
-            instance.SaveChanges();
+            await instance.SaveChangesAsync();
 
             return dbProduct;
         }
