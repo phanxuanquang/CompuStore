@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\DataProvider.cs" />
+    <Compile Include="Database\LoginServices\LoginServices.cs" />
     <Compile Include="Database\Models\CHANGE_OR_REFUND_PRODUCT.cs">
       <DependentUpon>CompuStoreModel.tt</DependentUpon>
     </Compile>
@@ -136,6 +138,8 @@
     <Compile Include="Database\Models\USERROLE.cs">
       <DependentUpon>CompuStoreModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\StaffServices.cs" />
+    <Compile Include="Database\UserServices.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
