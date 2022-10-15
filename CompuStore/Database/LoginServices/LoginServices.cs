@@ -25,7 +25,7 @@ namespace CompuStore.Database.LoginServices
             try
             {
                 string passhash = password;
-                return DataProvider.Instance.Database.COMMON_USER.Select(user => user.USERNAME == username && user.PASSWORD == passhash && user.HAS_AUTHORITY == true).Count() > 0;
+                return DataProvider.Instance.Database.COMMON_USER.SingleOrDefault(user => user.USERNAME == username && user.PASSWORD == passhash && user.HAS_AUTHORITY == true) != null;
             }
             catch (Exception e)
             {
@@ -35,7 +35,7 @@ namespace CompuStore.Database.LoginServices
 
         public bool CheckUser(string username)
         {
-            return DataProvider.Instance.Database.COMMON_USER.Select(user => user.USERNAME == username).Count() > 0;
+            return DataProvider.Instance.Database.COMMON_USER.SingleOrDefault(user => user.USERNAME == username) != null;
         }
 
         public string CheckUserRole(string userName)
@@ -44,7 +44,7 @@ namespace CompuStore.Database.LoginServices
                 return null;
             else
             {
-                var user = DataProvider.Instance.Database.COMMON_USER.Where((item) => item.USERNAME == userName).FirstOrDefault();
+                var user = DataProvider.Instance.Database.COMMON_USER.SingleOrDefault((item) => item.USERNAME == userName);
                 if (user.USERROLE.ROLE == "Nhân viên")
                 {
                     var staff = user.STAFF;
