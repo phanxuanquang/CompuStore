@@ -23,7 +23,7 @@
           <Property Name="QUANTITY" Type="int" />
           <Property Name="RELEASED_YEAR" Type="date" />
           <Property Name="CASE_MATERIAL" Type="varchar" MaxLength="50" />
-          <Property Name="PORT" Type="varchar" MaxLength="100" />
+          <Property Name="PORT" Type="varchar" MaxLength="300" />
           <Property Name="WEBCAM" Type="varchar" MaxLength="30" />
           <Property Name="DIMENSIONS" Type="varchar" MaxLength="100" />
           <Property Name="OS" Type="varchar" MaxLength="30" />
@@ -38,7 +38,7 @@
           <Property Name="NAME_ID" Type="varchar" MaxLength="30" StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="ID_USERROLE" Type="int" Nullable="false" />
           <Property Name="ID_STAFF" Type="int" />
-          <Property Name="USERNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="50" />
           <Property Name="PASSWORD" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DISPLAYNAME" Type="varchar" MaxLength="50" />
           <Property Name="HAS_AUTHORITY" Type="bit" />
@@ -107,7 +107,7 @@
           <Property Name="SIZE" Type="float" />
           <Property Name="BRIGHTNESS" Type="int" />
           <Property Name="PANEL" Type="varchar" MaxLength="30" />
-          <Property Name="COLOR_SPACE" Type="varchar" MaxLength="50" />
+          <Property Name="COLOR_SPACE" Type="varchar" MaxLength="100" />
           <Property Name="REFRESH_RATE" Type="int" />
           <Property Name="IS_TOUCH_PANEL" Type="bit" />
           <Property Name="SCREEN_TYPE" Type="nvarchar" MaxLength="30" />
@@ -764,7 +764,6 @@
       <Schema Namespace="CompuStoreDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="CompuStoreDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="COLORs" EntityType="CompuStoreDBModel.COLOR" />
-          <EntitySet Name="COMMON_SPECS" EntityType="CompuStoreDBModel.COMMON_SPECS" />
           <EntitySet Name="COMMON_USER" EntityType="CompuStoreDBModel.COMMON_USER" />
           <EntitySet Name="CUSTOMERs" EntityType="CompuStoreDBModel.CUSTOMER" />
           <EntitySet Name="CHANGE_OR_REFUND_PRODUCT" EntityType="CompuStoreDBModel.CHANGE_OR_REFUND_PRODUCT" />
@@ -786,14 +785,6 @@
           <EntitySet Name="USERROLEs" EntityType="CompuStoreDBModel.USERROLE" />
           <AssociationSet Name="FK__DETAIL_SP__COLOR__2645B050" Association="CompuStoreDBModel.FK__DETAIL_SP__COLOR__2645B050">
             <End Role="COLOR" EntitySet="COLORs" />
-            <End Role="DETAIL_SPECS" EntitySet="DETAIL_SPECS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__COMMON_SP__ID_LI__22751F6C" Association="CompuStoreDBModel.FK__COMMON_SP__ID_LI__22751F6C">
-            <End Role="LINE_UP" EntitySet="LINE_UP" />
-            <End Role="COMMON_SPECS" EntitySet="COMMON_SPECS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DETAIL_SP__ID_CO__245D67DE" Association="CompuStoreDBModel.FK__DETAIL_SP__ID_CO__245D67DE">
-            <End Role="COMMON_SPECS" EntitySet="COMMON_SPECS" />
             <End Role="DETAIL_SPECS" EntitySet="DETAIL_SPECS" />
           </AssociationSet>
           <AssociationSet Name="FK__COMMON_US__ID_ST__18EBB532" Association="CompuStoreDBModel.FK__COMMON_US__ID_ST__18EBB532">
@@ -900,6 +891,15 @@
             <End Role="STAFF" EntitySet="STAFFs" />
             <End Role="STORE" EntitySet="STOREs" />
           </AssociationSet>
+          <EntitySet Name="COMMON_SPECS" EntityType="CompuStoreDBModel.COMMON_SPECS" />
+          <AssociationSet Name="FK__COMMON_SP__ID_LI__22751F6C" Association="CompuStoreDBModel.FK__COMMON_SP__ID_LI__22751F6C">
+            <End Role="LINE_UP" EntitySet="LINE_UP" />
+            <End Role="COMMON_SPECS" EntitySet="COMMON_SPECS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETAIL_SP__ID_CO__245D67DE" Association="CompuStoreDBModel.FK__DETAIL_SP__ID_CO__245D67DE">
+            <End Role="COMMON_SPECS" EntitySet="COMMON_SPECS" />
+            <End Role="DETAIL_SPECS" EntitySet="DETAIL_SPECS" />
+          </AssociationSet>
           <EntitySet Name="DISPLAY_SPECS" EntityType="CompuStoreDBModel.DISPLAY_SPECS" />
           <AssociationSet Name="FK__UNIQUE_SP__ID_DI__236943A5" Association="CompuStoreDBModel.FK__UNIQUE_SP__ID_DI__236943A5">
             <End Role="DISPLAY_SPECS" EntitySet="DISPLAY_SPECS" />
@@ -914,26 +914,6 @@
           <Property Name="COLOR_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DETAIL_SPECS" Relationship="CompuStoreDBModel.FK__DETAIL_SP__COLOR__2645B050" FromRole="COLOR" ToRole="DETAIL_SPECS" />
         </EntityType>
-        <EntityType Name="COMMON_SPECS">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NAME_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="ID_LINE_UP" Type="Int32" Nullable="false" />
-          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="QUANTITY" Type="Int32" />
-          <Property Name="RELEASED_YEAR" Type="DateTime" Precision="0" />
-          <Property Name="CASE_MATERIAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PORT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="WEBCAM" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="DIMENSIONS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="OS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="WIFI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="BLUETOOTH" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="LINE_UP" Relationship="CompuStoreDBModel.FK__COMMON_SP__ID_LI__22751F6C" FromRole="COMMON_SPECS" ToRole="LINE_UP" />
-          <NavigationProperty Name="DETAIL_SPECS" Relationship="CompuStoreDBModel.FK__DETAIL_SP__ID_CO__245D67DE" FromRole="COMMON_SPECS" ToRole="DETAIL_SPECS" />
-        </EntityType>
         <EntityType Name="COMMON_USER">
           <Key>
             <PropertyRef Name="ID" />
@@ -942,7 +922,7 @@
           <Property Name="NAME_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="ID_USERROLE" Type="Int32" Nullable="false" />
           <Property Name="ID_STAFF" Type="Int32" />
-          <Property Name="USERNAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DISPLAYNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="HAS_AUTHORITY" Type="Boolean" />
@@ -1013,9 +993,9 @@
           <Property Name="QUANTITY" Type="Int32" />
           <Property Name="PRICE" Type="Double" />
           <NavigationProperty Name="COLOR" Relationship="CompuStoreDBModel.FK__DETAIL_SP__COLOR__2645B050" FromRole="DETAIL_SPECS" ToRole="COLOR" />
-          <NavigationProperty Name="COMMON_SPECS" Relationship="CompuStoreDBModel.FK__DETAIL_SP__ID_CO__245D67DE" FromRole="DETAIL_SPECS" ToRole="COMMON_SPECS" />
           <NavigationProperty Name="UNIQUE_SPECS" Relationship="CompuStoreDBModel.FK__DETAIL_SP__ID_UN__25518C17" FromRole="DETAIL_SPECS" ToRole="UNIQUE_SPECS" />
           <NavigationProperty Name="PRODUCTs" Relationship="CompuStoreDBModel.FK__PRODUCT__ID_DETA__2739D489" FromRole="DETAIL_SPECS" ToRole="PRODUCT" />
+          <NavigationProperty Name="COMMON_SPECS" Relationship="CompuStoreDBModel.FK__DETAIL_SP__ID_CO__245D67DE" FromRole="DETAIL_SPECS" ToRole="COMMON_SPECS" />
         </EntityType>
         <EntityType Name="DISTRIBUTOR">
           <Key>
@@ -1206,30 +1186,6 @@
             </Principal>
             <Dependent Role="DETAIL_SPECS">
               <PropertyRef Name="COLOR_CODE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__COMMON_SP__ID_LI__22751F6C">
-          <End Type="CompuStoreDBModel.LINE_UP" Role="LINE_UP" Multiplicity="1" />
-          <End Type="CompuStoreDBModel.COMMON_SPECS" Role="COMMON_SPECS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LINE_UP">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="COMMON_SPECS">
-              <PropertyRef Name="ID_LINE_UP" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DETAIL_SP__ID_CO__245D67DE">
-          <End Type="CompuStoreDBModel.COMMON_SPECS" Role="COMMON_SPECS" Multiplicity="1" />
-          <End Type="CompuStoreDBModel.DETAIL_SPECS" Role="DETAIL_SPECS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="COMMON_SPECS">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="DETAIL_SPECS">
-              <PropertyRef Name="ID_COMMON_SPECS" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1545,6 +1501,50 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="COMMON_SPECS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ID_LINE_UP" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="RELEASED_YEAR" Type="DateTime" Precision="0" />
+          <Property Name="CASE_MATERIAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PORT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="WEBCAM" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DIMENSIONS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="WIFI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BLUETOOTH" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LINE_UP" Relationship="CompuStoreDBModel.FK__COMMON_SP__ID_LI__22751F6C" FromRole="COMMON_SPECS" ToRole="LINE_UP" />
+          <NavigationProperty Name="DETAIL_SPECS" Relationship="CompuStoreDBModel.FK__DETAIL_SP__ID_CO__245D67DE" FromRole="COMMON_SPECS" ToRole="DETAIL_SPECS" />
+        </EntityType>
+        <Association Name="FK__COMMON_SP__ID_LI__22751F6C">
+          <End Type="CompuStoreDBModel.LINE_UP" Role="LINE_UP" Multiplicity="1" />
+          <End Type="CompuStoreDBModel.COMMON_SPECS" Role="COMMON_SPECS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LINE_UP">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMMON_SPECS">
+              <PropertyRef Name="ID_LINE_UP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETAIL_SP__ID_CO__245D67DE">
+          <End Type="CompuStoreDBModel.COMMON_SPECS" Role="COMMON_SPECS" Multiplicity="1" />
+          <End Type="CompuStoreDBModel.DETAIL_SPECS" Role="DETAIL_SPECS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMMON_SPECS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DETAIL_SPECS">
+              <PropertyRef Name="ID_COMMON_SPECS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="DISPLAY_SPECS">
           <Key>
             <PropertyRef Name="ID" />
@@ -1556,7 +1556,7 @@
           <Property Name="SIZE" Type="Double" />
           <Property Name="BRIGHTNESS" Type="Int32" />
           <Property Name="PANEL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="COLOR_SPACE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COLOR_SPACE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="REFRESH_RATE" Type="Int32" />
           <Property Name="IS_TOUCH_PANEL" Type="Boolean" />
           <Property Name="SCREEN_TYPE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
@@ -1586,25 +1586,6 @@
               <MappingFragment StoreEntitySet="COLOR">
                 <ScalarProperty Name="COLOR_NAME" ColumnName="COLOR_NAME" />
                 <ScalarProperty Name="COLOR_CODE" ColumnName="COLOR_CODE" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="COMMON_SPECS">
-            <EntityTypeMapping TypeName="CompuStoreDBModel.COMMON_SPECS">
-              <MappingFragment StoreEntitySet="COMMON_SPECS">
-                <ScalarProperty Name="BLUETOOTH" ColumnName="BLUETOOTH" />
-                <ScalarProperty Name="WIFI" ColumnName="WIFI" />
-                <ScalarProperty Name="OS" ColumnName="OS" />
-                <ScalarProperty Name="DIMENSIONS" ColumnName="DIMENSIONS" />
-                <ScalarProperty Name="WEBCAM" ColumnName="WEBCAM" />
-                <ScalarProperty Name="PORT" ColumnName="PORT" />
-                <ScalarProperty Name="CASE_MATERIAL" ColumnName="CASE_MATERIAL" />
-                <ScalarProperty Name="RELEASED_YEAR" ColumnName="RELEASED_YEAR" />
-                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="ID_LINE_UP" ColumnName="ID_LINE_UP" />
-                <ScalarProperty Name="NAME_ID" ColumnName="NAME_ID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1827,6 +1808,25 @@
             <EntityTypeMapping TypeName="CompuStoreDBModel.USERROLE">
               <MappingFragment StoreEntitySet="USERROLE">
                 <ScalarProperty Name="ROLE" ColumnName="ROLE" />
+                <ScalarProperty Name="NAME_ID" ColumnName="NAME_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMON_SPECS">
+            <EntityTypeMapping TypeName="CompuStoreDBModel.COMMON_SPECS">
+              <MappingFragment StoreEntitySet="COMMON_SPECS">
+                <ScalarProperty Name="BLUETOOTH" ColumnName="BLUETOOTH" />
+                <ScalarProperty Name="WIFI" ColumnName="WIFI" />
+                <ScalarProperty Name="OS" ColumnName="OS" />
+                <ScalarProperty Name="DIMENSIONS" ColumnName="DIMENSIONS" />
+                <ScalarProperty Name="WEBCAM" ColumnName="WEBCAM" />
+                <ScalarProperty Name="PORT" ColumnName="PORT" />
+                <ScalarProperty Name="CASE_MATERIAL" ColumnName="CASE_MATERIAL" />
+                <ScalarProperty Name="RELEASED_YEAR" ColumnName="RELEASED_YEAR" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID_LINE_UP" ColumnName="ID_LINE_UP" />
                 <ScalarProperty Name="NAME_ID" ColumnName="NAME_ID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>

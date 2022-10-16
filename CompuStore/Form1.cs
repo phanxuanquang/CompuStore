@@ -10,12 +10,8 @@ using System.Windows.Forms;
 
 namespace CompuStore
 {
-    using CompuStore.Database.Models;
     using CompuStore.ImportData;
-    using System.Data.SqlClient;
-    using System.Reflection;
     using System.Threading;
-    using static System.Net.Mime.MediaTypeNames;
 
     public partial class Form1 : Form
     {
@@ -49,7 +45,7 @@ namespace CompuStore
 
                             import.InsertProduct(products[index]).Wait();
                         }
-                        catch (AggregateException)
+                        catch (AggregateException ex)
                         {
                             MessageBox.Show(string.Format("Product serial: {0} already exists in the system", products[index].Serial));
                         }

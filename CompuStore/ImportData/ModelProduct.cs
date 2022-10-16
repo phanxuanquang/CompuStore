@@ -1,9 +1,6 @@
-﻿using CompuStore.Database.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CompuStore.ImportData
 {
@@ -19,7 +16,7 @@ namespace CompuStore.ImportData
         //split by 'x'
         //[0]: (x)pixels
         //[1]: (y)pixels
-        public string[] Resolution;
+        public double[] Resolution;
         //unit: inch
         public double? SizePanel;
         public int? Brightness;
@@ -48,14 +45,14 @@ namespace CompuStore.ImportData
         public string NameProduct;
         public DateTime? ReleaseDate;
         public string CaseMaterial;
-        //split by dash
+        //split by unit seperator (_)
         public string[] Ports;
         public string Webcam;
         //split by x
         //[0]: (x) dimension
         //[1]: (y) dimension
         //[2]: (z) dimension
-        public string[] SizeProduct;
+        public double[] SizeProduct;
         public string OS;
         public string Wifi;
         public string Bluetooth;
@@ -72,12 +69,21 @@ namespace CompuStore.ImportData
                 try
                 {
                     model = new ModelProduct();
-                    model.Serial = split[1];
-                    model.LineUp = split[2];
-                    model.Manufacturer = split[3];
-                    model.Country = split[4];
-                    model.IdPanel = split[5];
-                    model.Resolution = split[6].Split('x');
+                    model.Serial = split[1].Length == 0 ? null : split[1];
+                    model.LineUp = split[2].Length == 0 ? null : split[2];
+                    model.Manufacturer = split[3].Length == 0 ? null : split[3];
+                    model.Country = split[4].Length == 0 ? null : split[4];
+                    model.IdPanel = split[5].Length == 0 ? null : split[5];
+                    string[] resolution = split[6].Split('x');
+                    List<double> parseResolution = new List<double>();
+                    foreach (string dimension in resolution)
+                    {
+                        if (double.TryParse(dimension.Trim(), out double size))
+                        {
+                            parseResolution.Add(size);
+                        }
+                    }
+                    model.Resolution = parseResolution.ToArray();
                     if (double.TryParse(split[7], out double sizePanel))
                     {
                         model.SizePanel = sizePanel;
@@ -94,8 +100,8 @@ namespace CompuStore.ImportData
                     {
                         model.Brightness = null;
                     }
-                    model.TypePanel = split[9];
-                    model.SpaceColor = split[10];
+                    model.TypePanel = split[9].Length == 0 ? null : split[9];
+                    model.SpaceColor = split[10].Length == 0 ? null : split[10];
                     if (int.TryParse(split[11], out int refreshRate))
                     {
                         model.RefreshRate = refreshRate;
@@ -112,10 +118,10 @@ namespace CompuStore.ImportData
                     {
                         model.CanTouchPanel = null;
                     }
-                    model.TypeScreen = split[13];
-                    model.RatioPanel = split[14];
-                    model.CPU = split[15];
-                    model.iGPU = split[16];
+                    model.TypeScreen = split[13].Length == 0 ? null : split[13];
+                    model.RatioPanel = split[14].Length == 0 ? null : split[14];
+                    model.CPU = split[15].Length == 0 ? null : split[15];
+                    model.iGPU = split[16].Length == 0 ? null : split[16];
                     if (int.TryParse(split[17].Substring(0, split[17].Length - 2), out int ram))
                     {
                         model.RAM = ram;
@@ -124,7 +130,7 @@ namespace CompuStore.ImportData
                     {
                         model.RAM = null;
                     }
-                    model.TypeDrive = split[18];
+                    model.TypeDrive = split[18].Length == 0 ? null : split[18];
                     if (int.TryParse(split[19].Substring(0, split[19].Length-2), out int driveCapacity))
                     {
                         model.DriveCapacity = driveCapacity;
@@ -133,8 +139,12 @@ namespace CompuStore.ImportData
                     {
                         model.DriveCapacity = null;
                     }
-                    string[] gpu = split[20].Split(' ');
-                    model.GPU = new string[] { gpu.First(), string.Join(" ", gpu.Skip(1).Take(gpu.Length - 2)), gpu.Last() };
+                    if (split[20].Length > 0)
+                    {
+                        string[] gpu = split[20].Split(' ');
+                        model.GPU = new string[] { gpu.First(), string.Join(" ", gpu.Skip(1).Take(gpu.Length - 2)), gpu.Last() };
+                    }
+                    else model.GPU = null;
                     if (double.TryParse(split[21], out double bateryCapacity))
                     {
                         model.BatteryCapacity = bateryCapacity;
@@ -151,7 +161,7 @@ namespace CompuStore.ImportData
                     {
                         model.Weight = null;
                     }
-                    model.NameProduct = split[23];
+                    model.NameProduct = split[23].Length == 0 ? null : split[23];
                     if (DateTime.TryParseExact(
                         String.Format("{0}/{1}/{2}", "01", "01", split[24]),
                         "dd/MM/yyyy",
@@ -165,13 +175,22 @@ namespace CompuStore.ImportData
                     {
                         model.ReleaseDate = null;
                     }
-                    model.CaseMaterial = split[25];
-                    model.Ports = split[26].Split('-');
-                    model.Webcam = split[27];
-                    model.SizeProduct = split[28].Split('x');
-                    model.OS = split[29];
-                    model.Wifi = split[30];
-                    model.Bluetooth = split[31];
+                    model.CaseMaterial = split[25].Length == 0 ? null : split[25];
+                    model.Ports = split[26].Split('_');
+                    model.Webcam = split[27].Length == 0 ? null : split[27];
+                    string[] sizeProduct = split[28].Split('x');
+                    List<double> parseSizeProduct = new List<double>();
+                    foreach(string dimension in sizeProduct)
+                    {
+                        if(double.TryParse(dimension.Trim(), out double size))
+                        {
+                            parseSizeProduct.Add(size);
+                        }
+                    }
+                    model.SizeProduct = parseSizeProduct.ToArray();
+                    model.OS = split[29].Length == 0 ? null : split[29];
+                    model.Wifi = split[30].Length == 0 ? null : split[30];
+                    model.Bluetooth = split[31].Length == 0 ? null : split[31];
                     if (double.TryParse(split[32], out double price))
                     {
                         model.Price = price;
@@ -180,8 +199,8 @@ namespace CompuStore.ImportData
                     {
                         model.Price = null;
                     }
-                    model.ColorCode = split[33];
-                    model.ColorName = split[34];
+                    model.ColorCode = split[33].Length == 0 ? null : split[33];
+                    model.ColorName = split[34].Length == 0 ? null : split[34];
                     return true;
                 }
                 catch
