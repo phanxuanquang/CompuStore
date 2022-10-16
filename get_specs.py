@@ -101,7 +101,7 @@ def getSpecs(content: str):
                 color = content[index + 1]
                 color = re.search('class="cell-s">(.*)</td>', color)
                 map["Colors"] = color.group(1).split(', ')
-            elif 'Size' in content[index]:
+            elif 'Size' in content[index] and "Size display" not in map:
                 sizeDisplay = content[index + 1]
                 sizeDisplay = re.search('class="cell-s">(.*)</td>', sizeDisplay)
                 map["Size display"] = sizeDisplay.group(1).split(' ')[0]
@@ -329,6 +329,8 @@ def updateProperty(map:dict, nameProduct:str, indexRandom:int):
             result["OS"] = "Windows 11 Home 64bit"
     else:
         result["OS"] = "Linux"
+    if 'Apple' in nameProduct:
+        result["OS"] = "MacOS"
     result["Manufacturer"] = split[0]
     result["Country"] = mapManufacture[split[0].lower()]["Country"]
     lineup = None
@@ -441,7 +443,7 @@ if __name__ == '__main__':
         listProcess.append(multiprocessing.Process(target = process, kwargs = {"nameProduct": split[0], "linkProduct": split[1]}))
 
     index = 0
-    maxProcess = 16
+    maxProcess = 10
     lengthProcess = len(listProcess)
 
     while index < lengthProcess:
