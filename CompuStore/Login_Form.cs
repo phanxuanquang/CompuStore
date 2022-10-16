@@ -10,11 +10,17 @@ using System.Windows.Forms;
 
 namespace CompuStore
 {
-    public partial class Form1 : Form
+    public partial class Login_Form : Form
     {
-        public Form1()
+        public Login_Form()
         {
             InitializeComponent();
+        }
+
+        private void Exit_Button_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+
         }
     }
 }
