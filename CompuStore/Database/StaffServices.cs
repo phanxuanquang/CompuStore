@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace CompuStore.Database
 {
+    using Models;
     internal class StaffServices
     {
         private static StaffServices instance;
@@ -34,6 +35,28 @@ namespace CompuStore.Database
         {
             COMMON_USER user = UserServices.Instance.GetUserByUserName(userName);
             return user.STAFF;
+        }
+        public bool ChangeStaffRole(STAFF staff, STAFFROLE role)
+        {
+            if (staff == null) return false;
+            staff.STAFFROLE = role;
+            return true;
+        }
+
+        public bool ChangeStaffRole(STAFF staff, string role)
+        {
+            if (staff == null) return false;
+            if (StaffRoleServices.Instance.GetStaffRole(role) == null) return false;
+            staff.STAFFROLE = StaffRoleServices.Instance.GetStaffRole(role);
+            return true;
+        }
+
+        public bool RemoveStaff(STAFF staff)
+        {
+            if (staff == null) return false;
+            staff.WORKING_STATUS = 0;
+            staff.COMMON_USER.ToList().ForEach(c => c.HAS_AUTHORITY = false);
+            return true;
         }
     }
 }

@@ -138,6 +138,7 @@
     <Compile Include="Database\Models\USERROLE.cs">
       <DependentUpon>CompuStoreModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\StaffRoleServices.cs" />
     <Compile Include="Database\StaffServices.cs" />
     <Compile Include="Database\UserServices.cs" />
     <Compile Include="Form1.cs">
