@@ -35,5 +35,42 @@ namespace CompuStore.Database
             COMMON_USER user = UserServices.Instance.GetUserByUserName(userName);
             return user.STAFF;
         }
+        public bool SaveStaffToDB(string phone_number, string email, bool sex, string identity_code, string addtress, int id_staffRole)
+        {
+            INFOR infor = new INFOR()
+            {
+                PHONE_NUMBER = phone_number,
+                EMAIL = email,
+                SEX = sex,
+                IDENTITY_CODE = identity_code,
+                ADDRESS = addtress
+                
+            };
+            STAFF staff = new STAFF()
+            {
+                ID_STAFFROLE = DataProvider.Instance.Database.STAFFROLEs.FirstOrDefault(item => item.ID == id_staffRole).ID,
+                WORKING_STATUS = 1,
+                STAFFDATE = DateTime.Now
+            };
+            staff.ID_INFOR = infor.ID;
+            DataProvider.Instance.Database.INFORs.Add(infor);
+            DataProvider.Instance.Database.STAFFs.Add(staff);
+            try
+            {
+                DataProvider.Instance.Database.SaveChanges();
+            }
+            catch
+            {
+                // thông báo thêm nhân viên không thành công
+                return false;
+            }
+            if(!Database.UserServices.Instance.CreateNewStaffAccount(staff))
+            {
+                // thông báo tạo tài khoản không thành công
+                return false;
+            }    
+            return true;
+        }
+        
     }
 }

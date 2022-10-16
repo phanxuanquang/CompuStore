@@ -12,6 +12,7 @@ namespace CompuStore
 {
     using CompuStore.ImportData;
     using System.Threading;
+    using Database;
 
     public partial class Form1 : Form
     {
@@ -80,6 +81,11 @@ namespace CompuStore
             {
                 cancellationTokenSource.Cancel();
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            StaffServices.Instance.SaveStaffToDB("0909123123", "123@gmail.com", true, "0808123456", "ấp 1, xã Ba", 1);
         }
     }
 }
