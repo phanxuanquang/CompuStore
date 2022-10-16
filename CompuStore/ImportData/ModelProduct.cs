@@ -63,7 +63,7 @@ namespace CompuStore.ImportData
 
         public static bool TryParse(string singleLineCSV, out ModelProduct model)
         {
-            string[] split = singleLineCSV.Split(',');
+            string[] split = singleLineCSV.Split('\t');
             if (split.Length > 0 && int.TryParse(split.First(), out int index))
             {
                 try

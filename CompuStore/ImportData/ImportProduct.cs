@@ -17,7 +17,7 @@ namespace CompuStore.ImportData
 
     internal class ImportProduct
     {
-        public const string template = "../../../Resource/Template/data_sample.csv";
+        public const string template = "../../../Resource/Template/data_sample.tsv";
 
         public ModelProduct[] GetCSV()
         {
