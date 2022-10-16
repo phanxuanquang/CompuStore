@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace CompuStore.Database
 {
+    using Models;
     internal class StaffServices
     {
         private static StaffServices instance;
