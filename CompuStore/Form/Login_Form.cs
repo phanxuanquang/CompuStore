@@ -22,5 +22,11 @@ namespace CompuStore
             Application.Exit();
 
         }
+
+        private void Login_Button_Click(object sender, EventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+        }
     }
 }

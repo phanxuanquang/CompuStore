@@ -51,24 +51,39 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Login_Form.cs">
+    <Compile Include="Form\SubForm\StaffEdit_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login_Form.Designer.cs">
+    <Compile Include="Form\SubForm\StaffEdit_Form.Designer.cs">
+      <DependentUpon>StaffEdit_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\Login_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Login_Form.Designer.cs">
       <DependentUpon>Login_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.cs">
+    <Compile Include="Form\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainWindow.Designer.cs">
+    <Compile Include="Form\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Login_Form.resx">
+    <Compile Include="Tab\StaffManage_Tab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tab\StaffManage_Tab.Designer.cs">
+      <DependentUpon>StaffManage_Tab.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form\SubForm\StaffEdit_Form.resx">
+      <DependentUpon>StaffEdit_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Login_Form.resx">
       <DependentUpon>Login_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainWindow.resx">
+    <EmbeddedResource Include="Form\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -81,6 +96,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Tab\StaffManage_Tab.resx">
+      <DependentUpon>StaffManage_Tab.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -97,5 +115,6 @@
   <ItemGroup>
     <None Include="assets\Icons\Exit.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
