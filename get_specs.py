@@ -377,7 +377,7 @@ def json4csv(product:dict):
     result = []
     for color in product["Colors"]:
         serial = ''.join(random.sample(string.ascii_letters + string.digits, 16)).upper()
-        result.append(f'{serial},{product.get("Lineup", "")},{product.get("Manufacturer", "")},{product.get("Country", "")},{codeDisplay},{product.get("Resolution", "")},{product.get("Size display", "")},{product.get("Brightness", "")},{product.get("Type panel", "")},{colorSpace or ""},{product.get("Refresh rate", "")},{touchscreen},{product.get("Coating", "")},{product.get("Aspect ratio", "")},{product.get("CPU", "")},{product.get("iGPU", "")},{product.get("RAM", "")},{product.get("Storage type", "")},{product.get("Storage capacity", "")},{product.get("GPU", "")},{product.get("Battery", "")},{product.get("Weight", "")},{product.get("Name", "")},{product.get("Date release", "")},{product.get("Body material", "")},{ports or ""},{product.get("Webcam resolution", "")},{product.get("Dimensions", "")},{product.get("OS", "")},{product.get("Wi-Fi standard", "")},{product.get("Bluetooth", "")},{product.get("Price", "")},{color["Color code"]},{color["Color name"]}')
+        result.append(f'{serial}\t{product.get("Lineup", "")}\t{product.get("Manufacturer", "")}\t{product.get("Country", "")}\t{codeDisplay}\t{product.get("Resolution", "")}\t{product.get("Size display", "")}\t{product.get("Brightness", "")}\t{product.get("Type panel", "")}\t{colorSpace or ""}\t{product.get("Refresh rate", "")}\t{touchscreen}\t{product.get("Coating", "")}\t{product.get("Aspect ratio", "")}\t{product.get("CPU", "")}\t{product.get("iGPU", "")}\t{product.get("RAM", "")}\t{product.get("Storage type", "")}\t{product.get("Storage capacity", "")}\t{product.get("GPU", "")}\t{product.get("Battery", "")}\t{product.get("Weight", "")}\t{product.get("Name", "")}\t{product.get("Date release", "")}\t{product.get("Body material", "")}\t{ports or ""}\t{product.get("Webcam resolution", "")}\t{product.get("Dimensions", "")}\t{product.get("OS", "")}\t{product.get("Wi-Fi standard", "")}\t{product.get("Bluetooth", "")}\t{product.get("Price", "")}\t{color["Color code"]}\t{color["Color name"]}')
     return result
 
 def getPathFile(nameProduct:str):
@@ -388,7 +388,7 @@ def getPathFile(nameProduct:str):
     name = name.replace('*','-')
     name = name.replace('"','-')
     name = name.replace('|','-')
-    return './data/' + name + '.csv'
+    return './data/' + name + '.tsv'
 
 def process(nameProduct:str, linkProduct:str):
     try:
@@ -398,7 +398,7 @@ def process(nameProduct:str, linkProduct:str):
         options = getOptionSpecs(content["content"])
         randomNumber = random.randint(0, 1)
         index = 1
-        open(getPathFile(nameProduct), 'a', encoding='utf-8').write('STT, Serial máy, Dòng sản phẩm, Nhà sản xuất, Xuất xứ, Mã màn hình, Độ phân giải, Kích thước màn hình, Độ sáng, Tấm nền, Độ phủ màu, Tần số quét, Cảm ứng, Loại màn hình, Tỉ lệ màn hình, CPU, iGPU, RAM, Loại ổ cứng, Dung lượng ổ cứng, GPU, Dung lượng pin, Cân nặng, Tên sản phẩm, Năm ra mắt, Chất liệu vỏ, Cổng kết nối, Webcam, Kích thước máy tính, Hệ điều hành, Wifi, Bluetooth, Đơn giá, Mã màu, Tên màu' + '\n')
+        open(getPathFile(nameProduct), 'a', encoding='utf-8').write('STT\tSerial máy\tDòng sản phẩm\tNhà sản xuất\tXuất xứ\tMã màn hình\tĐộ phân giải\tKích thước màn hình\tĐộ sáng\tTấm nền\tĐộ phủ màu\tTần số quét\tCảm ứng\tLoại màn hình\tTỉ lệ màn hình\tCPU\tiGPU\tRAM\tLoại ổ cứng\tDung lượng ổ cứng\tGPU\tDung lượng pin\tCân nặng\tTên sản phẩm\tNăm ra mắt\tChất liệu vỏ\tCổng kết nối\tWebcam\tKích thước máy tính\tHệ điều hành\tWifi\tBluetooth\tĐơn giá\tMã màu\tTên màu' + '\n')
         for cpu in range(1, options["CPU"] + 1):
             for gpu in range(1, options["GPU"] + 1):
                 for ram in range(1, options["RAM"] + 1):
@@ -413,7 +413,7 @@ def process(nameProduct:str, linkProduct:str):
                                     data.append(specs)
                                     products = json4csv(specs)
                                     for item in products:
-                                        open(getPathFile(nameProduct), 'a', encoding='utf-8').write(f'{index},{item}' + '\n')
+                                        open(getPathFile(nameProduct), 'a', encoding='utf-8').write(f'{index}\t{item}' + '\n')
                                         index += 1
         
         # open(f'./{nameProduct}.json', 'a', encoding='utf-8').write(json.dumps(data))
@@ -443,7 +443,7 @@ if __name__ == '__main__':
         listProcess.append(multiprocessing.Process(target = process, kwargs = {"nameProduct": split[0], "linkProduct": split[1]}))
 
     index = 0
-    maxProcess = 10
+    maxProcess = 16
     lengthProcess = len(listProcess)
 
     while index < lengthProcess:
