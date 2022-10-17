@@ -13,12 +13,15 @@ namespace CompuStore
     public partial class MainWindow : Form
     {
         StaffManage_Tab staffManage_Tab;
+        Tab.Warehouse.Warehouse_UC warehouse_UC;
+
         public MainWindow()
         {
             InitializeComponent();
             staffManage_Tab = null;
             SetHeaderState_From(StaffManage_Button);
         }
+
         protected override CreateParams CreateParams
         {
             get
@@ -28,6 +31,7 @@ namespace CompuStore
                 return handleParam;
             }
         }
+
         void SetHeaderState_From(Guna.UI2.WinForms.Guna2TileButton button)
         {
             Header.Text = "QUẢN LÝ " + button.Text;
@@ -66,11 +70,21 @@ namespace CompuStore
         private void StorageManage_Button_Click(object sender, EventArgs e)
         {
             SetHeaderState_From(StorageManage_Button);
+            if (warehouse_UC == null)
+            {
+                warehouse_UC = new Tab.Warehouse.Warehouse_UC();
+            }
+            LoadTab(warehouse_UC);
         }
 
         private void Exit_Button_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void MainWindow_Shown(object sender, EventArgs e)
+        {
+            StaffManage_Button_Click(null,null);
         }
     }
 }

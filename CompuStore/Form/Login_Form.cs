@@ -16,6 +16,7 @@ namespace CompuStore
         {
             InitializeComponent();
         }
+
         protected override CreateParams CreateParams
         {
             get
@@ -29,12 +30,12 @@ namespace CompuStore
         private void Exit_Button_Click(object sender, EventArgs e)
         {
             Application.Exit();
-
         }
 
         private void Login_Button_Click(object sender, EventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
+            this.Hide();
             mainWindow.Show();
         }
     }

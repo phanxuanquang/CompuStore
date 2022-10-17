@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guna.UI2">
       <HintPath>..\..\..\02\C#\studMin\studMin\bin\Debug\Guna.UI2.dll</HintPath>
@@ -175,6 +178,18 @@
     <Compile Include="Tab\StaffManage_Tab.Designer.cs">
       <DependentUpon>StaffManage_Tab.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tab\Warehouse\DetailInvoiceImportWarehouse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tab\Warehouse\DetailInvoiceImportWarehouse.Designer.cs">
+      <DependentUpon>DetailInvoiceImportWarehouse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tab\Warehouse\Warehouse_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tab\Warehouse\Warehouse_UC.Designer.cs">
+      <DependentUpon>Warehouse_UC.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form\SubForm\StaffEdit_Form.resx">
       <DependentUpon>StaffEdit_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -197,10 +212,17 @@
     <EmbeddedResource Include="Tab\StaffManage_Tab.resx">
       <DependentUpon>StaffManage_Tab.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Tab\Warehouse\DetailInvoiceImportWarehouse.resx">
+      <DependentUpon>DetailInvoiceImportWarehouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tab\Warehouse\Warehouse_UC.resx">
+      <DependentUpon>Warehouse_UC.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="Database\Models\CompuStoreModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CompuStoreModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="app.manifest" />
     <None Include="Database\Models\CompuStoreModel.edmx.diagram">
       <DependentUpon>CompuStoreModel.edmx</DependentUpon>
     </None>
