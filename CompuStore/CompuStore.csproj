@@ -33,17 +33,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Guna.UI2">
+      <HintPath>..\..\..\02\C#\studMin\studMin\bin\Debug\Guna.UI2.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -143,17 +148,41 @@
     <Compile Include="Database\Services\StaffRoleServices.cs" />
     <Compile Include="Database\Services\StaffServices.cs" />
     <Compile Include="Database\Services\UserServices.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="ImportData\ModelProduct.cs" />
+    <Compile Include="Form\SubForm\StaffEdit_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Form\SubForm\StaffEdit_Form.Designer.cs">
+      <DependentUpon>StaffEdit_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImportData\ModelProduct.cs" />
+    <Compile Include="Form\Login_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\Login_Form.Designer.cs">
+      <DependentUpon>Login_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form\MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form\MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Tab\StaffManage_Tab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tab\StaffManage_Tab.Designer.cs">
+      <DependentUpon>StaffManage_Tab.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form\SubForm\StaffEdit_Form.resx">
+      <DependentUpon>StaffEdit_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\Login_Form.resx">
+      <DependentUpon>Login_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form\MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -163,7 +192,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Tab\StaffManage_Tab.resx">
+      <DependentUpon>StaffManage_Tab.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="Database\Models\CompuStoreModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CompuStoreModel.Designer.cs</LastGenOutput>
@@ -172,6 +205,10 @@
       <DependentUpon>CompuStoreModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -189,6 +226,9 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="assets\Icons\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Database\Models\CompuStoreModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CompuStoreModel.edmx</DependentUpon>
@@ -200,5 +240,6 @@
       <LastGenOutput>CompuStoreModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
