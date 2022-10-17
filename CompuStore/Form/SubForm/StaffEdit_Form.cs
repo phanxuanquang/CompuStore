@@ -27,7 +27,7 @@ namespace CompuStore
         private void Exit_Button_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
+        } 
 
         private void Edit_Button_Click(object sender, EventArgs e)
         {
