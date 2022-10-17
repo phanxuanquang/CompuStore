@@ -240,6 +240,44 @@
       <LastGenOutput>CompuStoreModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="assets\Icons\Close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Icons\Menu\Storage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Icons\Menu\Sale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Icons\Menu\Service.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Icons\Menu\Staff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Icons\Menu\Storage - Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Icons\Menu\Sale - Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Icons\Menu\Service - Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Icons\Menu\Staff - Hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Icons\Menu\Staff - Header.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Icons\Menu\Storage - Header.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Icons\Menu\Sale - Header.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\Icons\Menu\Service - Header.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

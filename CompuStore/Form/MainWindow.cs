@@ -19,7 +19,15 @@ namespace CompuStore
             staffManage_Tab = null;
             SetHeaderState_From(StaffManage_Button);
         }
-
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
+                return handleParam;
+            }
+        }
         void SetHeaderState_From(Guna.UI2.WinForms.Guna2TileButton button)
         {
             Header.Text = "QUẢN LÝ " + button.Text;

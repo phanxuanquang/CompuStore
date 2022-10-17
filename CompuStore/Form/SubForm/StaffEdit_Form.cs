@@ -16,11 +16,20 @@ namespace CompuStore
         {
             InitializeComponent();
             ShadowForm.SetShadowForm(this);
-            ID_Box.ReadOnly = Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = StaffDate_Box.ReadOnly = Edit_Button.Visible = !notReadOnly;
+            Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = StaffDate_Box.ReadOnly = Edit_Button.Visible = !notReadOnly;
             Header.Text = headerName;
             if (headerName == "THÊM NHÂN VIÊN")
             {
                 Edit_Button.Visible = false;
+            }
+        }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
+                return handleParam;
             }
         }
 
@@ -32,7 +41,7 @@ namespace CompuStore
 
         private void Edit_Button_Click(object sender, EventArgs e)
         {
-            ID_Box.ReadOnly = Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = StaffDate_Box.ReadOnly = Edit_Button.Visible = false;
+            Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = StaffDate_Box.ReadOnly = Edit_Button.Visible = false;
             Header.Text = "CHỈNH SỬA THÔNG TIN";
         }
     }
