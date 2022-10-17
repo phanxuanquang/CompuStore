@@ -28,6 +28,7 @@ namespace CompuStore
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Tab-seperator values | *.tsv";
+
             if(openFileDialog.ShowDialog() == DialogResult.OK && openFileDialog.CheckFileExists)
             {
                 ModelProduct[] products = ModelProduct.GetTSV(openFileDialog.FileName);
@@ -50,7 +51,7 @@ namespace CompuStore
 
                                 ProductServices.InstanceImport.Import(products[index]).Wait();
                             }
-                            catch (AggregateException ex)
+                            catch (AggregateException)
                             {
                                 MessageBox.Show(string.Format("Product serial: {0} already exists in the system", products[index].Serial));
                             }

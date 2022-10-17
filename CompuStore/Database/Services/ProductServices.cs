@@ -105,7 +105,8 @@ namespace CompuStore.Database.Services
         {
             if (product == null) throw new ArgumentNullException();
 
-            return new DETAIL_SPECS { PRICE = product.Price, QUANTITY = 0 };
+            //Note: Lúc nhập hàng thì price là giá của nhập hàng, giá của sản phẩm là giá nhập hàng * tỉ lệ lợi nhuận
+            return new DETAIL_SPECS { /*PRICE = product.Price,*/ QUANTITY = 0 };
         }
 
         public class ImportProduct
