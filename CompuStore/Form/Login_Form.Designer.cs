@@ -66,10 +66,10 @@
             this.Remember_CheckBox.CheckedState.BorderRadius = 2;
             this.Remember_CheckBox.CheckedState.BorderThickness = 0;
             this.Remember_CheckBox.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(151)))), ((int)(((byte)(232)))));
-            this.Remember_CheckBox.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Remember_CheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Remember_CheckBox.Location = new System.Drawing.Point(112, 263);
             this.Remember_CheckBox.Name = "Remember_CheckBox";
-            this.Remember_CheckBox.Size = new System.Drawing.Size(151, 22);
+            this.Remember_CheckBox.Size = new System.Drawing.Size(155, 20);
             this.Remember_CheckBox.TabIndex = 5;
             this.Remember_CheckBox.Text = "Ghi nhớ đăng nhập";
             this.Remember_CheckBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -187,6 +187,7 @@
             this.Name = "Login_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";
+            this.Load += new System.EventHandler(this.Login_Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

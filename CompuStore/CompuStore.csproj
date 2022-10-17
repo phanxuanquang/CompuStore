@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\DataProvider.cs" />
+    <Compile Include="Database\Models\Hash.cs" />
     <Compile Include="Database\Services\ImportServices.cs" />
     <Compile Include="Database\Services\LoginServices.cs" />
     <Compile Include="Database\Models\CHANGE_OR_REFUND_PRODUCT.cs">
