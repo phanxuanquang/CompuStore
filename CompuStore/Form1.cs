@@ -13,6 +13,7 @@ namespace CompuStore
     using CompuStore.ImportData;
     using System.Threading;
     using Database;
+    using CompuStore.Database.Services;
 
     public partial class Form1 : Form
     {
@@ -25,53 +26,57 @@ namespace CompuStore
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ImportData.ImportProduct import = new ImportData.ImportProduct();
-            ModelProduct[] products = import.GetCSV();
-
-            if (task == null || task.IsCompleted)
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Tab-seperator values | *.tsv";
+            if(openFileDialog.ShowDialog() == DialogResult.OK && openFileDialog.CheckFileExists)
             {
-                cancellationTokenSource = new CancellationTokenSource();
-                CancellationToken token = cancellationTokenSource.Token;
+                ModelProduct[] products = ModelProduct.GetTSV(openFileDialog.FileName);
 
-                task = Task.Factory.StartNew(() =>
+                if (task == null || task.IsCompleted)
                 {
-                    for (int index = 0; index < products.Length && !token.IsCancellationRequested; index++)
+                    cancellationTokenSource = new CancellationTokenSource();
+                    CancellationToken token = cancellationTokenSource.Token;
+
+                    task = Task.Factory.StartNew(() =>
                     {
-                        try
+                        for (int index = 0; index < products.Length && !token.IsCancellationRequested; index++)
+                        {
+                            try
+                            {
+                                if (label1.InvokeRequired)
+                                    label1.Invoke(new Action(() => label1.Text = string.Format("Completed {0}/{1}", index, products.Length)));
+                                else
+                                    label1.Text = string.Format("Completed {0}/{1}", index, products.Length);
+
+                                ProductServices.InstanceImport.Import(products[index]).Wait();
+                            }
+                            catch (AggregateException ex)
+                            {
+                                MessageBox.Show(string.Format("Product serial: {0} already exists in the system", products[index].Serial));
+                            }
+                        }
+                    }, token);
+
+                    task.GetAwaiter().OnCompleted(() =>
+                    {
+                        if (token.IsCancellationRequested)
                         {
                             if (label1.InvokeRequired)
-                                label1.Invoke(new Action(() => label1.Text = string.Format("Completed {0}/{1}", index, products.Length)));
+                                label1.Invoke(new Action(() => label1.Text = "Canceled"));
                             else
-                                label1.Text = string.Format("Completed {0}/{1}", index, products.Length);
-
-                            import.InsertProduct(products[index]).Wait();
+                                label1.Text = "Canceled";
                         }
-                        catch (AggregateException ex)
+                        else
                         {
-                            MessageBox.Show(string.Format("Product serial: {0} already exists in the system", products[index].Serial));
+                            if (label1.InvokeRequired)
+                                label1.Invoke(new Action(() => label1.Text = "Insert completed"));
+                            else
+                                label1.Text = "Insert completed";
                         }
-                    }
-                }, token);
-
-                task.GetAwaiter().OnCompleted(() =>
-                {
-                    if (token.IsCancellationRequested)
-                    {
-                        if (label1.InvokeRequired)
-                            label1.Invoke(new Action(() => label1.Text = "Canceled"));
-                        else
-                            label1.Text = "Canceled";
-                    }
-                    else
-                    {
-                        if (label1.InvokeRequired)
-                            label1.Invoke(new Action(() => label1.Text = "Insert completed"));
-                        else
-                            label1.Text = "Insert completed";
-                    }
-                    cancellationTokenSource.Dispose();
-                    cancellationTokenSource = null;
-                });
+                        cancellationTokenSource.Dispose();
+                        cancellationTokenSource = null;
+                    });
+                }
             }
         }
 
@@ -85,7 +90,7 @@ namespace CompuStore
 
         private void button3_Click(object sender, EventArgs e)
         {
-            StaffServices.Instance.SaveStaffToDB("0909123123", "123@gmail.com", true, "0808123456", "ấp 1, xã Ba", 1);
+            Database.Services.StaffServices.Instance.SaveStaffToDB("0909123123", "123@gmail.com", true, "0808123456", "ấp 1, xã Ba", 1);
         }
     }
 }

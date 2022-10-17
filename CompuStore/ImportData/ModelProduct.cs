@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace CompuStore.ImportData
 {
@@ -216,9 +218,16 @@ namespace CompuStore.ImportData
             }
         }
 
-        /*public static bool TryParse(PRODUCT product, out ModelProduct model)
+        public static ModelProduct[] GetTSV(string pathFile)
         {
+            string[] x = File.ReadAllLines(pathFile, Encoding.UTF8);
+            ModelProduct[] products = new ModelProduct[x.Length];
+            for (int index = 1; index < x.Length; index++)
+            {
+                TryParse(x[index], out products[index]);
+            }
 
-        }*/
+            return products;
+        }
     }
 }

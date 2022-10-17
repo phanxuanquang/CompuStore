@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CompuStore.Database
+namespace CompuStore.Database.Services
 {
     using Models;
     internal class StaffServices
@@ -65,7 +65,7 @@ namespace CompuStore.Database
                 // thông báo thêm nhân viên không thành công
                 return false;
             }
-            if(!Database.UserServices.Instance.CreateNewStaffAccount(staff))
+            if(!Database.Services.UserServices.Instance.CreateNewStaffAccount(staff))
             {
                 // thông báo tạo tài khoản không thành công
                 return false;

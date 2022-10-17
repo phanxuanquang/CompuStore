@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CompuStore.Database.LoginServices
+namespace CompuStore.Database.Services
 {
     internal class LoginServices
     {
