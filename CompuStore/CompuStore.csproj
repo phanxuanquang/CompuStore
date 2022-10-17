@@ -36,9 +36,18 @@
     <Reference Include="Guna.UI2">
       <HintPath>..\..\..\02\C#\studMin\studMin\bin\Debug\Guna.UI2.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -51,6 +60,95 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\DataProvider.cs" />
+    <Compile Include="Database\Services\ImportServices.cs" />
+    <Compile Include="Database\Services\LoginServices.cs" />
+    <Compile Include="Database\Models\CHANGE_OR_REFUND_PRODUCT.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\COLOR.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\COMMON_SPECS.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\COMMON_USER.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\CompuStoreModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CompuStoreModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\CompuStoreModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\CompuStoreModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CompuStoreModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\CUSTOMER.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\DETAIL_IMPORT_WAREHOUSE.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\DETAIL_INVOICE.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\DETAIL_SPECS.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\DISPLAY_SPECS.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\DISTRIBUTOR.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\IMPORT_WAREHOUSE.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\INFOR.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\INVOICE.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\LINE_UP.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\PRODUCT.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\RANK.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\RECEIVE_WARRANTY.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\STAFF.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\STAFFROLE.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\STORE.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\UNIQUE_SPECS.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Models\USERROLE.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Services\ProductServices.cs" />
+    <Compile Include="Database\Services\StaffRoleServices.cs" />
+    <Compile Include="Database\Services\StaffServices.cs" />
+    <Compile Include="Database\Services\UserServices.cs" />
+    <Compile Include="ImportData\ModelProduct.cs" />
     <Compile Include="Form\SubForm\StaffEdit_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +197,18 @@
     <EmbeddedResource Include="Tab\StaffManage_Tab.resx">
       <DependentUpon>StaffManage_Tab.cs</DependentUpon>
     </EmbeddedResource>
+    <EntityDeploy Include="Database\Models\CompuStoreModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CompuStoreModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Database\Models\CompuStoreModel.edmx.diagram">
+      <DependentUpon>CompuStoreModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -113,7 +223,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="assets\Icons\Exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\Models\CompuStoreModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CompuStoreModel.edmx</DependentUpon>
+      <LastGenOutput>CompuStoreModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\Models\CompuStoreModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CompuStoreModel.edmx</DependentUpon>
+      <LastGenOutput>CompuStoreModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\Icons\Close.png" />
