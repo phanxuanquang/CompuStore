@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.HeaderIcon = new System.Windows.Forms.PictureBox();
-            this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.Header = new System.Windows.Forms.Label();
             this.PhoneNumber_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Identity_Box = new Guna.UI2.WinForms.Guna2TextBox();
@@ -44,36 +42,10 @@
             this.ShadowForm = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.Apartment_ComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
             this.Edit_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.HeaderIcon = new System.Windows.Forms.PictureBox();
+            this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
-            // 
-            // HeaderIcon
-            // 
-            this.HeaderIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.HeaderIcon.BackgroundImage = global::CompuStore.Properties.Resources.Exit;
-            this.HeaderIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.HeaderIcon.Location = new System.Drawing.Point(9, 7);
-            this.HeaderIcon.Margin = new System.Windows.Forms.Padding(0);
-            this.HeaderIcon.Name = "HeaderIcon";
-            this.HeaderIcon.Size = new System.Drawing.Size(25, 25);
-            this.HeaderIcon.TabIndex = 9;
-            this.HeaderIcon.TabStop = false;
-            // 
-            // Exit_Button
-            // 
-            this.Exit_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Exit_Button.CheckedState.ImageSize = new System.Drawing.Size(25, 25);
-            this.Exit_Button.CheckedState.Parent = this.Exit_Button;
-            this.Exit_Button.HoverState.ImageSize = new System.Drawing.Size(25, 25);
-            this.Exit_Button.HoverState.Parent = this.Exit_Button;
-            this.Exit_Button.Image = global::CompuStore.Properties.Resources.Exit;
-            this.Exit_Button.ImageSize = new System.Drawing.Size(27, 27);
-            this.Exit_Button.Location = new System.Drawing.Point(485, 0);
-            this.Exit_Button.Name = "Exit_Button";
-            this.Exit_Button.PressedState.Parent = this.Exit_Button;
-            this.Exit_Button.Size = new System.Drawing.Size(40, 40);
-            this.Exit_Button.TabIndex = 8;
-            this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
             // 
             // Header
             // 
@@ -88,6 +60,7 @@
             this.Header.TabIndex = 7;
             this.Header.Text = "Chỉnh sửa thông tin";
             this.Header.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Header.UseCompatibleTextRendering = true;
             // 
             // PhoneNumber_Box
             // 
@@ -299,6 +272,7 @@
             this.Complete_Button.Size = new System.Drawing.Size(440, 59);
             this.Complete_Button.TabIndex = 16;
             this.Complete_Button.Text = "XONG";
+            this.Complete_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             // 
             // DragControl
             // 
@@ -443,8 +417,38 @@
             this.Edit_Button.Size = new System.Drawing.Size(440, 59);
             this.Edit_Button.TabIndex = 20;
             this.Edit_Button.Text = "CHỈNH SỬA";
+            this.Edit_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.Edit_Button.Visible = false;
             this.Edit_Button.Click += new System.EventHandler(this.Edit_Button_Click);
+            // 
+            // HeaderIcon
+            // 
+            this.HeaderIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.HeaderIcon.BackgroundImage = global::CompuStore.Properties.Resources.Staff___Header;
+            this.HeaderIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.HeaderIcon.Location = new System.Drawing.Point(9, 6);
+            this.HeaderIcon.Margin = new System.Windows.Forms.Padding(0);
+            this.HeaderIcon.Name = "HeaderIcon";
+            this.HeaderIcon.Size = new System.Drawing.Size(25, 25);
+            this.HeaderIcon.TabIndex = 9;
+            this.HeaderIcon.TabStop = false;
+            // 
+            // Exit_Button
+            // 
+            this.Exit_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Exit_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Exit_Button.CheckedState.ImageSize = new System.Drawing.Size(25, 25);
+            this.Exit_Button.CheckedState.Parent = this.Exit_Button;
+            this.Exit_Button.HoverState.ImageSize = new System.Drawing.Size(25, 25);
+            this.Exit_Button.HoverState.Parent = this.Exit_Button;
+            this.Exit_Button.Image = global::CompuStore.Properties.Resources.Close;
+            this.Exit_Button.ImageSize = new System.Drawing.Size(27, 27);
+            this.Exit_Button.Location = new System.Drawing.Point(485, 0);
+            this.Exit_Button.Name = "Exit_Button";
+            this.Exit_Button.PressedState.Parent = this.Exit_Button;
+            this.Exit_Button.Size = new System.Drawing.Size(40, 40);
+            this.Exit_Button.TabIndex = 8;
+            this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
             // 
             // StaffEdit_Form
             // 

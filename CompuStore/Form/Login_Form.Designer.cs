@@ -53,6 +53,8 @@
             this.Login_Button.Size = new System.Drawing.Size(527, 61);
             this.Login_Button.TabIndex = 4;
             this.Login_Button.Text = "ĐĂNG NHẬP";
+            this.Login_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Login_Button.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
             this.Login_Button.Click += new System.EventHandler(this.Login_Button_Click);
             // 
             // Remember_CheckBox
@@ -64,12 +66,13 @@
             this.Remember_CheckBox.CheckedState.BorderRadius = 2;
             this.Remember_CheckBox.CheckedState.BorderThickness = 0;
             this.Remember_CheckBox.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(151)))), ((int)(((byte)(232)))));
-            this.Remember_CheckBox.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Remember_CheckBox.Font = new System.Drawing.Font("Open Sans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Remember_CheckBox.Location = new System.Drawing.Point(112, 263);
             this.Remember_CheckBox.Name = "Remember_CheckBox";
-            this.Remember_CheckBox.Size = new System.Drawing.Size(145, 21);
+            this.Remember_CheckBox.Size = new System.Drawing.Size(151, 22);
             this.Remember_CheckBox.TabIndex = 5;
             this.Remember_CheckBox.Text = "Ghi nhớ đăng nhập";
+            this.Remember_CheckBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.Remember_CheckBox.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.Remember_CheckBox.UncheckedState.BorderRadius = 2;
             this.Remember_CheckBox.UncheckedState.BorderThickness = 0;
