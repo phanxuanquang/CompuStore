@@ -36,7 +36,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DataTable = new Guna.UI2.WinForms.Guna2DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Name_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhoneNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -91,7 +91,7 @@
             this.DataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DataTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
-            this.Name_Column,
+            this.Name,
             this.PhoneNum,
             this.Role,
             this.Status,
@@ -123,7 +123,7 @@
             this.DataTable.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.DataTable.EnableHeadersVisualStyles = false;
             this.DataTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.DataTable.Location = new System.Drawing.Point(0, 73);
+            this.DataTable.Location = new System.Drawing.Point(0, 78);
             this.DataTable.MultiSelect = false;
             this.DataTable.Name = "DataTable";
             this.DataTable.ReadOnly = true;
@@ -144,7 +144,7 @@
             this.DataTable.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.DataTable.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DataTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataTable.Size = new System.Drawing.Size(1226, 602);
+            this.DataTable.Size = new System.Drawing.Size(1234, 602);
             this.DataTable.TabIndex = 0;
             this.DataTable.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.DataTable.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -325,11 +325,11 @@
             this.AddStaff_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.AddStaff_Button.ForeColor = System.Drawing.Color.White;
             this.AddStaff_Button.HoverState.Parent = this.AddStaff_Button;
-            this.AddStaff_Button.Location = new System.Drawing.Point(90, 21);
+            this.AddStaff_Button.Location = new System.Drawing.Point(196, 21);
             this.AddStaff_Button.Name = "AddStaff_Button";
             this.AddStaff_Button.PressedDepth = 5;
             this.AddStaff_Button.ShadowDecoration.Parent = this.AddStaff_Button;
-            this.AddStaff_Button.Size = new System.Drawing.Size(406, 71);
+            this.AddStaff_Button.Size = new System.Drawing.Size(203, 37);
             this.AddStaff_Button.TabIndex = 5;
             this.AddStaff_Button.Text = "Thêm nhân viên";
             this.AddStaff_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -347,36 +347,14 @@
             this.FireStaff_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.FireStaff_Button.ForeColor = System.Drawing.Color.White;
             this.FireStaff_Button.HoverState.Parent = this.FireStaff_Button;
-            this.FireStaff_Button.Location = new System.Drawing.Point(934, 21);
+            this.FireStaff_Button.Location = new System.Drawing.Point(835, 21);
             this.FireStaff_Button.Name = "FireStaff_Button";
             this.FireStaff_Button.PressedDepth = 5;
             this.FireStaff_Button.ShadowDecoration.Parent = this.FireStaff_Button;
-            this.FireStaff_Button.Size = new System.Drawing.Size(406, 71);
+            this.FireStaff_Button.Size = new System.Drawing.Size(203, 37);
             this.FireStaff_Button.TabIndex = 6;
             this.FireStaff_Button.Text = "Thu hồi quyền";
             this.FireStaff_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            // 
-            // EditStaff_Button
-            // 
-            this.EditStaff_Button.Animated = true;
-            this.EditStaff_Button.BorderRadius = 5;
-            this.EditStaff_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.EditStaff_Button.CheckedState.Parent = this.EditStaff_Button;
-            this.EditStaff_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.EditStaff_Button.CustomImages.Parent = this.EditStaff_Button;
-            this.EditStaff_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.EditStaff_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.EditStaff_Button.ForeColor = System.Drawing.Color.White;
-            this.EditStaff_Button.HoverState.Parent = this.EditStaff_Button;
-            this.EditStaff_Button.Location = new System.Drawing.Point(723, 21);
-            this.EditStaff_Button.Name = "EditStaff_Button";
-            this.EditStaff_Button.PressedDepth = 5;
-            this.EditStaff_Button.ShadowDecoration.Parent = this.EditStaff_Button;
-            this.EditStaff_Button.Size = new System.Drawing.Size(203, 37);
-            this.EditStaff_Button.TabIndex = 7;
-            this.EditStaff_Button.Text = "Chỉnh sửa thông tin";
-            this.EditStaff_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            this.EditStaff_Button.Click += new System.EventHandler(this.EditStaff_Button_Click);
             // 
             // MoveStaff_Button
             // 
@@ -390,11 +368,11 @@
             this.MoveStaff_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.MoveStaff_Button.ForeColor = System.Drawing.Color.White;
             this.MoveStaff_Button.HoverState.Parent = this.MoveStaff_Button;
-            this.MoveStaff_Button.Location = new System.Drawing.Point(301, 21);
+            this.MoveStaff_Button.Location = new System.Drawing.Point(409, 21);
             this.MoveStaff_Button.Name = "MoveStaff_Button";
             this.MoveStaff_Button.PressedDepth = 5;
             this.MoveStaff_Button.ShadowDecoration.Parent = this.MoveStaff_Button;
-            this.MoveStaff_Button.Size = new System.Drawing.Size(406, 71);
+            this.MoveStaff_Button.Size = new System.Drawing.Size(203, 37);
             this.MoveStaff_Button.TabIndex = 8;
             this.MoveStaff_Button.Text = "Chuyển bộ phận";
             this.MoveStaff_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -411,64 +389,28 @@
             this.InfoStaff_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.InfoStaff_Button.ForeColor = System.Drawing.Color.White;
             this.InfoStaff_Button.HoverState.Parent = this.InfoStaff_Button;
-            this.InfoStaff_Button.Location = new System.Drawing.Point(512, 21);
+            this.InfoStaff_Button.Location = new System.Drawing.Point(622, 21);
             this.InfoStaff_Button.Name = "InfoStaff_Button";
             this.InfoStaff_Button.PressedDepth = 5;
             this.InfoStaff_Button.ShadowDecoration.Parent = this.InfoStaff_Button;
-            this.InfoStaff_Button.Size = new System.Drawing.Size(406, 71);
+            this.InfoStaff_Button.Size = new System.Drawing.Size(203, 37);
             this.InfoStaff_Button.TabIndex = 9;
             this.InfoStaff_Button.Text = "Xem thông tin";
             this.InfoStaff_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.InfoStaff_Button.Click += new System.EventHandler(this.InfoStaff_Button_Click);
             // 
-            // Id
-            // 
-            this.Id.HeaderText = "Mã nhân viên";
-            this.Id.MinimumWidth = 10;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            // 
-            // Name
-            // 
-            this.Name.HeaderText = "Họ và tên";
-            this.Name.MinimumWidth = 10;
-            this.Name.Name = "Name";
-            this.Name.ReadOnly = true;
-            // 
-            // PhoneNum
-            // 
-            this.PhoneNum.HeaderText = "Số điện thoại";
-            this.PhoneNum.MinimumWidth = 10;
-            this.PhoneNum.Name = "PhoneNum";
-            this.PhoneNum.ReadOnly = true;
-            // 
-            // Role
-            // 
-            this.Role.HeaderText = "Bộ phận phụ trách";
-            this.Role.MinimumWidth = 10;
-            this.Role.Name = "Role";
-            this.Role.ReadOnly = true;
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Tình trạng";
-            this.Status.MinimumWidth = 10;
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
-            // 
             // StaffManage_Tab
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
             this.Controls.Add(this.InfoStaff_Button);
             this.Controls.Add(this.MoveStaff_Button);
             this.Controls.Add(this.FireStaff_Button);
             this.Controls.Add(this.AddStaff_Button);
             this.Controls.Add(this.DataTable);
-
-            this.Size = new System.Drawing.Size(1226, 678);
+            //this.Name = "StaffManage_Tab";
+            this.Size = new System.Drawing.Size(1234, 680);
             ((System.ComponentModel.ISupportInitialize)(this.DataTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sTAFFBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -483,7 +425,7 @@
         private Guna.UI2.WinForms.Guna2DataGridView DataTable;
         private System.Windows.Forms.BindingSource sTAFFBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name_Column;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Role;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
