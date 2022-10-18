@@ -28,6 +28,7 @@ namespace CompuStore.Database.Models
         public Nullable<bool> SEX { get; set; }
         public string IDENTITY_CODE { get; set; }
         public string ADDRESS { get; set; }
+        public string NAME { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CUSTOMER> CUSTOMERs { get; set; }

@@ -34,7 +34,6 @@ namespace CompuStore.Database.Models
         public virtual DbSet<DETAIL_SPECS> DETAIL_SPECS { get; set; }
         public virtual DbSet<DISTRIBUTOR> DISTRIBUTORs { get; set; }
         public virtual DbSet<IMPORT_WAREHOUSE> IMPORT_WAREHOUSE { get; set; }
-        public virtual DbSet<INFOR> INFORs { get; set; }
         public virtual DbSet<INVOICE> INVOICEs { get; set; }
         public virtual DbSet<LINE_UP> LINE_UP { get; set; }
         public virtual DbSet<PRODUCT> PRODUCTs { get; set; }
@@ -47,5 +46,6 @@ namespace CompuStore.Database.Models
         public virtual DbSet<USERROLE> USERROLEs { get; set; }
         public virtual DbSet<COMMON_SPECS> COMMON_SPECS { get; set; }
         public virtual DbSet<DISPLAY_SPECS> DISPLAY_SPECS { get; set; }
+        public virtual DbSet<INFOR> INFORs { get; set; }
     }
 }

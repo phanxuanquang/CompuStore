@@ -38,12 +38,13 @@
             this.Complete_Button = new Guna.UI2.WinForms.Guna2Button();
             this.DragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.Name_Box = new Guna.UI2.WinForms.Guna2TextBox();
-            this.ID_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.ShadowForm = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.Apartment_ComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.sTAFFROLEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Edit_Button = new Guna.UI2.WinForms.Guna2Button();
             this.HeaderIcon = new System.Windows.Forms.PictureBox();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
+            ((System.ComponentModel.ISupportInitialize)(this.sTAFFROLEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             // 
             this.Header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
             this.Header.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Header.Font = new System.Drawing.Font("Open Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Header.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Header.ForeColor = System.Drawing.Color.White;
             this.Header.Location = new System.Drawing.Point(0, 0);
             this.Header.Name = "Header";
@@ -81,7 +82,7 @@
             this.PhoneNumber_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.PhoneNumber_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.PhoneNumber_Box.FocusedState.Parent = this.PhoneNumber_Box;
-            this.PhoneNumber_Box.Font = new System.Drawing.Font("Open Sans Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.PhoneNumber_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.PhoneNumber_Box.ForeColor = System.Drawing.Color.Black;
             this.PhoneNumber_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.PhoneNumber_Box.HoverState.Parent = this.PhoneNumber_Box;
@@ -119,7 +120,7 @@
             this.Identity_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Identity_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Identity_Box.FocusedState.Parent = this.Identity_Box;
-            this.Identity_Box.Font = new System.Drawing.Font("Open Sans Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Identity_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Identity_Box.ForeColor = System.Drawing.Color.Black;
             this.Identity_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.Identity_Box.HoverState.Parent = this.Identity_Box;
@@ -157,7 +158,7 @@
             this.Email_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Email_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Email_Box.FocusedState.Parent = this.Email_Box;
-            this.Email_Box.Font = new System.Drawing.Font("Open Sans Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Email_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Email_Box.ForeColor = System.Drawing.Color.Black;
             this.Email_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.Email_Box.HoverState.Parent = this.Email_Box;
@@ -195,7 +196,7 @@
             this.Address_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Address_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Address_Box.FocusedState.Parent = this.Address_Box;
-            this.Address_Box.Font = new System.Drawing.Font("Open Sans Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Address_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Address_Box.ForeColor = System.Drawing.Color.Black;
             this.Address_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.Address_Box.HoverState.Parent = this.Address_Box;
@@ -233,7 +234,7 @@
             this.StaffDate_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.StaffDate_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.StaffDate_Box.FocusedState.Parent = this.StaffDate_Box;
-            this.StaffDate_Box.Font = new System.Drawing.Font("Open Sans Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.StaffDate_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.StaffDate_Box.ForeColor = System.Drawing.Color.Black;
             this.StaffDate_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.StaffDate_Box.HoverState.Parent = this.StaffDate_Box;
@@ -245,6 +246,7 @@
             this.StaffDate_Box.PasswordChar = '\0';
             this.StaffDate_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.StaffDate_Box.PlaceholderText = "Ngày vào làm";
+            this.StaffDate_Box.ReadOnly = true;
             this.StaffDate_Box.SelectedText = "";
             this.StaffDate_Box.ShadowDecoration.Parent = this.StaffDate_Box;
             this.StaffDate_Box.Size = new System.Drawing.Size(217, 37);
@@ -262,7 +264,7 @@
             this.Complete_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Complete_Button.CustomImages.Parent = this.Complete_Button;
             this.Complete_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Complete_Button.Font = new System.Drawing.Font("Open Sans", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Complete_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Complete_Button.ForeColor = System.Drawing.Color.White;
             this.Complete_Button.HoverState.Parent = this.Complete_Button;
             this.Complete_Button.Location = new System.Drawing.Point(42, 354);
@@ -297,7 +299,7 @@
             this.Name_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Name_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Name_Box.FocusedState.Parent = this.Name_Box;
-            this.Name_Box.Font = new System.Drawing.Font("Open Sans Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Name_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Name_Box.ForeColor = System.Drawing.Color.Black;
             this.Name_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.Name_Box.HoverState.Parent = this.Name_Box;
@@ -316,45 +318,6 @@
             this.Name_Box.TabIndex = 17;
             this.Name_Box.TextOffset = new System.Drawing.Point(5, 0);
             // 
-            // ID_Box
-            // 
-            this.ID_Box.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ID_Box.Animated = true;
-            this.ID_Box.BackColor = System.Drawing.Color.Transparent;
-            this.ID_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
-            this.ID_Box.BorderRadius = 8;
-            this.ID_Box.BorderThickness = 2;
-            this.ID_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.ID_Box.DefaultText = "";
-            this.ID_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.ID_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.ID_Box.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.ID_Box.DisabledState.Parent = this.ID_Box;
-            this.ID_Box.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.ID_Box.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.ID_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.ID_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
-            this.ID_Box.FocusedState.Parent = this.ID_Box;
-            this.ID_Box.Font = new System.Drawing.Font("Open Sans Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.ID_Box.ForeColor = System.Drawing.Color.Black;
-            this.ID_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
-            this.ID_Box.HoverState.Parent = this.ID_Box;
-            this.ID_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
-            this.ID_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.ID_Box.Location = new System.Drawing.Point(42, 67);
-            this.ID_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ID_Box.Name = "ID_Box";
-            this.ID_Box.PasswordChar = '\0';
-            this.ID_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.ID_Box.PlaceholderText = "Mã nhân viên";
-            this.ID_Box.ReadOnly = true;
-            this.ID_Box.SelectedText = "";
-            this.ID_Box.ShadowDecoration.Parent = this.ID_Box;
-            this.ID_Box.Size = new System.Drawing.Size(440, 37);
-            this.ID_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.ID_Box.TabIndex = 18;
-            this.ID_Box.TextOffset = new System.Drawing.Point(5, 0);
-            // 
             // Apartment_ComboBox
             // 
             this.Apartment_ComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -364,6 +327,8 @@
             this.Apartment_ComboBox.BorderRadius = 4;
             this.Apartment_ComboBox.BorderThickness = 2;
             this.Apartment_ComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Apartment_ComboBox.DataSource = this.sTAFFROLEBindingSource;
+            this.Apartment_ComboBox.DisplayMember = "ROLE";
             this.Apartment_ComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.Apartment_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Apartment_ComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -372,7 +337,7 @@
             this.Apartment_ComboBox.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
             this.Apartment_ComboBox.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Apartment_ComboBox.FocusedState.Parent = this.Apartment_ComboBox;
-            this.Apartment_ComboBox.Font = new System.Drawing.Font("Open Sans Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Apartment_ComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.Apartment_ComboBox.ForeColor = System.Drawing.Color.Black;
             this.Apartment_ComboBox.FormattingEnabled = true;
             this.Apartment_ComboBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -380,22 +345,20 @@
             this.Apartment_ComboBox.HoverState.ForeColor = System.Drawing.Color.Black;
             this.Apartment_ComboBox.HoverState.Parent = this.Apartment_ComboBox;
             this.Apartment_ComboBox.ItemHeight = 32;
-            this.Apartment_ComboBox.Items.AddRange(new object[] {
-            "Bộ phận phụ trách",
-            "Bán hàng",
-            "Chăm sóc khách hàng",
-            "Kho vận"});
             this.Apartment_ComboBox.ItemsAppearance.Parent = this.Apartment_ComboBox;
             this.Apartment_ComboBox.Location = new System.Drawing.Point(42, 285);
             this.Apartment_ComboBox.Margin = new System.Windows.Forms.Padding(0);
             this.Apartment_ComboBox.Name = "Apartment_ComboBox";
             this.Apartment_ComboBox.ShadowDecoration.Parent = this.Apartment_ComboBox;
             this.Apartment_ComboBox.Size = new System.Drawing.Size(440, 38);
-            this.Apartment_ComboBox.StartIndex = 0;
             this.Apartment_ComboBox.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Apartment_ComboBox.TabIndex = 19;
             this.Apartment_ComboBox.TextOffset = new System.Drawing.Point(5, 0);
             this.Apartment_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            // 
+            // sTAFFROLEBindingSource
+            // 
+            this.sTAFFROLEBindingSource.DataSource = typeof(CompuStore.Database.Models.STAFFROLE);
             // 
             // Edit_Button
             // 
@@ -407,7 +370,7 @@
             this.Edit_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Edit_Button.CustomImages.Parent = this.Edit_Button;
             this.Edit_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Edit_Button.Font = new System.Drawing.Font("Open Sans", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Edit_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Edit_Button.ForeColor = System.Drawing.Color.White;
             this.Edit_Button.HoverState.Parent = this.Edit_Button;
             this.Edit_Button.Location = new System.Drawing.Point(42, 354);
@@ -458,7 +421,6 @@
             this.ClientSize = new System.Drawing.Size(525, 442);
             this.Controls.Add(this.Edit_Button);
             this.Controls.Add(this.Apartment_ComboBox);
-            this.Controls.Add(this.ID_Box);
             this.Controls.Add(this.Name_Box);
             this.Controls.Add(this.Complete_Button);
             this.Controls.Add(this.StaffDate_Box);
@@ -473,6 +435,8 @@
             this.Name = "StaffEdit_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thêm nhân viên mới";
+            this.Load += new System.EventHandler(this.StaffEdit_Form_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.sTAFFROLEBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).EndInit();
             this.ResumeLayout(false);
 
@@ -491,9 +455,9 @@
         private Guna.UI2.WinForms.Guna2Button Complete_Button;
         private Guna.UI2.WinForms.Guna2DragControl DragControl;
         private Guna.UI2.WinForms.Guna2TextBox Name_Box;
-        private Guna.UI2.WinForms.Guna2TextBox ID_Box;
         private Guna.UI2.WinForms.Guna2ShadowForm ShadowForm;
         private Guna.UI2.WinForms.Guna2ComboBox Apartment_ComboBox;
         private Guna.UI2.WinForms.Guna2Button Edit_Button;
+        private System.Windows.Forms.BindingSource sTAFFROLEBindingSource;
     }
 }

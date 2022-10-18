@@ -12,6 +12,11 @@ namespace CompuStore.Database.Services
         private static StaffRoleServices _instance;
         public static StaffRoleServices Instance => _instance ?? (_instance = new StaffRoleServices());
 
+        public List<STAFFROLE> GetSTAFFROLEs()
+        {
+            return DataProvider.Instance.Database.STAFFROLEs.ToList();
+        }
+
         public STAFFROLE GetStaffRole(string role)
         {
             return DataProvider.Instance.Database.STAFFROLEs.SingleOrDefault(c => c.ROLE == role);

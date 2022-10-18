@@ -64,7 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\DataProvider.cs" />
-    <Compile Include="Database\Models\Hash.cs" />
+    <Compile Include="Database\Hash.cs" />
     <Compile Include="Database\Services\ImportServices.cs" />
     <Compile Include="Database\Services\LoginServices.cs" />
     <Compile Include="Database\Models\CHANGE_OR_REFUND_PRODUCT.cs">
@@ -228,6 +228,8 @@
       <DependentUpon>CompuStoreModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CompuStore.Database.Models.STAFF.datasource" />
+    <None Include="Properties\DataSources\CompuStore.Database.Models.STAFFROLE.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

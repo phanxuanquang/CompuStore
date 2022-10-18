@@ -41,7 +41,6 @@ namespace CompuStore.Database.Models
         public virtual ICollection<CHANGE_OR_REFUND_PRODUCT> CHANGE_OR_REFUND_PRODUCT1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<IMPORT_WAREHOUSE> IMPORT_WAREHOUSE { get; set; }
-        public virtual INFOR INFOR { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INVOICE> INVOICEs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -49,5 +48,6 @@ namespace CompuStore.Database.Models
         public virtual STAFFROLE STAFFROLE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<STORE> STOREs { get; set; }
+        public virtual INFOR INFOR { get; set; }
     }
 }

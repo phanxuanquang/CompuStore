@@ -59,8 +59,7 @@ namespace CompuStore
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.ShowDialog();
-
-            /*if (Username_Box.Text == String.Empty || Password_Box.Text == String.Empty)
+/*          if (Username_Box.Text == String.Empty || Password_Box.Text == String.Empty)
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin đăng nhập.", "Đăng nhập thất bại", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -70,8 +69,8 @@ namespace CompuStore
                 string accountRole = String.Empty;
 
                 *//*GUI.LoadingWindow loadingWindow = new GUI.LoadingWindow(this, "ĐANG TẢI");
-                loadingWindow.Show();*//*
-                this.Enabled = false;
+                loadingWindow.Show();
+                this.Enabled = false;*//*
 
                 await System.Threading.Tasks.Task.Factory.StartNew(() =>
                 {
@@ -88,8 +87,8 @@ namespace CompuStore
                 });
 
                 *//*loadingWindow.Close();
-                loadingWindow.Dispose();*//*
-                this.Enabled = true;
+                loadingWindow.Dispose();
+                this.Enabled = true;*//*
 
                 if (isValidAccount)
                 {
@@ -98,24 +97,7 @@ namespace CompuStore
 
                     switch (accountRole)
                     {
-                        case "Nhân viên":
-                            personRole = studMin.role.officeStaff;
-                            break;
-                        case "Chủ nhiệm":
-                            personRole = studMin.role.classHead;
-                            break;
-                        case "Trưởng bộ môn":
-                            personRole = studMin.role.subjectHead;
-                            break;
-                        case "Hiệu trưởng":
-                            personRole = studMin.role.principal;
-                            break;
-                        case "Phó hiệu trưởng":
-                            personRole = studMin.role.vicePrincipal;
-                            break;
-                        default:
-                            personRole = studMin.role.normalTeacher;
-                            break;
+
                     }
 
                     MainWindow mainWindow = new MainWindow();

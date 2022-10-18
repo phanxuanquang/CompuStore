@@ -5,6 +5,19 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="CompuStoreDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CHANGE_OR_REFUND_PRODUCT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NAME_ID" Type="varchar" MaxLength="30" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="ID_HANDLING_STAFF" Type="int" Nullable="false" />
+          <Property Name="ID_WAREHOUSE_STAFF" Type="int" Nullable="false" />
+          <Property Name="ID_INVOICE" Type="int" Nullable="false" />
+          <Property Name="SERIAL_ID" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="REASON" Type="nvarchar" MaxLength="200" />
+          <Property Name="RETURN_DATE" Type="datetime" />
+        </EntityType>
         <EntityType Name="COLOR">
           <Key>
             <PropertyRef Name="COLOR_CODE" />
@@ -52,19 +65,6 @@
           <Property Name="ID_INFOR" Type="int" />
           <Property Name="ID_RANK" Type="int" />
           <Property Name="PURCHASED_QUANTITY" Type="int" />
-        </EntityType>
-        <EntityType Name="CHANGE_OR_REFUND_PRODUCT">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NAME_ID" Type="varchar" MaxLength="30" StoreGeneratedPattern="Computed" Nullable="false" />
-          <Property Name="ID_HANDLING_STAFF" Type="int" Nullable="false" />
-          <Property Name="ID_WAREHOUSE_STAFF" Type="int" Nullable="false" />
-          <Property Name="ID_INVOICE" Type="int" Nullable="false" />
-          <Property Name="SERIAL_ID" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="REASON" Type="nvarchar" MaxLength="200" />
-          <Property Name="RETURN_DATE" Type="datetime" />
         </EntityType>
         <EntityType Name="DETAIL_IMPORT_WAREHOUSE">
           <Key>
@@ -146,6 +146,7 @@
           <Property Name="SEX" Type="bit" />
           <Property Name="IDENTITY_CODE" Type="varchar" MaxLength="30" />
           <Property Name="ADDRESS" Type="nvarchar" MaxLength="200" />
+          <Property Name="NAME" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="INVOICE">
           <Key>
@@ -254,6 +255,54 @@
           <Property Name="NAME_ID" Type="varchar" MaxLength="30" StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="ROLE" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <Association Name="FK__CHANGE_OR__ID_HA__1EA48E88">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="CHANGE_OR_REFUND_PRODUCT" Type="Self.CHANGE_OR_REFUND_PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CHANGE_OR_REFUND_PRODUCT">
+              <PropertyRef Name="ID_HANDLING_STAFF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHANGE_OR__ID_IN__208CD6FA">
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="1" />
+          <End Role="CHANGE_OR_REFUND_PRODUCT" Type="Self.CHANGE_OR_REFUND_PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INVOICE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CHANGE_OR_REFUND_PRODUCT">
+              <PropertyRef Name="ID_INVOICE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHANGE_OR__ID_WA__1F98B2C1">
+          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
+          <End Role="CHANGE_OR_REFUND_PRODUCT" Type="Self.CHANGE_OR_REFUND_PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CHANGE_OR_REFUND_PRODUCT">
+              <PropertyRef Name="ID_WAREHOUSE_STAFF" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CHANGE_OR__SERIA__2180FB33">
+          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
+          <End Role="CHANGE_OR_REFUND_PRODUCT" Type="Self.CHANGE_OR_REFUND_PRODUCT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="SERIAL_ID" />
+            </Principal>
+            <Dependent Role="CHANGE_OR_REFUND_PRODUCT">
+              <PropertyRef Name="SERIAL_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__COMMON_SP__ID_LI__22751F6C">
           <End Role="LINE_UP" Type="Self.LINE_UP" Multiplicity="1" />
           <End Role="COMMON_SPECS" Type="Self.COMMON_SPECS" Multiplicity="*" />
@@ -311,54 +360,6 @@
             </Principal>
             <Dependent Role="CUSTOMER">
               <PropertyRef Name="ID_RANK" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CHANGE_OR__ID_HA__1EA48E88">
-          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
-          <End Role="CHANGE_OR_REFUND_PRODUCT" Type="Self.CHANGE_OR_REFUND_PRODUCT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="STAFF">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="CHANGE_OR_REFUND_PRODUCT">
-              <PropertyRef Name="ID_HANDLING_STAFF" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CHANGE_OR__ID_IN__208CD6FA">
-          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="1" />
-          <End Role="CHANGE_OR_REFUND_PRODUCT" Type="Self.CHANGE_OR_REFUND_PRODUCT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="INVOICE">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="CHANGE_OR_REFUND_PRODUCT">
-              <PropertyRef Name="ID_INVOICE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CHANGE_OR__ID_WA__1F98B2C1">
-          <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
-          <End Role="CHANGE_OR_REFUND_PRODUCT" Type="Self.CHANGE_OR_REFUND_PRODUCT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="STAFF">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="CHANGE_OR_REFUND_PRODUCT">
-              <PropertyRef Name="ID_WAREHOUSE_STAFF" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CHANGE_OR__SERIA__2180FB33">
-          <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
-          <End Role="CHANGE_OR_REFUND_PRODUCT" Type="Self.CHANGE_OR_REFUND_PRODUCT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRODUCT">
-              <PropertyRef Name="SERIAL_ID" />
-            </Principal>
-            <Dependent Role="CHANGE_OR_REFUND_PRODUCT">
-              <PropertyRef Name="SERIAL_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -615,11 +616,11 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="CompuStoreDBModelStoreContainer">
+          <EntitySet Name="CHANGE_OR_REFUND_PRODUCT" EntityType="Self.CHANGE_OR_REFUND_PRODUCT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="COLOR" EntityType="Self.COLOR" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="COMMON_SPECS" EntityType="Self.COMMON_SPECS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="COMMON_USER" EntityType="Self.COMMON_USER" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CUSTOMER" EntityType="Self.CUSTOMER" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CHANGE_OR_REFUND_PRODUCT" EntityType="Self.CHANGE_OR_REFUND_PRODUCT" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DETAIL_IMPORT_WAREHOUSE" EntityType="Self.DETAIL_IMPORT_WAREHOUSE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DETAIL_INVOICE" EntityType="Self.DETAIL_INVOICE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DETAIL_SPECS" EntityType="Self.DETAIL_SPECS" Schema="dbo" store:Type="Tables" />
@@ -637,6 +638,22 @@
           <EntitySet Name="STORE" EntityType="Self.STORE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UNIQUE_SPECS" EntityType="Self.UNIQUE_SPECS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERROLE" EntityType="Self.USERROLE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__CHANGE_OR__ID_HA__1EA48E88" Association="Self.FK__CHANGE_OR__ID_HA__1EA48E88">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="CHANGE_OR_REFUND_PRODUCT" EntitySet="CHANGE_OR_REFUND_PRODUCT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHANGE_OR__ID_IN__208CD6FA" Association="Self.FK__CHANGE_OR__ID_IN__208CD6FA">
+            <End Role="INVOICE" EntitySet="INVOICE" />
+            <End Role="CHANGE_OR_REFUND_PRODUCT" EntitySet="CHANGE_OR_REFUND_PRODUCT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHANGE_OR__ID_WA__1F98B2C1" Association="Self.FK__CHANGE_OR__ID_WA__1F98B2C1">
+            <End Role="STAFF" EntitySet="STAFF" />
+            <End Role="CHANGE_OR_REFUND_PRODUCT" EntitySet="CHANGE_OR_REFUND_PRODUCT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CHANGE_OR__SERIA__2180FB33" Association="Self.FK__CHANGE_OR__SERIA__2180FB33">
+            <End Role="PRODUCT" EntitySet="PRODUCT" />
+            <End Role="CHANGE_OR_REFUND_PRODUCT" EntitySet="CHANGE_OR_REFUND_PRODUCT" />
+          </AssociationSet>
           <AssociationSet Name="FK__COMMON_SP__ID_LI__22751F6C" Association="Self.FK__COMMON_SP__ID_LI__22751F6C">
             <End Role="LINE_UP" EntitySet="LINE_UP" />
             <End Role="COMMON_SPECS" EntitySet="COMMON_SPECS" />
@@ -656,22 +673,6 @@
           <AssociationSet Name="FK__CUSTOMER__ID_RAN__1CBC4616" Association="Self.FK__CUSTOMER__ID_RAN__1CBC4616">
             <End Role="RANK" EntitySet="RANK" />
             <End Role="CUSTOMER" EntitySet="CUSTOMER" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CHANGE_OR__ID_HA__1EA48E88" Association="Self.FK__CHANGE_OR__ID_HA__1EA48E88">
-            <End Role="STAFF" EntitySet="STAFF" />
-            <End Role="CHANGE_OR_REFUND_PRODUCT" EntitySet="CHANGE_OR_REFUND_PRODUCT" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CHANGE_OR__ID_IN__208CD6FA" Association="Self.FK__CHANGE_OR__ID_IN__208CD6FA">
-            <End Role="INVOICE" EntitySet="INVOICE" />
-            <End Role="CHANGE_OR_REFUND_PRODUCT" EntitySet="CHANGE_OR_REFUND_PRODUCT" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CHANGE_OR__ID_WA__1F98B2C1" Association="Self.FK__CHANGE_OR__ID_WA__1F98B2C1">
-            <End Role="STAFF" EntitySet="STAFF" />
-            <End Role="CHANGE_OR_REFUND_PRODUCT" EntitySet="CHANGE_OR_REFUND_PRODUCT" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CHANGE_OR__SERIA__2180FB33" Association="Self.FK__CHANGE_OR__SERIA__2180FB33">
-            <End Role="PRODUCT" EntitySet="PRODUCT" />
-            <End Role="CHANGE_OR_REFUND_PRODUCT" EntitySet="CHANGE_OR_REFUND_PRODUCT" />
           </AssociationSet>
           <AssociationSet Name="FK__DETAIL_IM__ID_IM__32AB8735" Association="Self.FK__DETAIL_IM__ID_IM__32AB8735">
             <End Role="IMPORT_WAREHOUSE" EntitySet="IMPORT_WAREHOUSE" />
@@ -772,7 +773,6 @@
           <EntitySet Name="DETAIL_SPECS" EntityType="CompuStoreDBModel.DETAIL_SPECS" />
           <EntitySet Name="DISTRIBUTORs" EntityType="CompuStoreDBModel.DISTRIBUTOR" />
           <EntitySet Name="IMPORT_WAREHOUSE" EntityType="CompuStoreDBModel.IMPORT_WAREHOUSE" />
-          <EntitySet Name="INFORs" EntityType="CompuStoreDBModel.INFOR" />
           <EntitySet Name="INVOICEs" EntityType="CompuStoreDBModel.INVOICE" />
           <EntitySet Name="LINE_UP" EntityType="CompuStoreDBModel.LINE_UP" />
           <EntitySet Name="PRODUCTs" EntityType="CompuStoreDBModel.PRODUCT" />
@@ -794,10 +794,6 @@
           <AssociationSet Name="FK__COMMON_US__ID_US__17F790F9" Association="CompuStoreDBModel.FK__COMMON_US__ID_US__17F790F9">
             <End Role="USERROLE" EntitySet="USERROLEs" />
             <End Role="COMMON_USER" EntitySet="COMMON_USER" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CUSTOMER__ID_INF__1BC821DD" Association="CompuStoreDBModel.FK__CUSTOMER__ID_INF__1BC821DD">
-            <End Role="INFOR" EntitySet="INFORs" />
-            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
           </AssociationSet>
           <AssociationSet Name="FK__CUSTOMER__ID_RAN__1CBC4616" Association="CompuStoreDBModel.FK__CUSTOMER__ID_RAN__1CBC4616">
             <End Role="RANK" EntitySet="RANKs" />
@@ -859,10 +855,6 @@
             <End Role="STAFF" EntitySet="STAFFs" />
             <End Role="IMPORT_WAREHOUSE" EntitySet="IMPORT_WAREHOUSE" />
           </AssociationSet>
-          <AssociationSet Name="FK__STAFF__ID_INFOR__19DFD96B" Association="CompuStoreDBModel.FK__STAFF__ID_INFOR__19DFD96B">
-            <End Role="INFOR" EntitySet="INFORs" />
-            <End Role="STAFF" EntitySet="STAFFs" />
-          </AssociationSet>
           <AssociationSet Name="FK__INVOICE__ID_STAF__29221CFB" Association="CompuStoreDBModel.FK__INVOICE__ID_STAF__29221CFB">
             <End Role="STAFF" EntitySet="STAFFs" />
             <End Role="INVOICE" EntitySet="INVOICEs" />
@@ -905,6 +897,15 @@
             <End Role="DISPLAY_SPECS" EntitySet="DISPLAY_SPECS" />
             <End Role="UNIQUE_SPECS" EntitySet="UNIQUE_SPECS" />
           </AssociationSet>
+          <EntitySet Name="INFORs" EntityType="CompuStoreDBModel.INFOR" />
+          <AssociationSet Name="FK__CUSTOMER__ID_INF__1BC821DD" Association="CompuStoreDBModel.FK__CUSTOMER__ID_INF__1BC821DD">
+            <End Role="INFOR" EntitySet="INFORs" />
+            <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__STAFF__ID_INFOR__19DFD96B" Association="CompuStoreDBModel.FK__STAFF__ID_INFOR__19DFD96B">
+            <End Role="INFOR" EntitySet="INFORs" />
+            <End Role="STAFF" EntitySet="STAFFs" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="COLOR">
           <Key>
@@ -938,9 +939,9 @@
           <Property Name="ID_INFOR" Type="Int32" />
           <Property Name="ID_RANK" Type="Int32" />
           <Property Name="PURCHASED_QUANTITY" Type="Int32" />
-          <NavigationProperty Name="INFOR" Relationship="CompuStoreDBModel.FK__CUSTOMER__ID_INF__1BC821DD" FromRole="CUSTOMER" ToRole="INFOR" />
           <NavigationProperty Name="RANK" Relationship="CompuStoreDBModel.FK__CUSTOMER__ID_RAN__1CBC4616" FromRole="CUSTOMER" ToRole="RANK" />
           <NavigationProperty Name="INVOICEs" Relationship="CompuStoreDBModel.FK__INVOICE__ID_CUST__282DF8C2" FromRole="CUSTOMER" ToRole="INVOICE" />
+          <NavigationProperty Name="INFOR" Relationship="CompuStoreDBModel.FK__CUSTOMER__ID_INF__1BC821DD" FromRole="CUSTOMER" ToRole="INFOR" />
         </EntityType>
         <EntityType Name="CHANGE_OR_REFUND_PRODUCT">
           <Key>
@@ -1023,20 +1024,6 @@
           <NavigationProperty Name="DISTRIBUTOR" Relationship="CompuStoreDBModel.FK__IMPORT_WA__ID_DI__31B762FC" FromRole="IMPORT_WAREHOUSE" ToRole="DISTRIBUTOR" />
           <NavigationProperty Name="STORE" Relationship="CompuStoreDBModel.FK__IMPORT_WA__ID_ST__2FCF1A8A" FromRole="IMPORT_WAREHOUSE" ToRole="STORE" />
           <NavigationProperty Name="STAFF" Relationship="CompuStoreDBModel.FK__IMPORT_WA__ID_ST__30C33EC3" FromRole="IMPORT_WAREHOUSE" ToRole="STAFF" />
-        </EntityType>
-        <EntityType Name="INFOR">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NAME_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="PHONE_NUMBER" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="SEX" Type="Boolean" />
-          <Property Name="IDENTITY_CODE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="ADDRESS" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CUSTOMERs" Relationship="CompuStoreDBModel.FK__CUSTOMER__ID_INF__1BC821DD" FromRole="INFOR" ToRole="CUSTOMER" />
-          <NavigationProperty Name="STAFFs" Relationship="CompuStoreDBModel.FK__STAFF__ID_INFOR__19DFD96B" FromRole="INFOR" ToRole="STAFF" />
         </EntityType>
         <EntityType Name="INVOICE">
           <Key>
@@ -1122,11 +1109,11 @@
           <NavigationProperty Name="CHANGE_OR_REFUND_PRODUCT" Relationship="CompuStoreDBModel.FK__CHANGE_OR__ID_HA__1EA48E88" FromRole="STAFF" ToRole="CHANGE_OR_REFUND_PRODUCT" />
           <NavigationProperty Name="CHANGE_OR_REFUND_PRODUCT1" Relationship="CompuStoreDBModel.FK__CHANGE_OR__ID_WA__1F98B2C1" FromRole="STAFF" ToRole="CHANGE_OR_REFUND_PRODUCT" />
           <NavigationProperty Name="IMPORT_WAREHOUSE" Relationship="CompuStoreDBModel.FK__IMPORT_WA__ID_ST__30C33EC3" FromRole="STAFF" ToRole="IMPORT_WAREHOUSE" />
-          <NavigationProperty Name="INFOR" Relationship="CompuStoreDBModel.FK__STAFF__ID_INFOR__19DFD96B" FromRole="STAFF" ToRole="INFOR" />
           <NavigationProperty Name="INVOICEs" Relationship="CompuStoreDBModel.FK__INVOICE__ID_STAF__29221CFB" FromRole="STAFF" ToRole="INVOICE" />
           <NavigationProperty Name="RECEIVE_WARRANTY" Relationship="CompuStoreDBModel.FK__RECEIVE_W__ID_ST__2CF2ADDF" FromRole="STAFF" ToRole="RECEIVE_WARRANTY" />
           <NavigationProperty Name="STAFFROLE" Relationship="CompuStoreDBModel.FK__STAFF__ID_STAFFR__1AD3FDA4" FromRole="STAFF" ToRole="STAFFROLE" />
           <NavigationProperty Name="STOREs" Relationship="CompuStoreDBModel.FK__STORE__ID_STAFF___1DB06A4F" FromRole="STAFF" ToRole="STORE" />
+          <NavigationProperty Name="INFOR" Relationship="CompuStoreDBModel.FK__STAFF__ID_INFOR__19DFD96B" FromRole="STAFF" ToRole="INFOR" />
         </EntityType>
         <EntityType Name="STAFFROLE">
           <Key>
@@ -1210,18 +1197,6 @@
             </Principal>
             <Dependent Role="COMMON_USER">
               <PropertyRef Name="ID_USERROLE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CUSTOMER__ID_INF__1BC821DD">
-          <End Type="CompuStoreDBModel.INFOR" Role="INFOR" Multiplicity="0..1" />
-          <End Type="CompuStoreDBModel.CUSTOMER" Role="CUSTOMER" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="INFOR">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="CUSTOMER">
-              <PropertyRef Name="ID_INFOR" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1405,18 +1380,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__STAFF__ID_INFOR__19DFD96B">
-          <End Type="CompuStoreDBModel.INFOR" Role="INFOR" Multiplicity="1" />
-          <End Type="CompuStoreDBModel.STAFF" Role="STAFF" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="INFOR">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="STAFF">
-              <PropertyRef Name="ID_INFOR" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__INVOICE__ID_STAF__29221CFB">
           <End Type="CompuStoreDBModel.STAFF" Role="STAFF" Multiplicity="0..1" />
           <End Type="CompuStoreDBModel.INVOICE" Role="INVOICE" Multiplicity="*" />
@@ -1575,6 +1538,45 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="INFOR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="PHONE_NUMBER" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SEX" Type="Boolean" />
+          <Property Name="IDENTITY_CODE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ADDRESS" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CUSTOMERs" Relationship="CompuStoreDBModel.FK__CUSTOMER__ID_INF__1BC821DD" FromRole="INFOR" ToRole="CUSTOMER" />
+          <NavigationProperty Name="STAFFs" Relationship="CompuStoreDBModel.FK__STAFF__ID_INFOR__19DFD96B" FromRole="INFOR" ToRole="STAFF" />
+        </EntityType>
+        <Association Name="FK__CUSTOMER__ID_INF__1BC821DD">
+          <End Type="CompuStoreDBModel.INFOR" Role="INFOR" Multiplicity="0..1" />
+          <End Type="CompuStoreDBModel.CUSTOMER" Role="CUSTOMER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INFOR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CUSTOMER">
+              <PropertyRef Name="ID_INFOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__STAFF__ID_INFOR__19DFD96B">
+          <End Type="CompuStoreDBModel.INFOR" Role="INFOR" Multiplicity="1" />
+          <End Type="CompuStoreDBModel.STAFF" Role="STAFF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INFOR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="STAFF">
+              <PropertyRef Name="ID_INFOR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1678,19 +1680,6 @@
                 <ScalarProperty Name="ID_DISTRIBUTOR" ColumnName="ID_DISTRIBUTOR" />
                 <ScalarProperty Name="ID_STAFF" ColumnName="ID_STAFF" />
                 <ScalarProperty Name="ID_STORE" ColumnName="ID_STORE" />
-                <ScalarProperty Name="NAME_ID" ColumnName="NAME_ID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="INFORs">
-            <EntityTypeMapping TypeName="CompuStoreDBModel.INFOR">
-              <MappingFragment StoreEntitySet="INFOR">
-                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
-                <ScalarProperty Name="IDENTITY_CODE" ColumnName="IDENTITY_CODE" />
-                <ScalarProperty Name="SEX" ColumnName="SEX" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-                <ScalarProperty Name="PHONE_NUMBER" ColumnName="PHONE_NUMBER" />
                 <ScalarProperty Name="NAME_ID" ColumnName="NAME_ID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
@@ -1845,6 +1834,20 @@
                 <ScalarProperty Name="SIZE" ColumnName="SIZE" />
                 <ScalarProperty Name="RESOLUTION" ColumnName="RESOLUTION" />
                 <ScalarProperty Name="CODE_DISPLAY" ColumnName="CODE_DISPLAY" />
+                <ScalarProperty Name="NAME_ID" ColumnName="NAME_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INFORs">
+            <EntityTypeMapping TypeName="CompuStoreDBModel.INFOR">
+              <MappingFragment StoreEntitySet="INFOR">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="IDENTITY_CODE" ColumnName="IDENTITY_CODE" />
+                <ScalarProperty Name="SEX" ColumnName="SEX" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="PHONE_NUMBER" ColumnName="PHONE_NUMBER" />
                 <ScalarProperty Name="NAME_ID" ColumnName="NAME_ID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
