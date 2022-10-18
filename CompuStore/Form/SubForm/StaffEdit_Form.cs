@@ -1,4 +1,5 @@
-﻿using CompuStore.Database.Services;
+﻿using CompuStore.Database.Models;
+using CompuStore.Database.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -51,11 +52,36 @@ namespace CompuStore
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+
+            if (!CheckEmail(Email_Box.Text))
+            {
+                MessageBox.Show("E-mail không hợp lệ. Vui lòng kiểm tra lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            string name = Name_Box.Text;
+            string identity = Identity_Box.Text;
+            string phoneNumber = PhoneNumber_Box.Text;
+            string email = Email_Box.Text;
+            string address = Address_Box.Text;
+            DateTime staffDate = DateTimeImportWarehouse_DateTimePicker.Value;
+            int idStaffRole = (sTAFFROLEBindingSource.Current as STAFFROLE).ID;
+
+            if (StaffServices.Instance.SaveStaffToDB(name, phoneNumber, email, true, staffDate, identity, address, idStaffRole))
+            {
+                MessageBox.Show("Thêm học sinh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Có lỗi xảy ra. Vui lòng thử lại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            this.Close();
         }
 
         private bool CheckEmptyInput()
         {
-            return String.IsNullOrEmpty(Name_Box.Text) || String.IsNullOrEmpty(Identity_Box.Text) || String.IsNullOrEmpty(PhoneNumber_Box.Text) || String.IsNullOrEmpty(Email_Box.Text) || String.IsNullOrEmpty(PhoneNumber_Box.Text) || String.IsNullOrEmpty(Address_Box.Text);
+            return String.IsNullOrEmpty(Name_Box.Text) || String.IsNullOrEmpty(Identity_Box.Text) || String.IsNullOrEmpty(PhoneNumber_Box.Text) || String.IsNullOrEmpty(Email_Box.Text) || String.IsNullOrEmpty(Address_Box.Text);
         }
 
         public bool CheckEmail(string emailAddress)

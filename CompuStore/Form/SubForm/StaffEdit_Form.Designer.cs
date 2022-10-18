@@ -40,11 +40,11 @@
             this.ShadowForm = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.Apartment_ComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
             this.sTAFFROLEBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Edit_Button = new Guna.UI2.WinForms.Guna2Button();
             this.HeaderIcon = new System.Windows.Forms.PictureBox();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.DateTimeImportWarehouse_DateTimePicker = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.StaffDate_Box = new Guna.UI2.WinForms.Guna2TextBox();
+            this.Edit_Button = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.sTAFFROLEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
@@ -322,30 +322,6 @@
             // 
             this.sTAFFROLEBindingSource.DataSource = typeof(CompuStore.Database.Models.STAFFROLE);
             // 
-            // Edit_Button
-            // 
-            this.Edit_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Edit_Button.Animated = true;
-            this.Edit_Button.BorderRadius = 8;
-            this.Edit_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Edit_Button.CheckedState.Parent = this.Edit_Button;
-            this.Edit_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Edit_Button.CustomImages.Parent = this.Edit_Button;
-            this.Edit_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Edit_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.Edit_Button.ForeColor = System.Drawing.Color.White;
-            this.Edit_Button.HoverState.Parent = this.Edit_Button;
-            this.Edit_Button.Location = new System.Drawing.Point(42, 313);
-            this.Edit_Button.Name = "Edit_Button";
-            this.Edit_Button.PressedDepth = 5;
-            this.Edit_Button.ShadowDecoration.Parent = this.Edit_Button;
-            this.Edit_Button.Size = new System.Drawing.Size(440, 59);
-            this.Edit_Button.TabIndex = 20;
-            this.Edit_Button.Text = "CHỈNH SỬA";
-            this.Edit_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            this.Edit_Button.Visible = false;
-            this.Edit_Button.Click += new System.EventHandler(this.Edit_Button_Click);
-            // 
             // HeaderIcon
             // 
             this.HeaderIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
@@ -384,7 +360,7 @@
             this.DateTimeImportWarehouse_DateTimePicker.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DateTimeImportWarehouse_DateTimePicker.CustomFormat = " dd/MM/yyyy";
             this.DateTimeImportWarehouse_DateTimePicker.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.DateTimeImportWarehouse_DateTimePicker.Font = new System.Drawing.Font("Open Sans Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.DateTimeImportWarehouse_DateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.DateTimeImportWarehouse_DateTimePicker.ForeColor = System.Drawing.Color.Black;
             this.DateTimeImportWarehouse_DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.DateTimeImportWarehouse_DateTimePicker.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -438,6 +414,30 @@
             this.StaffDate_Box.TabIndex = 25;
             this.StaffDate_Box.TextOffset = new System.Drawing.Point(5, 0);
             // 
+            // Edit_Button
+            // 
+            this.Edit_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Edit_Button.Animated = true;
+            this.Edit_Button.BorderRadius = 8;
+            this.Edit_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Edit_Button.CheckedState.Parent = this.Edit_Button;
+            this.Edit_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Edit_Button.CustomImages.Parent = this.Edit_Button;
+            this.Edit_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Edit_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Edit_Button.ForeColor = System.Drawing.Color.White;
+            this.Edit_Button.HoverState.Parent = this.Edit_Button;
+            this.Edit_Button.Location = new System.Drawing.Point(42, 313);
+            this.Edit_Button.Name = "Edit_Button";
+            this.Edit_Button.PressedDepth = 5;
+            this.Edit_Button.ShadowDecoration.Parent = this.Edit_Button;
+            this.Edit_Button.Size = new System.Drawing.Size(440, 59);
+            this.Edit_Button.TabIndex = 20;
+            this.Edit_Button.Text = "CHỈNH SỬA";
+            this.Edit_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Edit_Button.Visible = false;
+            this.Edit_Button.Click += new System.EventHandler(this.Edit_Button_Click);
+            // 
             // StaffEdit_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -482,9 +482,9 @@
         private Guna.UI2.WinForms.Guna2TextBox Name_Box;
         private Guna.UI2.WinForms.Guna2ShadowForm ShadowForm;
         private Guna.UI2.WinForms.Guna2ComboBox Apartment_ComboBox;
-        private Guna.UI2.WinForms.Guna2Button Edit_Button;
         private System.Windows.Forms.BindingSource sTAFFROLEBindingSource;
         private Guna.UI2.WinForms.Guna2DateTimePicker DateTimeImportWarehouse_DateTimePicker;
         private Guna.UI2.WinForms.Guna2TextBox StaffDate_Box;
+        private Guna.UI2.WinForms.Guna2Button Edit_Button;
     }
 }
