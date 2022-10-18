@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CompuStore.Tab.Warehouse
 {
-    public partial class DetailInvoiceImportWarehouse : Form
+    public partial class DetailInvoiceImportWarehouse_Form : Form
     {
-        public DetailInvoiceImportWarehouse()
+        public DetailInvoiceImportWarehouse_Form()
         {
             InitializeComponent();
         }

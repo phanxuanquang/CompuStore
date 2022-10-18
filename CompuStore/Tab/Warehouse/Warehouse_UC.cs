@@ -19,7 +19,7 @@ namespace CompuStore.Tab.Warehouse
 
         private void ImportWarehouse_Click(object sender, EventArgs e)
         {
-            DetailInvoiceImportWarehouse detail = new DetailInvoiceImportWarehouse();
+            DetailInvoiceImportWarehouse_Form detail = new DetailInvoiceImportWarehouse_Form();
             detail.ShowDialog(this);
         }
     }
