@@ -10,17 +10,16 @@ using System.Windows.Forms;
 
 namespace CompuStore.Tab.Warehouse
 {
-    public partial class Warehouse_UC : UserControl
+    public partial class DetailSpecs_Form : Form
     {
-        public Warehouse_UC()
+        public DetailSpecs_Form()
         {
             InitializeComponent();
         }
 
-        private void ImportWarehouse_Click(object sender, EventArgs e)
+        private void Exit_Button_Click(object sender, EventArgs e)
         {
-            DetailInvoiceImportWarehouse_Form detail = new DetailInvoiceImportWarehouse_Form();
-            detail.ShowDialog(this);
+            this.Close();
         }
     }
 }

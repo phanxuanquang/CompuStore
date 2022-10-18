@@ -1,6 +1,6 @@
 ﻿namespace CompuStore.Tab.Warehouse
 {
-    partial class DetailInvoiceImportWarehouse
+    partial class DetailInvoiceImportWarehouse_Form
     {
         /// <summary>
         /// Required designer variable.
