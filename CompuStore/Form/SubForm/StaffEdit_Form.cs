@@ -23,7 +23,7 @@ namespace CompuStore
             Header.Text = headerName;
             if (headerName == "THÊM NHÂN VIÊN")
             {
-                Edit_Button.Visible = false;
+                Edit_Button.Visible = StaffDate_Box.Visible = false;
             }
         }
         protected override CreateParams CreateParams
@@ -44,7 +44,7 @@ namespace CompuStore
 
         private void Edit_Button_Click(object sender, EventArgs e)
         {
-            Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = StaffDate_Box.ReadOnly = Edit_Button.Visible = false;
+            Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = StaffDate_Box.Visible = Edit_Button.Visible = false;
             Header.Text = "CHỈNH SỬA THÔNG TIN";
             if (CheckEmptyInput())
             {
@@ -74,7 +74,7 @@ namespace CompuStore
         private void StaffEdit_Form_Load(object sender, EventArgs e)
         {
             sTAFFROLEBindingSource.DataSource = StaffRoleServices.Instance.GetSTAFFROLEs();
-            StaffDate_Box.Text = DateTime.Today.ToString("dd/MM/yyyy");
+            DateTimeImportWarehouse_DateTimePicker.Value = DateTime.Today;
         }
     }
 }

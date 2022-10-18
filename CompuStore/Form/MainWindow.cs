@@ -86,5 +86,15 @@ namespace CompuStore
         {
             StaffManage_Button_Click(null,null);
         }
+
+        private void StaffManage_Button_MouseEnter(object sender, EventArgs e)
+        {
+            MenuPanel.Height = 120;
+        }
+
+        private void StaffManage_Button_MouseLeave(object sender, EventArgs e)
+        {
+            MenuPanel.Height = 20;
+        }
     }
 }
