@@ -56,8 +56,6 @@
             this.TableData_DataGridVIew.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.TableData_DataGridVIew.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.TableData_DataGridVIew.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.TableData_DataGridVIew.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.TableData_DataGridVIew.BackgroundColor = System.Drawing.Color.White;
             this.TableData_DataGridVIew.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -72,7 +70,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.TableData_DataGridVIew.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.TableData_DataGridVIew.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TableData_DataGridVIew.ColumnHeadersHeight = 25;
             this.TableData_DataGridVIew.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IDImportWarehouse_Column,
             this.DateTimeImportWarehouse_Column,
@@ -89,8 +87,7 @@
             this.TableData_DataGridVIew.DefaultCellStyle = dataGridViewCellStyle3;
             this.TableData_DataGridVIew.EnableHeadersVisualStyles = false;
             this.TableData_DataGridVIew.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.TableData_DataGridVIew.Location = new System.Drawing.Point(0, 140);
-            this.TableData_DataGridVIew.Margin = new System.Windows.Forms.Padding(6);
+            this.TableData_DataGridVIew.Location = new System.Drawing.Point(0, 73);
             this.TableData_DataGridVIew.MultiSelect = false;
             this.TableData_DataGridVIew.Name = "TableData_DataGridVIew";
             this.TableData_DataGridVIew.ReadOnly = true;
@@ -111,7 +108,7 @@
             this.TableData_DataGridVIew.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.TableData_DataGridVIew.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.TableData_DataGridVIew.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TableData_DataGridVIew.Size = new System.Drawing.Size(2452, 1158);
+            this.TableData_DataGridVIew.Size = new System.Drawing.Size(1226, 602);
             this.TableData_DataGridVIew.TabIndex = 0;
             this.TableData_DataGridVIew.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.TableData_DataGridVIew.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -125,8 +122,8 @@
             this.TableData_DataGridVIew.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.TableData_DataGridVIew.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.TableData_DataGridVIew.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.TableData_DataGridVIew.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TableData_DataGridVIew.ThemeStyle.HeaderStyle.Height = 38;
+            this.TableData_DataGridVIew.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.TableData_DataGridVIew.ThemeStyle.HeaderStyle.Height = 25;
             this.TableData_DataGridVIew.ThemeStyle.ReadOnly = true;
             this.TableData_DataGridVIew.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.TableData_DataGridVIew.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -178,12 +175,11 @@
             this.ImportWarehouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ImportWarehouse.ForeColor = System.Drawing.Color.White;
             this.ImportWarehouse.HoverState.Parent = this.ImportWarehouse;
-            this.ImportWarehouse.Location = new System.Drawing.Point(1656, 40);
-            this.ImportWarehouse.Margin = new System.Windows.Forms.Padding(6);
+            this.ImportWarehouse.Location = new System.Drawing.Point(828, 21);
             this.ImportWarehouse.Name = "ImportWarehouse";
             this.ImportWarehouse.PressedDepth = 5;
             this.ImportWarehouse.ShadowDecoration.Parent = this.ImportWarehouse;
-            this.ImportWarehouse.Size = new System.Drawing.Size(406, 71);
+            this.ImportWarehouse.Size = new System.Drawing.Size(203, 37);
             this.ImportWarehouse.TabIndex = 6;
             this.ImportWarehouse.Text = "Nhập hàng";
             this.ImportWarehouse.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -201,12 +197,11 @@
             this.SeeProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.SeeProduct.ForeColor = System.Drawing.Color.White;
             this.SeeProduct.HoverState.Parent = this.SeeProduct;
-            this.SeeProduct.Location = new System.Drawing.Point(1234, 40);
-            this.SeeProduct.Margin = new System.Windows.Forms.Padding(6);
+            this.SeeProduct.Location = new System.Drawing.Point(617, 21);
             this.SeeProduct.Name = "SeeProduct";
             this.SeeProduct.PressedDepth = 5;
             this.SeeProduct.ShadowDecoration.Parent = this.SeeProduct;
-            this.SeeProduct.Size = new System.Drawing.Size(406, 71);
+            this.SeeProduct.Size = new System.Drawing.Size(203, 37);
             this.SeeProduct.TabIndex = 7;
             this.SeeProduct.Text = "Xem sản phẩm";
             this.SeeProduct.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -223,12 +218,11 @@
             this.SearchProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.SearchProduct.ForeColor = System.Drawing.Color.White;
             this.SearchProduct.HoverState.Parent = this.SearchProduct;
-            this.SearchProduct.Location = new System.Drawing.Point(390, 40);
-            this.SearchProduct.Margin = new System.Windows.Forms.Padding(6);
+            this.SearchProduct.Location = new System.Drawing.Point(195, 21);
             this.SearchProduct.Name = "SearchProduct";
             this.SearchProduct.PressedDepth = 5;
             this.SearchProduct.ShadowDecoration.Parent = this.SearchProduct;
-            this.SearchProduct.Size = new System.Drawing.Size(406, 71);
+            this.SearchProduct.Size = new System.Drawing.Size(203, 37);
             this.SearchProduct.TabIndex = 8;
             this.SearchProduct.Text = "Kiểm tra kho";
             this.SearchProduct.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -245,12 +239,11 @@
             this.SeeInvoiceImportWarehouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.SeeInvoiceImportWarehouse.ForeColor = System.Drawing.Color.White;
             this.SeeInvoiceImportWarehouse.HoverState.Parent = this.SeeInvoiceImportWarehouse;
-            this.SeeInvoiceImportWarehouse.Location = new System.Drawing.Point(812, 40);
-            this.SeeInvoiceImportWarehouse.Margin = new System.Windows.Forms.Padding(6);
+            this.SeeInvoiceImportWarehouse.Location = new System.Drawing.Point(406, 21);
             this.SeeInvoiceImportWarehouse.Name = "SeeInvoiceImportWarehouse";
             this.SeeInvoiceImportWarehouse.PressedDepth = 5;
             this.SeeInvoiceImportWarehouse.ShadowDecoration.Parent = this.SeeInvoiceImportWarehouse;
-            this.SeeInvoiceImportWarehouse.Size = new System.Drawing.Size(406, 71);
+            this.SeeInvoiceImportWarehouse.Size = new System.Drawing.Size(203, 37);
             this.SeeInvoiceImportWarehouse.TabIndex = 9;
             this.SeeInvoiceImportWarehouse.Text = "Xem hóa đơn nhập hàng";
             this.SeeInvoiceImportWarehouse.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -260,24 +253,25 @@
             this.StatusImportWarehouse.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.StatusImportWarehouse.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar1});
-            this.StatusImportWarehouse.Location = new System.Drawing.Point(0, 1261);
+            this.StatusImportWarehouse.Location = new System.Drawing.Point(0, 653);
             this.StatusImportWarehouse.Name = "StatusImportWarehouse";
+            this.StatusImportWarehouse.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
             this.StatusImportWarehouse.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.StatusImportWarehouse.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.StatusImportWarehouse.Size = new System.Drawing.Size(2452, 42);
+            this.StatusImportWarehouse.Size = new System.Drawing.Size(1226, 25);
             this.StatusImportWarehouse.TabIndex = 10;
             // 
             // toolStripProgressBar1
             // 
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 30);
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(50, 19);
             this.toolStripProgressBar1.Step = 50;
             this.toolStripProgressBar1.ToolTipText = "Đã nhập được 50/100 sản phẩm";
             this.toolStripProgressBar1.Value = 50;
             // 
             // Warehouse_UC
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
             this.Controls.Add(this.StatusImportWarehouse);
@@ -286,9 +280,8 @@
             this.Controls.Add(this.SeeProduct);
             this.Controls.Add(this.ImportWarehouse);
             this.Controls.Add(this.TableData_DataGridVIew);
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Warehouse_UC";
-            this.Size = new System.Drawing.Size(2452, 1303);
+            this.Size = new System.Drawing.Size(1226, 678);
             ((System.ComponentModel.ISupportInitialize)(this.TableData_DataGridVIew)).EndInit();
             this.StatusImportWarehouse.ResumeLayout(false);
             this.StatusImportWarehouse.PerformLayout();

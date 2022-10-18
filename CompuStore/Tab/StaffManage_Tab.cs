@@ -75,12 +75,6 @@ namespace CompuStore
             //loadingWindow.Close();
         }
 
-        private void EditStaff_Button_Click(object sender, EventArgs e)
-        {
-            StaffEdit_Form staffEdit_Form = new StaffEdit_Form(true, "CHỈNH SỬA THÔNG TIN");
-            staffEdit_Form.ShowDialog();
-        }
-
         private void InfoStaff_Button_Click(object sender, EventArgs e)
         {
             StaffEdit_Form staffEdit_Form = new StaffEdit_Form(false, "THÔNG TIN NHÂN VIÊN");
@@ -89,7 +83,7 @@ namespace CompuStore
 
         private void AddStaff_Button_Click(object sender, EventArgs e)
         {
-            StaffEdit_Form staffEdit_Form = new StaffEdit_Form(false, "THÊM NHÂN VIÊN");
+            StaffEdit_Form staffEdit_Form = new StaffEdit_Form(true, "THÊM NHÂN VIÊN");
             staffEdit_Form.ShowDialog();
         }
 

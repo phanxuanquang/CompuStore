@@ -34,7 +34,6 @@
             this.Identity_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Email_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Address_Box = new Guna.UI2.WinForms.Guna2TextBox();
-            this.StaffDate_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Complete_Button = new Guna.UI2.WinForms.Guna2Button();
             this.DragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.Name_Box = new Guna.UI2.WinForms.Guna2TextBox();
@@ -44,6 +43,8 @@
             this.Edit_Button = new Guna.UI2.WinForms.Guna2Button();
             this.HeaderIcon = new System.Windows.Forms.PictureBox();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.DateTimeImportWarehouse_DateTimePicker = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.StaffDate_Box = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.sTAFFROLEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
@@ -88,7 +89,7 @@
             this.PhoneNumber_Box.HoverState.Parent = this.PhoneNumber_Box;
             this.PhoneNumber_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.PhoneNumber_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.PhoneNumber_Box.Location = new System.Drawing.Point(265, 153);
+            this.PhoneNumber_Box.Location = new System.Drawing.Point(265, 112);
             this.PhoneNumber_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PhoneNumber_Box.Name = "PhoneNumber_Box";
             this.PhoneNumber_Box.PasswordChar = '\0';
@@ -126,7 +127,7 @@
             this.Identity_Box.HoverState.Parent = this.Identity_Box;
             this.Identity_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Identity_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Identity_Box.Location = new System.Drawing.Point(42, 153);
+            this.Identity_Box.Location = new System.Drawing.Point(42, 112);
             this.Identity_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Identity_Box.Name = "Identity_Box";
             this.Identity_Box.PasswordChar = '\0';
@@ -164,7 +165,7 @@
             this.Email_Box.HoverState.Parent = this.Email_Box;
             this.Email_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Email_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Email_Box.Location = new System.Drawing.Point(42, 196);
+            this.Email_Box.Location = new System.Drawing.Point(42, 155);
             this.Email_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Email_Box.Name = "Email_Box";
             this.Email_Box.PasswordChar = '\0';
@@ -202,7 +203,7 @@
             this.Address_Box.HoverState.Parent = this.Address_Box;
             this.Address_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Address_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Address_Box.Location = new System.Drawing.Point(42, 239);
+            this.Address_Box.Location = new System.Drawing.Point(42, 198);
             this.Address_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Address_Box.Name = "Address_Box";
             this.Address_Box.PasswordChar = '\0';
@@ -214,45 +215,6 @@
             this.Address_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Address_Box.TabIndex = 14;
             this.Address_Box.TextOffset = new System.Drawing.Point(5, 0);
-            // 
-            // StaffDate_Box
-            // 
-            this.StaffDate_Box.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.StaffDate_Box.Animated = true;
-            this.StaffDate_Box.BackColor = System.Drawing.Color.Transparent;
-            this.StaffDate_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
-            this.StaffDate_Box.BorderRadius = 8;
-            this.StaffDate_Box.BorderThickness = 2;
-            this.StaffDate_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.StaffDate_Box.DefaultText = "";
-            this.StaffDate_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.StaffDate_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.StaffDate_Box.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.StaffDate_Box.DisabledState.Parent = this.StaffDate_Box;
-            this.StaffDate_Box.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.StaffDate_Box.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.StaffDate_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.StaffDate_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
-            this.StaffDate_Box.FocusedState.Parent = this.StaffDate_Box;
-            this.StaffDate_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.StaffDate_Box.ForeColor = System.Drawing.Color.Black;
-            this.StaffDate_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
-            this.StaffDate_Box.HoverState.Parent = this.StaffDate_Box;
-            this.StaffDate_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
-            this.StaffDate_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.StaffDate_Box.Location = new System.Drawing.Point(265, 196);
-            this.StaffDate_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.StaffDate_Box.Name = "StaffDate_Box";
-            this.StaffDate_Box.PasswordChar = '\0';
-            this.StaffDate_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.StaffDate_Box.PlaceholderText = "Ngày vào làm";
-            this.StaffDate_Box.ReadOnly = true;
-            this.StaffDate_Box.SelectedText = "";
-            this.StaffDate_Box.ShadowDecoration.Parent = this.StaffDate_Box;
-            this.StaffDate_Box.Size = new System.Drawing.Size(217, 37);
-            this.StaffDate_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.StaffDate_Box.TabIndex = 15;
-            this.StaffDate_Box.TextOffset = new System.Drawing.Point(5, 0);
             // 
             // Complete_Button
             // 
@@ -267,7 +229,7 @@
             this.Complete_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Complete_Button.ForeColor = System.Drawing.Color.White;
             this.Complete_Button.HoverState.Parent = this.Complete_Button;
-            this.Complete_Button.Location = new System.Drawing.Point(42, 354);
+            this.Complete_Button.Location = new System.Drawing.Point(42, 313);
             this.Complete_Button.Name = "Complete_Button";
             this.Complete_Button.PressedDepth = 5;
             this.Complete_Button.ShadowDecoration.Parent = this.Complete_Button;
@@ -305,7 +267,7 @@
             this.Name_Box.HoverState.Parent = this.Name_Box;
             this.Name_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Name_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Name_Box.Location = new System.Drawing.Point(42, 110);
+            this.Name_Box.Location = new System.Drawing.Point(42, 69);
             this.Name_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name_Box.Name = "Name_Box";
             this.Name_Box.PasswordChar = '\0';
@@ -346,7 +308,7 @@
             this.Apartment_ComboBox.HoverState.Parent = this.Apartment_ComboBox;
             this.Apartment_ComboBox.ItemHeight = 32;
             this.Apartment_ComboBox.ItemsAppearance.Parent = this.Apartment_ComboBox;
-            this.Apartment_ComboBox.Location = new System.Drawing.Point(42, 285);
+            this.Apartment_ComboBox.Location = new System.Drawing.Point(42, 244);
             this.Apartment_ComboBox.Margin = new System.Windows.Forms.Padding(0);
             this.Apartment_ComboBox.Name = "Apartment_ComboBox";
             this.Apartment_ComboBox.ShadowDecoration.Parent = this.Apartment_ComboBox;
@@ -373,7 +335,7 @@
             this.Edit_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Edit_Button.ForeColor = System.Drawing.Color.White;
             this.Edit_Button.HoverState.Parent = this.Edit_Button;
-            this.Edit_Button.Location = new System.Drawing.Point(42, 354);
+            this.Edit_Button.Location = new System.Drawing.Point(42, 313);
             this.Edit_Button.Name = "Edit_Button";
             this.Edit_Button.PressedDepth = 5;
             this.Edit_Button.ShadowDecoration.Parent = this.Edit_Button;
@@ -413,17 +375,81 @@
             this.Exit_Button.TabIndex = 8;
             this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
             // 
+            // DateTimeImportWarehouse_DateTimePicker
+            // 
+            this.DateTimeImportWarehouse_DateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DateTimeImportWarehouse_DateTimePicker.Animated = true;
+            this.DateTimeImportWarehouse_DateTimePicker.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.DateTimeImportWarehouse_DateTimePicker.CheckedState.Parent = this.DateTimeImportWarehouse_DateTimePicker;
+            this.DateTimeImportWarehouse_DateTimePicker.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DateTimeImportWarehouse_DateTimePicker.CustomFormat = " dd/MM/yyyy";
+            this.DateTimeImportWarehouse_DateTimePicker.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.DateTimeImportWarehouse_DateTimePicker.Font = new System.Drawing.Font("Open Sans Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.DateTimeImportWarehouse_DateTimePicker.ForeColor = System.Drawing.Color.Black;
+            this.DateTimeImportWarehouse_DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.DateTimeImportWarehouse_DateTimePicker.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.DateTimeImportWarehouse_DateTimePicker.HoverState.Parent = this.DateTimeImportWarehouse_DateTimePicker;
+            this.DateTimeImportWarehouse_DateTimePicker.Location = new System.Drawing.Point(265, 155);
+            this.DateTimeImportWarehouse_DateTimePicker.Margin = new System.Windows.Forms.Padding(0);
+            this.DateTimeImportWarehouse_DateTimePicker.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.DateTimeImportWarehouse_DateTimePicker.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.DateTimeImportWarehouse_DateTimePicker.Name = "DateTimeImportWarehouse_DateTimePicker";
+            this.DateTimeImportWarehouse_DateTimePicker.ShadowDecoration.Parent = this.DateTimeImportWarehouse_DateTimePicker;
+            this.DateTimeImportWarehouse_DateTimePicker.Size = new System.Drawing.Size(217, 37);
+            this.DateTimeImportWarehouse_DateTimePicker.TabIndex = 24;
+            this.DateTimeImportWarehouse_DateTimePicker.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.DateTimeImportWarehouse_DateTimePicker.Value = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
+            // 
+            // StaffDate_Box
+            // 
+            this.StaffDate_Box.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.StaffDate_Box.Animated = true;
+            this.StaffDate_Box.BackColor = System.Drawing.Color.Transparent;
+            this.StaffDate_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.StaffDate_Box.BorderRadius = 8;
+            this.StaffDate_Box.BorderThickness = 2;
+            this.StaffDate_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.StaffDate_Box.DefaultText = "";
+            this.StaffDate_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.StaffDate_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.StaffDate_Box.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.StaffDate_Box.DisabledState.Parent = this.StaffDate_Box;
+            this.StaffDate_Box.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.StaffDate_Box.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.StaffDate_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.StaffDate_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
+            this.StaffDate_Box.FocusedState.Parent = this.StaffDate_Box;
+            this.StaffDate_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.StaffDate_Box.ForeColor = System.Drawing.Color.Black;
+            this.StaffDate_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
+            this.StaffDate_Box.HoverState.Parent = this.StaffDate_Box;
+            this.StaffDate_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
+            this.StaffDate_Box.IconLeftSize = new System.Drawing.Size(30, 30);
+            this.StaffDate_Box.Location = new System.Drawing.Point(265, 155);
+            this.StaffDate_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.StaffDate_Box.Name = "StaffDate_Box";
+            this.StaffDate_Box.PasswordChar = '\0';
+            this.StaffDate_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.StaffDate_Box.PlaceholderText = "Ngày vào làm";
+            this.StaffDate_Box.SelectedText = "";
+            this.StaffDate_Box.ShadowDecoration.Parent = this.StaffDate_Box;
+            this.StaffDate_Box.Size = new System.Drawing.Size(217, 37);
+            this.StaffDate_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.StaffDate_Box.TabIndex = 25;
+            this.StaffDate_Box.TextOffset = new System.Drawing.Point(5, 0);
+            // 
             // StaffEdit_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(525, 442);
+            this.ClientSize = new System.Drawing.Size(525, 407);
+            this.Controls.Add(this.StaffDate_Box);
+            this.Controls.Add(this.DateTimeImportWarehouse_DateTimePicker);
             this.Controls.Add(this.Edit_Button);
             this.Controls.Add(this.Apartment_ComboBox);
             this.Controls.Add(this.Name_Box);
             this.Controls.Add(this.Complete_Button);
-            this.Controls.Add(this.StaffDate_Box);
             this.Controls.Add(this.Address_Box);
             this.Controls.Add(this.Email_Box);
             this.Controls.Add(this.Identity_Box);
@@ -451,7 +477,6 @@
         private Guna.UI2.WinForms.Guna2TextBox Identity_Box;
         private Guna.UI2.WinForms.Guna2TextBox Email_Box;
         private Guna.UI2.WinForms.Guna2TextBox Address_Box;
-        private Guna.UI2.WinForms.Guna2TextBox StaffDate_Box;
         private Guna.UI2.WinForms.Guna2Button Complete_Button;
         private Guna.UI2.WinForms.Guna2DragControl DragControl;
         private Guna.UI2.WinForms.Guna2TextBox Name_Box;
@@ -459,5 +484,7 @@
         private Guna.UI2.WinForms.Guna2ComboBox Apartment_ComboBox;
         private Guna.UI2.WinForms.Guna2Button Edit_Button;
         private System.Windows.Forms.BindingSource sTAFFROLEBindingSource;
+        private Guna.UI2.WinForms.Guna2DateTimePicker DateTimeImportWarehouse_DateTimePicker;
+        private Guna.UI2.WinForms.Guna2TextBox StaffDate_Box;
     }
 }
