@@ -185,6 +185,12 @@
     <Compile Include="Tab\Warehouse\DetailInvoiceImportWarehouse_Form.Designer.cs">
       <DependentUpon>DetailInvoiceImportWarehouse_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tab\Warehouse\DetailSpecsProduct_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tab\Warehouse\DetailSpecsProduct_Form.Designer.cs">
+      <DependentUpon>DetailSpecsProduct_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tab\Warehouse\Warehouse_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -215,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tab\Warehouse\DetailInvoiceImportWarehouse_Form.resx">
       <DependentUpon>DetailInvoiceImportWarehouse_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tab\Warehouse\DetailSpecsProduct_Form.resx">
+      <DependentUpon>DetailSpecsProduct_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tab\Warehouse\Warehouse_UC.resx">
       <DependentUpon>Warehouse_UC.cs</DependentUpon>

@@ -34,10 +34,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TableData_DataGridVIew = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.IDImportWarehouse_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateTimeImportWarehouse_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuantityImportWarehouse_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalImportWarehouse_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ImportWarehouse = new Guna.UI2.WinForms.Guna2Button();
             this.SeeProduct = new Guna.UI2.WinForms.Guna2Button();
             this.SearchProduct = new Guna.UI2.WinForms.Guna2Button();
@@ -59,6 +55,7 @@
             this.TableData_DataGridVIew.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.TableData_DataGridVIew.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.TableData_DataGridVIew.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.TableData_DataGridVIew.BackgroundColor = System.Drawing.Color.White;
             this.TableData_DataGridVIew.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TableData_DataGridVIew.CausesValidation = false;
@@ -72,12 +69,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.TableData_DataGridVIew.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.TableData_DataGridVIew.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TableData_DataGridVIew.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.IDImportWarehouse_Column,
-            this.DateTimeImportWarehouse_Column,
-            this.QuantityImportWarehouse_Column,
-            this.TotalImportWarehouse_Column});
+            this.TableData_DataGridVIew.ColumnHeadersHeight = 38;
             this.TableData_DataGridVIew.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -107,11 +99,11 @@
             this.TableData_DataGridVIew.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.TableData_DataGridVIew.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.TableData_DataGridVIew.RowTemplate.Height = 40;
             this.TableData_DataGridVIew.RowTemplate.ReadOnly = true;
-            this.TableData_DataGridVIew.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.TableData_DataGridVIew.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.TableData_DataGridVIew.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.TableData_DataGridVIew.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TableData_DataGridVIew.Size = new System.Drawing.Size(2452, 1158);
+            this.TableData_DataGridVIew.Size = new System.Drawing.Size(2452, 1127);
             this.TableData_DataGridVIew.TabIndex = 0;
             this.TableData_DataGridVIew.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.TableData_DataGridVIew.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -125,46 +117,16 @@
             this.TableData_DataGridVIew.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.TableData_DataGridVIew.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.TableData_DataGridVIew.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.TableData_DataGridVIew.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TableData_DataGridVIew.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.TableData_DataGridVIew.ThemeStyle.HeaderStyle.Height = 38;
             this.TableData_DataGridVIew.ThemeStyle.ReadOnly = true;
             this.TableData_DataGridVIew.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.TableData_DataGridVIew.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.TableData_DataGridVIew.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.TableData_DataGridVIew.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.TableData_DataGridVIew.ThemeStyle.RowsStyle.Height = 22;
+            this.TableData_DataGridVIew.ThemeStyle.RowsStyle.Height = 40;
             this.TableData_DataGridVIew.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.TableData_DataGridVIew.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            // 
-            // IDImportWarehouse_Column
-            // 
-            this.IDImportWarehouse_Column.HeaderText = "Mã nhập hàng";
-            this.IDImportWarehouse_Column.MinimumWidth = 10;
-            this.IDImportWarehouse_Column.Name = "IDImportWarehouse_Column";
-            this.IDImportWarehouse_Column.ReadOnly = true;
-            // 
-            // DateTimeImportWarehouse_Column
-            // 
-            this.DateTimeImportWarehouse_Column.HeaderText = "Thời gian nhập";
-            this.DateTimeImportWarehouse_Column.MinimumWidth = 10;
-            this.DateTimeImportWarehouse_Column.Name = "DateTimeImportWarehouse_Column";
-            this.DateTimeImportWarehouse_Column.ReadOnly = true;
-            // 
-            // QuantityImportWarehouse_Column
-            // 
-            this.QuantityImportWarehouse_Column.HeaderText = "Số lượng nhập";
-            this.QuantityImportWarehouse_Column.MinimumWidth = 10;
-            this.QuantityImportWarehouse_Column.Name = "QuantityImportWarehouse_Column";
-            this.QuantityImportWarehouse_Column.ReadOnly = true;
-            this.QuantityImportWarehouse_Column.ToolTipText = "Số lượng sản phẩm được nhập trong lần nhập hàng này";
-            // 
-            // TotalImportWarehouse_Column
-            // 
-            this.TotalImportWarehouse_Column.HeaderText = "Tổng tiền";
-            this.TotalImportWarehouse_Column.MinimumWidth = 10;
-            this.TotalImportWarehouse_Column.Name = "TotalImportWarehouse_Column";
-            this.TotalImportWarehouse_Column.ReadOnly = true;
-            this.TotalImportWarehouse_Column.ToolTipText = "Tổng số tiền trong lần nhập hàng này";
             // 
             // ImportWarehouse
             // 
@@ -210,6 +172,7 @@
             this.SeeProduct.TabIndex = 7;
             this.SeeProduct.Text = "Xem sản phẩm";
             this.SeeProduct.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.SeeProduct.Click += new System.EventHandler(this.SeeProduct_Click);
             // 
             // SearchProduct
             // 
@@ -254,6 +217,7 @@
             this.SeeInvoiceImportWarehouse.TabIndex = 9;
             this.SeeInvoiceImportWarehouse.Text = "Xem hóa đơn nhập hàng";
             this.SeeInvoiceImportWarehouse.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.SeeInvoiceImportWarehouse.Click += new System.EventHandler(this.SeeInvoiceImportWarehouse_Click);
             // 
             // StatusImportWarehouse
             // 
@@ -289,6 +253,7 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Warehouse_UC";
             this.Size = new System.Drawing.Size(2452, 1303);
+            this.Load += new System.EventHandler(this.Warehouse_UC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TableData_DataGridVIew)).EndInit();
             this.StatusImportWarehouse.ResumeLayout(false);
             this.StatusImportWarehouse.PerformLayout();
@@ -303,10 +268,6 @@
         private Guna.UI2.WinForms.Guna2Button SearchProduct;
         private Guna.UI2.WinForms.Guna2Button SeeInvoiceImportWarehouse;
         private Guna.UI2.WinForms.Guna2DataGridView TableData_DataGridVIew;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IDImportWarehouse_Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateTimeImportWarehouse_Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QuantityImportWarehouse_Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TotalImportWarehouse_Column;
         private System.Windows.Forms.StatusStrip StatusImportWarehouse;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
     }

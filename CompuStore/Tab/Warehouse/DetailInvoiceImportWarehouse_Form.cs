@@ -33,7 +33,8 @@ namespace CompuStore.Tab.Warehouse
 
         private void AddProduct_Button_Click(object sender, EventArgs e)
         {
-            TableData_DataGridView.Rows.Add("1");
+            DetailSpecsProduct_Form frm = new DetailSpecsProduct_Form();
+            frm.ShowDialog(this);
         }
     }
 }

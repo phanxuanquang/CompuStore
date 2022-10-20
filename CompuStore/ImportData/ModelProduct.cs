@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CompuStore.ImportData
 {
-    class ModelProduct
+    public class ModelProduct
     {
         public string Serial;
 
