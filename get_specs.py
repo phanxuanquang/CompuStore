@@ -360,7 +360,7 @@ def json4csv(product:dict):
             if colorSpace == None:
                 colorSpace = f'{color["Name color space"]}:{color["Value color space"]}'
             else:
-               colorSpace += f'-{color["Name color space"]}:{color["Value color space"]}' 
+               colorSpace += f'_{color["Name color space"]}:{color["Value color space"]}'
     codeDisplay = f'DP-{product.get("Resolution", "")}-{product.get("Size display", "")}-{product.get("Brightness", "")}-{product.get("Type panel", "")}-{colorSpace}-{product.get("Refresh rate", "")}-{product.get("Touchscreen", "")}-{product.get("Coating", "")}-{product.get("Aspect ratio", "")}'
     ports = None
     if "Ports" in product:
