@@ -94,7 +94,7 @@ namespace CompuStore
 
         private void StaffManage_Button_MouseLeave(object sender, EventArgs e)
         {
-            MenuPanel.Height = 20;
+            MenuPanel.Height = 10;
         }
     }
 }

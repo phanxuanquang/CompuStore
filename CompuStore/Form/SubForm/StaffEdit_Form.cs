@@ -19,12 +19,21 @@ namespace CompuStore
         {
             InitializeComponent();
             ShadowForm.SetShadowForm(this);
-            Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = StaffDate_Box.ReadOnly = Edit_Button.Visible = !notReadOnly;
+            Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = StaffDate_Box.ReadOnly = !notReadOnly;
             
             Header.Text = headerName;
             if (headerName == "THÊM NHÂN VIÊN")
             {
-                Edit_Button.Visible = StaffDate_Box.Visible = false;
+               StaffDate_Box.Visible = false;
+               Edit_Button.Text = "LƯU";
+            }
+            else if (headerName == "XEM THÔNG TIN")
+            {
+                Edit_Button.Text = "CHỈNH SỬA";
+            }
+            else if(headerName == "CHỈNH SỬA THÔNG TIN")
+            {
+                Edit_Button.Text = "LƯU";
             }
         }
         protected override CreateParams CreateParams
@@ -45,7 +54,13 @@ namespace CompuStore
 
         private void Edit_Button_Click(object sender, EventArgs e)
         {
-            Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = StaffDate_Box.Visible = Edit_Button.Visible = false;
+            if(Edit_Button.Text == "LƯU")
+            {
+                // Code db gì đó để lưu lại
+                return;
+            }
+
+            Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = StaffDate_Box.Visible = false;
             Header.Text = "CHỈNH SỬA THÔNG TIN";
             if (CheckEmptyInput())
             {

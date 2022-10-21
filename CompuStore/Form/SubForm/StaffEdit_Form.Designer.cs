@@ -34,7 +34,6 @@
             this.Identity_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Email_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Address_Box = new Guna.UI2.WinForms.Guna2TextBox();
-            this.Complete_Button = new Guna.UI2.WinForms.Guna2Button();
             this.DragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.Name_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.ShadowForm = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
@@ -215,28 +214,6 @@
             this.Address_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Address_Box.TabIndex = 14;
             this.Address_Box.TextOffset = new System.Drawing.Point(5, 0);
-            // 
-            // Complete_Button
-            // 
-            this.Complete_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Complete_Button.Animated = true;
-            this.Complete_Button.BorderRadius = 8;
-            this.Complete_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Complete_Button.CheckedState.Parent = this.Complete_Button;
-            this.Complete_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Complete_Button.CustomImages.Parent = this.Complete_Button;
-            this.Complete_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Complete_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.Complete_Button.ForeColor = System.Drawing.Color.White;
-            this.Complete_Button.HoverState.Parent = this.Complete_Button;
-            this.Complete_Button.Location = new System.Drawing.Point(42, 313);
-            this.Complete_Button.Name = "Complete_Button";
-            this.Complete_Button.PressedDepth = 5;
-            this.Complete_Button.ShadowDecoration.Parent = this.Complete_Button;
-            this.Complete_Button.Size = new System.Drawing.Size(440, 59);
-            this.Complete_Button.TabIndex = 16;
-            this.Complete_Button.Text = "XONG";
-            this.Complete_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             // 
             // DragControl
             // 
@@ -427,7 +404,7 @@
             this.Edit_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Edit_Button.ForeColor = System.Drawing.Color.White;
             this.Edit_Button.HoverState.Parent = this.Edit_Button;
-            this.Edit_Button.Location = new System.Drawing.Point(42, 313);
+            this.Edit_Button.Location = new System.Drawing.Point(42, 311);
             this.Edit_Button.Name = "Edit_Button";
             this.Edit_Button.PressedDepth = 5;
             this.Edit_Button.ShadowDecoration.Parent = this.Edit_Button;
@@ -435,7 +412,6 @@
             this.Edit_Button.TabIndex = 20;
             this.Edit_Button.Text = "CHỈNH SỬA";
             this.Edit_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            this.Edit_Button.Visible = false;
             this.Edit_Button.Click += new System.EventHandler(this.Edit_Button_Click);
             // 
             // StaffEdit_Form
@@ -449,7 +425,6 @@
             this.Controls.Add(this.Edit_Button);
             this.Controls.Add(this.Apartment_ComboBox);
             this.Controls.Add(this.Name_Box);
-            this.Controls.Add(this.Complete_Button);
             this.Controls.Add(this.Address_Box);
             this.Controls.Add(this.Email_Box);
             this.Controls.Add(this.Identity_Box);
@@ -477,7 +452,6 @@
         private Guna.UI2.WinForms.Guna2TextBox Identity_Box;
         private Guna.UI2.WinForms.Guna2TextBox Email_Box;
         private Guna.UI2.WinForms.Guna2TextBox Address_Box;
-        private Guna.UI2.WinForms.Guna2Button Complete_Button;
         private Guna.UI2.WinForms.Guna2DragControl DragControl;
         private Guna.UI2.WinForms.Guna2TextBox Name_Box;
         private Guna.UI2.WinForms.Guna2ShadowForm ShadowForm;
