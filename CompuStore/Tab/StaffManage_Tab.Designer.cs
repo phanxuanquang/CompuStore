@@ -35,16 +35,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DataTable = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StaffName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhoneNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddStaff_Button = new Guna.UI2.WinForms.Guna2Button();
             this.FireStaff_Button = new Guna.UI2.WinForms.Guna2Button();
             this.InfoStaff_Button = new Guna.UI2.WinForms.Guna2Button();
             this.SearchBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.sTAFFBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StaffName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoneNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Role = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DataTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sTAFFBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -57,6 +57,7 @@
             this.DataTable.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.DataTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.DataTable.AutoGenerateColumns = false;
             this.DataTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataTable.BackgroundColor = System.Drawing.Color.White;
             this.DataTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -80,6 +81,7 @@
             this.Role,
             this.Status});
             this.DataTable.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DataTable.DataSource = this.sTAFFBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -136,41 +138,6 @@
             this.DataTable.ThemeStyle.RowsStyle.Height = 22;
             this.DataTable.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.DataTable.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Mã nhân viên";
-            this.Id.MinimumWidth = 10;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            // 
-            // StaffName
-            // 
-            this.StaffName.HeaderText = "Họ và tên";
-            this.StaffName.MinimumWidth = 10;
-            this.StaffName.Name = "StaffName";
-            this.StaffName.ReadOnly = true;
-            // 
-            // PhoneNum
-            // 
-            this.PhoneNum.HeaderText = "Số điện thoại";
-            this.PhoneNum.MinimumWidth = 10;
-            this.PhoneNum.Name = "PhoneNum";
-            this.PhoneNum.ReadOnly = true;
-            // 
-            // Role
-            // 
-            this.Role.HeaderText = "Bộ phận phụ trách";
-            this.Role.MinimumWidth = 10;
-            this.Role.Name = "Role";
-            this.Role.ReadOnly = true;
-            // 
-            // Status
-            // 
-            this.Status.HeaderText = "Tình trạng";
-            this.Status.MinimumWidth = 10;
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
             // 
             // AddStaff_Button
             // 
@@ -266,6 +233,41 @@
             // 
             this.sTAFFBindingSource.DataSource = typeof(CompuStore.Database.Models.STAFF);
             // 
+            // Id
+            // 
+            this.Id.HeaderText = "Mã nhân viên";
+            this.Id.MinimumWidth = 10;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            // 
+            // StaffName
+            // 
+            this.StaffName.HeaderText = "Họ và tên";
+            this.StaffName.MinimumWidth = 10;
+            this.StaffName.Name = "StaffName";
+            this.StaffName.ReadOnly = true;
+            // 
+            // PhoneNum
+            // 
+            this.PhoneNum.HeaderText = "Số điện thoại";
+            this.PhoneNum.MinimumWidth = 10;
+            this.PhoneNum.Name = "PhoneNum";
+            this.PhoneNum.ReadOnly = true;
+            // 
+            // Role
+            // 
+            this.Role.HeaderText = "Bộ phận phụ trách";
+            this.Role.MinimumWidth = 10;
+            this.Role.Name = "Role";
+            this.Role.ReadOnly = true;
+            // 
+            // Status
+            // 
+            this.Status.HeaderText = "Tình trạng";
+            this.Status.MinimumWidth = 10;
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
+            // 
             // StaffManage_Tab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -290,11 +292,11 @@
         private Guna.UI2.WinForms.Guna2Button InfoStaff_Button;
         private Guna.UI2.WinForms.Guna2DataGridView DataTable;
         private System.Windows.Forms.BindingSource sTAFFBindingSource;
+        private Guna.UI2.WinForms.Guna2TextBox SearchBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn StaffName;
         private System.Windows.Forms.DataGridViewTextBoxColumn PhoneNum;
         private System.Windows.Forms.DataGridViewTextBoxColumn Role;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private Guna.UI2.WinForms.Guna2TextBox SearchBox;
     }
 }

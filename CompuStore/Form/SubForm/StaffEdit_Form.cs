@@ -56,12 +56,18 @@ namespace CompuStore
         {
             if(Edit_Button.Text == "LƯU")
             {
-                // Code db gì đó để lưu lại
+                SaveFromTextboxToDB();
+                this.Close();
                 return;
             }
 
             Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = StaffDate_Box.Visible = false;
             Header.Text = "CHỈNH SỬA THÔNG TIN";
+            this.Close();
+        }
+
+        private void SaveFromTextboxToDB()
+        {
             if (CheckEmptyInput())
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -84,14 +90,12 @@ namespace CompuStore
 
             if (StaffServices.Instance.SaveStaffToDB(name, phoneNumber, email, true, staffDate, identity, address, idStaffRole))
             {
-                MessageBox.Show("Thêm học sinh thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Thêm nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
                 MessageBox.Show("Có lỗi xảy ra. Vui lòng thử lại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            this.Close();
         }
 
         private bool CheckEmptyInput()

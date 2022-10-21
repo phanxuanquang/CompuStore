@@ -40,7 +40,7 @@ namespace CompuStore.Database.Services
         {
             INFOR infor = new INFOR()
             {
-                
+                NAME = name,
                 PHONE_NUMBER = phone_number,
                 EMAIL = email,
                 SEX = sex,

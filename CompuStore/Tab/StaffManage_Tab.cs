@@ -79,17 +79,19 @@ namespace CompuStore
         {
             StaffEdit_Form staffEdit_Form = new StaffEdit_Form(false, "THÔNG TIN NHÂN VIÊN");
             staffEdit_Form.ShowDialog();
+            BindingStaff(GetListStaff());
         }
 
         private void AddStaff_Button_Click(object sender, EventArgs e)
         {
             StaffEdit_Form staffEdit_Form = new StaffEdit_Form(true, "THÊM NHÂN VIÊN");
             staffEdit_Form.ShowDialog();
+            BindingStaff(GetListStaff());
         }
 
         public void BindingStaff(List<STAFF> sTAFFs)
         {
-            sTAFFBindingSource.ResetBindings(false);
+            sTAFFBindingSource.ResetBindings(true);
             sTAFFBindingSource.DataSource = sTAFFs;
             foreach (DataGridViewRow row in DataTable.Rows)
             {
@@ -97,7 +99,7 @@ namespace CompuStore
                 if (selected != null)
                 {
                     row.Cells["Id"].Value = selected.NAME_ID;
-                    row.Cells["Name"].Value = selected.INFOR.NAME;
+                    row.Cells["StaffName"].Value = selected.INFOR.NAME;
                     row.Cells["PhoneNum"].Value = selected.INFOR.PHONE_NUMBER;
                     row.Cells["Role"].Value = selected.STAFFROLE.ROLE;
                     row.Cells["Status"].Value = selected.WORKING_STATUS == 0 ? "Đã nghỉ việc" : "Đang làm việc";
