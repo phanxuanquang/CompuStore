@@ -15,16 +15,21 @@ namespace CompuStore
 {
     public partial class StaffEdit_Form : Form
     {
-        public StaffEdit_Form(bool notReadOnly, string headerName)
+        STAFF staffCurrent;
+        public StaffEdit_Form(bool notReadOnly, string headerName, object staff)
         {
+
+            if (staff != null)
+            {
+                staffCurrent = staff as STAFF;
+            }
             InitializeComponent();
             ShadowForm.SetShadowForm(this);
-            Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = StaffDate_Box.ReadOnly = !notReadOnly;
-            
+            Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = !notReadOnly;
+            DateTimeImportWarehouse_DateTimePicker.Enabled = notReadOnly;
             Header.Text = headerName;
             if (headerName == "THÊM NHÂN VIÊN")
             {
-               StaffDate_Box.Visible = false;
                Edit_Button.Text = "LƯU";
             }
             else if (headerName == "XEM THÔNG TIN")
@@ -61,7 +66,8 @@ namespace CompuStore
                 return;
             }
 
-            Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = StaffDate_Box.Visible = false;
+            Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly =false;
+            DateTimeImportWarehouse_DateTimePicker.Enabled = true;
             Header.Text = "CHỈNH SỬA THÔNG TIN";
             this.Close();
         }
@@ -118,8 +124,17 @@ namespace CompuStore
 
         private void StaffEdit_Form_Load(object sender, EventArgs e)
         {
+            if (staffCurrent != null)
+            {
+                iNFORBindingSource.DataSource = staffCurrent.INFOR;
+                Apartment_ComboBox.DisplayMember = "ROLE";
+                Apartment_ComboBox.SelectedValue = staffCurrent.STAFFROLE.ID;
+            }
+            else
+            {
+                DateTimeImportWarehouse_DateTimePicker.Value = DateTime.Today;
+            }
             sTAFFROLEBindingSource.DataSource = StaffRoleServices.Instance.GetSTAFFROLEs();
-            DateTimeImportWarehouse_DateTimePicker.Value = DateTime.Today;
         }
     }
 }

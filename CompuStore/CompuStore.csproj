@@ -237,6 +237,7 @@
       <DependentUpon>CompuStoreModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CompuStore.Database.Models.INFOR.datasource" />
     <None Include="Properties\DataSources\CompuStore.Database.Models.STAFF.datasource" />
     <None Include="Properties\DataSources\CompuStore.Database.Models.STAFFROLE.datasource" />
     <None Include="Properties\Settings.settings">

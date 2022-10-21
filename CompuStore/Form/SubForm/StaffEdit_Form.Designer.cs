@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.Header = new System.Windows.Forms.Label();
             this.PhoneNumber_Box = new Guna.UI2.WinForms.Guna2TextBox();
+            this.iNFORBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Identity_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Email_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Address_Box = new Guna.UI2.WinForms.Guna2TextBox();
@@ -42,10 +43,12 @@
             this.HeaderIcon = new System.Windows.Forms.PictureBox();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.DateTimeImportWarehouse_DateTimePicker = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.StaffDate_Box = new Guna.UI2.WinForms.Guna2TextBox();
+            this.sTAFFBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Edit_Button = new Guna.UI2.WinForms.Guna2Button();
+            ((System.ComponentModel.ISupportInitialize)(this.iNFORBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sTAFFROLEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sTAFFBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // Header
@@ -72,6 +75,7 @@
             this.PhoneNumber_Box.BorderRadius = 8;
             this.PhoneNumber_Box.BorderThickness = 2;
             this.PhoneNumber_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.PhoneNumber_Box.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.iNFORBindingSource, "PHONE_NUMBER", true));
             this.PhoneNumber_Box.DefaultText = "";
             this.PhoneNumber_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.PhoneNumber_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -101,6 +105,10 @@
             this.PhoneNumber_Box.TabIndex = 11;
             this.PhoneNumber_Box.TextOffset = new System.Drawing.Point(5, 0);
             // 
+            // iNFORBindingSource
+            // 
+            this.iNFORBindingSource.DataSource = typeof(CompuStore.Database.Models.INFOR);
+            // 
             // Identity_Box
             // 
             this.Identity_Box.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -110,6 +118,7 @@
             this.Identity_Box.BorderRadius = 8;
             this.Identity_Box.BorderThickness = 2;
             this.Identity_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Identity_Box.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.iNFORBindingSource, "IDENTITY_CODE", true));
             this.Identity_Box.DefaultText = "";
             this.Identity_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.Identity_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -148,6 +157,7 @@
             this.Email_Box.BorderRadius = 8;
             this.Email_Box.BorderThickness = 2;
             this.Email_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Email_Box.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.iNFORBindingSource, "EMAIL", true));
             this.Email_Box.DefaultText = "";
             this.Email_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.Email_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -186,6 +196,7 @@
             this.Address_Box.BorderRadius = 8;
             this.Address_Box.BorderThickness = 2;
             this.Address_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Address_Box.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.iNFORBindingSource, "ADDRESS", true));
             this.Address_Box.DefaultText = "";
             this.Address_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.Address_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -228,6 +239,7 @@
             this.Name_Box.BorderRadius = 8;
             this.Name_Box.BorderThickness = 2;
             this.Name_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Name_Box.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.iNFORBindingSource, "NAME", true));
             this.Name_Box.DefaultText = "";
             this.Name_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.Name_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -294,6 +306,7 @@
             this.Apartment_ComboBox.TabIndex = 19;
             this.Apartment_ComboBox.TextOffset = new System.Drawing.Point(5, 0);
             this.Apartment_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Apartment_ComboBox.ValueMember = "ID";
             // 
             // sTAFFROLEBindingSource
             // 
@@ -353,43 +366,9 @@
             this.DateTimeImportWarehouse_DateTimePicker.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.DateTimeImportWarehouse_DateTimePicker.Value = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
             // 
-            // StaffDate_Box
+            // sTAFFBindingSource
             // 
-            this.StaffDate_Box.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.StaffDate_Box.Animated = true;
-            this.StaffDate_Box.BackColor = System.Drawing.Color.Transparent;
-            this.StaffDate_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
-            this.StaffDate_Box.BorderRadius = 8;
-            this.StaffDate_Box.BorderThickness = 2;
-            this.StaffDate_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.StaffDate_Box.DefaultText = "";
-            this.StaffDate_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.StaffDate_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.StaffDate_Box.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.StaffDate_Box.DisabledState.Parent = this.StaffDate_Box;
-            this.StaffDate_Box.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.StaffDate_Box.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.StaffDate_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.StaffDate_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
-            this.StaffDate_Box.FocusedState.Parent = this.StaffDate_Box;
-            this.StaffDate_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.StaffDate_Box.ForeColor = System.Drawing.Color.Black;
-            this.StaffDate_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
-            this.StaffDate_Box.HoverState.Parent = this.StaffDate_Box;
-            this.StaffDate_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
-            this.StaffDate_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.StaffDate_Box.Location = new System.Drawing.Point(265, 155);
-            this.StaffDate_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.StaffDate_Box.Name = "StaffDate_Box";
-            this.StaffDate_Box.PasswordChar = '\0';
-            this.StaffDate_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.StaffDate_Box.PlaceholderText = "Ngày vào làm";
-            this.StaffDate_Box.SelectedText = "";
-            this.StaffDate_Box.ShadowDecoration.Parent = this.StaffDate_Box;
-            this.StaffDate_Box.Size = new System.Drawing.Size(217, 37);
-            this.StaffDate_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.StaffDate_Box.TabIndex = 25;
-            this.StaffDate_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.sTAFFBindingSource.DataSource = typeof(CompuStore.Database.Models.STAFF);
             // 
             // Edit_Button
             // 
@@ -420,7 +399,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(525, 407);
-            this.Controls.Add(this.StaffDate_Box);
             this.Controls.Add(this.DateTimeImportWarehouse_DateTimePicker);
             this.Controls.Add(this.Edit_Button);
             this.Controls.Add(this.Apartment_ComboBox);
@@ -437,8 +415,10 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thêm nhân viên mới";
             this.Load += new System.EventHandler(this.StaffEdit_Form_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.iNFORBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sTAFFROLEBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sTAFFBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -458,7 +438,8 @@
         private Guna.UI2.WinForms.Guna2ComboBox Apartment_ComboBox;
         private System.Windows.Forms.BindingSource sTAFFROLEBindingSource;
         private Guna.UI2.WinForms.Guna2DateTimePicker DateTimeImportWarehouse_DateTimePicker;
-        private Guna.UI2.WinForms.Guna2TextBox StaffDate_Box;
         private Guna.UI2.WinForms.Guna2Button Edit_Button;
+        private System.Windows.Forms.BindingSource iNFORBindingSource;
+        private System.Windows.Forms.BindingSource sTAFFBindingSource;
     }
 }

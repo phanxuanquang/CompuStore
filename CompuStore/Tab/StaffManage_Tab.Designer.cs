@@ -35,11 +35,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DataTable = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.sTAFFBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AddStaff_Button = new Guna.UI2.WinForms.Guna2Button();
             this.FireStaff_Button = new Guna.UI2.WinForms.Guna2Button();
             this.InfoStaff_Button = new Guna.UI2.WinForms.Guna2Button();
             this.SearchBox = new Guna.UI2.WinForms.Guna2TextBox();
-            this.sTAFFBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StaffName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhoneNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -139,6 +139,10 @@
             this.DataTable.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.DataTable.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             // 
+            // sTAFFBindingSource
+            // 
+            this.sTAFFBindingSource.DataSource = typeof(CompuStore.Database.Models.STAFF);
+            // 
             // AddStaff_Button
             // 
             this.AddStaff_Button.Animated = true;
@@ -228,10 +232,6 @@
             this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
             this.SearchBox.Size = new System.Drawing.Size(558, 37);
             this.SearchBox.TabIndex = 10;
-            // 
-            // sTAFFBindingSource
-            // 
-            this.sTAFFBindingSource.DataSource = typeof(CompuStore.Database.Models.STAFF);
             // 
             // Id
             // 

@@ -77,14 +77,14 @@ namespace CompuStore
 
         private void InfoStaff_Button_Click(object sender, EventArgs e)
         {
-            StaffEdit_Form staffEdit_Form = new StaffEdit_Form(false, "THÔNG TIN NHÂN VIÊN");
+            StaffEdit_Form staffEdit_Form = new StaffEdit_Form(false, "THÔNG TIN NHÂN VIÊN", sTAFFBindingSource.Current);
             staffEdit_Form.ShowDialog();
             BindingStaff(GetListStaff());
         }
 
         private void AddStaff_Button_Click(object sender, EventArgs e)
         {
-            StaffEdit_Form staffEdit_Form = new StaffEdit_Form(true, "THÊM NHÂN VIÊN");
+            StaffEdit_Form staffEdit_Form = new StaffEdit_Form(true, "THÊM NHÂN VIÊN", null);
             staffEdit_Form.ShowDialog();
             BindingStaff(GetListStaff());
         }
