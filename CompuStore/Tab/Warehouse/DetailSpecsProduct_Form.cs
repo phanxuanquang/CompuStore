@@ -26,7 +26,7 @@ namespace CompuStore.Tab.Warehouse
                 string serials = "";
                 for (int index = 0; index < preModels.Length; index++)
                 {
-                    serials += preModels[index].Serial;
+                    serials += preModels[index].Serial + '\n';
                 }
                 Serials_TextBox.Text = serials;
                 Lineup_ComboBox.DataSource = new string[] { preModels[0].LineUp };
