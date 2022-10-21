@@ -23,10 +23,14 @@ namespace CompuStore.ImportData
         public double? SizePanel;
         public int? Brightness;
         public string TypePanel;
-        public string SpaceColor;
+        //split by _. each item split by :
+        public Dictionary<string, double> SpaceColor;
         public int? RefreshRate;
         public bool? CanTouchPanel;
         public string TypeScreen;
+        //split by :
+        //[0]: ratio x
+        //[1]: ratio y
         public string RatioPanel;
 
         public string CPU;
@@ -103,7 +107,30 @@ namespace CompuStore.ImportData
                         model.Brightness = null;
                     }
                     model.TypePanel = split[9].Length == 0 ? null : split[9];
-                    model.SpaceColor = split[10].Length == 0 ? null : split[10];
+                    string[] spaceColor = split[10].Length == 0 ? null : split[10].Split('_');
+                    if (spaceColor != null)
+                    {
+                        for (int _index = 0; _index < spaceColor.Length; _index++)
+                        {
+                            string[] eachSpaceColor = spaceColor[_index].Split(':');
+                            if (eachSpaceColor.Length > 1 && double.TryParse(eachSpaceColor[1].Substring(0, eachSpaceColor[1].Length - 1), out double eachSpaceColorValue))
+                            {
+                                if(model.SpaceColor == null)
+                                {
+                                    model.SpaceColor = new Dictionary<string, double>();
+                                }
+                                model.SpaceColor.Add(eachSpaceColor[0], eachSpaceColorValue);
+                            }
+                        }
+                        if (model.SpaceColor != null && model.SpaceColor.Count == 0)
+                        {
+                            model.SpaceColor = null;
+                        }
+                    }
+                    else
+                    {
+                        model.SpaceColor = null;
+                    }
                     if (int.TryParse(split[11], out int refreshRate))
                     {
                         model.RefreshRate = refreshRate;
@@ -133,7 +160,7 @@ namespace CompuStore.ImportData
                         model.RAM = null;
                     }
                     model.TypeDrive = split[18].Length == 0 ? null : split[18];
-                    if (int.TryParse(split[19].Substring(0, split[19].Length-2), out int driveCapacity))
+                    if (int.TryParse(split[19].Substring(0, split[19].Length - 2), out int driveCapacity))
                     {
                         model.DriveCapacity = driveCapacity;
                     }
@@ -182,9 +209,12 @@ namespace CompuStore.ImportData
                     model.Webcam = split[27].Length == 0 ? null : split[27];
                     string[] sizeProduct = split[28].Split('x');
                     List<double> parseSizeProduct = new List<double>();
-                    foreach(string dimension in sizeProduct)
+                    foreach (string dimension in sizeProduct)
                     {
-                        if(double.TryParse(dimension.Trim(), out double size))
+                        string temp = dimension.Trim();
+                        if (temp.Contains('-')) temp = temp.Split('-')[0];
+
+                        if (double.TryParse(temp.Trim(), out double size))
                         {
                             parseSizeProduct.Add(size);
                         }
@@ -221,10 +251,10 @@ namespace CompuStore.ImportData
         public static ModelProduct[] GetTSV(string pathFile)
         {
             string[] x = File.ReadAllLines(pathFile, Encoding.UTF8);
-            ModelProduct[] products = new ModelProduct[x.Length];
+            ModelProduct[] products = new ModelProduct[x.Length - 1];
             for (int index = 1; index < x.Length; index++)
             {
-                TryParse(x[index], out products[index]);
+                TryParse(x[index], out products[index - 1]);
             }
 
             return products;

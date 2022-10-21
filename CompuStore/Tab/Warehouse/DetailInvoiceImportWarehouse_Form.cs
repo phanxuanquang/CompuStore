@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompuStore.ImportData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,8 +34,10 @@ namespace CompuStore.Tab.Warehouse
 
         private void AddProduct_Button_Click(object sender, EventArgs e)
         {
+            //để test xem form được chưa
             DetailSpecsProduct_Form frm = new DetailSpecsProduct_Form();
-            frm.ShowDialog(this);
+            ModelProduct[] products = ModelProduct.GetTSV("../../Resources/Template/data_sample.tsv");
+            frm.ShowDialog(this, products);
         }
     }
 }
