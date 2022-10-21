@@ -44,6 +44,11 @@ namespace CompuStore.Database.Services
             if (product == null) throw new ArgumentNullException();
 
             string resolution = product.Resolution == null ? null : string.Join("x", product.Resolution);
+            string spaceColor = "";
+            foreach (KeyValuePair<string, double> entry in product.SpaceColor)
+            {
+                spaceColor += (spaceColor.Length == 0 ? "" : "_") + entry.Key + ':' + entry.Value;
+            }
 
             return new DISPLAY_SPECS
             {
@@ -52,7 +57,7 @@ namespace CompuStore.Database.Services
                 SIZE = product.SizePanel,
                 BRIGHTNESS = product.Brightness,
                 PANEL = product.TypePanel,
-                COLOR_SPACE = product.SpaceColor,
+                COLOR_SPACE = spaceColor,
                 REFRESH_RATE = product.RefreshRate,
                 IS_TOUCH_PANEL = product.CanTouchPanel,
                 SCREEN_TYPE = product.TypeScreen,
