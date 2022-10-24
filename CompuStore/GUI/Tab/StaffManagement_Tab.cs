@@ -17,7 +17,9 @@ namespace CompuStore
         
         public StaffManagement_Tab()
         {
+            this.DataTable.AutoGenerateColumns = false;
             InitializeComponent();
+            this.DataTable.DataSource = sTAFFBindingSource;
             this.Load += StaffManagement_Tab_Load;
         }
 
@@ -34,29 +36,13 @@ namespace CompuStore
 
             /*Class_ComboBox.SelectedIndex = 0;
             SchoolYear_ComboBox.SelectedIndex = 0;*/
-            BindingStaff(GetListStaff());
+            
             //LoadToDataTable(GetListStudent(Class_ComboBox.SelectedItem.ToString(), SchoolYear_ComboBox.SelectedItem.ToString()));
             //loadingWindow.Close();
         }
         private void StaffManagement_Tab_Load(object sender, EventArgs e)
         {
-            if (backgroundWorker == null)
-            {
-                backgroundWorker = new BackgroundWorker();
-            }
-            else if (!backgroundWorker.IsBusy)
-            {
-                backgroundWorker.Dispose();
-                backgroundWorker = new BackgroundWorker();
-            }
-            else
-            {
-                MessageBox.Show("Đang nhập danh sách, vui lòng đợi!");
-                return;
-            }
-            backgroundWorker.DoWork += LoadFromDB_DoWork;
-            backgroundWorker.RunWorkerCompleted += LoadFromDB_RunrWorkerCompleted;
-            backgroundWorker.RunWorkerAsync();
+            BindingStaff(GetListStaff());
         }
         public void BindingStaff(List<STAFF> sTAFFs)
         {

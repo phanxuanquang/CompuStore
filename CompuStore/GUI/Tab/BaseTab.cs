@@ -31,8 +31,8 @@ namespace CompuStore
         {
             try
             {
-                CurrencyManager cm = (CurrencyManager)BindingContext[DataTable.DataSource];
-                cm.SuspendBinding();
+                /*CurrencyManager cm = (CurrencyManager)BindingContext[DataTable.DataSource];
+                cm.SuspendBinding();*/
 
                 for (int i = 0; i < DataTable.RowCount; i++)
                 {
@@ -51,7 +51,7 @@ namespace CompuStore
                     }
                 }
 
-                cm.ResumeBinding();
+                /*cm.ResumeBinding();*/
             }
             catch (Exception ex)
             {
