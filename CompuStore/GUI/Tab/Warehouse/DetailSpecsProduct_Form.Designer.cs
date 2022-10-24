@@ -78,6 +78,9 @@
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.Serials_TextBox = new System.Windows.Forms.TextBox();
             this.Screen_GroupBox = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.ColorSpace_DCIP3_TextBox = new System.Windows.Forms.TextBox();
+            this.ColorSpace_AdobeRGB_TextBox = new System.Windows.Forms.TextBox();
+            this.ColorSpace_sRGB_TextBox = new System.Windows.Forms.TextBox();
             this.CodeDisplay_TextBox = new System.Windows.Forms.TextBox();
             this.HasCodeDisplay_CheckBox = new System.Windows.Forms.CheckBox();
             this.ColorSpace_DCIP3_Label = new System.Windows.Forms.Label();
@@ -130,9 +133,6 @@
             this.X_Dimension_TextBox = new System.Windows.Forms.TextBox();
             this.Y_Dimension_TextBox = new System.Windows.Forms.TextBox();
             this.Z_Dimension_TextBox = new System.Windows.Forms.TextBox();
-            this.ColorSpace_sRGB_TextBox = new System.Windows.Forms.TextBox();
-            this.ColorSpace_AdobeRGB_TextBox = new System.Windows.Forms.TextBox();
-            this.ColorSpace_DCIP3_TextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Ports_DataGridView)).BeginInit();
             this.Screen_GroupBox.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
@@ -626,11 +626,11 @@
             this.Exit_Button.HoverState.Parent = this.Exit_Button;
             this.Exit_Button.Image = global::CompuStore.Properties.Resources.Close;
             this.Exit_Button.ImageSize = new System.Drawing.Size(27, 27);
-            this.Exit_Button.Location = new System.Drawing.Point(2587, 0);
+            this.Exit_Button.Location = new System.Drawing.Point(2047, 1);
             this.Exit_Button.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Exit_Button.Name = "Exit_Button";
             this.Exit_Button.PressedState.Parent = this.Exit_Button;
-            this.Exit_Button.Size = new System.Drawing.Size(87, 99);
+            this.Exit_Button.Size = new System.Drawing.Size(72, 72);
             this.Exit_Button.TabIndex = 6;
             this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
             // 
@@ -691,6 +691,30 @@
             this.Screen_GroupBox.Size = new System.Drawing.Size(1185, 589);
             this.Screen_GroupBox.TabIndex = 68;
             this.Screen_GroupBox.Text = "Màn hình";
+            // 
+            // ColorSpace_DCIP3_TextBox
+            // 
+            this.ColorSpace_DCIP3_TextBox.Location = new System.Drawing.Point(198, 511);
+            this.ColorSpace_DCIP3_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ColorSpace_DCIP3_TextBox.Name = "ColorSpace_DCIP3_TextBox";
+            this.ColorSpace_DCIP3_TextBox.Size = new System.Drawing.Size(134, 39);
+            this.ColorSpace_DCIP3_TextBox.TabIndex = 129;
+            // 
+            // ColorSpace_AdobeRGB_TextBox
+            // 
+            this.ColorSpace_AdobeRGB_TextBox.Location = new System.Drawing.Point(198, 436);
+            this.ColorSpace_AdobeRGB_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ColorSpace_AdobeRGB_TextBox.Name = "ColorSpace_AdobeRGB_TextBox";
+            this.ColorSpace_AdobeRGB_TextBox.Size = new System.Drawing.Size(134, 39);
+            this.ColorSpace_AdobeRGB_TextBox.TabIndex = 128;
+            // 
+            // ColorSpace_sRGB_TextBox
+            // 
+            this.ColorSpace_sRGB_TextBox.Location = new System.Drawing.Point(198, 368);
+            this.ColorSpace_sRGB_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ColorSpace_sRGB_TextBox.Name = "ColorSpace_sRGB_TextBox";
+            this.ColorSpace_sRGB_TextBox.Size = new System.Drawing.Size(134, 39);
+            this.ColorSpace_sRGB_TextBox.TabIndex = 127;
             // 
             // CodeDisplay_TextBox
             // 
@@ -1236,30 +1260,6 @@
             this.Z_Dimension_TextBox.Name = "Z_Dimension_TextBox";
             this.Z_Dimension_TextBox.Size = new System.Drawing.Size(108, 39);
             this.Z_Dimension_TextBox.TabIndex = 126;
-            // 
-            // ColorSpace_sRGB_TextBox
-            // 
-            this.ColorSpace_sRGB_TextBox.Location = new System.Drawing.Point(198, 368);
-            this.ColorSpace_sRGB_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ColorSpace_sRGB_TextBox.Name = "ColorSpace_sRGB_TextBox";
-            this.ColorSpace_sRGB_TextBox.Size = new System.Drawing.Size(134, 39);
-            this.ColorSpace_sRGB_TextBox.TabIndex = 127;
-            // 
-            // ColorSpace_AdobeRGB_TextBox
-            // 
-            this.ColorSpace_AdobeRGB_TextBox.Location = new System.Drawing.Point(198, 436);
-            this.ColorSpace_AdobeRGB_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ColorSpace_AdobeRGB_TextBox.Name = "ColorSpace_AdobeRGB_TextBox";
-            this.ColorSpace_AdobeRGB_TextBox.Size = new System.Drawing.Size(134, 39);
-            this.ColorSpace_AdobeRGB_TextBox.TabIndex = 128;
-            // 
-            // ColorSpace_DCIP3_TextBox
-            // 
-            this.ColorSpace_DCIP3_TextBox.Location = new System.Drawing.Point(198, 511);
-            this.ColorSpace_DCIP3_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ColorSpace_DCIP3_TextBox.Name = "ColorSpace_DCIP3_TextBox";
-            this.ColorSpace_DCIP3_TextBox.Size = new System.Drawing.Size(134, 39);
-            this.ColorSpace_DCIP3_TextBox.TabIndex = 129;
             // 
             // DetailSpecsProduct_Form
             // 

@@ -103,7 +103,7 @@
             this.TableData_DataGridVIew.RowTemplate.ReadOnly = true;
             this.TableData_DataGridVIew.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.TableData_DataGridVIew.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TableData_DataGridVIew.Size = new System.Drawing.Size(2452, 1127);
+            this.TableData_DataGridVIew.Size = new System.Drawing.Size(2468, 1168);
             this.TableData_DataGridVIew.TabIndex = 0;
             this.TableData_DataGridVIew.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.TableData_DataGridVIew.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -224,11 +224,11 @@
             this.StatusImportWarehouse.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.StatusImportWarehouse.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar1});
-            this.StatusImportWarehouse.Location = new System.Drawing.Point(0, 1261);
+            this.StatusImportWarehouse.Location = new System.Drawing.Point(0, 1314);
             this.StatusImportWarehouse.Name = "StatusImportWarehouse";
             this.StatusImportWarehouse.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
             this.StatusImportWarehouse.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.StatusImportWarehouse.Size = new System.Drawing.Size(2452, 42);
+            this.StatusImportWarehouse.Size = new System.Drawing.Size(2468, 42);
             this.StatusImportWarehouse.TabIndex = 10;
             // 
             // toolStripProgressBar1
@@ -252,7 +252,7 @@
             this.Controls.Add(this.TableData_DataGridVIew);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Warehouse_UC";
-            this.Size = new System.Drawing.Size(2452, 1303);
+            this.Size = new System.Drawing.Size(2468, 1356);
             this.Load += new System.EventHandler(this.Warehouse_UC_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TableData_DataGridVIew)).EndInit();
             this.StatusImportWarehouse.ResumeLayout(false);
