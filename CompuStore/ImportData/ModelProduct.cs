@@ -8,64 +8,64 @@ namespace CompuStore.ImportData
 {
     public class ModelProduct
     {
-        public string Serial;
+        public string Serial { get; set; }
 
-        public string LineUp;
-        public string Manufacturer;
-        public string Country;
+        public string LineUp { get; set; }
+        public string Manufacturer { get; set; }
+        public string Country { get; set; }
 
-        public string IdPanel;
+        public string IdPanel { get; set; }
         //split by 'x'
         //[0]: (x)pixels
         //[1]: (y)pixels
-        public double[] Resolution;
+        public double[] Resolution { get; set; }
         //unit: inch
-        public double? SizePanel;
-        public int? Brightness;
-        public string TypePanel;
+        public double? SizePanel { get; set; }
+        public int? Brightness { get; set; }
+        public string TypePanel { get; set; }
         //split by _. each item split by :
-        public Dictionary<string, double> SpaceColor;
-        public int? RefreshRate;
-        public bool? CanTouchPanel;
-        public string TypeScreen;
+        public Dictionary<string, double> SpaceColor { get; set; }
+        public int? RefreshRate { get; set; }
+        public bool? CanTouchPanel { get; set; }
+        public string TypeScreen { get; set; }
         //split by :
         //[0]: ratio x
         //[1]: ratio y
-        public string RatioPanel;
+        public string RatioPanel { get; set; }
 
-        public string CPU;
-        public string iGPU;
+        public string CPU { get; set; }
+        public string iGPU { get; set; }
         //unit: GB
-        public int? RAM;
-        public string TypeDrive;
+        public int? RAM { get; set; }
+        public string TypeDrive { get; set; }
         //unit: GB
-        public int? DriveCapacity;
+        public int? DriveCapacity { get; set; }
         //split by space
         //[0]: (manufacturer) GPU
         //[1-last-1]: (name) GPU
         //[last]: (VRAM) GPU
-        public string[] GPU;
-        public double? BatteryCapacity;
-        public double? Weight;
+        public string[] GPU { get; set; }
+        public double? BatteryCapacity { get; set; }
+        public double? Weight { get; set; }
 
-        public string NameProduct;
-        public DateTime? ReleaseDate;
-        public string CaseMaterial;
+        public string NameProduct { get; set; }
+        public DateTime? ReleaseDate { get; set; }
+        public string CaseMaterial { get; set; }
         //split by unit seperator (_)
-        public string[] Ports;
-        public string Webcam;
+        public string[] Ports { get; set; }
+        public string Webcam { get; set; }
         //split by x
         //[0]: (x) dimension
         //[1]: (y) dimension
         //[2]: (z) dimension
-        public double[] SizeProduct;
-        public string OS;
-        public string Wifi;
-        public string Bluetooth;
-        public double? Price;
+        public double[] SizeProduct { get; set; }
+        public string OS { get; set; }
+        public string Wifi { get; set; }
+        public string Bluetooth { get; set; }
+        public double? Price { get; set; }
 
-        public string ColorCode;
-        public string ColorName;
+        public string ColorCode { get; set; }
+        public string ColorName { get; set; }
 
         public static bool TryParse(string singleLineCSV, out ModelProduct model)
         {
@@ -115,7 +115,7 @@ namespace CompuStore.ImportData
                             string[] eachSpaceColor = spaceColor[_index].Split(':');
                             if (eachSpaceColor.Length > 1 && double.TryParse(eachSpaceColor[1].Substring(0, eachSpaceColor[1].Length - 1), out double eachSpaceColorValue))
                             {
-                                if(model.SpaceColor == null)
+                                if (model.SpaceColor == null)
                                 {
                                     model.SpaceColor = new Dictionary<string, double>();
                                 }

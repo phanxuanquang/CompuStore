@@ -1,4 +1,5 @@
 ﻿using CompuStore.Database.Models;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -120,7 +121,7 @@ namespace CompuStore.Tab.Warehouse
                 }
             }
 
-            public string MANUFACTUERE
+            public string MANUFACTURER
             {
                 get
                 {
@@ -146,9 +147,19 @@ namespace CompuStore.Tab.Warehouse
         }
 
         private BindingList<ImportWarehouseCustom> importWarehouseBinding;
-        private static readonly string[] columnVisiableImportWarehouse = { "NAME_ID", "IMPORT_DATE", "TOTAL", "DISTRIBUTOR" };
+        private static readonly Dictionary<string, string> columnVisiableImportWarehouse = new Dictionary<string, string> { 
+            { "NAME_ID", "Mã nhập hàng" }, 
+            { "IMPORT_DATE", "Ngày nhập hàng" }, 
+            { "TOTAL", "Tổng giá trị" }, 
+            { "DISTRIBUTOR_NAME", "Nhà phân phối" } };
         private BindingList<CommonSpecsCustom> commonSpecsBinding;
-        private static readonly string[] columnVisiableCommonSpecs = { "NAME_ID", "NAME", "LINE_UP", "RELEASED_YEAR" };
+        private static readonly Dictionary<string, string> columnVisiableCommonSpecs = new Dictionary<string, string> {
+            { "NAME_ID", "Mã sản phẩm" },
+            { "NAME", "Tên sản phẩm" },
+            { "NAME_LINE_UP", "Dòng sản phẩm" },
+            { "MANUFACTURER", "Nhà sản xuất" },
+            { "ReleasedYear", "Năm ra mắt" } };
+
         enum SEE_WHAT
         {
             IMPORT_WAREHOUSE, COMMON_SPECS, NONE
@@ -172,8 +183,6 @@ namespace CompuStore.Tab.Warehouse
                 commonSpecsBinding = new BindingList<CommonSpecsCustom>(viewCommonSpecs.ToList());
                 SeeProduct_Click(null, null);
                 SeeInvoiceImportWarehouse_Click(null, null);
-                var x = from f in Database.DataProvider.Instance.Database.IMPORT_WAREHOUSE
-                        select new { f.NAME_ID, f.IMPORT_DATE, f.TOTAL, f.DISTRIBUTOR.NAME };
             });
         }
 
@@ -186,52 +195,33 @@ namespace CompuStore.Tab.Warehouse
         private void SeeProduct_Click(object sender, EventArgs e)
         {
             seeWhat = SEE_WHAT.COMMON_SPECS;
-            if (TableData_DataGridVIew.InvokeRequired)
+            if (TableData_DataGridView.InvokeRequired)
             {
-                TableData_DataGridVIew.Invoke(new Action(() =>
+                TableData_DataGridView.Invoke(new Action(() =>
                 {
-                    TableData_DataGridVIew.DataSource = commonSpecsBinding;
+                    TableData_DataGridView.DataSource = commonSpecsBinding;
                 }));
             }
             else
             {
-                TableData_DataGridVIew.DataSource = commonSpecsBinding;
+                TableData_DataGridView.DataSource = commonSpecsBinding;
             }
         }
 
         private void SeeInvoiceImportWarehouse_Click(object sender, EventArgs e)
         {
             seeWhat = SEE_WHAT.IMPORT_WAREHOUSE;
-            if (TableData_DataGridVIew.InvokeRequired)
+            if (TableData_DataGridView.InvokeRequired)
             {
-                TableData_DataGridVIew.Invoke(new Action(() =>
+                TableData_DataGridView.Invoke(new Action(() =>
                 {
-                    TableData_DataGridVIew.DataSource = importWarehouseBinding;
+                    TableData_DataGridView.DataSource = importWarehouseBinding;
                 }));
             }
             else
             {
-                TableData_DataGridVIew.DataSource = importWarehouseBinding;
+                TableData_DataGridView.DataSource = importWarehouseBinding;
             }
-        }
-
-        private void TableData_DataGridVIew_DataSourceChanged(object sender, EventArgs e)
-        {
-            DataGridView grid = sender as DataGridView;
-            grid.SuspendLayout();
-            string[] columnVisible = seeWhat == SEE_WHAT.COMMON_SPECS ? columnVisiableCommonSpecs : columnVisiableImportWarehouse;
-            foreach (DataGridViewColumn column in grid.Columns)
-            {
-                if (!columnVisible.Contains(column.Name))
-                {
-                    column.Visible = false;
-                }
-                else if (column.Name == "RELEASED_YEAR")
-                {
-                    column.DefaultCellStyle.Format = "yyyy";
-                }
-            }
-            grid.ResumeLayout(true);
         }
 
         private async void Warehouse_UC_Load(object sender, EventArgs e)
@@ -239,6 +229,50 @@ namespace CompuStore.Tab.Warehouse
             //show wating form
             await LoadingBinding();
             //close wating form
+        }
+
+        private void TableData_DataGridView_DataSourceChanged(object sender, EventArgs e)
+        {
+            DataGridView grid = sender as DataGridView;
+            grid.SuspendLayout();
+            Dictionary<string, string> columnVisible = seeWhat == SEE_WHAT.COMMON_SPECS ? columnVisiableCommonSpecs : columnVisiableImportWarehouse;
+            foreach (DataGridViewColumn column in grid.Columns)
+            {
+                if (columnVisible.ContainsKey(column.Name))
+                {
+                    if (column.Name == "RELEASED_YEAR")
+                    {
+                        column.DefaultCellStyle.Format = "yyyy";
+                    }
+                    column.HeaderText = columnVisible[column.Name];
+                }
+                else
+                {
+                    column.Visible = false;
+                }
+            }
+            grid.ResumeLayout(true);
+        }
+
+        private void TableData_DataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                switch (seeWhat)
+                {
+                    case SEE_WHAT.COMMON_SPECS:
+                        string nameIdCommonSpecs = (sender as DataGridView).Rows[e.RowIndex].Cells[0].Value as string;
+                        COMMON_SPECS commonSpecs = Database.Services.CommonSpecsServices.Instance.GetCommonSpecsByNameID(nameIdCommonSpecs);
+                        if (commonSpecs != null)
+                        {
+                            DetailInvoiceImportWarehouse_Form form = new DetailInvoiceImportWarehouse_Form(commonSpecs);
+                            form.ShowDialog();
+                        }
+                        break;
+                    case SEE_WHAT.IMPORT_WAREHOUSE:
+                        break;
+                }
+            }
         }
     }
 }

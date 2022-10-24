@@ -63,6 +63,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\Services\CommonSpecsServices.cs" />
+    <Compile Include="Database\Services\UniqueSpecsServices.cs" />
     <Compile Include="GUI\Form\SubForm\AddInvoice_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +172,12 @@
     <Compile Include="Database\Services\StaffRoleServices.cs" />
     <Compile Include="Database\Services\StaffServices.cs" />
     <Compile Include="Database\Services\UserServices.cs" />
+    <Compile Include="GUI\Tab\Warehouse\InvoiceImportWarehouse_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Tab\Warehouse\InvoiceImportWarehouse_Form.Designer.cs">
+      <DependentUpon>InvoiceImportWarehouse_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImportData\ModelProduct.cs" />
     <Compile Include="GUI\Form\SubForm\StaffEdit_Form.cs">
       <SubType>Form</SubType>

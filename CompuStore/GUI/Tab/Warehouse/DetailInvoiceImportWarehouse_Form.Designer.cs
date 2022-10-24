@@ -50,18 +50,6 @@
             this.DeleteProduct_Button = new Guna.UI2.WinForms.Guna2Button();
             this.AddProductByExcel_Button = new Guna.UI2.WinForms.Guna2Button();
             this.TableData_DataGridView = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.No_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPU_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GPU_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.RAM_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SizePanelDisplay_Column = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.DisplayResolution_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QualityPanel_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StorageType_Column = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.StorageCapacity_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BatteryCapacity_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Weight = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dimensions_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Confirm_Button = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.TableData_DataGridView)).BeginInit();
             this.SuspendLayout();
@@ -292,19 +280,6 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.TableData_DataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.TableData_DataGridView.ColumnHeadersHeight = 48;
-            this.TableData_DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.No_Column,
-            this.CPU_Column,
-            this.GPU_Column,
-            this.RAM_Column,
-            this.SizePanelDisplay_Column,
-            this.DisplayResolution_Column,
-            this.QualityPanel_Column,
-            this.StorageType_Column,
-            this.StorageCapacity_Column,
-            this.BatteryCapacity_Column,
-            this.Weight,
-            this.Dimensions_Column});
             this.TableData_DataGridView.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -364,98 +339,7 @@
             this.TableData_DataGridView.ThemeStyle.RowsStyle.Height = 48;
             this.TableData_DataGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.TableData_DataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            // 
-            // No_Column
-            // 
-            this.No_Column.HeaderText = "STT";
-            this.No_Column.MinimumWidth = 10;
-            this.No_Column.Name = "No_Column";
-            this.No_Column.Width = 127;
-            // 
-            // CPU_Column
-            // 
-            this.CPU_Column.HeaderText = "CPU";
-            this.CPU_Column.MinimumWidth = 10;
-            this.CPU_Column.Name = "CPU_Column";
-            this.CPU_Column.Width = 134;
-            // 
-            // GPU_Column
-            // 
-            this.GPU_Column.HeaderText = "GPU";
-            this.GPU_Column.MinimumWidth = 10;
-            this.GPU_Column.Name = "GPU_Column";
-            this.GPU_Column.Width = 136;
-            // 
-            // RAM_Column
-            // 
-            this.RAM_Column.HeaderText = "RAM";
-            this.RAM_Column.MinimumWidth = 10;
-            this.RAM_Column.Name = "RAM_Column";
-            this.RAM_Column.Width = 139;
-            // 
-            // SizePanelDisplay_Column
-            // 
-            this.SizePanelDisplay_Column.HeaderText = "Kích thước màn hình";
-            this.SizePanelDisplay_Column.MinimumWidth = 10;
-            this.SizePanelDisplay_Column.Name = "SizePanelDisplay_Column";
-            this.SizePanelDisplay_Column.Width = 319;
-            // 
-            // DisplayResolution_Column
-            // 
-            this.DisplayResolution_Column.HeaderText = "Độ phân giải màn hình";
-            this.DisplayResolution_Column.MinimumWidth = 10;
-            this.DisplayResolution_Column.Name = "DisplayResolution_Column";
-            this.DisplayResolution_Column.Width = 387;
-            // 
-            // QualityPanel_Column
-            // 
-            this.QualityPanel_Column.HeaderText = "Chất lượng tấm nền";
-            this.QualityPanel_Column.MinimumWidth = 10;
-            this.QualityPanel_Column.Name = "QualityPanel_Column";
-            this.QualityPanel_Column.Width = 344;
-            // 
-            // StorageType_Column
-            // 
-            this.StorageType_Column.HeaderText = "Loại ổ cứng";
-            this.StorageType_Column.MinimumWidth = 10;
-            this.StorageType_Column.Name = "StorageType_Column";
-            this.StorageType_Column.Width = 196;
-            // 
-            // StorageCapacity_Column
-            // 
-            this.StorageCapacity_Column.HeaderText = "Dung lượng ổ cứng";
-            this.StorageCapacity_Column.MinimumWidth = 10;
-            this.StorageCapacity_Column.Name = "StorageCapacity_Column";
-            this.StorageCapacity_Column.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.StorageCapacity_Column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.StorageCapacity_Column.Width = 300;
-            // 
-            // BatteryCapacity_Column
-            // 
-            this.BatteryCapacity_Column.HeaderText = "Dung lượng pin";
-            this.BatteryCapacity_Column.MinimumWidth = 10;
-            this.BatteryCapacity_Column.Name = "BatteryCapacity_Column";
-            this.BatteryCapacity_Column.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.BatteryCapacity_Column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.BatteryCapacity_Column.Width = 247;
-            // 
-            // Weight
-            // 
-            this.Weight.HeaderText = "Cân nặng";
-            this.Weight.MinimumWidth = 10;
-            this.Weight.Name = "Weight";
-            this.Weight.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Weight.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Weight.Width = 166;
-            // 
-            // Dimensions_Column
-            // 
-            this.Dimensions_Column.HeaderText = "Kích thước máy";
-            this.Dimensions_Column.MinimumWidth = 10;
-            this.Dimensions_Column.Name = "Dimensions_Column";
-            this.Dimensions_Column.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Dimensions_Column.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.Dimensions_Column.Width = 246;
+            this.TableData_DataGridView.VirtualMode = true;
             // 
             // Confirm_Button
             // 
@@ -506,6 +390,7 @@
             this.Name = "DetailInvoiceImportWarehouse_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DetailInvoiceImportWarehouse";
+            this.Load += new System.EventHandler(this.DetailInvoiceImportWarehouse_Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.TableData_DataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -531,17 +416,5 @@
         private Guna.UI2.WinForms.Guna2Button AddProductByExcel_Button;
         private Guna.UI2.WinForms.Guna2DataGridView TableData_DataGridView;
         private Guna.UI2.WinForms.Guna2Button Confirm_Button;
-        private System.Windows.Forms.DataGridViewTextBoxColumn No_Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CPU_Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn GPU_Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn RAM_Column;
-        private System.Windows.Forms.DataGridViewComboBoxColumn SizePanelDisplay_Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DisplayResolution_Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QualityPanel_Column;
-        private System.Windows.Forms.DataGridViewComboBoxColumn StorageType_Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StorageCapacity_Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BatteryCapacity_Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Weight;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dimensions_Column;
     }
 }
