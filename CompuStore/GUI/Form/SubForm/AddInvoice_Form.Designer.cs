@@ -28,17 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.PhoneNumber_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Header = new System.Windows.Forms.Label();
-            this.Address_Box = new Guna.UI2.WinForms.Guna2TextBox();
-            this.Email_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Identity_Box = new Guna.UI2.WinForms.Guna2TextBox();
-            this.Name_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.HeaderIcon = new System.Windows.Forms.PictureBox();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.Save_Button = new Guna.UI2.WinForms.Guna2Button();
@@ -48,6 +45,10 @@
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddCustomer_Button = new Guna.UI2.WinForms.Guna2Button();
             this.Print_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.Email_Box = new Guna.UI2.WinForms.Guna2TextBox();
+            this.Address_Box = new Guna.UI2.WinForms.Guna2TextBox();
+            this.Name_Box = new Guna.UI2.WinForms.Guna2TextBox();
+            this.Edit_Button = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemTable)).BeginInit();
             this.SuspendLayout();
@@ -83,6 +84,7 @@
             this.PhoneNumber_Box.PasswordChar = '\0';
             this.PhoneNumber_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.PhoneNumber_Box.PlaceholderText = "Số điện thoại";
+            this.PhoneNumber_Box.ReadOnly = true;
             this.PhoneNumber_Box.SelectedText = "";
             this.PhoneNumber_Box.ShadowDecoration.Parent = this.PhoneNumber_Box;
             this.PhoneNumber_Box.Size = new System.Drawing.Size(232, 37);
@@ -104,82 +106,6 @@
             this.Header.Text = "Tạo hóa đơn bán hàng";
             this.Header.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Header.UseCompatibleTextRendering = true;
-            // 
-            // Address_Box
-            // 
-            this.Address_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.Address_Box.Animated = true;
-            this.Address_Box.BackColor = System.Drawing.Color.Transparent;
-            this.Address_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
-            this.Address_Box.BorderRadius = 8;
-            this.Address_Box.BorderThickness = 2;
-            this.Address_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Address_Box.DefaultText = "";
-            this.Address_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.Address_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.Address_Box.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Address_Box.DisabledState.Parent = this.Address_Box;
-            this.Address_Box.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Address_Box.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.Address_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.Address_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
-            this.Address_Box.FocusedState.Parent = this.Address_Box;
-            this.Address_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.Address_Box.ForeColor = System.Drawing.Color.Black;
-            this.Address_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
-            this.Address_Box.HoverState.Parent = this.Address_Box;
-            this.Address_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
-            this.Address_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Address_Box.Location = new System.Drawing.Point(36, 197);
-            this.Address_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Address_Box.Name = "Address_Box";
-            this.Address_Box.PasswordChar = '\0';
-            this.Address_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.Address_Box.PlaceholderText = "Địa chỉ";
-            this.Address_Box.SelectedText = "";
-            this.Address_Box.ShadowDecoration.Parent = this.Address_Box;
-            this.Address_Box.Size = new System.Drawing.Size(550, 37);
-            this.Address_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.Address_Box.TabIndex = 31;
-            this.Address_Box.TextOffset = new System.Drawing.Point(5, 0);
-            // 
-            // Email_Box
-            // 
-            this.Email_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.Email_Box.Animated = true;
-            this.Email_Box.BackColor = System.Drawing.Color.Transparent;
-            this.Email_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
-            this.Email_Box.BorderRadius = 8;
-            this.Email_Box.BorderThickness = 2;
-            this.Email_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Email_Box.DefaultText = "";
-            this.Email_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.Email_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.Email_Box.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Email_Box.DisabledState.Parent = this.Email_Box;
-            this.Email_Box.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Email_Box.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.Email_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.Email_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
-            this.Email_Box.FocusedState.Parent = this.Email_Box;
-            this.Email_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.Email_Box.ForeColor = System.Drawing.Color.Black;
-            this.Email_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
-            this.Email_Box.HoverState.Parent = this.Email_Box;
-            this.Email_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
-            this.Email_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Email_Box.Location = new System.Drawing.Point(36, 154);
-            this.Email_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Email_Box.Name = "Email_Box";
-            this.Email_Box.PasswordChar = '\0';
-            this.Email_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.Email_Box.PlaceholderText = "E-mail";
-            this.Email_Box.SelectedText = "";
-            this.Email_Box.ShadowDecoration.Parent = this.Email_Box;
-            this.Email_Box.Size = new System.Drawing.Size(550, 37);
-            this.Email_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.Email_Box.TabIndex = 30;
-            this.Email_Box.TextOffset = new System.Drawing.Point(5, 0);
             // 
             // Identity_Box
             // 
@@ -206,56 +132,18 @@
             this.Identity_Box.HoverState.Parent = this.Identity_Box;
             this.Identity_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Identity_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Identity_Box.Location = new System.Drawing.Point(36, 111);
+            this.Identity_Box.Location = new System.Drawing.Point(36, 68);
             this.Identity_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Identity_Box.Name = "Identity_Box";
             this.Identity_Box.PasswordChar = '\0';
             this.Identity_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.Identity_Box.PlaceholderText = "CCCD/CMND";
+            this.Identity_Box.PlaceholderText = "CMND/CCCD của khách hàng";
             this.Identity_Box.SelectedText = "";
             this.Identity_Box.ShadowDecoration.Parent = this.Identity_Box;
-            this.Identity_Box.Size = new System.Drawing.Size(312, 37);
+            this.Identity_Box.Size = new System.Drawing.Size(368, 37);
             this.Identity_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.Identity_Box.TabIndex = 29;
+            this.Identity_Box.TabIndex = 32;
             this.Identity_Box.TextOffset = new System.Drawing.Point(5, 0);
-            // 
-            // Name_Box
-            // 
-            this.Name_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.Name_Box.Animated = true;
-            this.Name_Box.BackColor = System.Drawing.Color.Transparent;
-            this.Name_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
-            this.Name_Box.BorderRadius = 8;
-            this.Name_Box.BorderThickness = 2;
-            this.Name_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Name_Box.DefaultText = "";
-            this.Name_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.Name_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.Name_Box.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Name_Box.DisabledState.Parent = this.Name_Box;
-            this.Name_Box.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.Name_Box.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.Name_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.Name_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
-            this.Name_Box.FocusedState.Parent = this.Name_Box;
-            this.Name_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.Name_Box.ForeColor = System.Drawing.Color.Black;
-            this.Name_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
-            this.Name_Box.HoverState.Parent = this.Name_Box;
-            this.Name_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
-            this.Name_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Name_Box.Location = new System.Drawing.Point(36, 68);
-            this.Name_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name_Box.Name = "Name_Box";
-            this.Name_Box.PasswordChar = '\0';
-            this.Name_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.Name_Box.PlaceholderText = "Họ và tên khách hàng";
-            this.Name_Box.SelectedText = "";
-            this.Name_Box.ShadowDecoration.Parent = this.Name_Box;
-            this.Name_Box.Size = new System.Drawing.Size(459, 37);
-            this.Name_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.Name_Box.TabIndex = 32;
-            this.Name_Box.TextOffset = new System.Drawing.Point(5, 0);
             // 
             // HeaderIcon
             // 
@@ -284,6 +172,7 @@
             this.Exit_Button.PressedState.Parent = this.Exit_Button;
             this.Exit_Button.Size = new System.Drawing.Size(40, 40);
             this.Exit_Button.TabIndex = 26;
+            this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
             // 
             // Save_Button
             // 
@@ -313,8 +202,8 @@
             this.ItemTable.AllowUserToDeleteRows = false;
             this.ItemTable.AllowUserToResizeColumns = false;
             this.ItemTable.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.ItemTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            this.ItemTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
             this.ItemTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ItemTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ItemTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
@@ -323,47 +212,47 @@
             this.ItemTable.CausesValidation = false;
             this.ItemTable.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.ItemTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(151)))), ((int)(((byte)(232)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(151)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.ItemTable.ColumnHeadersHeight = 25;
             this.ItemTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.StaffName,
             this.Status});
             this.ItemTable.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ItemTable.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ItemTable.DefaultCellStyle = dataGridViewCellStyle8;
             this.ItemTable.EnableHeadersVisualStyles = false;
             this.ItemTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.ItemTable.Location = new System.Drawing.Point(36, 239);
             this.ItemTable.MultiSelect = false;
             this.ItemTable.Name = "ItemTable";
             this.ItemTable.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ItemTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ItemTable.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.ItemTable.RowHeadersVisible = false;
             this.ItemTable.RowHeadersWidth = 82;
             this.ItemTable.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ItemTable.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ItemTable.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.ItemTable.RowTemplate.ReadOnly = true;
             this.ItemTable.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.ItemTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -426,7 +315,7 @@
             this.AddCustomer_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.AddCustomer_Button.ForeColor = System.Drawing.Color.White;
             this.AddCustomer_Button.HoverState.Parent = this.AddCustomer_Button;
-            this.AddCustomer_Button.Location = new System.Drawing.Point(501, 68);
+            this.AddCustomer_Button.Location = new System.Drawing.Point(410, 68);
             this.AddCustomer_Button.Name = "AddCustomer_Button";
             this.AddCustomer_Button.PressedDepth = 5;
             this.AddCustomer_Button.ShadowDecoration.Parent = this.AddCustomer_Button;
@@ -434,6 +323,7 @@
             this.AddCustomer_Button.TabIndex = 37;
             this.AddCustomer_Button.Text = "THÊM";
             this.AddCustomer_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.AddCustomer_Button.Click += new System.EventHandler(this.AddCustomer_Button_Click);
             // 
             // Print_Button
             // 
@@ -457,11 +347,152 @@
             this.Print_Button.Text = "IN HÓA ĐƠN";
             this.Print_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             // 
+            // Email_Box
+            // 
+            this.Email_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.Email_Box.Animated = true;
+            this.Email_Box.BackColor = System.Drawing.Color.Transparent;
+            this.Email_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.Email_Box.BorderRadius = 8;
+            this.Email_Box.BorderThickness = 2;
+            this.Email_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Email_Box.DefaultText = "";
+            this.Email_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.Email_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.Email_Box.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Email_Box.DisabledState.Parent = this.Email_Box;
+            this.Email_Box.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Email_Box.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.Email_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.Email_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
+            this.Email_Box.FocusedState.Parent = this.Email_Box;
+            this.Email_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Email_Box.ForeColor = System.Drawing.Color.Black;
+            this.Email_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
+            this.Email_Box.HoverState.Parent = this.Email_Box;
+            this.Email_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
+            this.Email_Box.IconLeftSize = new System.Drawing.Size(30, 30);
+            this.Email_Box.Location = new System.Drawing.Point(36, 154);
+            this.Email_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Email_Box.Name = "Email_Box";
+            this.Email_Box.PasswordChar = '\0';
+            this.Email_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.Email_Box.PlaceholderText = "E-mail";
+            this.Email_Box.ReadOnly = true;
+            this.Email_Box.SelectedText = "";
+            this.Email_Box.ShadowDecoration.Parent = this.Email_Box;
+            this.Email_Box.Size = new System.Drawing.Size(550, 37);
+            this.Email_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.Email_Box.TabIndex = 30;
+            this.Email_Box.TextOffset = new System.Drawing.Point(5, 0);
+            // 
+            // Address_Box
+            // 
+            this.Address_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.Address_Box.Animated = true;
+            this.Address_Box.BackColor = System.Drawing.Color.Transparent;
+            this.Address_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.Address_Box.BorderRadius = 8;
+            this.Address_Box.BorderThickness = 2;
+            this.Address_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Address_Box.DefaultText = "";
+            this.Address_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.Address_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.Address_Box.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Address_Box.DisabledState.Parent = this.Address_Box;
+            this.Address_Box.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Address_Box.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.Address_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.Address_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
+            this.Address_Box.FocusedState.Parent = this.Address_Box;
+            this.Address_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Address_Box.ForeColor = System.Drawing.Color.Black;
+            this.Address_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
+            this.Address_Box.HoverState.Parent = this.Address_Box;
+            this.Address_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
+            this.Address_Box.IconLeftSize = new System.Drawing.Size(30, 30);
+            this.Address_Box.Location = new System.Drawing.Point(36, 197);
+            this.Address_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Address_Box.Name = "Address_Box";
+            this.Address_Box.PasswordChar = '\0';
+            this.Address_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.Address_Box.PlaceholderText = "Địa chỉ";
+            this.Address_Box.ReadOnly = true;
+            this.Address_Box.SelectedText = "";
+            this.Address_Box.ShadowDecoration.Parent = this.Address_Box;
+            this.Address_Box.Size = new System.Drawing.Size(550, 37);
+            this.Address_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.Address_Box.TabIndex = 31;
+            this.Address_Box.TextOffset = new System.Drawing.Point(5, 0);
+            // 
+            // Name_Box
+            // 
+            this.Name_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.Name_Box.Animated = true;
+            this.Name_Box.BackColor = System.Drawing.Color.Transparent;
+            this.Name_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.Name_Box.BorderRadius = 8;
+            this.Name_Box.BorderThickness = 2;
+            this.Name_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Name_Box.DefaultText = "";
+            this.Name_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.Name_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.Name_Box.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Name_Box.DisabledState.Parent = this.Name_Box;
+            this.Name_Box.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.Name_Box.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.Name_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.Name_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
+            this.Name_Box.FocusedState.Parent = this.Name_Box;
+            this.Name_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Name_Box.ForeColor = System.Drawing.Color.Black;
+            this.Name_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
+            this.Name_Box.HoverState.Parent = this.Name_Box;
+            this.Name_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
+            this.Name_Box.IconLeftSize = new System.Drawing.Size(30, 30);
+            this.Name_Box.Location = new System.Drawing.Point(36, 111);
+            this.Name_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Name_Box.Name = "Name_Box";
+            this.Name_Box.PasswordChar = '\0';
+            this.Name_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.Name_Box.PlaceholderText = "Họ và tên khách hàng";
+            this.Name_Box.ReadOnly = true;
+            this.Name_Box.SelectedText = "";
+            this.Name_Box.ShadowDecoration.Parent = this.Name_Box;
+            this.Name_Box.Size = new System.Drawing.Size(312, 37);
+            this.Name_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.Name_Box.TabIndex = 29;
+            this.Name_Box.TextOffset = new System.Drawing.Point(5, 0);
+            // 
+            // Edit_Button
+            // 
+            this.Edit_Button.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.Edit_Button.Animated = true;
+            this.Edit_Button.BorderRadius = 3;
+            this.Edit_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Edit_Button.CheckedState.Parent = this.Edit_Button;
+            this.Edit_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Edit_Button.CustomImages.Parent = this.Edit_Button;
+            this.Edit_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Edit_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Edit_Button.ForeColor = System.Drawing.Color.White;
+            this.Edit_Button.HoverState.Parent = this.Edit_Button;
+            this.Edit_Button.Location = new System.Drawing.Point(501, 68);
+            this.Edit_Button.Name = "Edit_Button";
+            this.Edit_Button.PressedDepth = 5;
+            this.Edit_Button.ShadowDecoration.Parent = this.Edit_Button;
+            this.Edit_Button.Size = new System.Drawing.Size(85, 37);
+            this.Edit_Button.TabIndex = 39;
+            this.Edit_Button.Text = "SỬA";
+            this.Edit_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Edit_Button.Click += new System.EventHandler(this.Edit_Button_Click);
+            // 
             // AddInvoice_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 629);
+            this.Controls.Add(this.Edit_Button);
             this.Controls.Add(this.Print_Button);
             this.Controls.Add(this.AddCustomer_Button);
             this.Controls.Add(this.ItemTable);
@@ -469,8 +500,8 @@
             this.Controls.Add(this.PhoneNumber_Box);
             this.Controls.Add(this.Address_Box);
             this.Controls.Add(this.Email_Box);
-            this.Controls.Add(this.Identity_Box);
             this.Controls.Add(this.Name_Box);
+            this.Controls.Add(this.Identity_Box);
             this.Controls.Add(this.Exit_Button);
             this.Controls.Add(this.Save_Button);
             this.Controls.Add(this.Header);
@@ -489,10 +520,7 @@
 
         private Guna.UI2.WinForms.Guna2TextBox PhoneNumber_Box;
         private System.Windows.Forms.Label Header;
-        private Guna.UI2.WinForms.Guna2TextBox Address_Box;
-        private Guna.UI2.WinForms.Guna2TextBox Email_Box;
         private Guna.UI2.WinForms.Guna2TextBox Identity_Box;
-        private Guna.UI2.WinForms.Guna2TextBox Name_Box;
         private System.Windows.Forms.PictureBox HeaderIcon;
         private Guna.UI2.WinForms.Guna2ImageButton Exit_Button;
         private Guna.UI2.WinForms.Guna2Button Save_Button;
@@ -502,5 +530,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private Guna.UI2.WinForms.Guna2Button AddCustomer_Button;
         private Guna.UI2.WinForms.Guna2Button Print_Button;
+        private Guna.UI2.WinForms.Guna2TextBox Email_Box;
+        private Guna.UI2.WinForms.Guna2TextBox Address_Box;
+        private Guna.UI2.WinForms.Guna2TextBox Name_Box;
+        private Guna.UI2.WinForms.Guna2Button Edit_Button;
     }
 }
