@@ -47,42 +47,64 @@ namespace CompuStore.Tab.Warehouse
             frm.ShowDialog(this, products);
         }
 
-        class mymodel
-        {
-            public string ProductName { get; set; }
-            public string ProductDescription { get; set; }
-        }
-
         private async Task LoadingData()
         {
             await Task.Run(() =>
             {
-                List<ModelProduct> models = new List<ModelProduct>();
-                ICollection<DETAIL_SPECS> detailSpecs = commonSpecs.DETAIL_SPECS;
-                LINE_UP lineup = commonSpecs.LINE_UP;
-                foreach(DETAIL_SPECS detail in detailSpecs)
+                if (commonSpecs != null)
                 {
-                    UNIQUE_SPECS uniqueSpecs = detail.UNIQUE_SPECS;
-                    DISPLAY_SPECS display = uniqueSpecs.DISPLAY_SPECS;
-                    ICollection<PRODUCT> products = detail.PRODUCTs;
-
-                    foreach(PRODUCT product in products)
+                    List<ModelProduct> models = new List<ModelProduct>();
+                    ICollection<DETAIL_SPECS> detailSpecs = commonSpecs.DETAIL_SPECS;
+                    LINE_UP lineup = commonSpecs.LINE_UP;
+                    foreach (DETAIL_SPECS detail in detailSpecs)
                     {
-                        ModelProduct modelProduct = new ModelProduct();
-                        modelProduct.Serial = product.SERIAL_ID;
-                        modelProduct.RAM = uniqueSpecs.RAM;
-                        modelProduct.RatioPanel = display.RATIO;
-                        modelProduct.IdPanel = display.NAME_ID;
-                        modelProduct.CPU = uniqueSpecs.CPU;
-                        modelProduct.LineUp = lineup.NAME;
-                        modelProduct.Country = lineup.COUNTRY;
-                        modelProduct.Manufacturer = lineup.MANUFACTURER;
-                        modelProduct.ReleaseDate = commonSpecs.RELEASED_YEAR;
-                        modelProduct.RefreshRate = display.REFRESH_RATE;
-                        models.Add(modelProduct);
+                        UNIQUE_SPECS uniqueSpecs = detail.UNIQUE_SPECS;
+                        DISPLAY_SPECS display = uniqueSpecs.DISPLAY_SPECS;
+                        COLOR color = detail.COLOR;
+                        ICollection<PRODUCT> products = detail.PRODUCTs;
+
+                        foreach (PRODUCT product in products)
+                        {
+                            ModelProduct modelProduct = new ModelProduct();
+                            modelProduct.Serial = product.SERIAL_ID;
+                            modelProduct.LineUp = lineup.NAME;
+                            modelProduct.Manufacturer = lineup.MANUFACTURER;
+                            modelProduct.Country = lineup.COUNTRY;
+                            modelProduct.IdPanel = display.CODE_DISPLAY;
+                            modelProduct.ResolutionString = display.RESOLUTION;
+                            modelProduct.SizePanel = display.SIZE;
+                            modelProduct.Brightness = display.BRIGHTNESS;
+                            modelProduct.TypePanel = display.PANEL;
+                            modelProduct.SpaceColorString = display.COLOR_SPACE;
+                            modelProduct.RefreshRate = display.REFRESH_RATE;
+                            modelProduct.CanTouchPanel = display.IS_TOUCH_PANEL;
+                            modelProduct.TypeScreen = display.SCREEN_TYPE;
+                            modelProduct.RatioPanelString = display.RATIO;
+                            modelProduct.CPU = uniqueSpecs.CPU;
+                            modelProduct.iGPU = uniqueSpecs.IGPU;
+                            modelProduct.RAMString = uniqueSpecs.RAM;
+                            modelProduct.TypeDrive = uniqueSpecs.TYPE_DRIVE;
+                            modelProduct.DriveCapacity = uniqueSpecs.SIZE_DRIVE;
+                            modelProduct.GPUString = uniqueSpecs.GPU;
+                            modelProduct.BatteryCapacity = uniqueSpecs.BATTERY_CAPACITY;
+                            modelProduct.Weight = uniqueSpecs.WEIGHT;
+                            modelProduct.NameProduct = commonSpecs.NAME;
+                            modelProduct.ReleaseDate = commonSpecs.RELEASED_YEAR;
+                            modelProduct.CaseMaterial = commonSpecs.CASE_MATERIAL;
+                            modelProduct.PortString = commonSpecs.PORT;
+                            modelProduct.Webcam = commonSpecs.WEBCAM;
+                            modelProduct.SizeProductString = commonSpecs.DIMENSIONS;
+                            modelProduct.OS = commonSpecs.OS;
+                            modelProduct.Wifi = commonSpecs.WIFI;
+                            modelProduct.Bluetooth = commonSpecs.BLUETOOTH;
+                            modelProduct.Price = detail.PRICE;
+                            modelProduct.ColorCode = color.COLOR_CODE;
+                            modelProduct.ColorName = color.COLOR_NAME;
+                            models.Add(modelProduct);
+                        }
                     }
+                    binding = new BindingList<ModelProduct>(models);
                 }
-                binding = new BindingList<ModelProduct>(models);
             });
         }
 
@@ -93,7 +115,7 @@ namespace CompuStore.Tab.Warehouse
             {
                 TableData_DataGridView.DataSource = binding;
             });
-            
+
         }
     }
 }

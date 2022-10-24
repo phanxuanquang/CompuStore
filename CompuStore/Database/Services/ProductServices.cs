@@ -43,25 +43,18 @@ namespace CompuStore.Database.Services
         public DISPLAY_SPECS CreateDisplaySpecsByModelProduct(ModelProduct product) {
             if (product == null) throw new ArgumentNullException();
 
-            string resolution = product.Resolution == null ? null : string.Join("x", product.Resolution);
-            string spaceColor = "";
-            foreach (KeyValuePair<string, double> entry in product.SpaceColor)
-            {
-                spaceColor += (spaceColor.Length == 0 ? "" : "_") + entry.Key + ':' + entry.Value;
-            }
-
             return new DISPLAY_SPECS
             {
                 CODE_DISPLAY = product.IdPanel,
-                RESOLUTION = resolution,
+                RESOLUTION = product.ResolutionString,
                 SIZE = product.SizePanel,
                 BRIGHTNESS = product.Brightness,
                 PANEL = product.TypePanel,
-                COLOR_SPACE = spaceColor,
+                COLOR_SPACE = product.SpaceColorString,
                 REFRESH_RATE = product.RefreshRate,
                 IS_TOUCH_PANEL = product.CanTouchPanel,
                 SCREEN_TYPE = product.TypeScreen,
-                RATIO = product.RatioPanel
+                RATIO = product.RatioPanelString
             };
         }
 
@@ -69,17 +62,14 @@ namespace CompuStore.Database.Services
         {
             if (product == null) throw new ArgumentNullException();
 
-            string ports = product.Ports == null ? null : string.Join("_", product.Ports);
-            string dimensions = product.SizeProduct == null ? null : string.Join("x", product.SizeProduct);
-
             return new COMMON_SPECS
             {
                 NAME = product.NameProduct,
                 RELEASED_YEAR = product.ReleaseDate,
                 CASE_MATERIAL = product.CaseMaterial,
-                PORT = ports,
+                PORT = product.PortString,
                 WEBCAM = product.Webcam,
-                DIMENSIONS = dimensions,
+                DIMENSIONS = product.SizeProductString,
                 OS = product.OS,
                 WIFI = product.Wifi,
                 BLUETOOTH = product.Bluetooth,
@@ -91,16 +81,14 @@ namespace CompuStore.Database.Services
         {
             if (product == null) throw new ArgumentNullException();
 
-            string gpu = product.GPU == null ? null : string.Join(" ", product.GPU);
-
             return new UNIQUE_SPECS
             {
                 CPU = product.CPU,
                 IGPU = product.iGPU,
-                RAM = product.RAM,
+                RAM = product.RAMString,
                 TYPE_DRIVE = product.TypeDrive,
                 SIZE_DRIVE = product.DriveCapacity,
-                GPU = gpu,
+                GPU = product.GPUString,
                 BATTERY_CAPACITY = product.BatteryCapacity,
                 WEIGHT = product.Weight
             };
