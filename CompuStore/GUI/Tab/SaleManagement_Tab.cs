@@ -23,5 +23,11 @@ namespace CompuStore
             DetailSpecsProduct_Form detailSpecsProduct_Form = new DetailSpecsProduct_Form(DataTable.CurrentRow.Cells[0].Value.ToString());
             detailSpecsProduct_Form.ShowDialog();
         }
+
+        private void AddNew_Buttom_Click(object sender, EventArgs e)
+        {
+            AddInvoice_Form addInvoice_Form = new AddInvoice_Form();
+            addInvoice_Form.ShowDialog(); 
+        }
     }
 }

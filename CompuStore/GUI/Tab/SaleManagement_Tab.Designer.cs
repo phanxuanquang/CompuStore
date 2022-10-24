@@ -41,7 +41,9 @@
             this.SearchBox.FocusedState.Parent = this.SearchBox;
             this.SearchBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.SearchBox.HoverState.Parent = this.SearchBox;
+            this.SearchBox.PlaceholderText = "Tìm kiếm sản phẩm theo mã hoặc tên";
             this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
+            this.SearchBox.Size = new System.Drawing.Size(767, 37);
             // 
             // ViewDetail_Button
             // 
@@ -52,6 +54,7 @@
             this.ViewDetail_Button.DialogResult = System.Windows.Forms.DialogResult.None;
             this.ViewDetail_Button.HoverState.Parent = this.ViewDetail_Button;
             this.ViewDetail_Button.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ViewDetail_Button.Location = new System.Drawing.Point(1007, 19);
             this.ViewDetail_Button.ShadowDecoration.Parent = this.ViewDetail_Button;
             this.ViewDetail_Button.Text = "Xem cấu hình";
             this.ViewDetail_Button.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -81,10 +84,12 @@
             this.AddNew_Buttom.DialogResult = System.Windows.Forms.DialogResult.None;
             this.AddNew_Buttom.HoverState.Parent = this.AddNew_Buttom;
             this.AddNew_Buttom.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AddNew_Buttom.Location = new System.Drawing.Point(798, 19);
             this.AddNew_Buttom.ShadowDecoration.Parent = this.AddNew_Buttom;
             this.AddNew_Buttom.Text = "Tạo đơn hàng";
             this.AddNew_Buttom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.AddNew_Buttom.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
+            this.AddNew_Buttom.Click += new System.EventHandler(this.AddNew_Buttom_Click);
             // 
             // SaleManagement_Tab
             // 
