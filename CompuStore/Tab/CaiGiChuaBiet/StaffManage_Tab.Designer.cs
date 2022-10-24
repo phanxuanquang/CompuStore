@@ -35,11 +35,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DataTable = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.sTAFFBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.AddStaff_Button = new Guna.UI2.WinForms.Guna2Button();
             this.FireStaff_Button = new Guna.UI2.WinForms.Guna2Button();
             this.InfoStaff_Button = new Guna.UI2.WinForms.Guna2Button();
             this.SearchBox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.sTAFFBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.StaffName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PhoneNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +59,7 @@
             this.DataTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DataTable.AutoGenerateColumns = false;
             this.DataTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DataTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.DataTable.BackgroundColor = System.Drawing.Color.White;
             this.DataTable.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DataTable.CausesValidation = false;
@@ -73,7 +74,6 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DataTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DataTable.ColumnHeadersHeight = 25;
-            this.DataTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.DataTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.StaffName,
@@ -112,7 +112,6 @@
             this.DataTable.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.DataTable.RowTemplate.ReadOnly = true;
             this.DataTable.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataTable.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.DataTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DataTable.Size = new System.Drawing.Size(1234, 614);
             this.DataTable.TabIndex = 0;
@@ -128,7 +127,7 @@
             this.DataTable.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.DataTable.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.DataTable.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.DataTable.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.DataTable.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.DataTable.ThemeStyle.HeaderStyle.Height = 25;
             this.DataTable.ThemeStyle.ReadOnly = true;
             this.DataTable.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
@@ -138,10 +137,6 @@
             this.DataTable.ThemeStyle.RowsStyle.Height = 22;
             this.DataTable.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.DataTable.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            // 
-            // sTAFFBindingSource
-            // 
-            this.sTAFFBindingSource.DataSource = typeof(CompuStore.Database.Models.STAFF);
             // 
             // AddStaff_Button
             // 
@@ -232,6 +227,11 @@
             this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
             this.SearchBox.Size = new System.Drawing.Size(558, 37);
             this.SearchBox.TabIndex = 10;
+            this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
+            // 
+            // sTAFFBindingSource
+            // 
+            this.sTAFFBindingSource.DataSource = typeof(CompuStore.Database.Models.STAFF);
             // 
             // Id
             // 

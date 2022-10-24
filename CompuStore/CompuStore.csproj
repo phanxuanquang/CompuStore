@@ -63,6 +63,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tab\SaleManagement_Tab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tab\SaleManagement_Tab.Designer.cs">
+      <DependentUpon>SaleManagement_Tab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tab\BaseTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tab\BaseTab.Designer.cs">
+      <DependentUpon>BaseTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database\DataProvider.cs" />
     <Compile Include="Database\Hash.cs" />
     <Compile Include="Database\Services\ImportServices.cs" />
@@ -173,10 +185,22 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tab\StaffManage_Tab.cs">
+    <Compile Include="Tab\StaffManagement_Tab.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Tab\StaffManage_Tab.Designer.cs">
+    <Compile Include="Tab\StaffManagement_Tab.Designer.cs">
+      <DependentUpon>StaffManagement_Tab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tab\CaiGiChuaBiet\SalesManage_Tab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tab\CaiGiChuaBiet\SalesManage_Tab.Designer.cs">
+      <DependentUpon>SalesManage_Tab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tab\CaiGiChuaBiet\StaffManage_Tab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Tab\CaiGiChuaBiet\StaffManage_Tab.Designer.cs">
       <DependentUpon>StaffManage_Tab.cs</DependentUpon>
     </Compile>
     <Compile Include="Tab\Warehouse\DetailInvoiceImportWarehouse_Form.cs">
@@ -197,6 +221,12 @@
     <Compile Include="Tab\Warehouse\Warehouse_UC.Designer.cs">
       <DependentUpon>Warehouse_UC.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Tab\SaleManagement_Tab.resx">
+      <DependentUpon>SaleManagement_Tab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tab\BaseTab.resx">
+      <DependentUpon>BaseTab.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\SubForm\StaffEdit_Form.resx">
       <DependentUpon>StaffEdit_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -216,7 +246,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Tab\StaffManage_Tab.resx">
+    <EmbeddedResource Include="Tab\StaffManagement_Tab.resx">
+      <DependentUpon>StaffManagement_Tab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tab\CaiGiChuaBiet\SalesManage_Tab.resx">
+      <DependentUpon>SalesManage_Tab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tab\CaiGiChuaBiet\StaffManage_Tab.resx">
       <DependentUpon>StaffManage_Tab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tab\Warehouse\DetailInvoiceImportWarehouse_Form.resx">

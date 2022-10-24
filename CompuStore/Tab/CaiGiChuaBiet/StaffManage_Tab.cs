@@ -15,7 +15,7 @@ namespace CompuStore
     public partial class StaffManage_Tab : UserControl
     {
 
-        private BackgroundWorker backgroundWorker = null;
+        BackgroundWorker backgroundWorker = null;
         //private GUI.LoadingWindow loadingWindow = null;
         public StaffManage_Tab()
         {
@@ -171,6 +171,40 @@ namespace CompuStore
                 }
             }*/
             return students;
+        }
+
+        private void SearchBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                CurrencyManager cm = (CurrencyManager)BindingContext[DataTable.DataSource];
+                cm.SuspendBinding();
+
+                for (int i = 0; i < DataTable.RowCount; i++)
+                {
+                    if (DataTable.Rows[i].Cells[0].Value != null &&
+                        DataTable.Rows[i].Cells[1].Value != null && 
+                        DataTable.Rows[i].Cells[2].Value != null)
+                    {
+                        if (DataTable.Rows[i].Cells[0].Value.ToString().ToLower().StartsWith(SearchBox.Text.ToLower()) || 
+                            DataTable.Rows[i].Cells[1].Value.ToString().ToLower().Contains(SearchBox.Text.ToLower()) ||
+                            DataTable.Rows[i].Cells[2].Value.ToString().ToLower().Contains(SearchBox.Text.ToLower()))
+                        {
+                            DataTable.Rows[i].Visible = true;
+                        }
+                        else
+                        {
+                            DataTable.Rows[i].Visible = false;
+                        }
+                    }
+                }
+
+                cm.ResumeBinding();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ namespace CompuStore.Tab.Warehouse
 {
     public partial class DetailSpecsProduct_Form : Form
     {
-        public DetailSpecsProduct_Form()
+        public DetailSpecsProduct_Form(string id = "")
         {
             InitializeComponent();
         }

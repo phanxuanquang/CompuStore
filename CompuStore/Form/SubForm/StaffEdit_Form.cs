@@ -65,11 +65,10 @@ namespace CompuStore
                 this.Close();
                 return;
             }
-
-            Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly =false;
-            DateTimeImportWarehouse_DateTimePicker.Enabled = true;
+            Edit_Button.Text = "LƯU";
             Header.Text = "CHỈNH SỬA THÔNG TIN";
-            this.Close();
+            Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = false;
+            DateTimeImportWarehouse_DateTimePicker.Enabled = true;
         }
 
         private void SaveFromTextboxToDB()

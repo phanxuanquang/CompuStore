@@ -62,7 +62,7 @@
             this.Header.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
             this.Header.Size = new System.Drawing.Size(525, 40);
             this.Header.TabIndex = 7;
-            this.Header.Text = "Chỉnh sửa thông tin";
+            this.Header.Text = "Thông tin nhân viên";
             this.Header.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Header.UseCompatibleTextRendering = true;
             // 

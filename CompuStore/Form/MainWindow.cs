@@ -12,14 +12,15 @@ namespace CompuStore
 {
     public partial class MainWindow : Form
     {
-        StaffManage_Tab staffManage_Tab;
         Tab.Warehouse.Warehouse_UC warehouse_UC;
 
+        BaseTab staffManage_Tab, salesManage_Tab, serviceManage_Tab, storageManage_Tab;
         public MainWindow()
         {
             InitializeComponent();
             staffManage_Tab = null;
-            SetHeaderState_From(StaffManage_Button);
+            salesManage_Tab = null;
+            SetHeaderState_From(SaleManage_Button);
         }
 
         protected override CreateParams CreateParams
@@ -52,14 +53,19 @@ namespace CompuStore
             SetHeaderState_From(StaffManage_Button);
             if(staffManage_Tab == null)
             {
-                staffManage_Tab = new StaffManage_Tab();
+                staffManage_Tab = new StaffManagement_Tab();
             }
             LoadTab(staffManage_Tab);
         }
 
         private void SaleManage_Button_Click(object sender, EventArgs e)
         {
-            SetHeaderState_From(SaleManage_Button); 
+            SetHeaderState_From(SaleManage_Button);
+            if (salesManage_Tab == null)
+            {
+                salesManage_Tab = new SaleManagement_Tab();
+            }
+            LoadTab(salesManage_Tab);
         }
 
         private void ServiceManage_Button_Click(object sender, EventArgs e)
