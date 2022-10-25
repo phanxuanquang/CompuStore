@@ -29,9 +29,9 @@ namespace CompuStore.Database.Models
         public Nullable<double> PRICE { get; set; }
     
         public virtual COLOR COLOR { get; set; }
-        public virtual UNIQUE_SPECS UNIQUE_SPECS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PRODUCT> PRODUCTs { get; set; }
         public virtual COMMON_SPECS COMMON_SPECS { get; set; }
+        public virtual UNIQUE_SPECS UNIQUE_SPECS { get; set; }
     }
 }

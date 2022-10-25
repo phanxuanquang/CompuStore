@@ -252,6 +252,7 @@
             this.AddProductByExcel_Button.TabIndex = 17;
             this.AddProductByExcel_Button.Text = "Nhập bằng Excel";
             this.AddProductByExcel_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.AddProductByExcel_Button.Click += new System.EventHandler(this.AddProductByExcel_Button_Click);
             // 
             // TableData_DataGridView
             // 
@@ -340,6 +341,7 @@
             this.TableData_DataGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.TableData_DataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.TableData_DataGridView.VirtualMode = true;
+            this.TableData_DataGridView.DataSourceChanged += new System.EventHandler(this.TableData_DataGridView_DataSourceChanged);
             // 
             // Confirm_Button
             // 

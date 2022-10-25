@@ -25,9 +25,9 @@ namespace CompuStore.Database.Models
         public int ID_DISPLAY_SPECS { get; set; }
         public string CPU { get; set; }
         public string IGPU { get; set; }
-        public Nullable<int> RAM { get; set; }
-        public string TYPE_DRIVE { get; set; }
-        public Nullable<int> SIZE_DRIVE { get; set; }
+        public string RAM { get; set; }
+        public string TYPE_STORAGE { get; set; }
+        public Nullable<int> STORAGE_CAPACITY { get; set; }
         public string GPU { get; set; }
         public Nullable<double> BATTERY_CAPACITY { get; set; }
         public Nullable<double> WEIGHT { get; set; }
