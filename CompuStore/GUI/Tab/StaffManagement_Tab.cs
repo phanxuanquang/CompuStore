@@ -12,9 +12,12 @@ namespace CompuStore
 {
     using CompuStore.Database.Services;
     using Database.Models;
+    using System.Threading;
+    using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
     public partial class StaffManagement_Tab : BaseTab
     {
-        
+       
         public StaffManagement_Tab()
         {
             this.DataTable.AutoGenerateColumns = false;
@@ -40,11 +43,23 @@ namespace CompuStore
             //LoadToDataTable(GetListStudent(Class_ComboBox.SelectedItem.ToString(), SchoolYear_ComboBox.SelectedItem.ToString()));
             //loadingWindow.Close();
         }
+
+        public Task LoadDB()
+        {
+
+            Action GetData = () =>
+            {
+                BindingStaff(GetListStaff());
+            };
+            Task task = new Task(GetData);
+            task.Start(); // chạy thread
+            return task;
+        }
         private void StaffManagement_Tab_Load(object sender, EventArgs e)
         {
-            BindingStaff(GetListStaff());
+            LoadDB();
         }
-        public void BindingStaff(List<STAFF> sTAFFs)
+        private void run(List<STAFF> sTAFFs)
         {
             sTAFFBindingSource.ResetBindings(true);
             sTAFFBindingSource.DataSource = sTAFFs;
@@ -61,9 +76,21 @@ namespace CompuStore
                 }
             }
         }
+        public void BindingStaff(List<STAFF> sTAFFs)
+        {
+            if (DataTable.InvokeRequired)
+            {
+                DataTable.Invoke(new Action(() => run(sTAFFs)));
+            }
+            else
+            {
+                run(sTAFFs);
+            }
+            
+        }
         private List<STAFF> GetListStaff()
         {
-            List<STAFF> students = StaffServices.Instance.GetStaffs();
+            List<STAFF>  staffList = StaffServices.Instance.GetStaffs();
             /*if (className == "Mọi lớp")
             {
                 if (schoolYear == "Mọi niên khóa")
@@ -124,7 +151,7 @@ namespace CompuStore
                     }
                 }
             }*/
-            return students;
+            return staffList;
         }
         #endregion
 
