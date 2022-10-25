@@ -71,6 +71,12 @@
     <Compile Include="GUI\Form\SubForm\AddInvoice_Form.Designer.cs">
       <DependentUpon>AddInvoice_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Form\SubForm\Waiting_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Form\SubForm\Waiting_Form.Designer.cs">
+      <DependentUpon>Waiting_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Tab\SaleManagement_Tab.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -237,6 +243,9 @@
     </Compile>
     <EmbeddedResource Include="GUI\Form\SubForm\AddInvoice_Form.resx">
       <DependentUpon>AddInvoice_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Form\SubForm\Waiting_Form.resx">
+      <DependentUpon>Waiting_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Tab\SaleManagement_Tab.resx">
       <DependentUpon>SaleManagement_Tab.cs</DependentUpon>

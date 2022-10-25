@@ -1,5 +1,6 @@
 ﻿using CompuStore.Database.Models;
 using CompuStore.Database.Services;
+using CompuStore.GUI;
 using CompuStore.ImportData;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Data.Entity;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading;
@@ -73,13 +75,13 @@ namespace CompuStore.Tab.Warehouse
             frm.ShowDialog(this, products);
         }
 
-        private async Task LoadingData()
+        private Task LoadingData(IProgress<int> progress)
         {
-            await Task.Run(() =>
+            return Task.Factory.StartNew(() =>
             {
                 if (commonSpecs != null)
                 {
-                    List<ModelProduct> models = new List<ModelProduct>();
+                    int counter = 0;
                     ICollection<DETAIL_SPECS> detailSpecs = commonSpecs.DETAIL_SPECS;
                     LINE_UP lineup = commonSpecs.LINE_UP;
                     foreach (DETAIL_SPECS detail in detailSpecs)
@@ -126,25 +128,40 @@ namespace CompuStore.Tab.Warehouse
                             modelProduct.Price = detail.PRICE;
                             modelProduct.ColorCode = color.COLOR_CODE;
                             modelProduct.ColorName = color.COLOR_NAME;
-                            models.Add(modelProduct);
+                            if (TableData_DataGridView.InvokeRequired)
+                            {
+                                TableData_DataGridView.Invoke(new Action(() => binding.Add(modelProduct)));
+                            }
+                            else
+                            {
+                                binding.Add(modelProduct);
+                            }
+                            progress.Report(++counter);
                         }
                     }
-                    binding = new BindingList<ModelProduct>(models);
                 }
             });
         }
 
         private void DetailInvoiceImportWarehouse_Form_Load(object sender, EventArgs e)
         {
-            Task loading = LoadingData();
-            Form form = new Form();
-            form.Show();
-            loading.GetAwaiter().OnCompleted(() =>
-            {
-                TableData_DataGridView.DataSource = binding;
-                form.Close();
-            });
+            binding = new BindingList<ModelProduct>();
+            TableData_DataGridView.DataSource = binding;
+            Progress<int> progress = new Progress<int>();
+            Waiting_Form waiting = new Waiting_Form();
+            Task runLoading = LoadingData(progress);
 
+            const int stopWaitingCoutner = 20;
+
+            progress.ProgressChanged += (owner, value) =>
+            {
+                if (value == stopWaitingCoutner && !waiting.IsDisposed && waiting.shown)
+                {
+                    waiting.Close();
+                }
+            };
+
+            waiting.ShowDialog(this);
         }
 
         private void TableData_DataGridView_DataSourceChanged(object sender, EventArgs e)

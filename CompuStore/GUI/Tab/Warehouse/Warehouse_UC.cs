@@ -1,4 +1,5 @@
 ﻿using CompuStore.Database.Models;
+using CompuStore.GUI;
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
@@ -16,16 +17,19 @@ namespace CompuStore.Tab.Warehouse
     {
         class ImportWarehouseCustom
         {
-            private string nameID;
-            private DateTime? importDate;
-            private double total;
-            private DISTRIBUTOR distributor;
+            public int id;
+            public string nameID;
+            public DateTime? importDate;
+            public double total;
+            public int distributorID;
+            public string distributorName;
 
             public DISTRIBUTOR DISTRIBUTOR
             {
                 set
                 {
-                    distributor = value;
+                    distributorID = value.ID;
+                    distributorName = value.NAME;
                 }
             }
 
@@ -69,23 +73,28 @@ namespace CompuStore.Tab.Warehouse
             {
                 get
                 {
-                    return distributor.NAME;
+                    return distributorName;
                 }
             }
         }
 
         class CommonSpecsCustom
         {
-            private string nameId;
-            private string name;
-            private LINE_UP lineup;
-            private DateTime? releasedYear;
+            public int id;
+            public string nameId;
+            public string name;
+            public int lineupID;
+            public string lineupName;
+            public string lineupManufacturer;
+            public DateTime? releasedYear;
 
             public LINE_UP LINE_UP
             {
                 set
                 {
-                    lineup = value;
+                    lineupID = value.ID;
+                    lineupName = value.NAME;
+                    lineupManufacturer = value.MANUFACTURER;
                 }
             }
 
@@ -117,7 +126,7 @@ namespace CompuStore.Tab.Warehouse
             {
                 get
                 {
-                    return lineup.NAME;
+                    return lineupName;
                 }
             }
 
@@ -125,7 +134,7 @@ namespace CompuStore.Tab.Warehouse
             {
                 get
                 {
-                    return lineup.MANUFACTURER;
+                    return lineupManufacturer;
                 }
             }
 
@@ -171,18 +180,14 @@ namespace CompuStore.Tab.Warehouse
             InitializeComponent();
         }
 
-        private Task LoadingBinding()
+        private Task LoadingData(IProgress<int> progress)
         {
             return Task.Factory.StartNew(() =>
             {
-                IQueryable<ImportWarehouseCustom> viewImportWarehouse = from warehouse in Database.DataProvider.Instance.Database.IMPORT_WAREHOUSE
-                                                                        select new ImportWarehouseCustom { NAME_ID = warehouse.NAME_ID, IMPORT_DATE = warehouse.IMPORT_DATE, TOTAL = warehouse.TOTAL, DISTRIBUTOR = warehouse.DISTRIBUTOR };
-                IQueryable<CommonSpecsCustom> viewCommonSpecs = from specs in Database.DataProvider.Instance.Database.COMMON_SPECS
-                                                                select new CommonSpecsCustom { LINE_UP = specs.LINE_UP, NAME = specs.NAME, NAME_ID = specs.NAME_ID, RELEASED_YEAR = specs.RELEASED_YEAR };
-                importWarehouseBinding = new BindingList<ImportWarehouseCustom>(viewImportWarehouse.ToList());
-                commonSpecsBinding = new BindingList<CommonSpecsCustom>(viewCommonSpecs.ToList());
-                SeeProduct_Click(null, null);
-                SeeInvoiceImportWarehouse_Click(null, null);
+                importWarehouseBinding = new BindingList<ImportWarehouseCustom>(Database.DataProvider.Instance.Database.IMPORT_WAREHOUSE.Select(item => new ImportWarehouseCustom { DISTRIBUTOR = item.DISTRIBUTOR, IMPORT_DATE = item.IMPORT_DATE, NAME_ID = item.NAME_ID, TOTAL = item.TOTAL, id = item.ID }).ToList());
+                progress.Report(0);
+                commonSpecsBinding = new BindingList<CommonSpecsCustom>(Database.DataProvider.Instance.Database.COMMON_SPECS.Select(item => new CommonSpecsCustom { LINE_UP = item.LINE_UP, NAME = item.NAME, NAME_ID = item.NAME_ID, id = item.ID, RELEASED_YEAR = item.RELEASED_YEAR }).ToList());
+                progress.Report(1);
             });
         }
 
@@ -195,40 +200,49 @@ namespace CompuStore.Tab.Warehouse
         private void SeeProduct_Click(object sender, EventArgs e)
         {
             seeWhat = SEE_WHAT.COMMON_SPECS;
-            if (TableData_DataGridView.InvokeRequired)
-            {
-                TableData_DataGridView.Invoke(new Action(() =>
-                {
-                    TableData_DataGridView.DataSource = commonSpecsBinding;
-                }));
-            }
-            else
-            {
-                TableData_DataGridView.DataSource = commonSpecsBinding;
-            }
+            AddBindingToDataGridView(commonSpecsBinding);
         }
 
         private void SeeInvoiceImportWarehouse_Click(object sender, EventArgs e)
         {
             seeWhat = SEE_WHAT.IMPORT_WAREHOUSE;
+            AddBindingToDataGridView(importWarehouseBinding);
+        }
+
+        private void AddBindingToDataGridView(IBindingList binding)
+        {
             if (TableData_DataGridView.InvokeRequired)
             {
                 TableData_DataGridView.Invoke(new Action(() =>
                 {
-                    TableData_DataGridView.DataSource = importWarehouseBinding;
+                    TableData_DataGridView.DataSource = binding;
                 }));
             }
             else
             {
-                TableData_DataGridView.DataSource = importWarehouseBinding;
+                TableData_DataGridView.DataSource = binding;
             }
         }
 
-        private async void Warehouse_UC_Load(object sender, EventArgs e)
+        private void Warehouse_UC_Load(object sender, EventArgs e)
         {
-            //show wating form
-            await LoadingBinding();
-            //close wating form
+            Progress<int> progress = new Progress<int>();
+            Waiting_Form waiting = new Waiting_Form();
+            Task runLoading = LoadingData(progress);
+
+            const int stopWaitingCounter = 0;
+
+            progress.ProgressChanged += (owner, value) =>
+            {
+                //Stop wating form when loaded invoice import warehouse. CommonSpecs continue load
+                if (value >= stopWaitingCounter && !waiting.IsDisposed && waiting.shown)
+                {
+                    waiting.Close();
+                    SeeInvoiceImportWarehouse_Click(null, null);
+                }
+            };
+
+            waiting.ShowDialog(this);
         }
 
         private void TableData_DataGridView_DataSourceChanged(object sender, EventArgs e)
