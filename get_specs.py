@@ -1,4 +1,5 @@
 import json
+from math import prod
 import os
 import random
 import string
@@ -165,7 +166,27 @@ def getSpecs(content: str):
             elif 'name="first_r"' in content[index] and 'checked' in content[index]:
                 ram = content[index + 2]
                 ram = re.search('<span>(.*)</span>', ram)
-                map["RAM"] = ram.group(1)
+                if 'RAM' in map:
+                    map["RAM"]["CapacityRAM"] = ram.group(1)
+                else:
+                    map["RAM"] = {"CapacityRAM":ram.group(1)}
+            elif 'Clock' in content[index]:
+                bus = content[index + 1]
+                bus = re.search('class="cell-s">(.*)</td>', bus)
+                if bus != None:
+                    if 'RAM' in map:
+                        map["RAM"]["BusRAM"] = bus.group(1).replace(' ', '')
+                    else:
+                        map["RAM"] = {"BusRAM":bus.group(1).replace(' ', '')}
+                if 'Type' in content[index + 5]:
+                    typeRAM = content[index + 6]
+                    typeRAM = re.search('class="cell-s">(.*)</td>', typeRAM)
+                    if typeRAM != None:
+                        if 'RAM' in map:
+                            map["RAM"]["TypeRAM"] = typeRAM.group(1)
+                        else:
+                            map["RAM"] = {"TypeRAM":typeRAM.group(1)}
+
             elif 'name="first_s"' in content[index] and 'checked' in content[index]:
                 storage = content[index + 2]
                 storage = re.search('<span>(.*)</span>', storage)
@@ -375,9 +396,22 @@ def json4csv(product:dict):
     else:
         touchscreen = 1
     result = []
+    mapRAM = {"DDR3": "1600Mhz", "DDR4": "2400MHz", "DDR5": "5400Mhz"}
+    capacityRAM = product.get("RAM", None)
+    if capacityRAM != None:
+        capacityRAM = capacityRAM.get("CapacityRAM", '')
+    typeRAM = product.get("RAM", None)
+    if typeRAM != None:
+        typeRAM = typeRAM.get("TypeRAM", '')
+    busRAM = product.get("RAM", None)
+    if busRAM != None:
+        busRAM = busRAM.get("BusRAM", mapRAM.get(typeRAM, ''))
+    ram = f'{capacityRAM} {typeRAM} {busRAM}'
+    
+    
     for color in product["Colors"]:
         serial = ''.join(random.sample(string.ascii_letters + string.digits, 16)).upper()
-        result.append(f'{serial}\t{product.get("Lineup", "")}\t{product.get("Manufacturer", "")}\t{product.get("Country", "")}\t{codeDisplay}\t{product.get("Resolution", "")}\t{product.get("Size display", "")}\t{product.get("Brightness", "")}\t{product.get("Type panel", "")}\t{colorSpace or ""}\t{product.get("Refresh rate", "")}\t{touchscreen}\t{product.get("Coating", "")}\t{product.get("Aspect ratio", "")}\t{product.get("CPU", "")}\t{product.get("iGPU", "")}\t{product.get("RAM", "")}\t{product.get("Storage type", "")}\t{product.get("Storage capacity", "")}\t{product.get("GPU", "")}\t{product.get("Battery", "")}\t{product.get("Weight", "")}\t{product.get("Name", "")}\t{product.get("Date release", "")}\t{product.get("Body material", "")}\t{ports or ""}\t{product.get("Webcam resolution", "")}\t{product.get("Dimensions", "")}\t{product.get("OS", "")}\t{product.get("Wi-Fi standard", "")}\t{product.get("Bluetooth", "")}\t{product.get("Price", "")}\t{color["Color code"]}\t{color["Color name"]}')
+        result.append(f'{serial}\t{product.get("Lineup", "")}\t{product.get("Manufacturer", "")}\t{product.get("Country", "")}\t{codeDisplay}\t{product.get("Resolution", "")}\t{product.get("Size display", "")}\t{product.get("Brightness", "")}\t{product.get("Type panel", "")}\t{colorSpace or ""}\t{product.get("Refresh rate", "")}\t{touchscreen}\t{product.get("Coating", "")}\t{product.get("Aspect ratio", "")}\t{product.get("CPU", "")}\t{product.get("iGPU", "")}\t{ram}\t{product.get("Storage type", "")}\t{product.get("Storage capacity", "")}\t{product.get("GPU", "")}\t{product.get("Battery", "")}\t{product.get("Weight", "")}\t{product.get("Name", "")}\t{product.get("Date release", "")}\t{product.get("Body material", "")}\t{ports or ""}\t{product.get("Webcam resolution", "")}\t{product.get("Dimensions", "")}\t{product.get("OS", "")}\t{product.get("Wi-Fi standard", "")}\t{product.get("Bluetooth", "")}\t{product.get("Price", "")}\t{color["Color code"]}\t{color["Color name"]}')
     return result
 
 def getPathFile(nameProduct:str):
