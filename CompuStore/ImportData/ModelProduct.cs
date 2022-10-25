@@ -179,7 +179,7 @@ namespace CompuStore.ImportData
         {
             get
             {
-                return InfoRAM == null ? string.Empty : string.Format("{0} {1} {1}", InfoRAM.CapacityRAM, InfoRAM.TypeRAM, InfoRAM.BusRAM);
+                return InfoRAM == null ? string.Empty : string.Format("{0}GB {1} {2}", InfoRAM.CapacityRAM, InfoRAM.TypeRAM, InfoRAM.BusRAM);
             }
             set
             {
@@ -194,9 +194,9 @@ namespace CompuStore.ImportData
             }
         }
         public RAM InfoRAM;
-        public string TypeDrive { get; set; }
+        public string TypeStorage { get; set; }
         //unit: GB
-        public int? DriveCapacity { get; set; }
+        public int? StorageCapacity { get; set; }
         //split by space
         //[0]: (manufacturer) GPU
         //[1-last-1]: (name) GPU
@@ -248,7 +248,7 @@ namespace CompuStore.ImportData
                 if (value != null)
                 {
                     List<Port> models = new List<Port>();
-                    string[] ports = value.Split(' ');
+                    string[] ports = value.Split('_');
                     for (int index = 0; index < ports.Length; index++)
                     {
                         string port = ports[index];
@@ -367,14 +367,14 @@ namespace CompuStore.ImportData
                     model.CPU = split[15].Length == 0 ? null : split[15];
                     model.iGPU = split[16].Length == 0 ? null : split[16];
                     model.RAMString = split[17].Length == 0 ? null : split[17];
-                    model.TypeDrive = split[18].Length == 0 ? null : split[18];
+                    model.TypeStorage = split[18].Length == 0 ? null : split[18];
                     if (int.TryParse(split[19].Substring(0, split[19].Length - 2), out int driveCapacity))
                     {
-                        model.DriveCapacity = driveCapacity;
+                        model.StorageCapacity = driveCapacity;
                     }
                     else
                     {
-                        model.DriveCapacity = null;
+                        model.StorageCapacity = null;
                     }
                     model.GPUString = split[20].Length == 0 ? null : split[20];
                     if (double.TryParse(split[21], out double bateryCapacity))

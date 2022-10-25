@@ -42,10 +42,10 @@ namespace CompuStore.Database.Models
         public virtual DbSet<STAFF> STAFFs { get; set; }
         public virtual DbSet<STAFFROLE> STAFFROLEs { get; set; }
         public virtual DbSet<STORE> STOREs { get; set; }
-        public virtual DbSet<UNIQUE_SPECS> UNIQUE_SPECS { get; set; }
         public virtual DbSet<USERROLE> USERROLEs { get; set; }
         public virtual DbSet<COMMON_SPECS> COMMON_SPECS { get; set; }
         public virtual DbSet<DISPLAY_SPECS> DISPLAY_SPECS { get; set; }
         public virtual DbSet<INFOR> INFORs { get; set; }
+        public virtual DbSet<UNIQUE_SPECS> UNIQUE_SPECS { get; set; }
     }
 }

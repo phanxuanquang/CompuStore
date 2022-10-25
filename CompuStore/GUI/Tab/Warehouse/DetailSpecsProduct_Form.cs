@@ -72,8 +72,8 @@ namespace CompuStore.Tab.Warehouse
                 }
                 HasCodeDisplay_CheckBox.Checked = false;
                 CodeDisplay_TextBox.Text = preModels[0].IdPanel;
-                TypeStorage_ComboBox.DataSource = preModels.Select(x => x.TypeDrive).Distinct().ToList();
-                StorageCapacity_ComboBox.DataSource = preModels.Select(x => x.DriveCapacity).Distinct().ToList();
+                TypeStorage_ComboBox.DataSource = preModels.Select(x => x.TypeStorage).Distinct().ToList();
+                StorageCapacity_ComboBox.DataSource = preModels.Select(x => x.StorageCapacity).Distinct().ToList();
                 UnitStorage_ComboBox.DataSource = new string[] { "GB", "TB", "PB" };
                 WifiStandard_ComboBox.DataSource = preModels.Select(x => x.Wifi).Distinct().ToList();
                 BluetoothStandard_ComboBox.DataSource = preModels.Select(x => x.Bluetooth).Distinct().ToList();

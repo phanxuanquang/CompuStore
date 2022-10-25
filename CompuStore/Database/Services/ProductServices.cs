@@ -86,8 +86,8 @@ namespace CompuStore.Database.Services
                 CPU = product.CPU,
                 IGPU = product.iGPU,
                 RAM = product.RAMString,
-                TYPE_DRIVE = product.TypeDrive,
-                SIZE_DRIVE = product.DriveCapacity,
+                TYPE_STORAGE = product.TypeStorage,
+                STORAGE_CAPACITY = product.StorageCapacity,
                 GPU = product.GPUString,
                 BATTERY_CAPACITY = product.BatteryCapacity,
                 WEIGHT = product.Weight
@@ -99,7 +99,7 @@ namespace CompuStore.Database.Services
             if (product == null) throw new ArgumentNullException();
 
             //Note: Lúc nhập hàng thì price là giá của nhập hàng, giá của sản phẩm là giá nhập hàng * tỉ lệ lợi nhuận
-            return new DETAIL_SPECS { /*PRICE = product.Price,*/ QUANTITY = 0 };
+            return new DETAIL_SPECS { PRICE = product.Price, QUANTITY = 0 };
         }
 
         public class ImportProduct
@@ -198,8 +198,8 @@ namespace CompuStore.Database.Services
                     item.CPU == model.CPU &&
                     item.IGPU == model.IGPU &&
                     item.RAM == model.RAM &&
-                    item.TYPE_DRIVE == model.TYPE_DRIVE &&
-                    item.SIZE_DRIVE == model.SIZE_DRIVE &&
+                    item.TYPE_STORAGE == model.TYPE_STORAGE &&
+                    item.STORAGE_CAPACITY == model.STORAGE_CAPACITY &&
                     item.GPU == model.GPU &&
                     item.BATTERY_CAPACITY == model.BATTERY_CAPACITY &&
                     item.WEIGHT == model.WEIGHT,

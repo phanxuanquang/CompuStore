@@ -1,4 +1,5 @@
 ﻿using CompuStore.Database.Models;
+using CompuStore.Database.Services;
 using CompuStore.ImportData;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,9 @@ using System.Data.Entity;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,6 +21,29 @@ namespace CompuStore.Tab.Warehouse
     {
         private COMMON_SPECS commonSpecs = null;
         BindingList<ModelProduct> binding = null;
+        Task task = null;
+        CancellationTokenSource cancellationTokenSource = null;
+
+        private static readonly Dictionary<string, string> translater = new Dictionary<string, string> {
+            { "ReleasedDate", "Năm ra mắt|Năm hãng ra mắt đến công chúng" },
+            { "LineUp", "Dòng sản phẩm" },
+            { "Country", "Nơi sản xuất" },
+            { "Manufacturer", "Nhà sản xuất" },
+            { "SizePanel", "Kích thước màn hình|Đơn vị: inch" },
+            { "Brightness", "Độ sáng:Đơn vị: nit" },
+            { "TypePanel", "Tấm nền" },
+            { "SpaceColorString", "Độ phủ màu|Độ chính xác màu hiện thị trên màn hình so với khi in ấn" },
+            { "RefreshRate", "Tốc độ làm tươi" },
+            { "CanTouchPanel", "Cảm ứng" },
+            { "RatioPanelString", "Tỉ lệ màn hình" },
+            { "CPU", "CPU" },
+            { "GPU", "GPU" },
+            { "RAMString", "RAM" },
+            { "iGPU", "iGPU" },
+            { "TypeStorage", "Chuẩn ổ cứng" },
+            { "StorageCapacity", "Dung lượng ổ cứng" },
+            { "GPUString", "Card đồ hoại rời" },
+            { "BatteryCapacity", "Dung lượng pin" }};
 
         public DetailInvoiceImportWarehouse_Form(COMMON_SPECS commonSpecs = null)
         {
@@ -83,8 +109,8 @@ namespace CompuStore.Tab.Warehouse
                             modelProduct.CPU = uniqueSpecs.CPU;
                             modelProduct.iGPU = uniqueSpecs.IGPU;
                             modelProduct.RAMString = uniqueSpecs.RAM;
-                            modelProduct.TypeDrive = uniqueSpecs.TYPE_DRIVE;
-                            modelProduct.DriveCapacity = uniqueSpecs.SIZE_DRIVE;
+                            modelProduct.TypeStorage = uniqueSpecs.TYPE_STORAGE;
+                            modelProduct.StorageCapacity = uniqueSpecs.STORAGE_CAPACITY;
                             modelProduct.GPUString = uniqueSpecs.GPU;
                             modelProduct.BatteryCapacity = uniqueSpecs.BATTERY_CAPACITY;
                             modelProduct.Weight = uniqueSpecs.WEIGHT;
@@ -111,11 +137,93 @@ namespace CompuStore.Tab.Warehouse
         private void DetailInvoiceImportWarehouse_Form_Load(object sender, EventArgs e)
         {
             Task loading = LoadingData();
+            Form form = new Form();
+            form.Show();
             loading.GetAwaiter().OnCompleted(() =>
             {
                 TableData_DataGridView.DataSource = binding;
+                form.Close();
             });
 
+        }
+
+        private void TableData_DataGridView_DataSourceChanged(object sender, EventArgs e)
+        {
+            /*DataGridView grid = sender as DataGridView;
+            grid.SuspendLayout();
+            foreach (DataGridViewColumn column in grid.Columns)
+            {
+                if (translater.ContainsKey(column.Name))
+                {
+                    if (column.Name == "RELEASED_YEAR")
+                    {
+                        column.DefaultCellStyle.Format = "yyyy";
+                    }
+                    column.HeaderText = translater[column.Name];
+                }
+                else
+                {
+                    column.Visible = false;
+                }
+            }
+            grid.ResumeLayout(true);*/
+        }
+
+        private void AddProductByExcel_Button_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Tab-seperator values | *.tsv";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK && openFileDialog.CheckFileExists)
+            {
+                ModelProduct[] products = ModelProduct.GetTSV(openFileDialog.FileName);
+
+                if (task == null || task.IsCompleted)
+                {
+                    cancellationTokenSource = new CancellationTokenSource();
+                    CancellationToken token = cancellationTokenSource.Token;
+
+                    task = Task.Factory.StartNew(() =>
+                    {
+                        for (int index = 0; index < products.Length && !token.IsCancellationRequested; index++)
+                        {
+                            try
+                            {
+                                if (TotalImportWarehouse_Label.InvokeRequired)
+                                    TotalImportWarehouse_Label.Invoke(new Action(() => TotalImportWarehouse_Label.Text = string.Format("Completed {0}/{1}", index, products.Length)));
+                                else
+                                    TotalImportWarehouse_Label.Text = string.Format("Completed {0}/{1}", index, products.Length);
+
+                                ProductServices.InstanceImport.Import(products[index]).Wait();
+                            }
+                            catch (AggregateException)
+                            {
+                                MessageBox.Show(string.Format("Product serial: {0} already exists in the system", products[index].Serial));
+                            }
+                        }
+                    }, token);
+
+                    task.GetAwaiter().OnCompleted(() =>
+                    {
+                        if (token.IsCancellationRequested)
+                        {
+                            if (TotalImportWarehouse_Label.InvokeRequired)
+                                TotalImportWarehouse_Label.Invoke(new Action(() => TotalImportWarehouse_Label.Text = "Canceled"));
+                            else
+                                TotalImportWarehouse_Label.Text = "Canceled";
+                        }
+                        else
+                        {
+                            if (TotalImportWarehouse_Label.InvokeRequired)
+                                TotalImportWarehouse_Label.Invoke(new Action(() => TotalImportWarehouse_Label.Text = "Insert completed"));
+                            else
+                                TotalImportWarehouse_Label.Text = "Insert completed";
+                        }
+                        cancellationTokenSource.Dispose();
+                        cancellationTokenSource = null;
+                    });
+                }
+            }
         }
     }
 }
