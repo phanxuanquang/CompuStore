@@ -1,5 +1,7 @@
 ﻿using CompuStore.Database.Models;
 using CompuStore.Database.Services;
+using Guna.UI2.WinForms;
+using Guna.UI2.WinForms.Suite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,7 +20,7 @@ namespace CompuStore
         STAFF staffCurrent;
         public StaffEdit_Form(bool notReadOnly, string headerName, object staff)
         {
-
+         
             if (staff != null)
             {
                 staffCurrent = staff as STAFF;
