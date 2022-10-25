@@ -93,13 +93,13 @@ namespace CompuStore.ImportData
                         switch (entry.Key)
                         {
                             case ENUM_SPACE_COLOR.DCI_P3:
-                                item = string.Format("{0}:{1}", "DCI-P3 color gamut", entry.Value);
+                                item = string.Format("{0}:{1}%", "DCI-P3 color gamut", entry.Value);
                                 break;
                             case ENUM_SPACE_COLOR.AdobeRGBProfile:
-                                item = string.Format("{0}:{1}", "Adobe RGB profile", entry.Value);
+                                item = string.Format("{0}:{1}%", "Adobe RGB profile", entry.Value);
                                 break;
                             case ENUM_SPACE_COLOR.sRGB:
-                                item = string.Format("{0}:{1}", "sRGB color space", entry.Value);
+                                item = string.Format("{0}:{1}%", "sRGB color space", entry.Value);
                                 break;
                         }
                         if (!string.IsNullOrEmpty(item))

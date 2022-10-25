@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -61,7 +62,7 @@ namespace CompuStore.Tab.Warehouse
             { "Country", "Nơi sản xuất" },
             { "Manufacturer", "Nhà sản xuất" },
             { "SizePanel", "Kích thước màn hình|Đơn vị: inch" },
-            { "Brightness", "Độ sáng:Đơn vị: nit" },
+            { "Brightness", "Độ sáng|Đơn vị: nit" },
             { "TypePanel", "Tấm nền" },
             { "SpaceColorString", "Độ phủ màu|Độ chính xác màu hiện thị trên màn hình so với khi in ấn" },
             { "RefreshRate", "Tốc độ làm tươi|Đơn vị: Hz" },
@@ -69,18 +70,18 @@ namespace CompuStore.Tab.Warehouse
             { "RatioPanelString", "Tỉ lệ màn hình" },
             { "CPU", "CPU" },
             { "GPU", "GPU" },
-            { "RAMString", "RAM|Đơn vị: GB" },
+            { "RAMString", "RAM" },
             { "iGPU", "iGPU" },
             { "TypeStorage", "Chuẩn ổ cứng" },
             { "StorageCapacity", "Dung lượng ổ cứng|Đơn vị: GB" },
             { "GPUString", "Card đồ hoại rời" },
             { "Weight", "Khối lượng|Đơn vị: Kg" },
             { "NameProduct", "Tên sản phẩm" },
-            { "ReleasedDate", "Năm ra mắt|Năm hãng ra mắt đến công chúng" },
+            { "ReleaseDate", "Năm ra mắt|Năm hãng ra mắt đến công chúng" },
             { "CaseMaterial", "Vật liệu vỏ" },
             { "PortString", "Cổng kết nối" },
             { "Webcam", "Webcam" },
-            { "SizeProductString", "Kích thước máy" },
+            { "SizeProductString", "Kích thước máy|Đơn vị: mm" },
             { "OS", "Hệ điều hành" },
             { "Wifi", "Chuẩn Wifi" },
             { "Bluetooth", "Chuẩn Bluetooth" },
@@ -108,10 +109,7 @@ namespace CompuStore.Tab.Warehouse
 
         private void AddProduct_Button_Click(object sender, EventArgs e)
         {
-            //để test xem form được chưa
-            DetailSpecsProduct_Form frm = new DetailSpecsProduct_Form();
-            ModelProduct[] products = ModelProduct.GetTSV("../../Resources/Template/data_sample.tsv");
-            frm.ShowDialog(this, products);
+
         }
 
         private Task LoadingData(IProgress<int> progress)
@@ -220,24 +218,35 @@ namespace CompuStore.Tab.Warehouse
 
         private void TableData_DataGridView_DataSourceChanged(object sender, EventArgs e)
         {
-            /*DataGridView grid = sender as DataGridView;
+            DataGridView grid = sender as DataGridView;
             grid.SuspendLayout();
             foreach (DataGridViewColumn column in grid.Columns)
             {
                 if (translater.ContainsKey(column.Name))
                 {
-                    if (column.Name == "RELEASED_YEAR")
+                    if (column.Name == "ReleaseDate")
                     {
                         column.DefaultCellStyle.Format = "yyyy";
                     }
-                    column.HeaderText = translater[column.Name];
+                    string headerText = translater[column.Name];
+                    string[] split = headerText.Split('|');
+                    column.HeaderText = split[0];
+                    if (split.Length > 1)
+                    {
+                        column.ToolTipText = split[1];
+                    }
                 }
                 else
                 {
                     column.Visible = false;
                 }
             }
-            grid.ResumeLayout(true);*/
+            DataGridViewButtonColumn col = new DataGridViewButtonColumn();
+            col.Name = "AddSerial";
+            col.HeaderText = "Thêm sản phẩm";
+
+            grid.Columns.Add(col);
+            grid.ResumeLayout(true);
         }
 
         private void AddProductByExcel_Button_Click(object sender, EventArgs e)
@@ -308,6 +317,24 @@ namespace CompuStore.Tab.Warehouse
                     DetailSpecsProduct_Form detailSpecs = new DetailSpecsProduct_Form();
                     detailSpecs.ShowDialog(this, group.productsTheSame.ToArray());
                 }
+            }
+        }
+
+        private void TableData_DataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            if (e.RowIndex>=0&& e.RowCount > 0)
+            {
+                DataGridView grid = sender as DataGridView;
+
+                DataGridViewColumn colorModelCol = grid.Columns["ColorModel"];
+                DataGridViewColumn colorCodeCol = grid.Columns["ColorCode"];
+                DataGridViewColumn colorNameCol = grid.Columns["ColorName"];
+                DataGridViewCell toolTipColor = grid.Rows[e.RowIndex].Cells[colorNameCol.Index];
+                DataGridViewCell color = grid.Rows[e.RowIndex].Cells[colorModelCol.Index];
+                DataGridViewCell cell = grid.Rows[e.RowIndex].Cells[colorCodeCol.Index];
+                DataGridViewCellStyle style = cell.Style;
+                cell.ToolTipText = toolTipColor.Value.ToString();
+                style.ForeColor = style.SelectionForeColor = style.BackColor = style.SelectionBackColor = (color.Value as ImportData.ModelProduct.Color).ColorCode;
             }
         }
     }

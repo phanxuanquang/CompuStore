@@ -278,7 +278,6 @@
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(151)))), ((int)(((byte)(232)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.TableData_DataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.TableData_DataGridView.ColumnHeadersHeight = 48;
             this.TableData_DataGridView.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -312,6 +311,7 @@
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5);
             this.TableData_DataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.TableData_DataGridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.TableData_DataGridView.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5);
             this.TableData_DataGridView.RowTemplate.Height = 48;
             this.TableData_DataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -343,6 +343,7 @@
             this.TableData_DataGridView.VirtualMode = true;
             this.TableData_DataGridView.DataSourceChanged += new System.EventHandler(this.TableData_DataGridView_DataSourceChanged);
             this.TableData_DataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TableData_DataGridView_CellDoubleClick);
+            this.TableData_DataGridView.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.TableData_DataGridView_RowsAdded);
             // 
             // Confirm_Button
             // 
