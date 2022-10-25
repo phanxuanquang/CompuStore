@@ -232,6 +232,8 @@ namespace CompuStore.Tab.Warehouse
 
             const int stopWaitingCounter = 0;
 
+            runLoading.GetAwaiter().OnCompleted(() => waiting.Close());
+
             progress.ProgressChanged += (owner, value) =>
             {
                 //Stop wating form when loaded invoice import warehouse. CommonSpecs continue load

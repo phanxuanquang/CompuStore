@@ -13,7 +13,7 @@ namespace CompuStore.Tab.Warehouse
 {
     public partial class DetailSpecsProduct_Form : Form
     {
-        public DetailSpecsProduct_Form(string id = "")
+        public DetailSpecsProduct_Form()
         {
             InitializeComponent();
         }
@@ -51,8 +51,10 @@ namespace CompuStore.Tab.Warehouse
                 RefreshRate_ComboBox.DataSource = preModels.Select(x => x.RefreshRate).Distinct().ToList();
                 Brightness_TextBox.Text = preModels[0].Brightness.ToString();
                 SizePanel_ComboBox.DataSource = preModels.Select(x => x.SizePanel).Distinct().ToList();
-                X_Ratio_ComboBox.DataSource = preModels[0].RatioPanel[0];
-                Y_Ratio_ComboBox.DataSource = preModels[0].RatioPanel[1];
+                X_Ratio_ComboBox.DataSource = preModels[0].RatioPanel;
+                X_Ratio_ComboBox.SelectedItem = preModels[0].RatioPanel[0];
+                Y_Ratio_ComboBox.DataSource = preModels[0].RatioPanel;
+                Y_Ratio_ComboBox.SelectedItem = preModels[0].RatioPanel[1];
                 Touchscreen_ToggleButton.Checked = preModels[0].CanTouchPanel ?? false;
                 TypeScreen_ComboBox.DataSource = new string[] { preModels[0].TypeScreen };
                 if (preModels[0].SpaceColor != null)

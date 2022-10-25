@@ -315,7 +315,7 @@
             this.TableData_DataGridView.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5);
             this.TableData_DataGridView.RowTemplate.Height = 48;
             this.TableData_DataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.TableData_DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.TableData_DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.TableData_DataGridView.Size = new System.Drawing.Size(2468, 952);
             this.TableData_DataGridView.TabIndex = 20;
             this.TableData_DataGridView.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
@@ -342,6 +342,7 @@
             this.TableData_DataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.TableData_DataGridView.VirtualMode = true;
             this.TableData_DataGridView.DataSourceChanged += new System.EventHandler(this.TableData_DataGridView_DataSourceChanged);
+            this.TableData_DataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TableData_DataGridView_CellDoubleClick);
             // 
             // Confirm_Button
             // 

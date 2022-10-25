@@ -21,13 +21,42 @@ namespace CompuStore.Tab.Warehouse
 {
     public partial class DetailInvoiceImportWarehouse_Form : Form
     {
+        private class ModelProductCustom
+        {
+            public List<ModelProduct> productsTheSame;
+
+            public ModelProduct product
+            {
+                get
+                {
+                    return productsTheSame?.First() ?? null;
+                }
+                set
+                {
+                    if (value != null)
+                    {
+                        if (productsTheSame == null)
+                            productsTheSame = new List<ModelProduct>();
+                        productsTheSame.Add(value);
+                    }
+                }
+            }
+
+            public bool IsTheSameGroup(ModelProduct _product)
+            {
+                ModelProduct template = product;
+                if (template == null) return true;
+                return template.CompareSpecs(_product);
+            }
+        }
+
         private COMMON_SPECS commonSpecs = null;
         BindingList<ModelProduct> binding = null;
         Task task = null;
         CancellationTokenSource cancellationTokenSource = null;
+        List<ModelProductCustom> groupBinding = null;
 
         private static readonly Dictionary<string, string> translater = new Dictionary<string, string> {
-            { "ReleasedDate", "Năm ra mắt|Năm hãng ra mắt đến công chúng" },
             { "LineUp", "Dòng sản phẩm" },
             { "Country", "Nơi sản xuất" },
             { "Manufacturer", "Nhà sản xuất" },
@@ -35,17 +64,27 @@ namespace CompuStore.Tab.Warehouse
             { "Brightness", "Độ sáng:Đơn vị: nit" },
             { "TypePanel", "Tấm nền" },
             { "SpaceColorString", "Độ phủ màu|Độ chính xác màu hiện thị trên màn hình so với khi in ấn" },
-            { "RefreshRate", "Tốc độ làm tươi" },
+            { "RefreshRate", "Tốc độ làm tươi|Đơn vị: Hz" },
             { "CanTouchPanel", "Cảm ứng" },
             { "RatioPanelString", "Tỉ lệ màn hình" },
             { "CPU", "CPU" },
             { "GPU", "GPU" },
-            { "RAMString", "RAM" },
+            { "RAMString", "RAM|Đơn vị: GB" },
             { "iGPU", "iGPU" },
             { "TypeStorage", "Chuẩn ổ cứng" },
-            { "StorageCapacity", "Dung lượng ổ cứng" },
+            { "StorageCapacity", "Dung lượng ổ cứng|Đơn vị: GB" },
             { "GPUString", "Card đồ hoại rời" },
-            { "BatteryCapacity", "Dung lượng pin" }};
+            { "Weight", "Khối lượng|Đơn vị: Kg" },
+            { "NameProduct", "Tên sản phẩm" },
+            { "ReleasedDate", "Năm ra mắt|Năm hãng ra mắt đến công chúng" },
+            { "CaseMaterial", "Vật liệu vỏ" },
+            { "PortString", "Cổng kết nối" },
+            { "Webcam", "Webcam" },
+            { "SizeProductString", "Kích thước máy" },
+            { "OS", "Hệ điều hành" },
+            { "Wifi", "Chuẩn Wifi" },
+            { "Bluetooth", "Chuẩn Bluetooth" },
+            { "ColorCode", "Màu sắc" }};
 
         public DetailInvoiceImportWarehouse_Form(COMMON_SPECS commonSpecs = null)
         {
@@ -82,6 +121,7 @@ namespace CompuStore.Tab.Warehouse
                 if (commonSpecs != null)
                 {
                     int counter = 0;
+                    groupBinding = new List<ModelProductCustom>();
                     ICollection<DETAIL_SPECS> detailSpecs = commonSpecs.DETAIL_SPECS;
                     LINE_UP lineup = commonSpecs.LINE_UP;
                     foreach (DETAIL_SPECS detail in detailSpecs)
@@ -128,15 +168,27 @@ namespace CompuStore.Tab.Warehouse
                             modelProduct.Price = detail.PRICE;
                             modelProduct.ColorCode = color.COLOR_CODE;
                             modelProduct.ColorName = color.COLOR_NAME;
-                            if (TableData_DataGridView.InvokeRequired)
+                            ModelProductCustom group = groupBinding.Find(item => item.IsTheSameGroup(modelProduct));
+                            if (group != null)
                             {
-                                TableData_DataGridView.Invoke(new Action(() => binding.Add(modelProduct)));
+                                group.product = modelProduct;
                             }
                             else
                             {
-                                binding.Add(modelProduct);
+                                group = new ModelProductCustom();
+                                group.product = modelProduct;
+                                groupBinding.Add(group);
+
+                                if (TableData_DataGridView.InvokeRequired)
+                                {
+                                    TableData_DataGridView.Invoke(new Action(() => binding.Add(group.product)));
+                                }
+                                else
+                                {
+                                    binding.Add(modelProduct);
+                                }
+                                progress.Report(++counter);
                             }
-                            progress.Report(++counter);
                         }
                     }
                 }
@@ -153,9 +205,11 @@ namespace CompuStore.Tab.Warehouse
 
             const int stopWaitingCoutner = 20;
 
+            runLoading.GetAwaiter().OnCompleted(() => waiting.Close());
+
             progress.ProgressChanged += (owner, value) =>
             {
-                if (value == stopWaitingCoutner && !waiting.IsDisposed && waiting.shown)
+                if (value >= stopWaitingCoutner && !waiting.IsDisposed && waiting.shown)
                 {
                     waiting.Close();
                 }
@@ -239,6 +293,20 @@ namespace CompuStore.Tab.Warehouse
                         cancellationTokenSource.Dispose();
                         cancellationTokenSource = null;
                     });
+                }
+            }
+        }
+
+        private void TableData_DataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex >= 0)
+            {
+                ModelProduct model = binding[e.RowIndex];
+                if (model != null)
+                {
+                    ModelProductCustom group = groupBinding.Find(item => item.product.Equals(model));
+                    DetailSpecsProduct_Form detailSpecs = new DetailSpecsProduct_Form();
+                    detailSpecs.ShowDialog(this, group.productsTheSame.ToArray());
                 }
             }
         }
