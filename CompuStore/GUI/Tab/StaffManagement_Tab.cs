@@ -11,6 +11,8 @@ using System.Windows.Forms;
 namespace CompuStore
 {
     using CompuStore.Database.Services;
+    using CompuStore.GUI;
+    using CompuStore.ImportData;
     using Database.Models;
     using System.Threading;
     using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -44,20 +46,40 @@ namespace CompuStore
             //loadingWindow.Close();
         }
 
-        public Task LoadDB()
+        public Task LoadDB(IProgress<bool> progress)
         {
-
-            Action GetData = () =>
+            return Task.Factory.StartNew(() =>
+            {
+                BindingStaff(GetListStaff());
+                progress.Report(true);
+            });
+            /*Action GetData = () =>
             {
                 BindingStaff(GetListStaff());
             };
             Task task = new Task(GetData);
             task.Start(); // chạy thread
-            return task;
+            return task;*/
         }
         private void StaffManagement_Tab_Load(object sender, EventArgs e)
         {
-            LoadDB();
+            Progress<bool> progress = new Progress<bool>();
+            Waiting_Form waiting = new Waiting_Form();
+            Task runLoading = LoadDB(progress);
+
+            const bool stopWaitingCoutner = true;
+
+            runLoading.GetAwaiter().OnCompleted(() => waiting.Close());
+
+            progress.ProgressChanged += (owner, value) =>
+            {
+                if (value == stopWaitingCoutner && !waiting.IsDisposed && waiting.shown)
+                {
+                    waiting.Close();
+                }
+            };
+
+            waiting.ShowDialog(this);
         }
         private void run(List<STAFF> sTAFFs)
         {

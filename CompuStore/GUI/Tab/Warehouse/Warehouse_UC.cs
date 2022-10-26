@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -75,6 +76,21 @@ namespace CompuStore.Tab.Warehouse
                 {
                     return distributorName;
                 }
+            }
+
+            public static ImportWarehouseCustom Convert(IMPORT_WAREHOUSE model)
+            {
+                ImportWarehouseCustom result = null;
+                if (model != null)
+                {
+                    result = new ImportWarehouseCustom();
+                    result.DISTRIBUTOR = model.DISTRIBUTOR;
+                    result.IMPORT_DATE = model.IMPORT_DATE;
+                    result.NAME_ID = model.NAME_ID;
+                    result.TOTAL = model.TOTAL;
+                    result.id = model.ID;
+                }
+                return result;
             }
         }
 
@@ -153,6 +169,21 @@ namespace CompuStore.Tab.Warehouse
                     releasedYear = value;
                 }
             }
+
+            public static CommonSpecsCustom Convert(COMMON_SPECS model)
+            {
+                CommonSpecsCustom result = null;
+                if (model != null)
+                {
+                    result = new CommonSpecsCustom();
+                    result.LINE_UP = model.LINE_UP;
+                    result.NAME = model.NAME;
+                    result.NAME_ID = model.NAME_ID;
+                    result.id = model.ID;
+                    result.RELEASED_YEAR = model.RELEASED_YEAR;
+                }
+                return result;
+            }
         }
 
         private BindingList<ImportWarehouseCustom> importWarehouseBinding;
@@ -184,17 +215,39 @@ namespace CompuStore.Tab.Warehouse
         {
             return Task.Factory.StartNew(() =>
             {
-                importWarehouseBinding = new BindingList<ImportWarehouseCustom>(Database.DataProvider.Instance.Database.IMPORT_WAREHOUSE.Select(item => new ImportWarehouseCustom { DISTRIBUTOR = item.DISTRIBUTOR, IMPORT_DATE = item.IMPORT_DATE, NAME_ID = item.NAME_ID, TOTAL = item.TOTAL, id = item.ID }).ToList());
-                progress.Report(0);
-                commonSpecsBinding = new BindingList<CommonSpecsCustom>(Database.DataProvider.Instance.Database.COMMON_SPECS.Select(item => new CommonSpecsCustom { LINE_UP = item.LINE_UP, NAME = item.NAME, NAME_ID = item.NAME_ID, id = item.ID, RELEASED_YEAR = item.RELEASED_YEAR }).ToList());
-                progress.Report(1);
+                try
+                {
+                    IQueryable<IMPORT_WAREHOUSE> importWarehouseQueryable = Database.DataProvider.Instance.Database.IMPORT_WAREHOUSE;
+                    foreach(IMPORT_WAREHOUSE model in importWarehouseQueryable)
+                    {
+                        if (importWarehouseBinding != null)
+                        {
+                            importWarehouseBinding.Add(ImportWarehouseCustom.Convert(model));
+                        }
+                    }
+                    progress.Report(0);
+                    IQueryable<COMMON_SPECS> commonSpecsQueryable = Database.DataProvider.Instance.Database.COMMON_SPECS;
+                    foreach (COMMON_SPECS model in commonSpecsQueryable)
+                    {
+                        if (commonSpecsBinding != null)
+                        {
+                            commonSpecsBinding.Add(CommonSpecsCustom.Convert(model));
+                        }
+                    }
+                    progress.Report(1);
+                }
+                catch
+                {
+                    Thread.Sleep(5000);
+                    LoadingData(progress);
+                }
             });
         }
 
         private void ImportWarehouse_Click(object sender, EventArgs e)
         {
-            DetailInvoiceImportWarehouse_Form detail = new DetailInvoiceImportWarehouse_Form();
-            detail.ShowDialog(this);
+            InvoiceImportWarehouse_Form import = new InvoiceImportWarehouse_Form();
+            import.ShowDialog(this);
         }
 
         private void SeeProduct_Click(object sender, EventArgs e)
@@ -229,8 +282,10 @@ namespace CompuStore.Tab.Warehouse
             Progress<int> progress = new Progress<int>();
             Waiting_Form waiting = new Waiting_Form();
             Task runLoading = LoadingData(progress);
+            importWarehouseBinding = new BindingList<ImportWarehouseCustom>();
+            commonSpecsBinding = new BindingList<CommonSpecsCustom>();
 
-            const int stopWaitingCounter = 0;
+            const int stopWaitingCounter = 1;
 
             runLoading.GetAwaiter().OnCompleted(() => waiting.Close());
 

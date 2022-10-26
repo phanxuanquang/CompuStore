@@ -490,7 +490,7 @@ namespace CompuStore.ImportData
                 || SpaceColorString != model.SpaceColorString
                 || RefreshRate != model.RefreshRate
                 || RatioPanelString != model.RatioPanelString
-                || CanTouchPanel == model.CanTouchPanel
+                || CanTouchPanel != model.CanTouchPanel
                 || TypeScreen != model.TypeScreen
                 || CPU != model.CPU
                 || iGPU != model.iGPU

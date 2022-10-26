@@ -69,7 +69,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DataTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.DataTable.ColumnHeadersHeight = 25;
+            this.DataTable.ColumnHeadersHeight = 38;
             this.DataTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.StaffName,
@@ -88,7 +88,8 @@
             this.DataTable.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.DataTable.EnableHeadersVisualStyles = false;
             this.DataTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.DataTable.Location = new System.Drawing.Point(0, 77);
+            this.DataTable.Location = new System.Drawing.Point(0, 148);
+            this.DataTable.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.DataTable.MultiSelect = false;
             this.DataTable.Name = "DataTable";
             this.DataTable.ReadOnly = true;
@@ -108,7 +109,7 @@
             this.DataTable.RowTemplate.ReadOnly = true;
             this.DataTable.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.DataTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataTable.Size = new System.Drawing.Size(1234, 614);
+            this.DataTable.Size = new System.Drawing.Size(2468, 1181);
             this.DataTable.TabIndex = 1;
             this.DataTable.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.DataTable.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -123,7 +124,7 @@
             this.DataTable.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.DataTable.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.DataTable.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.DataTable.ThemeStyle.HeaderStyle.Height = 25;
+            this.DataTable.ThemeStyle.HeaderStyle.Height = 38;
             this.DataTable.ThemeStyle.ReadOnly = true;
             this.DataTable.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.DataTable.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -184,13 +185,14 @@
             this.SearchBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.SearchBox.HoverState.Parent = this.SearchBox;
             this.SearchBox.IconLeft = global::CompuStore.Properties.Resources.Exit;
-            this.SearchBox.Location = new System.Drawing.Point(25, 19);
+            this.SearchBox.Location = new System.Drawing.Point(50, 37);
+            this.SearchBox.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
             this.SearchBox.Name = "SearchBox";
             this.SearchBox.PasswordChar = '\0';
             this.SearchBox.PlaceholderText = "Tìm kiếm ";
             this.SearchBox.SelectedText = "";
             this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
-            this.SearchBox.Size = new System.Drawing.Size(558, 37);
+            this.SearchBox.Size = new System.Drawing.Size(1116, 71);
             this.SearchBox.TabIndex = 14;
             this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             // 
@@ -206,11 +208,12 @@
             this.ViewDetail_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ViewDetail_Button.ForeColor = System.Drawing.Color.White;
             this.ViewDetail_Button.HoverState.Parent = this.ViewDetail_Button;
-            this.ViewDetail_Button.Location = new System.Drawing.Point(798, 19);
+            this.ViewDetail_Button.Location = new System.Drawing.Point(1596, 37);
+            this.ViewDetail_Button.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.ViewDetail_Button.Name = "ViewDetail_Button";
             this.ViewDetail_Button.PressedDepth = 5;
             this.ViewDetail_Button.ShadowDecoration.Parent = this.ViewDetail_Button;
-            this.ViewDetail_Button.Size = new System.Drawing.Size(203, 37);
+            this.ViewDetail_Button.Size = new System.Drawing.Size(406, 71);
             this.ViewDetail_Button.TabIndex = 13;
             this.ViewDetail_Button.Text = "View Detail";
             this.ViewDetail_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -227,11 +230,12 @@
             this.Delete_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Delete_Button.ForeColor = System.Drawing.Color.White;
             this.Delete_Button.HoverState.Parent = this.Delete_Button;
-            this.Delete_Button.Location = new System.Drawing.Point(1007, 19);
+            this.Delete_Button.Location = new System.Drawing.Point(2014, 37);
+            this.Delete_Button.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Delete_Button.Name = "Delete_Button";
             this.Delete_Button.PressedDepth = 5;
             this.Delete_Button.ShadowDecoration.Parent = this.Delete_Button;
-            this.Delete_Button.Size = new System.Drawing.Size(203, 37);
+            this.Delete_Button.Size = new System.Drawing.Size(406, 71);
             this.Delete_Button.TabIndex = 12;
             this.Delete_Button.Text = "Delete";
             this.Delete_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -248,18 +252,19 @@
             this.AddNew_Buttom.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.AddNew_Buttom.ForeColor = System.Drawing.Color.White;
             this.AddNew_Buttom.HoverState.Parent = this.AddNew_Buttom;
-            this.AddNew_Buttom.Location = new System.Drawing.Point(589, 19);
+            this.AddNew_Buttom.Location = new System.Drawing.Point(1178, 37);
+            this.AddNew_Buttom.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.AddNew_Buttom.Name = "AddNew_Buttom";
             this.AddNew_Buttom.PressedDepth = 5;
             this.AddNew_Buttom.ShadowDecoration.Parent = this.AddNew_Buttom;
-            this.AddNew_Buttom.Size = new System.Drawing.Size(203, 37);
+            this.AddNew_Buttom.Size = new System.Drawing.Size(406, 71);
             this.AddNew_Buttom.TabIndex = 11;
             this.AddNew_Buttom.Text = "Add New";
             this.AddNew_Buttom.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             // 
             // BaseTab
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.SearchBox);
             this.Controls.Add(this.ViewDetail_Button);
@@ -268,7 +273,7 @@
             this.Controls.Add(this.DataTable);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "BaseTab";
-            this.Size = new System.Drawing.Size(1234, 691);
+            this.Size = new System.Drawing.Size(2468, 1329);
             ((System.ComponentModel.ISupportInitialize)(this.DataTable)).EndInit();
             this.ResumeLayout(false);
 

@@ -241,11 +241,6 @@ namespace CompuStore.Tab.Warehouse
                     column.Visible = false;
                 }
             }
-            DataGridViewButtonColumn col = new DataGridViewButtonColumn();
-            col.Name = "AddSerial";
-            col.HeaderText = "Thêm sản phẩm";
-
-            grid.Columns.Add(col);
             grid.ResumeLayout(true);
         }
 
@@ -322,7 +317,7 @@ namespace CompuStore.Tab.Warehouse
 
         private void TableData_DataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
-            if (e.RowIndex>=0&& e.RowCount > 0)
+            if (e.RowIndex >= 0 && e.RowCount > 0)
             {
                 DataGridView grid = sender as DataGridView;
 
@@ -335,6 +330,7 @@ namespace CompuStore.Tab.Warehouse
                 DataGridViewCellStyle style = cell.Style;
                 cell.ToolTipText = toolTipColor.Value.ToString();
                 style.ForeColor = style.SelectionForeColor = style.BackColor = style.SelectionBackColor = (color.Value as ImportData.ModelProduct.Color).ColorCode;
+                ModelProduct currentRow = binding[e.RowIndex];
             }
         }
     }

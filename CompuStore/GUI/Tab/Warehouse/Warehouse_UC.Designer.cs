@@ -36,10 +36,11 @@
             this.TableData_DataGridView = new Guna.UI2.WinForms.Guna2DataGridView();
             this.ImportWarehouse = new Guna.UI2.WinForms.Guna2Button();
             this.SeeProduct = new Guna.UI2.WinForms.Guna2Button();
-            this.SearchProduct = new Guna.UI2.WinForms.Guna2Button();
             this.SeeInvoiceImportWarehouse = new Guna.UI2.WinForms.Guna2Button();
-            this.StatusImportWarehouse = new System.Windows.Forms.StatusStrip();
+            this.SearchBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.StatusImportWarehouse = new System.Windows.Forms.StatusStrip();
+            this.CheckQuantity_Button = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.TableData_DataGridView)).BeginInit();
             this.StatusImportWarehouse.SuspendLayout();
             this.SuspendLayout();
@@ -142,12 +143,12 @@
             this.ImportWarehouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ImportWarehouse.ForeColor = System.Drawing.Color.White;
             this.ImportWarehouse.HoverState.Parent = this.ImportWarehouse;
-            this.ImportWarehouse.Location = new System.Drawing.Point(1656, 40);
+            this.ImportWarehouse.Location = new System.Drawing.Point(2134, 36);
             this.ImportWarehouse.Margin = new System.Windows.Forms.Padding(6);
             this.ImportWarehouse.Name = "ImportWarehouse";
             this.ImportWarehouse.PressedDepth = 5;
             this.ImportWarehouse.ShadowDecoration.Parent = this.ImportWarehouse;
-            this.ImportWarehouse.Size = new System.Drawing.Size(406, 71);
+            this.ImportWarehouse.Size = new System.Drawing.Size(300, 71);
             this.ImportWarehouse.TabIndex = 6;
             this.ImportWarehouse.Text = "Nhập hàng";
             this.ImportWarehouse.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -165,38 +166,16 @@
             this.SeeProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.SeeProduct.ForeColor = System.Drawing.Color.White;
             this.SeeProduct.HoverState.Parent = this.SeeProduct;
-            this.SeeProduct.Location = new System.Drawing.Point(1234, 40);
+            this.SeeProduct.Location = new System.Drawing.Point(1822, 36);
             this.SeeProduct.Margin = new System.Windows.Forms.Padding(6);
             this.SeeProduct.Name = "SeeProduct";
             this.SeeProduct.PressedDepth = 5;
             this.SeeProduct.ShadowDecoration.Parent = this.SeeProduct;
-            this.SeeProduct.Size = new System.Drawing.Size(406, 71);
+            this.SeeProduct.Size = new System.Drawing.Size(300, 71);
             this.SeeProduct.TabIndex = 7;
             this.SeeProduct.Text = "Xem sản phẩm";
             this.SeeProduct.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.SeeProduct.Click += new System.EventHandler(this.SeeProduct_Click);
-            // 
-            // SearchProduct
-            // 
-            this.SearchProduct.Animated = true;
-            this.SearchProduct.BorderRadius = 5;
-            this.SearchProduct.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.SearchProduct.CheckedState.Parent = this.SearchProduct;
-            this.SearchProduct.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SearchProduct.CustomImages.Parent = this.SearchProduct;
-            this.SearchProduct.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.SearchProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.SearchProduct.ForeColor = System.Drawing.Color.White;
-            this.SearchProduct.HoverState.Parent = this.SearchProduct;
-            this.SearchProduct.Location = new System.Drawing.Point(390, 40);
-            this.SearchProduct.Margin = new System.Windows.Forms.Padding(6);
-            this.SearchProduct.Name = "SearchProduct";
-            this.SearchProduct.PressedDepth = 5;
-            this.SearchProduct.ShadowDecoration.Parent = this.SearchProduct;
-            this.SearchProduct.Size = new System.Drawing.Size(406, 71);
-            this.SearchProduct.TabIndex = 8;
-            this.SearchProduct.Text = "Kiểm tra kho";
-            this.SearchProduct.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             // 
             // SeeInvoiceImportWarehouse
             // 
@@ -210,16 +189,50 @@
             this.SeeInvoiceImportWarehouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.SeeInvoiceImportWarehouse.ForeColor = System.Drawing.Color.White;
             this.SeeInvoiceImportWarehouse.HoverState.Parent = this.SeeInvoiceImportWarehouse;
-            this.SeeInvoiceImportWarehouse.Location = new System.Drawing.Point(812, 40);
+            this.SeeInvoiceImportWarehouse.Location = new System.Drawing.Point(1510, 36);
             this.SeeInvoiceImportWarehouse.Margin = new System.Windows.Forms.Padding(6);
             this.SeeInvoiceImportWarehouse.Name = "SeeInvoiceImportWarehouse";
             this.SeeInvoiceImportWarehouse.PressedDepth = 5;
             this.SeeInvoiceImportWarehouse.ShadowDecoration.Parent = this.SeeInvoiceImportWarehouse;
-            this.SeeInvoiceImportWarehouse.Size = new System.Drawing.Size(406, 71);
+            this.SeeInvoiceImportWarehouse.Size = new System.Drawing.Size(300, 71);
             this.SeeInvoiceImportWarehouse.TabIndex = 9;
-            this.SeeInvoiceImportWarehouse.Text = "Xem hóa đơn nhập hàng";
+            this.SeeInvoiceImportWarehouse.Text = "Xem hóa đơn\nnhập hàng";
             this.SeeInvoiceImportWarehouse.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.SeeInvoiceImportWarehouse.Click += new System.EventHandler(this.SeeInvoiceImportWarehouse_Click);
+            // 
+            // SearchBox
+            // 
+            this.SearchBox.Animated = true;
+            this.SearchBox.BorderRadius = 5;
+            this.SearchBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.SearchBox.DefaultText = "";
+            this.SearchBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.SearchBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.SearchBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.SearchBox.DisabledState.Parent = this.SearchBox;
+            this.SearchBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.SearchBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.SearchBox.FocusedState.Parent = this.SearchBox;
+            this.SearchBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.SearchBox.HoverState.Parent = this.SearchBox;
+            this.SearchBox.IconLeft = global::CompuStore.Properties.Resources.Exit;
+            this.SearchBox.Location = new System.Drawing.Point(30, 36);
+            this.SearchBox.Margin = new System.Windows.Forms.Padding(12);
+            this.SearchBox.Name = "SearchBox";
+            this.SearchBox.PasswordChar = '\0';
+            this.SearchBox.PlaceholderText = "Tìm kiếm ";
+            this.SearchBox.SelectedText = "";
+            this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
+            this.SearchBox.Size = new System.Drawing.Size(1116, 71);
+            this.SearchBox.TabIndex = 15;
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 30);
+            this.toolStripProgressBar1.Step = 50;
+            this.toolStripProgressBar1.ToolTipText = "Đã nhập được 50/100 sản phẩm";
+            this.toolStripProgressBar1.Value = 50;
             // 
             // StatusImportWarehouse
             // 
@@ -233,22 +246,37 @@
             this.StatusImportWarehouse.Size = new System.Drawing.Size(2468, 42);
             this.StatusImportWarehouse.TabIndex = 10;
             // 
-            // toolStripProgressBar1
+            // CheckQuantity_Button
             // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 30);
-            this.toolStripProgressBar1.Step = 50;
-            this.toolStripProgressBar1.ToolTipText = "Đã nhập được 50/100 sản phẩm";
-            this.toolStripProgressBar1.Value = 50;
+            this.CheckQuantity_Button.Animated = true;
+            this.CheckQuantity_Button.BorderRadius = 5;
+            this.CheckQuantity_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.CheckQuantity_Button.CheckedState.Parent = this.CheckQuantity_Button;
+            this.CheckQuantity_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CheckQuantity_Button.CustomImages.Parent = this.CheckQuantity_Button;
+            this.CheckQuantity_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.CheckQuantity_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.CheckQuantity_Button.ForeColor = System.Drawing.Color.White;
+            this.CheckQuantity_Button.HoverState.Parent = this.CheckQuantity_Button;
+            this.CheckQuantity_Button.Location = new System.Drawing.Point(1198, 36);
+            this.CheckQuantity_Button.Margin = new System.Windows.Forms.Padding(6);
+            this.CheckQuantity_Button.Name = "CheckQuantity_Button";
+            this.CheckQuantity_Button.PressedDepth = 5;
+            this.CheckQuantity_Button.ShadowDecoration.Parent = this.CheckQuantity_Button;
+            this.CheckQuantity_Button.Size = new System.Drawing.Size(300, 71);
+            this.CheckQuantity_Button.TabIndex = 16;
+            this.CheckQuantity_Button.Text = "Kiểm tra kho";
+            this.CheckQuantity_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             // 
             // Warehouse_UC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            this.Controls.Add(this.CheckQuantity_Button);
+            this.Controls.Add(this.SearchBox);
             this.Controls.Add(this.StatusImportWarehouse);
             this.Controls.Add(this.SeeInvoiceImportWarehouse);
-            this.Controls.Add(this.SearchProduct);
             this.Controls.Add(this.SeeProduct);
             this.Controls.Add(this.ImportWarehouse);
             this.Controls.Add(this.TableData_DataGridView);
@@ -267,10 +295,11 @@
         #endregion
         private Guna.UI2.WinForms.Guna2Button ImportWarehouse;
         private Guna.UI2.WinForms.Guna2Button SeeProduct;
-        private Guna.UI2.WinForms.Guna2Button SearchProduct;
         private Guna.UI2.WinForms.Guna2Button SeeInvoiceImportWarehouse;
         private Guna.UI2.WinForms.Guna2DataGridView TableData_DataGridView;
-        private System.Windows.Forms.StatusStrip StatusImportWarehouse;
+        protected Guna.UI2.WinForms.Guna2TextBox SearchBox;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+        private System.Windows.Forms.StatusStrip StatusImportWarehouse;
+        private Guna.UI2.WinForms.Guna2Button CheckQuantity_Button;
     }
 }

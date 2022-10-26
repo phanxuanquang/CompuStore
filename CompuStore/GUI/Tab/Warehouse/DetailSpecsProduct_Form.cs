@@ -51,10 +51,10 @@ namespace CompuStore.Tab.Warehouse
                 RefreshRate_ComboBox.DataSource = preModels.Select(x => x.RefreshRate).Distinct().ToList();
                 Brightness_TextBox.Text = preModels[0].Brightness.ToString();
                 SizePanel_ComboBox.DataSource = preModels.Select(x => x.SizePanel).Distinct().ToList();
-                X_Ratio_ComboBox.DataSource = preModels[0].RatioPanel;
-                X_Ratio_ComboBox.SelectedItem = preModels[0].RatioPanel[0];
-                Y_Ratio_ComboBox.DataSource = preModels[0].RatioPanel;
-                Y_Ratio_ComboBox.SelectedItem = preModels[0].RatioPanel[1];
+                X_Ratio_ComboBox.DataSource = preModels[0].RatioPanel.Clone();
+                X_Ratio_ComboBox.SelectedIndex = 0;
+                Y_Ratio_ComboBox.DataSource = preModels[0].RatioPanel.Clone();
+                Y_Ratio_ComboBox.SelectedIndex = 1;
                 Touchscreen_ToggleButton.Checked = preModels[0].CanTouchPanel ?? false;
                 TypeScreen_ComboBox.DataSource = new string[] { preModels[0].TypeScreen };
                 if (preModels[0].SpaceColor != null)
@@ -62,14 +62,17 @@ namespace CompuStore.Tab.Warehouse
                     if (preModels[0].SpaceColor.TryGetValue(ModelProduct.ENUM_SPACE_COLOR.sRGB, out double sRGB))
                     {
                         ColorSpace_sRGB_TextBox.Text = sRGB.ToString();
+                        ColorSpace_sRGB_TextBox.Enabled = true;
                     }
                     if (preModels[0].SpaceColor.TryGetValue(ModelProduct.ENUM_SPACE_COLOR.DCI_P3, out double dcip3))
                     {
                         ColorSpace_DCIP3_TextBox.Text = dcip3.ToString();
+                        ColorSpace_DCIP3_TextBox.Enabled = true;
                     }
                     if (preModels[0].SpaceColor.TryGetValue(ModelProduct.ENUM_SPACE_COLOR.AdobeRGBProfile, out double adobe))
                     {
                         ColorSpace_AdobeRGB_TextBox.Text = adobe.ToString();
+                        ColorSpace_AdobeRGB_TextBox.Enabled = true;
                     }
                 }
                 HasCodeDisplay_CheckBox.Checked = false;
@@ -102,6 +105,14 @@ namespace CompuStore.Tab.Warehouse
         private void Confirm_Button_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void ColorPicker_Button_Click(object sender, EventArgs e)
+        {
+            if (ColorDialog.ShowDialog() == DialogResult.OK)
+            {
+                ColorPicker_Button.FillColor = ColorDialog.Color;
+            }
         }
     }
 }

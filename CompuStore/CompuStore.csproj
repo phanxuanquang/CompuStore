@@ -262,6 +262,9 @@
     <EmbeddedResource Include="GUI\Form\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Tab\Warehouse\InvoiceImportWarehouse_Form.resx">
+      <DependentUpon>InvoiceImportWarehouse_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
