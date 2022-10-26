@@ -42,7 +42,6 @@
             this.ImportToStore = new System.Windows.Forms.Label();
             this.TotalImportWarehouse = new System.Windows.Forms.Label();
             this.Distributor_Combobox = new System.Windows.Forms.ComboBox();
-            this.DateTimeImportWarehouse_Label = new System.Windows.Forms.Label();
             this.StoreImportWarehouse_Combobox = new System.Windows.Forms.ComboBox();
             this.TotalImportWarehouse_Label = new System.Windows.Forms.Label();
             this.DateTimeImportWarehouse_DateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -51,6 +50,7 @@
             this.AddProductByExcel_Button = new Guna.UI2.WinForms.Guna2Button();
             this.TableData_DataGridView = new Guna.UI2.WinForms.Guna2DataGridView();
             this.Confirm_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.DateTimeImportWarehouse_Label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TableData_DataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -142,18 +142,6 @@
             this.Distributor_Combobox.Name = "Distributor_Combobox";
             this.Distributor_Combobox.Size = new System.Drawing.Size(400, 33);
             this.Distributor_Combobox.TabIndex = 11;
-            // 
-            // DateTimeImportWarehouse_Label
-            // 
-            this.DateTimeImportWarehouse_Label.AutoSize = true;
-            this.DateTimeImportWarehouse_Label.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DateTimeImportWarehouse_Label.Location = new System.Drawing.Point(406, 160);
-            this.DateTimeImportWarehouse_Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.DateTimeImportWarehouse_Label.Name = "DateTimeImportWarehouse_Label";
-            this.DateTimeImportWarehouse_Label.Size = new System.Drawing.Size(224, 32);
-            this.DateTimeImportWarehouse_Label.TabIndex = 13;
-            this.DateTimeImportWarehouse_Label.Text = "9:36AM 22/10/2022";
-            this.DateTimeImportWarehouse_Label.Click += new System.EventHandler(this.DateTimeImportWarehouse_Label_Click);
             // 
             // StoreImportWarehouse_Combobox
             // 
@@ -296,6 +284,7 @@
             this.TableData_DataGridView.Margin = new System.Windows.Forms.Padding(6);
             this.TableData_DataGridView.MultiSelect = false;
             this.TableData_DataGridView.Name = "TableData_DataGridView";
+            this.TableData_DataGridView.ReadOnly = true;
             this.TableData_DataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -332,7 +321,7 @@
             this.TableData_DataGridView.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.TableData_DataGridView.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.TableData_DataGridView.ThemeStyle.HeaderStyle.Height = 48;
-            this.TableData_DataGridView.ThemeStyle.ReadOnly = false;
+            this.TableData_DataGridView.ThemeStyle.ReadOnly = true;
             this.TableData_DataGridView.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.TableData_DataGridView.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.TableData_DataGridView.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -366,6 +355,18 @@
             this.Confirm_Button.TabIndex = 21;
             this.Confirm_Button.Text = "Xác nhận";
             this.Confirm_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            // 
+            // DateTimeImportWarehouse_Label
+            // 
+            this.DateTimeImportWarehouse_Label.AutoSize = true;
+            this.DateTimeImportWarehouse_Label.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DateTimeImportWarehouse_Label.Location = new System.Drawing.Point(406, 160);
+            this.DateTimeImportWarehouse_Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.DateTimeImportWarehouse_Label.Name = "DateTimeImportWarehouse_Label";
+            this.DateTimeImportWarehouse_Label.Size = new System.Drawing.Size(224, 32);
+            this.DateTimeImportWarehouse_Label.TabIndex = 13;
+            this.DateTimeImportWarehouse_Label.Text = "9:36AM 22/10/2022";
+            this.DateTimeImportWarehouse_Label.Click += new System.EventHandler(this.DateTimeImportWarehouse_Label_Click);
             // 
             // DetailInvoiceImportWarehouse_Form
             // 
@@ -411,7 +412,6 @@
         private System.Windows.Forms.Label ImportToStore;
         private System.Windows.Forms.Label TotalImportWarehouse;
         private System.Windows.Forms.ComboBox Distributor_Combobox;
-        private System.Windows.Forms.Label DateTimeImportWarehouse_Label;
         private System.Windows.Forms.ComboBox StoreImportWarehouse_Combobox;
         private System.Windows.Forms.Label TotalImportWarehouse_Label;
         private System.Windows.Forms.DateTimePicker DateTimeImportWarehouse_DateTimePicker;
@@ -420,5 +420,6 @@
         private Guna.UI2.WinForms.Guna2Button AddProductByExcel_Button;
         private Guna.UI2.WinForms.Guna2DataGridView TableData_DataGridView;
         private Guna.UI2.WinForms.Guna2Button Confirm_Button;
+        private System.Windows.Forms.Label DateTimeImportWarehouse_Label;
     }
 }

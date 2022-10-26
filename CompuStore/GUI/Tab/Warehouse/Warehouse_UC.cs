@@ -1,13 +1,9 @@
 ﻿using CompuStore.Database.Models;
 using CompuStore.GUI;
-using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -187,10 +183,10 @@ namespace CompuStore.Tab.Warehouse
         }
 
         private BindingList<ImportWarehouseCustom> importWarehouseBinding;
-        private static readonly Dictionary<string, string> columnVisiableImportWarehouse = new Dictionary<string, string> { 
-            { "NAME_ID", "Mã nhập hàng" }, 
-            { "IMPORT_DATE", "Ngày nhập hàng" }, 
-            { "TOTAL", "Tổng giá trị" }, 
+        private static readonly Dictionary<string, string> columnVisiableImportWarehouse = new Dictionary<string, string> {
+            { "NAME_ID", "Mã nhập hàng" },
+            { "IMPORT_DATE", "Ngày nhập hàng" },
+            { "TOTAL", "Tổng giá trị" },
             { "DISTRIBUTOR_NAME", "Nhà phân phối" } };
         private BindingList<CommonSpecsCustom> commonSpecsBinding;
         private static readonly Dictionary<string, string> columnVisiableCommonSpecs = new Dictionary<string, string> {
@@ -218,7 +214,7 @@ namespace CompuStore.Tab.Warehouse
                 try
                 {
                     IQueryable<IMPORT_WAREHOUSE> importWarehouseQueryable = Database.DataProvider.Instance.Database.IMPORT_WAREHOUSE;
-                    foreach(IMPORT_WAREHOUSE model in importWarehouseQueryable)
+                    foreach (IMPORT_WAREHOUSE model in importWarehouseQueryable)
                     {
                         if (importWarehouseBinding != null)
                         {
@@ -341,6 +337,13 @@ namespace CompuStore.Tab.Warehouse
                         }
                         break;
                     case SEE_WHAT.IMPORT_WAREHOUSE:
+                        string nameIdImportWarehouse = (sender as DataGridView).Rows[e.RowIndex].Cells[0].Value as string;
+                        IMPORT_WAREHOUSE importWarehouse = Database.Services.ImportServices.Instance.GetImportWarehouseByNameID(nameIdImportWarehouse);
+                        if (importWarehouse != null)
+                        {
+                            InvoiceImportWarehouse_Form form = new InvoiceImportWarehouse_Form(importWarehouse);
+                            form.ShowDialog();
+                        }
                         break;
                 }
             }

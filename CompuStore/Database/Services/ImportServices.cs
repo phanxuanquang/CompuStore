@@ -19,6 +19,11 @@ namespace CompuStore.Database.Services
 
         private ImportServices() { }
 
+        public IMPORT_WAREHOUSE GetImportWarehouseByNameID(string nameID)
+        {
+            return DataProvider.Instance.Database.IMPORT_WAREHOUSE.FirstOrDefault(item => item.NAME_ID.CompareTo(nameID) == 0);
+        }
+
         private async Task<IMPORT_WAREHOUSE> CreateInvoiceImportWareHouse(STORE store, STAFF staff, DISTRIBUTOR distributor)
         {
             if (store == null || staff == null || distributor == null) throw new ArgumentNullException();
