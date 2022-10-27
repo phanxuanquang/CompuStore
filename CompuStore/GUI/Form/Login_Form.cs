@@ -1,4 +1,5 @@
 ﻿using CompuStore.Database.Services;
+using CompuStore.GUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,47 +56,51 @@ namespace CompuStore
             Application.Exit();
         }
 
+        private Task<(bool, string)> LoginVerification(string userName, string password)
+        {
+            return Task<(bool, string)>.Factory.StartNew(() =>
+            {
+                bool isValidAccount = false;
+                string accountRole = String.Empty;
+                isValidAccount = LoginServices.Instance.CheckAccount(userName, password);
+                if (isValidAccount)
+                {
+                    LoginServices.Instance.Login(userName);
+                    accountRole = LoginServices.Instance.CheckUserRole(userName);
+                }
+                return (isValidAccount, accountRole);
+            });
+        }
+
         private async void Login_Button_Click(object sender, EventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.ShowDialog();
-/*          if (Username_Box.Text == String.Empty || Password_Box.Text == String.Empty)
+            Username_Box.Text = "admin";
+            Password_Box.Text = "admin";
+            if (Username_Box.Text == String.Empty || Password_Box.Text == String.Empty)
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin đăng nhập.", "Đăng nhập thất bại", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else if (isInternetAvailable())
             {
-                bool isValidAccount = false;
-                string accountRole = String.Empty;
+                Waiting_Form waiting = new Waiting_Form();
+                waiting.StartPosition = FormStartPosition.CenterScreen;
 
-                *//*GUI.LoadingWindow loadingWindow = new GUI.LoadingWindow(this, "ĐANG TẢI");
-                loadingWindow.Show();
-                this.Enabled = false;*//*
+                waiting.Show();
+                (bool, string) loginVerification = await LoginVerification(Username_Box.Text, Password_Box.Text);
+                waiting.Close();
+                waiting.Dispose();
 
-                await System.Threading.Tasks.Task.Factory.StartNew(() =>
+                if (Remember_CheckBox.Checked)
                 {
-                    isValidAccount = LoginServices.Instance.CheckAccount(Username_Box.Text, Password_Box.Text);
-                    if (isValidAccount)
-                    {
-                        LoginServices.Instance.Login(Username_Box.Text);
-                        accountRole = LoginServices.Instance.CheckUserRole(Username_Box.Text);
-                        if (Remember_CheckBox.Checked)
-                        {
-                            LoginServices.Instance.RememberAccount(Username_Box.Text, Password_Box.Text);
-                        }
-                    }
-                });
+                    LoginServices.Instance.RememberAccount(Username_Box.Text, Password_Box.Text);
+                }
 
-                *//*loadingWindow.Close();
-                loadingWindow.Dispose();
-                this.Enabled = true;*//*
-
-                if (isValidAccount)
+                if (loginVerification.Item1)
                 {
                     this.Hide();
                     this.ShowIcon = this.ShowInTaskbar = false;
 
-                    switch (accountRole)
+                    switch (loginVerification.Item2)
                     {
 
                     }
@@ -120,7 +125,7 @@ namespace CompuStore
             else
             {
                 MessageBox.Show("Không có kết nối mạng, vui lòng thử lại sau.", "Lỗi kết nối mạng", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }*/
+            }
         }
 
         private void Login_Form_Load(object sender, EventArgs e)

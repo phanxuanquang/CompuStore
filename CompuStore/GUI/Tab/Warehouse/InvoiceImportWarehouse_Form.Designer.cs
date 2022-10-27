@@ -176,8 +176,8 @@
             this.AddProduct_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.AddProduct_Button.ForeColor = System.Drawing.Color.White;
             this.AddProduct_Button.HoverState.Parent = this.AddProduct_Button;
-            this.AddProduct_Button.Location = new System.Drawing.Point(1952, 218);
-            this.AddProduct_Button.Margin = new System.Windows.Forms.Padding(6);
+            this.AddProduct_Button.Location = new System.Drawing.Point(1926, 243);
+            this.AddProduct_Button.Margin = new System.Windows.Forms.Padding(5);
             this.AddProduct_Button.Name = "AddProduct_Button";
             this.AddProduct_Button.PressedDepth = 5;
             this.AddProduct_Button.ShadowDecoration.Parent = this.AddProduct_Button;
@@ -198,8 +198,8 @@
             this.DeleteProduct_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.DeleteProduct_Button.ForeColor = System.Drawing.Color.White;
             this.DeleteProduct_Button.HoverState.Parent = this.DeleteProduct_Button;
-            this.DeleteProduct_Button.Location = new System.Drawing.Point(2114, 218);
-            this.DeleteProduct_Button.Margin = new System.Windows.Forms.Padding(6);
+            this.DeleteProduct_Button.Location = new System.Drawing.Point(2086, 242);
+            this.DeleteProduct_Button.Margin = new System.Windows.Forms.Padding(5);
             this.DeleteProduct_Button.Name = "DeleteProduct_Button";
             this.DeleteProduct_Button.PressedDepth = 5;
             this.DeleteProduct_Button.ShadowDecoration.Parent = this.DeleteProduct_Button;
@@ -220,7 +220,7 @@
             this.AddProductByExcel_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.AddProductByExcel_Button.ForeColor = System.Drawing.Color.White;
             this.AddProductByExcel_Button.HoverState.Parent = this.AddProductByExcel_Button;
-            this.AddProductByExcel_Button.Location = new System.Drawing.Point(1954, 106);
+            this.AddProductByExcel_Button.Location = new System.Drawing.Point(1926, 131);
             this.AddProductByExcel_Button.Margin = new System.Windows.Forms.Padding(6);
             this.AddProductByExcel_Button.Name = "AddProductByExcel_Button";
             this.AddProductByExcel_Button.PressedDepth = 5;
@@ -404,7 +404,7 @@
             this.guna2Button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.HoverState.Parent = this.guna2Button1;
-            this.guna2Button1.Location = new System.Drawing.Point(2276, 106);
+            this.guna2Button1.Location = new System.Drawing.Point(2248, 131);
             this.guna2Button1.Margin = new System.Windows.Forms.Padding(6);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.PressedDepth = 5;

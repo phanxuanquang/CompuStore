@@ -50,7 +50,6 @@
             this.AddProductByExcel_Button = new Guna.UI2.WinForms.Guna2Button();
             this.TableData_DataGridView = new Guna.UI2.WinForms.Guna2DataGridView();
             this.Confirm_Button = new Guna.UI2.WinForms.Guna2Button();
-            this.DateTimeImportWarehouse_Label = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.TableData_DataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,8 +62,8 @@
             this.Header.Location = new System.Drawing.Point(0, 0);
             this.Header.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Header.Name = "Header";
-            this.Header.Padding = new System.Windows.Forms.Padding(70, 0, 0, 0);
-            this.Header.Size = new System.Drawing.Size(2468, 77);
+            this.Header.Padding = new System.Windows.Forms.Padding(76, 0, 0, 0);
+            this.Header.Size = new System.Drawing.Size(2468, 99);
             this.Header.TabIndex = 5;
             this.Header.Text = "Chi tiết nhập hàng";
             this.Header.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -78,11 +77,11 @@
             this.Exit_Button.HoverState.Parent = this.Exit_Button;
             this.Exit_Button.Image = global::CompuStore.Properties.Resources.Close;
             this.Exit_Button.ImageSize = new System.Drawing.Size(27, 27);
-            this.Exit_Button.Location = new System.Drawing.Point(2388, 0);
-            this.Exit_Button.Margin = new System.Windows.Forms.Padding(6);
+            this.Exit_Button.Location = new System.Drawing.Point(2587, 0);
+            this.Exit_Button.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Exit_Button.Name = "Exit_Button";
             this.Exit_Button.PressedState.Parent = this.Exit_Button;
-            this.Exit_Button.Size = new System.Drawing.Size(80, 77);
+            this.Exit_Button.Size = new System.Drawing.Size(87, 99);
             this.Exit_Button.TabIndex = 6;
             this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
             // 
@@ -94,7 +93,7 @@
             // 
             this.Distributor.AutoSize = true;
             this.Distributor.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Distributor.Location = new System.Drawing.Point(136, 102);
+            this.Distributor.Location = new System.Drawing.Point(84, 133);
             this.Distributor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Distributor.Name = "Distributor";
             this.Distributor.Size = new System.Drawing.Size(162, 32);
@@ -105,7 +104,7 @@
             // 
             this.DateTimeImportWarehouse.AutoSize = true;
             this.DateTimeImportWarehouse.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DateTimeImportWarehouse.Location = new System.Drawing.Point(136, 160);
+            this.DateTimeImportWarehouse.Location = new System.Drawing.Point(84, 207);
             this.DateTimeImportWarehouse.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.DateTimeImportWarehouse.Name = "DateTimeImportWarehouse";
             this.DateTimeImportWarehouse.Size = new System.Drawing.Size(192, 32);
@@ -116,7 +115,7 @@
             // 
             this.ImportToStore.AutoSize = true;
             this.ImportToStore.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ImportToStore.Location = new System.Drawing.Point(136, 217);
+            this.ImportToStore.Location = new System.Drawing.Point(84, 280);
             this.ImportToStore.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ImportToStore.Name = "ImportToStore";
             this.ImportToStore.Size = new System.Drawing.Size(208, 32);
@@ -127,7 +126,7 @@
             // 
             this.TotalImportWarehouse.AutoSize = true;
             this.TotalImportWarehouse.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalImportWarehouse.Location = new System.Drawing.Point(136, 275);
+            this.TotalImportWarehouse.Location = new System.Drawing.Point(84, 354);
             this.TotalImportWarehouse.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TotalImportWarehouse.Name = "TotalImportWarehouse";
             this.TotalImportWarehouse.Size = new System.Drawing.Size(137, 32);
@@ -137,26 +136,26 @@
             // Distributor_Combobox
             // 
             this.Distributor_Combobox.FormattingEnabled = true;
-            this.Distributor_Combobox.Location = new System.Drawing.Point(412, 100);
-            this.Distributor_Combobox.Margin = new System.Windows.Forms.Padding(4);
+            this.Distributor_Combobox.Location = new System.Drawing.Point(383, 130);
+            this.Distributor_Combobox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Distributor_Combobox.Name = "Distributor_Combobox";
-            this.Distributor_Combobox.Size = new System.Drawing.Size(400, 33);
+            this.Distributor_Combobox.Size = new System.Drawing.Size(433, 40);
             this.Distributor_Combobox.TabIndex = 11;
             // 
             // StoreImportWarehouse_Combobox
             // 
             this.StoreImportWarehouse_Combobox.FormattingEnabled = true;
-            this.StoreImportWarehouse_Combobox.Location = new System.Drawing.Point(412, 215);
-            this.StoreImportWarehouse_Combobox.Margin = new System.Windows.Forms.Padding(4);
+            this.StoreImportWarehouse_Combobox.Location = new System.Drawing.Point(383, 277);
+            this.StoreImportWarehouse_Combobox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.StoreImportWarehouse_Combobox.Name = "StoreImportWarehouse_Combobox";
-            this.StoreImportWarehouse_Combobox.Size = new System.Drawing.Size(400, 33);
+            this.StoreImportWarehouse_Combobox.Size = new System.Drawing.Size(433, 40);
             this.StoreImportWarehouse_Combobox.TabIndex = 14;
             // 
             // TotalImportWarehouse_Label
             // 
             this.TotalImportWarehouse_Label.AutoSize = true;
             this.TotalImportWarehouse_Label.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalImportWarehouse_Label.Location = new System.Drawing.Point(406, 275);
+            this.TotalImportWarehouse_Label.Location = new System.Drawing.Point(377, 354);
             this.TotalImportWarehouse_Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TotalImportWarehouse_Label.Name = "TotalImportWarehouse_Label";
             this.TotalImportWarehouse_Label.Size = new System.Drawing.Size(216, 32);
@@ -165,12 +164,12 @@
             // 
             // DateTimeImportWarehouse_DateTimePicker
             // 
-            this.DateTimeImportWarehouse_DateTimePicker.CustomFormat = "hh:mm:ss dd/MM/yyyy";
+            this.DateTimeImportWarehouse_DateTimePicker.CustomFormat = "ht:mm tt dd/MM/yyyy";
             this.DateTimeImportWarehouse_DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimeImportWarehouse_DateTimePicker.Location = new System.Drawing.Point(638, 161);
-            this.DateTimeImportWarehouse_DateTimePicker.Margin = new System.Windows.Forms.Padding(4);
+            this.DateTimeImportWarehouse_DateTimePicker.Location = new System.Drawing.Point(383, 202);
+            this.DateTimeImportWarehouse_DateTimePicker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DateTimeImportWarehouse_DateTimePicker.Name = "DateTimeImportWarehouse_DateTimePicker";
-            this.DateTimeImportWarehouse_DateTimePicker.Size = new System.Drawing.Size(300, 31);
+            this.DateTimeImportWarehouse_DateTimePicker.Size = new System.Drawing.Size(433, 39);
             this.DateTimeImportWarehouse_DateTimePicker.TabIndex = 16;
             this.DateTimeImportWarehouse_DateTimePicker.Visible = false;
             // 
@@ -186,12 +185,12 @@
             this.AddProduct_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.AddProduct_Button.ForeColor = System.Drawing.Color.White;
             this.AddProduct_Button.HoverState.Parent = this.AddProduct_Button;
-            this.AddProduct_Button.Location = new System.Drawing.Point(1178, 102);
-            this.AddProduct_Button.Margin = new System.Windows.Forms.Padding(6);
+            this.AddProduct_Button.Location = new System.Drawing.Point(2114, 254);
+            this.AddProduct_Button.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.AddProduct_Button.Name = "AddProduct_Button";
             this.AddProduct_Button.PressedDepth = 5;
             this.AddProduct_Button.ShadowDecoration.Parent = this.AddProduct_Button;
-            this.AddProduct_Button.Size = new System.Drawing.Size(406, 71);
+            this.AddProduct_Button.Size = new System.Drawing.Size(150, 100);
             this.AddProduct_Button.TabIndex = 19;
             this.AddProduct_Button.Text = "Thêm";
             this.AddProduct_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -209,12 +208,12 @@
             this.DeleteProduct_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.DeleteProduct_Button.ForeColor = System.Drawing.Color.White;
             this.DeleteProduct_Button.HoverState.Parent = this.DeleteProduct_Button;
-            this.DeleteProduct_Button.Location = new System.Drawing.Point(1600, 102);
-            this.DeleteProduct_Button.Margin = new System.Windows.Forms.Padding(6);
+            this.DeleteProduct_Button.Location = new System.Drawing.Point(2274, 254);
+            this.DeleteProduct_Button.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.DeleteProduct_Button.Name = "DeleteProduct_Button";
             this.DeleteProduct_Button.PressedDepth = 5;
             this.DeleteProduct_Button.ShadowDecoration.Parent = this.DeleteProduct_Button;
-            this.DeleteProduct_Button.Size = new System.Drawing.Size(406, 71);
+            this.DeleteProduct_Button.Size = new System.Drawing.Size(150, 100);
             this.DeleteProduct_Button.TabIndex = 18;
             this.DeleteProduct_Button.Text = "Xóa";
             this.DeleteProduct_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -231,12 +230,12 @@
             this.AddProductByExcel_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.AddProductByExcel_Button.ForeColor = System.Drawing.Color.White;
             this.AddProductByExcel_Button.HoverState.Parent = this.AddProductByExcel_Button;
-            this.AddProductByExcel_Button.Location = new System.Drawing.Point(2022, 102);
-            this.AddProductByExcel_Button.Margin = new System.Windows.Forms.Padding(6);
+            this.AddProductByExcel_Button.Location = new System.Drawing.Point(2114, 142);
+            this.AddProductByExcel_Button.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.AddProductByExcel_Button.Name = "AddProductByExcel_Button";
             this.AddProductByExcel_Button.PressedDepth = 5;
             this.AddProductByExcel_Button.ShadowDecoration.Parent = this.AddProductByExcel_Button;
-            this.AddProductByExcel_Button.Size = new System.Drawing.Size(406, 71);
+            this.AddProductByExcel_Button.Size = new System.Drawing.Size(310, 100);
             this.AddProductByExcel_Button.TabIndex = 17;
             this.AddProductByExcel_Button.Text = "Nhập bằng Excel";
             this.AddProductByExcel_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -251,8 +250,6 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
             this.TableData_DataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.TableData_DataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.TableData_DataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.TableData_DataGridView.BackgroundColor = System.Drawing.Color.White;
             this.TableData_DataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -278,17 +275,18 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.TableData_DataGridView.DefaultCellStyle = dataGridViewCellStyle3;
+            this.TableData_DataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.TableData_DataGridView.EnableHeadersVisualStyles = false;
             this.TableData_DataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.TableData_DataGridView.Location = new System.Drawing.Point(0, 329);
-            this.TableData_DataGridView.Margin = new System.Windows.Forms.Padding(6);
+            this.TableData_DataGridView.Location = new System.Drawing.Point(0, 402);
+            this.TableData_DataGridView.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.TableData_DataGridView.MultiSelect = false;
             this.TableData_DataGridView.Name = "TableData_DataGridView";
             this.TableData_DataGridView.ReadOnly = true;
             this.TableData_DataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5);
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
@@ -305,7 +303,7 @@
             this.TableData_DataGridView.RowTemplate.Height = 48;
             this.TableData_DataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.TableData_DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TableData_DataGridView.Size = new System.Drawing.Size(2468, 952);
+            this.TableData_DataGridView.Size = new System.Drawing.Size(2468, 945);
             this.TableData_DataGridView.TabIndex = 20;
             this.TableData_DataGridView.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.TableData_DataGridView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -346,34 +344,22 @@
             this.Confirm_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Confirm_Button.ForeColor = System.Drawing.Color.White;
             this.Confirm_Button.HoverState.Parent = this.Confirm_Button;
-            this.Confirm_Button.Location = new System.Drawing.Point(2022, 1402);
-            this.Confirm_Button.Margin = new System.Windows.Forms.Padding(6);
+            this.Confirm_Button.Location = new System.Drawing.Point(2190, 1795);
+            this.Confirm_Button.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Confirm_Button.Name = "Confirm_Button";
             this.Confirm_Button.PressedDepth = 5;
             this.Confirm_Button.ShadowDecoration.Parent = this.Confirm_Button;
-            this.Confirm_Button.Size = new System.Drawing.Size(406, 71);
+            this.Confirm_Button.Size = new System.Drawing.Size(440, 91);
             this.Confirm_Button.TabIndex = 21;
             this.Confirm_Button.Text = "Xác nhận";
             this.Confirm_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             // 
-            // DateTimeImportWarehouse_Label
-            // 
-            this.DateTimeImportWarehouse_Label.AutoSize = true;
-            this.DateTimeImportWarehouse_Label.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DateTimeImportWarehouse_Label.Location = new System.Drawing.Point(406, 160);
-            this.DateTimeImportWarehouse_Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.DateTimeImportWarehouse_Label.Name = "DateTimeImportWarehouse_Label";
-            this.DateTimeImportWarehouse_Label.Size = new System.Drawing.Size(224, 32);
-            this.DateTimeImportWarehouse_Label.TabIndex = 13;
-            this.DateTimeImportWarehouse_Label.Text = "9:36AM 22/10/2022";
-            this.DateTimeImportWarehouse_Label.Click += new System.EventHandler(this.DateTimeImportWarehouse_Label_Click);
-            // 
             // DetailInvoiceImportWarehouse_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(2468, 1279);
+            this.ClientSize = new System.Drawing.Size(2468, 1347);
             this.Controls.Add(this.Confirm_Button);
             this.Controls.Add(this.TableData_DataGridView);
             this.Controls.Add(this.AddProduct_Button);
@@ -382,7 +368,6 @@
             this.Controls.Add(this.DateTimeImportWarehouse_DateTimePicker);
             this.Controls.Add(this.TotalImportWarehouse_Label);
             this.Controls.Add(this.StoreImportWarehouse_Combobox);
-            this.Controls.Add(this.DateTimeImportWarehouse_Label);
             this.Controls.Add(this.Distributor_Combobox);
             this.Controls.Add(this.TotalImportWarehouse);
             this.Controls.Add(this.ImportToStore);
@@ -390,8 +375,9 @@
             this.Controls.Add(this.Distributor);
             this.Controls.Add(this.Exit_Button);
             this.Controls.Add(this.Header);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "DetailInvoiceImportWarehouse_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DetailInvoiceImportWarehouse";
@@ -420,6 +406,5 @@
         private Guna.UI2.WinForms.Guna2Button AddProductByExcel_Button;
         private Guna.UI2.WinForms.Guna2DataGridView TableData_DataGridView;
         private Guna.UI2.WinForms.Guna2Button Confirm_Button;
-        private System.Windows.Forms.Label DateTimeImportWarehouse_Label;
     }
 }

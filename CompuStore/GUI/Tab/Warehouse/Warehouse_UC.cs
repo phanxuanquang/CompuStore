@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CompuStore.Tab.Warehouse
 {
-    public partial class Warehouse_UC : UserControl
+    public partial class Warehouse_UC : BaseTab
     {
         class ImportWarehouseCustom
         {
@@ -204,6 +204,14 @@ namespace CompuStore.Tab.Warehouse
 
         public Warehouse_UC()
         {
+            Button1.Text = "Xem hóa đơn nhập hàng";
+            Button2.Text = "Xem sản phẩm";
+            Button3.Text = "Nhập hàng";
+            Button1.Click += SeeInvoiceImportWarehouse_Click;
+            Button2.Click += SeeProduct_Click;
+            Button3.Click += ImportWarehouse_Click;
+            DataTable.DataSourceChanged += DataTable_DataSourceChanged;
+            DataTable.CellDoubleClick += DataTable_CellDoubleClick;
             InitializeComponent();
         }
 
@@ -260,16 +268,16 @@ namespace CompuStore.Tab.Warehouse
 
         private void AddBindingToDataGridView(IBindingList binding)
         {
-            if (TableData_DataGridView.InvokeRequired)
+            if (DataTable.InvokeRequired)
             {
-                TableData_DataGridView.Invoke(new Action(() =>
+                DataTable.Invoke(new Action(() =>
                 {
-                    TableData_DataGridView.DataSource = binding;
+                    DataTable.DataSource = binding;
                 }));
             }
             else
             {
-                TableData_DataGridView.DataSource = binding;
+                DataTable.DataSource = binding;
             }
         }
 
@@ -298,7 +306,7 @@ namespace CompuStore.Tab.Warehouse
             waiting.ShowDialog(this);
         }
 
-        private void TableData_DataGridView_DataSourceChanged(object sender, EventArgs e)
+        private void DataTable_DataSourceChanged(object sender, EventArgs e)
         {
             DataGridView grid = sender as DataGridView;
             grid.SuspendLayout();
@@ -321,7 +329,7 @@ namespace CompuStore.Tab.Warehouse
             grid.ResumeLayout(true);
         }
 
-        private void TableData_DataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void DataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1)
             {
