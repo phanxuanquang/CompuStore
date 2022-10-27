@@ -64,6 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\Services\CommonSpecsServices.cs" />
+    <Compile Include="Database\Services\CustomerServices.cs" />
+    <Compile Include="Database\Services\InvoiceServices.cs" />
     <Compile Include="Database\Services\UniqueSpecsServices.cs" />
     <Compile Include="GUI\Form\SubForm\AddInvoice_Form.cs">
       <SubType>Form</SubType>
