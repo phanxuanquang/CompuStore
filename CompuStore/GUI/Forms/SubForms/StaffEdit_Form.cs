@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CompuStore
+namespace CompuStore.GUI.Forms
 {
     public partial class StaffEdit_Form : Form
     {

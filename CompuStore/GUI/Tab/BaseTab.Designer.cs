@@ -1,4 +1,4 @@
-﻿namespace CompuStore
+﻿namespace CompuStore.Tab
 {
     partial class BaseTab
     {

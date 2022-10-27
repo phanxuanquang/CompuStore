@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompuStore.Tab;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,11 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CompuStore
+namespace CompuStore.GUI
 {
     public partial class MainWindow : Form
     {
-        BaseTab staffManage_Tab, salesManage_Tab, serviceManage_Tab, storageManage_Tab;
+        BaseTab staffManage_Tab, salesManage_Tab, serviceManage_Tab, warehouseManage_Tab;
         public MainWindow()
         {
             InitializeComponent();
@@ -74,11 +75,11 @@ namespace CompuStore
         private void StorageManage_Button_Click(object sender, EventArgs e)
         {
             SetHeaderState_From(StorageManage_Button);
-            if (storageManage_Tab == null)
+            if (warehouseManage_Tab == null)
             {
-                storageManage_Tab = new Tab.Warehouse.Warehouse_UC();
+                warehouseManage_Tab = new Warehouse_UC();
             }
-            LoadTab(storageManage_Tab);
+            LoadTab(warehouseManage_Tab);
         }
 
         private void Exit_Button_Click(object sender, EventArgs e)

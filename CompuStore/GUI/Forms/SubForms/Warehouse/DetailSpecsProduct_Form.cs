@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CompuStore.Tab.Warehouse
+namespace CompuStore.GUI.Forms.Warehouse
 {
     public partial class DetailSpecsProduct_Form : Form
     {

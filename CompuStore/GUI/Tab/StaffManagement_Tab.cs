@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CompuStore
+namespace CompuStore.Tab
 {
     using CompuStore.Database.Services;
     using CompuStore.GUI;
+    using CompuStore.GUI.Forms;
     using CompuStore.ImportData;
     using Database.Models;
     using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;

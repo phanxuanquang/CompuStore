@@ -1,4 +1,4 @@
-﻿namespace CompuStore.Tab.Warehouse
+﻿namespace CompuStore.Tab
 {
     partial class Warehouse_UC
     {

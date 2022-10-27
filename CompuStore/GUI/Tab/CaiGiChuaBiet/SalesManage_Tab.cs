@@ -1,4 +1,4 @@
-﻿using CompuStore.Tab.Warehouse;
+﻿using CompuStore.GUI.Forms.Warehouse;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

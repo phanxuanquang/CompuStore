@@ -1,4 +1,4 @@
-﻿namespace CompuStore.Tab.Warehouse
+﻿namespace CompuStore.GUI.Forms.Warehouse
 {
     partial class DetailSpecsProduct_Form
     {

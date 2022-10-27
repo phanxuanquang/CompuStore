@@ -1,4 +1,4 @@
-﻿namespace CompuStore
+﻿namespace CompuStore.GUI.Forms
 {
     partial class StaffEdit_Form
     {

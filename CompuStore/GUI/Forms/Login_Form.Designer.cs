@@ -1,4 +1,4 @@
-﻿namespace CompuStore
+﻿namespace CompuStore.GUI
 {
     partial class Login_Form
     {

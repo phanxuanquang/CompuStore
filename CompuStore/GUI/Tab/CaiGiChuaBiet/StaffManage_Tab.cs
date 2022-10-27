@@ -11,6 +11,7 @@ using System.Windows.Forms;
 namespace CompuStore
 {
     using CompuStore.Database.Services;
+    using CompuStore.GUI.Forms;
     using Database.Models;
     public partial class StaffManage_Tab : UserControl
     {

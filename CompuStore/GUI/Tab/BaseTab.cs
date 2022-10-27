@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CompuStore
+namespace CompuStore.Tab
 {
     public partial class BaseTab : UserControl
     {

@@ -1,7 +1,8 @@
 ﻿using CompuStore.Database.Models;
 using CompuStore.Database.Services;
 using CompuStore.GUI;
-using CompuStore.Tab.Warehouse;
+using CompuStore.GUI.Forms;
+using CompuStore.GUI.Forms.Warehouse;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CompuStore
+namespace CompuStore.Tab
 {
     public partial class SaleManagement_Tab : BaseTab
     {

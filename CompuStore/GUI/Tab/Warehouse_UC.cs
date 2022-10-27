@@ -1,5 +1,6 @@
 ﻿using CompuStore.Database.Models;
 using CompuStore.GUI;
+using CompuStore.GUI.Forms.Warehouse;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CompuStore.Tab.Warehouse
+namespace CompuStore.Tab
 {
     public partial class Warehouse_UC : BaseTab
     {
