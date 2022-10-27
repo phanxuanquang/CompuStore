@@ -98,7 +98,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "StaffManagement_Tab";
-            this.Load += new System.EventHandler(this.StaffManagement_Tab_Load);
             ((System.ComponentModel.ISupportInitialize)(this.sTAFFBindingSource)).EndInit();
             this.ResumeLayout(false);
 

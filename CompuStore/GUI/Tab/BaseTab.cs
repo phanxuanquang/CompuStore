@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CompuStore.Database.Models;
+using CompuStore.Database.Services;
+using CompuStore.GUI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,19 +16,14 @@ namespace CompuStore
     public partial class BaseTab : UserControl
     {
         protected BackgroundWorker backgroundWorker = null;
+        protected Dictionary<string, string> listItemViews = new Dictionary<string, string>();
         public BaseTab()
         {
+            
             InitializeComponent();
         }
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams handleParam = base.CreateParams;
-                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
-                return handleParam;
-            }
-        }
+
+
 
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
