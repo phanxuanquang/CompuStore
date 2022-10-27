@@ -17,6 +17,12 @@ namespace CompuStore.Database.Services
 
         public List<INVOICE> GetListInvoiceOfStaff(string idStaff)
         {
+            return null;
+        }
+
+        public List<INVOICE> GetINVOICEs()
+        {
+            return DataProvider.Instance.Database.INVOICEs.ToList();
         }
 
         public bool SaveInvoiceHasCusToDB(List<PRODUCT> listProduct, int idCustomer, int idStaff, DateTime invoiceDate, double vat, string idStore = null)
