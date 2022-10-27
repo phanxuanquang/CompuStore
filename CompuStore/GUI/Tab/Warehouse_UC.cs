@@ -313,7 +313,7 @@ namespace CompuStore.Tab
                         COMMON_SPECS commonSpecs = Database.Services.CommonSpecsServices.Instance.GetCommonSpecsByNameID(nameIdCommonSpecs);
                         if (commonSpecs != null)
                         {
-                            DetailInvoiceImportWarehouse_Form form = new DetailInvoiceImportWarehouse_Form(commonSpecs);
+                            BaseDetailInvoiceImportWarehouse_Form form = new EditDetailInvoiceImportWarehouse_Form(commonSpecs);
                             form.ShowDialog();
                         }
                         break;

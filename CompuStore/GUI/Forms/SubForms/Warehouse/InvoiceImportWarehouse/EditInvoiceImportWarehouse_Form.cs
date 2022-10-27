@@ -15,12 +15,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
     {
         private IMPORT_WAREHOUSE importWarehouse = null;
         BindingList<CommonSpecsCustom> bindingTable = null;
-        BindingList<DistributorCustom> bindingDistributor = null;
-        BindingList<StoreCustom> bindingStore = null;
         ImportWarehouseCustom convertImportWarehouse = null;
         List<CommonSpecsGroup<DETAIL_SPECS>> commonSpecsGroups = null;
 
-        #region Defind Custom Model
+        #region Implement interface
         private class ImportWarehouseCustom
         {
             public int IDImportWarehouse { get; set; }
@@ -191,30 +189,11 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             TableData_DataGridView.CellDoubleClick += TableData_DataGridView_CellDoubleClick;
         }
 
-        private Task LoadingData(IProgress<int> progress)
+        #region Loading data
+        private Task LoadingData(IProgress<bool> progress)
         {
             return Task.Factory.StartNew(() =>
             {
-                IQueryable<DISTRIBUTOR> distributorQueryable = Database.DataProvider.Instance.Database.DISTRIBUTORs;
-                foreach (DISTRIBUTOR distributor in distributorQueryable)
-                {
-                    if (bindingDistributor != null)
-                    {
-                        bindingDistributor.Add(DistributorCustom.Convert(distributor));
-                    }
-                }
-
-                IQueryable<STORE> storeQueryable = Database.DataProvider.Instance.Database.STOREs;
-                foreach (STORE store in storeQueryable)
-                {
-                    if (bindingStore != null)
-                    {
-                        bindingStore.Add(StoreCustom.Convert(store));
-                    }
-                }
-
-                progress.Report(0);
-
                 if (importWarehouse != null)
                 {
                     convertImportWarehouse = ImportWarehouseCustom.Convert(importWarehouse);
@@ -238,46 +217,29 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     }
                 }
 
-                progress.Report(1);
+                progress.Report(true);
             });
         }
 
         private void InvoiceImportWarehouse_Form_Load(object sender, EventArgs e)
         {
             bindingTable = new BindingList<CommonSpecsCustom>();
-            bindingStore = new BindingList<StoreCustom>();
-            bindingDistributor = new BindingList<DistributorCustom>();
             commonSpecsGroups = new List<CommonSpecsGroup<DETAIL_SPECS>>();
             TableData_DataGridView.DataSource = bindingTable;
 
-            Progress<int> progress = new Progress<int>();
+            Progress<bool> progress = new Progress<bool>();
             Waiting_Form waiting = new Waiting_Form();
             Task runLoading = LoadingData(progress);
 
-            const int stopWaitingCoutner = 1;
-
             waiting.FormClosed += (owner, ev) =>
             {
-                Distributor_Combobox.DataSource = bindingDistributor;
-                Distributor_Combobox.ValueMember = "ID";
-                Distributor_Combobox.DisplayMember = "Name";
-
-                ImportToStore_Combobox.DataSource = bindingStore;
-                ImportToStore_Combobox.ValueMember = "ID";
-                ImportToStore_Combobox.DisplayMember = "Name";
-
                 if (convertImportWarehouse != null)
                 {
                     Distributor_Combobox.SelectedValue = convertImportWarehouse.IDDistributor;
                     DateTimeImportWarehouse_DateTimePicker.Value = convertImportWarehouse.ImportDate.Value;
                     ImportToStore_Combobox.SelectedValue = convertImportWarehouse.IDStore;
                     TotalImportWarehouse_Value.Text = convertImportWarehouse.Total.ToString();
-                    StaffImport_Value.Text = string.Format("{0} | {1}", convertImportWarehouse.NameStaff, convertImportWarehouse.NameIDStaff);
                     IDImportWarehouse_Value.Text = convertImportWarehouse.NameIDImportWarehouse;
-                }
-                else
-                {
-                    StaffImport_Value.Text = string.Format("{0} | {1}", LoginServices.Instance.CurrentStaff.INFOR.NAME, LoginServices.Instance.CurrentStaff.NAME_ID);
                 }
             };
 
@@ -285,7 +247,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
             progress.ProgressChanged += (owner, value) =>
             {
-                if (value >= stopWaitingCoutner && !waiting.IsDisposed && waiting.shown)
+                if (value && !waiting.IsDisposed && waiting.shown)
                 {
                     waiting.Close();
                 }
@@ -293,6 +255,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
             waiting.ShowDialog(this);
         }
+        #endregion
 
         private void TableData_DataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -300,7 +263,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             COMMON_SPECS commonSpecs = Database.Services.CommonSpecsServices.Instance.GetCommonSpecsByNameID(nameIdCommonSpecs);
             if (commonSpecs != null)
             {
-                DetailInvoiceImportWarehouse_Form form = new DetailInvoiceImportWarehouse_Form(commonSpecs);
+                BaseDetailInvoiceImportWarehouse_Form form = new EditDetailInvoiceImportWarehouse_Form(commonSpecs);
                 form.ShowDialog();
             }
         }

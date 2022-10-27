@@ -13,11 +13,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
     public class AddInvoiceImportWarehouse_Form : BaseInvoiceImportWarehouse_Form
     {
-        BindingList<CommonSpecsCustom> bindingTable = null;
-        BindingList<DistributorCustom> bindingDistributor = null;
-        BindingList<StoreCustom> bindingStore = null;
-        List<CommonSpecsGroup<ModelProduct>> commonSpecsGroups = null;
-
+        #region Implement interface in base class
         private class AddInvoiceCommonSpecsGroup : CommonSpecsGroup<ModelProduct>
         {
             List<ModelProduct> _detailSpecs;
@@ -130,79 +126,25 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 }
             }
         }
+        #endregion
+
+        BindingList<CommonSpecsCustom> bindingTable = null;
+        List<CommonSpecsGroup<ModelProduct>> commonSpecsGroups = null;
 
         public AddInvoiceImportWarehouse_Form()
         {
             AddProductByExcel_Button.Click += AddProductByExcel_Button_Click;
-            Load += InvoiceImportWarehouse_Form_Load;
             TableData_DataGridView.CellDoubleClick += TableData_DataGridView_CellDoubleClick;
+            Load += AddInvoiceImportWarehouse_Form_Load;
         }
 
-        private Task LoadingData(IProgress<int> progress)
-        {
-            return Task.Factory.StartNew(() =>
-            {
-                IQueryable<DISTRIBUTOR> distributorQueryable = Database.DataProvider.Instance.Database.DISTRIBUTORs;
-                foreach (DISTRIBUTOR distributor in distributorQueryable)
-                {
-                    if (bindingDistributor != null)
-                    {
-                        bindingDistributor.Add(DistributorCustom.Convert(distributor));
-                    }
-                }
-
-                IQueryable<STORE> storeQueryable = Database.DataProvider.Instance.Database.STOREs;
-                foreach (STORE store in storeQueryable)
-                {
-                    if (bindingStore != null)
-                    {
-                        bindingStore.Add(StoreCustom.Convert(store));
-                    }
-                }
-
-                progress.Report(0);
-            });
-        }
-
-        private void InvoiceImportWarehouse_Form_Load(object sender, EventArgs e)
+        #region Add table binding
+        private void AddInvoiceImportWarehouse_Form_Load(object sender, EventArgs e)
         {
             bindingTable = new BindingList<CommonSpecsCustom>();
-            bindingStore = new BindingList<StoreCustom>();
-            bindingDistributor = new BindingList<DistributorCustom>();
-            commonSpecsGroups = new List<CommonSpecsGroup<ModelProduct>>();
             TableData_DataGridView.DataSource = bindingTable;
-
-            Progress<int> progress = new Progress<int>();
-            Waiting_Form waiting = new Waiting_Form();
-            Task runLoading = LoadingData(progress);
-
-            const int stopWaitingCoutner = 1;
-
-            waiting.FormClosed += (owner, ev) =>
-            {
-                Distributor_Combobox.DataSource = bindingDistributor;
-                Distributor_Combobox.ValueMember = "ID";
-                Distributor_Combobox.DisplayMember = "Name";
-
-                ImportToStore_Combobox.DataSource = bindingStore;
-                ImportToStore_Combobox.ValueMember = "ID";
-                ImportToStore_Combobox.DisplayMember = "Name";
-
-                StaffImport_Value.Text = string.Format("{0} | {1}", LoginServices.Instance.CurrentStaff.INFOR.NAME, LoginServices.Instance.CurrentStaff.NAME_ID);
-            };
-
-            runLoading.GetAwaiter().OnCompleted(() => waiting.Close());
-
-            progress.ProgressChanged += (owner, value) =>
-            {
-                if (value >= stopWaitingCoutner && !waiting.IsDisposed && waiting.shown)
-                {
-                    waiting.Close();
-                }
-            };
-
-            waiting.ShowDialog(this);
         }
+        #endregion
 
         private void TableData_DataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -210,8 +152,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             CommonSpecsGroup<ModelProduct> commonSpecs = commonSpecsGroups.FirstOrDefault(item => item.Represent.Serial == nameIdCommonSpecs);
             if (commonSpecs != null)
             {
-                /*DetailInvoiceImportWarehouse_Form form = new DetailInvoiceImportWarehouse_Form(commonSpecs);
-                form.ShowDialog();*/
+                BaseDetailInvoiceImportWarehouse_Form form = new AddDetailInvoiceImportWarehouse_Form(commonSpecs.detailSpecs.ToList());
+                form.ShowDialog();
             }
         }
 
@@ -241,7 +183,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     item.Bluetooth
                 }).Select(item => new AddInvoiceCommonSpecsGroup(item.ToList())).ToList<CommonSpecsGroup<ModelProduct>>();
 
-                foreach(CommonSpecsGroup<ModelProduct> item in commonSpecsGroups)
+                foreach (CommonSpecsGroup<ModelProduct> item in commonSpecsGroups)
                 {
                     bindingTable.Add(new AddInvoiceCommonSpecs(item));
                 }

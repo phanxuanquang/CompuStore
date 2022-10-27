@@ -14,6 +14,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
     public partial class BaseInvoiceImportWarehouse_Form : Form
     {
+        #region Interface
         protected interface CommonSpecsGroup<TModel> where TModel : class
         {
             double maxTotal { get;}
@@ -78,6 +79,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 return result;
             }
         }
+        #endregion
 
         private static readonly Dictionary<string, string> translater = new Dictionary<string, string> {
             { "NameCommonSpecs", "Tên sản phẩm" },
@@ -86,16 +88,76 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             { "ReleaseDate", "Năm ra mắt" },
             { "Quantity", "Số lượng|Số lượng sản phẩm nhập" },
             { "RangeTotal", "Giá tiền|Khoảng giá từ cấu hình thấp đến cao nhất" }};
+        BindingList<DistributorCustom> bindingDistributor = null;
+        BindingList<StoreCustom> bindingStore = null;
 
         public BaseInvoiceImportWarehouse_Form()
         {
             InitializeComponent();
             TableData_DataGridView.DataSource = typeof(CommonSpecsCustom);
+            Load += BaseInvoiceImportWarehouse_Form_Load;
         }
 
-        private void Exit_Button_Click(object sender, EventArgs e)
+        #region Loading data
+        private Task LoadingData(IProgress<bool> progress)
         {
-            this.Close();
+            return Task.Factory.StartNew(() =>
+            {
+                IQueryable<DISTRIBUTOR> distributorQueryable = Database.DataProvider.Instance.Database.DISTRIBUTORs;
+                foreach (DISTRIBUTOR distributor in distributorQueryable)
+                {
+                    if (bindingDistributor != null)
+                    {
+                        bindingDistributor.Add(DistributorCustom.Convert(distributor));
+                    }
+                }
+
+                IQueryable<STORE> storeQueryable = Database.DataProvider.Instance.Database.STOREs;
+                foreach (STORE store in storeQueryable)
+                {
+                    if (bindingStore != null)
+                    {
+                        bindingStore.Add(StoreCustom.Convert(store));
+                    }
+                }
+
+                progress.Report(true);
+            });
+        }
+
+        private void BaseInvoiceImportWarehouse_Form_Load(object sender, EventArgs e)
+        {
+            bindingStore = new BindingList<StoreCustom>();
+            bindingDistributor = new BindingList<DistributorCustom>();
+
+            Progress<bool> progress = new Progress<bool>();
+            Waiting_Form waiting = new Waiting_Form();
+            Task runLoading = LoadingData(progress);
+
+            waiting.FormClosed += (owner, ev) =>
+            {
+                Distributor_Combobox.DataSource = bindingDistributor;
+                Distributor_Combobox.ValueMember = "ID";
+                Distributor_Combobox.DisplayMember = "Name";
+
+                ImportToStore_Combobox.DataSource = bindingStore;
+                ImportToStore_Combobox.ValueMember = "ID";
+                ImportToStore_Combobox.DisplayMember = "Name";
+
+                StaffImport_Value.Text = string.Format("{0} | {1}", LoginServices.Instance.CurrentStaff.INFOR.NAME, LoginServices.Instance.CurrentStaff.NAME_ID);
+            };
+
+            runLoading.GetAwaiter().OnCompleted(() => waiting.Close());
+
+            progress.ProgressChanged += (owner, value) =>
+            {
+                if (value && !waiting.IsDisposed && waiting.shown)
+                {
+                    waiting.Close();
+                }
+            };
+
+            waiting.ShowDialog(this);
         }
 
         private void TableData_DataGridView_DataSourceChanged(object sender, EventArgs e)
@@ -124,6 +186,12 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 }
             }
             grid.ResumeLayout(true);
+        }
+        #endregion
+
+        private void Exit_Button_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
