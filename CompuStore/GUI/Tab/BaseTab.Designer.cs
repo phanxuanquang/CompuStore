@@ -35,9 +35,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DataTable = new Guna.UI2.WinForms.Guna2DataGridView();
             this.SearchBox = new Guna.UI2.WinForms.Guna2TextBox();
-            this.Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.Button3 = new Guna.UI2.WinForms.Guna2Button();
-            this.Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.AddNew_Buttom = new Guna.UI2.WinForms.Guna2Button();
+            this.ViewDetail_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.Delete_Button = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -217,9 +217,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.SearchBox);
-            this.Controls.Add(this.Button2);
-            this.Controls.Add(this.Button3);
-            this.Controls.Add(this.Button1);
+            this.Controls.Add(this.AddNew_Buttom);
+            this.Controls.Add(this.ViewDetail_Button);
+            this.Controls.Add(this.Delete_Button);
             this.Controls.Add(this.DataTable);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "BaseTab";
@@ -233,8 +233,8 @@
 
         protected Guna.UI2.WinForms.Guna2DataGridView DataTable;
         protected Guna.UI2.WinForms.Guna2TextBox SearchBox;
-        protected Guna.UI2.WinForms.Guna2Button Button2;
-        protected Guna.UI2.WinForms.Guna2Button Button3;
-        protected Guna.UI2.WinForms.Guna2Button Button1;
+        protected Guna.UI2.WinForms.Guna2Button ViewDetail_Button;
+        protected Guna.UI2.WinForms.Guna2Button AddNew_Buttom;
+        protected Guna.UI2.WinForms.Guna2Button Delete_Button;
     }
 }

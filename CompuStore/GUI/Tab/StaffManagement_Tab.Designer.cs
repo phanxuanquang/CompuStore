@@ -49,45 +49,45 @@
             // 
             // ViewDetail_Button
             // 
-            this.Button2.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
-            this.Button2.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Button2.CheckedState.Parent = this.Button2;
-            this.Button2.CustomImages.Parent = this.Button2;
-            this.Button2.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.Button2.HoverState.Parent = this.Button2;
-            this.Button2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Button2.ShadowDecoration.Parent = this.Button2;
-            this.Button2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Button2.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
-            this.Button2.Click += new System.EventHandler(this.ViewDetail_Button_Click);
+            this.ViewDetail_Button.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
+            this.ViewDetail_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.ViewDetail_Button.CheckedState.Parent = this.ViewDetail_Button;
+            this.ViewDetail_Button.CustomImages.Parent = this.ViewDetail_Button;
+            this.ViewDetail_Button.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.ViewDetail_Button.HoverState.Parent = this.ViewDetail_Button;
+            this.ViewDetail_Button.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ViewDetail_Button.ShadowDecoration.Parent = this.ViewDetail_Button;
+            this.ViewDetail_Button.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.ViewDetail_Button.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
+            this.ViewDetail_Button.Click += new System.EventHandler(this.ViewDetail_Button_Click);
             // 
             // Delete_Button
             // 
-            this.Button3.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
-            this.Button3.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Button3.CheckedState.Parent = this.Button3;
-            this.Button3.CustomImages.Parent = this.Button3;
-            this.Button3.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.Button3.HoverState.Parent = this.Button3;
-            this.Button3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Button3.ShadowDecoration.Parent = this.Button3;
-            this.Button3.Text = "Thu hồi quyền";
-            this.Button3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Button3.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
+            this.Delete_Button.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
+            this.Delete_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Delete_Button.CheckedState.Parent = this.Delete_Button;
+            this.Delete_Button.CustomImages.Parent = this.Delete_Button;
+            this.Delete_Button.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.Delete_Button.HoverState.Parent = this.Delete_Button;
+            this.Delete_Button.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Delete_Button.ShadowDecoration.Parent = this.Delete_Button;
+            this.Delete_Button.Text = "Thu hồi quyền";
+            this.Delete_Button.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Delete_Button.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
             // 
             // AddNew_Buttom
             // 
-            this.Button1.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
-            this.Button1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Button1.CheckedState.Parent = this.Button1;
-            this.Button1.CustomImages.Parent = this.Button1;
-            this.Button1.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.Button1.HoverState.Parent = this.Button1;
-            this.Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Button1.ShadowDecoration.Parent = this.Button1;
-            this.Button1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Button1.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
-            this.Button1.Click += new System.EventHandler(this.AddNew_Buttom_Click);
+            this.AddNew_Buttom.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
+            this.AddNew_Buttom.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.AddNew_Buttom.CheckedState.Parent = this.AddNew_Buttom;
+            this.AddNew_Buttom.CustomImages.Parent = this.AddNew_Buttom;
+            this.AddNew_Buttom.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.AddNew_Buttom.HoverState.Parent = this.AddNew_Buttom;
+            this.AddNew_Buttom.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AddNew_Buttom.ShadowDecoration.Parent = this.AddNew_Buttom;
+            this.AddNew_Buttom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.AddNew_Buttom.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
+            this.AddNew_Buttom.Click += new System.EventHandler(this.AddNew_Buttom_Click);
             // 
             // sTAFFBindingSource
             // 
