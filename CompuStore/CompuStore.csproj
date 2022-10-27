@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Database\Services\CommonSpecsServices.cs" />
+    <Compile Include="Database\Services\InvoiceServices.cs" />
     <Compile Include="Database\Services\UniqueSpecsServices.cs" />
     <Compile Include="GUI\Form\SubForm\AddInvoice_Form.cs">
       <SubType>Form</SubType>
@@ -303,6 +304,7 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\CompuStore.Database.Models.INFOR.datasource" />
+    <None Include="Properties\DataSources\CompuStore.Database.Models.INVOICE.datasource" />
     <None Include="Properties\DataSources\CompuStore.Database.Models.STAFF.datasource" />
     <None Include="Properties\DataSources\CompuStore.Database.Models.STAFFROLE.datasource" />
     <None Include="Properties\Settings.settings">

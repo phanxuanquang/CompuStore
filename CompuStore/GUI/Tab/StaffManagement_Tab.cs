@@ -14,12 +14,13 @@ namespace CompuStore
     using CompuStore.GUI;
     using CompuStore.ImportData;
     using Database.Models;
+    using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
     using System.Threading;
     using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
     public partial class StaffManagement_Tab : BaseTab
     {
-       
+        
         public StaffManagement_Tab()
         {
             this.DataTable.AutoGenerateColumns = false;
@@ -28,41 +29,9 @@ namespace CompuStore
             this.Load += StaffManagement_Tab_Load;
         }
 
-        #region Binding
-        private void LoadFromDB_DoWork(object sender, DoWorkEventArgs e)
-        {
-            // e.Result = (Database.ClassServices.Instance.GetClasss().Select(item => item.CLASSNAME).Distinct().ToArray(), Database.DataProvider.Instance.Database.CLASSes.Select(item => item.SCHOOLYEAR).Distinct().ToArray());
-        }
-        private void LoadFromDB_RunrWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            /*(string[], string[]) results = ((string[], string[]))(e.Result);
-            Class_ComboBox.Items.AddRange(results.Item1);
-            SchoolYear_ComboBox.Items.AddRange(results.Item2);*/
-
-            /*Class_ComboBox.SelectedIndex = 0;
-            SchoolYear_ComboBox.SelectedIndex = 0;*/
-            
-            //LoadToDataTable(GetListStudent(Class_ComboBox.SelectedItem.ToString(), SchoolYear_ComboBox.SelectedItem.ToString()));
-            //loadingWindow.Close();
-        }
-
-        public Task LoadDB(IProgress<bool> progress)
-        {
-            return Task.Factory.StartNew(() =>
-            {
-                BindingStaff(GetListStaff());
-                progress.Report(true);
-            });
-            /*Action GetData = () =>
-            {
-                BindingStaff(GetListStaff());
-            };
-            Task task = new Task(GetData);
-            task.Start(); // chạy thread
-            return task;*/
-        }
         private void StaffManagement_Tab_Load(object sender, EventArgs e)
         {
+            LoadView();
             Progress<bool> progress = new Progress<bool>();
             Waiting_Form waiting = new Waiting_Form();
             Task runLoading = LoadDB(progress);
@@ -81,7 +50,34 @@ namespace CompuStore
 
             waiting.ShowDialog(this);
         }
-        private void run(List<STAFF> sTAFFs)
+
+        #region Binding
+
+        public Task LoadDB(IProgress<bool> progress)
+        {
+            return Task.Factory.StartNew(() =>
+            {
+                Run(GetListView());
+                progress.Report(true);
+            });
+
+        }
+        private void LoadView()
+        {
+            listItemViews.Add("Id", "Mã nhân viên");
+            listItemViews.Add("StaffName", "Họ và tên");
+            listItemViews.Add("PhoneNum", "Số điện thoại");
+            listItemViews.Add("Role", "Chức vụ");
+            listItemViews.Add("Status", "Trình trạng");
+            foreach (var item in listItemViews)
+            {
+                DataGridViewTextBoxColumn dataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+                dataGridViewTextBoxColumn.Name = item.Key;
+                dataGridViewTextBoxColumn.HeaderText = item.Value;
+                DataTable.Columns.Add(dataGridViewTextBoxColumn);
+            }
+        }
+        private void View(List<STAFF> sTAFFs)
         {
             sTAFFBindingSource.ResetBindings(true);
             sTAFFBindingSource.DataSource = sTAFFs;
@@ -98,83 +94,26 @@ namespace CompuStore
                 }
             }
         }
-        public void BindingStaff(List<STAFF> sTAFFs)
+        public void Run(List<STAFF> sTAFFs)
         {
             if (DataTable.InvokeRequired)
             {
-                DataTable.Invoke(new Action(() => run(sTAFFs)));
+                DataTable.Invoke(new Action(() => View(sTAFFs)));
             }
             else
             {
-                run(sTAFFs);
+                View(sTAFFs);
             }
-            
+
         }
-        private List<STAFF> GetListStaff()
+        private List<STAFF> GetListView()
         {
-            List<STAFF>  staffList = StaffServices.Instance.GetStaffs();
-            /*if (className == "Mọi lớp")
-            {
-                if (schoolYear == "Mọi niên khóa")
-                {
-                    var allClass = Database.DataProvider.Instance.Database.CLASSes.ToList();
-                    foreach (var aClass in allClass)
-                    {
-                        var listStudent = Database.ClassServices.Instance.GetListStudyingOfClass(aClass.CLASSNAME, aClass.SCHOOLYEAR);
-                        foreach (var student in listStudent)
-                        {
-                            //DataTable.Rows.Add(student.CLASS.SCHOOLYEAR, student.ID.ToString().Substring(0, 7).ToUpper(), student.CLASS.CLASSNAME, student.INFOR.FIRSTNAME + " " + student.INFOR.LASTNAME, student.Status);
-                            students.Add(student);
-                        }
-                    }
-                }
-                else
-                {
+            List<STAFF> staffList = StaffServices.Instance.GetStaffs();
 
-                    var allClass = Database.DataProvider.Instance.Database.CLASSes.Where(item => item.SCHOOLYEAR == schoolYear).ToList();
-                    foreach (var aClass in allClass)
-                    {
-                        var listStudent = Database.ClassServices.Instance.GetListStudyingOfClass(aClass.CLASSNAME, aClass.SCHOOLYEAR);
-                        foreach (var student in listStudent)
-                        {
-                            //DataTable.Rows.Add(student.CLASS.SCHOOLYEAR, student.ID.ToString().Substring(0, 7).ToUpper(), student.CLASS.CLASSNAME, student.INFOR.FIRSTNAME + " " + student.INFOR.LASTNAME, student.Status);
-                            students.Add(student);
-                        }
-                    }
-                }
-            }
-            else
-            {
-                if (schoolYear == "Mọi niên khóa")
-                {
-                    var allClass = Database.DataProvider.Instance.Database.CLASSes.Where(item => item.CLASSNAME == Class_ComboBox.SelectedItem.ToString()).ToList();
-                    foreach (var aClass in allClass)
-                    {
-                        var listStudent = Database.ClassServices.Instance.GetListStudyingOfClass(aClass.CLASSNAME, aClass.SCHOOLYEAR);
-                        foreach (var student in listStudent)
-                        {
-                            //DataTable.Rows.Add(student.CLASS.SCHOOLYEAR, student.ID.ToString().Substring(0, 7).ToUpper(), student.CLASS.CLASSNAME, student.INFOR.FIRSTNAME + " " + student.INFOR.LASTNAME, student.Status);
-                            students.Add(student);
-                        }
-                    }
-                }
-                else
-                {
-
-                    //var allClass = Database.ClassServices.Instance.GetClassByClassNameAndSchoolYear(className,schoolYear);
-
-                    {
-                        var listStudent = Database.ClassServices.Instance.GetListStudyingOfClass(className, schoolYear);
-                        foreach (var student in listStudent)
-                        {
-                            //DataTable.Rows.Add(student.CLASS.SCHOOLYEAR, student.ID, student.CLASS.CLASSNAME, student.FIRSTNAME + " " + student.LASTNAME, student.Status);
-                            students.Add(student);
-                        }
-                    }
-                }
-            }*/
             return staffList;
         }
+
+
         #endregion
 
         #region Buttons
@@ -182,13 +121,13 @@ namespace CompuStore
         {
             StaffEdit_Form staffEdit_Form = new StaffEdit_Form(true, "THÊM NHÂN VIÊN", null);
             staffEdit_Form.ShowDialog();
-            BindingStaff(GetListStaff());
+            Run(GetListView());
         }
         private void ViewDetail_Button_Click(object sender, EventArgs e)
         {
             StaffEdit_Form staffEdit_Form = new StaffEdit_Form(false, "THÔNG TIN NHÂN VIÊN", sTAFFBindingSource.Current);
             staffEdit_Form.ShowDialog();
-            BindingStaff(GetListStaff());
+            Run(GetListView());
         }
         #endregion
     }
