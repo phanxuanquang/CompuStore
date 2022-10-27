@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompuStore.Database.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,6 @@ namespace CompuStore.Database.Services
 
         public List<INVOICE> GetListInvoiceOfStaff(string idStaff)
         {
-            return DataProvider.Instance.Database.INVOICEs.Where(invoice => invoice.NAME_ID.ToString() == idStaff).ToList();
         }
 
         public bool SaveInvoiceHasCusToDB(List<PRODUCT> listProduct, int idCustomer, int idStaff, DateTime invoiceDate, double vat, string idStore = null)

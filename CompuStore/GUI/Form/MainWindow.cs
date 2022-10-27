@@ -12,8 +12,6 @@ namespace CompuStore
 {
     public partial class MainWindow : Form
     {
-        Tab.Warehouse.Warehouse_UC warehouse_UC;
-
         BaseTab staffManage_Tab, salesManage_Tab, serviceManage_Tab, storageManage_Tab;
         public MainWindow()
         {
@@ -76,11 +74,11 @@ namespace CompuStore
         private void StorageManage_Button_Click(object sender, EventArgs e)
         {
             SetHeaderState_From(StorageManage_Button);
-            if (warehouse_UC == null)
+            if (storageManage_Tab == null)
             {
-                warehouse_UC = new Tab.Warehouse.Warehouse_UC();
+                storageManage_Tab = new Tab.Warehouse.Warehouse_UC();
             }
-            LoadTab(warehouse_UC);
+            LoadTab(storageManage_Tab);
         }
 
         private void Exit_Button_Click(object sender, EventArgs e)

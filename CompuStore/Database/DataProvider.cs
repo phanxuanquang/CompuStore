@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CompuStore.Database
 {
-    using Models;
+    using Database.Models;
     public class DataProvider
     {
         private static DataProvider instance;

@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // SearchBox
@@ -91,15 +94,22 @@
             this.AddNew_Buttom.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
             this.AddNew_Buttom.Click += new System.EventHandler(this.AddNew_Buttom_Click);
             // 
+            // invoiceBindingSource
+            // 
+            this.invoiceBindingSource.DataSource = typeof(CompuStore.Database.Models.INVOICE);
+            // 
             // SaleManagement_Tab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "SaleManagement_Tab";
+            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.BindingSource invoiceBindingSource;
     }
 }

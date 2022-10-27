@@ -10,14 +10,18 @@ using System.Windows.Forms;
 
 namespace CompuStore.Tab.Warehouse
 {
-    public partial class Warehouse_UC : UserControl
+    public partial class Warehouse_UC : BaseTab
     {
         class ImportWarehouseCustom
         {
             public int id;
-            public string nameID;
-            public DateTime? importDate;
-            public double total;
+
+            public string NameID { get; set; }
+
+            public DateTime? ImportDate { get; set; }
+
+            public double Total { get; set; }
+
             public int distributorID;
             public string distributorName;
 
@@ -30,43 +34,9 @@ namespace CompuStore.Tab.Warehouse
                 }
             }
 
-            public string NAME_ID
-            {
-                get
-                {
-                    return nameID;
-                }
-                set
-                {
-                    nameID = value;
-                }
-            }
+            public int Quantity { get; set; }
 
-            public DateTime? IMPORT_DATE
-            {
-                get
-                {
-                    return importDate;
-                }
-                set
-                {
-                    importDate = value;
-                }
-            }
-
-            public double TOTAL
-            {
-                get
-                {
-                    return total;
-                }
-                set
-                {
-                    total = value;
-                }
-            }
-
-            public string DISTRIBUTOR_NAME
+            public string DistributorName
             {
                 get
                 {
@@ -81,10 +51,11 @@ namespace CompuStore.Tab.Warehouse
                 {
                     result = new ImportWarehouseCustom();
                     result.DISTRIBUTOR = model.DISTRIBUTOR;
-                    result.IMPORT_DATE = model.IMPORT_DATE;
-                    result.NAME_ID = model.NAME_ID;
-                    result.TOTAL = model.TOTAL;
+                    result.ImportDate = model.IMPORT_DATE;
+                    result.NameID = model.NAME_ID;
+                    result.Total = model.TOTAL;
                     result.id = model.ID;
+                    result.Quantity = model.DETAIL_IMPORT_WAREHOUSE.Count;
                 }
                 return result;
             }
@@ -184,9 +155,10 @@ namespace CompuStore.Tab.Warehouse
 
         private BindingList<ImportWarehouseCustom> importWarehouseBinding;
         private static readonly Dictionary<string, string> columnVisiableImportWarehouse = new Dictionary<string, string> {
-            { "NAME_ID", "Mã nhập hàng" },
-            { "IMPORT_DATE", "Ngày nhập hàng" },
-            { "TOTAL", "Tổng giá trị" },
+            { "NameID", "Mã nhập hàng" },
+            { "ImportDate", "Ngày nhập hàng" },
+            { "Total", "Tổng giá trị" },
+            { "Quantity", "Số lượng" },
             { "DISTRIBUTOR_NAME", "Nhà phân phối" } };
         private BindingList<CommonSpecsCustom> commonSpecsBinding;
         private static readonly Dictionary<string, string> columnVisiableCommonSpecs = new Dictionary<string, string> {
@@ -204,6 +176,14 @@ namespace CompuStore.Tab.Warehouse
 
         public Warehouse_UC()
         {
+            AddNew_Buttom.Text = "Xem hóa đơn nhập hàng";
+            ViewDetail_Button.Text = "Xem sản phẩm";
+            Delete_Button.Text = "Nhập hàng";
+            AddNew_Buttom.Click += SeeInvoiceImportWarehouse_Click;
+            ViewDetail_Button.Click += SeeProduct_Click;
+            Delete_Button.Click += ImportWarehouse_Click;
+            DataTable.DataSourceChanged += DataTable_DataSourceChanged;
+            DataTable.CellDoubleClick += DataTable_CellDoubleClick;
             InitializeComponent();
         }
 
@@ -260,16 +240,16 @@ namespace CompuStore.Tab.Warehouse
 
         private void AddBindingToDataGridView(IBindingList binding)
         {
-            if (TableData_DataGridView.InvokeRequired)
+            if (DataTable.InvokeRequired)
             {
-                TableData_DataGridView.Invoke(new Action(() =>
+                DataTable.Invoke(new Action(() =>
                 {
-                    TableData_DataGridView.DataSource = binding;
+                    DataTable.DataSource = binding;
                 }));
             }
             else
             {
-                TableData_DataGridView.DataSource = binding;
+                DataTable.DataSource = binding;
             }
         }
 
@@ -298,7 +278,7 @@ namespace CompuStore.Tab.Warehouse
             waiting.ShowDialog(this);
         }
 
-        private void TableData_DataGridView_DataSourceChanged(object sender, EventArgs e)
+        private void DataTable_DataSourceChanged(object sender, EventArgs e)
         {
             DataGridView grid = sender as DataGridView;
             grid.SuspendLayout();
@@ -321,7 +301,7 @@ namespace CompuStore.Tab.Warehouse
             grid.ResumeLayout(true);
         }
 
-        private void TableData_DataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void DataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1)
             {
