@@ -18,7 +18,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CompuStore.GUI.Forms.Warehouse
+namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
     public partial class DetailInvoiceImportWarehouse_Form : Form
     {
@@ -300,7 +300,7 @@ namespace CompuStore.GUI.Forms.Warehouse
                 if (model != null)
                 {
                     ModelProductCustom group = groupBinding.Find(item => item.product.Equals(model));
-                    DetailSpecsProduct_Form detailSpecs = new DetailSpecsProduct_Form();
+                    BaseDetailSpecsProduct_Form detailSpecs = new BaseDetailSpecsProduct_Form();
                     detailSpecs.ShowDialog(this, group.productsTheSame.ToArray());
                 }
             }

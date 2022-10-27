@@ -9,11 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CompuStore.GUI.Forms.Warehouse
+namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
-    public partial class DetailSpecsProduct_Form : Form
+    public partial class BaseDetailSpecsProduct_Form : Form
     {
-        public DetailSpecsProduct_Form()
+        public BaseDetailSpecsProduct_Form()
         {
             InitializeComponent();
         }

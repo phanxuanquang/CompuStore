@@ -1,66 +1,26 @@
 ﻿using CompuStore.Database.Models;
 using CompuStore.Database.Services;
-using CompuStore.GUI;
 using CompuStore.ImportData;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Linq;
-using System.Reflection.Emit;
-using System.Threading;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CompuStore.GUI.Forms.Warehouse
+namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
-    public partial class InvoiceImportWarehouse_Form : Form
+    public class EditInvoiceImportWarehouse_Form : BaseInvoiceImportWarehouse_Form
     {
         private IMPORT_WAREHOUSE importWarehouse = null;
         BindingList<CommonSpecsCustom> bindingTable = null;
         BindingList<DistributorCustom> bindingDistributor = null;
         BindingList<StoreCustom> bindingStore = null;
         ImportWarehouseCustom convertImportWarehouse = null;
-        List<CommonSpecsGroup> commonSpecsGroups = null;
+        List<CommonSpecsGroup<DETAIL_SPECS>> commonSpecsGroups = null;
 
-        private class DistributorCustom
-        {
-            public int ID { get; set; }
-
-            public string Name { get; set; }
-
-            public static DistributorCustom Convert(DISTRIBUTOR model)
-            {
-                DistributorCustom result = null;
-                if (model != null)
-                {
-                    result = new DistributorCustom();
-                    result.ID = model.ID;
-                    result.Name = model.NAME;
-                }
-                return result;
-            }
-        }
-
-        private class StoreCustom
-        {
-            public int ID { get; set; }
-
-            public string Name { get; set; }
-
-            public static StoreCustom Convert(STORE model)
-            {
-                StoreCustom result = null;
-                if (model != null)
-                {
-                    result = new StoreCustom();
-                    result.ID = model.ID;
-                    result.Name = model.NAME;
-                }
-                return result;
-            }
-        }
-
+        #region Defind Custom Model
         private class ImportWarehouseCustom
         {
             public int IDImportWarehouse { get; set; }
@@ -108,113 +68,127 @@ namespace CompuStore.GUI.Forms.Warehouse
             }
         }
 
-        private class CommonSpecsGroup
+        private class EditInvoiceCommonSpecsGroup : CommonSpecsGroup<DETAIL_SPECS>
         {
-            public double maxTotal
-            {
-                get
-                {
-                    double? min = null;
-                    if (detailSpecs != null)
-                    {
-                        foreach (DETAIL_SPECS detail in detailSpecs)
-                        {
-                            if (detail.PRICE < min || min == null)
-                            {
-                                min = detail.PRICE;
-                            }
-                        }
-                    }
-                    return min == null ? 0.0 : min.Value;
-                }
-            }
+            List<DETAIL_SPECS> _detailSpecs;
 
-            public double minTotal
+            double CommonSpecsGroup<DETAIL_SPECS>.maxTotal
             {
                 get
                 {
                     double? max = null;
-                    if (detailSpecs != null)
+                    foreach (DETAIL_SPECS detail in _detailSpecs)
                     {
-                        foreach (DETAIL_SPECS detail in detailSpecs)
+                        if (detail.PRICE > max || max == null)
                         {
-                            if (detail.PRICE > max || max == null)
-                            {
-                                max = detail.PRICE;
-                            }
+                            max = detail.PRICE;
                         }
                     }
                     return max == null ? 0.0 : max.Value;
                 }
             }
-
-            public List<DETAIL_SPECS> detailSpecs = null;
-
-            public COMMON_SPECS Represent
+            double CommonSpecsGroup<DETAIL_SPECS>.minTotal
             {
                 get
                 {
-                    return detailSpecs?.First().COMMON_SPECS;
+                    double? min = null;
+                    foreach (DETAIL_SPECS detail in _detailSpecs)
+                    {
+                        if (detail.PRICE < min || min == null)
+                        {
+                            min = detail.PRICE;
+                        }
+                    }
+                    return min == null ? 0.0 : min.Value;
                 }
             }
-
-            public CommonSpecsGroup(List<DETAIL_SPECS> detailSpecs)
+            DETAIL_SPECS CommonSpecsGroup<DETAIL_SPECS>.Represent
             {
-                this.detailSpecs = detailSpecs;
+                get => _detailSpecs?.FirstOrDefault();
             }
-        }
 
-        private class CommonSpecsCustom
-        {
-            public int ID;
-
-            public string NameID { get; set; }
-
-            public string NameCommonSpecs { get; set; }
-
-            public string LineUp { get; set; }
-
-            public string Manufacturer { get; set; }
-
-            public DateTime? ReleaseDate { get; set; }
-
-            public int Quantity { get; set; }
-
-            public string RangeTotal { get; set; }
-
-            public static CommonSpecsCustom Convert(CommonSpecsGroup group)
+            public IList<DETAIL_SPECS> detailSpecs
             {
-                CommonSpecsCustom result = null;
-                if (group != null)
+                get => _detailSpecs;
+                set
                 {
-                    COMMON_SPECS common = group.Represent;
-                    if (common != null)
+                    if (value is List<DETAIL_SPECS>)
                     {
-                        result = new CommonSpecsCustom();
-                        result.ID = common.ID;
-                        result.NameID = common.NAME_ID;
-                        LINE_UP lineup = common.LINE_UP;
-                        result.LineUp = lineup.NAME;
-                        result.Manufacturer = lineup.MANUFACTURER;
-                        result.ReleaseDate = common.RELEASED_YEAR;
-                        result.NameCommonSpecs = common.NAME;
-                        result.RangeTotal = string.Format("{0} - {1} {2}", group.minTotal, group.maxTotal, "VNĐ");
-                        result.Quantity = group.detailSpecs.Count;
+                        _detailSpecs = (List<DETAIL_SPECS>)value;
+                    }
+                    else
+                    {
+                        throw new Exception();
                     }
                 }
-                return result;
+            }
+
+            public EditInvoiceCommonSpecsGroup(List<DETAIL_SPECS> detailSpecs)
+            {
+
+                if (detailSpecs != null)
+                {
+                    _detailSpecs = detailSpecs;
+                }
+                else
+                {
+                    throw new ArgumentNullException();
+                }
             }
         }
 
-        public InvoiceImportWarehouse_Form(IMPORT_WAREHOUSE importWarehouse = null)
+        private class EditInvoiceCommonSpecs : CommonSpecsCustom
+        {
+            private int _ID;
+            private string _NameID;
+            private string _NameCommonSpecs;
+            private string _LineUp;
+            private string _Manufacturer;
+            private DateTime? _ReleaseDate;
+            private int _Quantity;
+            private string _RangeTotal;
+
+            int CommonSpecsCustom.ID { get => _ID; set => _ID = value; }
+            string CommonSpecsCustom.NameID { get => _NameID; set => _NameID = value; }
+            string CommonSpecsCustom.NameCommonSpecs { get => _NameCommonSpecs; set => _NameCommonSpecs = value; }
+            string CommonSpecsCustom.LineUp { get => _LineUp; set => _LineUp = value; }
+            string CommonSpecsCustom.Manufacturer { get => _Manufacturer; set => _Manufacturer = value; }
+            DateTime? CommonSpecsCustom.ReleaseDate { get => _ReleaseDate; set => _ReleaseDate = value; }
+            int CommonSpecsCustom.Quantity { get => _Quantity; set => _Quantity = value; }
+            string CommonSpecsCustom.RangeTotal { get => _RangeTotal; set => _RangeTotal = value; }
+
+            public EditInvoiceCommonSpecs(CommonSpecsGroup<DETAIL_SPECS> group)
+            {
+                if (group != null)
+                {
+                    COMMON_SPECS common = group.Represent?.COMMON_SPECS;
+                    if (common != null)
+                    {
+                        _ID = common.ID;
+                        _NameID = common.NAME_ID;
+                        LINE_UP lineup = common.LINE_UP;
+                        _LineUp = lineup.NAME;
+                        _Manufacturer = lineup.MANUFACTURER;
+                        _ReleaseDate = common.RELEASED_YEAR;
+                        _NameCommonSpecs = common.NAME;
+                        _RangeTotal = string.Format("{0} - {1} {2}", group.minTotal, group.maxTotal, "VNĐ");
+                        _Quantity = group.detailSpecs.Count;
+                    }
+                }
+                else
+                {
+                    throw new ArgumentNullException();
+                }
+            }
+        }
+        #endregion
+
+        public EditInvoiceImportWarehouse_Form(IMPORT_WAREHOUSE importWarehouse)
         {
             this.importWarehouse = importWarehouse;
-            InitializeComponent();
-        }
-
-        private void Exit_Button_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            Load += InvoiceImportWarehouse_Form_Load;
+            FormClosing += InvoiceImportWarehouse_Form_FormClosing;
+            TableData_DataGridView.CellDoubleClick += TableData_DataGridView_CellDoubleClick;
         }
 
         private Task LoadingData(IProgress<int> progress)
@@ -244,14 +218,13 @@ namespace CompuStore.GUI.Forms.Warehouse
                 if (importWarehouse != null)
                 {
                     convertImportWarehouse = ImportWarehouseCustom.Convert(importWarehouse);
-                    double minPrice = 0.0, maxPrice = 0.0;
                     IEnumerable<IGrouping<int, DETAIL_SPECS>> groups = importWarehouse.DETAIL_IMPORT_WAREHOUSE.Select(item => item.PRODUCT).Select(item => item.DETAIL_SPECS).GroupBy(item => item.ID_COMMON_SPECS);
                     foreach (IGrouping<int, DETAIL_SPECS> group in groups)
                     {
                         if (commonSpecsGroups != null && bindingTable != null)
                         {
-                            CommonSpecsGroup commonSpecsGroup = new CommonSpecsGroup(group.ToList());
-                            CommonSpecsCustom commonSpecsCustom = CommonSpecsCustom.Convert(commonSpecsGroup);
+                            CommonSpecsGroup<DETAIL_SPECS> commonSpecsGroup = new EditInvoiceCommonSpecsGroup(group.ToList());
+                            CommonSpecsCustom commonSpecsCustom = new EditInvoiceCommonSpecs(commonSpecsGroup);
                             commonSpecsGroups.Add(commonSpecsGroup);
                             if (TableData_DataGridView.InvokeRequired)
                             {
@@ -274,7 +247,7 @@ namespace CompuStore.GUI.Forms.Warehouse
             bindingTable = new BindingList<CommonSpecsCustom>();
             bindingStore = new BindingList<StoreCustom>();
             bindingDistributor = new BindingList<DistributorCustom>();
-            commonSpecsGroups = new List<CommonSpecsGroup>();
+            commonSpecsGroups = new List<CommonSpecsGroup<DETAIL_SPECS>>();
             TableData_DataGridView.DataSource = bindingTable;
 
             Progress<int> progress = new Progress<int>();
@@ -323,7 +296,7 @@ namespace CompuStore.GUI.Forms.Warehouse
 
         private void TableData_DataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string nameIdCommonSpecs = (sender as DataGridView).Rows[e.RowIndex].Cells[0].Value as string;
+            string nameIdCommonSpecs = (sender as DataGridView).Rows[e.RowIndex].Cells["NameID"].Value as string;
             COMMON_SPECS commonSpecs = Database.Services.CommonSpecsServices.Instance.GetCommonSpecsByNameID(nameIdCommonSpecs);
             if (commonSpecs != null)
             {
@@ -332,7 +305,7 @@ namespace CompuStore.GUI.Forms.Warehouse
             }
         }
 
-        private void AddProductByExcel_Button_Click(object sender, EventArgs e)
+        private async void AddProductByExcel_Button_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Tab-seperator values | *.tsv";
@@ -340,8 +313,27 @@ namespace CompuStore.GUI.Forms.Warehouse
             if (openFileDialog.ShowDialog() == DialogResult.OK && openFileDialog.CheckFileExists)
             {
                 ModelProduct[] products = ModelProduct.GetTSV(openFileDialog.FileName);
-                int x = 0;
+                int? storeIDSelected = ImportToStore_Combobox.SelectedValue as int?;
+                int? distributorID = Distributor_Combobox.SelectedValue as int?;
+                if (products != null && storeIDSelected != null && LoginServices.Instance.CurrentStaff != null && distributorID != null)
+                {
+                    STORE store = StoreServices.Instance.GetStoreByID(storeIDSelected.Value);
+                    STAFF staff = LoginServices.Instance.CurrentStaff;
+                    DISTRIBUTOR distributor = DistributorServices.Instance.GetDistributorByID(distributorID.Value);
+                    if (store != null && distributor != null)
+                    {
+                        (IMPORT_WAREHOUSE, List<ModelProduct>) respone = await ImportServices.Instance.Import(products, store, staff, distributor);
+                        importWarehouse = respone.Item1;
+                        MessageBox.Show(string.Format("Chấp nhận {0}/{1}", products.Length - respone.Item2.Count, products.Length));
+                        InvoiceImportWarehouse_Form_Load(null, null);
+                    }
+                }
             }
+        }
+
+        private void InvoiceImportWarehouse_Form_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
         }
     }
 }

@@ -40,7 +40,8 @@ namespace CompuStore.Database.Services
             return new COLOR { COLOR_CODE = product.ColorCode, COLOR_NAME = product.ColorName };
         }
 
-        public DISPLAY_SPECS CreateDisplaySpecsByModelProduct(ModelProduct product) {
+        public DISPLAY_SPECS CreateDisplaySpecsByModelProduct(ModelProduct product)
+        {
             if (product == null) throw new ArgumentNullException();
 
             return new DISPLAY_SPECS
@@ -124,9 +125,14 @@ namespace CompuStore.Database.Services
             {
                 if (product == null) return null;
 
+                LINE_UP model = Instance.CreateLineUpByModelProduct(product);
+
                 return await GetData(DataProvider.Instance.Database.LINE_UP,
-                    item => item.NAME == product.LineUp && item.MANUFACTURER == product.Manufacturer && item.COUNTRY == product.Country,
-                    Instance.CreateLineUpByModelProduct(product)
+                    item =>
+                    item.NAME == model.NAME &&
+                    item.MANUFACTURER == model.MANUFACTURER &&
+                    item.COUNTRY == model.COUNTRY,
+                    model
                     );
             }
 
@@ -134,9 +140,11 @@ namespace CompuStore.Database.Services
             {
                 if (product == null) return null;
 
+                COLOR model = Instance.CreateColorByModelProduct(product);
+
                 return await GetData(DataProvider.Instance.Database.COLORs,
-                    item => item.COLOR_CODE == product.ColorCode && item.COLOR_NAME == product.ColorName,
-                    Instance.CreateColorByModelProduct(product)
+                    item => item.COLOR_CODE == model.COLOR_CODE && item.COLOR_NAME == model.COLOR_NAME,
+                    model
                     );
             }
 

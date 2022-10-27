@@ -1,6 +1,6 @@
 ﻿using CompuStore.Database.Models;
 using CompuStore.GUI;
-using CompuStore.GUI.Forms.Warehouse;
+using CompuStore.GUI.Forms.SubForms.Warehouse;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -223,7 +223,7 @@ namespace CompuStore.Tab
 
         private void ImportWarehouse_Click(object sender, EventArgs e)
         {
-            InvoiceImportWarehouse_Form import = new InvoiceImportWarehouse_Form();
+            BaseInvoiceImportWarehouse_Form import = new AddInvoiceImportWarehouse_Form();
             import.ShowDialog(this);
         }
 
@@ -322,7 +322,7 @@ namespace CompuStore.Tab
                         IMPORT_WAREHOUSE importWarehouse = Database.Services.ImportServices.Instance.GetImportWarehouseByNameID(nameIdImportWarehouse);
                         if (importWarehouse != null)
                         {
-                            InvoiceImportWarehouse_Form form = new InvoiceImportWarehouse_Form(importWarehouse);
+                            BaseInvoiceImportWarehouse_Form form = new EditInvoiceImportWarehouse_Form(importWarehouse);
                             form.ShowDialog();
                         }
                         break;

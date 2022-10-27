@@ -2,7 +2,7 @@
 using CompuStore.Database.Services;
 using CompuStore.GUI;
 using CompuStore.GUI.Forms;
-using CompuStore.GUI.Forms.Warehouse;
+using CompuStore.GUI.Forms.SubForms.Warehouse;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -115,7 +115,7 @@ namespace CompuStore.Tab
 
         private void ViewDetail_Button_Click(object sender, EventArgs e)
         {
-            DetailSpecsProduct_Form detailSpecsProduct_Form = new DetailSpecsProduct_Form(/*DataTable.CurrentRow.Cells[0].Value.ToString()*/);
+            BaseDetailSpecsProduct_Form detailSpecsProduct_Form = new BaseDetailSpecsProduct_Form(/*DataTable.CurrentRow.Cells[0].Value.ToString()*/);
             detailSpecsProduct_Form.ShowDialog();
         }
 
