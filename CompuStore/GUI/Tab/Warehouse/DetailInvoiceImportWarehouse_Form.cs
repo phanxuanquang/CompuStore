@@ -98,15 +98,6 @@ namespace CompuStore.Tab.Warehouse
             this.Close();
         }
 
-        private void DateTimeImportWarehouse_Label_Click(object sender, EventArgs e)
-        {
-            DateTimeImportWarehouse_DateTimePicker.Visible = !DateTimeImportWarehouse_DateTimePicker.Visible;
-            if (!DateTimeImportWarehouse_DateTimePicker.Visible)
-            {
-                DateTimeImportWarehouse_Label.Text = DateTimeImportWarehouse_DateTimePicker.Value.ToString("hh:mm:ss dd/MM/yyyy");
-            }
-        }
-
         private void AddProduct_Button_Click(object sender, EventArgs e)
         {
 
