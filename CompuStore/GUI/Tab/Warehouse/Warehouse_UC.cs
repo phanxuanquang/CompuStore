@@ -15,9 +15,13 @@ namespace CompuStore.Tab.Warehouse
         class ImportWarehouseCustom
         {
             public int id;
-            public string nameID;
-            public DateTime? importDate;
-            public double total;
+
+            public string NameID { get; set; }
+
+            public DateTime? ImportDate { get; set; }
+
+            public double Total { get; set; }
+
             public int distributorID;
             public string distributorName;
 
@@ -30,43 +34,9 @@ namespace CompuStore.Tab.Warehouse
                 }
             }
 
-            public string NAME_ID
-            {
-                get
-                {
-                    return nameID;
-                }
-                set
-                {
-                    nameID = value;
-                }
-            }
+            public int Quantity { get; set; }
 
-            public DateTime? IMPORT_DATE
-            {
-                get
-                {
-                    return importDate;
-                }
-                set
-                {
-                    importDate = value;
-                }
-            }
-
-            public double TOTAL
-            {
-                get
-                {
-                    return total;
-                }
-                set
-                {
-                    total = value;
-                }
-            }
-
-            public string DISTRIBUTOR_NAME
+            public string DistributorName
             {
                 get
                 {
@@ -81,10 +51,11 @@ namespace CompuStore.Tab.Warehouse
                 {
                     result = new ImportWarehouseCustom();
                     result.DISTRIBUTOR = model.DISTRIBUTOR;
-                    result.IMPORT_DATE = model.IMPORT_DATE;
-                    result.NAME_ID = model.NAME_ID;
-                    result.TOTAL = model.TOTAL;
+                    result.ImportDate = model.IMPORT_DATE;
+                    result.NameID = model.NAME_ID;
+                    result.Total = model.TOTAL;
                     result.id = model.ID;
+                    result.Quantity = model.DETAIL_IMPORT_WAREHOUSE.Count;
                 }
                 return result;
             }
@@ -184,9 +155,10 @@ namespace CompuStore.Tab.Warehouse
 
         private BindingList<ImportWarehouseCustom> importWarehouseBinding;
         private static readonly Dictionary<string, string> columnVisiableImportWarehouse = new Dictionary<string, string> {
-            { "NAME_ID", "Mã nhập hàng" },
-            { "IMPORT_DATE", "Ngày nhập hàng" },
-            { "TOTAL", "Tổng giá trị" },
+            { "NameID", "Mã nhập hàng" },
+            { "ImportDate", "Ngày nhập hàng" },
+            { "Total", "Tổng giá trị" },
+            { "Quantity", "Số lượng" },
             { "DISTRIBUTOR_NAME", "Nhà phân phối" } };
         private BindingList<CommonSpecsCustom> commonSpecsBinding;
         private static readonly Dictionary<string, string> columnVisiableCommonSpecs = new Dictionary<string, string> {

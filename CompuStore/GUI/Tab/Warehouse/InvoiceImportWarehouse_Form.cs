@@ -1,10 +1,14 @@
 ﻿using CompuStore.Database.Models;
+using CompuStore.Database.Services;
 using CompuStore.GUI;
+using CompuStore.ImportData;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -61,6 +65,8 @@ namespace CompuStore.Tab.Warehouse
         {
             public int IDImportWarehouse { get; set; }
 
+            public string NameIDImportWarehouse { get; set; }
+
             public int IDDistributor { get; set; }
 
             public string NameDistributor { get; set; }
@@ -86,6 +92,7 @@ namespace CompuStore.Tab.Warehouse
                 {
                     result = new ImportWarehouseCustom();
                     result.IDImportWarehouse = model.ID;
+                    result.NameIDImportWarehouse = model.NAME_ID;
                     result.ImportDate = model.IMPORT_DATE;
                     result.IDDistributor = model.ID_DISTRIBUTOR;
                     result.NameDistributor = model.DISTRIBUTOR.NAME;
@@ -293,11 +300,12 @@ namespace CompuStore.Tab.Warehouse
                     ImportToStore_Combobox.SelectedValue = convertImportWarehouse.IDStore;
                     TotalImportWarehouse_Value.Text = convertImportWarehouse.Total.ToString();
                     StaffImport_Value.Text = string.Format("{0} | {1}", convertImportWarehouse.NameStaff, convertImportWarehouse.NameIDStaff);
+                    IDImportWarehouse_Value.Text = convertImportWarehouse.NameIDImportWarehouse;
                 }
-                /*else
+                else
                 {
                     StaffImport_Value.Text = string.Format("{0} | {1}", LoginServices.Instance.CurrentStaff.INFOR.NAME, LoginServices.Instance.CurrentStaff.NAME_ID);
-                }*/
+                }
             };
 
             runLoading.GetAwaiter().OnCompleted(() => waiting.Close());
@@ -321,6 +329,18 @@ namespace CompuStore.Tab.Warehouse
             {
                 DetailInvoiceImportWarehouse_Form form = new DetailInvoiceImportWarehouse_Form(commonSpecs);
                 form.ShowDialog();
+            }
+        }
+
+        private void AddProductByExcel_Button_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Tab-seperator values | *.tsv";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK && openFileDialog.CheckFileExists)
+            {
+                ModelProduct[] products = ModelProduct.GetTSV(openFileDialog.FileName);
+                int x = 0;
             }
         }
     }

@@ -63,7 +63,7 @@
             this.Header.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Header.Name = "Header";
             this.Header.Padding = new System.Windows.Forms.Padding(76, 0, 0, 0);
-            this.Header.Size = new System.Drawing.Size(2468, 99);
+            this.Header.Size = new System.Drawing.Size(2468, 75);
             this.Header.TabIndex = 5;
             this.Header.Text = "Chi tiết nhập hàng";
             this.Header.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -77,11 +77,11 @@
             this.Exit_Button.HoverState.Parent = this.Exit_Button;
             this.Exit_Button.Image = global::CompuStore.Properties.Resources.Close;
             this.Exit_Button.ImageSize = new System.Drawing.Size(27, 27);
-            this.Exit_Button.Location = new System.Drawing.Point(2587, 0);
+            this.Exit_Button.Location = new System.Drawing.Point(2393, 0);
             this.Exit_Button.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Exit_Button.Name = "Exit_Button";
             this.Exit_Button.PressedState.Parent = this.Exit_Button;
-            this.Exit_Button.Size = new System.Drawing.Size(87, 99);
+            this.Exit_Button.Size = new System.Drawing.Size(75, 75);
             this.Exit_Button.TabIndex = 6;
             this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
             // 

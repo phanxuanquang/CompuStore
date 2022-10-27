@@ -50,8 +50,8 @@
             this.Confirm_Button = new Guna.UI2.WinForms.Guna2Button();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.TableData_DataGridView = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.IDImportWarehouse_Label = new System.Windows.Forms.Label();
+            this.IDImportWarehouse_Value = new System.Windows.Forms.Label();
             this.Staffimport_Label = new System.Windows.Forms.Label();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.StaffImport_Value = new System.Windows.Forms.Label();
@@ -229,6 +229,7 @@
             this.AddProductByExcel_Button.TabIndex = 17;
             this.AddProductByExcel_Button.Text = "Nhập bằng Excel";
             this.AddProductByExcel_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.AddProductByExcel_Button.Click += new System.EventHandler(this.AddProductByExcel_Button_Click);
             // 
             // Confirm_Button
             // 
@@ -359,27 +360,27 @@
             this.TableData_DataGridView.VirtualMode = true;
             this.TableData_DataGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TableData_DataGridView_CellDoubleClick);
             // 
-            // label1
+            // IDImportWarehouse_Label
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(72, 98);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(271, 50);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "Mã nhập hàng";
+            this.IDImportWarehouse_Label.AutoSize = true;
+            this.IDImportWarehouse_Label.Font = new System.Drawing.Font("Segoe UI", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IDImportWarehouse_Label.Location = new System.Drawing.Point(72, 98);
+            this.IDImportWarehouse_Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.IDImportWarehouse_Label.Name = "IDImportWarehouse_Label";
+            this.IDImportWarehouse_Label.Size = new System.Drawing.Size(271, 50);
+            this.IDImportWarehouse_Label.TabIndex = 22;
+            this.IDImportWarehouse_Label.Text = "Mã nhập hàng";
             // 
-            // label2
+            // IDImportWarehouse_Value
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(372, 106);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(235, 40);
-            this.label2.TabIndex = 23;
-            this.label2.Text = "IMPORT_SV0823";
+            this.IDImportWarehouse_Value.AutoSize = true;
+            this.IDImportWarehouse_Value.Font = new System.Drawing.Font("Segoe UI Semibold", 10.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.IDImportWarehouse_Value.Location = new System.Drawing.Point(372, 106);
+            this.IDImportWarehouse_Value.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.IDImportWarehouse_Value.Name = "IDImportWarehouse_Value";
+            this.IDImportWarehouse_Value.Size = new System.Drawing.Size(235, 40);
+            this.IDImportWarehouse_Value.TabIndex = 23;
+            this.IDImportWarehouse_Value.Text = "IMPORT_SV0823";
             // 
             // Staffimport_Label
             // 
@@ -434,8 +435,8 @@
             this.Controls.Add(this.StaffImport_Value);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.Staffimport_Label);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.IDImportWarehouse_Value);
+            this.Controls.Add(this.IDImportWarehouse_Label);
             this.Controls.Add(this.Confirm_Button);
             this.Controls.Add(this.TableData_DataGridView);
             this.Controls.Add(this.AddProduct_Button);
@@ -481,8 +482,8 @@
         private Guna.UI2.WinForms.Guna2Button AddProductByExcel_Button;
         private Guna.UI2.WinForms.Guna2Button Confirm_Button;
         private Guna.UI2.WinForms.Guna2DataGridView TableData_DataGridView;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label IDImportWarehouse_Label;
+        private System.Windows.Forms.Label IDImportWarehouse_Value;
         private System.Windows.Forms.Label Staffimport_Label;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private System.Windows.Forms.Label StaffImport_Value;
