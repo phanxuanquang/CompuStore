@@ -25,7 +25,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         #region Set Editable
         private void SetEditable(bool editable)
         {
-            Serials_TextBox.Enabled = editable;
+            //Serials_TextBox.Enabled = editable;
             Lineup_ComboBox.Enabled = editable;
             Manufacturer_ComboBox.Enabled = editable;
             Country_ComboBox.Enabled = editable;
@@ -54,7 +54,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             X_Ratio_ComboBox.Enabled = editable;
             Y_Ratio_ComboBox.Enabled = editable;
             TypeScreen_ComboBox.Enabled = editable;
-            CodeDisplay_TextBox.Enabled = editable;
+            //CodeDisplay_TextBox.Enabled = editable;
             HasCodeDisplay_CheckBox.Enabled = editable;
             TypeStorage_ComboBox.Enabled = editable;
             StorageCapacity_ComboBox.Enabled = editable;
@@ -68,7 +68,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             else ColorPicker_Button.Click -= ColorPicker_Button_Click;
             NameColor_TextBox.Enabled = editable;
             Ports_DataGridView.ReadOnly = !editable;
-            Price_TextBox.Enabled = editable;
+            //Price_TextBox.Enabled = editable;
         }
         #endregion
 
@@ -108,21 +108,21 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             {
                 serials += products[index].Serial + '\n';
             }
-            Serials_TextBox.Text = serials;
+            //Serials_TextBox.Text = serials;
 
             Weight_TextBox.Text = products.First().Weight.ToString();
             X_Dimension_TextBox.Text = products.First().SizeProduct[0].ToString();
             Y_Dimension_TextBox.Text = products.First().SizeProduct[1].ToString();
             Z_Dimension_TextBox.Text = products.First().SizeProduct[2].ToString();
             Brightness_TextBox.Text = products.First().Brightness.ToString();
-            Touchscreen_ToggleButton.Checked = products.First().CanTouchPanel ?? false;
+            //Touchscreen_ToggleButton.Checked = products.First().CanTouchPanel ?? false;
             HasCodeDisplay_CheckBox.Checked = false;
-            CodeDisplay_TextBox.Text = products.First().IdPanel;
+            //CodeDisplay_TextBox.Text = products.First().IdPanel;
             ColorDialog.Color = products.First().ColorModel.ColorCode;
             ColorPicker_Button.FillColor = ColorDialog.Color;
             NameColor_TextBox.Text = products.First().ColorModel.ColorName;
             BatteryCapacity_TextBox.Text = products.First().BatteryCapacity.ToString();
-            Price_TextBox.Text = products.First().Price.ToString();
+            //Price_TextBox.Text = products.First().Price.ToString();
 
             if (products.First().SpaceColor != null)
             {
@@ -148,7 +148,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 Ports_DataGridView.Rows.Add(products.First().Ports[index].PortProtocol, products.First().Ports[index].PortPhysic, products.First().Ports[index].Quantity);
             }
 
-            Price_TextBox.Text = products.First().Price.ToString();
+            //Price_TextBox.Text = products.First().Price.ToString();
 
             SetDefaultComboBox(Lineup_ComboBox, products.First().LineUp);
             SetDefaultComboBox(Manufacturer_ComboBox, products.First().Manufacturer);
@@ -310,7 +310,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         {
             ModelProduct checkModel = new ModelProduct();
             checkModel.NameProduct = NameProductValue_Label.Text;
-            string[] serials = Serials_TextBox.Text.Split('\n');
+            //string[] serials = Serials_TextBox.Text.Split('\n');
             checkModel.LineUp = Lineup_ComboBox.SelectedItem?.ToString();
             checkModel.Manufacturer = Manufacturer_ComboBox.SelectedItem?.ToString();
             checkModel.Country = Country_ComboBox.SelectedItem?.ToString();
@@ -338,15 +338,15 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             checkModel.RatioPanelString = string.Format("{0}:{1}", 
                 X_Ratio_ComboBox.SelectedItem?.ToString(), 
                 Y_Ratio_ComboBox.SelectedItem?.ToString());
-            checkModel.CanTouchPanel = Touchscreen_ToggleButton.Checked;
+            //checkModel.CanTouchPanel = Touchscreen_ToggleButton.Checked;
             checkModel.TypeScreen = TypeScreen_ComboBox.SelectedItem?.ToString();
-            checkModel.IdPanel = CodeDisplay_TextBox.Text;
+            //checkModel.IdPanel = CodeDisplay_TextBox.Text;
             checkModel.TypeStorage = TypeStorage_ComboBox.SelectedItem?.ToString();
             checkModel.StorageCapacity = int.Parse(StorageCapacity_ComboBox.SelectedItem?.ToString());
             checkModel.Wifi = WifiStandard_ComboBox.SelectedItem?.ToString();
             checkModel.Bluetooth = BluetoothStandard_ComboBox.SelectedItem?.ToString();
             checkModel.ColorName = NameColor_TextBox.Text;
-            checkModel.Price = double.Parse(Price_TextBox.Text);
+            //checkModel.Price = double.Parse(Price_TextBox.Text);
             checkModel.BatteryCapacity = double.Parse(BatteryCapacity_TextBox.Text);
             checkModel.OS = OS_ComboBox.SelectedItem?.ToString();
 
@@ -437,7 +437,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         private void HasCodeDisplay_CheckBox_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox control = sender as CheckBox;
-            CodeDisplay_TextBox.ReadOnly = !control.Checked;
+            //CodeDisplay_TextBox.ReadOnly = !control.Checked;
         }
 
         private async void DetailSpecsProduct_Form_Load(object sender, EventArgs e)

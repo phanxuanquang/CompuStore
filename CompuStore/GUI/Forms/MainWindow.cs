@@ -17,7 +17,7 @@ namespace CompuStore.GUI
         public MainWindow()
         {
             InitializeComponent();
-            this.Size = new Size(1240, 800);
+            //this.Size = new Size(1240, 800);
             staffManage_Tab = null;
             salesManage_Tab = null;
             SetHeaderState_From(SaleManage_Button);
