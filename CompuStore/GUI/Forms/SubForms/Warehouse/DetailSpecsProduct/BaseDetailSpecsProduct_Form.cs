@@ -17,7 +17,15 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         {
             InitializeComponent();
         }
-
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
+                return handleParam;
+            }
+        }
         public ModelProduct[] ShowDialog(IWin32Window owner, params ModelProduct[] preModels)
         {
             if (preModels != null)
