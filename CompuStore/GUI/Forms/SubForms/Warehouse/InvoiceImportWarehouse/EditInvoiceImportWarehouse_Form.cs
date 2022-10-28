@@ -14,9 +14,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
     public class EditInvoiceImportWarehouse_Form : BaseInvoiceImportWarehouse_Form
     {
         private IMPORT_WAREHOUSE importWarehouse = null;
-        BindingList<CommonSpecsCustom> bindingTable = null;
+        BindingList<ICommonSpecsCustom> bindingTable = null;
         ImportWarehouseCustom convertImportWarehouse = null;
-        List<CommonSpecsGroup<DETAIL_SPECS>> commonSpecsGroups = null;
+        List<ICommonSpecsGroup<DETAIL_SPECS>> commonSpecsGroups = null;
 
         #region Implement interface
         private class ImportWarehouseCustom
@@ -66,11 +66,11 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
         }
 
-        private class EditInvoiceCommonSpecsGroup : CommonSpecsGroup<DETAIL_SPECS>
+        private class EditInvoiceCommonSpecsGroup : ICommonSpecsGroup<DETAIL_SPECS>
         {
             List<DETAIL_SPECS> _detailSpecs;
 
-            double CommonSpecsGroup<DETAIL_SPECS>.maxTotal
+            double ICommonSpecsGroup<DETAIL_SPECS>.maxTotal
             {
                 get
                 {
@@ -85,7 +85,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     return max == null ? 0.0 : max.Value;
                 }
             }
-            double CommonSpecsGroup<DETAIL_SPECS>.minTotal
+            double ICommonSpecsGroup<DETAIL_SPECS>.minTotal
             {
                 get
                 {
@@ -100,7 +100,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     return min == null ? 0.0 : min.Value;
                 }
             }
-            DETAIL_SPECS CommonSpecsGroup<DETAIL_SPECS>.Represent
+            DETAIL_SPECS ICommonSpecsGroup<DETAIL_SPECS>.Represent
             {
                 get => _detailSpecs?.FirstOrDefault();
             }
@@ -135,7 +135,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
         }
 
-        private class EditInvoiceCommonSpecs : CommonSpecsCustom
+        private class EditInvoiceCommonSpecs : ICommonSpecsCustom
         {
             private int _ID;
             private string _NameID;
@@ -146,16 +146,16 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             private int _Quantity;
             private string _RangeTotal;
 
-            int CommonSpecsCustom.ID { get => _ID; set => _ID = value; }
-            string CommonSpecsCustom.NameID { get => _NameID; set => _NameID = value; }
-            string CommonSpecsCustom.NameCommonSpecs { get => _NameCommonSpecs; set => _NameCommonSpecs = value; }
-            string CommonSpecsCustom.LineUp { get => _LineUp; set => _LineUp = value; }
-            string CommonSpecsCustom.Manufacturer { get => _Manufacturer; set => _Manufacturer = value; }
-            DateTime? CommonSpecsCustom.ReleaseDate { get => _ReleaseDate; set => _ReleaseDate = value; }
-            int CommonSpecsCustom.Quantity { get => _Quantity; set => _Quantity = value; }
-            string CommonSpecsCustom.RangeTotal { get => _RangeTotal; set => _RangeTotal = value; }
+            int ICommonSpecsCustom.ID { get => _ID; set => _ID = value; }
+            string ICommonSpecsCustom.NameID { get => _NameID; set => _NameID = value; }
+            string ICommonSpecsCustom.NameCommonSpecs { get => _NameCommonSpecs; set => _NameCommonSpecs = value; }
+            string ICommonSpecsCustom.LineUp { get => _LineUp; set => _LineUp = value; }
+            string ICommonSpecsCustom.Manufacturer { get => _Manufacturer; set => _Manufacturer = value; }
+            DateTime? ICommonSpecsCustom.ReleaseDate { get => _ReleaseDate; set => _ReleaseDate = value; }
+            int ICommonSpecsCustom.Quantity { get => _Quantity; set => _Quantity = value; }
+            string ICommonSpecsCustom.RangeTotal { get => _RangeTotal; set => _RangeTotal = value; }
 
-            public EditInvoiceCommonSpecs(CommonSpecsGroup<DETAIL_SPECS> group)
+            public EditInvoiceCommonSpecs(ICommonSpecsGroup<DETAIL_SPECS> group)
             {
                 if (group != null)
                 {
@@ -202,8 +202,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     {
                         if (commonSpecsGroups != null && bindingTable != null)
                         {
-                            CommonSpecsGroup<DETAIL_SPECS> commonSpecsGroup = new EditInvoiceCommonSpecsGroup(group.ToList());
-                            CommonSpecsCustom commonSpecsCustom = new EditInvoiceCommonSpecs(commonSpecsGroup);
+                            ICommonSpecsGroup<DETAIL_SPECS> commonSpecsGroup = new EditInvoiceCommonSpecsGroup(group.ToList());
+                            ICommonSpecsCustom commonSpecsCustom = new EditInvoiceCommonSpecs(commonSpecsGroup);
                             commonSpecsGroups.Add(commonSpecsGroup);
                             if (TableData_DataGridView.InvokeRequired)
                             {
@@ -223,8 +223,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
         private void InvoiceImportWarehouse_Form_Load(object sender, EventArgs e)
         {
-            bindingTable = new BindingList<CommonSpecsCustom>();
-            commonSpecsGroups = new List<CommonSpecsGroup<DETAIL_SPECS>>();
+            bindingTable = new BindingList<ICommonSpecsCustom>();
+            commonSpecsGroups = new List<ICommonSpecsGroup<DETAIL_SPECS>>();
             TableData_DataGridView.DataSource = bindingTable;
 
             Progress<bool> progress = new Progress<bool>();

@@ -1,6 +1,6 @@
 ﻿namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
-    partial class BaseDetailSpecsProduct_Form
+    partial class DetailSpecsProduct_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Header = new System.Windows.Forms.Label();
             this.DragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.Confirm_Button = new Guna.UI2.WinForms.Guna2Button();
@@ -50,8 +50,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.Capacity_RAM_ComboBox = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.Unit_RAM_ComboBox = new System.Windows.Forms.ComboBox();
-            this.Type_Bus_RAM_ComboBox = new System.Windows.Forms.ComboBox();
+            this.TypeRAM_ComboBox = new System.Windows.Forms.ComboBox();
+            this.BusRAM_ComboBox = new System.Windows.Forms.ComboBox();
             this.iGPU_ComboBox = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.GPU_ComboBox = new System.Windows.Forms.ComboBox();
@@ -112,7 +112,6 @@
             this.label46 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
-            this.UnitStorage_ComboBox = new System.Windows.Forms.ComboBox();
             this.label30 = new System.Windows.Forms.Label();
             this.StorageCapacity_ComboBox = new System.Windows.Forms.ComboBox();
             this.label53 = new System.Windows.Forms.Label();
@@ -133,6 +132,8 @@
             this.X_Dimension_TextBox = new System.Windows.Forms.TextBox();
             this.Y_Dimension_TextBox = new System.Windows.Forms.TextBox();
             this.Z_Dimension_TextBox = new System.Windows.Forms.TextBox();
+            this.Edit_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.label19 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Ports_DataGridView)).BeginInit();
             this.Screen_GroupBox.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
@@ -172,12 +173,12 @@
             this.Confirm_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Confirm_Button.ForeColor = System.Drawing.Color.White;
             this.Confirm_Button.HoverState.Parent = this.Confirm_Button;
-            this.Confirm_Button.Location = new System.Drawing.Point(1620, 89);
+            this.Confirm_Button.Location = new System.Drawing.Point(1904, 89);
             this.Confirm_Button.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Confirm_Button.Name = "Confirm_Button";
             this.Confirm_Button.PressedDepth = 5;
             this.Confirm_Button.ShadowDecoration.Parent = this.Confirm_Button;
-            this.Confirm_Button.Size = new System.Drawing.Size(440, 91);
+            this.Confirm_Button.Size = new System.Drawing.Size(200, 91);
             this.Confirm_Button.TabIndex = 21;
             this.Confirm_Button.Text = "Hoàn tất";
             this.Confirm_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -225,6 +226,7 @@
             // 
             // Lineup_ComboBox
             // 
+            this.Lineup_ComboBox.Enabled = false;
             this.Lineup_ComboBox.FormattingEnabled = true;
             this.Lineup_ComboBox.Location = new System.Drawing.Point(246, 529);
             this.Lineup_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -234,6 +236,7 @@
             // 
             // Manufacturer_ComboBox
             // 
+            this.Manufacturer_ComboBox.Enabled = false;
             this.Manufacturer_ComboBox.FormattingEnabled = true;
             this.Manufacturer_ComboBox.Location = new System.Drawing.Point(245, 602);
             this.Manufacturer_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -253,6 +256,7 @@
             // 
             // Country_ComboBox
             // 
+            this.Country_ComboBox.Enabled = false;
             this.Country_ComboBox.FormattingEnabled = true;
             this.Country_ComboBox.Location = new System.Drawing.Point(245, 675);
             this.Country_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -272,6 +276,7 @@
             // 
             // CPU_ComboBox
             // 
+            this.CPU_ComboBox.Enabled = false;
             this.CPU_ComboBox.FormattingEnabled = true;
             this.CPU_ComboBox.Location = new System.Drawing.Point(245, 748);
             this.CPU_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -291,6 +296,7 @@
             // 
             // Capacity_RAM_ComboBox
             // 
+            this.Capacity_RAM_ComboBox.Enabled = false;
             this.Capacity_RAM_ComboBox.FormattingEnabled = true;
             this.Capacity_RAM_ComboBox.Location = new System.Drawing.Point(244, 821);
             this.Capacity_RAM_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -308,26 +314,29 @@
             this.label5.TabIndex = 34;
             this.label5.Text = "RAM";
             // 
-            // Unit_RAM_ComboBox
+            // TypeRAM_ComboBox
             // 
-            this.Unit_RAM_ComboBox.FormattingEnabled = true;
-            this.Unit_RAM_ComboBox.Location = new System.Drawing.Point(359, 821);
-            this.Unit_RAM_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Unit_RAM_ComboBox.Name = "Unit_RAM_ComboBox";
-            this.Unit_RAM_ComboBox.Size = new System.Drawing.Size(108, 40);
-            this.Unit_RAM_ComboBox.TabIndex = 36;
+            this.TypeRAM_ComboBox.Enabled = false;
+            this.TypeRAM_ComboBox.FormattingEnabled = true;
+            this.TypeRAM_ComboBox.Location = new System.Drawing.Point(359, 821);
+            this.TypeRAM_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TypeRAM_ComboBox.Name = "TypeRAM_ComboBox";
+            this.TypeRAM_ComboBox.Size = new System.Drawing.Size(108, 40);
+            this.TypeRAM_ComboBox.TabIndex = 36;
             // 
-            // Type_Bus_RAM_ComboBox
+            // BusRAM_ComboBox
             // 
-            this.Type_Bus_RAM_ComboBox.FormattingEnabled = true;
-            this.Type_Bus_RAM_ComboBox.Location = new System.Drawing.Point(473, 821);
-            this.Type_Bus_RAM_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Type_Bus_RAM_ComboBox.Name = "Type_Bus_RAM_ComboBox";
-            this.Type_Bus_RAM_ComboBox.Size = new System.Drawing.Size(235, 40);
-            this.Type_Bus_RAM_ComboBox.TabIndex = 37;
+            this.BusRAM_ComboBox.Enabled = false;
+            this.BusRAM_ComboBox.FormattingEnabled = true;
+            this.BusRAM_ComboBox.Location = new System.Drawing.Point(473, 821);
+            this.BusRAM_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BusRAM_ComboBox.Name = "BusRAM_ComboBox";
+            this.BusRAM_ComboBox.Size = new System.Drawing.Size(235, 40);
+            this.BusRAM_ComboBox.TabIndex = 37;
             // 
             // iGPU_ComboBox
             // 
+            this.iGPU_ComboBox.Enabled = false;
             this.iGPU_ComboBox.FormattingEnabled = true;
             this.iGPU_ComboBox.Location = new System.Drawing.Point(244, 894);
             this.iGPU_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -347,6 +356,7 @@
             // 
             // GPU_ComboBox
             // 
+            this.GPU_ComboBox.Enabled = false;
             this.GPU_ComboBox.FormattingEnabled = true;
             this.GPU_ComboBox.Location = new System.Drawing.Point(246, 967);
             this.GPU_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -366,6 +376,7 @@
             // 
             // Weight_TextBox
             // 
+            this.Weight_TextBox.Enabled = false;
             this.Weight_TextBox.Location = new System.Drawing.Point(244, 1040);
             this.Weight_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Weight_TextBox.Name = "Weight_TextBox";
@@ -434,6 +445,7 @@
             // 
             // Material_ComboBox
             // 
+            this.Material_ComboBox.Enabled = false;
             this.Material_ComboBox.FormattingEnabled = true;
             this.Material_ComboBox.Location = new System.Drawing.Point(244, 1186);
             this.Material_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -453,6 +465,7 @@
             // 
             // Webcam_ComboBox
             // 
+            this.Webcam_ComboBox.Enabled = false;
             this.Webcam_ComboBox.FormattingEnabled = true;
             this.Webcam_ComboBox.Location = new System.Drawing.Point(244, 1259);
             this.Webcam_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -472,6 +485,7 @@
             // 
             // OS_ComboBox
             // 
+            this.OS_ComboBox.Enabled = false;
             this.OS_ComboBox.FormattingEnabled = true;
             this.OS_ComboBox.Location = new System.Drawing.Point(244, 1332);
             this.OS_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -501,6 +515,7 @@
             // 
             // Price_TextBox
             // 
+            this.Price_TextBox.Enabled = false;
             this.Price_TextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Price_TextBox.Location = new System.Drawing.Point(1058, 118);
             this.Price_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -512,9 +527,9 @@
             // 
             this.Ports_DataGridView.AllowUserToResizeColumns = false;
             this.Ports_DataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.Padding = new System.Windows.Forms.Padding(5);
-            this.Ports_DataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle16.Padding = new System.Windows.Forms.Padding(5);
+            this.Ports_DataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
             this.Ports_DataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Ports_DataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -524,51 +539,52 @@
             this.Ports_DataGridView.CausesValidation = false;
             this.Ports_DataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.Ports_DataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(151)))), ((int)(((byte)(232)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Ports_DataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(151)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Ports_DataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
             this.Ports_DataGridView.ColumnHeadersHeight = 48;
             this.Ports_DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.PortProtocol,
             this.PortPhysic_Column,
             this.PortQuantity_Column});
             this.Ports_DataGridView.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Ports_DataGridView.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Ports_DataGridView.DefaultCellStyle = dataGridViewCellStyle18;
             this.Ports_DataGridView.EnableHeadersVisualStyles = false;
             this.Ports_DataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.Ports_DataGridView.Location = new System.Drawing.Point(0, 37);
             this.Ports_DataGridView.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Ports_DataGridView.MultiSelect = false;
             this.Ports_DataGridView.Name = "Ports_DataGridView";
+            this.Ports_DataGridView.ReadOnly = true;
             this.Ports_DataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Ports_DataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Ports_DataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.Ports_DataGridView.RowHeadersVisible = false;
             this.Ports_DataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle15.Padding = new System.Windows.Forms.Padding(5);
-            this.Ports_DataGridView.RowsDefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle20.Padding = new System.Windows.Forms.Padding(5);
+            this.Ports_DataGridView.RowsDefaultCellStyle = dataGridViewCellStyle20;
             this.Ports_DataGridView.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5);
             this.Ports_DataGridView.RowTemplate.Height = 48;
             this.Ports_DataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -589,7 +605,7 @@
             this.Ports_DataGridView.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.Ports_DataGridView.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.Ports_DataGridView.ThemeStyle.HeaderStyle.Height = 48;
-            this.Ports_DataGridView.ThemeStyle.ReadOnly = false;
+            this.Ports_DataGridView.ThemeStyle.ReadOnly = true;
             this.Ports_DataGridView.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.Ports_DataGridView.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.Ports_DataGridView.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
@@ -603,18 +619,21 @@
             this.PortProtocol.HeaderText = "Chuẩn giao tiếp";
             this.PortProtocol.MinimumWidth = 10;
             this.PortProtocol.Name = "PortProtocol";
+            this.PortProtocol.ReadOnly = true;
             // 
             // PortPhysic_Column
             // 
             this.PortPhysic_Column.HeaderText = "Chuẩn vật lý";
             this.PortPhysic_Column.MinimumWidth = 10;
             this.PortPhysic_Column.Name = "PortPhysic_Column";
+            this.PortPhysic_Column.ReadOnly = true;
             // 
             // PortQuantity_Column
             // 
             this.PortQuantity_Column.HeaderText = "Số lượng";
             this.PortQuantity_Column.MinimumWidth = 10;
             this.PortQuantity_Column.Name = "PortQuantity_Column";
+            this.PortQuantity_Column.ReadOnly = true;
             // 
             // Exit_Button
             // 
@@ -721,6 +740,7 @@
             // 
             // CodeDisplay_TextBox
             // 
+            this.CodeDisplay_TextBox.Enabled = false;
             this.CodeDisplay_TextBox.Location = new System.Drawing.Point(659, 438);
             this.CodeDisplay_TextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CodeDisplay_TextBox.Name = "CodeDisplay_TextBox";
@@ -730,6 +750,7 @@
             // HasCodeDisplay_CheckBox
             // 
             this.HasCodeDisplay_CheckBox.AutoSize = true;
+            this.HasCodeDisplay_CheckBox.Enabled = false;
             this.HasCodeDisplay_CheckBox.Location = new System.Drawing.Point(659, 370);
             this.HasCodeDisplay_CheckBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.HasCodeDisplay_CheckBox.Name = "HasCodeDisplay_CheckBox";
@@ -737,6 +758,7 @@
             this.HasCodeDisplay_CheckBox.TabIndex = 118;
             this.HasCodeDisplay_CheckBox.Text = "Mã màn hình";
             this.HasCodeDisplay_CheckBox.UseVisualStyleBackColor = true;
+            this.HasCodeDisplay_CheckBox.CheckedChanged += new System.EventHandler(this.HasCodeDisplay_CheckBox_CheckedChanged);
             // 
             // ColorSpace_DCIP3_Label
             // 
@@ -815,6 +837,7 @@
             // 
             // TypeScreen_ComboBox
             // 
+            this.TypeScreen_ComboBox.Enabled = false;
             this.TypeScreen_ComboBox.FormattingEnabled = true;
             this.TypeScreen_ComboBox.Location = new System.Drawing.Point(841, 297);
             this.TypeScreen_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -834,6 +857,7 @@
             // 
             // Y_Ratio_ComboBox
             // 
+            this.Y_Ratio_ComboBox.Enabled = false;
             this.Y_Ratio_ComboBox.FormattingEnabled = true;
             this.Y_Ratio_ComboBox.Location = new System.Drawing.Point(1017, 221);
             this.Y_Ratio_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -853,6 +877,7 @@
             // 
             // X_Ratio_ComboBox
             // 
+            this.X_Ratio_ComboBox.Enabled = false;
             this.X_Ratio_ComboBox.FormattingEnabled = true;
             this.X_Ratio_ComboBox.Location = new System.Drawing.Point(841, 221);
             this.X_Ratio_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -892,6 +917,7 @@
             // 
             // SizePanel_ComboBox
             // 
+            this.SizePanel_ComboBox.Enabled = false;
             this.SizePanel_ComboBox.FormattingEnabled = true;
             this.SizePanel_ComboBox.Location = new System.Drawing.Point(198, 212);
             this.SizePanel_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -931,6 +957,7 @@
             // 
             // Brightness_TextBox
             // 
+            this.Brightness_TextBox.Enabled = false;
             this.Brightness_TextBox.Location = new System.Drawing.Point(841, 150);
             this.Brightness_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Brightness_TextBox.Name = "Brightness_TextBox";
@@ -949,6 +976,7 @@
             // 
             // RefreshRate_ComboBox
             // 
+            this.RefreshRate_ComboBox.Enabled = false;
             this.RefreshRate_ComboBox.FormattingEnabled = true;
             this.RefreshRate_ComboBox.Location = new System.Drawing.Point(198, 143);
             this.RefreshRate_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -968,6 +996,7 @@
             // 
             // TypePanel_ComboBox
             // 
+            this.TypePanel_ComboBox.Enabled = false;
             this.TypePanel_ComboBox.FormattingEnabled = true;
             this.TypePanel_ComboBox.Location = new System.Drawing.Point(841, 76);
             this.TypePanel_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -977,6 +1006,7 @@
             // 
             // Y_Pixel_ComboBox
             // 
+            this.Y_Pixel_ComboBox.Enabled = false;
             this.Y_Pixel_ComboBox.FormattingEnabled = true;
             this.Y_Pixel_ComboBox.Location = new System.Drawing.Point(377, 73);
             this.Y_Pixel_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -996,6 +1026,7 @@
             // 
             // X_Pixel_ComboBox
             // 
+            this.X_Pixel_ComboBox.Enabled = false;
             this.X_Pixel_ComboBox.FormattingEnabled = true;
             this.X_Pixel_ComboBox.Location = new System.Drawing.Point(198, 73);
             this.X_Pixel_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -1027,7 +1058,7 @@
             // 
             this.guna2GroupBox1.BackColor = System.Drawing.Color.White;
             this.guna2GroupBox1.BorderRadius = 10;
-            this.guna2GroupBox1.Controls.Add(this.UnitStorage_ComboBox);
+            this.guna2GroupBox1.Controls.Add(this.label19);
             this.guna2GroupBox1.Controls.Add(this.label30);
             this.guna2GroupBox1.Controls.Add(this.StorageCapacity_ComboBox);
             this.guna2GroupBox1.Controls.Add(this.label53);
@@ -1043,15 +1074,6 @@
             this.guna2GroupBox1.TabIndex = 120;
             this.guna2GroupBox1.Text = "Ổ cứng";
             // 
-            // UnitStorage_ComboBox
-            // 
-            this.UnitStorage_ComboBox.FormattingEnabled = true;
-            this.UnitStorage_ComboBox.Location = new System.Drawing.Point(984, 72);
-            this.UnitStorage_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.UnitStorage_ComboBox.Name = "UnitStorage_ComboBox";
-            this.UnitStorage_ComboBox.Size = new System.Drawing.Size(134, 40);
-            this.UnitStorage_ComboBox.TabIndex = 106;
-            // 
             // label30
             // 
             this.label30.AutoSize = true;
@@ -1064,6 +1086,7 @@
             // 
             // StorageCapacity_ComboBox
             // 
+            this.StorageCapacity_ComboBox.Enabled = false;
             this.StorageCapacity_ComboBox.FormattingEnabled = true;
             this.StorageCapacity_ComboBox.Location = new System.Drawing.Point(841, 72);
             this.StorageCapacity_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -1083,6 +1106,7 @@
             // 
             // TypeStorage_ComboBox
             // 
+            this.TypeStorage_ComboBox.Enabled = false;
             this.TypeStorage_ComboBox.FormattingEnabled = true;
             this.TypeStorage_ComboBox.Location = new System.Drawing.Point(198, 73);
             this.TypeStorage_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -1099,6 +1123,7 @@
             this.guna2GroupBox2.Controls.Add(this.label25);
             this.guna2GroupBox2.Controls.Add(this.WifiStandard_ComboBox);
             this.guna2GroupBox2.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.guna2GroupBox2.FillColor = System.Drawing.Color.Transparent;
             this.guna2GroupBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2GroupBox2.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox2.Location = new System.Drawing.Point(875, 988);
@@ -1121,6 +1146,7 @@
             // 
             // BluetoothStandard_ComboBox
             // 
+            this.BluetoothStandard_ComboBox.Enabled = false;
             this.BluetoothStandard_ComboBox.FormattingEnabled = true;
             this.BluetoothStandard_ComboBox.Location = new System.Drawing.Point(842, 72);
             this.BluetoothStandard_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -1140,6 +1166,7 @@
             // 
             // WifiStandard_ComboBox
             // 
+            this.WifiStandard_ComboBox.Enabled = false;
             this.WifiStandard_ComboBox.FormattingEnabled = true;
             this.WifiStandard_ComboBox.Location = new System.Drawing.Point(198, 73);
             this.WifiStandard_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -1180,10 +1207,10 @@
             this.ColorPicker_Button.ShadowDecoration.Parent = this.ColorPicker_Button;
             this.ColorPicker_Button.Size = new System.Drawing.Size(87, 51);
             this.ColorPicker_Button.TabIndex = 106;
-            this.ColorPicker_Button.Click += new System.EventHandler(this.ColorPicker_Button_Click);
             // 
             // NameColor_TextBox
             // 
+            this.NameColor_TextBox.Enabled = false;
             this.NameColor_TextBox.Location = new System.Drawing.Point(842, 76);
             this.NameColor_TextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.NameColor_TextBox.Name = "NameColor_TextBox";
@@ -1243,6 +1270,7 @@
             // 
             // X_Dimension_TextBox
             // 
+            this.X_Dimension_TextBox.Enabled = false;
             this.X_Dimension_TextBox.Location = new System.Drawing.Point(243, 1113);
             this.X_Dimension_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.X_Dimension_TextBox.Name = "X_Dimension_TextBox";
@@ -1251,6 +1279,7 @@
             // 
             // Y_Dimension_TextBox
             // 
+            this.Y_Dimension_TextBox.Enabled = false;
             this.Y_Dimension_TextBox.Location = new System.Drawing.Point(388, 1115);
             this.Y_Dimension_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Y_Dimension_TextBox.Name = "Y_Dimension_TextBox";
@@ -1259,11 +1288,45 @@
             // 
             // Z_Dimension_TextBox
             // 
+            this.Z_Dimension_TextBox.Enabled = false;
             this.Z_Dimension_TextBox.Location = new System.Drawing.Point(536, 1113);
             this.Z_Dimension_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Z_Dimension_TextBox.Name = "Z_Dimension_TextBox";
             this.Z_Dimension_TextBox.Size = new System.Drawing.Size(108, 39);
             this.Z_Dimension_TextBox.TabIndex = 126;
+            // 
+            // Edit_Button
+            // 
+            this.Edit_Button.Animated = true;
+            this.Edit_Button.BorderRadius = 10;
+            this.Edit_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Edit_Button.CheckedState.Parent = this.Edit_Button;
+            this.Edit_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Edit_Button.CustomImages.Parent = this.Edit_Button;
+            this.Edit_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Edit_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Edit_Button.ForeColor = System.Drawing.Color.White;
+            this.Edit_Button.HoverState.Parent = this.Edit_Button;
+            this.Edit_Button.Location = new System.Drawing.Point(1692, 89);
+            this.Edit_Button.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.Edit_Button.Name = "Edit_Button";
+            this.Edit_Button.PressedDepth = 5;
+            this.Edit_Button.ShadowDecoration.Parent = this.Edit_Button;
+            this.Edit_Button.Size = new System.Drawing.Size(200, 91);
+            this.Edit_Button.TabIndex = 127;
+            this.Edit_Button.Text = "Chỉnh sửa";
+            this.Edit_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Edit_Button.Click += new System.EventHandler(this.Edit_Button_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(977, 76);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(44, 32);
+            this.label19.TabIndex = 105;
+            this.label19.Text = "GB";
             // 
             // DetailSpecsProduct_Form
             // 
@@ -1271,6 +1334,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(2119, 1675);
+            this.Controls.Add(this.Edit_Button);
             this.Controls.Add(this.Z_Dimension_TextBox);
             this.Controls.Add(this.Y_Dimension_TextBox);
             this.Controls.Add(this.X_Dimension_TextBox);
@@ -1300,8 +1364,8 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.iGPU_ComboBox);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.Type_Bus_RAM_ComboBox);
-            this.Controls.Add(this.Unit_RAM_ComboBox);
+            this.Controls.Add(this.BusRAM_ComboBox);
+            this.Controls.Add(this.TypeRAM_ComboBox);
             this.Controls.Add(this.Capacity_RAM_ComboBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.CPU_ComboBox);
@@ -1324,6 +1388,7 @@
             this.Name = "DetailSpecsProduct_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DetailInvoiceImportWarehouse";
+            this.Load += new System.EventHandler(this.DetailSpecsProduct_Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Ports_DataGridView)).EndInit();
             this.Screen_GroupBox.ResumeLayout(false);
             this.Screen_GroupBox.PerformLayout();
@@ -1358,8 +1423,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox Capacity_RAM_ComboBox;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox Unit_RAM_ComboBox;
-        private System.Windows.Forms.ComboBox Type_Bus_RAM_ComboBox;
+        private System.Windows.Forms.ComboBox TypeRAM_ComboBox;
+        private System.Windows.Forms.ComboBox BusRAM_ComboBox;
         private System.Windows.Forms.ComboBox iGPU_ComboBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox GPU_ComboBox;
@@ -1416,7 +1481,6 @@
         private System.Windows.Forms.TextBox CodeDisplay_TextBox;
         private System.Windows.Forms.CheckBox HasCodeDisplay_CheckBox;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
-        private System.Windows.Forms.ComboBox UnitStorage_ComboBox;
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.ComboBox StorageCapacity_ComboBox;
         private System.Windows.Forms.Label label53;
@@ -1440,5 +1504,7 @@
         private System.Windows.Forms.TextBox ColorSpace_DCIP3_TextBox;
         private System.Windows.Forms.TextBox ColorSpace_AdobeRGB_TextBox;
         private System.Windows.Forms.TextBox ColorSpace_sRGB_TextBox;
+        private Guna.UI2.WinForms.Guna2Button Edit_Button;
+        private System.Windows.Forms.Label label19;
     }
 }

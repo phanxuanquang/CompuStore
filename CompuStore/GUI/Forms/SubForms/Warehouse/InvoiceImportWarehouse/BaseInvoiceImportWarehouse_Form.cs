@@ -15,7 +15,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
     public partial class BaseInvoiceImportWarehouse_Form : Form
     {
         #region Interface
-        protected interface CommonSpecsGroup<TModel> where TModel : class
+        protected interface ICommonSpecsGroup<TModel> where TModel : class
         {
             double maxTotal { get;}
             double minTotal { get;}
@@ -23,7 +23,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             IList<TModel> detailSpecs { get; set; }
         }
 
-        protected interface CommonSpecsCustom
+        protected interface ICommonSpecsCustom
         {
             int ID { get; set; }
 
@@ -94,7 +94,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         public BaseInvoiceImportWarehouse_Form()
         {
             InitializeComponent();
-            TableData_DataGridView.DataSource = typeof(CommonSpecsCustom);
+            TableData_DataGridView.DataSource = typeof(ICommonSpecsCustom);
             Load += BaseInvoiceImportWarehouse_Form_Load;
         }
 

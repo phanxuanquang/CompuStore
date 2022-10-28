@@ -17,7 +17,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         BindingList<ModelProduct> bindingTable = null;
         Task task = null;
         CancellationTokenSource cancellationTokenSource = null;
-        List<ModelProductCustom> groupBinding = null;
+        List<ModelProductGroup> groupBinding = null;
 
         public EditDetailInvoiceImportWarehouse_Form(COMMON_SPECS commonSpecs = null)
         {
@@ -34,7 +34,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 if (commonSpecs != null)
                 {
                     int counter = 0;
-                    groupBinding = new List<ModelProductCustom>();
+                    groupBinding = new List<ModelProductGroup>();
                     ICollection<DETAIL_SPECS> detailSpecs = commonSpecs.DETAIL_SPECS;
                     LINE_UP lineup = commonSpecs.LINE_UP;
                     foreach (DETAIL_SPECS detail in detailSpecs)
@@ -81,14 +81,14 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                             modelProduct.Price = detail.PRICE;
                             modelProduct.ColorCode = color.COLOR_CODE;
                             modelProduct.ColorName = color.COLOR_NAME;
-                            ModelProductCustom group = groupBinding.Find(item => item.IsTheSameGroup(modelProduct));
+                            ModelProductGroup group = groupBinding.Find(item => item.IsTheSameGroup(modelProduct));
                             if (group != null)
                             {
                                 group.product = modelProduct;
                             }
                             else
                             {
-                                group = new ModelProductCustom();
+                                group = new ModelProductGroup();
                                 group.product = modelProduct;
                                 groupBinding.Add(group);
 
@@ -201,9 +201,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 ModelProduct model = bindingTable[e.RowIndex];
                 if (model != null)
                 {
-                    ModelProductCustom group = groupBinding.Find(item => item.product.Equals(model));
-                    BaseDetailSpecsProduct_Form detailSpecs = new BaseDetailSpecsProduct_Form();
-                    detailSpecs.ShowDialog(this, group.productsTheSame.ToArray());
+                    ModelProductGroup group = groupBinding.Find(item => item.product.Equals(model));
+                    DetailSpecsProduct_Form detailSpecs = new DetailSpecsProduct_Form();
+                    detailSpecs.ShowDialog(this, group.productsTheSame);
                 }
             }
         }
