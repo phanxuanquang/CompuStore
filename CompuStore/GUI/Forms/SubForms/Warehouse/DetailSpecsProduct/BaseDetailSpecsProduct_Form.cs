@@ -122,5 +122,15 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 ColorPicker_Button.FillColor = ColorDialog.Color;
             }
         }
+
+        private void guna2GroupBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void guna2GroupBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
