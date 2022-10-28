@@ -256,6 +256,11 @@ namespace CompuStore.Database.Services
 
                 return dbProduct;
             }
+
+            public async Task<PRODUCT> Update(ModelProduct product)
+            {
+                return null;
+            }
         }
     }
 }

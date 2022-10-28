@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Header = new System.Windows.Forms.Label();
             this.DragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.Confirm_Button = new Guna.UI2.WinForms.Guna2Button();
@@ -72,7 +72,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.Price_TextBox = new System.Windows.Forms.TextBox();
             this.Ports_DataGridView = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.PortProtocol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PortProtocol_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PortPhysic_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PortQuantity_Column = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
@@ -112,6 +112,7 @@
             this.label46 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.StorageCapacity_ComboBox = new System.Windows.Forms.ComboBox();
             this.label53 = new System.Windows.Forms.Label();
@@ -133,7 +134,10 @@
             this.Y_Dimension_TextBox = new System.Windows.Forms.TextBox();
             this.Z_Dimension_TextBox = new System.Windows.Forms.TextBox();
             this.Edit_Button = new Guna.UI2.WinForms.Guna2Button();
-            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.BatteryCapacity_TextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.Ports_DataGridView)).BeginInit();
             this.Screen_GroupBox.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
@@ -301,7 +305,7 @@
             this.Capacity_RAM_ComboBox.Location = new System.Drawing.Point(244, 821);
             this.Capacity_RAM_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Capacity_RAM_ComboBox.Name = "Capacity_RAM_ComboBox";
-            this.Capacity_RAM_ComboBox.Size = new System.Drawing.Size(108, 40);
+            this.Capacity_RAM_ComboBox.Size = new System.Drawing.Size(86, 40);
             this.Capacity_RAM_ComboBox.TabIndex = 35;
             // 
             // label5
@@ -318,20 +322,20 @@
             // 
             this.TypeRAM_ComboBox.Enabled = false;
             this.TypeRAM_ComboBox.FormattingEnabled = true;
-            this.TypeRAM_ComboBox.Location = new System.Drawing.Point(359, 821);
+            this.TypeRAM_ComboBox.Location = new System.Drawing.Point(390, 821);
             this.TypeRAM_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TypeRAM_ComboBox.Name = "TypeRAM_ComboBox";
-            this.TypeRAM_ComboBox.Size = new System.Drawing.Size(108, 40);
+            this.TypeRAM_ComboBox.Size = new System.Drawing.Size(137, 40);
             this.TypeRAM_ComboBox.TabIndex = 36;
             // 
             // BusRAM_ComboBox
             // 
             this.BusRAM_ComboBox.Enabled = false;
             this.BusRAM_ComboBox.FormattingEnabled = true;
-            this.BusRAM_ComboBox.Location = new System.Drawing.Point(473, 821);
+            this.BusRAM_ComboBox.Location = new System.Drawing.Point(535, 821);
             this.BusRAM_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BusRAM_ComboBox.Name = "BusRAM_ComboBox";
-            this.BusRAM_ComboBox.Size = new System.Drawing.Size(235, 40);
+            this.BusRAM_ComboBox.Size = new System.Drawing.Size(173, 40);
             this.BusRAM_ComboBox.TabIndex = 37;
             // 
             // iGPU_ComboBox
@@ -527,9 +531,9 @@
             // 
             this.Ports_DataGridView.AllowUserToResizeColumns = false;
             this.Ports_DataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle16.Padding = new System.Windows.Forms.Padding(5);
-            this.Ports_DataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
+            this.Ports_DataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Ports_DataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Ports_DataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -539,30 +543,30 @@
             this.Ports_DataGridView.CausesValidation = false;
             this.Ports_DataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.Ports_DataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(151)))), ((int)(((byte)(232)))));
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Ports_DataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(151)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Ports_DataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.Ports_DataGridView.ColumnHeadersHeight = 48;
             this.Ports_DataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.PortProtocol,
+            this.PortProtocol_Column,
             this.PortPhysic_Column,
             this.PortQuantity_Column});
             this.Ports_DataGridView.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.Ports_DataGridView.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.Ports_DataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.Ports_DataGridView.EnableHeadersVisualStyles = false;
             this.Ports_DataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.Ports_DataGridView.Location = new System.Drawing.Point(0, 37);
@@ -571,20 +575,20 @@
             this.Ports_DataGridView.Name = "Ports_DataGridView";
             this.Ports_DataGridView.ReadOnly = true;
             this.Ports_DataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle19.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.Ports_DataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.Ports_DataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.Ports_DataGridView.RowHeadersVisible = false;
             this.Ports_DataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle20.Padding = new System.Windows.Forms.Padding(5);
-            this.Ports_DataGridView.RowsDefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5);
+            this.Ports_DataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.Ports_DataGridView.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5);
             this.Ports_DataGridView.RowTemplate.Height = 48;
             this.Ports_DataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -614,12 +618,12 @@
             this.Ports_DataGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Ports_DataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             // 
-            // PortProtocol
+            // PortProtocol_Column
             // 
-            this.PortProtocol.HeaderText = "Chuẩn giao tiếp";
-            this.PortProtocol.MinimumWidth = 10;
-            this.PortProtocol.Name = "PortProtocol";
-            this.PortProtocol.ReadOnly = true;
+            this.PortProtocol_Column.HeaderText = "Chuẩn giao tiếp";
+            this.PortProtocol_Column.MinimumWidth = 10;
+            this.PortProtocol_Column.Name = "PortProtocol_Column";
+            this.PortProtocol_Column.ReadOnly = true;
             // 
             // PortPhysic_Column
             // 
@@ -744,6 +748,7 @@
             this.CodeDisplay_TextBox.Location = new System.Drawing.Point(659, 438);
             this.CodeDisplay_TextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CodeDisplay_TextBox.Name = "CodeDisplay_TextBox";
+            this.CodeDisplay_TextBox.ReadOnly = true;
             this.CodeDisplay_TextBox.Size = new System.Drawing.Size(493, 39);
             this.CodeDisplay_TextBox.TabIndex = 119;
             // 
@@ -824,6 +829,7 @@
             this.Touchscreen_ToggleButton.UncheckedState.InnerBorderRadius = 20;
             this.Touchscreen_ToggleButton.UncheckedState.InnerColor = System.Drawing.Color.White;
             this.Touchscreen_ToggleButton.UncheckedState.Parent = this.Touchscreen_ToggleButton;
+            this.Touchscreen_ToggleButton.CheckedChanged += new System.EventHandler(this.Touchscreen_ToggleButton_CheckedChanged);
             // 
             // label34
             // 
@@ -1074,6 +1080,16 @@
             this.guna2GroupBox1.TabIndex = 120;
             this.guna2GroupBox1.Text = "Ổ cứng";
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(977, 76);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(44, 32);
+            this.label19.TabIndex = 105;
+            this.label19.Text = "GB";
+            // 
             // label30
             // 
             this.label30.AutoSize = true;
@@ -1318,15 +1334,44 @@
             this.Edit_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.Edit_Button.Click += new System.EventHandler(this.Edit_Button_Click);
             // 
-            // label19
+            // label20
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(977, 76);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(44, 32);
-            this.label19.TabIndex = 105;
-            this.label19.Text = "GB";
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(338, 824);
+            this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(44, 32);
+            this.label20.TabIndex = 128;
+            this.label20.Text = "GB";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(360, 1405);
+            this.label50.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(50, 32);
+            this.label50.TabIndex = 131;
+            this.label50.Text = "Wh";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(44, 1405);
+            this.label23.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(183, 32);
+            this.label23.TabIndex = 130;
+            this.label23.Text = "Dung lượng pin";
+            // 
+            // BatteryCapacity_TextBox
+            // 
+            this.BatteryCapacity_TextBox.Enabled = false;
+            this.BatteryCapacity_TextBox.Location = new System.Drawing.Point(244, 1402);
+            this.BatteryCapacity_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BatteryCapacity_TextBox.Name = "BatteryCapacity_TextBox";
+            this.BatteryCapacity_TextBox.Size = new System.Drawing.Size(108, 39);
+            this.BatteryCapacity_TextBox.TabIndex = 129;
             // 
             // DetailSpecsProduct_Form
             // 
@@ -1334,6 +1379,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(2119, 1675);
+            this.Controls.Add(this.label50);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.BatteryCapacity_TextBox);
+            this.Controls.Add(this.label20);
             this.Controls.Add(this.Edit_Button);
             this.Controls.Add(this.Z_Dimension_TextBox);
             this.Controls.Add(this.Y_Dimension_TextBox);
@@ -1445,9 +1494,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox Price_TextBox;
         private Guna.UI2.WinForms.Guna2DataGridView Ports_DataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PortProtocol;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PortPhysic_Column;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PortQuantity_Column;
         private System.Windows.Forms.TextBox Serials_TextBox;
         private Guna.UI2.WinForms.Guna2GroupBox Screen_GroupBox;
         private System.Windows.Forms.Label label34;
@@ -1506,5 +1552,12 @@
         private System.Windows.Forms.TextBox ColorSpace_sRGB_TextBox;
         private Guna.UI2.WinForms.Guna2Button Edit_Button;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PortProtocol_Column;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PortPhysic_Column;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PortQuantity_Column;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.TextBox BatteryCapacity_TextBox;
     }
 }

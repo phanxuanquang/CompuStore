@@ -157,7 +157,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
         }
 
-        private void AddProductByExcel_Button_Click(object sender, EventArgs e)
+        private async void AddProductByExcel_Button_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Tab-seperator values | *.tsv";
@@ -199,7 +199,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     {
                         (IMPORT_WAREHOUSE, List<ModelProduct>) respone = await ImportServices.Instance.Import(products, store, staff, distributor);
                         MessageBox.Show(string.Format("Chấp nhận {0}/{1}", products.Length - respone.Item2.Count, products.Length));
-                        InvoiceImportWarehouse_Form_Load(null, null);
+                        AddInvoiceImportWarehouse_Form_Load(null, null);
                     }
                 }*/
             }
