@@ -35,9 +35,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DataTable = new Guna.UI2.WinForms.Guna2DataGridView();
             this.SearchBox = new Guna.UI2.WinForms.Guna2TextBox();
-            this.AddNew_Buttom = new Guna.UI2.WinForms.Guna2Button();
-            this.ViewDetail_Button = new Guna.UI2.WinForms.Guna2Button();
-            this.Delete_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.Bottom_1 = new Guna.UI2.WinForms.Guna2Button();
+            this.Button_2 = new Guna.UI2.WinForms.Guna2Button();
+            this.Button_3 = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,7 +139,7 @@
             this.SearchBox.HoverState.Parent = this.SearchBox;
             this.SearchBox.IconLeft = global::CompuStore.Properties.Resources.Exit;
             this.SearchBox.Location = new System.Drawing.Point(25, 19);
-            this.SearchBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.SearchBox.Margin = new System.Windows.Forms.Padding(6);
             this.SearchBox.Name = "SearchBox";
             this.SearchBox.PasswordChar = '\0';
             this.SearchBox.PlaceholderText = "Tìm kiếm ";
@@ -149,77 +149,77 @@
             this.SearchBox.TabIndex = 14;
             this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             // 
-            // ViewDetail_Button
+            // Bottom_1
             // 
-            this.ViewDetail_Button.Animated = true;
-            this.ViewDetail_Button.BorderRadius = 5;
-            this.ViewDetail_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.ViewDetail_Button.CheckedState.Parent = this.ViewDetail_Button;
-            this.ViewDetail_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ViewDetail_Button.CustomImages.Parent = this.ViewDetail_Button;
-            this.ViewDetail_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.ViewDetail_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.ViewDetail_Button.ForeColor = System.Drawing.Color.White;
-            this.ViewDetail_Button.HoverState.Parent = this.ViewDetail_Button;
-            this.ViewDetail_Button.Location = new System.Drawing.Point(798, 19);
-            this.ViewDetail_Button.Name = "ViewDetail_Button";
-            this.ViewDetail_Button.PressedDepth = 5;
-            this.ViewDetail_Button.ShadowDecoration.Parent = this.ViewDetail_Button;
-            this.ViewDetail_Button.Size = new System.Drawing.Size(203, 37);
-            this.ViewDetail_Button.TabIndex = 13;
-            this.ViewDetail_Button.Text = "View Detail";
-            this.ViewDetail_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Bottom_1.Animated = true;
+            this.Bottom_1.BorderRadius = 5;
+            this.Bottom_1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Bottom_1.CheckedState.Parent = this.Bottom_1;
+            this.Bottom_1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Bottom_1.CustomImages.Parent = this.Bottom_1;
+            this.Bottom_1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Bottom_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Bottom_1.ForeColor = System.Drawing.Color.White;
+            this.Bottom_1.HoverState.Parent = this.Bottom_1;
+            this.Bottom_1.Location = new System.Drawing.Point(589, 19);
+            this.Bottom_1.Name = "Bottom_1";
+            this.Bottom_1.PressedDepth = 5;
+            this.Bottom_1.ShadowDecoration.Parent = this.Bottom_1;
+            this.Bottom_1.Size = new System.Drawing.Size(203, 37);
+            this.Bottom_1.TabIndex = 11;
+            this.Bottom_1.Text = "Add New";
+            this.Bottom_1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             // 
-            // Delete_Button
+            // Button_2
             // 
-            this.Delete_Button.Animated = true;
-            this.Delete_Button.BorderRadius = 5;
-            this.Delete_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Delete_Button.CheckedState.Parent = this.Delete_Button;
-            this.Delete_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Delete_Button.CustomImages.Parent = this.Delete_Button;
-            this.Delete_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Delete_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.Delete_Button.ForeColor = System.Drawing.Color.White;
-            this.Delete_Button.HoverState.Parent = this.Delete_Button;
-            this.Delete_Button.Location = new System.Drawing.Point(1007, 19);
-            this.Delete_Button.Name = "Delete_Button";
-            this.Delete_Button.PressedDepth = 5;
-            this.Delete_Button.ShadowDecoration.Parent = this.Delete_Button;
-            this.Delete_Button.Size = new System.Drawing.Size(203, 37);
-            this.Delete_Button.TabIndex = 12;
-            this.Delete_Button.Text = "Delete";
-            this.Delete_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Button_2.Animated = true;
+            this.Button_2.BorderRadius = 5;
+            this.Button_2.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Button_2.CheckedState.Parent = this.Button_2;
+            this.Button_2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_2.CustomImages.Parent = this.Button_2;
+            this.Button_2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Button_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Button_2.ForeColor = System.Drawing.Color.White;
+            this.Button_2.HoverState.Parent = this.Button_2;
+            this.Button_2.Location = new System.Drawing.Point(798, 19);
+            this.Button_2.Name = "Button_2";
+            this.Button_2.PressedDepth = 5;
+            this.Button_2.ShadowDecoration.Parent = this.Button_2;
+            this.Button_2.Size = new System.Drawing.Size(203, 37);
+            this.Button_2.TabIndex = 13;
+            this.Button_2.Text = "View Detail";
+            this.Button_2.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             // 
-            // AddNew_Buttom
+            // Button_3
             // 
-            this.AddNew_Buttom.Animated = true;
-            this.AddNew_Buttom.BorderRadius = 5;
-            this.AddNew_Buttom.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.AddNew_Buttom.CheckedState.Parent = this.AddNew_Buttom;
-            this.AddNew_Buttom.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AddNew_Buttom.CustomImages.Parent = this.AddNew_Buttom;
-            this.AddNew_Buttom.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.AddNew_Buttom.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.AddNew_Buttom.ForeColor = System.Drawing.Color.White;
-            this.AddNew_Buttom.HoverState.Parent = this.AddNew_Buttom;
-            this.AddNew_Buttom.Location = new System.Drawing.Point(589, 19);
-            this.AddNew_Buttom.Name = "AddNew_Buttom";
-            this.AddNew_Buttom.PressedDepth = 5;
-            this.AddNew_Buttom.ShadowDecoration.Parent = this.AddNew_Buttom;
-            this.AddNew_Buttom.Size = new System.Drawing.Size(203, 37);
-            this.AddNew_Buttom.TabIndex = 11;
-            this.AddNew_Buttom.Text = "Add New";
-            this.AddNew_Buttom.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Button_3.Animated = true;
+            this.Button_3.BorderRadius = 5;
+            this.Button_3.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Button_3.CheckedState.Parent = this.Button_3;
+            this.Button_3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Button_3.CustomImages.Parent = this.Button_3;
+            this.Button_3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Button_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Button_3.ForeColor = System.Drawing.Color.White;
+            this.Button_3.HoverState.Parent = this.Button_3;
+            this.Button_3.Location = new System.Drawing.Point(1007, 19);
+            this.Button_3.Name = "Button_3";
+            this.Button_3.PressedDepth = 5;
+            this.Button_3.ShadowDecoration.Parent = this.Button_3;
+            this.Button_3.Size = new System.Drawing.Size(203, 37);
+            this.Button_3.TabIndex = 12;
+            this.Button_3.Text = "Delete";
+            this.Button_3.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             // 
             // BaseTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.SearchBox);
-            this.Controls.Add(this.AddNew_Buttom);
-            this.Controls.Add(this.ViewDetail_Button);
-            this.Controls.Add(this.Delete_Button);
+            this.Controls.Add(this.Bottom_1);
+            this.Controls.Add(this.Button_2);
+            this.Controls.Add(this.Button_3);
             this.Controls.Add(this.DataTable);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "BaseTab";
@@ -233,8 +233,8 @@
 
         protected Guna.UI2.WinForms.Guna2DataGridView DataTable;
         protected Guna.UI2.WinForms.Guna2TextBox SearchBox;
-        protected Guna.UI2.WinForms.Guna2Button ViewDetail_Button;
-        protected Guna.UI2.WinForms.Guna2Button AddNew_Buttom;
-        protected Guna.UI2.WinForms.Guna2Button Delete_Button;
+        protected Guna.UI2.WinForms.Guna2Button Button_2;
+        protected Guna.UI2.WinForms.Guna2Button Bottom_1;
+        protected Guna.UI2.WinForms.Guna2Button Button_3;
     }
 }

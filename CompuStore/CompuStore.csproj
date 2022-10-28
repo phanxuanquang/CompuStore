@@ -257,6 +257,12 @@
     <Compile Include="GUI\Tab\Warehouse_UC.Designer.cs">
       <DependentUpon>Warehouse_UC.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Tab\ServiceManagement_Tab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Tab\ServiceManagement_Tab.Designer.cs">
+      <DependentUpon>ServiceManagement_Tab.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="GUI\Forms\SubForms\AddInvoice_Form.resx">
       <DependentUpon>AddInvoice_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -280,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Forms\SubForms\Warehouse\InvoiceImportWarehouse\BaseInvoiceImportWarehouse_Form.resx">
       <DependentUpon>BaseInvoiceImportWarehouse_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Tab\ServiceManagement_Tab.resx">
+      <DependentUpon>ServiceManagement_Tab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

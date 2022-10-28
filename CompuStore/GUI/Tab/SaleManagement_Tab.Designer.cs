@@ -50,49 +50,49 @@
             // 
             // ViewDetail_Button
             // 
-            this.ViewDetail_Button.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
-            this.ViewDetail_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.ViewDetail_Button.CheckedState.Parent = this.ViewDetail_Button;
-            this.ViewDetail_Button.CustomImages.Parent = this.ViewDetail_Button;
-            this.ViewDetail_Button.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.ViewDetail_Button.HoverState.Parent = this.ViewDetail_Button;
-            this.ViewDetail_Button.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ViewDetail_Button.Location = new System.Drawing.Point(1007, 19);
-            this.ViewDetail_Button.ShadowDecoration.Parent = this.ViewDetail_Button;
-            this.ViewDetail_Button.Text = "Xem cấu hình";
-            this.ViewDetail_Button.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.ViewDetail_Button.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
-            this.ViewDetail_Button.Click += new System.EventHandler(this.ViewDetail_Button_Click);
+            this.Button_2.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
+            this.Button_2.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Button_2.CheckedState.Parent = this.Button_2;
+            this.Button_2.CustomImages.Parent = this.Button_2;
+            this.Button_2.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.Button_2.HoverState.Parent = this.Button_2;
+            this.Button_2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Button_2.Location = new System.Drawing.Point(1007, 19);
+            this.Button_2.ShadowDecoration.Parent = this.Button_2;
+            this.Button_2.Text = "Xem cấu hình";
+            this.Button_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Button_2.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
+            this.Button_2.Click += new System.EventHandler(this.ViewDetail_Button_Click);
             // 
             // Delete_Button
             // 
-            this.Delete_Button.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
-            this.Delete_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Delete_Button.CheckedState.Parent = this.Delete_Button;
-            this.Delete_Button.CustomImages.Parent = this.Delete_Button;
-            this.Delete_Button.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.Delete_Button.HoverState.Parent = this.Delete_Button;
-            this.Delete_Button.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Delete_Button.ShadowDecoration.Parent = this.Delete_Button;
-            this.Delete_Button.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Delete_Button.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
-            this.Delete_Button.Visible = false;
+            this.Button_3.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
+            this.Button_3.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Button_3.CheckedState.Parent = this.Button_3;
+            this.Button_3.CustomImages.Parent = this.Button_3;
+            this.Button_3.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.Button_3.HoverState.Parent = this.Button_3;
+            this.Button_3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Button_3.ShadowDecoration.Parent = this.Button_3;
+            this.Button_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Button_3.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
+            this.Button_3.Visible = false;
             // 
             // AddNew_Buttom
             // 
-            this.AddNew_Buttom.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
-            this.AddNew_Buttom.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.AddNew_Buttom.CheckedState.Parent = this.AddNew_Buttom;
-            this.AddNew_Buttom.CustomImages.Parent = this.AddNew_Buttom;
-            this.AddNew_Buttom.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.AddNew_Buttom.HoverState.Parent = this.AddNew_Buttom;
-            this.AddNew_Buttom.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.AddNew_Buttom.Location = new System.Drawing.Point(798, 19);
-            this.AddNew_Buttom.ShadowDecoration.Parent = this.AddNew_Buttom;
-            this.AddNew_Buttom.Text = "Tạo đơn hàng";
-            this.AddNew_Buttom.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.AddNew_Buttom.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
-            this.AddNew_Buttom.Click += new System.EventHandler(this.AddNew_Buttom_Click);
+            this.Bottom_1.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
+            this.Bottom_1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Bottom_1.CheckedState.Parent = this.Bottom_1;
+            this.Bottom_1.CustomImages.Parent = this.Bottom_1;
+            this.Bottom_1.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.Bottom_1.HoverState.Parent = this.Bottom_1;
+            this.Bottom_1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Bottom_1.Location = new System.Drawing.Point(798, 19);
+            this.Bottom_1.ShadowDecoration.Parent = this.Bottom_1;
+            this.Bottom_1.Text = "Tạo đơn hàng";
+            this.Bottom_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Bottom_1.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
+            this.Bottom_1.Click += new System.EventHandler(this.AddNew_Buttom_Click);
             // 
             // invoiceBindingSource
             // 

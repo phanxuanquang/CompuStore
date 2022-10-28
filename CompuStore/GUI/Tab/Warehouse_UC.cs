@@ -177,12 +177,12 @@ namespace CompuStore.Tab
 
         public Warehouse_UC()
         {
-            AddNew_Buttom.Text = "Xem hóa đơn nhập hàng";
-            ViewDetail_Button.Text = "Xem sản phẩm";
-            Delete_Button.Text = "Nhập hàng";
-            AddNew_Buttom.Click += SeeInvoiceImportWarehouse_Click;
-            ViewDetail_Button.Click += SeeProduct_Click;
-            Delete_Button.Click += ImportWarehouse_Click;
+            Bottom_1.Text = "Xem hóa đơn nhập hàng";
+            Button_2.Text = "Xem sản phẩm";
+            Button_3.Text = "Nhập hàng";
+            Bottom_1.Click += SeeInvoiceImportWarehouse_Click;
+            Button_2.Click += SeeProduct_Click;
+            Button_3.Click += ImportWarehouse_Click;
             DataTable.DataSourceChanged += DataTable_DataSourceChanged;
             DataTable.CellDoubleClick += DataTable_CellDoubleClick;
             InitializeComponent();

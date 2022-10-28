@@ -1,6 +1,6 @@
-﻿namespace CompuStore.Tab
+﻿namespace CompuStore
 {
-    partial class StaffManagement_Tab
+    partial class ServiceManagement_Tab
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,9 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.sTAFFBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.sTAFFBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // SearchBox
@@ -44,7 +41,6 @@
             this.SearchBox.FocusedState.Parent = this.SearchBox;
             this.SearchBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.SearchBox.HoverState.Parent = this.SearchBox;
-            this.SearchBox.PlaceholderText = "Tìm kiếm nhân viên theo mã, họ và tên hoặc số điện thoại";
             this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
             // 
             // ViewDetail_Button
@@ -57,10 +53,9 @@
             this.Button_2.HoverState.Parent = this.Button_2;
             this.Button_2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Button_2.ShadowDecoration.Parent = this.Button_2;
-            this.Button_2.Text = "Xem thông tin";
+            this.Button_2.Text = "Thêm phiếu đổi trả";
             this.Button_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Button_2.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
-            this.Button_2.Click += new System.EventHandler(this.ViewDetail_Button_Click);
             // 
             // AddNew_Buttom
             // 
@@ -72,10 +67,9 @@
             this.Bottom_1.HoverState.Parent = this.Bottom_1;
             this.Bottom_1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Bottom_1.ShadowDecoration.Parent = this.Bottom_1;
-            this.Bottom_1.Text = "Thêm nhân viên";
+            this.Bottom_1.Text = "Thêm phiếu bảo hành";
             this.Bottom_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Bottom_1.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
-            this.Bottom_1.Click += new System.EventHandler(this.AddNew_Buttom_Click);
             // 
             // Delete_Button
             // 
@@ -87,26 +81,19 @@
             this.Button_3.HoverState.Parent = this.Button_3;
             this.Button_3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Button_3.ShadowDecoration.Parent = this.Button_3;
-            this.Button_3.Text = "Thu hồi quyền";
+            this.Button_3.Text = "Xem thông tin";
             this.Button_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Button_3.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
             // 
-            // sTAFFBindingSource
-            // 
-            this.sTAFFBindingSource.DataSource = typeof(CompuStore.Database.Models.STAFF);
-            // 
-            // StaffManagement_Tab
+            // ServiceManagement_Tab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "StaffManagement_Tab";
-            ((System.ComponentModel.ISupportInitialize)(this.sTAFFBindingSource)).EndInit();
+            this.Name = "ServiceManagement_Tab";
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.BindingSource sTAFFBindingSource;
     }
 }
