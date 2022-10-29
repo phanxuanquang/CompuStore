@@ -14,14 +14,16 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
     public class EditDetailInvoiceImportWarehouse_Form : BaseDetailInvoiceImportWarehouse_Form
     {
         private COMMON_SPECS commonSpecs = null;
+        private IMPORT_WAREHOUSE importWarehouse = null;
         BindingList<ModelProduct> bindingTable = null;
         Task task = null;
         CancellationTokenSource cancellationTokenSource = null;
-        List<ModelProductCustom> groupBinding = null;
+        List<ModelProductGroup> groupBinding = null;
 
-        public EditDetailInvoiceImportWarehouse_Form(COMMON_SPECS commonSpecs = null)
+        public EditDetailInvoiceImportWarehouse_Form(IMPORT_WAREHOUSE importWarehouse, COMMON_SPECS commonSpecs)
         {
             this.commonSpecs = commonSpecs;
+            this.importWarehouse = importWarehouse;
             Load += DetailInvoiceImportWarehouse_Form_Load;
             TableData_DataGridView.CellDoubleClick += TableData_DataGridView_CellDoubleClick;
             AddProductByExcel_Button.Click += AddProductByExcel_Button_Click;
@@ -34,73 +36,148 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 if (commonSpecs != null)
                 {
                     int counter = 0;
-                    groupBinding = new List<ModelProductCustom>();
-                    ICollection<DETAIL_SPECS> detailSpecs = commonSpecs.DETAIL_SPECS;
+                    groupBinding = new List<ModelProductGroup>();
                     LINE_UP lineup = commonSpecs.LINE_UP;
-                    foreach (DETAIL_SPECS detail in detailSpecs)
+                    if (importWarehouse != null)
                     {
-                        UNIQUE_SPECS uniqueSpecs = detail.UNIQUE_SPECS;
-                        DISPLAY_SPECS display = uniqueSpecs.DISPLAY_SPECS;
-                        COLOR color = detail.COLOR;
-                        ICollection<PRODUCT> products = detail.PRODUCTs;
-
-                        foreach (PRODUCT product in products)
+                        IEnumerable<DETAIL_IMPORT_WAREHOUSE> detailImportWarehouse = importWarehouse.DETAIL_IMPORT_WAREHOUSE.Where(item => item.PRODUCT.DETAIL_SPECS.ID_COMMON_SPECS == commonSpecs.ID);
+                        foreach (DETAIL_IMPORT_WAREHOUSE detailImport in detailImportWarehouse)
                         {
-                            ModelProduct modelProduct = new ModelProduct();
-                            modelProduct.Serial = product.SERIAL_ID;
-                            modelProduct.LineUp = lineup.NAME;
-                            modelProduct.Manufacturer = lineup.MANUFACTURER;
-                            modelProduct.Country = lineup.COUNTRY;
-                            modelProduct.IdPanel = display.CODE_DISPLAY;
-                            modelProduct.ResolutionString = display.RESOLUTION;
-                            modelProduct.SizePanel = display.SIZE;
-                            modelProduct.Brightness = display.BRIGHTNESS;
-                            modelProduct.TypePanel = display.PANEL;
-                            modelProduct.SpaceColorString = display.COLOR_SPACE;
-                            modelProduct.RefreshRate = display.REFRESH_RATE;
-                            modelProduct.CanTouchPanel = display.IS_TOUCH_PANEL;
-                            modelProduct.TypeScreen = display.SCREEN_TYPE;
-                            modelProduct.RatioPanelString = display.RATIO;
-                            modelProduct.CPU = uniqueSpecs.CPU;
-                            modelProduct.iGPU = uniqueSpecs.IGPU;
-                            modelProduct.RAMString = uniqueSpecs.RAM;
-                            modelProduct.TypeStorage = uniqueSpecs.TYPE_STORAGE;
-                            modelProduct.StorageCapacity = uniqueSpecs.STORAGE_CAPACITY;
-                            modelProduct.GPUString = uniqueSpecs.GPU;
-                            modelProduct.BatteryCapacity = uniqueSpecs.BATTERY_CAPACITY;
-                            modelProduct.Weight = uniqueSpecs.WEIGHT;
-                            modelProduct.NameProduct = commonSpecs.NAME;
-                            modelProduct.ReleaseDate = commonSpecs.RELEASED_YEAR;
-                            modelProduct.CaseMaterial = commonSpecs.CASE_MATERIAL;
-                            modelProduct.PortString = commonSpecs.PORT;
-                            modelProduct.Webcam = commonSpecs.WEBCAM;
-                            modelProduct.SizeProductString = commonSpecs.DIMENSIONS;
-                            modelProduct.OS = commonSpecs.OS;
-                            modelProduct.Wifi = commonSpecs.WIFI;
-                            modelProduct.Bluetooth = commonSpecs.BLUETOOTH;
-                            modelProduct.Price = detail.PRICE;
-                            modelProduct.ColorCode = color.COLOR_CODE;
-                            modelProduct.ColorName = color.COLOR_NAME;
-                            ModelProductCustom group = groupBinding.Find(item => item.IsTheSameGroup(modelProduct));
-                            if (group != null)
-                            {
-                                group.product = modelProduct;
-                            }
-                            else
-                            {
-                                group = new ModelProductCustom();
-                                group.product = modelProduct;
-                                groupBinding.Add(group);
+                            DETAIL_SPECS detail = detailImport.PRODUCT.DETAIL_SPECS;
+                            UNIQUE_SPECS uniqueSpecs = detail.UNIQUE_SPECS;
+                            DISPLAY_SPECS display = uniqueSpecs.DISPLAY_SPECS;
+                            COLOR color = detail.COLOR;
+                            ICollection<PRODUCT> products = detail.PRODUCTs;
 
-                                if (TableData_DataGridView.InvokeRequired)
+                            foreach (PRODUCT product in products)
+                            {
+                                ModelProduct modelProduct = new ModelProduct();
+                                modelProduct.Price = detailImport.PRICE_PER_UNIT;
+                                modelProduct.Serial = detailImport.SERIAL_ID;
+                                modelProduct.LineUp = lineup.NAME;
+                                modelProduct.Manufacturer = lineup.MANUFACTURER;
+                                modelProduct.Country = lineup.COUNTRY;
+                                modelProduct.IdPanel = display.CODE_DISPLAY;
+                                modelProduct.ResolutionString = display.RESOLUTION;
+                                modelProduct.SizePanel = display.SIZE;
+                                modelProduct.Brightness = display.BRIGHTNESS;
+                                modelProduct.TypePanel = display.PANEL;
+                                modelProduct.SpaceColorString = display.COLOR_SPACE;
+                                modelProduct.RefreshRate = display.REFRESH_RATE;
+                                modelProduct.CanTouchPanel = display.IS_TOUCH_PANEL;
+                                modelProduct.TypeScreen = display.SCREEN_TYPE;
+                                modelProduct.RatioPanelString = display.RATIO;
+                                modelProduct.CPU = uniqueSpecs.CPU;
+                                modelProduct.iGPU = uniqueSpecs.IGPU;
+                                modelProduct.RAMString = uniqueSpecs.RAM;
+                                modelProduct.TypeStorage = uniqueSpecs.TYPE_STORAGE;
+                                modelProduct.StorageCapacity = uniqueSpecs.STORAGE_CAPACITY;
+                                modelProduct.GPUString = uniqueSpecs.GPU;
+                                modelProduct.BatteryCapacity = uniqueSpecs.BATTERY_CAPACITY;
+                                modelProduct.Weight = uniqueSpecs.WEIGHT;
+                                modelProduct.NameProduct = commonSpecs.NAME;
+                                modelProduct.ReleaseDate = commonSpecs.RELEASED_YEAR;
+                                modelProduct.CaseMaterial = commonSpecs.CASE_MATERIAL;
+                                modelProduct.PortString = commonSpecs.PORT;
+                                modelProduct.Webcam = commonSpecs.WEBCAM;
+                                modelProduct.SizeProductString = commonSpecs.DIMENSIONS;
+                                modelProduct.OS = commonSpecs.OS;
+                                modelProduct.Wifi = commonSpecs.WIFI;
+                                modelProduct.Bluetooth = commonSpecs.BLUETOOTH;
+                                modelProduct.ColorCode = color.COLOR_CODE;
+                                modelProduct.ColorName = color.COLOR_NAME;
+                                ModelProductGroup group = groupBinding.Find(item => item.IsTheSameGroup(modelProduct));
+                                if (group != null)
                                 {
-                                    TableData_DataGridView.Invoke(new Action(() => bindingTable.Add(group.product)));
+                                    group.product = modelProduct;
                                 }
                                 else
                                 {
-                                    bindingTable.Add(modelProduct);
+                                    group = new ModelProductGroup();
+                                    group.product = modelProduct;
+                                    groupBinding.Add(group);
+
+                                    if (TableData_DataGridView.InvokeRequired)
+                                    {
+                                        TableData_DataGridView.Invoke(new Action(() => bindingTable.Add(group.product)));
+                                    }
+                                    else
+                                    {
+                                        bindingTable.Add(modelProduct);
+                                    }
+                                    progress.Report(++counter);
                                 }
-                                progress.Report(++counter);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        ICollection<DETAIL_SPECS> detailSpecs = commonSpecs.DETAIL_SPECS;
+                        foreach (DETAIL_SPECS detail in detailSpecs)
+                        {
+                            UNIQUE_SPECS uniqueSpecs = detail.UNIQUE_SPECS;
+                            DISPLAY_SPECS display = uniqueSpecs.DISPLAY_SPECS;
+                            COLOR color = detail.COLOR;
+                            ICollection<PRODUCT> products = detail.PRODUCTs;
+
+                            foreach (PRODUCT product in products)
+                            {
+                                ModelProduct modelProduct = new ModelProduct();
+                                modelProduct.Serial = product.SERIAL_ID;
+                                modelProduct.LineUp = lineup.NAME;
+                                modelProduct.Manufacturer = lineup.MANUFACTURER;
+                                modelProduct.Country = lineup.COUNTRY;
+                                modelProduct.IdPanel = display.CODE_DISPLAY;
+                                modelProduct.ResolutionString = display.RESOLUTION;
+                                modelProduct.SizePanel = display.SIZE;
+                                modelProduct.Brightness = display.BRIGHTNESS;
+                                modelProduct.TypePanel = display.PANEL;
+                                modelProduct.SpaceColorString = display.COLOR_SPACE;
+                                modelProduct.RefreshRate = display.REFRESH_RATE;
+                                modelProduct.CanTouchPanel = display.IS_TOUCH_PANEL;
+                                modelProduct.TypeScreen = display.SCREEN_TYPE;
+                                modelProduct.RatioPanelString = display.RATIO;
+                                modelProduct.CPU = uniqueSpecs.CPU;
+                                modelProduct.iGPU = uniqueSpecs.IGPU;
+                                modelProduct.RAMString = uniqueSpecs.RAM;
+                                modelProduct.TypeStorage = uniqueSpecs.TYPE_STORAGE;
+                                modelProduct.StorageCapacity = uniqueSpecs.STORAGE_CAPACITY;
+                                modelProduct.GPUString = uniqueSpecs.GPU;
+                                modelProduct.BatteryCapacity = uniqueSpecs.BATTERY_CAPACITY;
+                                modelProduct.Weight = uniqueSpecs.WEIGHT;
+                                modelProduct.NameProduct = commonSpecs.NAME;
+                                modelProduct.ReleaseDate = commonSpecs.RELEASED_YEAR;
+                                modelProduct.CaseMaterial = commonSpecs.CASE_MATERIAL;
+                                modelProduct.PortString = commonSpecs.PORT;
+                                modelProduct.Webcam = commonSpecs.WEBCAM;
+                                modelProduct.SizeProductString = commonSpecs.DIMENSIONS;
+                                modelProduct.OS = commonSpecs.OS;
+                                modelProduct.Wifi = commonSpecs.WIFI;
+                                modelProduct.Bluetooth = commonSpecs.BLUETOOTH;
+                                modelProduct.Price = detail.PRICE;
+                                modelProduct.ColorCode = color.COLOR_CODE;
+                                modelProduct.ColorName = color.COLOR_NAME;
+                                ModelProductGroup group = groupBinding.Find(item => item.IsTheSameGroup(modelProduct));
+                                if (group != null)
+                                {
+                                    group.product = modelProduct;
+                                }
+                                else
+                                {
+                                    group = new ModelProductGroup();
+                                    group.product = modelProduct;
+                                    groupBinding.Add(group);
+
+                                    if (TableData_DataGridView.InvokeRequired)
+                                    {
+                                        TableData_DataGridView.Invoke(new Action(() => bindingTable.Add(group.product)));
+                                    }
+                                    else
+                                    {
+                                        bindingTable.Add(modelProduct);
+                                    }
+                                    progress.Report(++counter);
+                                }
                             }
                         }
                     }
@@ -201,9 +278,12 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 ModelProduct model = bindingTable[e.RowIndex];
                 if (model != null)
                 {
-                    ModelProductCustom group = groupBinding.Find(item => item.product.Equals(model));
-                    BaseDetailSpecsProduct_Form detailSpecs = new BaseDetailSpecsProduct_Form();
-                    detailSpecs.ShowDialog(this, group.productsTheSame.ToArray());
+                    ModelProductGroup group = groupBinding.Find(item => item.product.Equals(model));
+                    if(group != null)
+                    {
+                        DetailSpecsProduct_Form detailSpecs = new DetailSpecsProduct_Form();
+                        detailSpecs.ShowDialog(this, group.productsTheSame);
+                    }
                 }
             }
         }

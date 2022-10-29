@@ -14,11 +14,11 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
     public class AddInvoiceImportWarehouse_Form : BaseInvoiceImportWarehouse_Form
     {
         #region Implement interface in base class
-        private class AddInvoiceCommonSpecsGroup : CommonSpecsGroup<ModelProduct>
+        private class AddInvoiceCommonSpecsGroup : ICommonSpecsGroup<ModelProduct>
         {
             List<ModelProduct> _detailSpecs;
 
-            double CommonSpecsGroup<ModelProduct>.maxTotal
+            double ICommonSpecsGroup<ModelProduct>.maxTotal
             {
                 get
                 {
@@ -33,7 +33,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     return max == null ? 0.0 : max.Value;
                 }
             }
-            double CommonSpecsGroup<ModelProduct>.minTotal
+            double ICommonSpecsGroup<ModelProduct>.minTotal
             {
                 get
                 {
@@ -48,7 +48,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     return min == null ? 0.0 : min.Value;
                 }
             }
-            ModelProduct CommonSpecsGroup<ModelProduct>.Represent
+            ModelProduct ICommonSpecsGroup<ModelProduct>.Represent
             {
                 get => _detailSpecs?.FirstOrDefault();
             }
@@ -82,7 +82,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
         }
 
-        private class AddInvoiceCommonSpecs : CommonSpecsCustom
+        private class AddInvoiceCommonSpecs : ICommonSpecsCustom
         {
             private int? _ID;
             private string _NameID;
@@ -93,16 +93,16 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             private int? _Quantity;
             private string _RangeTotal;
 
-            int CommonSpecsCustom.ID { get => _ID.Value; set => _ID = value; }
-            string CommonSpecsCustom.NameID { get => _NameID; set => _NameID = value; }
-            string CommonSpecsCustom.NameCommonSpecs { get => _NameCommonSpecs; set => _NameCommonSpecs = value; }
-            string CommonSpecsCustom.LineUp { get => _LineUp; set => _LineUp = value; }
-            string CommonSpecsCustom.Manufacturer { get => _Manufacturer; set => _Manufacturer = value; }
-            DateTime? CommonSpecsCustom.ReleaseDate { get => _ReleaseDate; set => _ReleaseDate = value; }
-            int CommonSpecsCustom.Quantity { get => _Quantity.Value; set => _Quantity = value; }
-            string CommonSpecsCustom.RangeTotal { get => _RangeTotal; set => _RangeTotal = value; }
+            int ICommonSpecsCustom.ID { get => _ID.Value; set => _ID = value; }
+            string ICommonSpecsCustom.NameID { get => _NameID; set => _NameID = value; }
+            string ICommonSpecsCustom.NameCommonSpecs { get => _NameCommonSpecs; set => _NameCommonSpecs = value; }
+            string ICommonSpecsCustom.LineUp { get => _LineUp; set => _LineUp = value; }
+            string ICommonSpecsCustom.Manufacturer { get => _Manufacturer; set => _Manufacturer = value; }
+            DateTime? ICommonSpecsCustom.ReleaseDate { get => _ReleaseDate; set => _ReleaseDate = value; }
+            int ICommonSpecsCustom.Quantity { get => _Quantity.Value; set => _Quantity = value; }
+            string ICommonSpecsCustom.RangeTotal { get => _RangeTotal; set => _RangeTotal = value; }
 
-            public AddInvoiceCommonSpecs(CommonSpecsGroup<ModelProduct> group)
+            public AddInvoiceCommonSpecs(ICommonSpecsGroup<ModelProduct> group)
             {
                 if (group != null)
                 {
@@ -128,8 +128,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         }
         #endregion
 
-        BindingList<CommonSpecsCustom> bindingTable = null;
-        List<CommonSpecsGroup<ModelProduct>> commonSpecsGroups = null;
+        BindingList<ICommonSpecsCustom> bindingTable = null;
+        List<ICommonSpecsGroup<ModelProduct>> commonSpecsGroups = null;
 
         public AddInvoiceImportWarehouse_Form()
         {
@@ -141,7 +141,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         #region Add table binding
         private void AddInvoiceImportWarehouse_Form_Load(object sender, EventArgs e)
         {
-            bindingTable = new BindingList<CommonSpecsCustom>();
+            bindingTable = new BindingList<ICommonSpecsCustom>();
             TableData_DataGridView.DataSource = bindingTable;
         }
         #endregion
@@ -149,7 +149,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         private void TableData_DataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string nameIdCommonSpecs = (sender as DataGridView).Rows[e.RowIndex].Cells["NameID"].Value as string;
-            CommonSpecsGroup<ModelProduct> commonSpecs = commonSpecsGroups.FirstOrDefault(item => item.Represent.Serial == nameIdCommonSpecs);
+            ICommonSpecsGroup<ModelProduct> commonSpecs = commonSpecsGroups.FirstOrDefault(item => item.Represent.Serial == nameIdCommonSpecs);
             if (commonSpecs != null)
             {
                 BaseDetailInvoiceImportWarehouse_Form form = new AddDetailInvoiceImportWarehouse_Form(commonSpecs.detailSpecs.ToList());
@@ -157,7 +157,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
         }
 
-        private void AddProductByExcel_Button_Click(object sender, EventArgs e)
+        private async void AddProductByExcel_Button_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Tab-seperator values | *.tsv";
@@ -181,9 +181,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     item.SizeProductString,
                     item.Wifi,
                     item.Bluetooth
-                }).Select(item => new AddInvoiceCommonSpecsGroup(item.ToList())).ToList<CommonSpecsGroup<ModelProduct>>();
+                }).Select(item => new AddInvoiceCommonSpecsGroup(item.ToList())).ToList<ICommonSpecsGroup<ModelProduct>>();
 
-                foreach (CommonSpecsGroup<ModelProduct> item in commonSpecsGroups)
+                foreach (ICommonSpecsGroup<ModelProduct> item in commonSpecsGroups)
                 {
                     bindingTable.Add(new AddInvoiceCommonSpecs(item));
                 }
@@ -199,7 +199,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     {
                         (IMPORT_WAREHOUSE, List<ModelProduct>) respone = await ImportServices.Instance.Import(products, store, staff, distributor);
                         MessageBox.Show(string.Format("Chấp nhận {0}/{1}", products.Length - respone.Item2.Count, products.Length));
-                        InvoiceImportWarehouse_Form_Load(null, null);
+                        AddInvoiceImportWarehouse_Form_Load(null, null);
                     }
                 }*/
             }

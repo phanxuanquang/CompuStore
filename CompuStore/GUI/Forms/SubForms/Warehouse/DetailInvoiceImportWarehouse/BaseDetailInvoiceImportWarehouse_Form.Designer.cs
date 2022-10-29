@@ -38,13 +38,12 @@
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.DragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.Manufacturer = new System.Windows.Forms.Label();
-            this.DateTimeImportWarehouse = new System.Windows.Forms.Label();
+            this.ReleaseDate_Label = new System.Windows.Forms.Label();
             this.NameProduct = new System.Windows.Forms.Label();
             this.TotalImportWarehouse = new System.Windows.Forms.Label();
             this.Manufacturer_ComboBox = new System.Windows.Forms.ComboBox();
             this.NameProduct_ComboBox = new System.Windows.Forms.ComboBox();
             this.TotalImportWarehouse_Label = new System.Windows.Forms.Label();
-            this.DateTimeImportWarehouse_DateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.AddProduct_Button = new Guna.UI2.WinForms.Guna2Button();
             this.DeleteProduct_Button = new Guna.UI2.WinForms.Guna2Button();
             this.AddProductByExcel_Button = new Guna.UI2.WinForms.Guna2Button();
@@ -55,6 +54,7 @@
             this.Finish_Button = new Guna.UI2.WinForms.Guna2Button();
             this.LineUp_ComboBox = new System.Windows.Forms.ComboBox();
             this.LineUp = new System.Windows.Forms.Label();
+            this.ReleaseDate_DateTimePicker = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.TableData_DataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,16 +105,16 @@
             this.Manufacturer.TabIndex = 7;
             this.Manufacturer.Text = "Nhà sản xuất";
             // 
-            // DateTimeImportWarehouse
+            // ReleaseDate_Label
             // 
-            this.DateTimeImportWarehouse.AutoSize = true;
-            this.DateTimeImportWarehouse.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DateTimeImportWarehouse.Location = new System.Drawing.Point(84, 255);
-            this.DateTimeImportWarehouse.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.DateTimeImportWarehouse.Name = "DateTimeImportWarehouse";
-            this.DateTimeImportWarehouse.Size = new System.Drawing.Size(192, 32);
-            this.DateTimeImportWarehouse.TabIndex = 8;
-            this.DateTimeImportWarehouse.Text = "Ngày nhập hàng";
+            this.ReleaseDate_Label.AutoSize = true;
+            this.ReleaseDate_Label.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReleaseDate_Label.Location = new System.Drawing.Point(84, 255);
+            this.ReleaseDate_Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ReleaseDate_Label.Name = "ReleaseDate_Label";
+            this.ReleaseDate_Label.Size = new System.Drawing.Size(145, 32);
+            this.ReleaseDate_Label.TabIndex = 8;
+            this.ReleaseDate_Label.Text = "Ngày ra mắt";
             // 
             // NameProduct
             // 
@@ -150,7 +150,7 @@
             // NameProduct_ComboBox
             // 
             this.NameProduct_ComboBox.FormattingEnabled = true;
-            this.NameProduct_ComboBox.Location = new System.Drawing.Point(414, 296);
+            this.NameProduct_ComboBox.Location = new System.Drawing.Point(414, 301);
             this.NameProduct_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.NameProduct_ComboBox.Name = "NameProduct_ComboBox";
             this.NameProduct_ComboBox.Size = new System.Drawing.Size(433, 40);
@@ -166,16 +166,6 @@
             this.TotalImportWarehouse_Label.Size = new System.Drawing.Size(216, 32);
             this.TotalImportWarehouse_Label.TabIndex = 15;
             this.TotalImportWarehouse_Label.Text = "1000 củ khoai lang";
-            // 
-            // DateTimeImportWarehouse_DateTimePicker
-            // 
-            this.DateTimeImportWarehouse_DateTimePicker.CustomFormat = "h:mm tt dd/MM/yyyy";
-            this.DateTimeImportWarehouse_DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimeImportWarehouse_DateTimePicker.Location = new System.Drawing.Point(414, 250);
-            this.DateTimeImportWarehouse_DateTimePicker.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.DateTimeImportWarehouse_DateTimePicker.Name = "DateTimeImportWarehouse_DateTimePicker";
-            this.DateTimeImportWarehouse_DateTimePicker.Size = new System.Drawing.Size(433, 39);
-            this.DateTimeImportWarehouse_DateTimePicker.TabIndex = 16;
             // 
             // AddProduct_Button
             // 
@@ -419,12 +409,23 @@
             this.LineUp.TabIndex = 28;
             this.LineUp.Text = "Dòng sản phẩm";
             // 
+            // ReleaseDate_DateTimePicker
+            // 
+            this.ReleaseDate_DateTimePicker.CustomFormat = "h:mm tt dd/MM/yyyy";
+            this.ReleaseDate_DateTimePicker.Enabled = false;
+            this.ReleaseDate_DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.ReleaseDate_DateTimePicker.Location = new System.Drawing.Point(414, 252);
+            this.ReleaseDate_DateTimePicker.Name = "ReleaseDate_DateTimePicker";
+            this.ReleaseDate_DateTimePicker.Size = new System.Drawing.Size(433, 39);
+            this.ReleaseDate_DateTimePicker.TabIndex = 30;
+            // 
             // BaseDetailInvoiceImportWarehouse_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(2468, 1347);
+            this.Controls.Add(this.ReleaseDate_DateTimePicker);
             this.Controls.Add(this.LineUp_ComboBox);
             this.Controls.Add(this.LineUp);
             this.Controls.Add(this.Finish_Button);
@@ -435,13 +436,12 @@
             this.Controls.Add(this.AddProduct_Button);
             this.Controls.Add(this.DeleteProduct_Button);
             this.Controls.Add(this.AddProductByExcel_Button);
-            this.Controls.Add(this.DateTimeImportWarehouse_DateTimePicker);
             this.Controls.Add(this.TotalImportWarehouse_Label);
             this.Controls.Add(this.NameProduct_ComboBox);
             this.Controls.Add(this.Manufacturer_ComboBox);
             this.Controls.Add(this.TotalImportWarehouse);
             this.Controls.Add(this.NameProduct);
-            this.Controls.Add(this.DateTimeImportWarehouse);
+            this.Controls.Add(this.ReleaseDate_Label);
             this.Controls.Add(this.Manufacturer);
             this.Controls.Add(this.Exit_Button);
             this.Controls.Add(this.Header);
@@ -464,7 +464,7 @@
         private Guna.UI2.WinForms.Guna2ImageButton Exit_Button;
         private Guna.UI2.WinForms.Guna2DragControl DragControl;
         private System.Windows.Forms.Label Manufacturer;
-        private System.Windows.Forms.Label DateTimeImportWarehouse;
+        private System.Windows.Forms.Label ReleaseDate_Label;
         private System.Windows.Forms.Label NameProduct;
         private System.Windows.Forms.Label TotalImportWarehouse;
         private Guna.UI2.WinForms.Guna2Button Confirm_Button;
@@ -475,11 +475,11 @@
         protected System.Windows.Forms.ComboBox Manufacturer_ComboBox;
         protected System.Windows.Forms.ComboBox NameProduct_ComboBox;
         protected System.Windows.Forms.Label TotalImportWarehouse_Label;
-        protected System.Windows.Forms.DateTimePicker DateTimeImportWarehouse_DateTimePicker;
         protected Guna.UI2.WinForms.Guna2Button AddProduct_Button;
         protected Guna.UI2.WinForms.Guna2Button DeleteProduct_Button;
         protected Guna.UI2.WinForms.Guna2Button AddProductByExcel_Button;
         protected Guna.UI2.WinForms.Guna2DataGridView TableData_DataGridView;
         protected System.Windows.Forms.ComboBox LineUp_ComboBox;
+        private System.Windows.Forms.DateTimePicker ReleaseDate_DateTimePicker;
     }
 }

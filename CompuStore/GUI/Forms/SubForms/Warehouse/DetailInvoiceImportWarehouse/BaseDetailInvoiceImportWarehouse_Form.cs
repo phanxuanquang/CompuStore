@@ -23,7 +23,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
     public partial class BaseDetailInvoiceImportWarehouse_Form : Form
     {
         #region Interface
-        protected class ModelProductCustom
+        protected class ModelProductGroup
         {
             public List<ModelProduct> productsTheSame;
 

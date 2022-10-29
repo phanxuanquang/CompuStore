@@ -125,7 +125,7 @@ namespace CompuStore.ImportData
                             {
                                 if (SpaceColor == null)
                                 {
-                                    SpaceColor = new Dictionary<ENUM_SPACE_COLOR, double>();
+                                    SpaceColor = new SortedDictionary<ENUM_SPACE_COLOR, double>();
                                 }
                                 if (eachSpaceColor[0].CompareTo("Adobe RGB profile") == 0)
                                 {
@@ -153,7 +153,7 @@ namespace CompuStore.ImportData
         {
             AdobeRGBProfile, sRGB, DCI_P3
         }
-        public Dictionary<ENUM_SPACE_COLOR, double> SpaceColor;
+        public SortedDictionary<ENUM_SPACE_COLOR, double> SpaceColor;
 
         public int? RefreshRate { get; set; }
 
@@ -228,11 +228,11 @@ namespace CompuStore.ImportData
         {
             get
             {
-                return GPU == null ? "" : string.Join(" ", GPU);
+                return GPU == null ? null : string.Join(" ", GPU);
             }
             set
             {
-                if (value != null)
+                if (value != null && !string.IsNullOrWhiteSpace(value) && !string.IsNullOrEmpty(value))
                 {
                     string[] gpu = value.Split(' ');
                     GPU = new string[] { gpu.First(), string.Join(" ", gpu.Skip(1).Take(gpu.Length - 2)), gpu.Last() };
@@ -283,13 +283,15 @@ namespace CompuStore.ImportData
                         string[] split = port.Split(':');
                         string portPhysic = split[0];
                         string quantityPort = "1";
-                        string portProtocol = portPhysic;
+                        string portProtocol = split[1];
                         if (split[1].Contains('x'))
                         {
                             string[] split2 = split[1].Split('x');
                             quantityPort = split2[0];
                             portProtocol = split2[1].Substring(1);
                         }
+                        if (int.TryParse(portProtocol, out int numberic))
+                            portProtocol = portPhysic;
                         models.Add(new Port { PortPhysic = portPhysic, PortProtocol = portProtocol, Quantity = quantityPort });
                     }
                     Ports = models.ToArray();
@@ -348,7 +350,18 @@ namespace CompuStore.ImportData
             }
         }
 
-        public string ColorCode { get; set; }
+        private string _ColorCode;
+        public string ColorCode
+        {
+            get
+            {
+                return _ColorCode.ToLower();
+            }
+            set
+            {
+                _ColorCode = value.ToLower();
+            }
+        }
 
         public string ColorName { get; set; }
 

@@ -17,7 +17,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         BindingList<ModelProduct> bindingTable = null;
         Task task = null;
         CancellationTokenSource cancellationTokenSource = null;
-        List<ModelProductCustom> groupBinding = null;
+        List<ModelProductGroup> groupBinding = null;
 
         public AddDetailInvoiceImportWarehouse_Form(List<ModelProduct> products)
         {
@@ -34,17 +34,17 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 if (productsList != null)
                 {
                     int counter = 0;
-                    groupBinding = new List<ModelProductCustom>();
+                    groupBinding = new List<ModelProductGroup>();
                     foreach(ModelProduct model in productsList)
                     {
-                        ModelProductCustom group = groupBinding.Find(item => item.IsTheSameGroup(model));
+                        ModelProductGroup group = groupBinding.Find(item => item.IsTheSameGroup(model));
                         if (group != null)
                         {
                             group.product = model;
                         }
                         else
                         {
-                            group = new ModelProductCustom();
+                            group = new ModelProductGroup();
                             group.product = model;
                             groupBinding.Add(group);
 
@@ -59,75 +59,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                             progress.Report(++counter);
                         }
                     }
-                    /*ICollection<DETAIL_SPECS> detailSpecs = commonSpecs.DETAIL_SPECS;
-                    LINE_UP lineup = commonSpecs.LINE_UP;
-                    foreach (DETAIL_SPECS detail in detailSpecs)
-                    {
-                        UNIQUE_SPECS uniqueSpecs = detail.UNIQUE_SPECS;
-                        DISPLAY_SPECS display = uniqueSpecs.DISPLAY_SPECS;
-                        COLOR color = detail.COLOR;
-                        ICollection<PRODUCT> products = detail.PRODUCTs;
-
-                        foreach (PRODUCT product in products)
-                        {
-                            ModelProduct modelProduct = new ModelProduct();
-                            modelProduct.Serial = product.SERIAL_ID;
-                            modelProduct.LineUp = lineup.NAME;
-                            modelProduct.Manufacturer = lineup.MANUFACTURER;
-                            modelProduct.Country = lineup.COUNTRY;
-                            modelProduct.IdPanel = display.CODE_DISPLAY;
-                            modelProduct.ResolutionString = display.RESOLUTION;
-                            modelProduct.SizePanel = display.SIZE;
-                            modelProduct.Brightness = display.BRIGHTNESS;
-                            modelProduct.TypePanel = display.PANEL;
-                            modelProduct.SpaceColorString = display.COLOR_SPACE;
-                            modelProduct.RefreshRate = display.REFRESH_RATE;
-                            modelProduct.CanTouchPanel = display.IS_TOUCH_PANEL;
-                            modelProduct.TypeScreen = display.SCREEN_TYPE;
-                            modelProduct.RatioPanelString = display.RATIO;
-                            modelProduct.CPU = uniqueSpecs.CPU;
-                            modelProduct.iGPU = uniqueSpecs.IGPU;
-                            modelProduct.RAMString = uniqueSpecs.RAM;
-                            modelProduct.TypeStorage = uniqueSpecs.TYPE_STORAGE;
-                            modelProduct.StorageCapacity = uniqueSpecs.STORAGE_CAPACITY;
-                            modelProduct.GPUString = uniqueSpecs.GPU;
-                            modelProduct.BatteryCapacity = uniqueSpecs.BATTERY_CAPACITY;
-                            modelProduct.Weight = uniqueSpecs.WEIGHT;
-                            modelProduct.NameProduct = commonSpecs.NAME;
-                            modelProduct.ReleaseDate = commonSpecs.RELEASED_YEAR;
-                            modelProduct.CaseMaterial = commonSpecs.CASE_MATERIAL;
-                            modelProduct.PortString = commonSpecs.PORT;
-                            modelProduct.Webcam = commonSpecs.WEBCAM;
-                            modelProduct.SizeProductString = commonSpecs.DIMENSIONS;
-                            modelProduct.OS = commonSpecs.OS;
-                            modelProduct.Wifi = commonSpecs.WIFI;
-                            modelProduct.Bluetooth = commonSpecs.BLUETOOTH;
-                            modelProduct.Price = detail.PRICE;
-                            modelProduct.ColorCode = color.COLOR_CODE;
-                            modelProduct.ColorName = color.COLOR_NAME;
-                            ModelProductCustom group = groupBinding.Find(item => item.IsTheSameGroup(modelProduct));
-                            if (group != null)
-                            {
-                                group.product = modelProduct;
-                            }
-                            else
-                            {
-                                group = new ModelProductCustom();
-                                group.product = modelProduct;
-                                groupBinding.Add(group);
-
-                                if (TableData_DataGridView.InvokeRequired)
-                                {
-                                    TableData_DataGridView.Invoke(new Action(() => bindingTable.Add(group.product)));
-                                }
-                                else
-                                {
-                                    bindingTable.Add(modelProduct);
-                                }
-                                progress.Report(++counter);
-                            }
-                        }
-                    }*/
                 }
             });
         }
@@ -226,9 +157,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 ModelProduct model = bindingTable[e.RowIndex];
                 if (model != null)
                 {
-                    ModelProductCustom group = groupBinding.Find(item => item.product.Equals(model));
-                    BaseDetailSpecsProduct_Form detailSpecs = new BaseDetailSpecsProduct_Form();
-                    detailSpecs.ShowDialog(this, group.productsTheSame.ToArray());
+                    ModelProductGroup group = groupBinding.Find(item => item.product.Equals(model));
+                    DetailSpecsProduct_Form detailSpecs = new DetailSpecsProduct_Form();
+                    detailSpecs.ShowDialog(this, group.productsTheSame);
                 }
             }
         }
