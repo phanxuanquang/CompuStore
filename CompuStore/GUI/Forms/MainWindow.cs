@@ -17,9 +17,14 @@ namespace CompuStore.GUI
         public MainWindow()
         {
             InitializeComponent();
-            //this.Size = new Size(1240, 800);
+            this.AutoScaleMode = AutoScaleMode.Dpi;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+
             staffManage_Tab = null;
             salesManage_Tab = null;
+            serviceManage_Tab = null;
+            warehouseManage_Tab = null;
+
             SetHeaderState_From(SaleManage_Button);
         }
 
@@ -71,6 +76,11 @@ namespace CompuStore.GUI
         private void ServiceManage_Button_Click(object sender, EventArgs e)
         {
             SetHeaderState_From(ServiceManage_Button);
+            if (serviceManage_Tab == null)
+            {
+                serviceManage_Tab = new ServiceManagement_Tab();
+            }
+            LoadTab(serviceManage_Tab);
         }
 
         private void StorageManage_Button_Click(object sender, EventArgs e)

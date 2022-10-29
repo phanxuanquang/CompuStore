@@ -137,6 +137,15 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             TableData_DataGridView.CellDoubleClick += TableData_DataGridView_CellDoubleClick;
             Load += AddInvoiceImportWarehouse_Form_Load;
         }
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
+                return handleParam;
+            }
+        }
 
         #region Add table binding
         private void AddInvoiceImportWarehouse_Form_Load(object sender, EventArgs e)

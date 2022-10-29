@@ -124,5 +124,11 @@ namespace CompuStore.Tab
             AddInvoice_Form addInvoice_Form = new AddInvoice_Form();
             addInvoice_Form.ShowDialog(); 
         }
+
+        private void Button_3_Click(object sender, EventArgs e)
+        {
+            InvoiceList_Form invoiceList_Form = new InvoiceList_Form();
+            invoiceList_Form.ShowDialog();
+        }
     }
 }

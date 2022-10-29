@@ -20,8 +20,18 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         public DetailSpecsProduct_Form()
         {
             InitializeComponent();
+            this.AutoScaleMode = AutoScaleMode.Dpi;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
         }
-
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
+                return handleParam;
+            }
+        }
         #region Set Editable
         private void SetEditable(bool editable)
         {

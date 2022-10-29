@@ -41,9 +41,10 @@
             this.SearchBox.FocusedState.Parent = this.SearchBox;
             this.SearchBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.SearchBox.HoverState.Parent = this.SearchBox;
+            this.SearchBox.PlaceholderText = "Tìm kiếm phiếu bảo hành theo số điện thoại ";
             this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
             // 
-            // ViewDetail_Button
+            // Button_2
             // 
             this.Button_2.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
             this.Button_2.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
@@ -56,8 +57,9 @@
             this.Button_2.Text = "Thêm phiếu đổi trả";
             this.Button_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Button_2.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
+            this.Button_2.Click += new System.EventHandler(this.Button_2_Click);
             // 
-            // AddNew_Buttom
+            // Bottom_1
             // 
             this.Bottom_1.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
             this.Bottom_1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
@@ -70,8 +72,9 @@
             this.Bottom_1.Text = "Thêm phiếu bảo hành";
             this.Bottom_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Bottom_1.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
+            this.Bottom_1.Click += new System.EventHandler(this.Bottom_1_Click);
             // 
-            // Delete_Button
+            // Button_3
             // 
             this.Button_3.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
             this.Button_3.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
@@ -81,9 +84,10 @@
             this.Button_3.HoverState.Parent = this.Button_3;
             this.Button_3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Button_3.ShadowDecoration.Parent = this.Button_3;
-            this.Button_3.Text = "Xem thông tin";
+            this.Button_3.Text = "Danh sách đổi trả";
             this.Button_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Button_3.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
+            this.Button_3.Click += new System.EventHandler(this.Button_3_Click);
             // 
             // ServiceManagement_Tab
             // 

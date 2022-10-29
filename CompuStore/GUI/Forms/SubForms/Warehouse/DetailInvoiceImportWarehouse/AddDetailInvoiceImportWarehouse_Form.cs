@@ -26,7 +26,15 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             TableData_DataGridView.CellDoubleClick += TableData_DataGridView_CellDoubleClick;
             AddProductByExcel_Button.Click += AddProductByExcel_Button_Click;
         }
-
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
+                return handleParam;
+            }
+        }
         private Task LoadingData(IProgress<int> progress)
         {
             return Task.Factory.StartNew(() =>

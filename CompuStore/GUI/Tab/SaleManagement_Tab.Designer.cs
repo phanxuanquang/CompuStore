@@ -91,7 +91,7 @@
             this.Button_3.Text = "Danh sách đơn hàng";
             this.Button_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Button_3.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
-            this.Button_3.Visible = false;
+            this.Button_3.Click += new System.EventHandler(this.Button_3_Click);
             // 
             // invoiceBindingSource
             // 
@@ -104,6 +104,7 @@
             this.Name = "SaleManagement_Tab";
             ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

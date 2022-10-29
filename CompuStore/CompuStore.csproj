@@ -63,6 +63,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GUI\Forms\SubForms\AddReturn_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\AddReturn_Form.Designer.cs">
+      <DependentUpon>AddReturn_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\AddWarranty_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\AddWarranty_Form.Designer.cs">
+      <DependentUpon>AddWarranty_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database\Services\CommonSpecsServices.cs" />
     <Compile Include="Database\Services\CustomerServices.cs" />
     <Compile Include="Database\Services\DistributorServices.cs" />
@@ -219,6 +231,12 @@
     <Compile Include="GUI\Forms\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Forms\SubForms\InvoiceList_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\InvoiceList_Form.Designer.cs">
+      <DependentUpon>InvoiceList_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GUI\Tab\StaffManagement_Tab.cs">
@@ -263,6 +281,12 @@
     <Compile Include="GUI\Tab\ServiceManagement_Tab.Designer.cs">
       <DependentUpon>ServiceManagement_Tab.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GUI\Forms\SubForms\AddReturn_Form.resx">
+      <DependentUpon>AddReturn_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Forms\SubForms\AddWarranty_Form.resx">
+      <DependentUpon>AddWarranty_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Forms\SubForms\AddInvoice_Form.resx">
       <DependentUpon>AddInvoice_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -289,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Tab\ServiceManagement_Tab.resx">
       <DependentUpon>ServiceManagement_Tab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Forms\SubForms\InvoiceList_Form.resx">
+      <DependentUpon>InvoiceList_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

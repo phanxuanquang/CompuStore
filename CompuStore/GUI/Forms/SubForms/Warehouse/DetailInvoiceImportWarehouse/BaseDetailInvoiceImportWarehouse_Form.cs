@@ -129,7 +129,15 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         {
             InitializeComponent();
         }
-
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
+                return handleParam;
+            }
+        }
         private void Exit_Button_Click(object sender, EventArgs e)
         {
             this.Close();

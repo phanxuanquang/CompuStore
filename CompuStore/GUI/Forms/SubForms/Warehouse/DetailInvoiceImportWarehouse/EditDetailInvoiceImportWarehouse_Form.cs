@@ -184,7 +184,15 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 }
             });
         }
-
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
+                return handleParam;
+            }
+        }
         private void DetailInvoiceImportWarehouse_Form_Load(object sender, EventArgs e)
         {
             bindingTable = new BindingList<ModelProduct>();
