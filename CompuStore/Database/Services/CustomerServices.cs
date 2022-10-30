@@ -19,7 +19,7 @@ namespace CompuStore.Database.Services
             return Database.DataProvider.Instance.Database.CUSTOMERs.Where(customer => customer.INFOR.IDENTITY_CODE == idCode).FirstOrDefault();
         }
 
-        public bool SaveCustomerToDB(string name, string phone_number, string email, bool sex, DateTime staffDate, string identity_code, string addtress, int id_staffRole, int purchased = 0)
+        public CUSTOMER SaveCustomerToDB(string name, string phone_number, string email, string identity_code, string addtress, int purchased = 0, bool sex = true)
         {
             INFOR infor = new INFOR()
             {
@@ -45,9 +45,9 @@ namespace CompuStore.Database.Services
             catch
             {
                 // thông báo thêm hoa không thành công
-                return false;
+                return null;
             }
-            return true;
+            return customer;
         }
     }
 }

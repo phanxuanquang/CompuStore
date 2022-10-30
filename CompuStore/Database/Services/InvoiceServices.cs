@@ -25,7 +25,7 @@ namespace CompuStore.Database.Services
             return DataProvider.Instance.Database.INVOICEs.ToList();
         }
 
-        public bool SaveInvoiceHasCusToDB(List<PRODUCT> listProduct, int idCustomer, int idStaff, DateTime invoiceDate, double vat, string idStore = null)
+        public bool SaveInvoiceToDB(List<PRODUCT> listProduct, int idCustomer, int idStaff, DateTime invoiceDate, double vat, string idStore = null)
         {
             INVOICE invoice = new INVOICE()
             {
