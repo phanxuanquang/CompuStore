@@ -126,5 +126,10 @@ namespace CompuStore
         {
             this.Close();
         }
+
+        private void ViewDetail_Button_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

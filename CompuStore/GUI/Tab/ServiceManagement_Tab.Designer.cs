@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.warrantyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.warrantyBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // SearchBox
@@ -89,15 +92,22 @@
             this.Button_3.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
             this.Button_3.Click += new System.EventHandler(this.Button_3_Click);
             // 
+            // warrantyBindingSource
+            // 
+            this.warrantyBindingSource.DataSource = typeof(CompuStore.Database.Models.RECEIVE_WARRANTY);
+            // 
             // ServiceManagement_Tab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "ServiceManagement_Tab";
+            ((System.ComponentModel.ISupportInitialize)(this.warrantyBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.BindingSource warrantyBindingSource;
     }
 }

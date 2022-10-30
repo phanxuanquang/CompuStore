@@ -35,15 +35,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DataTable = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.iNVOICEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.SearchBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.ViewDetail_Button = new Guna.UI2.WinForms.Guna2Button();
             this.HeaderIcon = new System.Windows.Forms.PictureBox();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.Header = new System.Windows.Forms.Label();
-            this.iNVOICEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DataTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iNVOICEBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // DataTable
@@ -54,7 +54,6 @@
             this.DataTable.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.DataTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.DataTable.AutoGenerateColumns = false;
             this.DataTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.DataTable.BackgroundColor = System.Drawing.Color.White;
@@ -72,7 +71,6 @@
             this.DataTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DataTable.ColumnHeadersHeight = 30;
             this.DataTable.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DataTable.DataSource = this.iNVOICEBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -129,6 +127,10 @@
             this.DataTable.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.DataTable.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             // 
+            // iNVOICEBindingSource
+            // 
+            this.iNVOICEBindingSource.DataSource = typeof(CompuStore.Database.Models.INVOICE);
+            // 
             // SearchBox
             // 
             this.SearchBox.Animated = true;
@@ -175,6 +177,7 @@
             this.ViewDetail_Button.TabIndex = 16;
             this.ViewDetail_Button.Text = "Xem đơn hàng";
             this.ViewDetail_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.ViewDetail_Button.Click += new System.EventHandler(this.ViewDetail_Button_Click);
             // 
             // HeaderIcon
             // 
@@ -220,10 +223,6 @@
             this.Header.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Header.UseCompatibleTextRendering = true;
             // 
-            // iNVOICEBindingSource
-            // 
-            this.iNVOICEBindingSource.DataSource = typeof(CompuStore.Database.Models.INVOICE);
-            // 
             // InvoiceList_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,8 +238,8 @@
             this.Name = "InvoiceList_Form";
             this.Text = "InvoiceList_Form";
             ((System.ComponentModel.ISupportInitialize)(this.DataTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iNVOICEBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).EndInit();
             this.ResumeLayout(false);
 
         }

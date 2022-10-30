@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\Services\WarrantyServices.cs" />
     <Compile Include="GUI\Forms\SubForms\AddReturn_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -356,6 +357,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\CompuStore.Database.Models.INFOR.datasource" />
     <None Include="Properties\DataSources\CompuStore.Database.Models.INVOICE.datasource" />
+    <None Include="Properties\DataSources\CompuStore.Database.Models.RECEIVE_WARRANTY.datasource" />
     <None Include="Properties\DataSources\CompuStore.Database.Models.STAFF.datasource" />
     <None Include="Properties\DataSources\CompuStore.Database.Models.STAFFROLE.datasource" />
     <None Include="Properties\Settings.settings">
