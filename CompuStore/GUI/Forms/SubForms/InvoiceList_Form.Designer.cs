@@ -28,24 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DataTable = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SearchBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.ViewDetail_Button = new Guna.UI2.WinForms.Guna2Button();
             this.HeaderIcon = new System.Windows.Forms.PictureBox();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.Header = new System.Windows.Forms.Label();
+            this.iNVOICEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DataTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iNVOICEBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // DataTable
@@ -56,6 +54,7 @@
             this.DataTable.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.DataTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.DataTable.AutoGenerateColumns = false;
             this.DataTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DataTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.DataTable.BackgroundColor = System.Drawing.Color.White;
@@ -72,13 +71,8 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DataTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DataTable.ColumnHeadersHeight = 30;
-            this.DataTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5});
             this.DataTable.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DataTable.DataSource = this.iNVOICEBindingSource;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -134,36 +128,6 @@
             this.DataTable.ThemeStyle.RowsStyle.Height = 22;
             this.DataTable.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.DataTable.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Mã đơn hàng";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Số điện thoại";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Họ và tên khách hàng";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Đơn giá";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Ngày lập";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
             // 
             // SearchBox
             // 
@@ -256,6 +220,10 @@
             this.Header.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Header.UseCompatibleTextRendering = true;
             // 
+            // iNVOICEBindingSource
+            // 
+            this.iNVOICEBindingSource.DataSource = typeof(CompuStore.Database.Models.INVOICE);
+            // 
             // InvoiceList_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -272,6 +240,7 @@
             this.Text = "InvoiceList_Form";
             ((System.ComponentModel.ISupportInitialize)(this.DataTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iNVOICEBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -279,15 +248,11 @@
         #endregion
 
         protected Guna.UI2.WinForms.Guna2DataGridView DataTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         protected Guna.UI2.WinForms.Guna2TextBox SearchBox;
         protected Guna.UI2.WinForms.Guna2Button ViewDetail_Button;
         private System.Windows.Forms.PictureBox HeaderIcon;
         private Guna.UI2.WinForms.Guna2ImageButton Exit_Button;
         private System.Windows.Forms.Label Header;
+        private System.Windows.Forms.BindingSource iNVOICEBindingSource;
     }
 }

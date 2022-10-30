@@ -26,11 +26,8 @@
         /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private new void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.invoiceBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // SearchBox
@@ -91,25 +88,18 @@
             this.Button_3.Text = "Danh sách đơn hàng";
             this.Button_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Button_3.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
-            this.Button_3.Click += new System.EventHandler(this.Button_3_Click);
-            // 
-            // invoiceBindingSource
-            // 
-            this.invoiceBindingSource.DataSource = typeof(CompuStore.Database.Models.INVOICE);
+            this.Button_3.Click += new System.EventHandler(this.ViewInvoice_Click);
             // 
             // SaleManagement_Tab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "SaleManagement_Tab";
-            ((System.ComponentModel.ISupportInitialize)(this.invoiceBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.BindingSource invoiceBindingSource;
     }
 }
