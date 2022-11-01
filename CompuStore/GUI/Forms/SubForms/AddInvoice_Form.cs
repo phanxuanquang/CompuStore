@@ -81,7 +81,15 @@ namespace CompuStore
             {
                 customer = CustomerServices.Instance.SaveCustomerToDB(Name_Box.Text, PhoneNumber_Box.Text, Email_Box.Text, Identity_Box.Text, Address_Box.Text);
             }
-            InvoiceServices.Instance.SaveInvoiceToDB(listProduct, customer.ID, currentStaff.ID, DateTime.Now, 10);
+            Exception res = InvoiceServices.Instance.SaveInvoiceToDB(listProduct, customer.ID, currentStaff.ID, DateTime.Now, 10);
+            if (res.Message == "done")
+            {
+                MessageBox.Show("Lưu thành công");
+            }
+            else
+            {
+                MessageBox.Show(res.Message);
+            }
         }
     }
 }

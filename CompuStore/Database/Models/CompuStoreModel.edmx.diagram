@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fafee7cb03fd4d77bfb2f34648e34b01" Name="Diagram1" ZoomLevel="77">
+      <Diagram DiagramId="fafee7cb03fd4d77bfb2f34648e34b01" Name="Diagram1" ZoomLevel="93">
         <EntityTypeShape EntityType="CompuStoreDBModel.COLOR" Width="1.5" PointX="6" PointY="7.625" />
         <EntityTypeShape EntityType="CompuStoreDBModel.COMMON_USER" Width="1.5" PointX="8.25" PointY="11" />
         <EntityTypeShape EntityType="CompuStoreDBModel.CUSTOMER" Width="1.5" PointX="3" PointY="11.25" />

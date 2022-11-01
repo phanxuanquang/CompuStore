@@ -25,7 +25,12 @@ namespace CompuStore.Database.Services
             return DataProvider.Instance.Database.INVOICEs.ToList();
         }
 
-        public bool SaveInvoiceToDB(List<PRODUCT> listProduct, int idCustomer, int idStaff, DateTime invoiceDate, double vat, string idStore = null)
+        public DETAIL_INVOICE GetDetailBySerialID(string serial)
+        {
+            return Database.DataProvider.Instance.Database.DETAIL_INVOICE.Where(detail => detail.SERIAL_ID == serial).FirstOrDefault();
+        }
+
+        public Exception SaveInvoiceToDB(List<PRODUCT> listProduct, int idCustomer, int idStaff, DateTime invoiceDate, double vat, string idStore = null)
         {
             INVOICE invoice = new INVOICE()
             {
@@ -49,11 +54,11 @@ namespace CompuStore.Database.Services
             {
                 Database.DataProvider.Instance.Database.SaveChanges();
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                return ex;
             }
-            return true;
+            return new Exception("done");
         }
     }
 }
