@@ -47,7 +47,7 @@ namespace CompuStore
         {
             if (!isValidSerialID(detail))
             {
-                Exception res =  WarrantyServices.Instance.SaveWarrantyToDB(detail.ID_INVOICE, currentStaff.ID, ItemSerial_Box.Text, null, DateTime.Now, WarrantyDoneDate_Picker.Value, null);
+                Exception res =  WarrantyServices.Instance.SaveWarrantyToDB(detail.ID_INVOICE, currentStaff.ID, int.Parse(ItemSerial_Box.Text), null, DateTime.Now, WarrantyDoneDate_Picker.Value, null);
                 if (res.Message == "done")
                 {
                     MessageBox.Show("Lưu thành công");
@@ -72,7 +72,7 @@ namespace CompuStore
         {
             if (e.KeyChar == (char)13)
             {
-                detail = InvoiceServices.Instance.GetDetailBySerialID(ItemSerial_Box.Text);
+                detail = InvoiceServices.Instance.GetDetailBySerialID(int.Parse(ItemSerial_Box.Text));
                 if (!isValidSerialID(detail))
                 {
                     MessageBox.Show("Không tìm thấy hóa đơn bán sản phẩm này");

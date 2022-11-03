@@ -18,7 +18,7 @@ namespace CompuStore.Database.Models
         public string NAME_ID { get; set; }
         public int ID_STAFF { get; set; }
         public int ID_INVOICE { get; set; }
-        public string SERIAL_ID { get; set; }
+        public int PRODUCT_ID { get; set; }
         public string REASON_WARRANTY { get; set; }
         public Nullable<System.DateTime> RECEIVE_DATE { get; set; }
         public Nullable<System.DateTime> RETURN_DATE { get; set; }

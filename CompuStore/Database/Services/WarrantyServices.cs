@@ -20,13 +20,13 @@ namespace CompuStore.Database.Services
             return DataProvider.Instance.Database.RECEIVE_WARRANTY.ToList();
         }
 
-        public Exception SaveWarrantyToDB(int idInvoice, int idStaff, string serialID, string reasonWarranty, DateTime receiveDate, DateTime returnDate, string statusWarranty)
+        public Exception SaveWarrantyToDB(int idInvoice, int idStaff, int productID, string reasonWarranty, DateTime receiveDate, DateTime returnDate, string statusWarranty)
         {
             RECEIVE_WARRANTY receive = new RECEIVE_WARRANTY()
             {
                 ID_INVOICE = idInvoice,
                 ID_STAFF = idStaff,
-                SERIAL_ID = serialID,
+                PRODUCT_ID = productID,
                 REASON_WARRANTY = reasonWarranty,
                 RECEIVE_DATE = receiveDate,
                 RETURN_DATE = returnDate,
@@ -35,7 +35,7 @@ namespace CompuStore.Database.Services
             Database.DataProvider.Instance.Database.RECEIVE_WARRANTY.Add(receive);
             try
             {
-                Database.DataProvider.Instance.Database.SaveChanges();
+                DataProvider.Instance.Database.SaveChanges();
             }
             catch (Exception ex)
             {

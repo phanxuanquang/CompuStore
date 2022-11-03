@@ -1,4 +1,5 @@
 ﻿using CompuStore.Database.Models;
+using CompuStore.Database.Services.ProductServices;
 using CompuStore.GUI;
 using CompuStore.GUI.Forms.SubForms.Warehouse;
 using System;
@@ -224,7 +225,7 @@ namespace CompuStore.Tab
         protected void ImportWarehouse_Click(object sender, EventArgs e)
         {
             BaseInvoiceImportWarehouse_Form import = new AddInvoiceImportWarehouse_Form();
-            import.ShowDialog(this);
+            import.ShowDialog(this, null, false);
         }
 
         protected void SeeProduct_Click(object sender, EventArgs e)
@@ -313,17 +314,17 @@ namespace CompuStore.Tab
                         COMMON_SPECS commonSpecs = Database.Services.CommonSpecsServices.Instance.GetCommonSpecsByNameID(nameIdCommonSpecs);
                         if (commonSpecs != null)
                         {
-                            BaseDetailInvoiceImportWarehouse_Form form = new EditDetailInvoiceImportWarehouse_Form(null, commonSpecs);
-                            form.ShowDialog();
+                            BaseDetailInvoiceImportWarehouse_Form form = new EditDetailInvoiceImportWarehouse_Form();
+                            form.ShowDialog(this, null, commonSpecs);
                         }
                         break;
                     case SEE_WHAT.IMPORT_WAREHOUSE:
                         string nameIdImportWarehouse = (sender as DataGridView).Rows[e.RowIndex].Cells[0].Value as string;
-                        IMPORT_WAREHOUSE importWarehouse = Database.Services.ImportServices.Instance.GetImportWarehouseByNameID(nameIdImportWarehouse);
+                        IMPORT_WAREHOUSE importWarehouse = ImportWarehouseServices.Instance.GetImportWarehouseByNameID(nameIdImportWarehouse);
                         if (importWarehouse != null)
                         {
-                            BaseInvoiceImportWarehouse_Form form = new EditInvoiceImportWarehouse_Form(importWarehouse);
-                            form.ShowDialog();
+                            BaseInvoiceImportWarehouse_Form form = new EditInvoiceImportWarehouse_Form();
+                            form.ShowDialog(this, importWarehouse, false);
                         }
                         break;
                 }

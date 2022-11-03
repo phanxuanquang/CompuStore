@@ -26,9 +26,9 @@ namespace CompuStore.Database.Models
         public Nullable<int> ID_RANK { get; set; }
         public Nullable<int> PURCHASED_QUANTITY { get; set; }
     
+        public virtual INFOR INFOR { get; set; }
         public virtual RANK RANK { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INVOICE> INVOICEs { get; set; }
-        public virtual INFOR INFOR { get; set; }
     }
 }

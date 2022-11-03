@@ -52,7 +52,8 @@
             this.MenuPanel.Controls.Add(this.StaffManage_Button);
             this.MenuPanel.Controls.Add(this.StorageManage_Button);
             this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.MenuPanel.Location = new System.Drawing.Point(0, 742);
+            this.MenuPanel.Location = new System.Drawing.Point(0, 1352);
+            this.MenuPanel.Margin = new System.Windows.Forms.Padding(6);
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Size = new System.Drawing.Size(1223, 10);
             this.MenuPanel.TabIndex = 3;
@@ -218,7 +219,8 @@
             this.Exit_Button.HoverState.Parent = this.Exit_Button;
             this.Exit_Button.Image = global::CompuStore.Properties.Resources.Close;
             this.Exit_Button.ImageSize = new System.Drawing.Size(27, 27);
-            this.Exit_Button.Location = new System.Drawing.Point(1441, 0);
+            this.Exit_Button.Location = new System.Drawing.Point(2376, 0);
+            this.Exit_Button.Margin = new System.Windows.Forms.Padding(6);
             this.Exit_Button.Name = "Exit_Button";
             this.Exit_Button.PressedState.Parent = this.Exit_Button;
             this.Exit_Button.Size = new System.Drawing.Size(40, 40);
@@ -238,6 +240,7 @@
             this.Controls.Add(this.MenuPanel);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainWindow";
