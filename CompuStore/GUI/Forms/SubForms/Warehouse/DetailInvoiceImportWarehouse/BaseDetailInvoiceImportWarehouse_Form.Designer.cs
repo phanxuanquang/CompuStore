@@ -1,4 +1,6 @@
-﻿namespace CompuStore.GUI.Forms.SubForms.Warehouse
+﻿using CompuStore.Control;
+
+namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
     partial class BaseDetailInvoiceImportWarehouse_Form
     {
@@ -41,8 +43,6 @@
             this.ReleaseDate_Label = new System.Windows.Forms.Label();
             this.NameProduct = new System.Windows.Forms.Label();
             this.TotalImportWarehouse = new System.Windows.Forms.Label();
-            this.Manufacturer_ComboBox = new System.Windows.Forms.ComboBox();
-            this.NameProduct_ComboBox = new System.Windows.Forms.ComboBox();
             this.TotalImportWarehouse_Label = new System.Windows.Forms.Label();
             this.AddProduct_Button = new Guna.UI2.WinForms.Guna2Button();
             this.DeleteProduct_Button = new Guna.UI2.WinForms.Guna2Button();
@@ -52,9 +52,11 @@
             this.IDImportWarehouse_Value = new System.Windows.Forms.Label();
             this.IDImportWarehouse_Label = new System.Windows.Forms.Label();
             this.Finish_Button = new Guna.UI2.WinForms.Guna2Button();
-            this.LineUp_ComboBox = new System.Windows.Forms.ComboBox();
             this.LineUp = new System.Windows.Forms.Label();
             this.ReleaseDate_DateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.LineUp_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.NameProduct_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.Manufacturer_ComboBox = new CompuStore.Control.ComboBoxCustom();
             ((System.ComponentModel.ISupportInitialize)(this.TableData_DataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,7 +90,7 @@
             this.Exit_Button.PressedState.Parent = this.Exit_Button;
             this.Exit_Button.Size = new System.Drawing.Size(75, 75);
             this.Exit_Button.TabIndex = 6;
-            this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
+            this.Exit_Button.Click += new System.EventHandler(this.Exit_Clicked);
             // 
             // DragControl
             // 
@@ -98,7 +100,7 @@
             // 
             this.Manufacturer.AutoSize = true;
             this.Manufacturer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Manufacturer.Location = new System.Drawing.Point(84, 155);
+            this.Manufacturer.Location = new System.Drawing.Point(84, 206);
             this.Manufacturer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Manufacturer.Name = "Manufacturer";
             this.Manufacturer.Size = new System.Drawing.Size(153, 32);
@@ -109,7 +111,7 @@
             // 
             this.ReleaseDate_Label.AutoSize = true;
             this.ReleaseDate_Label.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReleaseDate_Label.Location = new System.Drawing.Point(84, 255);
+            this.ReleaseDate_Label.Location = new System.Drawing.Point(84, 303);
             this.ReleaseDate_Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ReleaseDate_Label.Name = "ReleaseDate_Label";
             this.ReleaseDate_Label.Size = new System.Drawing.Size(145, 32);
@@ -120,7 +122,7 @@
             // 
             this.NameProduct.AutoSize = true;
             this.NameProduct.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameProduct.Location = new System.Drawing.Point(84, 304);
+            this.NameProduct.Location = new System.Drawing.Point(84, 158);
             this.NameProduct.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.NameProduct.Name = "NameProduct";
             this.NameProduct.Size = new System.Drawing.Size(163, 32);
@@ -137,24 +139,6 @@
             this.TotalImportWarehouse.Size = new System.Drawing.Size(137, 32);
             this.TotalImportWarehouse.TabIndex = 10;
             this.TotalImportWarehouse.Text = "Tổng giá trị";
-            // 
-            // Manufacturer_ComboBox
-            // 
-            this.Manufacturer_ComboBox.FormattingEnabled = true;
-            this.Manufacturer_ComboBox.Location = new System.Drawing.Point(414, 152);
-            this.Manufacturer_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Manufacturer_ComboBox.Name = "Manufacturer_ComboBox";
-            this.Manufacturer_ComboBox.Size = new System.Drawing.Size(433, 40);
-            this.Manufacturer_ComboBox.TabIndex = 11;
-            // 
-            // NameProduct_ComboBox
-            // 
-            this.NameProduct_ComboBox.FormattingEnabled = true;
-            this.NameProduct_ComboBox.Location = new System.Drawing.Point(414, 301);
-            this.NameProduct_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.NameProduct_ComboBox.Name = "NameProduct_ComboBox";
-            this.NameProduct_ComboBox.Size = new System.Drawing.Size(433, 40);
-            this.NameProduct_ComboBox.TabIndex = 14;
             // 
             // TotalImportWarehouse_Label
             // 
@@ -188,6 +172,7 @@
             this.AddProduct_Button.TabIndex = 19;
             this.AddProduct_Button.Text = "Thêm";
             this.AddProduct_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.AddProduct_Button.Visible = false;
             // 
             // DeleteProduct_Button
             // 
@@ -210,6 +195,7 @@
             this.DeleteProduct_Button.TabIndex = 18;
             this.DeleteProduct_Button.Text = "Xóa";
             this.DeleteProduct_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.DeleteProduct_Button.Visible = false;
             // 
             // AddProductByExcel_Button
             // 
@@ -232,6 +218,7 @@
             this.AddProductByExcel_Button.TabIndex = 17;
             this.AddProductByExcel_Button.Text = "Nhập bằng Excel";
             this.AddProductByExcel_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.AddProductByExcel_Button.Visible = false;
             // 
             // TableData_DataGridView
             // 
@@ -388,21 +375,14 @@
             this.Finish_Button.TabIndex = 27;
             this.Finish_Button.Text = "Hoàn tất";
             this.Finish_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            // 
-            // LineUp_ComboBox
-            // 
-            this.LineUp_ComboBox.FormattingEnabled = true;
-            this.LineUp_ComboBox.Location = new System.Drawing.Point(414, 201);
-            this.LineUp_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.LineUp_ComboBox.Name = "LineUp_ComboBox";
-            this.LineUp_ComboBox.Size = new System.Drawing.Size(433, 40);
-            this.LineUp_ComboBox.TabIndex = 29;
+            this.Finish_Button.Visible = false;
+            this.Finish_Button.Click += new System.EventHandler(this.Exit_Clicked);
             // 
             // LineUp
             // 
             this.LineUp.AutoSize = true;
             this.LineUp.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LineUp.Location = new System.Drawing.Point(84, 204);
+            this.LineUp.Location = new System.Drawing.Point(84, 254);
             this.LineUp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LineUp.Name = "LineUp";
             this.LineUp.Size = new System.Drawing.Size(184, 32);
@@ -412,12 +392,52 @@
             // ReleaseDate_DateTimePicker
             // 
             this.ReleaseDate_DateTimePicker.CustomFormat = "h:mm tt dd/MM/yyyy";
-            this.ReleaseDate_DateTimePicker.Enabled = false;
             this.ReleaseDate_DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.ReleaseDate_DateTimePicker.Location = new System.Drawing.Point(414, 252);
+            this.ReleaseDate_DateTimePicker.Location = new System.Drawing.Point(414, 300);
+            this.ReleaseDate_DateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.ReleaseDate_DateTimePicker.Name = "ReleaseDate_DateTimePicker";
             this.ReleaseDate_DateTimePicker.Size = new System.Drawing.Size(433, 39);
             this.ReleaseDate_DateTimePicker.TabIndex = 30;
+            this.ReleaseDate_DateTimePicker.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
+            // 
+            // LineUp_ComboBox
+            // 
+            this.LineUp_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.LineUp_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.LineUp_ComboBox.FormattingEnabled = true;
+            this.LineUp_ComboBox.Location = new System.Drawing.Point(414, 251);
+            this.LineUp_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.LineUp_ComboBox.Name = "LineUp_ComboBox";
+            this.LineUp_ComboBox.Size = new System.Drawing.Size(433, 40);
+            this.LineUp_ComboBox.TabIndex = 29;
+            this.LineUp_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.NameProduct_ComboBox_InsertKeyPressed);
+            this.LineUp_ComboBox.Leave += new System.EventHandler(this.NameProduct_ComboBox_Leave);
+            // 
+            // NameProduct_ComboBox
+            // 
+            this.NameProduct_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.NameProduct_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.NameProduct_ComboBox.FormattingEnabled = true;
+            this.NameProduct_ComboBox.Location = new System.Drawing.Point(414, 155);
+            this.NameProduct_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.NameProduct_ComboBox.Name = "NameProduct_ComboBox";
+            this.NameProduct_ComboBox.Size = new System.Drawing.Size(433, 40);
+            this.NameProduct_ComboBox.TabIndex = 14;
+            this.NameProduct_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.NameProduct_ComboBox_InsertKeyPressed);
+            this.NameProduct_ComboBox.Leave += new System.EventHandler(this.NameProduct_ComboBox_Leave);
+            // 
+            // Manufacturer_ComboBox
+            // 
+            this.Manufacturer_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.Manufacturer_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.Manufacturer_ComboBox.FormattingEnabled = true;
+            this.Manufacturer_ComboBox.Location = new System.Drawing.Point(414, 203);
+            this.Manufacturer_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Manufacturer_ComboBox.Name = "Manufacturer_ComboBox";
+            this.Manufacturer_ComboBox.Size = new System.Drawing.Size(433, 40);
+            this.Manufacturer_ComboBox.TabIndex = 11;
+            this.Manufacturer_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.NameProduct_ComboBox_InsertKeyPressed);
+            this.Manufacturer_ComboBox.Leave += new System.EventHandler(this.NameProduct_ComboBox_Leave);
             // 
             // BaseDetailInvoiceImportWarehouse_Form
             // 
@@ -472,14 +492,14 @@
         private System.Windows.Forms.Label IDImportWarehouse_Label;
         protected Guna.UI2.WinForms.Guna2Button Finish_Button;
         private System.Windows.Forms.Label LineUp;
-        protected System.Windows.Forms.ComboBox Manufacturer_ComboBox;
-        protected System.Windows.Forms.ComboBox NameProduct_ComboBox;
+        protected ComboBoxCustom Manufacturer_ComboBox;
+        protected ComboBoxCustom NameProduct_ComboBox;
         protected System.Windows.Forms.Label TotalImportWarehouse_Label;
         protected Guna.UI2.WinForms.Guna2Button AddProduct_Button;
         protected Guna.UI2.WinForms.Guna2Button DeleteProduct_Button;
         protected Guna.UI2.WinForms.Guna2Button AddProductByExcel_Button;
         protected Guna.UI2.WinForms.Guna2DataGridView TableData_DataGridView;
-        protected System.Windows.Forms.ComboBox LineUp_ComboBox;
-        private System.Windows.Forms.DateTimePicker ReleaseDate_DateTimePicker;
+        protected ComboBoxCustom LineUp_ComboBox;
+        protected System.Windows.Forms.DateTimePicker ReleaseDate_DateTimePicker;
     }
 }

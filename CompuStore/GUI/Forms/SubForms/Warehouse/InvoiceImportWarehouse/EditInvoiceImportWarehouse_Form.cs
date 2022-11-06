@@ -19,63 +19,22 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         List<ICommonSpecsGroup<DETAIL_IMPORT_WAREHOUSE>> commonSpecsGroups = null;
 
         #region Implement interface
-        private class ImportWarehouseCustom
-        {
-            public int IDImportWarehouse { get; set; }
-
-            public string NameIDImportWarehouse { get; set; }
-
-            public int IDDistributor { get; set; }
-
-            public string NameDistributor { get; set; }
-
-            public int IDStore { get; set; }
-
-            public string NameStore { get; set; }
-
-            public DateTime? ImportDate { get; set; }
-
-            public int IDStaff { get; set; }
-
-            public string NameIDStaff { get; set; }
-
-            public string NameStaff { get; set; }
-
-            public double Total { get; set; }
-
-            public static ImportWarehouseCustom Convert(IMPORT_WAREHOUSE model)
-            {
-                ImportWarehouseCustom result = null;
-                if (model != null)
-                {
-                    result = new ImportWarehouseCustom();
-                    result.IDImportWarehouse = model.ID;
-                    result.NameIDImportWarehouse = model.NAME_ID;
-                    result.ImportDate = model.IMPORT_DATE;
-                    result.IDDistributor = model.ID_DISTRIBUTOR;
-                    result.NameDistributor = model.DISTRIBUTOR.NAME;
-                    result.IDStore = model.ID_STORE;
-                    result.NameStore = model.STORE.NAME;
-                    result.IDStore = model.ID_STORE;
-                    result.IDStaff = model.ID_STAFF;
-                    result.NameIDStaff = model.STAFF.NAME_ID;
-                    result.NameStaff = model.STAFF.INFOR.NAME;
-                    result.Total = model.TOTAL;
-                }
-                return result;
-            }
-        }
 
         private class EditInvoiceCommonSpecsGroup : ICommonSpecsGroup<DETAIL_IMPORT_WAREHOUSE>
         {
-            List<DETAIL_IMPORT_WAREHOUSE> _detailSpecs;
+            DETAIL_IMPORT_WAREHOUSE ICommonSpecsGroup<DETAIL_IMPORT_WAREHOUSE>.Represent
+            {
+                get => detailSpecs?.FirstOrDefault();
+            }
 
-            double ICommonSpecsGroup<DETAIL_IMPORT_WAREHOUSE>.maxTotal
+            public IList<DETAIL_IMPORT_WAREHOUSE> detailSpecs { get; set; }
+
+            public double? maxTotal
             {
                 get
                 {
                     double? max = null;
-                    foreach (DETAIL_IMPORT_WAREHOUSE detail in _detailSpecs)
+                    foreach (DETAIL_IMPORT_WAREHOUSE detail in detailSpecs)
                     {
                         if (detail.PRICE_PER_UNIT > max || max == null)
                         {
@@ -85,12 +44,13 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     return max == null ? 0.0 : max.Value;
                 }
             }
-            double ICommonSpecsGroup<DETAIL_IMPORT_WAREHOUSE>.minTotal
+
+            public double? minTotal
             {
                 get
                 {
                     double? min = null;
-                    foreach (DETAIL_IMPORT_WAREHOUSE detail in _detailSpecs)
+                    foreach (DETAIL_IMPORT_WAREHOUSE detail in detailSpecs)
                     {
                         if (detail.PRICE_PER_UNIT < min || min == null)
                         {
@@ -100,33 +60,13 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     return min == null ? 0.0 : min.Value;
                 }
             }
-            DETAIL_IMPORT_WAREHOUSE ICommonSpecsGroup<DETAIL_IMPORT_WAREHOUSE>.Represent
-            {
-                get => _detailSpecs?.FirstOrDefault();
-            }
-
-            public IList<DETAIL_IMPORT_WAREHOUSE> detailSpecs
-            {
-                get => _detailSpecs;
-                set
-                {
-                    if (value is List<DETAIL_IMPORT_WAREHOUSE>)
-                    {
-                        _detailSpecs = (List<DETAIL_IMPORT_WAREHOUSE>)value;
-                    }
-                    else
-                    {
-                        throw new Exception();
-                    }
-                }
-            }
 
             public EditInvoiceCommonSpecsGroup(List<DETAIL_IMPORT_WAREHOUSE> detailSpecs)
             {
 
                 if (detailSpecs != null)
                 {
-                    _detailSpecs = detailSpecs;
+                    this.detailSpecs = detailSpecs;
                 }
                 else
                 {
@@ -137,24 +77,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
         private class EditInvoiceCommonSpecs : ICommonSpecsCustom
         {
-            private int _ID;
-            private string _NameID;
-            private string _NameCommonSpecs;
-            private string _LineUp;
-            private string _Manufacturer;
-            private DateTime? _ReleaseDate;
-            private int _Quantity;
-            private string _RangeTotal;
-
-            int ICommonSpecsCustom.ID { get => _ID; set => _ID = value; }
-            string ICommonSpecsCustom.NameID { get => _NameID; set => _NameID = value; }
-            string ICommonSpecsCustom.NameCommonSpecs { get => _NameCommonSpecs; set => _NameCommonSpecs = value; }
-            string ICommonSpecsCustom.LineUp { get => _LineUp; set => _LineUp = value; }
-            string ICommonSpecsCustom.Manufacturer { get => _Manufacturer; set => _Manufacturer = value; }
-            DateTime? ICommonSpecsCustom.ReleaseDate { get => _ReleaseDate; set => _ReleaseDate = value; }
-            int ICommonSpecsCustom.Quantity { get => _Quantity; set => _Quantity = value; }
-            string ICommonSpecsCustom.RangeTotal { get => _RangeTotal; set => _RangeTotal = value; }
-
             public EditInvoiceCommonSpecs(ICommonSpecsGroup<DETAIL_IMPORT_WAREHOUSE> group)
             {
                 if (group != null)
@@ -162,15 +84,15 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     COMMON_SPECS common = group.Represent?.PRODUCT.DETAIL_SPECS.COMMON_SPECS;
                     if (common != null)
                     {
-                        _ID = common.ID;
-                        _NameID = common.NAME_ID;
+                        ID = common.ID;
+                        NameID = common.NAME_ID;
                         LINE_UP lineup = common.LINE_UP;
-                        _LineUp = lineup.NAME;
-                        _Manufacturer = lineup.MANUFACTURER;
-                        _ReleaseDate = common.RELEASED_YEAR;
-                        _NameCommonSpecs = common.NAME;
-                        _RangeTotal = string.Format("{0} - {1} {2}", group.minTotal, group.maxTotal, "VNĐ");
-                        _Quantity = group.detailSpecs.Count;
+                        LineUp = lineup.NAME;
+                        Manufacturer = lineup.MANUFACTURER;
+                        ReleaseDate = common.RELEASED_YEAR;
+                        NameCommonSpecs = common.NAME;
+                        RangeTotal = string.Format("{0} - {1} {2}", group.minTotal, group.maxTotal, "VNĐ");
+                        Quantity = group.detailSpecs.Count;
                     }
                 }
                 else
@@ -178,15 +100,25 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     throw new ArgumentNullException();
                 }
             }
+
+            public int? ID { get; set; }
+            public string NameID { get; set; }
+            public string NameCommonSpecs { get; set; }
+            public string LineUp { get; set; }
+            public string Manufacturer { get; set; }
+            public DateTime? ReleaseDate { get; set; }
+            public int? Quantity { get; set; }
+            public string RangeTotal { get; set; }
         }
         #endregion
 
-        public EditInvoiceImportWarehouse_Form(IMPORT_WAREHOUSE importWarehouse)
+        public EditInvoiceImportWarehouse_Form()
         {
-            this.importWarehouse = importWarehouse;
             Load += InvoiceImportWarehouse_Form_Load;
-            FormClosing += InvoiceImportWarehouse_Form_FormClosing;
             TableData_DataGridView.CellDoubleClick += TableData_DataGridView_CellDoubleClick;
+            AddProductByExcel_Button.Click += NavToEdit;
+            AddProduct_Button.Click += NavToEdit;
+            DeleteProduct_Button.Click += NavToEdit;
         }
         protected override CreateParams CreateParams
         {
@@ -240,9 +172,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             {
                 if (convertImportWarehouse != null)
                 {
-                    Distributor_Combobox.SelectedValue = convertImportWarehouse.IDDistributor;
+                    Distributor_ComboBox.SelectedValue = convertImportWarehouse.IDDistributor;
                     DateTimeImportWarehouse_DateTimePicker.Value = convertImportWarehouse.ImportDate.Value;
-                    ImportToStore_Combobox.SelectedValue = convertImportWarehouse.IDStore;
+                    ImportToStore_ComboBox.SelectedValue = convertImportWarehouse.IDStore;
                     TotalImportWarehouse_Value.Text = convertImportWarehouse.Total.ToString();
                     IDImportWarehouse_Value.Text = convertImportWarehouse.NameIDImportWarehouse;
                 }
@@ -270,40 +202,21 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             COMMON_SPECS commonSpecs = Database.Services.CommonSpecsServices.Instance.GetCommonSpecsByNameID(nameIdCommonSpecs);
             if (commonSpecs != null)
             {
-                BaseDetailInvoiceImportWarehouse_Form form = new EditDetailInvoiceImportWarehouse_Form(importWarehouse, commonSpecs);
-                form.ShowDialog();
+                BaseDetailInvoiceImportWarehouse_Form form = new EditDetailInvoiceImportWarehouse_Form();
+                form.ShowDialog(this, importWarehouse, commonSpecs);
             }
         }
 
-        private async void AddProductByExcel_Button_Click(object sender, EventArgs e)
+        public override void ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, bool edit = false)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Tab-seperator values | *.tsv";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK && openFileDialog.CheckFileExists)
-            {
-                ModelProduct[] products = ModelProduct.GetTSV(openFileDialog.FileName);
-                int? storeIDSelected = ImportToStore_Combobox.SelectedValue as int?;
-                int? distributorID = Distributor_Combobox.SelectedValue as int?;
-                if (products != null && storeIDSelected != null && LoginServices.Instance.CurrentStaff != null && distributorID != null)
-                {
-                    STORE store = StoreServices.Instance.GetStoreByID(storeIDSelected.Value);
-                    STAFF staff = LoginServices.Instance.CurrentStaff;
-                    DISTRIBUTOR distributor = DistributorServices.Instance.GetDistributorByID(distributorID.Value);
-                    if (store != null && distributor != null)
-                    {
-                        (IMPORT_WAREHOUSE, List<ModelProduct>) respone = await ImportServices.Instance.Import(products, store, staff, distributor);
-                        importWarehouse = respone.Item1;
-                        MessageBox.Show(string.Format("Chấp nhận {0}/{1}", products.Length - respone.Item2.Count, products.Length));
-                        InvoiceImportWarehouse_Form_Load(null, null);
-                    }
-                }
-            }
+            this.importWarehouse = importWarehouse;
+            base.ShowDialog(owner, importWarehouse, false);
         }
 
-        private void InvoiceImportWarehouse_Form_FormClosing(object sender, FormClosingEventArgs e)
+        private void NavToEdit(object sender, EventArgs e)
         {
-
+            BaseInvoiceImportWarehouse_Form editInvoice = new AddInvoiceImportWarehouse_Form();
+            editInvoice.ShowDialog(this, importWarehouse, true);
         }
     }
 }

@@ -12,12 +12,15 @@ using System.Windows.Forms;
 
 namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
-    public partial class DetailSpecsProduct_Form : Form
+    public partial class BaseDetailSpecsProduct_Form : Form
     {
-        private List<ModelProduct> products;
-        private bool editable = true;
+        protected ModelProduct product;
+        protected bool editable = true;
+        protected BindingList<ModelProduct.Port> bindingPorts;
+        protected ResultDetailSpecsProduct resultChanged;
+        private BindingList<string> bindingCodeDisplay = null;
 
-        public DetailSpecsProduct_Form()
+        protected BaseDetailSpecsProduct_Form()
         {
             InitializeComponent();
             this.AutoScaleMode = AutoScaleMode.Dpi;
@@ -32,10 +35,21 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 return handleParam;
             }
         }
-        #region Set Editable
-        private void SetEditable(bool editable)
+
+        public class ResultDetailSpecsProduct
         {
-            //Serials_TextBox.Enabled = editable;
+            public enum TypeReturn
+            {
+                NoChanged, SpecsChanged, ProductChanged, NewProduct
+            }
+            public TypeReturn typeReturn;
+            public ModelProduct sendPayload;
+            public ModelProduct receivePayload;
+        }
+
+        #region Set Editable
+        protected virtual void SetEditable(bool editable)
+        {
             Lineup_ComboBox.Enabled = editable;
             Manufacturer_ComboBox.Enabled = editable;
             Country_ComboBox.Enabled = editable;
@@ -64,7 +78,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             X_Ratio_ComboBox.Enabled = editable;
             Y_Ratio_ComboBox.Enabled = editable;
             TypeScreen_ComboBox.Enabled = editable;
-            //CodeDisplay_TextBox.Enabled = editable;
+            TouchScreen_CheckBox.Enabled = editable;
             HasCodeDisplay_CheckBox.Enabled = editable;
             TypeStorage_ComboBox.Enabled = editable;
             StorageCapacity_ComboBox.Enabled = editable;
@@ -78,7 +92,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             else ColorPicker_Button.Click -= ColorPicker_Button_Click;
             NameColor_TextBox.Enabled = editable;
             Ports_DataGridView.ReadOnly = !editable;
-            //Price_TextBox.Enabled = editable;
         }
         #endregion
 
@@ -110,87 +123,77 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
         }
 
-        private void SetDefaultData()
+        protected virtual void SetDefaultData()
         {
-            NameProductValue_Label.Text = products.First().NameProduct;
-            string serials = "";
-            for (int index = 0; index < products.Count; index++)
-            {
-                serials += products[index].Serial + '\n';
-            }
-            //Serials_TextBox.Text = serials;
-
-            Weight_TextBox.Text = products.First().Weight.ToString();
-            X_Dimension_TextBox.Text = products.First().SizeProduct[0].ToString();
-            Y_Dimension_TextBox.Text = products.First().SizeProduct[1].ToString();
-            Z_Dimension_TextBox.Text = products.First().SizeProduct[2].ToString();
-            Brightness_TextBox.Text = products.First().Brightness.ToString();
-            //Touchscreen_ToggleButton.Checked = products.First().CanTouchPanel ?? false;
+            NameProductValue_Label.Text = product?.NameProduct;
+            Weight_TextBox.Text = product?.Weight?.ToString();
+            X_Dimension_TextBox.Text = product?.SizeProduct?[0].ToString();
+            Y_Dimension_TextBox.Text = product?.SizeProduct?[1].ToString();
+            Z_Dimension_TextBox.Text = product?.SizeProduct?[2].ToString();
+            Brightness_TextBox.Text = product?.Brightness?.ToString();
+            TouchScreen_CheckBox.Checked = product?.CanTouchPanel ?? false;
             HasCodeDisplay_CheckBox.Checked = false;
-            //CodeDisplay_TextBox.Text = products.First().IdPanel;
-            ColorDialog.Color = products.First().ColorModel.ColorCode;
+            ColorDialog.Color = product?.ColorModel?.ColorCode ?? Color.Black;
             ColorPicker_Button.FillColor = ColorDialog.Color;
-            NameColor_TextBox.Text = products.First().ColorModel.ColorName;
-            BatteryCapacity_TextBox.Text = products.First().BatteryCapacity.ToString();
-            //Price_TextBox.Text = products.First().Price.ToString();
+            NameColor_TextBox.Text = product?.ColorModel?.ColorName;
+            BatteryCapacity_TextBox.Text = product?.BatteryCapacity?.ToString();
 
-            if (products.First().SpaceColor != null)
+            if (product?.SpaceColor != null)
             {
-                if (products.First().SpaceColor.TryGetValue(ModelProduct.ENUM_SPACE_COLOR.sRGB, out double sRGB))
+                if (product.SpaceColor.TryGetValue(ModelProduct.ENUM_SPACE_COLOR.sRGB, out double sRGB))
                 {
                     ColorSpace_sRGB_TextBox.Text = sRGB.ToString();
                     ColorSpace_sRGB_TextBox.Enabled = true;
                 }
-                if (products.First().SpaceColor.TryGetValue(ModelProduct.ENUM_SPACE_COLOR.DCI_P3, out double dcip3))
+                if (product.SpaceColor.TryGetValue(ModelProduct.ENUM_SPACE_COLOR.DCI_P3, out double dcip3))
                 {
                     ColorSpace_DCIP3_TextBox.Text = dcip3.ToString();
                     ColorSpace_DCIP3_TextBox.Enabled = true;
                 }
-                if (products.First().SpaceColor.TryGetValue(ModelProduct.ENUM_SPACE_COLOR.AdobeRGBProfile, out double adobe))
+                if (product.SpaceColor.TryGetValue(ModelProduct.ENUM_SPACE_COLOR.AdobeRGBProfile, out double adobe))
                 {
                     ColorSpace_AdobeRGB_TextBox.Text = adobe.ToString();
                     ColorSpace_AdobeRGB_TextBox.Enabled = true;
                 }
             }
 
-            for (int index = 0; index < products.First().Ports.Length; index++)
+            for (int index = 0; index < product?.Ports?.Length; index++)
             {
-                Ports_DataGridView.Rows.Add(products.First().Ports[index].PortProtocol, products.First().Ports[index].PortPhysic, products.First().Ports[index].Quantity);
+                bindingPorts.Add(product.Ports[index]);
             }
 
-            //Price_TextBox.Text = products.First().Price.ToString();
-
-            SetDefaultComboBox(Lineup_ComboBox, products.First().LineUp);
-            SetDefaultComboBox(Manufacturer_ComboBox, products.First().Manufacturer);
-            SetDefaultComboBox(Country_ComboBox, products.First().Country);
-            SetDefaultComboBox(CPU_ComboBox, products.First().CPU);
-            SetDefaultComboBox(Capacity_RAM_ComboBox, products.First().InfoRAM.CapacityRAM.ToString());
-            SetDefaultComboBox(TypeRAM_ComboBox, products.First().InfoRAM.TypeRAM.ToString());
-            SetDefaultComboBox(BusRAM_ComboBox, products.First().InfoRAM.BusRAM.ToString());
-            SetDefaultComboBox(iGPU_ComboBox, products.First().iGPU);
-            SetDefaultComboBox(GPU_ComboBox, products.First().GPUString);
-            SetDefaultComboBox(Material_ComboBox, products.First().CaseMaterial);
-            SetDefaultComboBox(Webcam_ComboBox, products.First().Webcam);
-            SetDefaultComboBox(OS_ComboBox, products.First().OS);
-            SetDefaultComboBox(X_Pixel_ComboBox, products.First().Resolution[0].ToString());
-            SetDefaultComboBox(Y_Pixel_ComboBox, products.First().Resolution[1].ToString());
-            SetDefaultComboBox(TypePanel_ComboBox, products.First().TypePanel);
-            SetDefaultComboBox(RefreshRate_ComboBox, products.First().RefreshRate.ToString());
-            SetDefaultComboBox(SizePanel_ComboBox, products.First().SizePanel.ToString());
-            SetDefaultComboBox(X_Ratio_ComboBox, products.First().RatioPanel[0].ToString());
-            SetDefaultComboBox(Y_Ratio_ComboBox, products.First().RatioPanel[1].ToString());
-            SetDefaultComboBox(TypeScreen_ComboBox, products.First().TypeScreen);
-            SetDefaultComboBox(TypeStorage_ComboBox, products.First().TypeStorage);
-            SetDefaultComboBox(StorageCapacity_ComboBox, products.First().StorageCapacity.ToString());
-            SetDefaultComboBox(WifiStandard_ComboBox, products.First().Wifi);
-            SetDefaultComboBox(BluetoothStandard_ComboBox, products.First().Bluetooth);
+            SetDefaultComboBox(Lineup_ComboBox, product?.LineUp);
+            SetDefaultComboBox(Manufacturer_ComboBox, product?.Manufacturer);
+            SetDefaultComboBox(Country_ComboBox, product?.Country);
+            SetDefaultComboBox(CPU_ComboBox, product?.CPU);
+            SetDefaultComboBox(Capacity_RAM_ComboBox, product?.InfoRAM?.CapacityRAM.ToString());
+            SetDefaultComboBox(TypeRAM_ComboBox, product?.InfoRAM?.TypeRAM.ToString());
+            SetDefaultComboBox(BusRAM_ComboBox, product?.InfoRAM?.BusRAM.ToString());
+            SetDefaultComboBox(iGPU_ComboBox, product?.iGPU);
+            SetDefaultComboBox(GPU_ComboBox, product?.GPUString);
+            SetDefaultComboBox(Material_ComboBox, product?.CaseMaterial);
+            SetDefaultComboBox(Webcam_ComboBox, product?.Webcam);
+            SetDefaultComboBox(OS_ComboBox, product?.OS);
+            SetDefaultComboBox(X_Pixel_ComboBox, product?.Resolution?[0].ToString());
+            SetDefaultComboBox(Y_Pixel_ComboBox, product?.Resolution?[1].ToString());
+            SetDefaultComboBox(TypePanel_ComboBox, product?.TypePanel);
+            SetDefaultComboBox(RefreshRate_ComboBox, product?.RefreshRate.ToString());
+            SetDefaultComboBox(SizePanel_ComboBox, product?.SizePanel.ToString());
+            SetDefaultComboBox(X_Ratio_ComboBox, product?.RatioPanel?[0].ToString());
+            SetDefaultComboBox(Y_Ratio_ComboBox, product?.RatioPanel?[1].ToString());
+            SetDefaultComboBox(TypeScreen_ComboBox, product?.TypeScreen);
+            SetDefaultComboBox(TypeStorage_ComboBox, product?.TypeStorage);
+            SetDefaultComboBox(StorageCapacity_ComboBox, product?.StorageCapacity.ToString());
+            SetDefaultComboBox(WifiStandard_ComboBox, product?.Wifi);
+            SetDefaultComboBox(BluetoothStandard_ComboBox, product?.Bluetooth);
+            SetDefaultComboBox(CodeDisplay_ComboBox, product?.IdPanel);
         }
         #endregion
 
         #region Loading data
         private List<string> GetDistinctValue<TModel>(IQueryable<TModel> query, Expression<Func<TModel, string>> select) where TModel : class
         {
-            return query.Select(select).Distinct().ToList();
+            return query.Select(select).Where(item => item != null).Distinct().ToList();
         }
 
         private class MainBindingData
@@ -219,10 +222,12 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             public BindingList<string> yResolution { get; set; }
             public BindingList<string> xRatioPanel { get; set; }
             public BindingList<string> yRatioPanel { get; set; }
+            public BindingList<string> codeDisplay { get; set; }
         }
 
         private void AssignBinding(MainBindingData binding)
         {
+            this.SuspendLayout();
             Lineup_ComboBox.DataSource = binding.lineup;
             Manufacturer_ComboBox.DataSource = binding.manufacturer;
             Country_ComboBox.DataSource = binding.country;
@@ -247,6 +252,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             Y_Pixel_ComboBox.DataSource = binding.yResolution;
             X_Ratio_ComboBox.DataSource = binding.xRatioPanel;
             Y_Ratio_ComboBox.DataSource = binding.yRatioPanel;
+            CodeDisplay_ComboBox.DataSource = binding.codeDisplay;
+            this.ResumeLayout(true);
         }
 
         private Task LoadingData()
@@ -278,6 +285,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     sizePanel = new BindingList<string>(GetDistinctValue(displaySpecsQueryable, item => item.SIZE.ToString())),
                     typePanel = new BindingList<string>(GetDistinctValue(displaySpecsQueryable, item => item.PANEL)),
                     typeScreen = new BindingList<string>(GetDistinctValue(displaySpecsQueryable, item => item.SCREEN_TYPE)),
+                    codeDisplay = new BindingList<string>(GetDistinctValue(displaySpecsQueryable, item => item.CODE_DISPLAY))
                 };
                 List<string> ram = GetDistinctValue(uniqueSpecsQueryable, item => item.RAM);
                 List<string> resolution = GetDistinctValue(displaySpecsQueryable, item => item.RESOLUTION);
@@ -301,6 +309,16 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
                 binding.yRatioPanel = new BindingList<string>(ratioPanel.Select(item => item.Split(':')[1]).Distinct().ToList());
 
+                //auto or manual code display
+                bindingCodeDisplay = binding.codeDisplay;
+
+                //optional
+                binding.gpu.Insert(0, string.Empty);
+                binding.webcam.Insert(0, string.Empty);
+                binding.codeDisplay.Insert(0, string.Empty);
+                binding.bluetooth.Insert(0, string.Empty);
+                binding.wifi.Insert(0, string.Empty);
+
                 if (this.InvokeRequired)
                 {
                     this.Invoke(new Action(() =>
@@ -316,118 +334,15 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         }
         #endregion
 
-        private void CheckChange()
+        protected virtual void CheckChange() { }
+
+        public virtual ResultDetailSpecsProduct ShowDialog(IWin32Window owner, IList<ModelProduct> payload, bool editable = true)
         {
-            ModelProduct checkModel = new ModelProduct();
-            checkModel.NameProduct = NameProductValue_Label.Text;
-            //string[] serials = Serials_TextBox.Text.Split('\n');
-            checkModel.LineUp = Lineup_ComboBox.SelectedItem?.ToString();
-            checkModel.Manufacturer = Manufacturer_ComboBox.SelectedItem?.ToString();
-            checkModel.Country = Country_ComboBox.SelectedItem?.ToString();
-            checkModel.CPU = CPU_ComboBox.SelectedItem?.ToString();
-            checkModel.RAMString = string.Format("{0}GB {1} {2}", 
-                Capacity_RAM_ComboBox.SelectedItem?.ToString(), 
-                TypeRAM_ComboBox.SelectedItem?.ToString(), 
-                BusRAM_ComboBox.SelectedItem?.ToString());
-            checkModel.iGPU = iGPU_ComboBox.SelectedItem?.ToString();
-            checkModel.GPUString = GPU_ComboBox.SelectedItem?.ToString();
-            checkModel.Weight = double.Parse(Weight_TextBox.Text);
-            checkModel.SizeProductString = string.Format("{0}x{1}x{2}", 
-                X_Dimension_TextBox.Text, 
-                Y_Dimension_TextBox.Text, 
-                Z_Dimension_TextBox.Text);
-            checkModel.CaseMaterial = Material_ComboBox.SelectedItem?.ToString();
-            checkModel.Webcam = Webcam_ComboBox.SelectedItem?.ToString();
-            checkModel.ResolutionString = string.Format("{0}x{1}", 
-                X_Pixel_ComboBox.SelectedItem?.ToString(), 
-                Y_Pixel_ComboBox.SelectedItem?.ToString());
-            checkModel.TypePanel = TypePanel_ComboBox.SelectedItem?.ToString();
-            checkModel.RefreshRate = int.Parse(RefreshRate_ComboBox.SelectedItem?.ToString());
-            checkModel.Brightness = int.Parse(Brightness_TextBox.Text);
-            checkModel.SizePanel = double.Parse(SizePanel_ComboBox.SelectedItem?.ToString());
-            checkModel.RatioPanelString = string.Format("{0}:{1}", 
-                X_Ratio_ComboBox.SelectedItem?.ToString(), 
-                Y_Ratio_ComboBox.SelectedItem?.ToString());
-            //checkModel.CanTouchPanel = Touchscreen_ToggleButton.Checked;
-            checkModel.TypeScreen = TypeScreen_ComboBox.SelectedItem?.ToString();
-            //checkModel.IdPanel = CodeDisplay_TextBox.Text;
-            checkModel.TypeStorage = TypeStorage_ComboBox.SelectedItem?.ToString();
-            checkModel.StorageCapacity = int.Parse(StorageCapacity_ComboBox.SelectedItem?.ToString());
-            checkModel.Wifi = WifiStandard_ComboBox.SelectedItem?.ToString();
-            checkModel.Bluetooth = BluetoothStandard_ComboBox.SelectedItem?.ToString();
-            checkModel.ColorName = NameColor_TextBox.Text;
-            //checkModel.Price = double.Parse(Price_TextBox.Text);
-            checkModel.BatteryCapacity = double.Parse(BatteryCapacity_TextBox.Text);
-            checkModel.OS = OS_ComboBox.SelectedItem?.ToString();
-
-            List<string> spaceColor = new List<string>();
-            if (!string.IsNullOrEmpty(ColorSpace_sRGB_TextBox.Text))
-            {
-                spaceColor.Add(string.Format("{0}:{1}%", "sRGB color space", ColorSpace_sRGB_TextBox.Text));
-            }
-            if (!string.IsNullOrEmpty(ColorSpace_AdobeRGB_TextBox.Text))
-            {
-                spaceColor.Add(string.Format("{0}:{1}%", "Adobe RGB profile", ColorSpace_AdobeRGB_TextBox.Text));
-            }
-            if (!string.IsNullOrEmpty(ColorSpace_DCIP3_TextBox.Text))
-            {
-                spaceColor.Add(string.Format("{0}:{1}%", "DCI-P3 color gamut", ColorSpace_DCIP3_TextBox.Text));
-            }
-
-            checkModel.SpaceColorString = string.Join("_", spaceColor);
-
-            checkModel.ColorCode = "#" + string.Format("{0:X8}", ColorTranslator.ToWin32(ColorDialog.Color)).Substring(2);
-
-            List<string> ports = new List<string>();
-
-            for (int index = 0; index < Ports_DataGridView.RowCount - 1; index++)
-            {
-                string portProtocol = Ports_DataGridView.Rows[index].Cells["PortProtocol_Column"].Value.ToString();
-                string portPhysic = Ports_DataGridView.Rows[index].Cells["PortPhysic_Column"].Value.ToString();
-                string portQuantity = Ports_DataGridView.Rows[index].Cells["PortQuantity_Column"].Value.ToString();
-
-                if (portProtocol.CompareTo(portPhysic) == 0)
-                {
-                    ports.Add(string.Format("{0}:{1}", portPhysic, portQuantity));
-                }
-                else
-                {
-                    ports.Add(string.Format("{0}:{1}x {2}", portPhysic, portQuantity, portProtocol));
-                }
-            }
-
-            checkModel.PortString = string.Join("_", ports);
-
-            foreach(ModelProduct model in products)
-            {
-                checkModel.ReleaseDate = model.ReleaseDate;
-                if (!model.CompareSpecs(checkModel))
-                {
-                    MessageBox.Show("!");
-                }
-            }
-        }
-
-        public List<ModelProduct> ShowDialog(IWin32Window owner, List<ModelProduct> preModels, bool editable = true)
-        {
-            if (preModels != null)
-            {
-                this.editable = editable;
-                products = preModels;
-            }
+            resultChanged = new ResultDetailSpecsProduct();
+            this.editable = editable;
+            product = payload.First();
             base.ShowDialog();
-            CheckChange();
-            return preModels;
-        }
-
-        private void Exit_Button_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Confirm_Button_Click(object sender, EventArgs e)
-        {
-            this.Close();
+            return resultChanged;
         }
 
         private void ColorPicker_Button_Click(object sender, EventArgs e)
@@ -447,23 +362,159 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         private void HasCodeDisplay_CheckBox_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox control = sender as CheckBox;
-            //CodeDisplay_TextBox.ReadOnly = !control.Checked;
+            if (control.Checked)
+            {
+                CodeDisplay_ComboBox.DataSource = null;
+                CodeDisplay_ComboBox.DropDownStyle = ComboBoxStyle.Simple;
+                CodeDisplay_ComboBox.AutoCompleteMode = AutoCompleteMode.None;
+                CodeDisplay_ComboBox.AutoCompleteSource = AutoCompleteSource.None;
+                CodeDisplay_ComboBox.Leave -= ValidationComboBox;
+                CodeDisplay_ComboBox.InsertKeyPressed -= AddNewItemToComboBox;
+            }
+            else
+            {
+                CodeDisplay_ComboBox.DataSource = bindingCodeDisplay;
+                CodeDisplay_ComboBox.DropDownStyle = ComboBoxStyle.DropDown;
+                CodeDisplay_ComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
+                CodeDisplay_ComboBox.AutoCompleteMode = AutoCompleteMode.Suggest;
+                CodeDisplay_ComboBox.Leave += ValidationComboBox;
+                CodeDisplay_ComboBox.InsertKeyPressed += AddNewItemToComboBox;
+            }
         }
 
         private async void DetailSpecsProduct_Form_Load(object sender, EventArgs e)
         {
+            bindingPorts = new BindingList<ModelProduct.Port>();
+            Ports_DataGridView.DataSource = bindingPorts;
             Edit_Button.Visible = this.editable;
-            SetEditable(this.editable);
             await LoadingData();
             SetDefaultData();
+            SetEditable(this.editable);
         }
 
-        private void Touchscreen_ToggleButton_CheckedChanged(object sender, EventArgs e)
+        private void AddNewItemToComboBox(object sender, string value)
         {
-            Guna2ToggleSwitch control = (sender as Guna2ToggleSwitch);
-            if (!editable && control.Checked != products.First().CanTouchPanel)
+            ComboBox control = sender as ComboBox;
+            BindingList<string> binding = control?.DataSource as BindingList<string>;
+
+            if (control != null && binding != null)
             {
-                control.Checked = products.First().CanTouchPanel ?? false;
+                int index = binding.IndexOf(value);
+                if (index == -1)
+                {
+                    switch (MessageBox.Show("Giá trị chưa tồn tại trên CSDL. Bạn có muốn tạo mới?", "Thông tin chưa tồn tại.", MessageBoxButtons.YesNoCancel))
+                    {
+                        case DialogResult.Yes:
+                            binding.Add(value);
+                            control.SelectedIndex = binding.IndexOf(value);
+                            break;
+                        case DialogResult.No:
+                            control.Text = string.Empty;
+                            break;
+                        case DialogResult.Cancel:
+                            break;
+                    }
+                }
+                else
+                {
+                    control.SelectedIndex = index;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lỗi");
+            }
+        }
+
+        private void ValidationComboBox(object sender, EventArgs e)
+        {
+            ComboBox control = sender as ComboBox;
+            BindingList<string> binding = control?.DataSource as BindingList<string>;
+            string currentText = control?.Text;
+            if (control?.Equals(CodeDisplay_ComboBox) == true && HasCodeDisplay_CheckBox.Checked) return;
+            if (control == null || binding == null || currentText == null || binding.FirstOrDefault(item => item.Equals(currentText)) == null)
+            {
+                control.Focus();
+                MessageBox.Show("Thông tin chưa hợp lệ! Vui lòng nhập lại.", "Lỗi nhập");
+            }
+        }
+
+        protected virtual List<string> ValidationDetailSpecs()
+        {
+            List<string> result = new List<string>();
+            if (Lineup_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn dòng sản phẩm");
+            if (Manufacturer_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn nhà sản xuất");
+            if (Country_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn nơi sản xuất");
+            if (CPU_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn CPU");
+            if (Capacity_RAM_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn dung lượng RAM");
+            if (BusRAM_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn BUS RAM");
+            if (TypeRAM_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn loại RAM");
+            if (iGPU_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn iGPU");
+            if (string.IsNullOrEmpty(Weight_TextBox.Text) || !double.TryParse(Weight_TextBox.Text, out double weight))
+                result.Add("Chưa nhập cân nặng");
+            if (string.IsNullOrEmpty(X_Dimension_TextBox.Text) || !double.TryParse(X_Dimension_TextBox.Text, out double xSize))
+                result.Add("Chưa nhập chiều dài sản phẩm");
+            if (string.IsNullOrEmpty(Y_Dimension_TextBox.Text) || !double.TryParse(Y_Dimension_TextBox.Text, out double ySize))
+                result.Add("Chưa nhập chiều rộng sản phẩm");
+            if (string.IsNullOrEmpty(Z_Dimension_TextBox.Text) || !double.TryParse(Z_Dimension_TextBox.Text, out double zSize))
+                result.Add("Chưa nhập chiều cao sản phẩm");
+            if (Material_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn vật liệu máy");
+            if (Webcam_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn Webcam");
+            if (OS_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn hệ điều hành");
+            if (X_Pixel_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn chiều ngang màn hình");
+            if (Y_Pixel_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn chiều dọc màn hình");
+            if (RefreshRate_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn tần số quét");
+            if (SizePanel_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn kích thước màn hình");
+            if (TypePanel_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn loại tấm nền");
+            if (string.IsNullOrEmpty(BatteryCapacity_TextBox.Text) || !int.TryParse(Brightness_TextBox.Text, out int brightness))
+                result.Add("Chưa nhập độ sáng màn hình");
+            if (X_Ratio_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn tỉ lệ màn hình");
+            if (Y_Ratio_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn tỉ lệ màn hình");
+            if (TypeScreen_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn loại màn hình");
+            if ((HasCodeDisplay_CheckBox.Checked && string.IsNullOrEmpty(CodeDisplay_ComboBox.Text)) || CodeDisplay_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn mã màn hình");
+            if (TypeStorage_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn loại ổ cứng");
+            if (StorageCapacity_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn dung lượng ổ cứng");
+            if (string.IsNullOrEmpty(BatteryCapacity_TextBox.Text) || !double.TryParse(BatteryCapacity_TextBox.Text, out double battery))
+                result.Add("Chưa nhập dung lượng pin");
+            return result;
+        }
+
+        private void Exit_Clicked(object sender, EventArgs e)
+        {
+            List<string> checkValidation = ValidationDetailSpecs();
+            if (checkValidation?.Count > 0)
+            {
+                if (MessageBox.Show(string.Join("\n", checkValidation) + "\n\n" + "Quay trở lại(Yes) hay hủy thay đổi(No)?", "Thiếu thông tin", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                CheckChange();
+                this.Close();
             }
         }
     }
