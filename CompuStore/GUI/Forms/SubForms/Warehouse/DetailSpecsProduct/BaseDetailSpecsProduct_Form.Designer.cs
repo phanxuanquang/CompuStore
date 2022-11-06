@@ -1156,6 +1156,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Ports_DataGridView.ThemeStyle.RowsStyle.Height = 48;
             this.Ports_DataGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Ports_DataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.Ports_DataGridView.DataSourceChanged += new System.EventHandler(this.Ports_DataGridView_DataSourceChanged);
             // 
             // X_Dimension_TextBox
             // 

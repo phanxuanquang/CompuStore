@@ -63,7 +63,7 @@ namespace CompuStore.ImportData
             }
             set
             {
-                if (value != null)
+                if (!string.IsNullOrEmpty(value))
                 {
                     string[] resolution = value.Split('x');
                     List<double> parseResolution = new List<double>();
@@ -122,7 +122,7 @@ namespace CompuStore.ImportData
             }
             set
             {
-                if (value != null)
+                if (!string.IsNullOrEmpty(value))
                 {
                     string[] spaceColor = value.Split('_');
                     SpaceColor = new SortedDictionary<ENUM_SPACE_COLOR, double>();
@@ -178,7 +178,7 @@ namespace CompuStore.ImportData
             }
             set
             {
-                if (value != null)
+                if (!string.IsNullOrEmpty(value))
                 {
                     string[] ratio = value.Split(':');
                     List<double> parseRatio = new List<double>();
@@ -320,7 +320,7 @@ namespace CompuStore.ImportData
             }
             set
             {
-                if (value != null)
+                if (!string.IsNullOrEmpty(value))
                 {
                     string[] sizeProduct = value.Split('x');
                     List<double> parseSizeProduct = new List<double>();
@@ -498,9 +498,9 @@ namespace CompuStore.ImportData
 
         public bool StrictCompareSpecs(ModelProduct model)
         {
-            if (model == null 
-                || Price != model.Price 
-                || !CompareSpecs(model)) 
+            if (model == null
+                || Price != model.Price
+                || !CompareSpecs(model))
                 return false;
             return true;
         }
@@ -602,11 +602,11 @@ namespace CompuStore.ImportData
 
         public static ModelProduct DatabaseToModel(
             PRODUCT product,
-            DETAIL_IMPORT_WAREHOUSE detailImport, 
-            LINE_UP lineup, 
-            DISPLAY_SPECS display, 
-            UNIQUE_SPECS uniqueSpecs, 
-            COMMON_SPECS commonSpecs, 
+            DETAIL_IMPORT_WAREHOUSE detailImport,
+            LINE_UP lineup,
+            DISPLAY_SPECS display,
+            UNIQUE_SPECS uniqueSpecs,
+            COMMON_SPECS commonSpecs,
             COLOR color)
         {
             return new ModelProduct
@@ -662,13 +662,17 @@ namespace CompuStore.ImportData
         public static ModelProduct[] GetTSV(string pathFile)
         {
             string[] x = File.ReadAllLines(pathFile, Encoding.UTF8);
-            ModelProduct[] products = new ModelProduct[x.Length - 1];
+            List<ModelProduct> products = new List<ModelProduct>();
+            ModelProduct parse = null;
             for (int index = 1; index < x.Length; index++)
             {
-                TryParse(x[index], out products[index - 1]);
+                parse = new ModelProduct();
+                TryParse(x[index], out parse);
+                if (parse != null)
+                    products.Add(parse);
             }
 
-            return products;
+            return products.ToArray();
         }
     }
 }

@@ -14,28 +14,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
     public partial class BaseDetailSpecsProduct_Form : Form
     {
-        protected ModelProduct product;
-        protected bool editable = true;
-        protected BindingList<ModelProduct.Port> bindingPorts;
-        protected ResultDetailSpecsProduct resultChanged;
-        private BindingList<string> bindingCodeDisplay = null;
-
-        protected BaseDetailSpecsProduct_Form()
-        {
-            InitializeComponent();
-            this.AutoScaleMode = AutoScaleMode.Dpi;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-        }
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams handleParam = base.CreateParams;
-                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
-                return handleParam;
-            }
-        }
-
+        #region Class
         public class ResultDetailSpecsProduct
         {
             public enum TypeReturn
@@ -45,6 +24,69 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             public TypeReturn typeReturn;
             public ModelProduct sendPayload;
             public ModelProduct receivePayload;
+        }
+
+        private class MainBindingData
+        {
+            public BindingList<string> lineup { get; set; }
+            public BindingList<string> manufacturer { get; set; }
+            public BindingList<string> country { get; set; }
+            public BindingList<string> cpu { get; set; }
+            public BindingList<string> iGPU { get; set; }
+            public BindingList<string> gpu { get; set; }
+            public BindingList<string> typeStorage { get; set; }
+            public BindingList<string> storageCapacity { get; set; }
+            public BindingList<string> material { get; set; }
+            public BindingList<string> webcam { get; set; }
+            public BindingList<string> os { get; set; }
+            public BindingList<string> wifi { get; set; }
+            public BindingList<string> bluetooth { get; set; }
+            public BindingList<string> refreshRate { get; set; }
+            public BindingList<string> sizePanel { get; set; }
+            public BindingList<string> typePanel { get; set; }
+            public BindingList<string> typeScreen { get; set; }
+            public BindingList<string> ramCapacity { get; set; }
+            public BindingList<string> typeRAM { get; set; }
+            public BindingList<string> busRAM { get; set; }
+            public BindingList<string> xResolution { get; set; }
+            public BindingList<string> yResolution { get; set; }
+            public BindingList<string> xRatioPanel { get; set; }
+            public BindingList<string> yRatioPanel { get; set; }
+            public BindingList<string> codeDisplay { get; set; }
+        }
+        #endregion
+
+        #region Variable
+        protected ModelProduct product;
+        protected bool editable = true;
+        protected BindingList<ModelProduct.Port> bindingPorts;
+        protected ResultDetailSpecsProduct resultChanged;
+        private BindingList<string> bindingCodeDisplay = null;
+        #endregion
+
+        #region Translater
+        protected static readonly Dictionary<string, string> portTranslater = new Dictionary<string, string> {
+            { "PortPhysic", "Chuẩn giao tiếp" },
+            { "PortProtocol", "Chuẩn vật lý" },
+            { "Quantity", "Số lượng" }};
+        #endregion
+
+        protected virtual void AddInitializeComponent() { }
+
+        protected BaseDetailSpecsProduct_Form()
+        {
+            InitializeComponent();
+            AddInitializeComponent();
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
+                return handleParam;
+            }
         }
 
         #region Set Editable
@@ -196,35 +238,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             return query.Select(select).Where(item => item != null).Distinct().ToList();
         }
 
-        private class MainBindingData
-        {
-            public BindingList<string> lineup { get; set; }
-            public BindingList<string> manufacturer { get; set; }
-            public BindingList<string> country { get; set; }
-            public BindingList<string> cpu { get; set; }
-            public BindingList<string> iGPU { get; set; }
-            public BindingList<string> gpu { get; set; }
-            public BindingList<string> typeStorage { get; set; }
-            public BindingList<string> storageCapacity { get; set; }
-            public BindingList<string> material { get; set; }
-            public BindingList<string> webcam { get; set; }
-            public BindingList<string> os { get; set; }
-            public BindingList<string> wifi { get; set; }
-            public BindingList<string> bluetooth { get; set; }
-            public BindingList<string> refreshRate { get; set; }
-            public BindingList<string> sizePanel { get; set; }
-            public BindingList<string> typePanel { get; set; }
-            public BindingList<string> typeScreen { get; set; }
-            public BindingList<string> ramCapacity { get; set; }
-            public BindingList<string> typeRAM { get; set; }
-            public BindingList<string> busRAM { get; set; }
-            public BindingList<string> xResolution { get; set; }
-            public BindingList<string> yResolution { get; set; }
-            public BindingList<string> xRatioPanel { get; set; }
-            public BindingList<string> yRatioPanel { get; set; }
-            public BindingList<string> codeDisplay { get; set; }
-        }
-
         private void AssignBinding(MainBindingData binding)
         {
             this.SuspendLayout();
@@ -332,10 +345,34 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 }
             });
         }
+
+        private void Ports_DataGridView_DataSourceChanged(object sender, EventArgs e)
+        {
+            DataGridView grid = sender as DataGridView;
+            grid.SuspendLayout();
+            foreach (DataGridViewColumn column in grid.Columns)
+            {
+                if (portTranslater.ContainsKey(column.Name))
+                {
+                    string headerText = portTranslater[column.Name];
+                    string[] split = headerText.Split('|');
+                    column.HeaderText = split[0];
+                    if (split.Length > 1)
+                    {
+                        column.ToolTipText = split[1];
+                    }
+                }
+                else
+                {
+                    column.Visible = false;
+                }
+            }
+            grid.ResumeLayout(false);
+            grid.PerformLayout();
+        }
         #endregion
 
-        protected virtual void CheckChange() { }
-
+        #region IO Handle
         public virtual ResultDetailSpecsProduct ShowDialog(IWin32Window owner, IList<ModelProduct> payload, bool editable = true)
         {
             resultChanged = new ResultDetailSpecsProduct();
@@ -345,40 +382,30 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             return resultChanged;
         }
 
+        private void Exit_Clicked(object sender, EventArgs e)
+        {
+            List<string> checkValidation = ValidationDetailSpecs();
+            if (checkValidation?.Count > 0)
+            {
+                if (MessageBox.Show(string.Join("\n", checkValidation) + "\n\n" + "Quay trở lại(Yes) hay hủy thay đổi(No)?", "Thiếu thông tin", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    this.Close();
+                }
+            }
+            else
+            {
+                CheckChange();
+                this.Close();
+            }
+        }
+        #endregion
+
+        #region Event
         private void ColorPicker_Button_Click(object sender, EventArgs e)
         {
             if (ColorDialog.ShowDialog() == DialogResult.OK)
             {
                 ColorPicker_Button.FillColor = ColorDialog.Color;
-            }
-        }
-
-        private void Edit_Button_Click(object sender, EventArgs e)
-        {
-            editable = !editable;
-            SetEditable(editable);
-        }
-
-        private void HasCodeDisplay_CheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckBox control = sender as CheckBox;
-            if (control.Checked)
-            {
-                CodeDisplay_ComboBox.DataSource = null;
-                CodeDisplay_ComboBox.DropDownStyle = ComboBoxStyle.Simple;
-                CodeDisplay_ComboBox.AutoCompleteMode = AutoCompleteMode.None;
-                CodeDisplay_ComboBox.AutoCompleteSource = AutoCompleteSource.None;
-                CodeDisplay_ComboBox.Leave -= ValidationComboBox;
-                CodeDisplay_ComboBox.InsertKeyPressed -= AddNewItemToComboBox;
-            }
-            else
-            {
-                CodeDisplay_ComboBox.DataSource = bindingCodeDisplay;
-                CodeDisplay_ComboBox.DropDownStyle = ComboBoxStyle.DropDown;
-                CodeDisplay_ComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
-                CodeDisplay_ComboBox.AutoCompleteMode = AutoCompleteMode.Suggest;
-                CodeDisplay_ComboBox.Leave += ValidationComboBox;
-                CodeDisplay_ComboBox.InsertKeyPressed += AddNewItemToComboBox;
             }
         }
 
@@ -390,6 +417,12 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             await LoadingData();
             SetDefaultData();
             SetEditable(this.editable);
+        }
+
+        private void Edit_Button_Click(object sender, EventArgs e)
+        {
+            editable = !editable;
+            SetEditable(editable);
         }
 
         private void AddNewItemToComboBox(object sender, string value)
@@ -426,6 +459,31 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
         }
 
+        private void HasCodeDisplay_CheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox control = sender as CheckBox;
+            if (control.Checked)
+            {
+                CodeDisplay_ComboBox.DataSource = null;
+                CodeDisplay_ComboBox.DropDownStyle = ComboBoxStyle.Simple;
+                CodeDisplay_ComboBox.AutoCompleteMode = AutoCompleteMode.None;
+                CodeDisplay_ComboBox.AutoCompleteSource = AutoCompleteSource.None;
+                CodeDisplay_ComboBox.Leave -= ValidationComboBox;
+                CodeDisplay_ComboBox.InsertKeyPressed -= AddNewItemToComboBox;
+            }
+            else
+            {
+                CodeDisplay_ComboBox.DataSource = bindingCodeDisplay;
+                CodeDisplay_ComboBox.DropDownStyle = ComboBoxStyle.DropDown;
+                CodeDisplay_ComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
+                CodeDisplay_ComboBox.AutoCompleteMode = AutoCompleteMode.Suggest;
+                CodeDisplay_ComboBox.Leave += ValidationComboBox;
+                CodeDisplay_ComboBox.InsertKeyPressed += AddNewItemToComboBox;
+            }
+        }
+        #endregion
+
+        #region Validation
         private void ValidationComboBox(object sender, EventArgs e)
         {
             ComboBox control = sender as ComboBox;
@@ -438,6 +496,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 MessageBox.Show("Thông tin chưa hợp lệ! Vui lòng nhập lại.", "Lỗi nhập");
             }
         }
+
+        protected virtual void CheckChange() { }
 
         protected virtual List<string> ValidationDetailSpecs()
         {
@@ -500,22 +560,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 result.Add("Chưa nhập dung lượng pin");
             return result;
         }
-
-        private void Exit_Clicked(object sender, EventArgs e)
-        {
-            List<string> checkValidation = ValidationDetailSpecs();
-            if (checkValidation?.Count > 0)
-            {
-                if (MessageBox.Show(string.Join("\n", checkValidation) + "\n\n" + "Quay trở lại(Yes) hay hủy thay đổi(No)?", "Thiếu thông tin", MessageBoxButtons.YesNo) == DialogResult.No)
-                {
-                    this.Close();
-                }
-            }
-            else
-            {
-                CheckChange();
-                this.Close();
-            }
-        }
+        #endregion
     }
 }

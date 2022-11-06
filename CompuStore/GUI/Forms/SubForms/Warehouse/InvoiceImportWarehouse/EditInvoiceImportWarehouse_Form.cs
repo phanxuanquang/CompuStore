@@ -13,13 +13,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
     public class EditInvoiceImportWarehouse_Form : BaseInvoiceImportWarehouse_Form
     {
-        private IMPORT_WAREHOUSE importWarehouse = null;
-        BindingList<ICommonSpecsCustom> bindingTable = null;
-        ImportWarehouseCustom convertImportWarehouse = null;
-        List<ICommonSpecsGroup<DETAIL_IMPORT_WAREHOUSE>> commonSpecsGroups = null;
-
         #region Implement interface
-
         private class EditInvoiceCommonSpecsGroup : ICommonSpecsGroup<DETAIL_IMPORT_WAREHOUSE>
         {
             DETAIL_IMPORT_WAREHOUSE ICommonSpecsGroup<DETAIL_IMPORT_WAREHOUSE>.Represent
@@ -112,6 +106,13 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         }
         #endregion
 
+        #region Variable
+        private IMPORT_WAREHOUSE importWarehouse = null;
+        BindingList<ICommonSpecsCustom> bindingTable = null;
+        ImportWarehouseCustom convertImportWarehouse = null;
+        List<ICommonSpecsGroup<DETAIL_IMPORT_WAREHOUSE>> commonSpecsGroups = null;
+        #endregion
+
         public EditInvoiceImportWarehouse_Form()
         {
             Load += InvoiceImportWarehouse_Form_Load;
@@ -120,6 +121,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             AddProduct_Button.Click += NavToEdit;
             DeleteProduct_Button.Click += NavToEdit;
         }
+
         protected override CreateParams CreateParams
         {
             get
@@ -129,6 +131,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 return handleParam;
             }
         }
+
         #region Loading data
         private Task LoadingData(IProgress<int> progress)
         {
@@ -196,6 +199,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         }
         #endregion
 
+        #region Event
         private void TableData_DataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             string nameIdCommonSpecs = (sender as DataGridView).Rows[e.RowIndex].Cells["NameID"].Value as string;
@@ -207,16 +211,19 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
         }
 
-        public override void ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, bool edit = false)
-        {
-            this.importWarehouse = importWarehouse;
-            base.ShowDialog(owner, importWarehouse, false);
-        }
-
         private void NavToEdit(object sender, EventArgs e)
         {
             BaseInvoiceImportWarehouse_Form editInvoice = new AddInvoiceImportWarehouse_Form();
             editInvoice.ShowDialog(this, importWarehouse, true);
         }
+        #endregion
+
+        #region IO Handle
+        public override void ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, bool edit = false)
+        {
+            this.importWarehouse = importWarehouse;
+            base.ShowDialog(owner, importWarehouse, false);
+        }
+        #endregion
     }
 }

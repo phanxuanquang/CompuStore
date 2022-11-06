@@ -14,6 +14,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
     public class AddDetailInvoiceImportWarehouse_Form : BaseDetailInvoiceImportWarehouse_Form
     {
+        #region Set editable
         private void SetEditable()
         {
             Finish_Button.Visible = true;
@@ -21,6 +22,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             AddProduct_Button.Visible = true;
             DeleteProduct_Button.Visible = true;
         }
+        #endregion
 
         public AddDetailInvoiceImportWarehouse_Form()
         {
@@ -38,7 +40,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
         }
 
-
+        #region Event
         private void SetDefaultComboBox(ComboBox control, string value)
         {
             if (control != null)
@@ -83,29 +85,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
         }
 
-        private void AddProductByExcel_Button_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Tab-seperator values | *.tsv";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK && openFileDialog.CheckFileExists)
-            {
-                ModelProduct[] products = ModelProduct.GetTSV(openFileDialog.FileName);
-                if (products.Select(item => item.NameProduct).Distinct().Count() == 1 && (productList.Count() == 0 || productList.First().NameProduct == products[0].NameProduct))
-                {
-                    foreach (ModelProduct product in products)
-                    {
-                        productList.Add(product);
-                    }
-                    Custom_Load(null, null);
-                }
-                else
-                {
-                    MessageBox.Show("Chỉ được nhập 1 sản phâm duy nhất");
-                }
-            }
-        }
-
         private void TableData_DataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -142,6 +121,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 }
             }
         }
+        #endregion
 
         /*protected override void CheckChange()
         {
@@ -169,10 +149,12 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
         }*/
 
+        #region IO Handle
         public override ResultDetailInvoiceImportWarehouse ShowDialog(IWin32Window owner, List<ModelProduct> products)
         {
             SetEditable();
             return base.ShowDialog(owner, products);
         }
+        #endregion
     }
 }

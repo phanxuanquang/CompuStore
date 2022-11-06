@@ -95,6 +95,12 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         }
         #endregion
 
+        #region Variable
+        private BindingList<ComboBoxBinding> bindingDistributor = null;
+        private BindingList<ComboBoxBinding> bindingStore = null;
+        #endregion
+
+        #region Translater
         private static readonly Dictionary<string, string> translater = new Dictionary<string, string> {
             { "NameCommonSpecs", "Tên sản phẩm" },
             { "LineUp", "Dòng sản phẩm" },
@@ -102,9 +108,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             { "ReleaseDate", "Năm ra mắt" },
             { "Quantity", "Số lượng|Số lượng sản phẩm nhập" },
             { "RangeTotal", "Giá tiền|Khoảng giá từ cấu hình thấp đến cao nhất" }};
-        private BindingList<ComboBoxBinding> bindingDistributor = null;
-        private BindingList<ComboBoxBinding> bindingStore = null;
+        #endregion
 
+        #region Set default if View | Edit
         private void SetDefaultComboBox(ComboBox control, string value)
         {
             if (control != null)
@@ -131,6 +137,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 }
             }
         }
+        #endregion
 
         protected BaseInvoiceImportWarehouse_Form()
         {
@@ -138,6 +145,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             TableData_DataGridView.DataSource = typeof(ICommonSpecsCustom);
             Load += BaseInvoiceImportWarehouse_Form_Load;
         }
+
         protected override CreateParams CreateParams
         {
             get
@@ -241,6 +249,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         }
         #endregion
 
+        #region Event
         private void Distributor_ComboBox_Leave(object sender, EventArgs e)
         {
             ComboBox control = sender as ComboBox;
@@ -287,7 +296,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 MessageBox.Show("Lỗi");
             }
         }
+        #endregion
 
+        #region Validation
         protected virtual List<string> ValidationInvoiceImportWarehouse()
         {
             List<string> result = new List<string>();
@@ -298,11 +309,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             return result;
         }
 
-        protected virtual void Exit_Clicked(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         public virtual void ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, bool edit)
         {
             if ((edit && this is AddInvoiceImportWarehouse_Form) || !edit)
@@ -310,10 +316,13 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             else
                 throw new InvalidOperationException();
         }
+        #endregion
 
-        private void DeleteProduct_Button_Click(object sender, EventArgs e)
+        #region IO Handle
+        protected virtual void Exit_Clicked(object sender, EventArgs e)
         {
-
+            this.Close();
         }
+        #endregion
     }
 }

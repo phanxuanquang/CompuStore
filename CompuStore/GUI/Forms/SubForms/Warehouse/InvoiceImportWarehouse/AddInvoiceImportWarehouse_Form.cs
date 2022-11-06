@@ -110,13 +110,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         }
         #endregion
 
-        BindingList<ICommonSpecsCustom> bindingTable = null;
-        Dictionary<ModelProductGroupBy, ICommonSpecsGroup<ModelProduct>> commonSpecsGroups;
-        BaseDetailInvoiceImportWarehouse_Form.ResultDetailInvoiceImportWarehouse resultChanged;
-        ImportWarehouseCustom convertImportWarehouse = null;
-        List<ModelProduct> initProducts;
-        IMPORT_WAREHOUSE importWarehouse;
-
+        #region Class
         private class ModelProductGroupBy
         {
             public string LineUp { get; set; }
@@ -172,6 +166,16 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 }).Select(item => (item.Key, new AddInvoiceCommonSpecsGroup(item.ToList())));
             }
         }
+        #endregion
+
+        #region Variable
+        BindingList<ICommonSpecsCustom> bindingTable = null;
+        Dictionary<ModelProductGroupBy, ICommonSpecsGroup<ModelProduct>> commonSpecsGroups;
+        BaseDetailInvoiceImportWarehouse_Form.ResultDetailInvoiceImportWarehouse resultChanged;
+        ImportWarehouseCustom convertImportWarehouse = null;
+        List<ModelProduct> initProducts;
+        IMPORT_WAREHOUSE importWarehouse;
+        #endregion
 
         public AddInvoiceImportWarehouse_Form()
         {
@@ -183,6 +187,17 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             DeleteProduct_Button.Click += DeleteProduct_Button_Click;
         }
 
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
+                return handleParam;
+            }
+        }
+
+        #region Event
         private void DeleteProduct_Button_Click(object sender, EventArgs e)
         {
             BindingList<ICommonSpecsCustom> bindingTable = TableData_DataGridView.DataSource as BindingList<ICommonSpecsCustom>;
@@ -247,17 +262,67 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
             ReloadBinding();
         }
-        protected override CreateParams CreateParams
+
+        private void TableData_DataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            get
+            string nameIdCommonSpecs = (sender as DataGridView).Rows[e.RowIndex].Cells["NameID"].Value as string;
+            int.TryParse(nameIdCommonSpecs, out int ModelProductID);
+            KeyValuePair<ModelProductGroupBy, ICommonSpecsGroup<ModelProduct>> selected = commonSpecsGroups.FirstOrDefault(item => item.Value.Represent.TypeProduct == ModelProduct.TypeModel.New ? item.Value.Represent.Serial == nameIdCommonSpecs : item.Value.Represent.ID == ModelProductID);
+            if (selected.Value != null)
             {
-                CreateParams handleParam = base.CreateParams;
-                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
-                return handleParam;
+                BaseDetailInvoiceImportWarehouse_Form edit = new AddDetailInvoiceImportWarehouse_Form();
+                BaseDetailInvoiceImportWarehouse_Form.ResultDetailInvoiceImportWarehouse afterEdit = edit.ShowDialog(this, selected.Value.detailSpecs.ToList());
+                if (afterEdit.Remove != null && afterEdit.Remove.Count > 0)
+                {
+                    IEnumerable<(ModelProductGroupBy, AddInvoiceCommonSpecsGroup)> removed = ModelProductGroupBy.ConvertGroup(afterEdit.Remove);
+                    foreach ((ModelProductGroupBy, AddInvoiceCommonSpecsGroup) group in removed)
+                    {
+                        KeyValuePair<ModelProductGroupBy, ICommonSpecsGroup<ModelProduct>> existsGroup = commonSpecsGroups.FirstOrDefault(item => item.Key.IsGroup(group.Item1));
+                        if (existsGroup.Key != null)
+                        {
+                            IList<ModelProduct> productInGroup = commonSpecsGroups[existsGroup.Key].detailSpecs;
+                            foreach (ModelProduct product in group.Item2.detailSpecs)
+                            {
+                                productInGroup.Remove(product);
+                            }
+                        }
+                    }
+                }
+
+                if (afterEdit.NewProduct != null && afterEdit.NewProduct.Count > 0)
+                {
+                    AddProductsToCommonSpecsGroup(afterEdit.NewProduct);
+                }
+
+                if (afterEdit.SpecsChanged != null && afterEdit.SpecsChanged.Count > 0)
+                {
+                    foreach (KeyValuePair<ModelProduct, ModelProduct> item in afterEdit.SpecsChanged)
+                    {
+                        item.Key.OverrideData(item.Value);
+                    }
+                }
+
+                ReloadBinding();
             }
         }
 
-        #region Add table binding
+        private void AddProductByExcel_Button_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Tab-seperator values | *.tsv";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK && openFileDialog.CheckFileExists)
+            {
+                ModelProduct[] products = ModelProduct.GetTSV(openFileDialog.FileName);
+
+                AddProductsToCommonSpecsGroup(products);
+
+                ReloadBinding();
+            }
+        }
+        #endregion
+
+        #region Loading data
         private Task LoadingData(IProgress<int> progress)
         {
             return Task.Factory.StartNew(() =>
@@ -333,50 +398,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 waiting.ShowDialog(this);
             }
         }
-        #endregion
-
-        private void TableData_DataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            string nameIdCommonSpecs = (sender as DataGridView).Rows[e.RowIndex].Cells["NameID"].Value as string;
-            int.TryParse(nameIdCommonSpecs, out int ModelProductID);
-            KeyValuePair<ModelProductGroupBy, ICommonSpecsGroup<ModelProduct>> selected = commonSpecsGroups.FirstOrDefault(item => item.Value.Represent.TypeProduct == ModelProduct.TypeModel.New ? item.Value.Represent.Serial == nameIdCommonSpecs : item.Value.Represent.ID == ModelProductID);
-            if (selected.Value != null)
-            {
-                BaseDetailInvoiceImportWarehouse_Form edit = new AddDetailInvoiceImportWarehouse_Form();
-                BaseDetailInvoiceImportWarehouse_Form.ResultDetailInvoiceImportWarehouse afterEdit = edit.ShowDialog(this, selected.Value.detailSpecs.ToList());
-                if (afterEdit.Remove != null && afterEdit.Remove.Count > 0)
-                {
-                    IEnumerable<(ModelProductGroupBy, AddInvoiceCommonSpecsGroup)> removed = ModelProductGroupBy.ConvertGroup(afterEdit.Remove);
-                    foreach ((ModelProductGroupBy, AddInvoiceCommonSpecsGroup) group in removed)
-                    {
-                        KeyValuePair<ModelProductGroupBy, ICommonSpecsGroup<ModelProduct>> existsGroup = commonSpecsGroups.FirstOrDefault(item => item.Key.IsGroup(group.Item1));
-                        if (existsGroup.Key != null)
-                        {
-                            IList<ModelProduct> productInGroup = commonSpecsGroups[existsGroup.Key].detailSpecs;
-                            foreach (ModelProduct product in group.Item2.detailSpecs)
-                            {
-                                productInGroup.Remove(product);
-                            }
-                        }
-                    }
-                }
-
-                if (afterEdit.NewProduct != null && afterEdit.NewProduct.Count > 0)
-                {
-                    AddProductsToCommonSpecsGroup(afterEdit.NewProduct);
-                }
-
-                if (afterEdit.SpecsChanged != null && afterEdit.SpecsChanged.Count > 0)
-                {
-                    foreach (KeyValuePair<ModelProduct, ModelProduct> item in afterEdit.SpecsChanged)
-                    {
-                        item.Key.OverrideData(item.Value);
-                    }
-                }
-
-                ReloadBinding();
-            }
-        }
 
         private void ReloadBinding()
         {
@@ -431,82 +452,13 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 }
             }
         }
+        #endregion
 
-        private void AddProductByExcel_Button_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Tab-seperator values | *.tsv";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK && openFileDialog.CheckFileExists)
-            {
-                ModelProduct[] products = ModelProduct.GetTSV(openFileDialog.FileName);
-
-                AddProductsToCommonSpecsGroup(products);
-
-                ReloadBinding();
-            }
-        }
-
+        #region IO Handle
         public override void ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, bool edit = true)
         {
             this.importWarehouse = importWarehouse;
             base.ShowDialog(owner, importWarehouse, edit);
-        }
-
-        private IList<ModelProduct> ExtractionGroup()
-        {
-            List<ModelProduct> extract = new List<ModelProduct>();
-            foreach (KeyValuePair<ModelProductGroupBy, ICommonSpecsGroup<ModelProduct>> group in commonSpecsGroups)
-            {
-                extract.AddRange(group.Value.detailSpecs);
-            }
-            return extract;
-        }
-
-        private IList<IList<ModelProduct>> ValidationProduct(IList<ModelProduct> productsCheckValidation)
-        {
-            IList<IList<ModelProduct>> result = new List<IList<ModelProduct>>();
-            IEnumerable<IGrouping<string, ModelProduct>> groupBySerial = productsCheckValidation.GroupBy(item => item.Serial);
-            foreach (IGrouping<string, ModelProduct> group in groupBySerial)
-            {
-                if (group.Count() > 1)
-                {
-                    result.Add(group.ToList());
-                }
-            }
-            return result;
-        }
-
-        private void CheckChange(IList<ModelProduct> productList)
-        {
-            if (resultChanged != null)
-            {
-                resultChanged.ResetField(true);
-            }
-            else
-                resultChanged = new BaseDetailInvoiceImportWarehouse_Form.ResultDetailInvoiceImportWarehouse();
-            if (initProducts == null)
-            {
-                resultChanged.NoChanged = null;
-                resultChanged.SpecsChanged = null;
-                resultChanged.Remove = null;
-                resultChanged.NewProduct = productList.ToList();
-            }
-            else
-            {
-                resultChanged.NoChanged = initProducts.Where(item => productList.FirstOrDefault(item2 => item2.CompareProduct(item)) != null).ToList();
-                resultChanged.NewProduct = productList.Where(item => item.TypeProduct == ModelProduct.TypeModel.New && initProducts.FirstOrDefault(item2 => item2.Serial == item.Serial) == null).ToList();
-                resultChanged.Remove = initProducts.Where(item => productList.FirstOrDefault(item2 => item2.TypeProduct == ModelProduct.TypeModel.New ? item2.Serial == item.Serial : item2.ID == item.ID) == null).ToList();
-                resultChanged.SpecsChanged = new Dictionary<ModelProduct, ModelProduct>();
-                foreach (ModelProduct product in initProducts)
-                {
-                    ModelProduct after = product.TypeProduct == ModelProduct.TypeModel.Exist ? productList.FirstOrDefault(item => item.ID == product.ID && item.Serial != product.Serial) : productList.FirstOrDefault(item => item.Serial == product.Serial);
-                    if (after != null && (product.TypeProduct == ModelProduct.TypeModel.Exist || !product.StrictCompareSpecs(after)))
-                    {
-                        resultChanged.SpecsChanged.Add(product, after);
-                    }
-                }
-            }
         }
 
         protected async override void Exit_Clicked(object sender, EventArgs e)
@@ -567,5 +519,64 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 }
             }
         }
+        #endregion
+
+        #region Validation
+        private IList<ModelProduct> ExtractionGroup()
+        {
+            List<ModelProduct> extract = new List<ModelProduct>();
+            foreach (KeyValuePair<ModelProductGroupBy, ICommonSpecsGroup<ModelProduct>> group in commonSpecsGroups)
+            {
+                extract.AddRange(group.Value.detailSpecs);
+            }
+            return extract;
+        }
+
+        private IList<IList<ModelProduct>> ValidationProduct(IList<ModelProduct> productsCheckValidation)
+        {
+            IList<IList<ModelProduct>> result = new List<IList<ModelProduct>>();
+            IEnumerable<IGrouping<string, ModelProduct>> groupBySerial = productsCheckValidation.GroupBy(item => item.Serial);
+            foreach (IGrouping<string, ModelProduct> group in groupBySerial)
+            {
+                if (group.Count() > 1)
+                {
+                    result.Add(group.ToList());
+                }
+            }
+            return result;
+        }
+
+        private void CheckChange(IList<ModelProduct> productList)
+        {
+            if (resultChanged != null)
+            {
+                resultChanged.ResetField(true);
+            }
+            else
+                resultChanged = new BaseDetailInvoiceImportWarehouse_Form.ResultDetailInvoiceImportWarehouse();
+            if (initProducts == null)
+            {
+                resultChanged.NoChanged = null;
+                resultChanged.SpecsChanged = null;
+                resultChanged.Remove = null;
+                resultChanged.NewProduct = productList.ToList();
+            }
+            else
+            {
+                resultChanged.NoChanged = initProducts.Where(item => productList.FirstOrDefault(item2 => item2.CompareProduct(item)) != null).ToList();
+                resultChanged.NewProduct = productList.Where(item => item.TypeProduct == ModelProduct.TypeModel.New && initProducts.FirstOrDefault(item2 => item2.Serial == item.Serial) == null).ToList();
+                resultChanged.Remove = initProducts.Where(item => productList.FirstOrDefault(item2 => item2.TypeProduct == ModelProduct.TypeModel.New ? item2.Serial == item.Serial : item2.ID == item.ID) == null).ToList();
+                resultChanged.SpecsChanged = new Dictionary<ModelProduct, ModelProduct>();
+                foreach (ModelProduct product in initProducts)
+                {
+                    ModelProduct after = product.TypeProduct == ModelProduct.TypeModel.Exist ? productList.FirstOrDefault(item => item.ID == product.ID && item.Serial != product.Serial) : productList.FirstOrDefault(item => item.Serial == product.Serial);
+                    if (after != null && (product.TypeProduct == ModelProduct.TypeModel.Exist || !product.StrictCompareSpecs(after)))
+                    {
+                        resultChanged.SpecsChanged.Add(product, after);
+                    }
+                }
+            }
+        }
+        #endregion
     }
 }

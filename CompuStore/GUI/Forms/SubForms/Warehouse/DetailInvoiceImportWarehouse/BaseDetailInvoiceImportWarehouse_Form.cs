@@ -25,7 +25,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
     public partial class BaseDetailInvoiceImportWarehouse_Form : Form
     {
-        protected ResultDetailInvoiceImportWarehouse resultChanged;
         #region Interface
         protected class ComboBoxBinding
         {
@@ -53,6 +52,17 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         }
         #endregion
 
+        #region Variable
+        protected BindingList<ModelProduct> bindingTable = null;
+        protected BindingList<ModelProduct> productList = null;
+        protected List<ModelProduct> initProduct;
+        BindingList<ComboBoxBinding> bindingNameProduct = null;
+        BindingList<ComboBoxBinding> bindingLineUp = null;
+        BindingList<ComboBoxBinding> bindingManufacturer = null;
+        protected ResultDetailInvoiceImportWarehouse resultChanged;
+        #endregion
+
+        #region Translater
         protected static readonly Dictionary<string, string> translater = new Dictionary<string, string> {
             { "Serial", "Serial máy" },
             { "Price", "Giá bán" },
@@ -83,14 +93,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             { "OS", "Hệ điều hành" },
             { "Wifi", "Chuẩn Wifi" },
             { "Bluetooth", "Chuẩn Bluetooth" },
+            { "TypeScreen", "Loại màn hình" },
+            { "BatteryCapacity", "Dung lượng pin|Đơn vị: Wh" },
             { "ColorCode", "Màu sắc" }};
-
-        protected BindingList<ModelProduct> bindingTable = null;
-        protected BindingList<ModelProduct> productList = null;
-        protected List<ModelProduct> initProduct;
-        BindingList<ComboBoxBinding> bindingNameProduct = null;
-        BindingList<ComboBoxBinding> bindingLineUp = null;
-        BindingList<ComboBoxBinding> bindingManufacturer = null;
+        #endregion
 
         public BaseDetailInvoiceImportWarehouse_Form()
         {
@@ -110,6 +116,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
         }
 
+        #region Event
         private void DeleteProduct_Button_Click(object sender, EventArgs e)
         {
             BindingList<ModelProduct> bindingTable = TableData_DataGridView.DataSource as BindingList<ModelProduct>;
@@ -198,6 +205,55 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
         }
 
+        private void NameProduct_ComboBox_Leave(object sender, EventArgs e)
+        {
+            ComboBox control = sender as ComboBox;
+            BindingList<ComboBoxBinding> binding = control?.DataSource as BindingList<ComboBoxBinding>;
+            string currentText = control?.Text;
+            if (control == null || binding == null || currentText == null || binding.FirstOrDefault(item => item.Value.Equals(currentText)) == null)
+            {
+                control.Focus();
+                MessageBox.Show("Thông tin chưa hợp lệ! Vui lòng nhập lại.", "Lỗi nhập");
+            }
+        }
+
+        private void NameProduct_ComboBox_InsertKeyPressed(object sender, string value)
+        {
+            ComboBox control = sender as ComboBox;
+            BindingList<ComboBoxBinding> binding = control?.DataSource as BindingList<ComboBoxBinding>;
+
+            if (control != null && binding != null)
+            {
+                ComboBoxBinding find = binding.FirstOrDefault(item => item.Value == value);
+                if (find == null)
+                {
+                    switch (MessageBox.Show("Giá trị chưa tồn tại trên CSDL. Bạn có muốn tạo mới?", "Thông tin chưa tồn tại.", MessageBoxButtons.YesNoCancel))
+                    {
+                        case DialogResult.Yes:
+                            ComboBoxBinding newItem = new ComboBoxBinding { ID = binding.Count * -1, Value = value };
+                            binding.Add(newItem);
+                            control.SelectedIndex = binding.IndexOf(newItem);
+                            break;
+                        case DialogResult.No:
+                            control.Text = string.Empty;
+                            break;
+                        case DialogResult.Cancel:
+                            break;
+                    }
+                }
+                else
+                {
+                    control.SelectedIndex = binding.IndexOf(find);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lỗi");
+            }
+        }
+        #endregion
+
+        #region Loading data
         private Task LoadingData(IProgress<bool> progress)
         {
             return Task.Factory.StartNew(() =>
@@ -264,8 +320,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             waiting.ShowDialog(this);
         }
 
-        protected virtual void Custom_Load(object sender, EventArgs e) { }
-
         private void TableData_DataGridView_DataSourceChanged(object sender, EventArgs e)
         {
             DataGridView grid = sender as DataGridView;
@@ -295,6 +349,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             grid.PerformLayout();
         }
 
+        protected virtual void Custom_Load(object sender, EventArgs e) { }
+
         private void TableData_DataGridView_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowCount > 0)
@@ -312,54 +368,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 style.ForeColor = style.SelectionForeColor = style.BackColor = style.SelectionBackColor = (color.Value as ImportData.ModelProduct.Color).ColorCode;
             }
         }
+        #endregion
 
-        private void NameProduct_ComboBox_Leave(object sender, EventArgs e)
-        {
-            ComboBox control = sender as ComboBox;
-            BindingList<ComboBoxBinding> binding = control?.DataSource as BindingList<ComboBoxBinding>;
-            string currentText = control?.Text;
-            if (control == null || binding == null || currentText == null || binding.FirstOrDefault(item => item.Value.Equals(currentText)) == null)
-            {
-                control.Focus();
-                MessageBox.Show("Thông tin chưa hợp lệ! Vui lòng nhập lại.", "Lỗi nhập");
-            }
-        }
-
-        private void NameProduct_ComboBox_InsertKeyPressed(object sender, string value)
-        {
-            ComboBox control = sender as ComboBox;
-            BindingList<ComboBoxBinding> binding = control?.DataSource as BindingList<ComboBoxBinding>;
-
-            if (control != null && binding != null)
-            {
-                ComboBoxBinding find = binding.FirstOrDefault(item => item.Value == value);
-                if (find == null)
-                {
-                    switch (MessageBox.Show("Giá trị chưa tồn tại trên CSDL. Bạn có muốn tạo mới?", "Thông tin chưa tồn tại.", MessageBoxButtons.YesNoCancel))
-                    {
-                        case DialogResult.Yes:
-                            ComboBoxBinding newItem = new ComboBoxBinding { ID = binding.Count * -1, Value = value };
-                            binding.Add(newItem);
-                            control.SelectedIndex = binding.IndexOf(newItem);
-                            break;
-                        case DialogResult.No:
-                            control.Text = string.Empty;
-                            break;
-                        case DialogResult.Cancel:
-                            break;
-                    }
-                }
-                else
-                {
-                    control.SelectedIndex = binding.IndexOf(find);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Lỗi");
-            }
-        }
-
+        #region Validation
         protected virtual void CheckChange()
         {
             if (initProduct == null)
@@ -400,6 +411,49 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             return result;
         }
 
+        private void ProductList_ListChanged(object sender, ListChangedEventArgs e)
+        {
+            BindingList<ModelProduct> owner = sender as BindingList<ModelProduct>;
+            switch (e.ListChangedType)
+            {
+                case ListChangedType.ItemAdded:
+                    ModelProduct added = owner[e.NewIndex];
+                    if (owner.Where(item => item.Serial == added.Serial)?.Count() > 1)
+                    {
+                        if (MessageBox.Show("Bạn muốn sửa chửa(Yes) hay xóa sản phẩm bị trùng?", "Trùng Serial máy", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            BaseDetailSpecsProduct_Form detailSpecs = new ImportDetailSpecsProduct_Form();
+                            BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct afterEdit = detailSpecs.ShowDialog(this, added.ToList());
+                            switch (afterEdit.typeReturn)
+                            {
+                                case BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct.TypeReturn.NewProduct:
+                                    owner.Add(afterEdit.receivePayload);
+                                    break;
+                                case BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct.TypeReturn.ProductChanged:
+                                    int index = owner.IndexOf(afterEdit.sendPayload);
+                                    owner.Remove(afterEdit.sendPayload);
+                                    owner.Insert(index, afterEdit.receivePayload);
+                                    break;
+                                case BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct.TypeReturn.SpecsChanged:
+                                    afterEdit.sendPayload.OverrideData(afterEdit.receivePayload);
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            owner.Remove(added);
+                        }
+                    }
+                    break;
+                case ListChangedType.ItemChanged:
+                    break;
+                case ListChangedType.ItemDeleted:
+                    break;
+            }
+        }
+        #endregion
+
+        #region IO Handle
         private void Exit_Clicked(object sender, EventArgs e)
         {
             List<string> checkValidation = ValidationDetailInvoiceImportWarehouse();
@@ -443,46 +497,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             base.ShowDialog(owner);
             return resultChanged;
         }
-
-        private void ProductList_ListChanged(object sender, ListChangedEventArgs e)
-        {
-            BindingList<ModelProduct> owner = sender as BindingList<ModelProduct>;
-            switch (e.ListChangedType)
-            {
-                case ListChangedType.ItemAdded:
-                    ModelProduct added = owner[e.NewIndex];
-                    if (owner.Where(item => item.Serial == added.Serial)?.Count() > 1)
-                    {
-                        if (MessageBox.Show("Bạn muốn sửa chửa(Yes) hay xóa sản phẩm bị trùng?", "Trùng Serial máy", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                        {
-                            BaseDetailSpecsProduct_Form detailSpecs = new ImportDetailSpecsProduct_Form();
-                            BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct afterEdit = detailSpecs.ShowDialog(this, added.ToList());
-                            switch (afterEdit.typeReturn)
-                            {
-                                case BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct.TypeReturn.NewProduct:
-                                    owner.Add(afterEdit.receivePayload);
-                                    break;
-                                case BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct.TypeReturn.ProductChanged:
-                                    int index = owner.IndexOf(afterEdit.sendPayload);
-                                    owner.Remove(afterEdit.sendPayload);
-                                    owner.Insert(index, afterEdit.receivePayload);
-                                    break;
-                                case BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct.TypeReturn.SpecsChanged:
-                                    afterEdit.sendPayload.OverrideData(afterEdit.receivePayload);
-                                    break;
-                            }
-                        }
-                        else
-                        {
-                            owner.Remove(added);
-                        }
-                    }
-                    break;
-                case ListChangedType.ItemChanged:
-                    break;
-                case ListChangedType.ItemDeleted:
-                    break;
-            }
-        }
+        #endregion
     }
 }

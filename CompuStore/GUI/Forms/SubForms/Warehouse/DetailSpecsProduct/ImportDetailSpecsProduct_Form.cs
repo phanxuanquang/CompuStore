@@ -14,10 +14,14 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
     public class ImportDetailSpecsProduct_Form : BaseDetailSpecsProduct_Form
     {
+        #region Variable
         private System.Windows.Forms.Panel ImportPanel;
         private System.Windows.Forms.TextBox Serial_TextBox, Price_TextBox;
         private System.Windows.Forms.Label Serial_Label, UnitPrice_Label, Price_Label;
-        private void InitializeComponent()
+        #endregion
+
+        #region Private Component
+        protected override void AddInitializeComponent()
         {
             this.ImportPanel = new System.Windows.Forms.Panel();
             this.Serial_TextBox = new System.Windows.Forms.TextBox();
@@ -102,31 +106,34 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+        #endregion
 
-        public ImportDetailSpecsProduct_Form()
-        {
-            InitializeComponent();
-        }
-
+        #region Set Editable
         protected override void SetEditable(bool editable)
         {
             base.SetEditable(editable);
             Serial_TextBox.Enabled = editable;
             Price_TextBox.Enabled = editable;
         }
+        #endregion
 
+        #region Set default if View | Edit;
         protected override void SetDefaultData()
         {
             base.SetDefaultData();
             Serial_TextBox.Text = product.Serial;
             Price_TextBox.Text = product.Price.ToString();
         }
+        #endregion
 
+        #region Show handle
         public override ResultDetailSpecsProduct ShowDialog(IWin32Window owner, IList<ModelProduct> payload, bool editable = true)
         {
             return base.ShowDialog(owner, payload, editable);
         }
+        #endregion
 
+        #region Validation
         protected override void CheckChange()
         {
             ModelProduct checkModel = new ModelProduct();
@@ -265,5 +272,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             result.AddRange(base.ValidationDetailSpecs());
             return result;
         }
+        #endregion
     }
 }

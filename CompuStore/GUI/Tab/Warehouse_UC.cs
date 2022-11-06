@@ -14,6 +14,7 @@ namespace CompuStore.Tab
 {
     public partial class Warehouse_UC : BaseTab
     {
+        #region Class
         protected class ImportWarehouseCustom
         {
             public int id;
@@ -154,27 +155,32 @@ namespace CompuStore.Tab
                 return result;
             }
         }
+        #endregion
 
+        #region Variable
         protected BindingList<ImportWarehouseCustom> importWarehouseBinding;
+        protected BindingList<CommonSpecsCustom> commonSpecsBinding;
+        protected enum SEE_WHAT
+        {
+            IMPORT_WAREHOUSE, COMMON_SPECS, NONE
+        }
+        protected SEE_WHAT seeWhat = SEE_WHAT.NONE;
+        #endregion
+
+        #region Translater
         protected static readonly Dictionary<string, string> columnVisiableImportWarehouse = new Dictionary<string, string> {
             { "NameID", "Mã nhập hàng" },
             { "ImportDate", "Ngày nhập hàng" },
             { "Total", "Tổng giá trị" },
             { "Quantity", "Số lượng" },
             { "DISTRIBUTOR_NAME", "Nhà phân phối" } };
-        protected BindingList<CommonSpecsCustom> commonSpecsBinding;
         protected static readonly Dictionary<string, string> columnVisiableCommonSpecs = new Dictionary<string, string> {
             { "NAME_ID", "Mã sản phẩm" },
             { "NAME", "Tên sản phẩm" },
             { "NAME_LINE_UP", "Dòng sản phẩm" },
             { "MANUFACTURER", "Nhà sản xuất" },
             { "ReleasedYear", "Năm ra mắt" } };
-
-        protected enum SEE_WHAT
-        {
-            IMPORT_WAREHOUSE, COMMON_SPECS, NONE
-        }
-        protected SEE_WHAT seeWhat = SEE_WHAT.NONE;
+        #endregion
 
         public Warehouse_UC()
         {
@@ -189,6 +195,7 @@ namespace CompuStore.Tab
             InitializeComponent();
         }
 
+        #region Loading data
         protected Task LoadingData(IProgress<int> progress)
         {
             return Task.Factory.StartNew(() =>
@@ -220,39 +227,6 @@ namespace CompuStore.Tab
                     LoadingData(progress);
                 }
             });
-        }
-
-        protected void ImportWarehouse_Click(object sender, EventArgs e)
-        {
-            BaseInvoiceImportWarehouse_Form import = new AddInvoiceImportWarehouse_Form();
-            import.ShowDialog(this, null, false);
-        }
-
-        protected void SeeProduct_Click(object sender, EventArgs e)
-        {
-            seeWhat = SEE_WHAT.COMMON_SPECS;
-            AddBindingToDataGridView(commonSpecsBinding);
-        }
-
-        protected void SeeInvoiceImportWarehouse_Click(object sender, EventArgs e)
-        {
-            seeWhat = SEE_WHAT.IMPORT_WAREHOUSE;
-            AddBindingToDataGridView(importWarehouseBinding);
-        }
-
-        protected void AddBindingToDataGridView(IBindingList binding)
-        {
-            if (DataTable.InvokeRequired)
-            {
-                DataTable.Invoke(new Action(() =>
-                {
-                    DataTable.DataSource = binding;
-                }));
-            }
-            else
-            {
-                DataTable.DataSource = binding;
-            }
         }
 
         protected void Warehouse_UC_Load(object sender, EventArgs e)
@@ -302,6 +276,41 @@ namespace CompuStore.Tab
             }
             grid.ResumeLayout(true);
         }
+        #endregion
+
+        #region Event
+        protected void ImportWarehouse_Click(object sender, EventArgs e)
+        {
+            BaseInvoiceImportWarehouse_Form import = new AddInvoiceImportWarehouse_Form();
+            import.ShowDialog(this, null, false);
+        }
+
+        protected void SeeProduct_Click(object sender, EventArgs e)
+        {
+            seeWhat = SEE_WHAT.COMMON_SPECS;
+            AddBindingToDataGridView(commonSpecsBinding);
+        }
+
+        protected void SeeInvoiceImportWarehouse_Click(object sender, EventArgs e)
+        {
+            seeWhat = SEE_WHAT.IMPORT_WAREHOUSE;
+            AddBindingToDataGridView(importWarehouseBinding);
+        }
+
+        protected void AddBindingToDataGridView(IBindingList binding)
+        {
+            if (DataTable.InvokeRequired)
+            {
+                DataTable.Invoke(new Action(() =>
+                {
+                    DataTable.DataSource = binding;
+                }));
+            }
+            else
+            {
+                DataTable.DataSource = binding;
+            }
+        }
 
         protected void DataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -330,5 +339,6 @@ namespace CompuStore.Tab
                 }
             }
         }
+        #endregion
     }
 }

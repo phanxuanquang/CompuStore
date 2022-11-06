@@ -13,9 +13,12 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
     public class EditDetailInvoiceImportWarehouse_Form : BaseDetailInvoiceImportWarehouse_Form
     {
+        #region Variable
         private COMMON_SPECS commonSpecs = null;
         private IMPORT_WAREHOUSE importWarehouse = null;
+        #endregion
 
+        #region Set editable
         private void SetEditable()
         {
             if (importWarehouse != null)
@@ -26,9 +29,21 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 DeleteProduct_Button.Visible = true;
             }
         }
+        #endregion
 
         public EditDetailInvoiceImportWarehouse_Form() { }
 
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams handleParam = base.CreateParams;
+                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
+                return handleParam;
+            }
+        }
+
+        #region Loading data
         private Task LoadingData(IProgress<int> progress)
         {
             return Task.Factory.StartNew(() =>
@@ -77,9 +92,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                             }
                         }
                     }
-                    
 
-                    foreach(ModelProduct product in productList)
+
+                    foreach (ModelProduct product in productList)
                     {
                         if (TableData_DataGridView.InvokeRequired)
                         {
@@ -93,16 +108,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     }
                 }
             });
-        }
-
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams handleParam = base.CreateParams;
-                handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
-                return handleParam;
-            }
         }
 
         protected override void Custom_Load(object sender, EventArgs e)
@@ -133,7 +138,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
             waiting.ShowDialog(this);
         }
+        #endregion
 
+        #region Event
         private void TableData_DataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -157,7 +164,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 }
             }
         }
+        #endregion
 
+        #region IO Handle
         public override ResultDetailInvoiceImportWarehouse ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, COMMON_SPECS commonSpecs)
         {
             this.commonSpecs = commonSpecs;
@@ -168,7 +177,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
             return base.ShowDialog(owner, importWarehouse, commonSpecs);
         }
-
+        #endregion
         /*protected override void CheckChange()
         {
             

@@ -14,10 +14,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
     public class OverviewDetailSpecsProduct_Form : BaseDetailSpecsProduct_Form
     {
-        private BindingList<SerialBinding> binding;
-        private Guna.UI2.WinForms.Guna2GroupBox Serials_GroupBox;
-        private Guna.UI2.WinForms.Guna2DataGridView Serial_DataGridView;
-        private IList<ModelProduct> products;
+        #region Class
         private class SerialBinding
         {
             public int STT { get; set; }
@@ -26,8 +23,17 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             public DateTime? ImportDate { get; set; }
             public double? Price { get; set; }
         }
+        #endregion
 
-        private void InitializeComponent()
+        #region Variable
+        private BindingList<SerialBinding> binding;
+        private Guna.UI2.WinForms.Guna2GroupBox Serials_GroupBox;
+        private Guna.UI2.WinForms.Guna2DataGridView Serial_DataGridView;
+        private IList<ModelProduct> products;
+        #endregion
+
+        #region Private component
+        protected override void AddInitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -156,10 +162,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+        #endregion
 
         public OverviewDetailSpecsProduct_Form()
         {
-            InitializeComponent();
             Load += OverviewDetailSpecsProduct_Form_Load;
             Serial_DataGridView.AllowUserToAddRows = false;
             Serial_DataGridView.AllowUserToDeleteRows = false;
@@ -168,36 +174,11 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             Serial_DataGridView.DataSourceChanged += Serial_DataGridView_DataSourceChanged;
         }
 
+        #region Loading data
         private void Serial_DataGridView_DataSourceChanged(object sender, EventArgs e)
         {
             DataGridView grid = sender as DataGridView;
             grid.Columns["STT"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-        }
-
-        private void OverviewDetailSpecsProduct_Form_Load(object sender, EventArgs e)
-        {
-            Waiting_Form waiting = new Waiting_Form();
-            Progress<int> progress = new Progress<int>();
-            binding = new BindingList<SerialBinding>();
-            Serial_DataGridView.DataSource = binding;
-            const int stopWaitingCounter = 10;
-            progress.ProgressChanged += (owner, value) =>
-            {
-                if (value >= stopWaitingCounter && !waiting.IsDisposed && waiting.shown)
-                {
-                    waiting.Close();
-                }
-            };
-            waiting.FormClosing += (owner, ev) =>
-            {
-
-            };
-            Task task = LoadingData(progress);
-            task.GetAwaiter().OnCompleted(() =>
-            {
-                waiting.Close();
-            });
-            waiting.ShowDialog(this);
         }
 
         private Task LoadingData(IProgress<int> progress)
@@ -230,11 +211,42 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 }
             });
         }
+        #endregion
 
+        #region Event
+        private void OverviewDetailSpecsProduct_Form_Load(object sender, EventArgs e)
+        {
+            Waiting_Form waiting = new Waiting_Form();
+            Progress<int> progress = new Progress<int>();
+            binding = new BindingList<SerialBinding>();
+            Serial_DataGridView.DataSource = binding;
+            const int stopWaitingCounter = 10;
+            progress.ProgressChanged += (owner, value) =>
+            {
+                if (value >= stopWaitingCounter && !waiting.IsDisposed && waiting.shown)
+                {
+                    waiting.Close();
+                }
+            };
+            waiting.FormClosing += (owner, ev) =>
+            {
+
+            };
+            Task task = LoadingData(progress);
+            task.GetAwaiter().OnCompleted(() =>
+            {
+                waiting.Close();
+            });
+            waiting.ShowDialog(this);
+        }
+        #endregion
+
+        #region Show handle
         public override ResultDetailSpecsProduct ShowDialog(IWin32Window owner, IList<ModelProduct> payload, bool editable = true)
         {
             products = payload;
             return base.ShowDialog(owner, payload, false);
         }
+        #endregion
     }
 }
