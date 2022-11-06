@@ -15,12 +15,15 @@ namespace CompuStore
     public partial class AddInvoice_Form : Form
     {
         CUSTOMER customer;
-        List<PRODUCT> listProduct;
+        public Dictionary<COMMON_SPECS, int> listProduct = new Dictionary<COMMON_SPECS, int>();
+        List<PRODUCT> productList = new List<PRODUCT>();
         STAFF currentStaff;
-        public AddInvoice_Form()
+        public AddInvoice_Form(Dictionary<COMMON_SPECS, int> listProduct)
         {
             InitializeComponent();
             LoadLabel();
+            this.listProduct = listProduct;
+            LoadData();
         }
 
         private void LoadLabel()
@@ -54,6 +57,41 @@ namespace CompuStore
             return true;
         }
 
+        private void LoadData()
+        {
+            ItemTable.Rows.Clear();
+            int count = 1;
+            double temp = 0;
+            List<double> prices = new List<double>();
+            foreach (var item in listProduct)
+            {
+                var detail = Database.DataProvider.Instance.Database.DETAIL_SPECS.Where(x => x.ID_COMMON_SPECS == item.Key.ID).FirstOrDefault();
+                if (detail.PRICE != null)
+                {
+                    prices.Add((double)detail.PRICE);
+                }
+                else
+                {
+                    prices.Add(100000);
+                }    
+            }    
+            foreach (var item in listProduct)
+            {
+                DataGridViewRow newRow = new DataGridViewRow();
+
+                newRow.CreateCells(ItemTable);
+                newRow.Cells[0].Value = count;
+                newRow.Cells[1].Value = item.Key.NAME;
+                newRow.Cells[2].Value = item.Value;
+                temp = prices[count - 1];
+                newRow.Cells[3].Value = temp;
+                newRow.Cells[4].Value = temp * item.Value;
+                count++;
+                ItemTable.Rows.Add(newRow);
+            }    
+ 
+        }
+
         private void Identity_Box_KeyPress(object sender, KeyPressEventArgs e)
         {
             if(e.KeyChar == (char)13)
@@ -77,11 +115,16 @@ namespace CompuStore
 
         private void Save_Button_Click(object sender, EventArgs e)
         {
+            foreach (var item in listProduct)
+            {
+                productList.Add(Database.DataProvider.Instance.Database.PRODUCTs.Where(prod => prod.DETAIL_SPECS.ID_COMMON_SPECS == item.Key.ID).FirstOrDefault());
+            }    
+
             if (customer == null)
             {
                 customer = CustomerServices.Instance.SaveCustomerToDB(Name_Box.Text, PhoneNumber_Box.Text, Email_Box.Text, Identity_Box.Text, Address_Box.Text);
             }
-            Exception res = InvoiceServices.Instance.SaveInvoiceToDB(listProduct, customer.ID, currentStaff.ID, DateTime.Now, 10);
+            Exception res = InvoiceServices.Instance.SaveInvoiceToDB(productList, customer.ID, currentStaff.ID, DateTime.Now, 10);
             if (res.Message == "done")
             {
                 MessageBox.Show("Lưu thành công");
@@ -90,6 +133,13 @@ namespace CompuStore
             {
                 MessageBox.Show(res.Message);
             }
+            this.Close();
+        }
+
+        private void AddInvoice_Form_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            CompuStore.Tab.SaleManagement_Tab.listProduct.Clear();
+            CompuStore.Tab.SaleManagement_Tab.nameIdCommonSpecs = null;
         }
     }
 }

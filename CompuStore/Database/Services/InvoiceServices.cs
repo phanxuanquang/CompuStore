@@ -46,7 +46,7 @@ namespace CompuStore.Database.Services
                 {
                     ID_INVOICE = invoice.ID,
                     PRODUCT_ID = product.PRODUCT_ID,
-                    PRICE_PER_UNIT = (double)product.DETAIL_SPECS.PRICE
+                    PRICE_PER_UNIT = 100000
                 };
                 Database.DataProvider.Instance.Database.DETAIL_INVOICE.Add(detail);
             }

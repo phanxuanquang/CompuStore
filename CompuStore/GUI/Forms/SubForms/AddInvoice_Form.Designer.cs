@@ -514,6 +514,7 @@
             this.Name = "AddInvoice_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddInvoice_Form";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddInvoice_Form_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemTable)).EndInit();
             this.ResumeLayout(false);

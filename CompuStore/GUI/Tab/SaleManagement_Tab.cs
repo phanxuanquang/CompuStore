@@ -17,6 +17,8 @@ namespace CompuStore.Tab
 {
     public partial class SaleManagement_Tab : Warehouse_UC
     {
+        public static string nameIdCommonSpecs;
+        public static Dictionary<COMMON_SPECS, int> listProduct = new Dictionary<COMMON_SPECS, int>();
         public SaleManagement_Tab()
         {
             
@@ -29,6 +31,25 @@ namespace CompuStore.Tab
         {
             ViewProduct();
             this.Button_3.Click -= ImportWarehouse_Click;
+            this.DataTable.CellDoubleClick -= DataTable_CellDoubleClick;
+            this.DataTable.CellDoubleClick += DataTable_CellDoubleClick1;
+        }
+
+        private void DataTable_CellDoubleClick1(object sender, DataGridViewCellEventArgs e)
+        {
+            nameIdCommonSpecs = DataTable.CurrentRow.Cells[0].Value.ToString();
+            COMMON_SPECS commonSpecs = Database.Services.CommonSpecsServices.Instance.GetCommonSpecsByNameID(nameIdCommonSpecs);
+            if (commonSpecs != null)
+            {
+                if (listProduct.ContainsKey(commonSpecs))
+                {
+                    listProduct[commonSpecs]++;
+                }
+                else
+                {
+                    listProduct.Add(commonSpecs, 1);
+                }    
+            }
         }
 
         #region Binding
@@ -43,12 +64,24 @@ namespace CompuStore.Tab
         {
             /*BaseDetailSpecsProduct_Form detailSpecsProduct_Form = new BaseDetailSpecsProduct_Form(*//*DataTable.CurrentRow.Cells[0].Value.ToString()*//*);
             detailSpecsProduct_Form.ShowDialog();*/
+            nameIdCommonSpecs = DataTable.CurrentRow.Cells[0].Value.ToString();
+            COMMON_SPECS commonSpecs = Database.Services.CommonSpecsServices.Instance.GetCommonSpecsByNameID(nameIdCommonSpecs);
+            if (commonSpecs != null)
+            {
+                BaseDetailInvoiceImportWarehouse_Form form = new EditDetailInvoiceImportWarehouse_Form();
+                form.ShowDialog(this, null, commonSpecs);
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy sản phẩm");
+            }    
         }
 
         private void AddNew_Buttom_Click(object sender, EventArgs e)
         {
-            AddInvoice_Form addInvoice_Form = new AddInvoice_Form();
-            addInvoice_Form.ShowDialog(); 
+            ViewProduct();
+            AddInvoice_Form addInvoice_Form = new AddInvoice_Form(listProduct);
+            addInvoice_Form.ShowDialog();
         }
 
         private void ViewInvoice_Click(object sender, EventArgs e)
