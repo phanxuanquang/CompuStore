@@ -26,12 +26,14 @@ namespace CompuStore.Database.Models
         }
     
         public virtual DbSet<COLOR> COLORs { get; set; }
+        public virtual DbSet<COMMON_SPECS> COMMON_SPECS { get; set; }
         public virtual DbSet<COMMON_USER> COMMON_USER { get; set; }
         public virtual DbSet<CUSTOMER> CUSTOMERs { get; set; }
         public virtual DbSet<CHANGE_OR_REFUND_PRODUCT> CHANGE_OR_REFUND_PRODUCT { get; set; }
         public virtual DbSet<DETAIL_IMPORT_WAREHOUSE> DETAIL_IMPORT_WAREHOUSE { get; set; }
         public virtual DbSet<DETAIL_INVOICE> DETAIL_INVOICE { get; set; }
         public virtual DbSet<DETAIL_SPECS> DETAIL_SPECS { get; set; }
+        public virtual DbSet<DISPLAY_SPECS> DISPLAY_SPECS { get; set; }
         public virtual DbSet<DISTRIBUTOR> DISTRIBUTORs { get; set; }
         public virtual DbSet<IMPORT_WAREHOUSE> IMPORT_WAREHOUSE { get; set; }
         public virtual DbSet<INFOR> INFORs { get; set; }
@@ -45,7 +47,5 @@ namespace CompuStore.Database.Models
         public virtual DbSet<STORE> STOREs { get; set; }
         public virtual DbSet<UNIQUE_SPECS> UNIQUE_SPECS { get; set; }
         public virtual DbSet<USERROLE> USERROLEs { get; set; }
-        public virtual DbSet<COMMON_SPECS> COMMON_SPECS { get; set; }
-        public virtual DbSet<DISPLAY_SPECS> DISPLAY_SPECS { get; set; }
     }
 }

@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Guna.UI2">
       <HintPath>..\..\..\02\C#\studMin\studMin\bin\Debug\Guna.UI2.dll</HintPath>
@@ -60,8 +63,80 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\Services\WarrantyServices.cs" />
+    <Compile Include="GUI\Forms\SubForms\AddReturn_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\AddReturn_Form.Designer.cs">
+      <DependentUpon>AddReturn_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\AddWarranty_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\AddWarranty_Form.Designer.cs">
+      <DependentUpon>AddWarranty_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ComboBoxCustom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Database\Services\ProductServices\ColorServices.cs" />
+    <Compile Include="Database\Services\ProductServices\CommonSpecsServices.cs" />
+    <Compile Include="Database\Services\CustomerServices.cs" />
+    <Compile Include="Database\Services\DistributorServices.cs" />
+    <Compile Include="Database\Services\InvoiceServices.cs" />
+    <Compile Include="Database\Services\ProductServices\Controller.cs" />
+    <Compile Include="Database\Services\ProductServices\DetailImportWarehouseServices.cs" />
+    <Compile Include="Database\Services\ProductServices\DetailSpecsServices.cs" />
+    <Compile Include="Database\Services\ProductServices\DisplaySpecsServices.cs" />
+    <Compile Include="Database\Services\ProductServices\ImportWarehouseServices.cs" />
+    <Compile Include="Database\Services\ProductServices\LineUpServices.cs" />
+    <Compile Include="Database\Services\ProductServices\MappingModelProduct.cs" />
+    <Compile Include="Database\Services\StoreServices.cs" />
+    <Compile Include="Database\Services\ProductServices\UniqueSpecsServices.cs" />
+    <Compile Include="GUI\Forms\SubForms\AddInvoice_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\AddInvoice_Form.Designer.cs">
+      <DependentUpon>AddInvoice_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailInvoiceImportWarehouse\AddDetailInvoiceImportWarehouse_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailInvoiceImportWarehouse\EditDetailInvoiceImportWarehouse_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\ImportDetailSpecsProduct_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\OverviewDetailSpecsProduct_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\Warehouse\InvoiceImportWarehouse\AddInvoiceImportWarehouse_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\Warehouse\InvoiceImportWarehouse\EditInvoiceImportWarehouse_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\Waiting_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\Waiting_Form.Designer.cs">
+      <DependentUpon>Waiting_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Tab\SaleManagement_Tab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Tab\SaleManagement_Tab.Designer.cs">
+      <DependentUpon>SaleManagement_Tab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Tab\BaseTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Tab\BaseTab.Designer.cs">
+      <DependentUpon>BaseTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Database\DataProvider.cs" />
-    <Compile Include="Database\Services\ImportServices.cs" />
+    <Compile Include="Database\Hash.cs" />
     <Compile Include="Database\Services\LoginServices.cs" />
     <Compile Include="Database\Models\CHANGE_OR_REFUND_PRODUCT.cs">
       <DependentUpon>CompuStoreModel.tt</DependentUpon>
@@ -144,45 +219,120 @@
     <Compile Include="Database\Models\USERROLE.cs">
       <DependentUpon>CompuStoreModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Database\Services\ProductServices.cs" />
+    <Compile Include="Database\Services\ProductServices\ProductServices.cs" />
     <Compile Include="Database\Services\StaffRoleServices.cs" />
     <Compile Include="Database\Services\StaffServices.cs" />
     <Compile Include="Database\Services\UserServices.cs" />
-    <Compile Include="ImportData\ModelProduct.cs" />
-    <Compile Include="Form\SubForm\StaffEdit_Form.cs">
+    <Compile Include="GUI\Forms\SubForms\Warehouse\InvoiceImportWarehouse\BaseInvoiceImportWarehouse_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\SubForm\StaffEdit_Form.Designer.cs">
+    <Compile Include="GUI\Forms\SubForms\Warehouse\InvoiceImportWarehouse\BaseInvoiceImportWarehouse_Form.Designer.cs">
+      <DependentUpon>BaseInvoiceImportWarehouse_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportData\ModelProduct.cs" />
+    <Compile Include="GUI\Forms\SubForms\StaffEdit_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\StaffEdit_Form.Designer.cs">
       <DependentUpon>StaffEdit_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\Login_Form.cs">
+    <Compile Include="GUI\Forms\Login_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\Login_Form.Designer.cs">
+    <Compile Include="GUI\Forms\Login_Form.Designer.cs">
       <DependentUpon>Login_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form\MainWindow.cs">
+    <Compile Include="GUI\Forms\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form\MainWindow.Designer.cs">
+    <Compile Include="GUI\Forms\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\InvoiceList_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\InvoiceList_Form.Designer.cs">
+      <DependentUpon>InvoiceList_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tab\StaffManage_Tab.cs">
+    <Compile Include="GUI\Tab\StaffManagement_Tab.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Tab\StaffManage_Tab.Designer.cs">
+    <Compile Include="GUI\Tab\StaffManagement_Tab.Designer.cs">
+      <DependentUpon>StaffManagement_Tab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Tab\CaiGiChuaBiet\SalesManage_Tab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Tab\CaiGiChuaBiet\SalesManage_Tab.Designer.cs">
+      <DependentUpon>SalesManage_Tab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Tab\CaiGiChuaBiet\StaffManage_Tab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Tab\CaiGiChuaBiet\StaffManage_Tab.Designer.cs">
       <DependentUpon>StaffManage_Tab.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form\SubForm\StaffEdit_Form.resx">
+    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailInvoiceImportWarehouse\BaseDetailInvoiceImportWarehouse_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailInvoiceImportWarehouse\BaseDetailInvoiceImportWarehouse_Form.Designer.cs">
+      <DependentUpon>BaseDetailInvoiceImportWarehouse_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\BaseDetailSpecsProduct_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\BaseDetailSpecsProduct_Form.Designer.cs">
+      <DependentUpon>BaseDetailSpecsProduct_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Tab\Warehouse_UC.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Tab\Warehouse_UC.Designer.cs">
+      <DependentUpon>Warehouse_UC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Tab\ServiceManagement_Tab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Tab\ServiceManagement_Tab.Designer.cs">
+      <DependentUpon>ServiceManagement_Tab.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="GUI\Forms\SubForms\AddReturn_Form.resx">
+      <DependentUpon>AddReturn_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Forms\SubForms\AddWarranty_Form.resx">
+      <DependentUpon>AddWarranty_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Forms\SubForms\AddInvoice_Form.resx">
+      <DependentUpon>AddInvoice_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Forms\Waiting_Form.resx">
+      <DependentUpon>Waiting_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Tab\SaleManagement_Tab.resx">
+      <DependentUpon>SaleManagement_Tab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Tab\BaseTab.resx">
+      <DependentUpon>BaseTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Forms\SubForms\StaffEdit_Form.resx">
       <DependentUpon>StaffEdit_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\Login_Form.resx">
+    <EmbeddedResource Include="GUI\Forms\Login_Form.resx">
       <DependentUpon>Login_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form\MainWindow.resx">
+    <EmbeddedResource Include="GUI\Forms\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Forms\SubForms\Warehouse\InvoiceImportWarehouse\BaseInvoiceImportWarehouse_Form.resx">
+      <DependentUpon>BaseInvoiceImportWarehouse_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Tab\ServiceManagement_Tab.resx">
+      <DependentUpon>ServiceManagement_Tab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Forms\SubForms\InvoiceList_Form.resx">
+      <DependentUpon>InvoiceList_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -194,17 +344,38 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Tab\StaffManage_Tab.resx">
+    <EmbeddedResource Include="GUI\Tab\StaffManagement_Tab.resx">
+      <DependentUpon>StaffManagement_Tab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Tab\CaiGiChuaBiet\SalesManage_Tab.resx">
+      <DependentUpon>SalesManage_Tab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Tab\CaiGiChuaBiet\StaffManage_Tab.resx">
       <DependentUpon>StaffManage_Tab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Forms\SubForms\Warehouse\DetailInvoiceImportWarehouse\BaseDetailInvoiceImportWarehouse_Form.resx">
+      <DependentUpon>BaseDetailInvoiceImportWarehouse_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\BaseDetailSpecsProduct_Form.resx">
+      <DependentUpon>BaseDetailSpecsProduct_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Tab\Warehouse_UC.resx">
+      <DependentUpon>Warehouse_UC.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Database\Models\CompuStoreModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CompuStoreModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="app.manifest" />
     <None Include="Database\Models\CompuStoreModel.edmx.diagram">
       <DependentUpon>CompuStoreModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CompuStore.Database.Models.INFOR.datasource" />
+    <None Include="Properties\DataSources\CompuStore.Database.Models.INVOICE.datasource" />
+    <None Include="Properties\DataSources\CompuStore.Database.Models.RECEIVE_WARRANTY.datasource" />
+    <None Include="Properties\DataSources\CompuStore.Database.Models.STAFF.datasource" />
+    <None Include="Properties\DataSources\CompuStore.Database.Models.STAFFROLE.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

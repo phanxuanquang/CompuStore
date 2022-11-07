@@ -36,10 +36,11 @@ namespace CompuStore.Database.Services
             COMMON_USER user = UserServices.Instance.GetUserByUserName(userName);
             return user.STAFF;
         }
-        public bool SaveStaffToDB(string phone_number, string email, bool sex, string identity_code, string addtress, int id_staffRole)
+        public bool SaveStaffToDB(string name, string phone_number, string email, bool sex, DateTime staffDate, string identity_code, string addtress, int id_staffRole)
         {
             INFOR infor = new INFOR()
             {
+                NAME = name,
                 PHONE_NUMBER = phone_number,
                 EMAIL = email,
                 SEX = sex,
@@ -51,7 +52,7 @@ namespace CompuStore.Database.Services
             {
                 ID_STAFFROLE = DataProvider.Instance.Database.STAFFROLEs.FirstOrDefault(item => item.ID == id_staffRole).ID,
                 WORKING_STATUS = 1,
-                STAFFDATE = DateTime.Now
+                STAFFDATE = staffDate
             };
             staff.ID_INFOR = infor.ID;
             DataProvider.Instance.Database.INFORs.Add(infor);

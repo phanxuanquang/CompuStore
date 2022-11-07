@@ -23,6 +23,7 @@ namespace CompuStore.Database.Models
             this.RECEIVE_WARRANTY = new HashSet<RECEIVE_WARRANTY>();
         }
     
+        public int PRODUCT_ID { get; set; }
         public string SERIAL_ID { get; set; }
         public int ID_DETAIL_SPECS { get; set; }
         public Nullable<bool> IN_WAREHOUSE { get; set; }
