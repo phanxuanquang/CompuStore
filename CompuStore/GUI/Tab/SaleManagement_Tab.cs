@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace CompuStore.Tab
 {
-    public partial class SaleManagement_Tab : Warehouse_UC
+    public partial class SaleManagement_Tab : BaseTab
     {
         public SaleManagement_Tab()
         {
