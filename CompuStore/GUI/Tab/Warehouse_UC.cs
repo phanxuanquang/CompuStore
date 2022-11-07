@@ -1,4 +1,5 @@
 ﻿using CompuStore.Database.Models;
+using CompuStore.Database.Services.ProductServices;
 using CompuStore.GUI;
 using CompuStore.GUI.Forms.SubForms.Warehouse;
 using System;
@@ -13,7 +14,8 @@ namespace CompuStore.Tab
 {
     public partial class Warehouse_UC : BaseTab
     {
-        class ImportWarehouseCustom
+        #region Class
+        protected class ImportWarehouseCustom
         {
             public int id;
 
@@ -62,7 +64,7 @@ namespace CompuStore.Tab
             }
         }
 
-        class CommonSpecsCustom
+        protected class CommonSpecsCustom
         {
             public int id;
             public string nameId;
@@ -153,27 +155,32 @@ namespace CompuStore.Tab
                 return result;
             }
         }
+        #endregion
 
-        private BindingList<ImportWarehouseCustom> importWarehouseBinding;
-        private static readonly Dictionary<string, string> columnVisiableImportWarehouse = new Dictionary<string, string> {
+        #region Variable
+        protected BindingList<ImportWarehouseCustom> importWarehouseBinding;
+        protected BindingList<CommonSpecsCustom> commonSpecsBinding;
+        protected enum SEE_WHAT
+        {
+            IMPORT_WAREHOUSE, COMMON_SPECS, NONE
+        }
+        protected SEE_WHAT seeWhat = SEE_WHAT.NONE;
+        #endregion
+
+        #region Translater
+        protected static readonly Dictionary<string, string> columnVisiableImportWarehouse = new Dictionary<string, string> {
             { "NameID", "Mã nhập hàng" },
             { "ImportDate", "Ngày nhập hàng" },
             { "Total", "Tổng giá trị" },
             { "Quantity", "Số lượng" },
             { "DISTRIBUTOR_NAME", "Nhà phân phối" } };
-        private BindingList<CommonSpecsCustom> commonSpecsBinding;
-        private static readonly Dictionary<string, string> columnVisiableCommonSpecs = new Dictionary<string, string> {
+        protected static readonly Dictionary<string, string> columnVisiableCommonSpecs = new Dictionary<string, string> {
             { "NAME_ID", "Mã sản phẩm" },
             { "NAME", "Tên sản phẩm" },
             { "NAME_LINE_UP", "Dòng sản phẩm" },
             { "MANUFACTURER", "Nhà sản xuất" },
             { "ReleasedYear", "Năm ra mắt" } };
-
-        enum SEE_WHAT
-        {
-            IMPORT_WAREHOUSE, COMMON_SPECS, NONE
-        }
-        private SEE_WHAT seeWhat = SEE_WHAT.NONE;
+        #endregion
 
         public Warehouse_UC()
         {
@@ -188,7 +195,8 @@ namespace CompuStore.Tab
             InitializeComponent();
         }
 
-        private Task LoadingData(IProgress<int> progress)
+        #region Loading data
+        protected Task LoadingData(IProgress<int> progress)
         {
             return Task.Factory.StartNew(() =>
             {
@@ -221,40 +229,7 @@ namespace CompuStore.Tab
             });
         }
 
-        private void ImportWarehouse_Click(object sender, EventArgs e)
-        {
-            BaseInvoiceImportWarehouse_Form import = new AddInvoiceImportWarehouse_Form();
-            import.ShowDialog(this);
-        }
-
-        private void SeeProduct_Click(object sender, EventArgs e)
-        {
-            seeWhat = SEE_WHAT.COMMON_SPECS;
-            AddBindingToDataGridView(commonSpecsBinding);
-        }
-
-        private void SeeInvoiceImportWarehouse_Click(object sender, EventArgs e)
-        {
-            seeWhat = SEE_WHAT.IMPORT_WAREHOUSE;
-            AddBindingToDataGridView(importWarehouseBinding);
-        }
-
-        private void AddBindingToDataGridView(IBindingList binding)
-        {
-            if (DataTable.InvokeRequired)
-            {
-                DataTable.Invoke(new Action(() =>
-                {
-                    DataTable.DataSource = binding;
-                }));
-            }
-            else
-            {
-                DataTable.DataSource = binding;
-            }
-        }
-
-        private void Warehouse_UC_Load(object sender, EventArgs e)
+        protected void Warehouse_UC_Load(object sender, EventArgs e)
         {
             Progress<int> progress = new Progress<int>();
             Waiting_Form waiting = new Waiting_Form();
@@ -279,7 +254,7 @@ namespace CompuStore.Tab
             waiting.ShowDialog(this);
         }
 
-        private void DataTable_DataSourceChanged(object sender, EventArgs e)
+        protected void DataTable_DataSourceChanged(object sender, EventArgs e)
         {
             DataGridView grid = sender as DataGridView;
             grid.SuspendLayout();
@@ -301,8 +276,43 @@ namespace CompuStore.Tab
             }
             grid.ResumeLayout(true);
         }
+        #endregion
 
-        private void DataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        #region Event
+        protected void ImportWarehouse_Click(object sender, EventArgs e)
+        {
+            BaseInvoiceImportWarehouse_Form import = new AddInvoiceImportWarehouse_Form();
+            import.ShowDialog(this, null, false);
+        }
+
+        protected void SeeProduct_Click(object sender, EventArgs e)
+        {
+            seeWhat = SEE_WHAT.COMMON_SPECS;
+            AddBindingToDataGridView(commonSpecsBinding);
+        }
+
+        protected void SeeInvoiceImportWarehouse_Click(object sender, EventArgs e)
+        {
+            seeWhat = SEE_WHAT.IMPORT_WAREHOUSE;
+            AddBindingToDataGridView(importWarehouseBinding);
+        }
+
+        protected void AddBindingToDataGridView(IBindingList binding)
+        {
+            if (DataTable.InvokeRequired)
+            {
+                DataTable.Invoke(new Action(() =>
+                {
+                    DataTable.DataSource = binding;
+                }));
+            }
+            else
+            {
+                DataTable.DataSource = binding;
+            }
+        }
+
+        protected void DataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1)
             {
@@ -313,21 +323,22 @@ namespace CompuStore.Tab
                         COMMON_SPECS commonSpecs = Database.Services.CommonSpecsServices.Instance.GetCommonSpecsByNameID(nameIdCommonSpecs);
                         if (commonSpecs != null)
                         {
-                            BaseDetailInvoiceImportWarehouse_Form form = new EditDetailInvoiceImportWarehouse_Form(null, commonSpecs);
-                            form.ShowDialog();
+                            BaseDetailInvoiceImportWarehouse_Form form = new EditDetailInvoiceImportWarehouse_Form();
+                            form.ShowDialog(this, null, commonSpecs);
                         }
                         break;
                     case SEE_WHAT.IMPORT_WAREHOUSE:
                         string nameIdImportWarehouse = (sender as DataGridView).Rows[e.RowIndex].Cells[0].Value as string;
-                        IMPORT_WAREHOUSE importWarehouse = Database.Services.ImportServices.Instance.GetImportWarehouseByNameID(nameIdImportWarehouse);
+                        IMPORT_WAREHOUSE importWarehouse = ImportWarehouseServices.Instance.GetImportWarehouseByNameID(nameIdImportWarehouse);
                         if (importWarehouse != null)
                         {
-                            BaseInvoiceImportWarehouse_Form form = new EditInvoiceImportWarehouse_Form(importWarehouse);
-                            form.ShowDialog();
+                            BaseInvoiceImportWarehouse_Form form = new EditInvoiceImportWarehouse_Form();
+                            form.ShowDialog(this, importWarehouse, false);
                         }
                         break;
                 }
             }
         }
+        #endregion
     }
 }

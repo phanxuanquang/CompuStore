@@ -17,15 +17,15 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         #region Interface
         protected interface ICommonSpecsGroup<TModel> where TModel : class
         {
-            double maxTotal { get;}
-            double minTotal { get;}
+            double? maxTotal { get;}
+            double? minTotal { get;}
             TModel Represent { get; }
             IList<TModel> detailSpecs { get; set; }
         }
 
         protected interface ICommonSpecsCustom
         {
-            int ID { get; set; }
+            int? ID { get; set; }
 
             string NameID { get; set; }
 
@@ -37,50 +37,70 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
             DateTime? ReleaseDate { get; set; }
 
-            int Quantity { get; set; }
+            int? Quantity { get; set; }
 
             string RangeTotal { get; set; }
         }
 
-        protected class DistributorCustom
+        private class ComboBoxBinding
         {
             public int ID { get; set; }
-
-            public string Name { get; set; }
-
-            public static DistributorCustom Convert(DISTRIBUTOR model)
-            {
-                DistributorCustom result = null;
-                if (model != null)
-                {
-                    result = new DistributorCustom();
-                    result.ID = model.ID;
-                    result.Name = model.NAME;
-                }
-                return result;
-            }
+            public string Value { get; set; }
         }
-
-        protected class StoreCustom
+        protected class ImportWarehouseCustom
         {
-            public int ID { get; set; }
+            public int IDImportWarehouse { get; set; }
 
-            public string Name { get; set; }
+            public string NameIDImportWarehouse { get; set; }
 
-            public static StoreCustom Convert(STORE model)
+            public int IDDistributor { get; set; }
+
+            public string NameDistributor { get; set; }
+
+            public int IDStore { get; set; }
+
+            public string NameStore { get; set; }
+
+            public DateTime? ImportDate { get; set; }
+
+            public int IDStaff { get; set; }
+
+            public string NameIDStaff { get; set; }
+
+            public string NameStaff { get; set; }
+
+            public double Total { get; set; }
+
+            public static ImportWarehouseCustom Convert(IMPORT_WAREHOUSE model)
             {
-                StoreCustom result = null;
+                ImportWarehouseCustom result = null;
                 if (model != null)
                 {
-                    result = new StoreCustom();
-                    result.ID = model.ID;
-                    result.Name = model.NAME;
+                    result = new ImportWarehouseCustom();
+                    result.IDImportWarehouse = model.ID;
+                    result.NameIDImportWarehouse = model.NAME_ID;
+                    result.ImportDate = model.IMPORT_DATE;
+                    result.IDDistributor = model.ID_DISTRIBUTOR;
+                    result.NameDistributor = model.DISTRIBUTOR.NAME;
+                    result.IDStore = model.ID_STORE;
+                    result.NameStore = model.STORE.NAME;
+                    result.IDStore = model.ID_STORE;
+                    result.IDStaff = model.ID_STAFF;
+                    result.NameIDStaff = model.STAFF.NAME_ID;
+                    result.NameStaff = model.STAFF.INFOR.NAME;
+                    result.Total = model.TOTAL;
                 }
                 return result;
             }
         }
         #endregion
 
+        #region Variable
+        private BindingList<ComboBoxBinding> bindingDistributor = null;
+        private BindingList<ComboBoxBinding> bindingStore = null;
+        #endregion
+
+        #region Translater
         private static readonly Dictionary<string, string> translater = new Dictionary<string, string> {
             { "NameCommonSpecs", "Tên sản phẩm" },
             { "LineUp", "Dòng sản phẩm" },
@@ -88,15 +108,44 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             { "ReleaseDate", "Năm ra mắt" },
             { "Quantity", "Số lượng|Số lượng sản phẩm nhập" },
             { "RangeTotal", "Giá tiền|Khoảng giá từ cấu hình thấp đến cao nhất" }};
-        BindingList<DistributorCustom> bindingDistributor = null;
-        BindingList<StoreCustom> bindingStore = null;
+        #endregion
 
-        public BaseInvoiceImportWarehouse_Form()
+        #region Set default if View | Edit
+        private void SetDefaultComboBox(ComboBox control, string value)
+        {
+            if (control != null)
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    BindingList<string> binding = control.DataSource as BindingList<string>;
+                    if (binding != null)
+                    {
+                        if (!binding.Contains(value))
+                            binding.Add(value);
+                    }
+                    else
+                    {
+                        binding = new BindingList<string>();
+                        binding.Add(value);
+                        control.DataSource = binding;
+                    }
+                    control.SelectedIndex = binding.IndexOf(value);
+                }
+                else
+                {
+                    control.SelectedIndex = -1;
+                }
+            }
+        }
+        #endregion
+
+        protected BaseInvoiceImportWarehouse_Form()
         {
             InitializeComponent();
             TableData_DataGridView.DataSource = typeof(ICommonSpecsCustom);
             Load += BaseInvoiceImportWarehouse_Form_Load;
         }
+
         protected override CreateParams CreateParams
         {
             get
@@ -117,7 +166,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 {
                     if (bindingDistributor != null)
                     {
-                        bindingDistributor.Add(DistributorCustom.Convert(distributor));
+                        bindingDistributor.Add(new ComboBoxBinding { ID = distributor.ID, Value = distributor.NAME });
                     }
                 }
 
@@ -126,7 +175,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 {
                     if (bindingStore != null)
                     {
-                        bindingStore.Add(StoreCustom.Convert(store));
+                        bindingStore.Add(new ComboBoxBinding { ID = store.ID, Value = store.NAME });
                     }
                 }
 
@@ -136,8 +185,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
         private void BaseInvoiceImportWarehouse_Form_Load(object sender, EventArgs e)
         {
-            bindingStore = new BindingList<StoreCustom>();
-            bindingDistributor = new BindingList<DistributorCustom>();
+            bindingStore = new BindingList<ComboBoxBinding>();
+            bindingDistributor = new BindingList<ComboBoxBinding>();
 
             Progress<bool> progress = new Progress<bool>();
             Waiting_Form waiting = new Waiting_Form();
@@ -145,13 +194,15 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
             waiting.FormClosed += (owner, ev) =>
             {
-                Distributor_Combobox.DataSource = bindingDistributor;
-                Distributor_Combobox.ValueMember = "ID";
-                Distributor_Combobox.DisplayMember = "Name";
+                Distributor_ComboBox.DataSource = bindingDistributor;
+                Distributor_ComboBox.ValueMember = "ID";
+                Distributor_ComboBox.DisplayMember = "Value";
+                SetDefaultComboBox(Distributor_ComboBox, null);
 
-                ImportToStore_Combobox.DataSource = bindingStore;
-                ImportToStore_Combobox.ValueMember = "ID";
-                ImportToStore_Combobox.DisplayMember = "Name";
+                ImportToStore_ComboBox.DataSource = bindingStore;
+                ImportToStore_ComboBox.ValueMember = "ID";
+                ImportToStore_ComboBox.DisplayMember = "Value";
+                SetDefaultComboBox(ImportToStore_ComboBox, null);
 
                 StaffImport_Value.Text = string.Format("{0} | {1}", LoginServices.Instance.CurrentStaff.INFOR.NAME, LoginServices.Instance.CurrentStaff.NAME_ID);
             };
@@ -198,9 +249,80 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         }
         #endregion
 
-        private void Exit_Button_Click(object sender, EventArgs e)
+        #region Event
+        private void Distributor_ComboBox_Leave(object sender, EventArgs e)
+        {
+            ComboBox control = sender as ComboBox;
+            BindingList<ComboBoxBinding> binding = control?.DataSource as BindingList<ComboBoxBinding>;
+            string currentText = control?.Text;
+            if (control == null || binding == null || currentText == null || binding.FirstOrDefault(item => item.Value.Equals(currentText)) == null)
+            {
+                control.Focus();
+                MessageBox.Show("Thông tin chưa hợp lệ! Vui lòng nhập lại.", "Lỗi nhập");
+            }
+        }
+
+        private void Distributor_ComboBox_InsertKeyPressed(object sender, string value)
+        {
+            ComboBox control = sender as ComboBox;
+            BindingList<ComboBoxBinding> binding = control?.DataSource as BindingList<ComboBoxBinding>;
+
+            if (control != null && binding != null)
+            {
+                ComboBoxBinding find = binding.FirstOrDefault(item => item.Value == value);
+                if (find == null)
+                {
+                    switch (MessageBox.Show("Giá trị chưa tồn tại trên CSDL. Bạn có muốn tạo mới?", "Thông tin chưa tồn tại.", MessageBoxButtons.YesNoCancel))
+                    {
+                        case DialogResult.Yes:
+                            ComboBoxBinding newItem = new ComboBoxBinding { ID = binding.Count * -1, Value = value };
+                            binding.Add(newItem);
+                            control.SelectedIndex = binding.IndexOf(newItem);
+                            break;
+                        case DialogResult.No:
+                            control.Text = string.Empty;
+                            break;
+                        case DialogResult.Cancel:
+                            break;
+                    }
+                }
+                else
+                {
+                    control.SelectedIndex = binding.IndexOf(find);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Lỗi");
+            }
+        }
+        #endregion
+
+        #region Validation
+        protected virtual List<string> ValidationInvoiceImportWarehouse()
+        {
+            List<string> result = new List<string>();
+            if (Distributor_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn nhà cung cấp");
+            if (ImportToStore_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn nhập vào cửa hàng");
+            return result;
+        }
+
+        public virtual void ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, bool edit)
+        {
+            if ((edit && this is AddInvoiceImportWarehouse_Form) || !edit)
+                base.ShowDialog();
+            else
+                throw new InvalidOperationException();
+        }
+        #endregion
+
+        #region IO Handle
+        protected virtual void Exit_Clicked(object sender, EventArgs e)
         {
             this.Close();
         }
+        #endregion
     }
 }

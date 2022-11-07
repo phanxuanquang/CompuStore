@@ -25,7 +25,12 @@ namespace CompuStore.Database.Services
             return DataProvider.Instance.Database.INVOICEs.ToList();
         }
 
-        public bool SaveInvoiceHasCusToDB(List<PRODUCT> listProduct, int idCustomer, int idStaff, DateTime invoiceDate, double vat, string idStore = null)
+        public DETAIL_INVOICE GetDetailBySerialID(int productID)
+        {
+            return Database.DataProvider.Instance.Database.DETAIL_INVOICE.Where(detail => detail.PRODUCT_ID == productID).FirstOrDefault();
+        }
+
+        public Exception SaveInvoiceToDB(List<PRODUCT> listProduct, int idCustomer, int idStaff, DateTime invoiceDate, double vat, string idStore = null)
         {
             INVOICE invoice = new INVOICE()
             {
@@ -40,8 +45,8 @@ namespace CompuStore.Database.Services
                 DETAIL_INVOICE detail = new DETAIL_INVOICE()
                 {
                     ID_INVOICE = invoice.ID,
-                    SERIAL_ID = product.SERIAL_ID,
-                    PRICE_PER_UNIT = (double)product.DETAIL_SPECS.PRICE
+                    PRODUCT_ID = product.PRODUCT_ID,
+                    PRICE_PER_UNIT = 100000
                 };
                 Database.DataProvider.Instance.Database.DETAIL_INVOICE.Add(detail);
             }
@@ -49,11 +54,11 @@ namespace CompuStore.Database.Services
             {
                 Database.DataProvider.Instance.Database.SaveChanges();
             }
-            catch
+            catch (Exception ex)
             {
-                return false;
+                return ex;
             }
-            return true;
+            return new Exception("done");
         }
     }
 }

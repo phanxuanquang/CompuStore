@@ -2,6 +2,7 @@
 using Microsoft.VisualBasic.Devices;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.IO;
 using System.Linq;
 using System.Management.Instrumentation;
@@ -13,8 +14,8 @@ namespace CompuStore.ImportData
     {
         public class Port
         {
-            public string PortPhysic { get; set; }
             public string PortProtocol { get; set; }
+            public string PortPhysic { get; set; }
             public string Quantity { get; set; }
         }
 
@@ -32,6 +33,14 @@ namespace CompuStore.ImportData
             public string BusRAM { get; set; }
             public string TypeRAM { get; set; }
         }
+
+        //Use to mapping PRODUCT model
+        public int? ID;
+        public enum TypeModel
+        {
+            New, Exist, None
+        }
+        public TypeModel TypeProduct = TypeModel.New;
 
         public string Serial { get; set; }
 
@@ -54,7 +63,7 @@ namespace CompuStore.ImportData
             }
             set
             {
-                if (value != null)
+                if (!string.IsNullOrEmpty(value))
                 {
                     string[] resolution = value.Split('x');
                     List<double> parseResolution = new List<double>();
@@ -113,9 +122,10 @@ namespace CompuStore.ImportData
             }
             set
             {
-                if (value != null)
+                if (!string.IsNullOrEmpty(value))
                 {
                     string[] spaceColor = value.Split('_');
+                    SpaceColor = new SortedDictionary<ENUM_SPACE_COLOR, double>();
                     if (spaceColor != null)
                     {
                         for (int _index = 0; _index < spaceColor.Length; _index++)
@@ -123,10 +133,6 @@ namespace CompuStore.ImportData
                             string[] eachSpaceColor = spaceColor[_index].Split(':');
                             if (eachSpaceColor.Length > 1 && double.TryParse(eachSpaceColor[1].Substring(0, eachSpaceColor[1].Length - 1), out double eachSpaceColorValue))
                             {
-                                if (SpaceColor == null)
-                                {
-                                    SpaceColor = new SortedDictionary<ENUM_SPACE_COLOR, double>();
-                                }
                                 if (eachSpaceColor[0].CompareTo("Adobe RGB profile") == 0)
                                 {
                                     SpaceColor.Add(ENUM_SPACE_COLOR.AdobeRGBProfile, eachSpaceColorValue);
@@ -172,7 +178,7 @@ namespace CompuStore.ImportData
             }
             set
             {
-                if (value != null)
+                if (!string.IsNullOrEmpty(value))
                 {
                     string[] ratio = value.Split(':');
                     List<double> parseRatio = new List<double>();
@@ -203,7 +209,7 @@ namespace CompuStore.ImportData
             }
             set
             {
-                if (value != null)
+                if (!string.IsNullOrEmpty(value))
                 {
                     string[] info = value.Split(' ');
                     if (int.TryParse(info[0].Substring(0, info[0].Length - 2), out int CapacityRAM))
@@ -232,7 +238,7 @@ namespace CompuStore.ImportData
             }
             set
             {
-                if (value != null && !string.IsNullOrWhiteSpace(value) && !string.IsNullOrEmpty(value))
+                if (!string.IsNullOrWhiteSpace(value) && !string.IsNullOrEmpty(value))
                 {
                     string[] gpu = value.Split(' ');
                     GPU = new string[] { gpu.First(), string.Join(" ", gpu.Skip(1).Take(gpu.Length - 2)), gpu.Last() };
@@ -273,7 +279,7 @@ namespace CompuStore.ImportData
             }
             set
             {
-                if (value != null)
+                if (!string.IsNullOrEmpty(value))
                 {
                     List<Port> models = new List<Port>();
                     string[] ports = value.Split('_');
@@ -314,7 +320,7 @@ namespace CompuStore.ImportData
             }
             set
             {
-                if (value != null)
+                if (!string.IsNullOrEmpty(value))
                 {
                     string[] sizeProduct = value.Split('x');
                     List<double> parseSizeProduct = new List<double>();
@@ -346,7 +352,7 @@ namespace CompuStore.ImportData
         {
             get
             {
-                return new Color { ColorCode = System.Drawing.Color.FromArgb(Convert.ToInt32("0xFF" + ColorCode.Substring(1), 16)), ColorName = ColorName };
+                return new Color { ColorCode = System.Drawing.Color.FromArgb(Convert.ToInt32("0xFF" + ColorCode?.Substring(1), 16)), ColorName = ColorName };
             }
         }
 
@@ -355,7 +361,7 @@ namespace CompuStore.ImportData
         {
             get
             {
-                return _ColorCode.ToLower();
+                return _ColorCode?.ToLower();
             }
             set
             {
@@ -490,9 +496,19 @@ namespace CompuStore.ImportData
             }
         }
 
+        public bool StrictCompareSpecs(ModelProduct model)
+        {
+            if (model == null
+                || Price != model.Price
+                || !CompareSpecs(model))
+                return false;
+            return true;
+        }
+
         public bool CompareSpecs(ModelProduct model)
         {
-            if (model == null || LineUp != model.LineUp
+            if (model == null
+                || LineUp != model.LineUp
                 || Manufacturer != model.Manufacturer
                 || Country != model.Country
                 || IdPanel != model.IdPanel
@@ -519,32 +535,144 @@ namespace CompuStore.ImportData
                 || PortString != model.PortString
                 || Webcam != model.Webcam
                 || SizeProductString != model.SizeProductString
-                || OS != model.OS
                 || Wifi != model.Wifi
                 || Bluetooth != model.Bluetooth
-                || Price != model.Price
+                || OS != model.OS
                 || ColorCode != model.ColorCode
                 || ColorName != model.ColorName)
                 return false;
             return true;
         }
 
+        public bool StrictCompareProduct(ModelProduct model)
+        {
+            if (model == null || ID != model.ID || !CompareProduct(model)) return false;
+            return true;
+        }
+
         public bool CompareProduct(ModelProduct model)
         {
-            if (model == null || Serial != model.Serial || !CompareSpecs(model)) return false;
+            if (model == null || Serial != model.Serial || !StrictCompareSpecs(model)) return false;
             return true;
+        }
+
+        public void OverrideData(ModelProduct model)
+        {
+            if (model != null)
+            {
+                /*ID = model.ID;*/
+                Serial = model.Serial;
+                LineUp = model.LineUp;
+                Manufacturer = model.Manufacturer;
+                Country = model.Country;
+                IdPanel = model.IdPanel;
+                ResolutionString = model.ResolutionString;
+                SizePanel = model.SizePanel;
+                Brightness = model.Brightness;
+                TypePanel = model.TypePanel;
+                SpaceColorString = model.SpaceColorString;
+                RefreshRate = model.RefreshRate;
+                RatioPanelString = model.RatioPanelString;
+                CanTouchPanel = model.CanTouchPanel;
+                TypeScreen = model.TypeScreen;
+                CPU = model.CPU;
+                iGPU = model.iGPU;
+                RAMString = model.RAMString;
+                TypeStorage = model.TypeStorage;
+                StorageCapacity = model.StorageCapacity;
+                GPUString = model.GPUString;
+                BatteryCapacity = model.BatteryCapacity;
+                Weight = model.Weight;
+                NameProduct = model.NameProduct;
+                ReleaseDate = model.ReleaseDate;
+                CaseMaterial = model.CaseMaterial;
+                PortString = model.PortString;
+                Webcam = model.Webcam;
+                SizeProductString = model.SizeProductString;
+                OS = model.OS;
+                Wifi = model.Wifi;
+                Bluetooth = model.Bluetooth;
+                Price = model.Price;
+                ColorCode = model.ColorCode;
+                ColorName = model.ColorName;
+            }
+        }
+
+        public IList<ModelProduct> ToList() => (new ModelProduct[] { this }).ToList();
+
+        public static ModelProduct DatabaseToModel(
+            PRODUCT product,
+            DETAIL_IMPORT_WAREHOUSE detailImport,
+            LINE_UP lineup,
+            DISPLAY_SPECS display,
+            UNIQUE_SPECS uniqueSpecs,
+            COMMON_SPECS commonSpecs,
+            COLOR color)
+        {
+            return new ModelProduct
+            {
+                ID = product.PRODUCT_ID,
+                Price = detailImport.PRICE_PER_UNIT,
+                Serial = product.SERIAL_ID,
+                LineUp = lineup.NAME,
+                Manufacturer = lineup.MANUFACTURER,
+                Country = lineup.COUNTRY,
+                IdPanel = display.CODE_DISPLAY,
+                ResolutionString = display.RESOLUTION,
+                SizePanel = display.SIZE,
+                Brightness = display.BRIGHTNESS,
+                TypePanel = display.PANEL,
+                SpaceColorString = display.COLOR_SPACE,
+                RefreshRate = display.REFRESH_RATE,
+                CanTouchPanel = display.IS_TOUCH_PANEL,
+                TypeScreen = display.SCREEN_TYPE,
+                RatioPanelString = display.RATIO,
+                CPU = uniqueSpecs.CPU,
+                iGPU = uniqueSpecs.IGPU,
+                RAMString = uniqueSpecs.RAM,
+                TypeStorage = uniqueSpecs.TYPE_STORAGE,
+                StorageCapacity = uniqueSpecs.STORAGE_CAPACITY,
+                GPUString = uniqueSpecs.GPU,
+                BatteryCapacity = uniqueSpecs.BATTERY_CAPACITY,
+                Weight = uniqueSpecs.WEIGHT,
+                NameProduct = commonSpecs.NAME,
+                ReleaseDate = commonSpecs.RELEASED_YEAR,
+                CaseMaterial = commonSpecs.CASE_MATERIAL,
+                PortString = commonSpecs.PORT,
+                Webcam = commonSpecs.WEBCAM,
+                SizeProductString = commonSpecs.DIMENSIONS,
+                OS = commonSpecs.OS,
+                Wifi = commonSpecs.WIFI,
+                Bluetooth = commonSpecs.BLUETOOTH,
+                ColorCode = color.COLOR_CODE,
+                ColorName = color.COLOR_NAME,
+                TypeProduct = TypeModel.Exist
+            };
+        }
+
+        public ModelProduct Clone()
+        {
+            ModelProduct modelProduct = new ModelProduct();
+            modelProduct.OverrideData(this);
+            modelProduct.ID = this.ID;
+            modelProduct.TypeProduct = this.TypeProduct;
+            return modelProduct;
         }
 
         public static ModelProduct[] GetTSV(string pathFile)
         {
             string[] x = File.ReadAllLines(pathFile, Encoding.UTF8);
-            ModelProduct[] products = new ModelProduct[x.Length - 1];
+            List<ModelProduct> products = new List<ModelProduct>();
+            ModelProduct parse = null;
             for (int index = 1; index < x.Length; index++)
             {
-                TryParse(x[index], out products[index - 1]);
+                parse = new ModelProduct();
+                TryParse(x[index], out parse);
+                if (parse != null)
+                    products.Add(parse);
             }
 
-            return products;
+            return products.ToArray();
         }
     }
 }

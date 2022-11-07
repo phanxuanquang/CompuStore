@@ -1,4 +1,6 @@
-﻿namespace CompuStore.GUI.Forms.SubForms.Warehouse
+﻿using CompuStore.Control;
+
+namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
     partial class BaseInvoiceImportWarehouse_Form
     {
@@ -29,19 +31,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.Header = new System.Windows.Forms.Label();
             this.DragControl = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.Distributor_Label = new System.Windows.Forms.Label();
             this.DateTimeImportWarehouse_Label = new System.Windows.Forms.Label();
             this.ImportToStore_Label = new System.Windows.Forms.Label();
             this.TotalImportWarehouse_Label = new System.Windows.Forms.Label();
-            this.Distributor_Combobox = new System.Windows.Forms.ComboBox();
-            this.ImportToStore_Combobox = new System.Windows.Forms.ComboBox();
             this.TotalImportWarehouse_Value = new System.Windows.Forms.Label();
             this.DateTimeImportWarehouse_DateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.AddProduct_Button = new Guna.UI2.WinForms.Guna2Button();
@@ -55,6 +55,8 @@
             this.Staffimport_Label = new System.Windows.Forms.Label();
             this.Finish_Button = new Guna.UI2.WinForms.Guna2Button();
             this.StaffImport_Value = new System.Windows.Forms.Label();
+            this.ImportToStore_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.Distributor_ComboBox = new CompuStore.Control.ComboBoxCustom();
             ((System.ComponentModel.ISupportInitialize)(this.TableData_DataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,26 +122,6 @@
             this.TotalImportWarehouse_Label.Size = new System.Drawing.Size(137, 32);
             this.TotalImportWarehouse_Label.TabIndex = 10;
             this.TotalImportWarehouse_Label.Text = "Tổng giá trị";
-            // 
-            // Distributor_Combobox
-            // 
-            this.Distributor_Combobox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Distributor_Combobox.FormattingEnabled = true;
-            this.Distributor_Combobox.Location = new System.Drawing.Point(406, 147);
-            this.Distributor_Combobox.Margin = new System.Windows.Forms.Padding(4);
-            this.Distributor_Combobox.Name = "Distributor_Combobox";
-            this.Distributor_Combobox.Size = new System.Drawing.Size(400, 40);
-            this.Distributor_Combobox.TabIndex = 11;
-            // 
-            // ImportToStore_Combobox
-            // 
-            this.ImportToStore_Combobox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ImportToStore_Combobox.FormattingEnabled = true;
-            this.ImportToStore_Combobox.Location = new System.Drawing.Point(406, 242);
-            this.ImportToStore_Combobox.Margin = new System.Windows.Forms.Padding(4);
-            this.ImportToStore_Combobox.Name = "ImportToStore_Combobox";
-            this.ImportToStore_Combobox.Size = new System.Drawing.Size(400, 40);
-            this.ImportToStore_Combobox.TabIndex = 14;
             // 
             // TotalImportWarehouse_Value
             // 
@@ -267,7 +249,7 @@
             this.Exit_Button.PressedState.Parent = this.Exit_Button;
             this.Exit_Button.Size = new System.Drawing.Size(75, 75);
             this.Exit_Button.TabIndex = 6;
-            this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
+            this.Exit_Button.Click += new System.EventHandler(this.Exit_Clicked);
             // 
             // TableData_DataGridView
             // 
@@ -275,34 +257,34 @@
             this.TableData_DataGridView.AllowUserToDeleteRows = false;
             this.TableData_DataGridView.AllowUserToResizeColumns = false;
             this.TableData_DataGridView.AllowUserToResizeRows = false;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(5);
-            this.TableData_DataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
+            this.TableData_DataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.TableData_DataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.TableData_DataGridView.BackgroundColor = System.Drawing.Color.White;
             this.TableData_DataGridView.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.TableData_DataGridView.CausesValidation = false;
             this.TableData_DataGridView.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.TableData_DataGridView.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(151)))), ((int)(((byte)(232)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.TableData_DataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(151)))), ((int)(((byte)(232)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.TableData_DataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.TableData_DataGridView.ColumnHeadersHeight = 48;
             this.TableData_DataGridView.Cursor = System.Windows.Forms.Cursors.Hand;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.TableData_DataGridView.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.TableData_DataGridView.DefaultCellStyle = dataGridViewCellStyle3;
             this.TableData_DataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.TableData_DataGridView.EnableHeadersVisualStyles = false;
             this.TableData_DataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
@@ -312,20 +294,20 @@
             this.TableData_DataGridView.Name = "TableData_DataGridView";
             this.TableData_DataGridView.ReadOnly = true;
             this.TableData_DataGridView.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.TableData_DataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.TableData_DataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.TableData_DataGridView.RowHeadersVisible = false;
             this.TableData_DataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.Padding = new System.Windows.Forms.Padding(5);
-            this.TableData_DataGridView.RowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(5);
+            this.TableData_DataGridView.RowsDefaultCellStyle = dataGridViewCellStyle5;
             this.TableData_DataGridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.TableData_DataGridView.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5);
             this.TableData_DataGridView.RowTemplate.Height = 48;
@@ -413,6 +395,7 @@
             this.Finish_Button.TabIndex = 26;
             this.Finish_Button.Text = "Hoàn tất";
             this.Finish_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Finish_Button.Click += new System.EventHandler(this.Exit_Clicked);
             // 
             // StaffImport_Value
             // 
@@ -424,6 +407,34 @@
             this.StaffImport_Value.Size = new System.Drawing.Size(264, 32);
             this.StaffImport_Value.TabIndex = 27;
             this.StaffImport_Value.Text = "Nguyễn Văn A | SF4652";
+            // 
+            // ImportToStore_ComboBox
+            // 
+            this.ImportToStore_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.ImportToStore_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ImportToStore_ComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ImportToStore_ComboBox.FormattingEnabled = true;
+            this.ImportToStore_ComboBox.Location = new System.Drawing.Point(406, 242);
+            this.ImportToStore_ComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.ImportToStore_ComboBox.Name = "ImportToStore_ComboBox";
+            this.ImportToStore_ComboBox.Size = new System.Drawing.Size(400, 40);
+            this.ImportToStore_ComboBox.TabIndex = 14;
+            this.ImportToStore_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.Distributor_ComboBox_InsertKeyPressed);
+            this.ImportToStore_ComboBox.Leave += new System.EventHandler(this.Distributor_ComboBox_Leave);
+            // 
+            // Distributor_ComboBox
+            // 
+            this.Distributor_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.Distributor_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.Distributor_ComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Distributor_ComboBox.FormattingEnabled = true;
+            this.Distributor_ComboBox.Location = new System.Drawing.Point(406, 147);
+            this.Distributor_ComboBox.Margin = new System.Windows.Forms.Padding(4);
+            this.Distributor_ComboBox.Name = "Distributor_ComboBox";
+            this.Distributor_ComboBox.Size = new System.Drawing.Size(400, 40);
+            this.Distributor_ComboBox.TabIndex = 11;
+            this.Distributor_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.Distributor_ComboBox_InsertKeyPressed);
+            this.Distributor_ComboBox.Leave += new System.EventHandler(this.Distributor_ComboBox_Leave);
             // 
             // BaseInvoiceImportWarehouse_Form
             // 
@@ -443,8 +454,8 @@
             this.Controls.Add(this.AddProductByExcel_Button);
             this.Controls.Add(this.DateTimeImportWarehouse_DateTimePicker);
             this.Controls.Add(this.TotalImportWarehouse_Value);
-            this.Controls.Add(this.ImportToStore_Combobox);
-            this.Controls.Add(this.Distributor_Combobox);
+            this.Controls.Add(this.ImportToStore_ComboBox);
+            this.Controls.Add(this.Distributor_ComboBox);
             this.Controls.Add(this.TotalImportWarehouse_Label);
             this.Controls.Add(this.ImportToStore_Label);
             this.Controls.Add(this.DateTimeImportWarehouse_Label);
@@ -471,8 +482,8 @@
         private System.Windows.Forms.Label DateTimeImportWarehouse_Label;
         private System.Windows.Forms.Label ImportToStore_Label;
         private System.Windows.Forms.Label TotalImportWarehouse_Label;
-        protected System.Windows.Forms.ComboBox Distributor_Combobox;
-        protected System.Windows.Forms.ComboBox ImportToStore_Combobox;
+        protected ComboBoxCustom Distributor_ComboBox;
+        protected ComboBoxCustom ImportToStore_ComboBox;
         protected System.Windows.Forms.Label TotalImportWarehouse_Value;
         protected System.Windows.Forms.DateTimePicker DateTimeImportWarehouse_DateTimePicker;
         protected Guna.UI2.WinForms.Guna2Button AddProduct_Button;

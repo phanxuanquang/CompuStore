@@ -19,7 +19,7 @@ namespace CompuStore.Database.Models
         public int ID_HANDLING_STAFF { get; set; }
         public int ID_WAREHOUSE_STAFF { get; set; }
         public int ID_INVOICE { get; set; }
-        public string SERIAL_ID { get; set; }
+        public int PRODUCT_ID { get; set; }
         public string REASON { get; set; }
         public Nullable<System.DateTime> RETURN_DATE { get; set; }
     

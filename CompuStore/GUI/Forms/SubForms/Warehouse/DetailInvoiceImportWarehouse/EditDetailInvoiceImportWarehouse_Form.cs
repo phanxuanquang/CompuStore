@@ -13,177 +13,26 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
     public class EditDetailInvoiceImportWarehouse_Form : BaseDetailInvoiceImportWarehouse_Form
     {
+        #region Variable
         private COMMON_SPECS commonSpecs = null;
         private IMPORT_WAREHOUSE importWarehouse = null;
-        BindingList<ModelProduct> bindingTable = null;
-        Task task = null;
-        CancellationTokenSource cancellationTokenSource = null;
-        List<ModelProductGroup> groupBinding = null;
+        #endregion
 
-        public EditDetailInvoiceImportWarehouse_Form(IMPORT_WAREHOUSE importWarehouse, COMMON_SPECS commonSpecs)
+        #region Set editable
+        private void SetEditable()
         {
-            this.commonSpecs = commonSpecs;
-            this.importWarehouse = importWarehouse;
-            Load += DetailInvoiceImportWarehouse_Form_Load;
-            TableData_DataGridView.CellDoubleClick += TableData_DataGridView_CellDoubleClick;
-            AddProductByExcel_Button.Click += AddProductByExcel_Button_Click;
-        }
-
-        private Task LoadingData(IProgress<int> progress)
-        {
-            return Task.Factory.StartNew(() =>
+            if (importWarehouse != null)
             {
-                if (commonSpecs != null)
-                {
-                    int counter = 0;
-                    groupBinding = new List<ModelProductGroup>();
-                    LINE_UP lineup = commonSpecs.LINE_UP;
-                    if (importWarehouse != null)
-                    {
-                        IEnumerable<DETAIL_IMPORT_WAREHOUSE> detailImportWarehouse = importWarehouse.DETAIL_IMPORT_WAREHOUSE.Where(item => item.PRODUCT.DETAIL_SPECS.ID_COMMON_SPECS == commonSpecs.ID);
-                        foreach (DETAIL_IMPORT_WAREHOUSE detailImport in detailImportWarehouse)
-                        {
-                            DETAIL_SPECS detail = detailImport.PRODUCT.DETAIL_SPECS;
-                            UNIQUE_SPECS uniqueSpecs = detail.UNIQUE_SPECS;
-                            DISPLAY_SPECS display = uniqueSpecs.DISPLAY_SPECS;
-                            COLOR color = detail.COLOR;
-                            ICollection<PRODUCT> products = detail.PRODUCTs;
-
-                            foreach (PRODUCT product in products)
-                            {
-                                ModelProduct modelProduct = new ModelProduct();
-                                modelProduct.Price = detailImport.PRICE_PER_UNIT;
-                                modelProduct.Serial = detailImport.SERIAL_ID;
-                                modelProduct.LineUp = lineup.NAME;
-                                modelProduct.Manufacturer = lineup.MANUFACTURER;
-                                modelProduct.Country = lineup.COUNTRY;
-                                modelProduct.IdPanel = display.CODE_DISPLAY;
-                                modelProduct.ResolutionString = display.RESOLUTION;
-                                modelProduct.SizePanel = display.SIZE;
-                                modelProduct.Brightness = display.BRIGHTNESS;
-                                modelProduct.TypePanel = display.PANEL;
-                                modelProduct.SpaceColorString = display.COLOR_SPACE;
-                                modelProduct.RefreshRate = display.REFRESH_RATE;
-                                modelProduct.CanTouchPanel = display.IS_TOUCH_PANEL;
-                                modelProduct.TypeScreen = display.SCREEN_TYPE;
-                                modelProduct.RatioPanelString = display.RATIO;
-                                modelProduct.CPU = uniqueSpecs.CPU;
-                                modelProduct.iGPU = uniqueSpecs.IGPU;
-                                modelProduct.RAMString = uniqueSpecs.RAM;
-                                modelProduct.TypeStorage = uniqueSpecs.TYPE_STORAGE;
-                                modelProduct.StorageCapacity = uniqueSpecs.STORAGE_CAPACITY;
-                                modelProduct.GPUString = uniqueSpecs.GPU;
-                                modelProduct.BatteryCapacity = uniqueSpecs.BATTERY_CAPACITY;
-                                modelProduct.Weight = uniqueSpecs.WEIGHT;
-                                modelProduct.NameProduct = commonSpecs.NAME;
-                                modelProduct.ReleaseDate = commonSpecs.RELEASED_YEAR;
-                                modelProduct.CaseMaterial = commonSpecs.CASE_MATERIAL;
-                                modelProduct.PortString = commonSpecs.PORT;
-                                modelProduct.Webcam = commonSpecs.WEBCAM;
-                                modelProduct.SizeProductString = commonSpecs.DIMENSIONS;
-                                modelProduct.OS = commonSpecs.OS;
-                                modelProduct.Wifi = commonSpecs.WIFI;
-                                modelProduct.Bluetooth = commonSpecs.BLUETOOTH;
-                                modelProduct.ColorCode = color.COLOR_CODE;
-                                modelProduct.ColorName = color.COLOR_NAME;
-                                ModelProductGroup group = groupBinding.Find(item => item.IsTheSameGroup(modelProduct));
-                                if (group != null)
-                                {
-                                    group.product = modelProduct;
-                                }
-                                else
-                                {
-                                    group = new ModelProductGroup();
-                                    group.product = modelProduct;
-                                    groupBinding.Add(group);
-
-                                    if (TableData_DataGridView.InvokeRequired)
-                                    {
-                                        TableData_DataGridView.Invoke(new Action(() => bindingTable.Add(group.product)));
-                                    }
-                                    else
-                                    {
-                                        bindingTable.Add(modelProduct);
-                                    }
-                                    progress.Report(++counter);
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        ICollection<DETAIL_SPECS> detailSpecs = commonSpecs.DETAIL_SPECS;
-                        foreach (DETAIL_SPECS detail in detailSpecs)
-                        {
-                            UNIQUE_SPECS uniqueSpecs = detail.UNIQUE_SPECS;
-                            DISPLAY_SPECS display = uniqueSpecs.DISPLAY_SPECS;
-                            COLOR color = detail.COLOR;
-                            ICollection<PRODUCT> products = detail.PRODUCTs;
-
-                            foreach (PRODUCT product in products)
-                            {
-                                ModelProduct modelProduct = new ModelProduct();
-                                modelProduct.Serial = product.SERIAL_ID;
-                                modelProduct.LineUp = lineup.NAME;
-                                modelProduct.Manufacturer = lineup.MANUFACTURER;
-                                modelProduct.Country = lineup.COUNTRY;
-                                modelProduct.IdPanel = display.CODE_DISPLAY;
-                                modelProduct.ResolutionString = display.RESOLUTION;
-                                modelProduct.SizePanel = display.SIZE;
-                                modelProduct.Brightness = display.BRIGHTNESS;
-                                modelProduct.TypePanel = display.PANEL;
-                                modelProduct.SpaceColorString = display.COLOR_SPACE;
-                                modelProduct.RefreshRate = display.REFRESH_RATE;
-                                modelProduct.CanTouchPanel = display.IS_TOUCH_PANEL;
-                                modelProduct.TypeScreen = display.SCREEN_TYPE;
-                                modelProduct.RatioPanelString = display.RATIO;
-                                modelProduct.CPU = uniqueSpecs.CPU;
-                                modelProduct.iGPU = uniqueSpecs.IGPU;
-                                modelProduct.RAMString = uniqueSpecs.RAM;
-                                modelProduct.TypeStorage = uniqueSpecs.TYPE_STORAGE;
-                                modelProduct.StorageCapacity = uniqueSpecs.STORAGE_CAPACITY;
-                                modelProduct.GPUString = uniqueSpecs.GPU;
-                                modelProduct.BatteryCapacity = uniqueSpecs.BATTERY_CAPACITY;
-                                modelProduct.Weight = uniqueSpecs.WEIGHT;
-                                modelProduct.NameProduct = commonSpecs.NAME;
-                                modelProduct.ReleaseDate = commonSpecs.RELEASED_YEAR;
-                                modelProduct.CaseMaterial = commonSpecs.CASE_MATERIAL;
-                                modelProduct.PortString = commonSpecs.PORT;
-                                modelProduct.Webcam = commonSpecs.WEBCAM;
-                                modelProduct.SizeProductString = commonSpecs.DIMENSIONS;
-                                modelProduct.OS = commonSpecs.OS;
-                                modelProduct.Wifi = commonSpecs.WIFI;
-                                modelProduct.Bluetooth = commonSpecs.BLUETOOTH;
-                                modelProduct.Price = detail.PRICE;
-                                modelProduct.ColorCode = color.COLOR_CODE;
-                                modelProduct.ColorName = color.COLOR_NAME;
-                                ModelProductGroup group = groupBinding.Find(item => item.IsTheSameGroup(modelProduct));
-                                if (group != null)
-                                {
-                                    group.product = modelProduct;
-                                }
-                                else
-                                {
-                                    group = new ModelProductGroup();
-                                    group.product = modelProduct;
-                                    groupBinding.Add(group);
-
-                                    if (TableData_DataGridView.InvokeRequired)
-                                    {
-                                        TableData_DataGridView.Invoke(new Action(() => bindingTable.Add(group.product)));
-                                    }
-                                    else
-                                    {
-                                        bindingTable.Add(modelProduct);
-                                    }
-                                    progress.Report(++counter);
-                                }
-                            }
-                        }
-                    }
-                }
-            });
+                Finish_Button.Visible = true;
+                AddProductByExcel_Button.Visible = true;
+                AddProduct_Button.Visible = true;
+                DeleteProduct_Button.Visible = true;
+            }
         }
+        #endregion
+
+        public EditDetailInvoiceImportWarehouse_Form() { }
+
         protected override CreateParams CreateParams
         {
             get
@@ -193,17 +42,85 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 return handleParam;
             }
         }
-        private void DetailInvoiceImportWarehouse_Form_Load(object sender, EventArgs e)
+
+        #region Loading data
+        private Task LoadingData(IProgress<int> progress)
         {
-            bindingTable = new BindingList<ModelProduct>();
-            TableData_DataGridView.DataSource = bindingTable;
+            return Task.Factory.StartNew(() =>
+            {
+                if (commonSpecs != null)
+                {
+                    int counter = 0;
+                    LINE_UP lineup = commonSpecs.LINE_UP;
+
+                    if (initProduct == null)
+                    {
+                        //Loading data from database
+                        //Load only once time
+                        initProduct = new List<ModelProduct>();
+                        if (importWarehouse != null)
+                        {
+                            IEnumerable<DETAIL_IMPORT_WAREHOUSE> detailImportWarehouse = importWarehouse.DETAIL_IMPORT_WAREHOUSE.Where(item => item.PRODUCT.DETAIL_SPECS.ID_COMMON_SPECS == commonSpecs.ID);
+                            foreach (DETAIL_IMPORT_WAREHOUSE detailImport in detailImportWarehouse)
+                            {
+                                PRODUCT product = detailImport.PRODUCT;
+                                DETAIL_SPECS detail = product.DETAIL_SPECS;
+                                UNIQUE_SPECS uniqueSpecs = detail.UNIQUE_SPECS;
+                                DISPLAY_SPECS display = uniqueSpecs.DISPLAY_SPECS;
+                                COLOR color = detail.COLOR;
+
+                                initProduct.Add(ModelProduct.DatabaseToModel(product, detailImport, lineup, display, uniqueSpecs, commonSpecs, color));
+                                productList.Add(ModelProduct.DatabaseToModel(product, detailImport, lineup, display, uniqueSpecs, commonSpecs, color));
+                            }
+                        }
+                        else
+                        {
+                            ICollection<DETAIL_SPECS> detailSpecs = commonSpecs.DETAIL_SPECS;
+                            foreach (DETAIL_SPECS detail in detailSpecs)
+                            {
+                                UNIQUE_SPECS uniqueSpecs = detail.UNIQUE_SPECS;
+                                DISPLAY_SPECS display = uniqueSpecs.DISPLAY_SPECS;
+                                COLOR color = detail.COLOR;
+                                ICollection<PRODUCT> products = detail.PRODUCTs;
+
+                                foreach (PRODUCT product in products)
+                                {
+                                    DETAIL_IMPORT_WAREHOUSE detailImport = product.DETAIL_IMPORT_WAREHOUSE.First(item => item.PRODUCT_ID == product.PRODUCT_ID);
+                                    initProduct.Add(ModelProduct.DatabaseToModel(product, detailImport, lineup, display, uniqueSpecs, commonSpecs, color));
+                                    productList.Add(ModelProduct.DatabaseToModel(product, detailImport, lineup, display, uniqueSpecs, commonSpecs, color));
+                                }
+                            }
+                        }
+                    }
+
+
+                    foreach (ModelProduct product in productList)
+                    {
+                        if (TableData_DataGridView.InvokeRequired)
+                        {
+                            TableData_DataGridView.Invoke(new Action(() => bindingTable.Add(product)));
+                        }
+                        else
+                        {
+                            bindingTable.Add(product);
+                        }
+                        progress.Report(++counter);
+                    }
+                }
+            });
+        }
+
+        protected override void Custom_Load(object sender, EventArgs e)
+        {
             Progress<int> progress = new Progress<int>();
             Waiting_Form waiting = new Waiting_Form();
+            bindingTable.Clear();
             waiting.FormClosing += (owner, ev) =>
             {
                 LineUp_ComboBox.SelectedValue = commonSpecs.ID_LINE_UP;
                 NameProduct_ComboBox.SelectedValue = commonSpecs.ID;
                 Manufacturer_ComboBox.SelectedValue = commonSpecs.ID_LINE_UP;
+                ReleaseDate_DateTimePicker.Value = commonSpecs.RELEASED_YEAR.Value;
             };
             Task runLoading = LoadingData(progress);
 
@@ -221,79 +138,49 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
             waiting.ShowDialog(this);
         }
+        #endregion
 
-        private void AddProductByExcel_Button_Click(object sender, EventArgs e)
-        {
-            /*OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Tab-seperator values | *.tsv";
-
-            if (openFileDialog.ShowDialog() == DialogResult.OK && openFileDialog.CheckFileExists)
-            {
-                ModelProduct[] products = ModelProduct.GetTSV(openFileDialog.FileName);
-
-                if (task == null || task.IsCompleted)
-                {
-                    cancellationTokenSource = new CancellationTokenSource();
-                    CancellationToken token = cancellationTokenSource.Token;
-
-                    task = Task.Factory.StartNew(() =>
-                    {
-                        for (int index = 0; index < products.Length && !token.IsCancellationRequested; index++)
-                        {
-                            try
-                            {
-                                if (TotalImportWarehouse_Label.InvokeRequired)
-                                    TotalImportWarehouse_Label.Invoke(new Action(() => TotalImportWarehouse_Label.Text = string.Format("Completed {0}/{1}", index, products.Length)));
-                                else
-                                    TotalImportWarehouse_Label.Text = string.Format("Completed {0}/{1}", index, products.Length);
-
-                                ProductServices.InstanceImport.Import(products[index]).Wait();
-                            }
-                            catch (AggregateException)
-                            {
-                                MessageBox.Show(string.Format("Product serial: {0} already exists in the system", products[index].Serial));
-                            }
-                        }
-                    }, token);
-
-                    task.GetAwaiter().OnCompleted(() =>
-                    {
-                        if (token.IsCancellationRequested)
-                        {
-                            if (TotalImportWarehouse_Label.InvokeRequired)
-                                TotalImportWarehouse_Label.Invoke(new Action(() => TotalImportWarehouse_Label.Text = "Canceled"));
-                            else
-                                TotalImportWarehouse_Label.Text = "Canceled";
-                        }
-                        else
-                        {
-                            if (TotalImportWarehouse_Label.InvokeRequired)
-                                TotalImportWarehouse_Label.Invoke(new Action(() => TotalImportWarehouse_Label.Text = "Insert completed"));
-                            else
-                                TotalImportWarehouse_Label.Text = "Insert completed";
-                        }
-                        cancellationTokenSource.Dispose();
-                        cancellationTokenSource = null;
-                    });
-                }
-            }*/
-        }
-
+        #region Event
         private void TableData_DataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
+                IList<ModelProduct> models = new List<ModelProduct>();
                 ModelProduct model = bindingTable[e.RowIndex];
                 if (model != null)
                 {
-                    ModelProductGroup group = groupBinding.Find(item => item.product.Equals(model));
-                    if(group != null)
+                    BaseDetailSpecsProduct_Form detailSpecs = null;
+                    if (importWarehouse == null)
                     {
-                        DetailSpecsProduct_Form detailSpecs = new DetailSpecsProduct_Form();
-                        detailSpecs.ShowDialog(this, group.productsTheSame);
+                        detailSpecs = new OverviewDetailSpecsProduct_Form();
+                        models = bindingTable.Where(item => item.CompareSpecs(model)).ToList();
                     }
+                    else
+                    {
+                        detailSpecs = new ImportDetailSpecsProduct_Form();
+                        models.Add(model);
+                    }
+                    detailSpecs.ShowDialog(this, models);
                 }
             }
         }
+        #endregion
+
+        #region IO Handle
+        public override ResultDetailInvoiceImportWarehouse ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, COMMON_SPECS commonSpecs)
+        {
+            this.commonSpecs = commonSpecs;
+            this.importWarehouse = importWarehouse;
+            SetEditable();
+            Load += Custom_Load;
+            TableData_DataGridView.CellDoubleClick += TableData_DataGridView_CellDoubleClick;
+
+            return base.ShowDialog(owner, importWarehouse, commonSpecs);
+        }
+        #endregion
+        /*protected override void CheckChange()
+        {
+            
+        }*/
     }
 }
