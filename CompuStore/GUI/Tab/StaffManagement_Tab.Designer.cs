@@ -46,8 +46,9 @@
             this.SearchBox.HoverState.Parent = this.SearchBox;
             this.SearchBox.PlaceholderText = "Tìm kiếm nhân viên theo mã, họ và tên hoặc số điện thoại";
             this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
+            this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             // 
-            // ViewDetail_Button
+            // Button_2
             // 
             this.Button_2.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
             this.Button_2.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
@@ -62,7 +63,7 @@
             this.Button_2.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
             this.Button_2.Click += new System.EventHandler(this.ViewDetail_Button_Click);
             // 
-            // AddNew_Buttom
+            // Bottom_1
             // 
             this.Bottom_1.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
             this.Bottom_1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
@@ -77,7 +78,7 @@
             this.Bottom_1.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
             this.Bottom_1.Click += new System.EventHandler(this.AddNew_Buttom_Click);
             // 
-            // Delete_Button
+            // Button_3
             // 
             this.Button_3.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
             this.Button_3.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
