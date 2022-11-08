@@ -141,6 +141,9 @@ namespace CompuStore
 
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
+
+            CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[DataTable.DataSource];
+            currencyManager1.SuspendBinding();
             foreach (DataGridViewRow row in DataTable.Rows)
             {
                 RECEIVE_WARRANTY selected = row.DataBoundItem as RECEIVE_WARRANTY;
@@ -148,10 +151,15 @@ namespace CompuStore
                 {
                     if (!(selected.NAME_ID.ToString().Contains(SearchBox.Text) || selected.INVOICE.CUSTOMER.INFOR.PHONE_NUMBER.Contains(SearchBox.Text)))
                     {
-                        DataTable.CurrentCell = null;
+                        row.Visible = false;
+                    }
+                    else
+                    {
+                        row.Visible = true;
                     }
                 }
             }
+            currencyManager1.ResumeBinding();
         }
     }
 }
