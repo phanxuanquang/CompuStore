@@ -32,6 +32,16 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         private IList<ModelProduct> products;
         #endregion
 
+        #region Translater
+        protected static readonly Dictionary<string, string> serialTranslater = new Dictionary<string, string> {
+            { "STT", "STT" },
+            { "Serial", "Serial máy|Mỗi máy có một số định danh duy nhất được nhán ở đáy máy" },
+            { "NameIDImportWarehouse", "Mã nhập hàng|Sản phẩm được nhập ở lần nhập có mã nhập hàng" },
+            { "ImportDate", "Ngày nhập hàng" },
+            { "Price", "Giá tiền" }
+        };
+        #endregion
+
         #region Private component
         protected override void AddInitializeComponent()
         {
@@ -178,7 +188,26 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         private void Serial_DataGridView_DataSourceChanged(object sender, EventArgs e)
         {
             DataGridView grid = sender as DataGridView;
-            grid.Columns["STT"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            grid.SuspendLayout();
+            foreach (DataGridViewColumn column in grid.Columns)
+            {
+                if (serialTranslater.ContainsKey(column.Name))
+                {
+                    string headerText = serialTranslater[column.Name];
+                    string[] split = headerText.Split('|');
+                    column.HeaderText = split[0];
+                    if (split.Length > 1)
+                        column.ToolTipText = split[1];
+                    if (headerText == "STT")
+                        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                }
+                else
+                {
+                    column.Visible = false;
+                }
+            }
+            grid.ResumeLayout(false);
+            grid.PerformLayout();
         }
 
         private Task LoadingData(IProgress<int> progress)
