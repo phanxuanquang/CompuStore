@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace CompuStore.Tab
 {
-    public partial class SaleManagement_Tab : BaseTab
+    public partial class SaleManagement_Tab : Warehouse_UC
     {
         public static string nameIdCommonSpecs;
         public static Dictionary<COMMON_SPECS, int> listProduct = new Dictionary<COMMON_SPECS, int>();
