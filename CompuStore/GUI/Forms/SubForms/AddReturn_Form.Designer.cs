@@ -41,6 +41,7 @@
             this.PhoneNumber_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Identity_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Save_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.ReturnReason = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,7 +114,7 @@
             this.NewItemSerial_Box.HoverState.Parent = this.NewItemSerial_Box;
             this.NewItemSerial_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.NewItemSerial_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.NewItemSerial_Box.Location = new System.Drawing.Point(30, 232);
+            this.NewItemSerial_Box.Location = new System.Drawing.Point(30, 228);
             this.NewItemSerial_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NewItemSerial_Box.Name = "NewItemSerial_Box";
             this.NewItemSerial_Box.PasswordChar = '\0';
@@ -152,7 +153,7 @@
             this.OldItemSerial_Box.HoverState.Parent = this.OldItemSerial_Box;
             this.OldItemSerial_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.OldItemSerial_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.OldItemSerial_Box.Location = new System.Drawing.Point(30, 189);
+            this.OldItemSerial_Box.Location = new System.Drawing.Point(30, 185);
             this.OldItemSerial_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.OldItemSerial_Box.Name = "OldItemSerial_Box";
             this.OldItemSerial_Box.PasswordChar = '\0';
@@ -170,7 +171,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.Location = new System.Drawing.Point(26, 313);
+            this.label2.Location = new System.Drawing.Point(26, 354);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 24);
@@ -191,7 +192,7 @@
             this.Print_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Print_Button.ForeColor = System.Drawing.Color.White;
             this.Print_Button.HoverState.Parent = this.Print_Button;
-            this.Print_Button.Location = new System.Drawing.Point(30, 345);
+            this.Print_Button.Location = new System.Drawing.Point(30, 386);
             this.Print_Button.Name = "Print_Button";
             this.Print_Button.PressedDepth = 5;
             this.Print_Button.ShadowDecoration.Parent = this.Print_Button;
@@ -225,7 +226,7 @@
             this.Email_Box.HoverState.Parent = this.Email_Box;
             this.Email_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Email_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Email_Box.Location = new System.Drawing.Point(30, 148);
+            this.Email_Box.Location = new System.Drawing.Point(30, 144);
             this.Email_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Email_Box.Name = "Email_Box";
             this.Email_Box.PasswordChar = '\0';
@@ -264,7 +265,7 @@
             this.Name_Box.HoverState.Parent = this.Name_Box;
             this.Name_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Name_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Name_Box.Location = new System.Drawing.Point(30, 105);
+            this.Name_Box.Location = new System.Drawing.Point(30, 101);
             this.Name_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name_Box.Name = "Name_Box";
             this.Name_Box.PasswordChar = '\0';
@@ -282,7 +283,7 @@
             // 
             this.lbStaffName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbStaffName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbStaffName.Location = new System.Drawing.Point(26, 280);
+            this.lbStaffName.Location = new System.Drawing.Point(26, 321);
             this.lbStaffName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbStaffName.Name = "lbStaffName";
             this.lbStaffName.Size = new System.Drawing.Size(106, 24);
@@ -315,7 +316,7 @@
             this.PhoneNumber_Box.HoverState.Parent = this.PhoneNumber_Box;
             this.PhoneNumber_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.PhoneNumber_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.PhoneNumber_Box.Location = new System.Drawing.Point(348, 105);
+            this.PhoneNumber_Box.Location = new System.Drawing.Point(348, 101);
             this.PhoneNumber_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PhoneNumber_Box.Name = "PhoneNumber_Box";
             this.PhoneNumber_Box.PasswordChar = '\0';
@@ -354,7 +355,7 @@
             this.Identity_Box.HoverState.Parent = this.Identity_Box;
             this.Identity_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Identity_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Identity_Box.Location = new System.Drawing.Point(30, 62);
+            this.Identity_Box.Location = new System.Drawing.Point(30, 58);
             this.Identity_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Identity_Box.Name = "Identity_Box";
             this.Identity_Box.PasswordChar = '\0';
@@ -380,7 +381,7 @@
             this.Save_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Save_Button.ForeColor = System.Drawing.Color.White;
             this.Save_Button.HoverState.Parent = this.Save_Button;
-            this.Save_Button.Location = new System.Drawing.Point(30, 415);
+            this.Save_Button.Location = new System.Drawing.Point(30, 456);
             this.Save_Button.Name = "Save_Button";
             this.Save_Button.PressedDepth = 5;
             this.Save_Button.ShadowDecoration.Parent = this.Save_Button;
@@ -389,11 +390,51 @@
             this.Save_Button.Text = "LƯU";
             this.Save_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             // 
+            // ReturnReason
+            // 
+            this.ReturnReason.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReturnReason.Animated = true;
+            this.ReturnReason.BackColor = System.Drawing.Color.Transparent;
+            this.ReturnReason.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.ReturnReason.BorderRadius = 8;
+            this.ReturnReason.BorderThickness = 2;
+            this.ReturnReason.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.ReturnReason.DefaultText = "";
+            this.ReturnReason.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.ReturnReason.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.ReturnReason.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.ReturnReason.DisabledState.Parent = this.ReturnReason;
+            this.ReturnReason.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.ReturnReason.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.ReturnReason.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.ReturnReason.FocusedState.ForeColor = System.Drawing.Color.Black;
+            this.ReturnReason.FocusedState.Parent = this.ReturnReason;
+            this.ReturnReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ReturnReason.ForeColor = System.Drawing.Color.Black;
+            this.ReturnReason.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
+            this.ReturnReason.HoverState.Parent = this.ReturnReason;
+            this.ReturnReason.IconLeftOffset = new System.Drawing.Point(9, 0);
+            this.ReturnReason.IconLeftSize = new System.Drawing.Size(30, 30);
+            this.ReturnReason.Location = new System.Drawing.Point(30, 272);
+            this.ReturnReason.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ReturnReason.Name = "ReturnReason";
+            this.ReturnReason.PasswordChar = '\0';
+            this.ReturnReason.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.ReturnReason.PlaceholderText = "Lý do đổi trả";
+            this.ReturnReason.ReadOnly = true;
+            this.ReturnReason.SelectedText = "";
+            this.ReturnReason.ShadowDecoration.Parent = this.ReturnReason;
+            this.ReturnReason.Size = new System.Drawing.Size(550, 37);
+            this.ReturnReason.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.ReturnReason.TabIndex = 136;
+            this.ReturnReason.TextOffset = new System.Drawing.Point(5, 0);
+            // 
             // AddReturn_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(607, 498);
+            this.ClientSize = new System.Drawing.Size(607, 539);
+            this.Controls.Add(this.ReturnReason);
             this.Controls.Add(this.NewItemSerial_Box);
             this.Controls.Add(this.OldItemSerial_Box);
             this.Controls.Add(this.label2);
@@ -429,5 +470,6 @@
         private Guna.UI2.WinForms.Guna2TextBox PhoneNumber_Box;
         private Guna.UI2.WinForms.Guna2TextBox Identity_Box;
         private Guna.UI2.WinForms.Guna2Button Save_Button;
+        private Guna.UI2.WinForms.Guna2TextBox ReturnReason;
     }
 }
