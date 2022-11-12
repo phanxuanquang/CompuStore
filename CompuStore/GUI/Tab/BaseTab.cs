@@ -19,7 +19,6 @@ namespace CompuStore.Tab
         protected Dictionary<string, string> listItemViews = new Dictionary<string, string>();
         public BaseTab()
         {
-            
             InitializeComponent();
         }
 
@@ -27,10 +26,10 @@ namespace CompuStore.Tab
 
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
-            try
+            /*try
             {
-                /*CurrencyManager cm = (CurrencyManager)BindingContext[DataTable.DataSource];
-                cm.SuspendBinding();*/
+                *//*CurrencyManager cm = (CurrencyManager)BindingContext[DataTable.DataSource];
+                cm.SuspendBinding();*//*
 
                 for (int i = 0; i < DataTable.RowCount; i++)
                 {
@@ -49,12 +48,12 @@ namespace CompuStore.Tab
                     }
                 }
 
-                /*cm.ResumeBinding();*/
+                *//*cm.ResumeBinding();*//*
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
+            }*/
         }
     }
 }

@@ -131,5 +131,29 @@ namespace CompuStore.Tab
             Run(GetListView());
         }
         #endregion
+
+        private void SearchBox_TextChanged(object sender, EventArgs e)
+        {
+            CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[DataTable.DataSource];
+            currencyManager1.SuspendBinding();
+            foreach (DataGridViewRow row in DataTable.Rows)
+            {
+                STAFF selected = row.DataBoundItem as STAFF;
+                if (selected != null)
+                {
+                    if (!(selected.NAME_ID.ToLower().Contains(SearchBox.Text) || selected.INFOR.NAME.Contains(SearchBox.Text) || selected.INFOR.PHONE_NUMBER.Contains(SearchBox.Text)))
+                    {
+                        
+                        row.Visible = false;
+                        
+                    }
+                    else
+                    {
+                        row.Visible = true;
+                    }
+                }
+            }
+            currencyManager1.ResumeBinding();
+        }
     }
 }

@@ -273,5 +273,24 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             return result;
         }
         #endregion
+
+        #region IO handle
+        protected override void Exit_Clicked(object sender, EventArgs e)
+        {
+            List<string> checkValidation = ValidationDetailSpecs();
+            if (checkValidation?.Count > 0)
+            {
+                if (MessageBox.Show(string.Join("\n", checkValidation) + "\n\n" + "Quay trở lại(Yes) hay hủy thay đổi(No)?", "Thiếu thông tin", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    base.Exit_Clicked(sender, e);
+                }
+            }
+            else
+            {
+                CheckChange();
+                base.Exit_Clicked(sender, e);
+            }
+        }
+        #endregion
     }
 }

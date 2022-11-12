@@ -138,5 +138,28 @@ namespace CompuStore
             AddReturn_Form addReturn_Form = new AddReturn_Form();
             addReturn_Form.ShowDialog();
         }
+
+        private void SearchBox_TextChanged(object sender, EventArgs e)
+        {
+
+            CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[DataTable.DataSource];
+            currencyManager1.SuspendBinding();
+            foreach (DataGridViewRow row in DataTable.Rows)
+            {
+                RECEIVE_WARRANTY selected = row.DataBoundItem as RECEIVE_WARRANTY;
+                if (selected != null)
+                {
+                    if (!(selected.NAME_ID.ToString().Contains(SearchBox.Text) || selected.INVOICE.CUSTOMER.INFOR.PHONE_NUMBER.Contains(SearchBox.Text)))
+                    {
+                        row.Visible = false;
+                    }
+                    else
+                    {
+                        row.Visible = true;
+                    }
+                }
+            }
+            currencyManager1.ResumeBinding();
+        }
     }
 }
