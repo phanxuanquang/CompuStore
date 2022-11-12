@@ -40,17 +40,17 @@
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.Save_Button = new Guna.UI2.WinForms.Guna2Button();
             this.ItemTable = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StaffName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Print_Button = new Guna.UI2.WinForms.Guna2Button();
             this.Email_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Address_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Name_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbStaffName = new System.Windows.Forms.Label();
             this.lbDate = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.AddItemToTable_Button = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemTable)).BeginInit();
             this.SuspendLayout();
@@ -80,8 +80,8 @@
             this.PhoneNumber_Box.HoverState.Parent = this.PhoneNumber_Box;
             this.PhoneNumber_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.PhoneNumber_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.PhoneNumber_Box.Location = new System.Drawing.Point(472, 129);
-            this.PhoneNumber_Box.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.PhoneNumber_Box.Location = new System.Drawing.Point(354, 105);
+            this.PhoneNumber_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PhoneNumber_Box.Name = "PhoneNumber_Box";
             this.PhoneNumber_Box.PasswordChar = '\0';
             this.PhoneNumber_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
@@ -89,7 +89,7 @@
             this.PhoneNumber_Box.ReadOnly = true;
             this.PhoneNumber_Box.SelectedText = "";
             this.PhoneNumber_Box.ShadowDecoration.Parent = this.PhoneNumber_Box;
-            this.PhoneNumber_Box.Size = new System.Drawing.Size(309, 46);
+            this.PhoneNumber_Box.Size = new System.Drawing.Size(232, 37);
             this.PhoneNumber_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.PhoneNumber_Box.TabIndex = 28;
             this.PhoneNumber_Box.TextOffset = new System.Drawing.Point(5, 0);
@@ -101,10 +101,9 @@
             this.Header.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Header.ForeColor = System.Drawing.Color.White;
             this.Header.Location = new System.Drawing.Point(0, 0);
-            this.Header.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Header.Name = "Header";
-            this.Header.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.Header.Size = new System.Drawing.Size(831, 49);
+            this.Header.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.Header.Size = new System.Drawing.Size(623, 40);
             this.Header.TabIndex = 25;
             this.Header.Text = "Tạo hóa đơn bán hàng";
             this.Header.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -135,15 +134,15 @@
             this.Identity_Box.HoverState.Parent = this.Identity_Box;
             this.Identity_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Identity_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Identity_Box.Location = new System.Drawing.Point(48, 76);
-            this.Identity_Box.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.Identity_Box.Location = new System.Drawing.Point(36, 62);
+            this.Identity_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Identity_Box.Name = "Identity_Box";
             this.Identity_Box.PasswordChar = '\0';
             this.Identity_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Identity_Box.PlaceholderText = "CMND/CCCD của khách hàng";
             this.Identity_Box.SelectedText = "";
             this.Identity_Box.ShadowDecoration.Parent = this.Identity_Box;
-            this.Identity_Box.Size = new System.Drawing.Size(733, 46);
+            this.Identity_Box.Size = new System.Drawing.Size(550, 37);
             this.Identity_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Identity_Box.TabIndex = 32;
             this.Identity_Box.TextOffset = new System.Drawing.Point(5, 0);
@@ -154,10 +153,10 @@
             this.HeaderIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
             this.HeaderIcon.BackgroundImage = global::CompuStore.Properties.Resources.Staff___Header;
             this.HeaderIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.HeaderIcon.Location = new System.Drawing.Point(9, 9);
+            this.HeaderIcon.Location = new System.Drawing.Point(7, 7);
             this.HeaderIcon.Margin = new System.Windows.Forms.Padding(0);
             this.HeaderIcon.Name = "HeaderIcon";
-            this.HeaderIcon.Size = new System.Drawing.Size(33, 31);
+            this.HeaderIcon.Size = new System.Drawing.Size(25, 25);
             this.HeaderIcon.TabIndex = 27;
             this.HeaderIcon.TabStop = false;
             // 
@@ -171,11 +170,10 @@
             this.Exit_Button.HoverState.Parent = this.Exit_Button;
             this.Exit_Button.Image = global::CompuStore.Properties.Resources.Close;
             this.Exit_Button.ImageSize = new System.Drawing.Size(27, 27);
-            this.Exit_Button.Location = new System.Drawing.Point(777, 0);
-            this.Exit_Button.Margin = new System.Windows.Forms.Padding(4);
+            this.Exit_Button.Location = new System.Drawing.Point(583, 0);
             this.Exit_Button.Name = "Exit_Button";
             this.Exit_Button.PressedState.Parent = this.Exit_Button;
-            this.Exit_Button.Size = new System.Drawing.Size(53, 49);
+            this.Exit_Button.Size = new System.Drawing.Size(40, 40);
             this.Exit_Button.TabIndex = 26;
             this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
             // 
@@ -192,12 +190,11 @@
             this.Save_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Save_Button.ForeColor = System.Drawing.Color.White;
             this.Save_Button.HoverState.Parent = this.Save_Button;
-            this.Save_Button.Location = new System.Drawing.Point(48, 751);
-            this.Save_Button.Margin = new System.Windows.Forms.Padding(4);
+            this.Save_Button.Location = new System.Drawing.Point(36, 600);
             this.Save_Button.Name = "Save_Button";
             this.Save_Button.PressedDepth = 5;
             this.Save_Button.ShadowDecoration.Parent = this.Save_Button;
-            this.Save_Button.Size = new System.Drawing.Size(733, 65);
+            this.Save_Button.Size = new System.Drawing.Size(550, 53);
             this.Save_Button.TabIndex = 34;
             this.Save_Button.Text = "LƯU";
             this.Save_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -229,11 +226,9 @@
             this.ItemTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.ItemTable.ColumnHeadersHeight = 25;
             this.ItemTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.STT,
-            this.StaffName,
-            this.Count,
-            this.Price,
-            this.Total});
+            this.Column1,
+            this.Column2,
+            this.Column3});
             this.ItemTable.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
@@ -245,8 +240,7 @@
             this.ItemTable.DefaultCellStyle = dataGridViewCellStyle3;
             this.ItemTable.EnableHeadersVisualStyles = false;
             this.ItemTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.ItemTable.Location = new System.Drawing.Point(48, 287);
-            this.ItemTable.Margin = new System.Windows.Forms.Padding(4);
+            this.ItemTable.Location = new System.Drawing.Point(36, 280);
             this.ItemTable.MultiSelect = false;
             this.ItemTable.Name = "ItemTable";
             this.ItemTable.ReadOnly = true;
@@ -266,7 +260,7 @@
             this.ItemTable.RowTemplate.ReadOnly = true;
             this.ItemTable.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.ItemTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ItemTable.Size = new System.Drawing.Size(733, 289);
+            this.ItemTable.Size = new System.Drawing.Size(550, 188);
             this.ItemTable.TabIndex = 36;
             this.ItemTable.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.ItemTable.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -291,41 +285,6 @@
             this.ItemTable.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.ItemTable.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             // 
-            // STT
-            // 
-            this.STT.HeaderText = "STT";
-            this.STT.MinimumWidth = 6;
-            this.STT.Name = "STT";
-            this.STT.ReadOnly = true;
-            // 
-            // StaffName
-            // 
-            this.StaffName.HeaderText = "Sản phẩm";
-            this.StaffName.MinimumWidth = 10;
-            this.StaffName.Name = "StaffName";
-            this.StaffName.ReadOnly = true;
-            // 
-            // Count
-            // 
-            this.Count.HeaderText = "Số lượng";
-            this.Count.MinimumWidth = 6;
-            this.Count.Name = "Count";
-            this.Count.ReadOnly = true;
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Đơn giá";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            // 
-            // Total
-            // 
-            this.Total.HeaderText = "Thành tiền";
-            this.Total.MinimumWidth = 6;
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            // 
             // Print_Button
             // 
             this.Print_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -339,12 +298,11 @@
             this.Print_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Print_Button.ForeColor = System.Drawing.Color.White;
             this.Print_Button.HoverState.Parent = this.Print_Button;
-            this.Print_Button.Location = new System.Drawing.Point(48, 661);
-            this.Print_Button.Margin = new System.Windows.Forms.Padding(4);
+            this.Print_Button.Location = new System.Drawing.Point(36, 537);
             this.Print_Button.Name = "Print_Button";
             this.Print_Button.PressedDepth = 5;
             this.Print_Button.ShadowDecoration.Parent = this.Print_Button;
-            this.Print_Button.Size = new System.Drawing.Size(733, 70);
+            this.Print_Button.Size = new System.Drawing.Size(550, 57);
             this.Print_Button.TabIndex = 38;
             this.Print_Button.Text = "IN HÓA ĐƠN";
             this.Print_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -374,8 +332,8 @@
             this.Email_Box.HoverState.Parent = this.Email_Box;
             this.Email_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Email_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Email_Box.Location = new System.Drawing.Point(48, 182);
-            this.Email_Box.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.Email_Box.Location = new System.Drawing.Point(36, 148);
+            this.Email_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Email_Box.Name = "Email_Box";
             this.Email_Box.PasswordChar = '\0';
             this.Email_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
@@ -383,7 +341,7 @@
             this.Email_Box.ReadOnly = true;
             this.Email_Box.SelectedText = "";
             this.Email_Box.ShadowDecoration.Parent = this.Email_Box;
-            this.Email_Box.Size = new System.Drawing.Size(733, 46);
+            this.Email_Box.Size = new System.Drawing.Size(550, 37);
             this.Email_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Email_Box.TabIndex = 30;
             this.Email_Box.TextOffset = new System.Drawing.Point(5, 0);
@@ -413,8 +371,8 @@
             this.Address_Box.HoverState.Parent = this.Address_Box;
             this.Address_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Address_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Address_Box.Location = new System.Drawing.Point(48, 235);
-            this.Address_Box.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.Address_Box.Location = new System.Drawing.Point(36, 191);
+            this.Address_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Address_Box.Name = "Address_Box";
             this.Address_Box.PasswordChar = '\0';
             this.Address_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
@@ -422,7 +380,7 @@
             this.Address_Box.ReadOnly = true;
             this.Address_Box.SelectedText = "";
             this.Address_Box.ShadowDecoration.Parent = this.Address_Box;
-            this.Address_Box.Size = new System.Drawing.Size(733, 46);
+            this.Address_Box.Size = new System.Drawing.Size(550, 37);
             this.Address_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Address_Box.TabIndex = 31;
             this.Address_Box.TextOffset = new System.Drawing.Point(5, 0);
@@ -452,8 +410,8 @@
             this.Name_Box.HoverState.Parent = this.Name_Box;
             this.Name_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Name_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Name_Box.Location = new System.Drawing.Point(48, 129);
-            this.Name_Box.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.Name_Box.Location = new System.Drawing.Point(36, 105);
+            this.Name_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name_Box.Name = "Name_Box";
             this.Name_Box.PasswordChar = '\0';
             this.Name_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
@@ -461,7 +419,7 @@
             this.Name_Box.ReadOnly = true;
             this.Name_Box.SelectedText = "";
             this.Name_Box.ShadowDecoration.Parent = this.Name_Box;
-            this.Name_Box.Size = new System.Drawing.Size(416, 46);
+            this.Name_Box.Size = new System.Drawing.Size(312, 37);
             this.Name_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Name_Box.TabIndex = 29;
             this.Name_Box.TextOffset = new System.Drawing.Point(5, 0);
@@ -471,9 +429,10 @@
             this.lbStaffName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbStaffName.AutoSize = true;
             this.lbStaffName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbStaffName.Location = new System.Drawing.Point(43, 585);
+            this.lbStaffName.Location = new System.Drawing.Point(32, 475);
+            this.lbStaffName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbStaffName.Name = "lbStaffName";
-            this.lbStaffName.Size = new System.Drawing.Size(110, 25);
+            this.lbStaffName.Size = new System.Drawing.Size(89, 20);
             this.lbStaffName.TabIndex = 39;
             this.lbStaffName.Text = "Người lập:";
             this.lbStaffName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -483,18 +442,82 @@
             this.lbDate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbDate.AutoSize = true;
             this.lbDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbDate.Location = new System.Drawing.Point(43, 618);
+            this.lbDate.Location = new System.Drawing.Point(32, 502);
+            this.lbDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDate.Name = "lbDate";
-            this.lbDate.Size = new System.Drawing.Size(104, 25);
+            this.lbDate.Size = new System.Drawing.Size(83, 20);
             this.lbDate.TabIndex = 40;
             this.lbDate.Text = "Ngày lập:";
             this.lbDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Số sê-ri";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Tên sản phẩm";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Giá tiền";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // guna2ComboBox1
+            // 
+            this.guna2ComboBox1.Animated = true;
+            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.Empty;
+            this.guna2ComboBox1.FocusedState.Parent = this.guna2ComboBox1;
+            this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox1.FormattingEnabled = true;
+            this.guna2ComboBox1.HoverState.Parent = this.guna2ComboBox1;
+            this.guna2ComboBox1.ItemHeight = 30;
+            this.guna2ComboBox1.ItemsAppearance.Parent = this.guna2ComboBox1;
+            this.guna2ComboBox1.Location = new System.Drawing.Point(36, 233);
+            this.guna2ComboBox1.Name = "guna2ComboBox1";
+            this.guna2ComboBox1.ShadowDecoration.Parent = this.guna2ComboBox1;
+            this.guna2ComboBox1.Size = new System.Drawing.Size(426, 36);
+            this.guna2ComboBox1.TabIndex = 41;
+            this.guna2ComboBox1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            // 
+            // AddItemToTable_Button
+            // 
+            this.AddItemToTable_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.AddItemToTable_Button.Animated = true;
+            this.AddItemToTable_Button.BorderRadius = 3;
+            this.AddItemToTable_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.AddItemToTable_Button.CheckedState.Parent = this.AddItemToTable_Button;
+            this.AddItemToTable_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AddItemToTable_Button.CustomImages.Parent = this.AddItemToTable_Button;
+            this.AddItemToTable_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.AddItemToTable_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.AddItemToTable_Button.ForeColor = System.Drawing.Color.White;
+            this.AddItemToTable_Button.HoverState.Parent = this.AddItemToTable_Button;
+            this.AddItemToTable_Button.Location = new System.Drawing.Point(468, 233);
+            this.AddItemToTable_Button.Name = "AddItemToTable_Button";
+            this.AddItemToTable_Button.PressedDepth = 5;
+            this.AddItemToTable_Button.ShadowDecoration.Parent = this.AddItemToTable_Button;
+            this.AddItemToTable_Button.Size = new System.Drawing.Size(118, 36);
+            this.AddItemToTable_Button.TabIndex = 42;
+            this.AddItemToTable_Button.Text = "THÊM";
+            this.AddItemToTable_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            // 
             // AddInvoice_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(831, 833);
+            this.ClientSize = new System.Drawing.Size(623, 677);
+            this.Controls.Add(this.AddItemToTable_Button);
+            this.Controls.Add(this.guna2ComboBox1);
             this.Controls.Add(this.lbDate);
             this.Controls.Add(this.lbStaffName);
             this.Controls.Add(this.Print_Button);
@@ -510,7 +533,6 @@
             this.Controls.Add(this.Header);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "AddInvoice_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddInvoice_Form";
@@ -537,10 +559,10 @@
         private Guna.UI2.WinForms.Guna2TextBox Name_Box;
         private System.Windows.Forms.Label lbStaffName;
         private System.Windows.Forms.Label lbDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StaffName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Count;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
+        private Guna.UI2.WinForms.Guna2Button AddItemToTable_Button;
     }
 }
