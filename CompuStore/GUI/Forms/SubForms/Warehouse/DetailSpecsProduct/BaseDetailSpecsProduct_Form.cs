@@ -52,7 +52,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             public BindingList<string> yResolution { get; set; }
             public BindingList<string> xRatioPanel { get; set; }
             public BindingList<string> yRatioPanel { get; set; }
-            public BindingList<string> codeDisplay { get; set; }
         }
         #endregion
 
@@ -61,7 +60,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         protected bool editable = true;
         protected BindingList<ModelProduct.Port> bindingPorts;
         protected ResultDetailSpecsProduct resultChanged;
-        private BindingList<string> bindingCodeDisplay = null;
+        private BindingList<DISPLAY_SPECS> bindingCodeDisplay = null;
         #endregion
 
         #region Translater
@@ -138,13 +137,13 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         #endregion
 
         #region Set Value if View | Edit
-        private void SetDefaultComboBox(ComboBox control, string value)
+        private void SetDefaultComboBox<T>(ComboBox control, T value) where T : class
         {
             if (control != null)
             {
-                if (!string.IsNullOrEmpty(value))
+                if (value != null)
                 {
-                    BindingList<string> binding = control.DataSource as BindingList<string>;
+                    BindingList<T> binding = control.DataSource as BindingList<T>;
                     if (binding != null)
                     {
                         if (!binding.Contains(value))
@@ -152,7 +151,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     }
                     else
                     {
-                        binding = new BindingList<string>();
+                        binding = new BindingList<T>();
                         binding.Add(value);
                         control.DataSource = binding;
                     }
@@ -228,7 +227,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             SetDefaultComboBox(StorageCapacity_ComboBox, product?.StorageCapacity.ToString());
             SetDefaultComboBox(WifiStandard_ComboBox, product?.Wifi);
             SetDefaultComboBox(BluetoothStandard_ComboBox, product?.Bluetooth);
-            SetDefaultComboBox(CodeDisplay_ComboBox, product?.IdPanel);
+            SetDefaultComboBox(CodeDisplay_ComboBox, bindingCodeDisplay.FirstOrDefault(item => item.CODE_DISPLAY == product?.IdPanel));
         }
         #endregion
 
@@ -265,8 +264,19 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             Y_Pixel_ComboBox.DataSource = binding.yResolution;
             X_Ratio_ComboBox.DataSource = binding.xRatioPanel;
             Y_Ratio_ComboBox.DataSource = binding.yRatioPanel;
-            CodeDisplay_ComboBox.DataSource = binding.codeDisplay;
-            this.ResumeLayout(true);
+            AssignBinding(CodeDisplay_ComboBox, bindingCodeDisplay);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+        }
+
+        private void AssignBinding(ComboBox control, BindingList<DISPLAY_SPECS> codeDisplay)
+        {
+            control.DataSource = codeDisplay;
+            if (codeDisplay != null)
+            {
+                control.ValueMember = "ID";
+                control.DisplayMember = "CODE_DISPLAY";
+            }
         }
 
         private Task LoadingData()
@@ -297,8 +307,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     refreshRate = new BindingList<string>(GetDistinctValue(displaySpecsQueryable, item => item.REFRESH_RATE.ToString())),
                     sizePanel = new BindingList<string>(GetDistinctValue(displaySpecsQueryable, item => item.SIZE.ToString())),
                     typePanel = new BindingList<string>(GetDistinctValue(displaySpecsQueryable, item => item.PANEL)),
-                    typeScreen = new BindingList<string>(GetDistinctValue(displaySpecsQueryable, item => item.SCREEN_TYPE)),
-                    codeDisplay = new BindingList<string>(GetDistinctValue(displaySpecsQueryable, item => item.CODE_DISPLAY))
+                    typeScreen = new BindingList<string>(GetDistinctValue(displaySpecsQueryable, item => item.SCREEN_TYPE))
                 };
                 List<string> ram = GetDistinctValue(uniqueSpecsQueryable, item => item.RAM);
                 List<string> resolution = GetDistinctValue(displaySpecsQueryable, item => item.RESOLUTION);
@@ -323,12 +332,11 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 binding.yRatioPanel = new BindingList<string>(ratioPanel.Select(item => item.Split(':')[1]).Distinct().ToList());
 
                 //auto or manual code display
-                bindingCodeDisplay = binding.codeDisplay;
+                bindingCodeDisplay = new BindingList<DISPLAY_SPECS>(displaySpecsQueryable.ToList());
 
                 //optional
                 binding.gpu.Insert(0, string.Empty);
                 binding.webcam.Insert(0, string.Empty);
-                binding.codeDisplay.Insert(0, string.Empty);
                 binding.bluetooth.Insert(0, string.Empty);
                 binding.wifi.Insert(0, string.Empty);
 
@@ -402,6 +410,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             bindingPorts = new BindingList<ModelProduct.Port>();
             Ports_DataGridView.DataSource = bindingPorts;
             Edit_Button.Visible = this.editable;
+            HasCodeDisplay_CheckBox.Checked = false;
             await LoadingData();
             SetDefaultData();
             SetEditable(this.editable);
@@ -417,33 +426,36 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         {
             ComboBox control = sender as ComboBox;
             BindingList<string> binding = control?.DataSource as BindingList<string>;
-
-            if (control != null && binding != null)
+            if (control != null)
             {
-                int index = binding.IndexOf(value);
-                if (index == -1)
+                if (control.Equals(CodeDisplay_ComboBox))
                 {
-                    switch (MessageBox.Show("Giá trị chưa tồn tại trên CSDL. Bạn có muốn tạo mới?", "Thông tin chưa tồn tại.", MessageBoxButtons.YesNoCancel))
+                    if (HasCodeDisplay_CheckBox.Checked && MessageBox.Show("Vui lòng chọn đã có mã màn hình", "Tạo mới mã màn hình", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        HasCodeDisplay_CheckBox.Checked = true;
+                }
+                else if (binding != null)
+                {
+                    int index = binding.IndexOf(value);
+                    if (index == -1)
                     {
-                        case DialogResult.Yes:
-                            binding.Add(value);
-                            control.SelectedIndex = binding.IndexOf(value);
-                            break;
-                        case DialogResult.No:
-                            control.Text = string.Empty;
-                            break;
-                        case DialogResult.Cancel:
-                            break;
+                        switch (MessageBox.Show("Giá trị chưa tồn tại trên CSDL. Bạn có muốn tạo mới?", "Thông tin chưa tồn tại.", MessageBoxButtons.YesNoCancel))
+                        {
+                            case DialogResult.Yes:
+                                binding.Add(value);
+                                control.SelectedIndex = binding.IndexOf(value);
+                                break;
+                            case DialogResult.No:
+                                control.Text = string.Empty;
+                                break;
+                            case DialogResult.Cancel:
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        control.SelectedIndex = index;
                     }
                 }
-                else
-                {
-                    control.SelectedIndex = index;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Lỗi");
             }
         }
 
@@ -452,7 +464,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             CheckBox control = sender as CheckBox;
             if (control.Checked)
             {
-                CodeDisplay_ComboBox.DataSource = null;
+                AssignBinding(CodeDisplay_ComboBox, null);
                 CodeDisplay_ComboBox.DropDownStyle = ComboBoxStyle.Simple;
                 CodeDisplay_ComboBox.AutoCompleteMode = AutoCompleteMode.None;
                 CodeDisplay_ComboBox.AutoCompleteSource = AutoCompleteSource.None;
@@ -461,12 +473,55 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
             else
             {
-                CodeDisplay_ComboBox.DataSource = bindingCodeDisplay;
+                AssignBinding(CodeDisplay_ComboBox, bindingCodeDisplay);
                 CodeDisplay_ComboBox.DropDownStyle = ComboBoxStyle.DropDown;
                 CodeDisplay_ComboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
                 CodeDisplay_ComboBox.AutoCompleteMode = AutoCompleteMode.Suggest;
                 CodeDisplay_ComboBox.Leave += ValidationComboBox;
                 CodeDisplay_ComboBox.InsertKeyPressed += AddNewItemToComboBox;
+            }
+        }
+
+        private void CodeDisplay_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox control = sender as ComboBox;
+            if (control != null && control.DataSource is BindingList<DISPLAY_SPECS>)
+            {
+                DISPLAY_SPECS selected = control.SelectedItem as DISPLAY_SPECS;
+                if (selected != null)
+                {
+                    Brightness_TextBox.Text = selected.BRIGHTNESS.Value.ToString();
+                    TouchScreen_CheckBox.Checked = selected.IS_TOUCH_PANEL ?? false;
+                    if (!string.IsNullOrEmpty(selected.COLOR_SPACE))
+                    {
+                        ModelProduct model = new ModelProduct { SpaceColorString = selected.COLOR_SPACE };
+                        if (model.SpaceColor.TryGetValue(ModelProduct.ENUM_SPACE_COLOR.sRGB, out double sRGB))
+                        {
+                            ColorSpace_sRGB_TextBox.Text = sRGB.ToString();
+                            ColorSpace_sRGB_TextBox.Enabled = true;
+                        }
+                        if (model.SpaceColor.TryGetValue(ModelProduct.ENUM_SPACE_COLOR.DCI_P3, out double dcip3))
+                        {
+                            ColorSpace_DCIP3_TextBox.Text = dcip3.ToString();
+                            ColorSpace_DCIP3_TextBox.Enabled = true;
+                        }
+                        if (model.SpaceColor.TryGetValue(ModelProduct.ENUM_SPACE_COLOR.AdobeRGBProfile, out double adobe))
+                        {
+                            ColorSpace_AdobeRGB_TextBox.Text = adobe.ToString();
+                            ColorSpace_AdobeRGB_TextBox.Enabled = true;
+                        }
+                    }
+                    string[] pixels = selected.RESOLUTION.Split('x');
+                    string[] ratioPanel = selected.RATIO.Split(':');
+                    SetDefaultComboBox(X_Pixel_ComboBox, pixels[0].ToString());
+                    SetDefaultComboBox(Y_Pixel_ComboBox, pixels[1].ToString());
+                    SetDefaultComboBox(TypePanel_ComboBox, selected.PANEL);
+                    SetDefaultComboBox(RefreshRate_ComboBox, selected.REFRESH_RATE.Value.ToString());
+                    SetDefaultComboBox(SizePanel_ComboBox, selected.SIZE.Value.ToString());
+                    SetDefaultComboBox(X_Ratio_ComboBox, ratioPanel[0].ToString());
+                    SetDefaultComboBox(Y_Ratio_ComboBox, ratioPanel[1].ToString());
+                    SetDefaultComboBox(TypeScreen_ComboBox, selected.SCREEN_TYPE);
+                }
             }
         }
         #endregion
@@ -475,12 +530,35 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         private void ValidationComboBox(object sender, EventArgs e)
         {
             ComboBox control = sender as ComboBox;
-            BindingList<string> binding = control?.DataSource as BindingList<string>;
             string currentText = control?.Text;
-            if (control?.Equals(CodeDisplay_ComboBox) == true && HasCodeDisplay_CheckBox.Checked) return;
-            if (control == null || binding == null || currentText == null || binding.FirstOrDefault(item => item.Equals(currentText)) == null)
+            bool passed = true;
+            if (control != null)
             {
-                control.Focus();
+                if (control.Equals(CodeDisplay_ComboBox))
+                {
+                    if (HasCodeDisplay_CheckBox.Checked)
+                        return;
+                    else
+                    {
+                        BindingList<DISPLAY_SPECS> binding = control?.DataSource as BindingList<DISPLAY_SPECS>;
+                        if (binding == null || currentText == null || binding.FirstOrDefault(item => item.CODE_DISPLAY == currentText) == null)
+                        {
+                            passed = false;
+                        }
+                    }
+                }
+                else
+                {
+                    BindingList<string> binding = control?.DataSource as BindingList<string>;
+                    if (binding == null || currentText == null || binding.FirstOrDefault(item => item.Equals(currentText)) == null)
+                    {
+                        passed = false;
+                    }
+                }
+            }
+            if (!passed)
+            {
+                control?.Focus();
                 MessageBox.Show("Thông tin chưa hợp lệ! Vui lòng nhập lại.", "Lỗi nhập");
             }
         }

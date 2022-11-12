@@ -61,7 +61,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.Screen_GroupBox = new Guna.UI2.WinForms.Guna2GroupBox();
             this.TouchScreen_CheckBox = new System.Windows.Forms.CheckBox();
-            this.CodeDisplay_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.ColorSpace_DCIP3_TextBox = new System.Windows.Forms.TextBox();
             this.ColorSpace_AdobeRGB_TextBox = new System.Windows.Forms.TextBox();
             this.ColorSpace_sRGB_TextBox = new System.Windows.Forms.TextBox();
@@ -71,38 +70,26 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.label22 = new System.Windows.Forms.Label();
             this.ColorSpace_sRGB_Label = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
-            this.TypeScreen_ComboBox = new CompuStore.Control.ComboBoxCustom();
-            this.Y_Ratio_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.label36 = new System.Windows.Forms.Label();
-            this.X_Ratio_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.label37 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
-            this.SizePanel_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.label40 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
             this.Brightness_TextBox = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
-            this.RefreshRate_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.label44 = new System.Windows.Forms.Label();
-            this.TypePanel_ComboBox = new CompuStore.Control.ComboBoxCustom();
-            this.Y_Pixel_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.label45 = new System.Windows.Forms.Label();
-            this.X_Pixel_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.label46 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
-            this.StorageCapacity_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.label53 = new System.Windows.Forms.Label();
-            this.TypeStorage_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.guna2GroupBox2 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.BluetoothStandard_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.label25 = new System.Windows.Forms.Label();
-            this.WifiStandard_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.guna2GroupBox3 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.ColorPicker_Button = new Guna.UI2.WinForms.Guna2Button();
             this.NameColor_TextBox = new System.Windows.Forms.TextBox();
@@ -120,19 +107,32 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.BatteryCapacity_TextBox = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.SpecsPanel = new System.Windows.Forms.Panel();
+            this.MainFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.CodeDisplay_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.TypeScreen_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.Y_Ratio_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.X_Ratio_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.SizePanel_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.RefreshRate_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.TypePanel_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.Y_Pixel_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.X_Pixel_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.Lineup_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.Manufacturer_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.Country_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.BluetoothStandard_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.WifiStandard_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.CPU_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.Capacity_RAM_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.TypeRAM_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.BusRAM_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.StorageCapacity_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.TypeStorage_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.iGPU_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.OS_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.GPU_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.Webcam_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.Material_ComboBox = new CompuStore.Control.ComboBoxCustom();
-            this.MainFlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.Screen_GroupBox.SuspendLayout();
             this.guna2GroupBox1.SuspendLayout();
             this.guna2GroupBox2.SuspendLayout();
@@ -454,17 +454,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.TouchScreen_CheckBox.Text = "Cảm ứng";
             this.TouchScreen_CheckBox.UseVisualStyleBackColor = true;
             // 
-            // CodeDisplay_ComboBox
-            // 
-            this.CodeDisplay_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.CodeDisplay_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.CodeDisplay_ComboBox.ForeColor = System.Drawing.Color.Black;
-            this.CodeDisplay_ComboBox.FormattingEnabled = true;
-            this.CodeDisplay_ComboBox.Location = new System.Drawing.Point(249, 76);
-            this.CodeDisplay_ComboBox.Name = "CodeDisplay_ComboBox";
-            this.CodeDisplay_ComboBox.Size = new System.Drawing.Size(384, 40);
-            this.CodeDisplay_ComboBox.TabIndex = 130;
-            // 
             // ColorSpace_DCIP3_TextBox
             // 
             this.ColorSpace_DCIP3_TextBox.Enabled = false;
@@ -564,36 +553,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.label34.TabIndex = 109;
             this.label34.Text = "Loại màn hình";
             // 
-            // TypeScreen_ComboBox
-            // 
-            this.TypeScreen_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.TypeScreen_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.TypeScreen_ComboBox.Enabled = false;
-            this.TypeScreen_ComboBox.ForeColor = System.Drawing.Color.Black;
-            this.TypeScreen_ComboBox.FormattingEnabled = true;
-            this.TypeScreen_ComboBox.Location = new System.Drawing.Point(251, 216);
-            this.TypeScreen_ComboBox.Margin = new System.Windows.Forms.Padding(5);
-            this.TypeScreen_ComboBox.Name = "TypeScreen_ComboBox";
-            this.TypeScreen_ComboBox.Size = new System.Drawing.Size(231, 40);
-            this.TypeScreen_ComboBox.TabIndex = 108;
-            this.TypeScreen_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
-            this.TypeScreen_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
-            // 
-            // Y_Ratio_ComboBox
-            // 
-            this.Y_Ratio_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.Y_Ratio_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.Y_Ratio_ComboBox.Enabled = false;
-            this.Y_Ratio_ComboBox.ForeColor = System.Drawing.Color.Black;
-            this.Y_Ratio_ComboBox.FormattingEnabled = true;
-            this.Y_Ratio_ComboBox.Location = new System.Drawing.Point(430, 142);
-            this.Y_Ratio_ComboBox.Margin = new System.Windows.Forms.Padding(5);
-            this.Y_Ratio_ComboBox.Name = "Y_Ratio_ComboBox";
-            this.Y_Ratio_ComboBox.Size = new System.Drawing.Size(135, 40);
-            this.Y_Ratio_ComboBox.TabIndex = 106;
-            this.Y_Ratio_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
-            this.Y_Ratio_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
-            // 
             // label36
             // 
             this.label36.AutoSize = true;
@@ -604,21 +563,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.label36.Size = new System.Drawing.Size(168, 32);
             this.label36.TabIndex = 104;
             this.label36.Text = "Tỉ lệ màn hình";
-            // 
-            // X_Ratio_ComboBox
-            // 
-            this.X_Ratio_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.X_Ratio_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.X_Ratio_ComboBox.Enabled = false;
-            this.X_Ratio_ComboBox.ForeColor = System.Drawing.Color.Black;
-            this.X_Ratio_ComboBox.FormattingEnabled = true;
-            this.X_Ratio_ComboBox.Location = new System.Drawing.Point(251, 142);
-            this.X_Ratio_ComboBox.Margin = new System.Windows.Forms.Padding(5);
-            this.X_Ratio_ComboBox.Name = "X_Ratio_ComboBox";
-            this.X_Ratio_ComboBox.Size = new System.Drawing.Size(135, 40);
-            this.X_Ratio_ComboBox.TabIndex = 103;
-            this.X_Ratio_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
-            this.X_Ratio_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
             // label37
             // 
@@ -652,21 +596,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.label39.Size = new System.Drawing.Size(127, 32);
             this.label39.TabIndex = 101;
             this.label39.Text = "Kích thước";
-            // 
-            // SizePanel_ComboBox
-            // 
-            this.SizePanel_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.SizePanel_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.SizePanel_ComboBox.Enabled = false;
-            this.SizePanel_ComboBox.ForeColor = System.Drawing.Color.Black;
-            this.SizePanel_ComboBox.FormattingEnabled = true;
-            this.SizePanel_ComboBox.Location = new System.Drawing.Point(894, 218);
-            this.SizePanel_ComboBox.Margin = new System.Windows.Forms.Padding(5);
-            this.SizePanel_ComboBox.Name = "SizePanel_ComboBox";
-            this.SizePanel_ComboBox.Size = new System.Drawing.Size(135, 40);
-            this.SizePanel_ComboBox.TabIndex = 100;
-            this.SizePanel_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
-            this.SizePanel_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
             // label40
             // 
@@ -722,21 +651,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.label43.TabIndex = 98;
             this.label43.Text = "Tần số quét";
             // 
-            // RefreshRate_ComboBox
-            // 
-            this.RefreshRate_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.RefreshRate_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.RefreshRate_ComboBox.Enabled = false;
-            this.RefreshRate_ComboBox.ForeColor = System.Drawing.Color.Black;
-            this.RefreshRate_ComboBox.FormattingEnabled = true;
-            this.RefreshRate_ComboBox.Location = new System.Drawing.Point(894, 289);
-            this.RefreshRate_ComboBox.Margin = new System.Windows.Forms.Padding(5);
-            this.RefreshRate_ComboBox.Name = "RefreshRate_ComboBox";
-            this.RefreshRate_ComboBox.Size = new System.Drawing.Size(135, 40);
-            this.RefreshRate_ComboBox.TabIndex = 97;
-            this.RefreshRate_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
-            this.RefreshRate_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
-            // 
             // label44
             // 
             this.label44.AutoSize = true;
@@ -748,36 +662,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.label44.TabIndex = 96;
             this.label44.Text = "Tấm nền";
             // 
-            // TypePanel_ComboBox
-            // 
-            this.TypePanel_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.TypePanel_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.TypePanel_ComboBox.Enabled = false;
-            this.TypePanel_ComboBox.ForeColor = System.Drawing.Color.Black;
-            this.TypePanel_ComboBox.FormattingEnabled = true;
-            this.TypePanel_ComboBox.Location = new System.Drawing.Point(894, 73);
-            this.TypePanel_ComboBox.Margin = new System.Windows.Forms.Padding(5);
-            this.TypePanel_ComboBox.Name = "TypePanel_ComboBox";
-            this.TypePanel_ComboBox.Size = new System.Drawing.Size(203, 40);
-            this.TypePanel_ComboBox.TabIndex = 95;
-            this.TypePanel_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
-            this.TypePanel_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
-            // 
-            // Y_Pixel_ComboBox
-            // 
-            this.Y_Pixel_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.Y_Pixel_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.Y_Pixel_ComboBox.Enabled = false;
-            this.Y_Pixel_ComboBox.ForeColor = System.Drawing.Color.Black;
-            this.Y_Pixel_ComboBox.FormattingEnabled = true;
-            this.Y_Pixel_ComboBox.Location = new System.Drawing.Point(427, 292);
-            this.Y_Pixel_ComboBox.Margin = new System.Windows.Forms.Padding(5);
-            this.Y_Pixel_ComboBox.Name = "Y_Pixel_ComboBox";
-            this.Y_Pixel_ComboBox.Size = new System.Drawing.Size(135, 40);
-            this.Y_Pixel_ComboBox.TabIndex = 94;
-            this.Y_Pixel_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
-            this.Y_Pixel_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
-            // 
             // label45
             // 
             this.label45.AutoSize = true;
@@ -788,21 +672,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.label45.Size = new System.Drawing.Size(151, 32);
             this.label45.TabIndex = 89;
             this.label45.Text = "Độ phân giải";
-            // 
-            // X_Pixel_ComboBox
-            // 
-            this.X_Pixel_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.X_Pixel_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.X_Pixel_ComboBox.Enabled = false;
-            this.X_Pixel_ComboBox.ForeColor = System.Drawing.Color.Black;
-            this.X_Pixel_ComboBox.FormattingEnabled = true;
-            this.X_Pixel_ComboBox.Location = new System.Drawing.Point(251, 292);
-            this.X_Pixel_ComboBox.Margin = new System.Windows.Forms.Padding(5);
-            this.X_Pixel_ComboBox.Name = "X_Pixel_ComboBox";
-            this.X_Pixel_ComboBox.Size = new System.Drawing.Size(135, 40);
-            this.X_Pixel_ComboBox.TabIndex = 87;
-            this.X_Pixel_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
-            this.X_Pixel_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
             // label46
             // 
@@ -868,21 +737,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.label30.TabIndex = 104;
             this.label30.Text = "Dung lượng";
             // 
-            // StorageCapacity_ComboBox
-            // 
-            this.StorageCapacity_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.StorageCapacity_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.StorageCapacity_ComboBox.Enabled = false;
-            this.StorageCapacity_ComboBox.ForeColor = System.Drawing.Color.Black;
-            this.StorageCapacity_ComboBox.FormattingEnabled = true;
-            this.StorageCapacity_ComboBox.Location = new System.Drawing.Point(177, 143);
-            this.StorageCapacity_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.StorageCapacity_ComboBox.Name = "StorageCapacity_ComboBox";
-            this.StorageCapacity_ComboBox.Size = new System.Drawing.Size(150, 40);
-            this.StorageCapacity_ComboBox.TabIndex = 103;
-            this.StorageCapacity_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
-            this.StorageCapacity_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
-            // 
             // label53
             // 
             this.label53.AutoSize = true;
@@ -893,21 +747,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.label53.Size = new System.Drawing.Size(138, 32);
             this.label53.TabIndex = 89;
             this.label53.Text = "Loại ổ cứng";
-            // 
-            // TypeStorage_ComboBox
-            // 
-            this.TypeStorage_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.TypeStorage_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.TypeStorage_ComboBox.Enabled = false;
-            this.TypeStorage_ComboBox.ForeColor = System.Drawing.Color.Black;
-            this.TypeStorage_ComboBox.FormattingEnabled = true;
-            this.TypeStorage_ComboBox.Location = new System.Drawing.Point(177, 73);
-            this.TypeStorage_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.TypeStorage_ComboBox.Name = "TypeStorage_ComboBox";
-            this.TypeStorage_ComboBox.Size = new System.Drawing.Size(202, 40);
-            this.TypeStorage_ComboBox.TabIndex = 87;
-            this.TypeStorage_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
-            this.TypeStorage_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
             // guna2GroupBox2
             // 
@@ -940,21 +779,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.label24.TabIndex = 104;
             this.label24.Text = "Bluetooth";
             // 
-            // BluetoothStandard_ComboBox
-            // 
-            this.BluetoothStandard_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.BluetoothStandard_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.BluetoothStandard_ComboBox.Enabled = false;
-            this.BluetoothStandard_ComboBox.ForeColor = System.Drawing.Color.Black;
-            this.BluetoothStandard_ComboBox.FormattingEnabled = true;
-            this.BluetoothStandard_ComboBox.Location = new System.Drawing.Point(164, 143);
-            this.BluetoothStandard_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.BluetoothStandard_ComboBox.Name = "BluetoothStandard_ComboBox";
-            this.BluetoothStandard_ComboBox.Size = new System.Drawing.Size(144, 40);
-            this.BluetoothStandard_ComboBox.TabIndex = 103;
-            this.BluetoothStandard_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
-            this.BluetoothStandard_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
-            // 
             // label25
             // 
             this.label25.AutoSize = true;
@@ -965,21 +789,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.label25.Size = new System.Drawing.Size(56, 32);
             this.label25.TabIndex = 89;
             this.label25.Text = "Wifi";
-            // 
-            // WifiStandard_ComboBox
-            // 
-            this.WifiStandard_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.WifiStandard_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.WifiStandard_ComboBox.Enabled = false;
-            this.WifiStandard_ComboBox.ForeColor = System.Drawing.Color.Black;
-            this.WifiStandard_ComboBox.FormattingEnabled = true;
-            this.WifiStandard_ComboBox.Location = new System.Drawing.Point(164, 73);
-            this.WifiStandard_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.WifiStandard_ComboBox.Name = "WifiStandard_ComboBox";
-            this.WifiStandard_ComboBox.Size = new System.Drawing.Size(144, 40);
-            this.WifiStandard_ComboBox.TabIndex = 87;
-            this.WifiStandard_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
-            this.WifiStandard_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
             // guna2GroupBox3
             // 
@@ -1299,6 +1108,148 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.SpecsPanel.Size = new System.Drawing.Size(1935, 1021);
             this.SpecsPanel.TabIndex = 133;
             // 
+            // MainFlowLayoutPanel
+            // 
+            this.MainFlowLayoutPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.MainFlowLayoutPanel.Controls.Add(this.SpecsPanel);
+            this.MainFlowLayoutPanel.Location = new System.Drawing.Point(1, 199);
+            this.MainFlowLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.MainFlowLayoutPanel.Name = "MainFlowLayoutPanel";
+            this.MainFlowLayoutPanel.Size = new System.Drawing.Size(1991, 1326);
+            this.MainFlowLayoutPanel.TabIndex = 134;
+            // 
+            // CodeDisplay_ComboBox
+            // 
+            this.CodeDisplay_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.CodeDisplay_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CodeDisplay_ComboBox.ForeColor = System.Drawing.Color.Black;
+            this.CodeDisplay_ComboBox.FormattingEnabled = true;
+            this.CodeDisplay_ComboBox.Location = new System.Drawing.Point(249, 76);
+            this.CodeDisplay_ComboBox.Name = "CodeDisplay_ComboBox";
+            this.CodeDisplay_ComboBox.Size = new System.Drawing.Size(384, 40);
+            this.CodeDisplay_ComboBox.TabIndex = 130;
+            this.CodeDisplay_ComboBox.SelectedIndexChanged += new System.EventHandler(this.CodeDisplay_ComboBox_SelectedIndexChanged);
+            // 
+            // TypeScreen_ComboBox
+            // 
+            this.TypeScreen_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.TypeScreen_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.TypeScreen_ComboBox.Enabled = false;
+            this.TypeScreen_ComboBox.ForeColor = System.Drawing.Color.Black;
+            this.TypeScreen_ComboBox.FormattingEnabled = true;
+            this.TypeScreen_ComboBox.Location = new System.Drawing.Point(251, 216);
+            this.TypeScreen_ComboBox.Margin = new System.Windows.Forms.Padding(5);
+            this.TypeScreen_ComboBox.Name = "TypeScreen_ComboBox";
+            this.TypeScreen_ComboBox.Size = new System.Drawing.Size(231, 40);
+            this.TypeScreen_ComboBox.TabIndex = 108;
+            this.TypeScreen_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
+            this.TypeScreen_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
+            // 
+            // Y_Ratio_ComboBox
+            // 
+            this.Y_Ratio_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.Y_Ratio_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.Y_Ratio_ComboBox.Enabled = false;
+            this.Y_Ratio_ComboBox.ForeColor = System.Drawing.Color.Black;
+            this.Y_Ratio_ComboBox.FormattingEnabled = true;
+            this.Y_Ratio_ComboBox.Location = new System.Drawing.Point(430, 142);
+            this.Y_Ratio_ComboBox.Margin = new System.Windows.Forms.Padding(5);
+            this.Y_Ratio_ComboBox.Name = "Y_Ratio_ComboBox";
+            this.Y_Ratio_ComboBox.Size = new System.Drawing.Size(135, 40);
+            this.Y_Ratio_ComboBox.TabIndex = 106;
+            this.Y_Ratio_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
+            this.Y_Ratio_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
+            // 
+            // X_Ratio_ComboBox
+            // 
+            this.X_Ratio_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.X_Ratio_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.X_Ratio_ComboBox.Enabled = false;
+            this.X_Ratio_ComboBox.ForeColor = System.Drawing.Color.Black;
+            this.X_Ratio_ComboBox.FormattingEnabled = true;
+            this.X_Ratio_ComboBox.Location = new System.Drawing.Point(251, 142);
+            this.X_Ratio_ComboBox.Margin = new System.Windows.Forms.Padding(5);
+            this.X_Ratio_ComboBox.Name = "X_Ratio_ComboBox";
+            this.X_Ratio_ComboBox.Size = new System.Drawing.Size(135, 40);
+            this.X_Ratio_ComboBox.TabIndex = 103;
+            this.X_Ratio_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
+            this.X_Ratio_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
+            // 
+            // SizePanel_ComboBox
+            // 
+            this.SizePanel_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.SizePanel_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.SizePanel_ComboBox.Enabled = false;
+            this.SizePanel_ComboBox.ForeColor = System.Drawing.Color.Black;
+            this.SizePanel_ComboBox.FormattingEnabled = true;
+            this.SizePanel_ComboBox.Location = new System.Drawing.Point(894, 218);
+            this.SizePanel_ComboBox.Margin = new System.Windows.Forms.Padding(5);
+            this.SizePanel_ComboBox.Name = "SizePanel_ComboBox";
+            this.SizePanel_ComboBox.Size = new System.Drawing.Size(135, 40);
+            this.SizePanel_ComboBox.TabIndex = 100;
+            this.SizePanel_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
+            this.SizePanel_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
+            // 
+            // RefreshRate_ComboBox
+            // 
+            this.RefreshRate_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.RefreshRate_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.RefreshRate_ComboBox.Enabled = false;
+            this.RefreshRate_ComboBox.ForeColor = System.Drawing.Color.Black;
+            this.RefreshRate_ComboBox.FormattingEnabled = true;
+            this.RefreshRate_ComboBox.Location = new System.Drawing.Point(894, 289);
+            this.RefreshRate_ComboBox.Margin = new System.Windows.Forms.Padding(5);
+            this.RefreshRate_ComboBox.Name = "RefreshRate_ComboBox";
+            this.RefreshRate_ComboBox.Size = new System.Drawing.Size(135, 40);
+            this.RefreshRate_ComboBox.TabIndex = 97;
+            this.RefreshRate_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
+            this.RefreshRate_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
+            // 
+            // TypePanel_ComboBox
+            // 
+            this.TypePanel_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.TypePanel_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.TypePanel_ComboBox.Enabled = false;
+            this.TypePanel_ComboBox.ForeColor = System.Drawing.Color.Black;
+            this.TypePanel_ComboBox.FormattingEnabled = true;
+            this.TypePanel_ComboBox.Location = new System.Drawing.Point(894, 73);
+            this.TypePanel_ComboBox.Margin = new System.Windows.Forms.Padding(5);
+            this.TypePanel_ComboBox.Name = "TypePanel_ComboBox";
+            this.TypePanel_ComboBox.Size = new System.Drawing.Size(203, 40);
+            this.TypePanel_ComboBox.TabIndex = 95;
+            this.TypePanel_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
+            this.TypePanel_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
+            // 
+            // Y_Pixel_ComboBox
+            // 
+            this.Y_Pixel_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.Y_Pixel_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.Y_Pixel_ComboBox.Enabled = false;
+            this.Y_Pixel_ComboBox.ForeColor = System.Drawing.Color.Black;
+            this.Y_Pixel_ComboBox.FormattingEnabled = true;
+            this.Y_Pixel_ComboBox.Location = new System.Drawing.Point(427, 292);
+            this.Y_Pixel_ComboBox.Margin = new System.Windows.Forms.Padding(5);
+            this.Y_Pixel_ComboBox.Name = "Y_Pixel_ComboBox";
+            this.Y_Pixel_ComboBox.Size = new System.Drawing.Size(135, 40);
+            this.Y_Pixel_ComboBox.TabIndex = 94;
+            this.Y_Pixel_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
+            this.Y_Pixel_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
+            // 
+            // X_Pixel_ComboBox
+            // 
+            this.X_Pixel_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.X_Pixel_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.X_Pixel_ComboBox.Enabled = false;
+            this.X_Pixel_ComboBox.ForeColor = System.Drawing.Color.Black;
+            this.X_Pixel_ComboBox.FormattingEnabled = true;
+            this.X_Pixel_ComboBox.Location = new System.Drawing.Point(251, 292);
+            this.X_Pixel_ComboBox.Margin = new System.Windows.Forms.Padding(5);
+            this.X_Pixel_ComboBox.Name = "X_Pixel_ComboBox";
+            this.X_Pixel_ComboBox.Size = new System.Drawing.Size(135, 40);
+            this.X_Pixel_ComboBox.TabIndex = 87;
+            this.X_Pixel_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
+            this.X_Pixel_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
+            // 
             // Lineup_ComboBox
             // 
             this.Lineup_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
@@ -1340,6 +1291,36 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Country_ComboBox.TabIndex = 31;
             this.Country_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.Country_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
+            // 
+            // BluetoothStandard_ComboBox
+            // 
+            this.BluetoothStandard_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.BluetoothStandard_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.BluetoothStandard_ComboBox.Enabled = false;
+            this.BluetoothStandard_ComboBox.ForeColor = System.Drawing.Color.Black;
+            this.BluetoothStandard_ComboBox.FormattingEnabled = true;
+            this.BluetoothStandard_ComboBox.Location = new System.Drawing.Point(164, 143);
+            this.BluetoothStandard_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BluetoothStandard_ComboBox.Name = "BluetoothStandard_ComboBox";
+            this.BluetoothStandard_ComboBox.Size = new System.Drawing.Size(144, 40);
+            this.BluetoothStandard_ComboBox.TabIndex = 103;
+            this.BluetoothStandard_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
+            this.BluetoothStandard_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
+            // 
+            // WifiStandard_ComboBox
+            // 
+            this.WifiStandard_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.WifiStandard_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.WifiStandard_ComboBox.Enabled = false;
+            this.WifiStandard_ComboBox.ForeColor = System.Drawing.Color.Black;
+            this.WifiStandard_ComboBox.FormattingEnabled = true;
+            this.WifiStandard_ComboBox.Location = new System.Drawing.Point(164, 73);
+            this.WifiStandard_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.WifiStandard_ComboBox.Name = "WifiStandard_ComboBox";
+            this.WifiStandard_ComboBox.Size = new System.Drawing.Size(144, 40);
+            this.WifiStandard_ComboBox.TabIndex = 87;
+            this.WifiStandard_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
+            this.WifiStandard_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
             // CPU_ComboBox
             // 
@@ -1396,6 +1377,36 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.BusRAM_ComboBox.TabIndex = 37;
             this.BusRAM_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.BusRAM_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
+            // 
+            // StorageCapacity_ComboBox
+            // 
+            this.StorageCapacity_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.StorageCapacity_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.StorageCapacity_ComboBox.Enabled = false;
+            this.StorageCapacity_ComboBox.ForeColor = System.Drawing.Color.Black;
+            this.StorageCapacity_ComboBox.FormattingEnabled = true;
+            this.StorageCapacity_ComboBox.Location = new System.Drawing.Point(177, 143);
+            this.StorageCapacity_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.StorageCapacity_ComboBox.Name = "StorageCapacity_ComboBox";
+            this.StorageCapacity_ComboBox.Size = new System.Drawing.Size(150, 40);
+            this.StorageCapacity_ComboBox.TabIndex = 103;
+            this.StorageCapacity_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
+            this.StorageCapacity_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
+            // 
+            // TypeStorage_ComboBox
+            // 
+            this.TypeStorage_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.TypeStorage_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.TypeStorage_ComboBox.Enabled = false;
+            this.TypeStorage_ComboBox.ForeColor = System.Drawing.Color.Black;
+            this.TypeStorage_ComboBox.FormattingEnabled = true;
+            this.TypeStorage_ComboBox.Location = new System.Drawing.Point(177, 73);
+            this.TypeStorage_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TypeStorage_ComboBox.Name = "TypeStorage_ComboBox";
+            this.TypeStorage_ComboBox.Size = new System.Drawing.Size(202, 40);
+            this.TypeStorage_ComboBox.TabIndex = 87;
+            this.TypeStorage_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
+            this.TypeStorage_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
             // iGPU_ComboBox
             // 
@@ -1466,16 +1477,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Material_ComboBox.TabIndex = 53;
             this.Material_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.Material_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
-            // 
-            // MainFlowLayoutPanel
-            // 
-            this.MainFlowLayoutPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.MainFlowLayoutPanel.Controls.Add(this.SpecsPanel);
-            this.MainFlowLayoutPanel.Location = new System.Drawing.Point(1, 199);
-            this.MainFlowLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.MainFlowLayoutPanel.Name = "MainFlowLayoutPanel";
-            this.MainFlowLayoutPanel.Size = new System.Drawing.Size(1991, 1326);
-            this.MainFlowLayoutPanel.TabIndex = 134;
             // 
             // BaseDetailSpecsProduct_Form
             // 
