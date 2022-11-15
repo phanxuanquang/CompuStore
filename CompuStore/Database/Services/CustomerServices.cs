@@ -14,6 +14,11 @@ namespace CompuStore.Database.Services
 
         private CustomerServices() { }
 
+        public List<CUSTOMER> GetCUSTOMERs()
+        {
+            return Database.DataProvider.Instance.Database.CUSTOMERs.ToList();
+        }
+
         public CUSTOMER GetCustomerByIDCode(string idCode)
         {
             return Database.DataProvider.Instance.Database.CUSTOMERs.Where(customer => customer.INFOR.IDENTITY_CODE == idCode).FirstOrDefault();

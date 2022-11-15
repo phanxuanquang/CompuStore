@@ -63,6 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Database\Services\DetailInvoiceServices.cs" />
     <Compile Include="Database\Services\WarrantyServices.cs" />
     <Compile Include="GUI\Forms\SubForms\AddReturn_Form.cs">
       <SubType>Form</SubType>

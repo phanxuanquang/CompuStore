@@ -43,6 +43,7 @@
             this.Identity_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Save_Button = new Guna.UI2.WinForms.Guna2Button();
             this.WarrantyReason = new Guna.UI2.WinForms.Guna2TextBox();
+            this.AddInfor_Button = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -152,20 +153,18 @@
             this.ItemSerial_Box.HoverState.Parent = this.ItemSerial_Box;
             this.ItemSerial_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.ItemSerial_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.ItemSerial_Box.Location = new System.Drawing.Point(38, 205);
+            this.ItemSerial_Box.Location = new System.Drawing.Point(39, 82);
             this.ItemSerial_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ItemSerial_Box.Name = "ItemSerial_Box";
             this.ItemSerial_Box.PasswordChar = '\0';
             this.ItemSerial_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.ItemSerial_Box.PlaceholderText = "Mã se-ri sản phẩm bảo hành";
-            this.ItemSerial_Box.ReadOnly = true;
             this.ItemSerial_Box.SelectedText = "";
             this.ItemSerial_Box.ShadowDecoration.Parent = this.ItemSerial_Box;
-            this.ItemSerial_Box.Size = new System.Drawing.Size(550, 37);
+            this.ItemSerial_Box.Size = new System.Drawing.Size(407, 37);
             this.ItemSerial_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.ItemSerial_Box.TabIndex = 87;
             this.ItemSerial_Box.TextOffset = new System.Drawing.Point(5, 0);
-            this.ItemSerial_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ItemSerial_Box_KeyPress);
             // 
             // lbDate
             // 
@@ -227,7 +226,7 @@
             this.Email_Box.HoverState.Parent = this.Email_Box;
             this.Email_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Email_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Email_Box.Location = new System.Drawing.Point(38, 164);
+            this.Email_Box.Location = new System.Drawing.Point(39, 205);
             this.Email_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Email_Box.Name = "Email_Box";
             this.Email_Box.PasswordChar = '\0';
@@ -266,7 +265,7 @@
             this.Name_Box.HoverState.Parent = this.Name_Box;
             this.Name_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Name_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Name_Box.Location = new System.Drawing.Point(38, 121);
+            this.Name_Box.Location = new System.Drawing.Point(39, 164);
             this.Name_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name_Box.Name = "Name_Box";
             this.Name_Box.PasswordChar = '\0';
@@ -318,7 +317,7 @@
             this.PhoneNumber_Box.HoverState.Parent = this.PhoneNumber_Box;
             this.PhoneNumber_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.PhoneNumber_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.PhoneNumber_Box.Location = new System.Drawing.Point(356, 121);
+            this.PhoneNumber_Box.Location = new System.Drawing.Point(356, 164);
             this.PhoneNumber_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PhoneNumber_Box.Name = "PhoneNumber_Box";
             this.PhoneNumber_Box.PasswordChar = '\0';
@@ -357,12 +356,13 @@
             this.Identity_Box.HoverState.Parent = this.Identity_Box;
             this.Identity_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Identity_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Identity_Box.Location = new System.Drawing.Point(38, 78);
+            this.Identity_Box.Location = new System.Drawing.Point(38, 123);
             this.Identity_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Identity_Box.Name = "Identity_Box";
             this.Identity_Box.PasswordChar = '\0';
             this.Identity_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Identity_Box.PlaceholderText = "CMND/CCCD của khách hàng";
+            this.Identity_Box.ReadOnly = true;
             this.Identity_Box.SelectedText = "";
             this.Identity_Box.ShadowDecoration.Parent = this.Identity_Box;
             this.Identity_Box.Size = new System.Drawing.Size(550, 37);
@@ -418,13 +418,12 @@
             this.WarrantyReason.HoverState.Parent = this.WarrantyReason;
             this.WarrantyReason.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.WarrantyReason.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.WarrantyReason.Location = new System.Drawing.Point(36, 251);
+            this.WarrantyReason.Location = new System.Drawing.Point(38, 246);
             this.WarrantyReason.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.WarrantyReason.Name = "WarrantyReason";
             this.WarrantyReason.PasswordChar = '\0';
             this.WarrantyReason.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.WarrantyReason.PlaceholderText = "Lý do bảo hành";
-            this.WarrantyReason.ReadOnly = true;
             this.WarrantyReason.SelectedText = "";
             this.WarrantyReason.ShadowDecoration.Parent = this.WarrantyReason;
             this.WarrantyReason.Size = new System.Drawing.Size(550, 37);
@@ -432,11 +431,35 @@
             this.WarrantyReason.TabIndex = 90;
             this.WarrantyReason.TextOffset = new System.Drawing.Point(5, 0);
             // 
+            // AddInfor_Button
+            // 
+            this.AddInfor_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.AddInfor_Button.Animated = true;
+            this.AddInfor_Button.BorderRadius = 3;
+            this.AddInfor_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.AddInfor_Button.CheckedState.Parent = this.AddInfor_Button;
+            this.AddInfor_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AddInfor_Button.CustomImages.Parent = this.AddInfor_Button;
+            this.AddInfor_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.AddInfor_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.AddInfor_Button.ForeColor = System.Drawing.Color.White;
+            this.AddInfor_Button.HoverState.Parent = this.AddInfor_Button;
+            this.AddInfor_Button.Location = new System.Drawing.Point(452, 82);
+            this.AddInfor_Button.Name = "AddInfor_Button";
+            this.AddInfor_Button.PressedDepth = 5;
+            this.AddInfor_Button.ShadowDecoration.Parent = this.AddInfor_Button;
+            this.AddInfor_Button.Size = new System.Drawing.Size(136, 36);
+            this.AddInfor_Button.TabIndex = 91;
+            this.AddInfor_Button.Text = "Thêm thông tin";
+            this.AddInfor_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.AddInfor_Button.Click += new System.EventHandler(this.AddInfor_Button_Click);
+            // 
             // AddWarranty_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 572);
+            this.Controls.Add(this.AddInfor_Button);
             this.Controls.Add(this.WarrantyReason);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.WarrantyDoneDate_Picker);
@@ -479,5 +502,6 @@
         private Guna.UI2.WinForms.Guna2TextBox Identity_Box;
         private Guna.UI2.WinForms.Guna2Button Save_Button;
         private Guna.UI2.WinForms.Guna2TextBox WarrantyReason;
+        private Guna.UI2.WinForms.Guna2Button AddInfor_Button;
     }
 }
