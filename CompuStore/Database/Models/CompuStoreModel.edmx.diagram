@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="CompuStoreDBModel.COMMON_SPECS" Width="1.5" PointX="3.75" PointY="3" />
         <EntityTypeShape EntityType="CompuStoreDBModel.COMMON_USER" Width="1.5" PointX="8.25" PointY="11" />
         <EntityTypeShape EntityType="CompuStoreDBModel.CUSTOMER" Width="1.5" PointX="6" PointY="12.25" />
-        <EntityTypeShape EntityType="CompuStoreDBModel.CHANGE_OR_REFUND_PRODUCT" Width="1.5" PointX="13.5" PointY="13.5" />
         <EntityTypeShape EntityType="CompuStoreDBModel.DETAIL_IMPORT_WAREHOUSE" Width="1.5" PointX="15.75" PointY="16" />
         <EntityTypeShape EntityType="CompuStoreDBModel.DETAIL_INVOICE" Width="1.5" PointX="13.5" PointY="18" />
         <EntityTypeShape EntityType="CompuStoreDBModel.DETAIL_SPECS" Width="1.5" PointX="6" PointY="0.75" />
@@ -35,10 +34,6 @@
         <AssociationConnector Association="CompuStoreDBModel.FK__CUSTOMER__ID_INF__22751F6C" />
         <AssociationConnector Association="CompuStoreDBModel.FK__CUSTOMER__ID_RAN__236943A5" />
         <AssociationConnector Association="CompuStoreDBModel.FK__INVOICE__ID_CUST__2DE6D218" />
-        <AssociationConnector Association="CompuStoreDBModel.FK__CHANGE_OR__ID_HA__1BC821DD" />
-        <AssociationConnector Association="CompuStoreDBModel.FK__CHANGE_OR__ID_IN__1CBC4616" />
-        <AssociationConnector Association="CompuStoreDBModel.FK__CHANGE_OR__ID_WA__1DB06A4F" />
-        <AssociationConnector Association="CompuStoreDBModel.FK__CHANGE_OR__PRODU__1EA48E88" />
         <AssociationConnector Association="CompuStoreDBModel.FK__DETAIL_IM__ID_IM__245D67DE" />
         <AssociationConnector Association="CompuStoreDBModel.FK__DETAIL_IM__PRODU__25518C17" />
         <AssociationConnector Association="CompuStoreDBModel.FK__DETAIL_IN__ID_IN__2645B050" />
@@ -57,6 +52,11 @@
         <AssociationConnector Association="CompuStoreDBModel.FK__RECEIVE_W__ID_ST__32AB8735" />
         <AssociationConnector Association="CompuStoreDBModel.FK__STAFF__ID_STAFFR__3587F3E0" />
         <AssociationConnector Association="CompuStoreDBModel.FK__STORE__ID_STAFF___367C1819" />
+        <EntityTypeShape EntityType="CompuStoreDBModel.CHANGE_OR_REFUND_PRODUCT" Width="1.5" PointX="10.5" PointY="6.125" />
+        <AssociationConnector Association="CompuStoreDBModel.FK__CHANGE_OR__ID_HA__503BEA1C" />
+        <AssociationConnector Association="CompuStoreDBModel.FK__CHANGE_OR__ID_IN__51300E55" />
+        <AssociationConnector Association="CompuStoreDBModel.FK__CHANGE_OR__PRODU__5224328E" />
+        <AssociationConnector Association="CompuStoreDBModel.FK__CHANGE_OR__PRODU__531856C7" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

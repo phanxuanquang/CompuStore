@@ -18,12 +18,11 @@ namespace CompuStore.Database.Models
         public STAFF()
         {
             this.COMMON_USER = new HashSet<COMMON_USER>();
-            this.CHANGE_OR_REFUND_PRODUCT = new HashSet<CHANGE_OR_REFUND_PRODUCT>();
-            this.CHANGE_OR_REFUND_PRODUCT1 = new HashSet<CHANGE_OR_REFUND_PRODUCT>();
             this.IMPORT_WAREHOUSE = new HashSet<IMPORT_WAREHOUSE>();
             this.INVOICEs = new HashSet<INVOICE>();
             this.RECEIVE_WARRANTY = new HashSet<RECEIVE_WARRANTY>();
             this.STOREs = new HashSet<STORE>();
+            this.CHANGE_OR_REFUND_PRODUCT = new HashSet<CHANGE_OR_REFUND_PRODUCT>();
         }
     
         public int ID { get; set; }
@@ -36,10 +35,6 @@ namespace CompuStore.Database.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<COMMON_USER> COMMON_USER { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHANGE_OR_REFUND_PRODUCT> CHANGE_OR_REFUND_PRODUCT { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHANGE_OR_REFUND_PRODUCT> CHANGE_OR_REFUND_PRODUCT1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<IMPORT_WAREHOUSE> IMPORT_WAREHOUSE { get; set; }
         public virtual INFOR INFOR { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -49,5 +44,7 @@ namespace CompuStore.Database.Models
         public virtual STAFFROLE STAFFROLE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<STORE> STOREs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CHANGE_OR_REFUND_PRODUCT> CHANGE_OR_REFUND_PRODUCT { get; set; }
     }
 }

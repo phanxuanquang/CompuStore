@@ -33,7 +33,7 @@
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.NewItemSerial_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.OldItemSerial_Box = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbDate = new System.Windows.Forms.Label();
             this.Print_Button = new Guna.UI2.WinForms.Guna2Button();
             this.Email_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Name_Box = new Guna.UI2.WinForms.Guna2TextBox();
@@ -42,6 +42,7 @@
             this.Identity_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Save_Button = new Guna.UI2.WinForms.Guna2Button();
             this.ReturnReason = new Guna.UI2.WinForms.Guna2TextBox();
+            this.AddInfor_Button = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -120,7 +121,6 @@
             this.NewItemSerial_Box.PasswordChar = '\0';
             this.NewItemSerial_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.NewItemSerial_Box.PlaceholderText = "Mã se-ri sản phẩm đổi mới";
-            this.NewItemSerial_Box.ReadOnly = true;
             this.NewItemSerial_Box.SelectedText = "";
             this.NewItemSerial_Box.ShadowDecoration.Parent = this.NewItemSerial_Box;
             this.NewItemSerial_Box.Size = new System.Drawing.Size(550, 37);
@@ -153,31 +153,30 @@
             this.OldItemSerial_Box.HoverState.Parent = this.OldItemSerial_Box;
             this.OldItemSerial_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.OldItemSerial_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.OldItemSerial_Box.Location = new System.Drawing.Point(30, 185);
+            this.OldItemSerial_Box.Location = new System.Drawing.Point(30, 61);
             this.OldItemSerial_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.OldItemSerial_Box.Name = "OldItemSerial_Box";
             this.OldItemSerial_Box.PasswordChar = '\0';
             this.OldItemSerial_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.OldItemSerial_Box.PlaceholderText = "Mã se-ri sản phẩm trả lại";
-            this.OldItemSerial_Box.ReadOnly = true;
             this.OldItemSerial_Box.SelectedText = "";
             this.OldItemSerial_Box.ShadowDecoration.Parent = this.OldItemSerial_Box;
-            this.OldItemSerial_Box.Size = new System.Drawing.Size(550, 37);
+            this.OldItemSerial_Box.Size = new System.Drawing.Size(410, 37);
             this.OldItemSerial_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.OldItemSerial_Box.TabIndex = 134;
             this.OldItemSerial_Box.TextOffset = new System.Drawing.Point(5, 0);
             // 
-            // label2
+            // lbDate
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label2.Location = new System.Drawing.Point(26, 354);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 24);
-            this.label2.TabIndex = 133;
-            this.label2.Text = "Ngày lập:";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbDate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbDate.Location = new System.Drawing.Point(26, 354);
+            this.lbDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbDate.Name = "lbDate";
+            this.lbDate.Size = new System.Drawing.Size(98, 24);
+            this.lbDate.TabIndex = 133;
+            this.lbDate.Text = "Ngày lập:";
+            this.lbDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Print_Button
             // 
@@ -226,7 +225,7 @@
             this.Email_Box.HoverState.Parent = this.Email_Box;
             this.Email_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Email_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Email_Box.Location = new System.Drawing.Point(30, 144);
+            this.Email_Box.Location = new System.Drawing.Point(30, 188);
             this.Email_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Email_Box.Name = "Email_Box";
             this.Email_Box.PasswordChar = '\0';
@@ -265,7 +264,7 @@
             this.Name_Box.HoverState.Parent = this.Name_Box;
             this.Name_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Name_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Name_Box.Location = new System.Drawing.Point(30, 101);
+            this.Name_Box.Location = new System.Drawing.Point(30, 145);
             this.Name_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name_Box.Name = "Name_Box";
             this.Name_Box.PasswordChar = '\0';
@@ -316,7 +315,7 @@
             this.PhoneNumber_Box.HoverState.Parent = this.PhoneNumber_Box;
             this.PhoneNumber_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.PhoneNumber_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.PhoneNumber_Box.Location = new System.Drawing.Point(348, 101);
+            this.PhoneNumber_Box.Location = new System.Drawing.Point(348, 145);
             this.PhoneNumber_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PhoneNumber_Box.Name = "PhoneNumber_Box";
             this.PhoneNumber_Box.PasswordChar = '\0';
@@ -355,12 +354,13 @@
             this.Identity_Box.HoverState.Parent = this.Identity_Box;
             this.Identity_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Identity_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Identity_Box.Location = new System.Drawing.Point(30, 58);
+            this.Identity_Box.Location = new System.Drawing.Point(30, 102);
             this.Identity_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Identity_Box.Name = "Identity_Box";
             this.Identity_Box.PasswordChar = '\0';
             this.Identity_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Identity_Box.PlaceholderText = "CMND/CCCD của khách hàng";
+            this.Identity_Box.ReadOnly = true;
             this.Identity_Box.SelectedText = "";
             this.Identity_Box.ShadowDecoration.Parent = this.Identity_Box;
             this.Identity_Box.Size = new System.Drawing.Size(550, 37);
@@ -389,6 +389,7 @@
             this.Save_Button.TabIndex = 130;
             this.Save_Button.Text = "LƯU";
             this.Save_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Save_Button.Click += new System.EventHandler(this.Save_Button_Click);
             // 
             // ReturnReason
             // 
@@ -421,7 +422,6 @@
             this.ReturnReason.PasswordChar = '\0';
             this.ReturnReason.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.ReturnReason.PlaceholderText = "Lý do đổi trả";
-            this.ReturnReason.ReadOnly = true;
             this.ReturnReason.SelectedText = "";
             this.ReturnReason.ShadowDecoration.Parent = this.ReturnReason;
             this.ReturnReason.Size = new System.Drawing.Size(550, 37);
@@ -429,15 +429,39 @@
             this.ReturnReason.TabIndex = 136;
             this.ReturnReason.TextOffset = new System.Drawing.Point(5, 0);
             // 
+            // AddInfor_Button
+            // 
+            this.AddInfor_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.AddInfor_Button.Animated = true;
+            this.AddInfor_Button.BorderRadius = 3;
+            this.AddInfor_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.AddInfor_Button.CheckedState.Parent = this.AddInfor_Button;
+            this.AddInfor_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AddInfor_Button.CustomImages.Parent = this.AddInfor_Button;
+            this.AddInfor_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.AddInfor_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.AddInfor_Button.ForeColor = System.Drawing.Color.White;
+            this.AddInfor_Button.HoverState.Parent = this.AddInfor_Button;
+            this.AddInfor_Button.Location = new System.Drawing.Point(444, 61);
+            this.AddInfor_Button.Name = "AddInfor_Button";
+            this.AddInfor_Button.PressedDepth = 5;
+            this.AddInfor_Button.ShadowDecoration.Parent = this.AddInfor_Button;
+            this.AddInfor_Button.Size = new System.Drawing.Size(136, 36);
+            this.AddInfor_Button.TabIndex = 137;
+            this.AddInfor_Button.Text = "Thêm thông tin";
+            this.AddInfor_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.AddInfor_Button.Click += new System.EventHandler(this.AddInfor_Button_Click);
+            // 
             // AddReturn_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 539);
+            this.Controls.Add(this.AddInfor_Button);
             this.Controls.Add(this.ReturnReason);
             this.Controls.Add(this.NewItemSerial_Box);
             this.Controls.Add(this.OldItemSerial_Box);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbDate);
             this.Controls.Add(this.Print_Button);
             this.Controls.Add(this.Email_Box);
             this.Controls.Add(this.Name_Box);
@@ -450,6 +474,7 @@
             this.Controls.Add(this.Header);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddReturn_Form";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddReturn_Form";
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).EndInit();
             this.ResumeLayout(false);
@@ -462,7 +487,7 @@
         private System.Windows.Forms.Label Header;
         private Guna.UI2.WinForms.Guna2TextBox NewItemSerial_Box;
         private Guna.UI2.WinForms.Guna2TextBox OldItemSerial_Box;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbDate;
         private Guna.UI2.WinForms.Guna2Button Print_Button;
         private Guna.UI2.WinForms.Guna2TextBox Email_Box;
         private Guna.UI2.WinForms.Guna2TextBox Name_Box;
@@ -471,5 +496,6 @@
         private Guna.UI2.WinForms.Guna2TextBox Identity_Box;
         private Guna.UI2.WinForms.Guna2Button Save_Button;
         private Guna.UI2.WinForms.Guna2TextBox ReturnReason;
+        private Guna.UI2.WinForms.Guna2Button AddInfor_Button;
     }
 }
