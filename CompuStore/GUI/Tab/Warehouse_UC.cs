@@ -190,8 +190,8 @@ namespace CompuStore.Tab
             Bottom_1.Click += SeeInvoiceImportWarehouse_Click;
             Button_2.Click += SeeProduct_Click;
             Button_3.Click += ImportWarehouse_Click;
-            DataTable.DataSourceChanged += DataTable_DataSourceChanged;
-            DataTable.CellDoubleClick += DataTable_CellDoubleClick;
+            GridDataTable.DataSourceChanged += DataTable_DataSourceChanged;
+            GridDataTable.CellDoubleClick += DataTable_CellDoubleClick;
             InitializeComponent();
         }
 
@@ -299,16 +299,16 @@ namespace CompuStore.Tab
 
         protected void AddBindingToDataGridView(IBindingList binding)
         {
-            if (DataTable.InvokeRequired)
+            if (GridDataTable.InvokeRequired)
             {
-                DataTable.Invoke(new Action(() =>
+                GridDataTable.Invoke(new Action(() =>
                 {
-                    DataTable.DataSource = binding;
+                    GridDataTable.DataSource = binding;
                 }));
             }
             else
             {
-                DataTable.DataSource = binding;
+                GridDataTable.DataSource = binding;
             }
         }
 

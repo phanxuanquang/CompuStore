@@ -20,9 +20,9 @@ namespace CompuStore
     {
         public ServiceManagement_Tab()
         {
-            this.DataTable.AutoGenerateColumns = false;
+            this.GridDataTable.AutoGenerateColumns = false;
             InitializeComponent();
-            this.DataTable.DataSource = warrantyBindingSource;
+            this.GridDataTable.DataSource = warrantyBindingSource;
             this.Load += ServiceManagement_Tab_Load;
         }
 
@@ -110,7 +110,7 @@ namespace CompuStore
                 DataGridViewTextBoxColumn dataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
                 dataGridViewTextBoxColumn.Name = item.Key;
                 dataGridViewTextBoxColumn.HeaderText = item.Value;
-                DataTable.Columns.Add(dataGridViewTextBoxColumn);
+                GridDataTable.Columns.Add(dataGridViewTextBoxColumn);
             }
         }
 
@@ -129,14 +129,14 @@ namespace CompuStore
                 DataGridViewTextBoxColumn dataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
                 dataGridViewTextBoxColumn.Name = item.Key;
                 dataGridViewTextBoxColumn.HeaderText = item.Value;
-                DataTable.Columns.Add(dataGridViewTextBoxColumn);
+                GridDataTable.Columns.Add(dataGridViewTextBoxColumn);
             }
         }
         private void ViewWarranty(List<RECEIVE_WARRANTY> wARRANTies)
         {
             warrantyBindingSource.ResetBindings(true);
             warrantyBindingSource.DataSource = wARRANTies;
-            foreach (DataGridViewRow row in DataTable.Rows)
+            foreach (DataGridViewRow row in GridDataTable.Rows)
             {
                 RECEIVE_WARRANTY selected = row.DataBoundItem as RECEIVE_WARRANTY;
                 if (selected != null)
@@ -158,7 +158,7 @@ namespace CompuStore
         {
             warrantyBindingSource.ResetBindings(true);
             warrantyBindingSource.DataSource = cHANGE_OR_REFUND_PRODUCTs;
-            foreach (DataGridViewRow row in DataTable.Rows)
+            foreach (DataGridViewRow row in GridDataTable.Rows)
             {
                 CHANGE_OR_REFUND_PRODUCT selected = row.DataBoundItem as CHANGE_OR_REFUND_PRODUCT;
                 if (selected != null)
@@ -176,9 +176,9 @@ namespace CompuStore
         }
         public void RunWarranty(List<RECEIVE_WARRANTY> wARRANTies)
         {
-            if (DataTable.InvokeRequired)
+            if (GridDataTable.InvokeRequired)
             {
-                DataTable.Invoke(new Action(() => ViewWarranty(wARRANTies)));
+                GridDataTable.Invoke(new Action(() => ViewWarranty(wARRANTies)));
             }
             else
             {
@@ -189,9 +189,9 @@ namespace CompuStore
 
         public void RunCOrRefund(List<CHANGE_OR_REFUND_PRODUCT> cHANGE_OR_REFUND_PRODUCTs)
         {
-            if (DataTable.InvokeRequired)
+            if (GridDataTable.InvokeRequired)
             {
-                DataTable.Invoke(new Action(() => ViewCOrRefund(cHANGE_OR_REFUND_PRODUCTs)));
+                GridDataTable.Invoke(new Action(() => ViewCOrRefund(cHANGE_OR_REFUND_PRODUCTs)));
             }
             else
             {
@@ -244,11 +244,11 @@ namespace CompuStore
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
 
-            CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[DataTable.DataSource];
+            CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[GridDataTable.DataSource];
             currencyManager1.SuspendBinding();
             if (Button_3.Text == "Danh sách đổi trả")
             {
-                foreach (DataGridViewRow row in DataTable.Rows)
+                foreach (DataGridViewRow row in GridDataTable.Rows)
                 {
                     CHANGE_OR_REFUND_PRODUCT selected = row.DataBoundItem as CHANGE_OR_REFUND_PRODUCT;
                     if (selected != null)
@@ -266,7 +266,7 @@ namespace CompuStore
             }
             else
             {
-                foreach (DataGridViewRow row in DataTable.Rows)
+                foreach (DataGridViewRow row in GridDataTable.Rows)
                 {
                     RECEIVE_WARRANTY selected = row.DataBoundItem as RECEIVE_WARRANTY;
                     if (selected != null)

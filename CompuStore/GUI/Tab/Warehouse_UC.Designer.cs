@@ -61,7 +61,7 @@
             this.Controls.Add(this.StatusImportWarehouse);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Warehouse_UC";
-            this.Size = new System.Drawing.Size(2468, 1356);
+            //this.Size = new System.Drawing.Size(2468, 1356);
             this.Load += new System.EventHandler(this.Warehouse_UC_Load);
             this.StatusImportWarehouse.ResumeLayout(false);
             this.StatusImportWarehouse.PerformLayout();

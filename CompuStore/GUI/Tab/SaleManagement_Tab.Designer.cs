@@ -30,6 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.Color_ComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.Size_ComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.CPU_ComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.VGA_ComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.RAM_ComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.Storage_ComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.Resolution_ComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,7 +80,7 @@
             this.Bottom_1.HoverState.Parent = this.Bottom_1;
             this.Bottom_1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Bottom_1.Location = new System.Drawing.Point(794, 19);
-            this.Bottom_1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bottom_1.Margin = new System.Windows.Forms.Padding(4);
             this.Bottom_1.ShadowDecoration.Parent = this.Bottom_1;
             this.Bottom_1.Text = "Tạo đơn hàng";
             this.Bottom_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -95,11 +102,197 @@
             this.Button_3.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
             this.Button_3.Click += new System.EventHandler(this.ViewInvoice_Click);
             // 
+            // Color_ComboBox
+            // 
+            this.Color_ComboBox.Animated = true;
+            this.Color_ComboBox.BackColor = System.Drawing.Color.Transparent;
+            this.Color_ComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.Color_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Color_ComboBox.FocusedColor = System.Drawing.Color.Empty;
+            this.Color_ComboBox.FocusedState.Parent = this.Color_ComboBox;
+            this.Color_ComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.Color_ComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.Color_ComboBox.FormattingEnabled = true;
+            this.Color_ComboBox.HoverState.Parent = this.Color_ComboBox;
+            this.Color_ComboBox.ItemHeight = 30;
+            this.Color_ComboBox.Items.AddRange(new object[] {
+            "Màu sắc"});
+            this.Color_ComboBox.ItemsAppearance.Parent = this.Color_ComboBox;
+            this.Color_ComboBox.Location = new System.Drawing.Point(25, 63);
+            this.Color_ComboBox.Name = "Color_ComboBox";
+            this.Color_ComboBox.ShadowDecoration.Parent = this.Color_ComboBox;
+            this.Color_ComboBox.Size = new System.Drawing.Size(154, 36);
+            this.Color_ComboBox.StartIndex = 0;
+            this.Color_ComboBox.TabIndex = 42;
+            this.Color_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            // 
+            // Size_ComboBox
+            // 
+            this.Size_ComboBox.Animated = true;
+            this.Size_ComboBox.BackColor = System.Drawing.Color.Transparent;
+            this.Size_ComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.Size_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Size_ComboBox.FocusedColor = System.Drawing.Color.Empty;
+            this.Size_ComboBox.FocusedState.Parent = this.Size_ComboBox;
+            this.Size_ComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.Size_ComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.Size_ComboBox.FormattingEnabled = true;
+            this.Size_ComboBox.HoverState.Parent = this.Size_ComboBox;
+            this.Size_ComboBox.ItemHeight = 30;
+            this.Size_ComboBox.Items.AddRange(new object[] {
+            "Kích thước"});
+            this.Size_ComboBox.ItemsAppearance.Parent = this.Size_ComboBox;
+            this.Size_ComboBox.Location = new System.Drawing.Point(185, 63);
+            this.Size_ComboBox.Name = "Size_ComboBox";
+            this.Size_ComboBox.ShadowDecoration.Parent = this.Size_ComboBox;
+            this.Size_ComboBox.Size = new System.Drawing.Size(170, 36);
+            this.Size_ComboBox.StartIndex = 0;
+            this.Size_ComboBox.TabIndex = 43;
+            this.Size_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            // 
+            // CPU_ComboBox
+            // 
+            this.CPU_ComboBox.Animated = true;
+            this.CPU_ComboBox.BackColor = System.Drawing.Color.Transparent;
+            this.CPU_ComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.CPU_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CPU_ComboBox.FocusedColor = System.Drawing.Color.Empty;
+            this.CPU_ComboBox.FocusedState.Parent = this.CPU_ComboBox;
+            this.CPU_ComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.CPU_ComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.CPU_ComboBox.FormattingEnabled = true;
+            this.CPU_ComboBox.HoverState.Parent = this.CPU_ComboBox;
+            this.CPU_ComboBox.ItemHeight = 30;
+            this.CPU_ComboBox.Items.AddRange(new object[] {
+            "CPU"});
+            this.CPU_ComboBox.ItemsAppearance.Parent = this.CPU_ComboBox;
+            this.CPU_ComboBox.Location = new System.Drawing.Point(361, 63);
+            this.CPU_ComboBox.Name = "CPU_ComboBox";
+            this.CPU_ComboBox.ShadowDecoration.Parent = this.CPU_ComboBox;
+            this.CPU_ComboBox.Size = new System.Drawing.Size(170, 36);
+            this.CPU_ComboBox.StartIndex = 0;
+            this.CPU_ComboBox.TabIndex = 44;
+            this.CPU_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            // 
+            // VGA_ComboBox
+            // 
+            this.VGA_ComboBox.Animated = true;
+            this.VGA_ComboBox.BackColor = System.Drawing.Color.Transparent;
+            this.VGA_ComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.VGA_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.VGA_ComboBox.FocusedColor = System.Drawing.Color.Empty;
+            this.VGA_ComboBox.FocusedState.Parent = this.VGA_ComboBox;
+            this.VGA_ComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.VGA_ComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.VGA_ComboBox.FormattingEnabled = true;
+            this.VGA_ComboBox.HoverState.Parent = this.VGA_ComboBox;
+            this.VGA_ComboBox.ItemHeight = 30;
+            this.VGA_ComboBox.Items.AddRange(new object[] {
+            "VGA"});
+            this.VGA_ComboBox.ItemsAppearance.Parent = this.VGA_ComboBox;
+            this.VGA_ComboBox.Location = new System.Drawing.Point(537, 63);
+            this.VGA_ComboBox.Name = "VGA_ComboBox";
+            this.VGA_ComboBox.ShadowDecoration.Parent = this.VGA_ComboBox;
+            this.VGA_ComboBox.Size = new System.Drawing.Size(170, 36);
+            this.VGA_ComboBox.StartIndex = 0;
+            this.VGA_ComboBox.TabIndex = 45;
+            this.VGA_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            // 
+            // RAM_ComboBox
+            // 
+            this.RAM_ComboBox.Animated = true;
+            this.RAM_ComboBox.BackColor = System.Drawing.Color.Transparent;
+            this.RAM_ComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.RAM_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.RAM_ComboBox.FocusedColor = System.Drawing.Color.Empty;
+            this.RAM_ComboBox.FocusedState.Parent = this.RAM_ComboBox;
+            this.RAM_ComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.RAM_ComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.RAM_ComboBox.FormattingEnabled = true;
+            this.RAM_ComboBox.HoverState.Parent = this.RAM_ComboBox;
+            this.RAM_ComboBox.ItemHeight = 30;
+            this.RAM_ComboBox.Items.AddRange(new object[] {
+            "RAM"});
+            this.RAM_ComboBox.ItemsAppearance.Parent = this.RAM_ComboBox;
+            this.RAM_ComboBox.Location = new System.Drawing.Point(713, 63);
+            this.RAM_ComboBox.Name = "RAM_ComboBox";
+            this.RAM_ComboBox.ShadowDecoration.Parent = this.RAM_ComboBox;
+            this.RAM_ComboBox.Size = new System.Drawing.Size(170, 36);
+            this.RAM_ComboBox.StartIndex = 0;
+            this.RAM_ComboBox.TabIndex = 46;
+            this.RAM_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            // 
+            // Storage_ComboBox
+            // 
+            this.Storage_ComboBox.Animated = true;
+            this.Storage_ComboBox.BackColor = System.Drawing.Color.Transparent;
+            this.Storage_ComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.Storage_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Storage_ComboBox.FocusedColor = System.Drawing.Color.Empty;
+            this.Storage_ComboBox.FocusedState.Parent = this.Storage_ComboBox;
+            this.Storage_ComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.Storage_ComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.Storage_ComboBox.FormattingEnabled = true;
+            this.Storage_ComboBox.HoverState.Parent = this.Storage_ComboBox;
+            this.Storage_ComboBox.ItemHeight = 30;
+            this.Storage_ComboBox.Items.AddRange(new object[] {
+            "Ổ cứng"});
+            this.Storage_ComboBox.ItemsAppearance.Parent = this.Storage_ComboBox;
+            this.Storage_ComboBox.Location = new System.Drawing.Point(889, 63);
+            this.Storage_ComboBox.Name = "Storage_ComboBox";
+            this.Storage_ComboBox.ShadowDecoration.Parent = this.Storage_ComboBox;
+            this.Storage_ComboBox.Size = new System.Drawing.Size(170, 36);
+            this.Storage_ComboBox.StartIndex = 0;
+            this.Storage_ComboBox.TabIndex = 47;
+            this.Storage_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            // 
+            // Resolution_ComboBox
+            // 
+            this.Resolution_ComboBox.Animated = true;
+            this.Resolution_ComboBox.BackColor = System.Drawing.Color.Transparent;
+            this.Resolution_ComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.Resolution_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Resolution_ComboBox.FocusedColor = System.Drawing.Color.Empty;
+            this.Resolution_ComboBox.FocusedState.Parent = this.Resolution_ComboBox;
+            this.Resolution_ComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.Resolution_ComboBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.Resolution_ComboBox.FormattingEnabled = true;
+            this.Resolution_ComboBox.HoverState.Parent = this.Resolution_ComboBox;
+            this.Resolution_ComboBox.ItemHeight = 30;
+            this.Resolution_ComboBox.Items.AddRange(new object[] {
+            "Độ phân giải"});
+            this.Resolution_ComboBox.ItemsAppearance.Parent = this.Resolution_ComboBox;
+            this.Resolution_ComboBox.Location = new System.Drawing.Point(1065, 63);
+            this.Resolution_ComboBox.Name = "Resolution_ComboBox";
+            this.Resolution_ComboBox.ShadowDecoration.Parent = this.Resolution_ComboBox;
+            this.Resolution_ComboBox.Size = new System.Drawing.Size(170, 36);
+            this.Resolution_ComboBox.StartIndex = 0;
+            this.Resolution_ComboBox.TabIndex = 48;
+            this.Resolution_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            // 
             // SaleManagement_Tab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Resolution_ComboBox);
+            this.Controls.Add(this.Storage_ComboBox);
+            this.Controls.Add(this.RAM_ComboBox);
+            this.Controls.Add(this.VGA_ComboBox);
+            this.Controls.Add(this.CPU_ComboBox);
+            this.Controls.Add(this.Size_ComboBox);
+            this.Controls.Add(this.Color_ComboBox);
             this.Name = "SaleManagement_Tab";
+            this.Controls.SetChildIndex(this.Button_3, 0);
+            this.Controls.SetChildIndex(this.Button_2, 0);
+            this.Controls.SetChildIndex(this.Bottom_1, 0);
+            this.Controls.SetChildIndex(this.SearchBox, 0);
+            this.Controls.SetChildIndex(this.Color_ComboBox, 0);
+            this.Controls.SetChildIndex(this.Size_ComboBox, 0);
+            this.Controls.SetChildIndex(this.CPU_ComboBox, 0);
+            this.Controls.SetChildIndex(this.VGA_ComboBox, 0);
+            this.Controls.SetChildIndex(this.RAM_ComboBox, 0);
+            this.Controls.SetChildIndex(this.Storage_ComboBox, 0);
+            this.Controls.SetChildIndex(this.Resolution_ComboBox, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 
@@ -108,5 +301,12 @@
         #endregion
 
         private System.Windows.Forms.BindingSource bindingSource1;
+        private Guna.UI2.WinForms.Guna2ComboBox Color_ComboBox;
+        private Guna.UI2.WinForms.Guna2ComboBox Size_ComboBox;
+        private Guna.UI2.WinForms.Guna2ComboBox CPU_ComboBox;
+        private Guna.UI2.WinForms.Guna2ComboBox VGA_ComboBox;
+        private Guna.UI2.WinForms.Guna2ComboBox RAM_ComboBox;
+        private Guna.UI2.WinForms.Guna2ComboBox Storage_ComboBox;
+        private Guna.UI2.WinForms.Guna2ComboBox Resolution_ComboBox;
     }
 }

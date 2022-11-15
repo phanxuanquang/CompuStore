@@ -30,16 +30,16 @@ namespace CompuStore.Tab
             { "CPU", "CPU" },
            { "RAMString", "RAM" },
            { "GPU", "GPU" },
-           { "TypeStorage", "Chuẩn ổ cứng" },
            { "StorageCapacity", "Dung lượng ổ cứng|Đơn vị: GB" },
         };
         public SaleManagement_Tab()
         {
             InitializeComponent();
-            this.DataTable.AutoGenerateColumns = false;
-            this.DataTable.DataSource = bindingSource1;
-            this.DataTable.CellDoubleClick += DataTable_CellDoubleClick;
+            this.GridDataTable.AutoGenerateColumns = false;
+            this.GridDataTable.DataSource = bindingSource1;
+            this.GridDataTable.CellDoubleClick += DataTable_CellDoubleClick;
             this.Load += SaleManagement_Tab_Load;
+            this.GridDataTable.Height = 690;
         }
 
         private void DataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -90,19 +90,18 @@ namespace CompuStore.Tab
         {
             bindingSource1.ResetBindings(true);
             bindingSource1.DataSource = productList;
-            foreach (DataGridViewRow row in DataTable.Rows)
+            foreach (DataGridViewRow row in GridDataTable.Rows)
             {
                 ModelProduct selected = row.DataBoundItem as ModelProduct;
                 if (selected != null)
                 {
                     row.Cells["Name"].Value = selected.NameProduct;
                     row.Cells["Price"].Value = selected.Price;
-                    row.Cells["Size"].Value = selected.SizeProductString;
+                    row.Cells["Size"].Value = selected.SizePanel;
                     row.Cells["Resolution"].Value = selected.ResolutionString;
                     row.Cells["CPU"].Value = selected.CPU;
-                    row.Cells["RAMString"].Value = selected.RAMString;
-                    row.Cells["GPU"].Value = selected.GPU;
-                    row.Cells["TypeStorage"].Value = selected.TypeStorage;
+                    row.Cells["RAMString"].Value = selected.InfoRAM.CapacityRAM;
+                    row.Cells["GPU"].Value = selected.GPUString;
                     row.Cells["StorageCapacity"].Value = selected.StorageCapacity;
                   
                 }
@@ -111,9 +110,9 @@ namespace CompuStore.Tab
 
         public void Run(BindingList<ModelProduct> productList)
         {
-            if (DataTable.InvokeRequired)
+            if (GridDataTable.InvokeRequired)
             {
-                DataTable.Invoke(new Action(() => View(productList)));
+                GridDataTable.Invoke(new Action(() => View(productList)));
             }
             else
             {
@@ -129,7 +128,7 @@ namespace CompuStore.Tab
                 DataGridViewTextBoxColumn dataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
                 dataGridViewTextBoxColumn.Name = item.Key;
                 dataGridViewTextBoxColumn.HeaderText = item.Value;
-                DataTable.Columns.Add(dataGridViewTextBoxColumn);
+                GridDataTable.Columns.Add(dataGridViewTextBoxColumn);
             }
         }
 
@@ -150,7 +149,7 @@ namespace CompuStore.Tab
                 {
                     DETAIL_IMPORT_WAREHOUSE detailImport = product.DETAIL_IMPORT_WAREHOUSE.First(item => item.PRODUCT_ID == product.PRODUCT_ID);
                     ModelProduct productMD = ModelProduct.DatabaseToModel(product, detailImport, lineup, display, uniqueSpecs, commonSpecs, color);
-                    productMD.Price = detail.PRICE;
+                    //productMD.Price = detail.PRICE;
                     productList.Add(productMD);
                 }
             }
@@ -170,7 +169,7 @@ namespace CompuStore.Tab
         {
             /*BaseDetailSpecsProduct_Form detailSpecsProduct_Form = new BaseDetailSpecsProduct_Form(*//*DataTable.CurrentRow.Cells[0].Value.ToString()*//*);
             detailSpecsProduct_Form.ShowDialog();*/
-            nameIdCommonSpecs = DataTable.CurrentRow.Cells[0].Value.ToString();
+            nameIdCommonSpecs = GridDataTable.CurrentRow.Cells[0].Value.ToString();
             COMMON_SPECS commonSpecs = Database.Services.CommonSpecsServices.Instance.GetCommonSpecsByNameID(nameIdCommonSpecs);
             if (commonSpecs != null)
             {

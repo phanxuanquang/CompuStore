@@ -24,10 +24,11 @@ namespace CompuStore.Tab
         
         public StaffManagement_Tab()
         {
-            this.DataTable.AutoGenerateColumns = false;
+            this.GridDataTable.AutoGenerateColumns = false;
             InitializeComponent();
-            this.DataTable.DataSource = sTAFFBindingSource;
+            this.GridDataTable.DataSource = sTAFFBindingSource;
             this.Load += StaffManagement_Tab_Load;
+            
         }
 
         private void StaffManagement_Tab_Load(object sender, EventArgs e)
@@ -75,14 +76,14 @@ namespace CompuStore.Tab
                 DataGridViewTextBoxColumn dataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
                 dataGridViewTextBoxColumn.Name = item.Key;
                 dataGridViewTextBoxColumn.HeaderText = item.Value;
-                DataTable.Columns.Add(dataGridViewTextBoxColumn);
+                GridDataTable.Columns.Add(dataGridViewTextBoxColumn);
             }
         }
         private void View(List<STAFF> sTAFFs)
         {
             sTAFFBindingSource.ResetBindings(true);
             sTAFFBindingSource.DataSource = sTAFFs;
-            foreach (DataGridViewRow row in DataTable.Rows)
+            foreach (DataGridViewRow row in GridDataTable.Rows)
             {
                 STAFF selected = row.DataBoundItem as STAFF;
                 if (selected != null)
@@ -97,9 +98,9 @@ namespace CompuStore.Tab
         }
         public void Run(List<STAFF> sTAFFs)
         {
-            if (DataTable.InvokeRequired)
+            if (GridDataTable.InvokeRequired)
             {
-                DataTable.Invoke(new Action(() => View(sTAFFs)));
+                GridDataTable.Invoke(new Action(() => View(sTAFFs)));
             }
             else
             {
@@ -134,9 +135,9 @@ namespace CompuStore.Tab
 
         private void SearchBox_TextChanged(object sender, EventArgs e)
         {
-            CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[DataTable.DataSource];
+            CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[GridDataTable.DataSource];
             currencyManager1.SuspendBinding();
-            foreach (DataGridViewRow row in DataTable.Rows)
+            foreach (DataGridViewRow row in GridDataTable.Rows)
             {
                 STAFF selected = row.DataBoundItem as STAFF;
                 if (selected != null)
