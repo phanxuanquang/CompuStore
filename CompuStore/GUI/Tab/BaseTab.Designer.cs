@@ -77,7 +77,7 @@
             this.DataTable.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.DataTable.EnableHeadersVisualStyles = false;
             this.DataTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.DataTable.Location = new System.Drawing.Point(0, 77);
+            this.DataTable.Location = new System.Drawing.Point(0, 80);
             this.DataTable.MultiSelect = false;
             this.DataTable.Name = "DataTable";
             this.DataTable.ReadOnly = true;
@@ -97,7 +97,7 @@
             this.DataTable.RowTemplate.ReadOnly = true;
             this.DataTable.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.DataTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DataTable.Size = new System.Drawing.Size(1234, 614);
+            this.DataTable.Size = new System.Drawing.Size(1440, 720);
             this.DataTable.TabIndex = 1;
             this.DataTable.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.DataTable.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -124,6 +124,8 @@
             // 
             // SearchBox
             // 
+            this.SearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SearchBox.Animated = true;
             this.SearchBox.BorderRadius = 5;
             this.SearchBox.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -145,12 +147,13 @@
             this.SearchBox.PlaceholderText = "Tìm kiếm ";
             this.SearchBox.SelectedText = "";
             this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
-            this.SearchBox.Size = new System.Drawing.Size(558, 37);
+            this.SearchBox.Size = new System.Drawing.Size(764, 37);
             this.SearchBox.TabIndex = 14;
             this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             // 
             // Bottom_1
             // 
+            this.Bottom_1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Bottom_1.Animated = true;
             this.Bottom_1.BorderRadius = 5;
             this.Bottom_1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
@@ -161,7 +164,7 @@
             this.Bottom_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Bottom_1.ForeColor = System.Drawing.Color.White;
             this.Bottom_1.HoverState.Parent = this.Bottom_1;
-            this.Bottom_1.Location = new System.Drawing.Point(589, 19);
+            this.Bottom_1.Location = new System.Drawing.Point(795, 19);
             this.Bottom_1.Name = "Bottom_1";
             this.Bottom_1.PressedDepth = 5;
             this.Bottom_1.ShadowDecoration.Parent = this.Bottom_1;
@@ -172,6 +175,7 @@
             // 
             // Button_2
             // 
+            this.Button_2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Button_2.Animated = true;
             this.Button_2.BorderRadius = 5;
             this.Button_2.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
@@ -182,7 +186,7 @@
             this.Button_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Button_2.ForeColor = System.Drawing.Color.White;
             this.Button_2.HoverState.Parent = this.Button_2;
-            this.Button_2.Location = new System.Drawing.Point(798, 19);
+            this.Button_2.Location = new System.Drawing.Point(1004, 19);
             this.Button_2.Name = "Button_2";
             this.Button_2.PressedDepth = 5;
             this.Button_2.ShadowDecoration.Parent = this.Button_2;
@@ -193,6 +197,7 @@
             // 
             // Button_3
             // 
+            this.Button_3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Button_3.Animated = true;
             this.Button_3.BorderRadius = 5;
             this.Button_3.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
@@ -203,7 +208,7 @@
             this.Button_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Button_3.ForeColor = System.Drawing.Color.White;
             this.Button_3.HoverState.Parent = this.Button_3;
-            this.Button_3.Location = new System.Drawing.Point(1007, 19);
+            this.Button_3.Location = new System.Drawing.Point(1213, 19);
             this.Button_3.Name = "Button_3";
             this.Button_3.PressedDepth = 5;
             this.Button_3.ShadowDecoration.Parent = this.Button_3;
@@ -223,18 +228,17 @@
             this.Controls.Add(this.DataTable);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "BaseTab";
-            this.Size = new System.Drawing.Size(1234, 691);
+            this.Size = new System.Drawing.Size(1440, 800);
             ((System.ComponentModel.ISupportInitialize)(this.DataTable)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        protected Guna.UI2.WinForms.Guna2DataGridView DataTable;
         protected Guna.UI2.WinForms.Guna2TextBox SearchBox;
         protected Guna.UI2.WinForms.Guna2Button Button_2;
         protected Guna.UI2.WinForms.Guna2Button Bottom_1;
         protected Guna.UI2.WinForms.Guna2Button Button_3;
+        public Guna.UI2.WinForms.Guna2DataGridView DataTable;
     }
 }
