@@ -28,6 +28,9 @@
         /// </summary>
         private new void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // SearchBox
@@ -68,7 +71,8 @@
             this.Bottom_1.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Bottom_1.HoverState.Parent = this.Bottom_1;
             this.Bottom_1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Bottom_1.Location = new System.Drawing.Point(592, 19);
+            this.Bottom_1.Location = new System.Drawing.Point(789, 23);
+            this.Bottom_1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Bottom_1.ShadowDecoration.Parent = this.Bottom_1;
             this.Bottom_1.Text = "Tạo đơn hàng";
             this.Bottom_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -92,14 +96,16 @@
             // 
             // SaleManagement_Tab
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Name = "SaleManagement_Tab";
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
