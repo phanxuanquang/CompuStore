@@ -20,10 +20,13 @@ namespace CompuStore
     {
         public ServiceManagement_Tab()
         {
+            this.DataTable.AutoGenerateColumns = false;
             InitializeComponent();
+            this.DataTable.DataSource = warrantyBindingSource;
+            this.Load += ServiceManagement_Tab_Load;
         }
 
-        private void StaffManagement_Tab_Load(object sender, EventArgs e)
+        private void ServiceManagement_Tab_Load(object sender, EventArgs e)
         {
             LoadView();
             Progress<bool> progress = new Progress<bool>();
@@ -46,7 +49,6 @@ namespace CompuStore
         }
 
 
-
         public Task LoadDB(IProgress<bool> progress)
         {
             return Task.Factory.StartNew(() =>
@@ -58,12 +60,13 @@ namespace CompuStore
         }
         private void LoadView()
         {
-            listItemViews.Add("Id", "Mã nhân viên");
             listItemViews.Add("CusName", "Họ và tên");
             listItemViews.Add("PhoneNum", "Số điện thoại");
             listItemViews.Add("Product", "Tên sản phẩm");
+            listItemViews.Add("ProductSerial", "Mã sản phẩm");
             listItemViews.Add("Date", "Ngày lập");
             listItemViews.Add("DateRe", "Ngày hẹn trả");
+            listItemViews.Add("Id", "Mã nhân viên phụ trách");
             listItemViews.Add("Status", "Trạng thái");
             foreach (var item in listItemViews)
             {
@@ -82,12 +85,14 @@ namespace CompuStore
                 RECEIVE_WARRANTY selected = row.DataBoundItem as RECEIVE_WARRANTY;
                 if (selected != null)
                 {
-                    row.Cells["Id"].Value = selected.NAME_ID;
+
                     row.Cells["CusName"].Value = selected.INVOICE.CUSTOMER.INFOR.NAME;
                     row.Cells["PhoneNum"].Value = selected.INVOICE.CUSTOMER.INFOR.PHONE_NUMBER;
                     row.Cells["Product"].Value = selected.PRODUCT.DETAIL_SPECS.COMMON_SPECS.NAME;
+                    row.Cells["ProductSerial"].Value = selected.PRODUCT.SERIAL_ID;
                     row.Cells["Date"].Value = selected.RECEIVE_DATE;
                     row.Cells["DateRe"].Value = selected.RETURN_DATE;
+                    row.Cells["Id"].Value = selected.NAME_ID;
                     row.Cells["Status"].Value = selected.STATUS_WARRANTY;
                 }
             }
