@@ -20,9 +20,9 @@ namespace CompuStore.Database.Models
             this.COMMON_USER = new HashSet<COMMON_USER>();
             this.IMPORT_WAREHOUSE = new HashSet<IMPORT_WAREHOUSE>();
             this.INVOICEs = new HashSet<INVOICE>();
-            this.RECEIVE_WARRANTY = new HashSet<RECEIVE_WARRANTY>();
             this.STOREs = new HashSet<STORE>();
             this.CHANGE_OR_REFUND_PRODUCT = new HashSet<CHANGE_OR_REFUND_PRODUCT>();
+            this.RECEIVE_WARRANTY = new HashSet<RECEIVE_WARRANTY>();
         }
     
         public int ID { get; set; }
@@ -39,12 +39,12 @@ namespace CompuStore.Database.Models
         public virtual INFOR INFOR { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<INVOICE> INVOICEs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RECEIVE_WARRANTY> RECEIVE_WARRANTY { get; set; }
         public virtual STAFFROLE STAFFROLE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<STORE> STOREs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHANGE_OR_REFUND_PRODUCT> CHANGE_OR_REFUND_PRODUCT { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RECEIVE_WARRANTY> RECEIVE_WARRANTY { get; set; }
     }
 }

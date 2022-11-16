@@ -97,6 +97,8 @@ namespace CompuStore
         }
         private void LoadViewWarranty()
         {
+            listItemViews.Clear();
+            GridDataTable.Columns.Clear();
             listItemViews.Add("CusName", "Họ và tên");
             listItemViews.Add("PhoneNum", "Số điện thoại");
             listItemViews.Add("Product", "Tên sản phẩm");
@@ -116,6 +118,8 @@ namespace CompuStore
 
         private void LoadViewCOrRefund()
         {
+            listItemViews.Clear();
+            GridDataTable.Columns.Clear();
             listItemViews.Add("CusName", "Họ và tên");
             listItemViews.Add("PhoneNum", "Số điện thoại");
             listItemViews.Add("Product", "Tên sản phẩm");
@@ -124,6 +128,7 @@ namespace CompuStore
             listItemViews.Add("ProductSerialRe", "Mã sản phẩm đổi");
             listItemViews.Add("DateRe", "Ngày hẹn trả");
             listItemViews.Add("Id", "Mã nhân viên phụ trách");
+            
             foreach (var item in listItemViews)
             {
                 DataGridViewTextBoxColumn dataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -149,7 +154,7 @@ namespace CompuStore
                     row.Cells["Date"].Value = selected.RECEIVE_DATE;
                     row.Cells["DateRe"].Value = selected.RETURN_DATE;
                     row.Cells["Id"].Value = selected.STAFF.NAME_ID;
-                    row.Cells["Status"].Value = selected.STATUS_WARRANTY;
+                    row.Cells["Status"].Value = selected.STATUS_WARRANTY == 0 ? "Đang xử lý" : "Đã xử lý";
                 }
             }
         }

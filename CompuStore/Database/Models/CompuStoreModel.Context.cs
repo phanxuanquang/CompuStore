@@ -40,12 +40,12 @@ namespace CompuStore.Database.Models
         public virtual DbSet<LINE_UP> LINE_UP { get; set; }
         public virtual DbSet<PRODUCT> PRODUCTs { get; set; }
         public virtual DbSet<RANK> RANKs { get; set; }
-        public virtual DbSet<RECEIVE_WARRANTY> RECEIVE_WARRANTY { get; set; }
         public virtual DbSet<STAFF> STAFFs { get; set; }
         public virtual DbSet<STAFFROLE> STAFFROLEs { get; set; }
         public virtual DbSet<STORE> STOREs { get; set; }
         public virtual DbSet<UNIQUE_SPECS> UNIQUE_SPECS { get; set; }
         public virtual DbSet<USERROLE> USERROLEs { get; set; }
         public virtual DbSet<CHANGE_OR_REFUND_PRODUCT> CHANGE_OR_REFUND_PRODUCT { get; set; }
+        public virtual DbSet<RECEIVE_WARRANTY> RECEIVE_WARRANTY { get; set; }
     }
 }

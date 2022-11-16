@@ -20,7 +20,6 @@
         <EntityTypeShape EntityType="CompuStoreDBModel.LINE_UP" Width="1.5" PointX="1.5" PointY="3.75" />
         <EntityTypeShape EntityType="CompuStoreDBModel.PRODUCT" Width="1.5" PointX="8.25" PointY="0.75" />
         <EntityTypeShape EntityType="CompuStoreDBModel.RANK" Width="1.5" PointX="3.75" PointY="8.625" />
-        <EntityTypeShape EntityType="CompuStoreDBModel.RECEIVE_WARRANTY" Width="1.5" PointX="10.5" PointY="10.5" />
         <EntityTypeShape EntityType="CompuStoreDBModel.STAFF" Width="1.5" PointX="3" PointY="11.5" />
         <EntityTypeShape EntityType="CompuStoreDBModel.STAFFROLE" Width="1.5" PointX="0.75" PointY="8.625" />
         <EntityTypeShape EntityType="CompuStoreDBModel.STORE" Width="1.5" PointX="5.25" PointY="19.75" />
@@ -47,9 +46,6 @@
         <AssociationConnector Association="CompuStoreDBModel.FK__STAFF__ID_INFOR__3493CFA7" />
         <AssociationConnector Association="CompuStoreDBModel.FK__INVOICE__ID_STAF__2EDAF651" />
         <AssociationConnector Association="CompuStoreDBModel.FK__INVOICE__ID_STOR__2FCF1A8A" />
-        <AssociationConnector Association="CompuStoreDBModel.FK__RECEIVE_W__ID_IN__31B762FC" />
-        <AssociationConnector Association="CompuStoreDBModel.FK__RECEIVE_W__PRODU__339FAB6E" />
-        <AssociationConnector Association="CompuStoreDBModel.FK__RECEIVE_W__ID_ST__32AB8735" />
         <AssociationConnector Association="CompuStoreDBModel.FK__STAFF__ID_STAFFR__3587F3E0" />
         <AssociationConnector Association="CompuStoreDBModel.FK__STORE__ID_STAFF___367C1819" />
         <EntityTypeShape EntityType="CompuStoreDBModel.CHANGE_OR_REFUND_PRODUCT" Width="1.5" PointX="10.5" PointY="6.125" />
@@ -57,6 +53,10 @@
         <AssociationConnector Association="CompuStoreDBModel.FK__CHANGE_OR__ID_IN__51300E55" />
         <AssociationConnector Association="CompuStoreDBModel.FK__CHANGE_OR__PRODU__5224328E" />
         <AssociationConnector Association="CompuStoreDBModel.FK__CHANGE_OR__PRODU__531856C7" />
+        <EntityTypeShape EntityType="CompuStoreDBModel.RECEIVE_WARRANTY" Width="1.5" PointX="10.5" PointY="11.125" />
+        <AssociationConnector Association="CompuStoreDBModel.FK__RECEIVE_W__ID_IN__31B762FC" />
+        <AssociationConnector Association="CompuStoreDBModel.FK__RECEIVE_W__PRODU__339FAB6E" />
+        <AssociationConnector Association="CompuStoreDBModel.FK__RECEIVE_W__ID_ST__32AB8735" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

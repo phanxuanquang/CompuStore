@@ -19,9 +19,9 @@ namespace CompuStore.Database.Models
         {
             this.DETAIL_IMPORT_WAREHOUSE = new HashSet<DETAIL_IMPORT_WAREHOUSE>();
             this.DETAIL_INVOICE = new HashSet<DETAIL_INVOICE>();
-            this.RECEIVE_WARRANTY = new HashSet<RECEIVE_WARRANTY>();
             this.CHANGE_OR_REFUND_PRODUCT = new HashSet<CHANGE_OR_REFUND_PRODUCT>();
             this.CHANGE_OR_REFUND_PRODUCT1 = new HashSet<CHANGE_OR_REFUND_PRODUCT>();
+            this.RECEIVE_WARRANTY = new HashSet<RECEIVE_WARRANTY>();
         }
     
         public int PRODUCT_ID { get; set; }
@@ -35,10 +35,10 @@ namespace CompuStore.Database.Models
         public virtual ICollection<DETAIL_INVOICE> DETAIL_INVOICE { get; set; }
         public virtual DETAIL_SPECS DETAIL_SPECS { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RECEIVE_WARRANTY> RECEIVE_WARRANTY { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHANGE_OR_REFUND_PRODUCT> CHANGE_OR_REFUND_PRODUCT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CHANGE_OR_REFUND_PRODUCT> CHANGE_OR_REFUND_PRODUCT1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RECEIVE_WARRANTY> RECEIVE_WARRANTY { get; set; }
     }
 }

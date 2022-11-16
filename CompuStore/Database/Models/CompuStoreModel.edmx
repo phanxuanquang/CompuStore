@@ -201,7 +201,7 @@
           <Property Name="REASON_WARRANTY" Type="nvarchar" MaxLength="200" />
           <Property Name="RECEIVE_DATE" Type="datetime" />
           <Property Name="RETURN_DATE" Type="datetime" />
-          <Property Name="STATUS_WARRANTY" Type="varchar" MaxLength="50" />
+          <Property Name="STATUS_WARRANTY" Type="int" />
         </EntityType>
         <EntityType Name="STAFF">
           <Key>
@@ -780,7 +780,6 @@
           <EntitySet Name="LINE_UP" EntityType="CompuStoreDBModel.LINE_UP" />
           <EntitySet Name="PRODUCTs" EntityType="CompuStoreDBModel.PRODUCT" />
           <EntitySet Name="RANKs" EntityType="CompuStoreDBModel.RANK" />
-          <EntitySet Name="RECEIVE_WARRANTY" EntityType="CompuStoreDBModel.RECEIVE_WARRANTY" />
           <EntitySet Name="STAFFs" EntityType="CompuStoreDBModel.STAFF" />
           <EntitySet Name="STAFFROLEs" EntityType="CompuStoreDBModel.STAFFROLE" />
           <EntitySet Name="STOREs" EntityType="CompuStoreDBModel.STORE" />
@@ -870,18 +869,6 @@
             <End Role="STORE" EntitySet="STOREs" />
             <End Role="INVOICE" EntitySet="INVOICEs" />
           </AssociationSet>
-          <AssociationSet Name="FK__RECEIVE_W__ID_IN__31B762FC" Association="CompuStoreDBModel.FK__RECEIVE_W__ID_IN__31B762FC">
-            <End Role="INVOICE" EntitySet="INVOICEs" />
-            <End Role="RECEIVE_WARRANTY" EntitySet="RECEIVE_WARRANTY" />
-          </AssociationSet>
-          <AssociationSet Name="FK__RECEIVE_W__PRODU__339FAB6E" Association="CompuStoreDBModel.FK__RECEIVE_W__PRODU__339FAB6E">
-            <End Role="PRODUCT" EntitySet="PRODUCTs" />
-            <End Role="RECEIVE_WARRANTY" EntitySet="RECEIVE_WARRANTY" />
-          </AssociationSet>
-          <AssociationSet Name="FK__RECEIVE_W__ID_ST__32AB8735" Association="CompuStoreDBModel.FK__RECEIVE_W__ID_ST__32AB8735">
-            <End Role="STAFF" EntitySet="STAFFs" />
-            <End Role="RECEIVE_WARRANTY" EntitySet="RECEIVE_WARRANTY" />
-          </AssociationSet>
           <AssociationSet Name="FK__STAFF__ID_STAFFR__3587F3E0" Association="CompuStoreDBModel.FK__STAFF__ID_STAFFR__3587F3E0">
             <End Role="STAFFROLE" EntitySet="STAFFROLEs" />
             <End Role="STAFF" EntitySet="STAFFs" />
@@ -906,6 +893,19 @@
           <AssociationSet Name="FK__CHANGE_OR__PRODU__531856C7" Association="CompuStoreDBModel.FK__CHANGE_OR__PRODU__531856C7">
             <End Role="PRODUCT" EntitySet="PRODUCTs" />
             <End Role="CHANGE_OR_REFUND_PRODUCT" EntitySet="CHANGE_OR_REFUND_PRODUCT" />
+          </AssociationSet>
+          <EntitySet Name="RECEIVE_WARRANTY" EntityType="CompuStoreDBModel.RECEIVE_WARRANTY" />
+          <AssociationSet Name="FK__RECEIVE_W__ID_IN__31B762FC" Association="CompuStoreDBModel.FK__RECEIVE_W__ID_IN__31B762FC">
+            <End Role="INVOICE" EntitySet="INVOICEs" />
+            <End Role="RECEIVE_WARRANTY" EntitySet="RECEIVE_WARRANTY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RECEIVE_W__PRODU__339FAB6E" Association="CompuStoreDBModel.FK__RECEIVE_W__PRODU__339FAB6E">
+            <End Role="PRODUCT" EntitySet="PRODUCTs" />
+            <End Role="RECEIVE_WARRANTY" EntitySet="RECEIVE_WARRANTY" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RECEIVE_W__ID_ST__32AB8735" Association="CompuStoreDBModel.FK__RECEIVE_W__ID_ST__32AB8735">
+            <End Role="STAFF" EntitySet="STAFFs" />
+            <End Role="RECEIVE_WARRANTY" EntitySet="RECEIVE_WARRANTY" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="COLOR">
@@ -1078,8 +1078,8 @@
           <NavigationProperty Name="DETAIL_INVOICE" Relationship="CompuStoreDBModel.FK__DETAIL_IN__ID_IN__2645B050" FromRole="INVOICE" ToRole="DETAIL_INVOICE" />
           <NavigationProperty Name="STAFF" Relationship="CompuStoreDBModel.FK__INVOICE__ID_STAF__2EDAF651" FromRole="INVOICE" ToRole="STAFF" />
           <NavigationProperty Name="STORE" Relationship="CompuStoreDBModel.FK__INVOICE__ID_STOR__2FCF1A8A" FromRole="INVOICE" ToRole="STORE" />
-          <NavigationProperty Name="RECEIVE_WARRANTY" Relationship="CompuStoreDBModel.FK__RECEIVE_W__ID_IN__31B762FC" FromRole="INVOICE" ToRole="RECEIVE_WARRANTY" />
           <NavigationProperty Name="CHANGE_OR_REFUND_PRODUCT" Relationship="CompuStoreDBModel.FK__CHANGE_OR__ID_IN__51300E55" FromRole="INVOICE" ToRole="CHANGE_OR_REFUND_PRODUCT" />
+          <NavigationProperty Name="RECEIVE_WARRANTY" Relationship="CompuStoreDBModel.FK__RECEIVE_W__ID_IN__31B762FC" FromRole="INVOICE" ToRole="RECEIVE_WARRANTY" />
         </EntityType>
         <EntityType Name="LINE_UP">
           <Key>
@@ -1104,9 +1104,9 @@
           <NavigationProperty Name="DETAIL_IMPORT_WAREHOUSE" Relationship="CompuStoreDBModel.FK__DETAIL_IM__PRODU__25518C17" FromRole="PRODUCT" ToRole="DETAIL_IMPORT_WAREHOUSE" />
           <NavigationProperty Name="DETAIL_INVOICE" Relationship="CompuStoreDBModel.FK__DETAIL_IN__PRODU__2739D489" FromRole="PRODUCT" ToRole="DETAIL_INVOICE" />
           <NavigationProperty Name="DETAIL_SPECS" Relationship="CompuStoreDBModel.FK__PRODUCT__ID_DETA__30C33EC3" FromRole="PRODUCT" ToRole="DETAIL_SPECS" />
-          <NavigationProperty Name="RECEIVE_WARRANTY" Relationship="CompuStoreDBModel.FK__RECEIVE_W__PRODU__339FAB6E" FromRole="PRODUCT" ToRole="RECEIVE_WARRANTY" />
           <NavigationProperty Name="CHANGE_OR_REFUND_PRODUCT" Relationship="CompuStoreDBModel.FK__CHANGE_OR__PRODU__5224328E" FromRole="PRODUCT" ToRole="CHANGE_OR_REFUND_PRODUCT" />
           <NavigationProperty Name="CHANGE_OR_REFUND_PRODUCT1" Relationship="CompuStoreDBModel.FK__CHANGE_OR__PRODU__531856C7" FromRole="PRODUCT" ToRole="CHANGE_OR_REFUND_PRODUCT" />
+          <NavigationProperty Name="RECEIVE_WARRANTY" Relationship="CompuStoreDBModel.FK__RECEIVE_W__PRODU__339FAB6E" FromRole="PRODUCT" ToRole="RECEIVE_WARRANTY" />
           </EntityType>
         <EntityType Name="RANK">
           <Key>
@@ -1116,23 +1116,6 @@
           <Property Name="NAME_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CUSTOMERs" Relationship="CompuStoreDBModel.FK__CUSTOMER__ID_RAN__236943A5" FromRole="RANK" ToRole="CUSTOMER" />
-        </EntityType>
-        <EntityType Name="RECEIVE_WARRANTY">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NAME_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="ID_STAFF" Type="Int32" Nullable="false" />
-          <Property Name="ID_INVOICE" Type="Int32" Nullable="false" />
-          <Property Name="PRODUCT_ID" Type="Int32" Nullable="false" />
-          <Property Name="REASON_WARRANTY" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="RECEIVE_DATE" Type="DateTime" Precision="3" />
-          <Property Name="RETURN_DATE" Type="DateTime" Precision="3" />
-          <Property Name="STATUS_WARRANTY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="INVOICE" Relationship="CompuStoreDBModel.FK__RECEIVE_W__ID_IN__31B762FC" FromRole="RECEIVE_WARRANTY" ToRole="INVOICE" />
-          <NavigationProperty Name="PRODUCT" Relationship="CompuStoreDBModel.FK__RECEIVE_W__PRODU__339FAB6E" FromRole="RECEIVE_WARRANTY" ToRole="PRODUCT" />
-          <NavigationProperty Name="STAFF" Relationship="CompuStoreDBModel.FK__RECEIVE_W__ID_ST__32AB8735" FromRole="RECEIVE_WARRANTY" ToRole="STAFF" />
         </EntityType>
         <EntityType Name="STAFF">
           <Key>
@@ -1148,10 +1131,10 @@
           <NavigationProperty Name="IMPORT_WAREHOUSE" Relationship="CompuStoreDBModel.FK__IMPORT_WA__ID_ST__2CF2ADDF" FromRole="STAFF" ToRole="IMPORT_WAREHOUSE" />
           <NavigationProperty Name="INFOR" Relationship="CompuStoreDBModel.FK__STAFF__ID_INFOR__3493CFA7" FromRole="STAFF" ToRole="INFOR" />
           <NavigationProperty Name="INVOICEs" Relationship="CompuStoreDBModel.FK__INVOICE__ID_STAF__2EDAF651" FromRole="STAFF" ToRole="INVOICE" />
-          <NavigationProperty Name="RECEIVE_WARRANTY" Relationship="CompuStoreDBModel.FK__RECEIVE_W__ID_ST__32AB8735" FromRole="STAFF" ToRole="RECEIVE_WARRANTY" />
           <NavigationProperty Name="STAFFROLE" Relationship="CompuStoreDBModel.FK__STAFF__ID_STAFFR__3587F3E0" FromRole="STAFF" ToRole="STAFFROLE" />
           <NavigationProperty Name="STOREs" Relationship="CompuStoreDBModel.FK__STORE__ID_STAFF___367C1819" FromRole="STAFF" ToRole="STORE" />
           <NavigationProperty Name="CHANGE_OR_REFUND_PRODUCT" Relationship="CompuStoreDBModel.FK__CHANGE_OR__ID_HA__503BEA1C" FromRole="STAFF" ToRole="CHANGE_OR_REFUND_PRODUCT" />
+          <NavigationProperty Name="RECEIVE_WARRANTY" Relationship="CompuStoreDBModel.FK__RECEIVE_W__ID_ST__32AB8735" FromRole="STAFF" ToRole="RECEIVE_WARRANTY" />
           </EntityType>
         <EntityType Name="STAFFROLE">
           <Key>
@@ -1454,42 +1437,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RECEIVE_W__ID_IN__31B762FC">
-          <End Type="CompuStoreDBModel.INVOICE" Role="INVOICE" Multiplicity="1" />
-          <End Type="CompuStoreDBModel.RECEIVE_WARRANTY" Role="RECEIVE_WARRANTY" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="INVOICE">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="RECEIVE_WARRANTY">
-              <PropertyRef Name="ID_INVOICE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__RECEIVE_W__PRODU__339FAB6E">
-          <End Type="CompuStoreDBModel.PRODUCT" Role="PRODUCT" Multiplicity="1" />
-          <End Type="CompuStoreDBModel.RECEIVE_WARRANTY" Role="RECEIVE_WARRANTY" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PRODUCT">
-              <PropertyRef Name="PRODUCT_ID" />
-            </Principal>
-            <Dependent Role="RECEIVE_WARRANTY">
-              <PropertyRef Name="PRODUCT_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__RECEIVE_W__ID_ST__32AB8735">
-          <End Type="CompuStoreDBModel.STAFF" Role="STAFF" Multiplicity="1" />
-          <End Type="CompuStoreDBModel.RECEIVE_WARRANTY" Role="RECEIVE_WARRANTY" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="STAFF">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="RECEIVE_WARRANTY">
-              <PropertyRef Name="ID_STAFF" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__STAFF__ID_STAFFR__3587F3E0">
           <End Type="CompuStoreDBModel.STAFFROLE" Role="STAFFROLE" Multiplicity="0..1" />
           <End Type="CompuStoreDBModel.STAFF" Role="STAFF" Multiplicity="*" />
@@ -1576,6 +1523,59 @@
             </Principal>
             <Dependent Role="CHANGE_OR_REFUND_PRODUCT">
               <PropertyRef Name="PRODUCT_ID_RE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RECEIVE_WARRANTY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ID_STAFF" Type="Int32" Nullable="false" />
+          <Property Name="ID_INVOICE" Type="Int32" Nullable="false" />
+          <Property Name="PRODUCT_ID" Type="Int32" Nullable="false" />
+          <Property Name="REASON_WARRANTY" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="RECEIVE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="RETURN_DATE" Type="DateTime" Precision="3" />
+          <Property Name="STATUS_WARRANTY" Type="Int32" />
+          <NavigationProperty Name="INVOICE" Relationship="CompuStoreDBModel.FK__RECEIVE_W__ID_IN__31B762FC" FromRole="RECEIVE_WARRANTY" ToRole="INVOICE" />
+          <NavigationProperty Name="PRODUCT" Relationship="CompuStoreDBModel.FK__RECEIVE_W__PRODU__339FAB6E" FromRole="RECEIVE_WARRANTY" ToRole="PRODUCT" />
+          <NavigationProperty Name="STAFF" Relationship="CompuStoreDBModel.FK__RECEIVE_W__ID_ST__32AB8735" FromRole="RECEIVE_WARRANTY" ToRole="STAFF" />
+        </EntityType>
+        <Association Name="FK__RECEIVE_W__ID_IN__31B762FC">
+          <End Type="CompuStoreDBModel.INVOICE" Role="INVOICE" Multiplicity="1" />
+          <End Type="CompuStoreDBModel.RECEIVE_WARRANTY" Role="RECEIVE_WARRANTY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="INVOICE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RECEIVE_WARRANTY">
+              <PropertyRef Name="ID_INVOICE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RECEIVE_W__PRODU__339FAB6E">
+          <End Type="CompuStoreDBModel.PRODUCT" Role="PRODUCT" Multiplicity="1" />
+          <End Type="CompuStoreDBModel.RECEIVE_WARRANTY" Role="RECEIVE_WARRANTY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PRODUCT">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Principal>
+            <Dependent Role="RECEIVE_WARRANTY">
+              <PropertyRef Name="PRODUCT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RECEIVE_W__ID_ST__32AB8735">
+          <End Type="CompuStoreDBModel.STAFF" Role="STAFF" Multiplicity="1" />
+          <End Type="CompuStoreDBModel.RECEIVE_WARRANTY" Role="RECEIVE_WARRANTY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="STAFF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RECEIVE_WARRANTY">
+              <PropertyRef Name="ID_STAFF" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1769,21 +1769,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="RECEIVE_WARRANTY">
-            <EntityTypeMapping TypeName="CompuStoreDBModel.RECEIVE_WARRANTY">
-              <MappingFragment StoreEntitySet="RECEIVE_WARRANTY">
-                <ScalarProperty Name="STATUS_WARRANTY" ColumnName="STATUS_WARRANTY" />
-                <ScalarProperty Name="RETURN_DATE" ColumnName="RETURN_DATE" />
-                <ScalarProperty Name="RECEIVE_DATE" ColumnName="RECEIVE_DATE" />
-                <ScalarProperty Name="REASON_WARRANTY" ColumnName="REASON_WARRANTY" />
-                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
-                <ScalarProperty Name="ID_INVOICE" ColumnName="ID_INVOICE" />
-                <ScalarProperty Name="ID_STAFF" ColumnName="ID_STAFF" />
-                <ScalarProperty Name="NAME_ID" ColumnName="NAME_ID" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="STAFFs">
             <EntityTypeMapping TypeName="CompuStoreDBModel.STAFF">
               <MappingFragment StoreEntitySet="STAFF">
@@ -1851,6 +1836,21 @@
                 <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
                 <ScalarProperty Name="ID_INVOICE" ColumnName="ID_INVOICE" />
                 <ScalarProperty Name="ID_HANDLING_STAFF" ColumnName="ID_HANDLING_STAFF" />
+                <ScalarProperty Name="NAME_ID" ColumnName="NAME_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RECEIVE_WARRANTY">
+            <EntityTypeMapping TypeName="CompuStoreDBModel.RECEIVE_WARRANTY">
+              <MappingFragment StoreEntitySet="RECEIVE_WARRANTY">
+                <ScalarProperty Name="STATUS_WARRANTY" ColumnName="STATUS_WARRANTY" />
+                <ScalarProperty Name="RETURN_DATE" ColumnName="RETURN_DATE" />
+                <ScalarProperty Name="RECEIVE_DATE" ColumnName="RECEIVE_DATE" />
+                <ScalarProperty Name="REASON_WARRANTY" ColumnName="REASON_WARRANTY" />
+                <ScalarProperty Name="PRODUCT_ID" ColumnName="PRODUCT_ID" />
+                <ScalarProperty Name="ID_INVOICE" ColumnName="ID_INVOICE" />
+                <ScalarProperty Name="ID_STAFF" ColumnName="ID_STAFF" />
                 <ScalarProperty Name="NAME_ID" ColumnName="NAME_ID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
