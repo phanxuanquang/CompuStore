@@ -169,11 +169,12 @@
             // lbDate
             // 
             this.lbDate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbDate.AutoSize = true;
             this.lbDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbDate.Location = new System.Drawing.Point(26, 354);
             this.lbDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDate.Name = "lbDate";
-            this.lbDate.Size = new System.Drawing.Size(98, 24);
+            this.lbDate.Size = new System.Drawing.Size(83, 20);
             this.lbDate.TabIndex = 133;
             this.lbDate.Text = "Ngày lập:";
             this.lbDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -281,11 +282,12 @@
             // lbStaffName
             // 
             this.lbStaffName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lbStaffName.AutoSize = true;
             this.lbStaffName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.lbStaffName.Location = new System.Drawing.Point(26, 321);
             this.lbStaffName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbStaffName.Name = "lbStaffName";
-            this.lbStaffName.Size = new System.Drawing.Size(106, 24);
+            this.lbStaffName.Size = new System.Drawing.Size(89, 20);
             this.lbStaffName.TabIndex = 132;
             this.lbStaffName.Text = "Người lập:";
             this.lbStaffName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -478,6 +480,7 @@
             this.Text = "AddReturn_Form";
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
