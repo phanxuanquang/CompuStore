@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Guna.UI2.WinForms;
+using CompuStore.Database.Services.ProductServices;
 
 namespace CompuStore
 {
@@ -21,9 +23,14 @@ namespace CompuStore
         public AddInvoice_Form(Dictionary<COMMON_SPECS, int> listProduct)
         {
             InitializeComponent();
-            LoadLabel();
             this.listProduct = listProduct;
+            this.Load += AddInvoice_Form_Load;
+        }
+
+        private void AddInvoice_Form_Load(object sender, EventArgs e)
+        {
             LoadData();
+            TurnOnAutocomplete();
         }
 
         private void LoadLabel()
@@ -140,6 +147,35 @@ namespace CompuStore
         {
             CompuStore.Tab.SaleManagement_Tab.listProduct.Clear();
             CompuStore.Tab.SaleManagement_Tab.nameIdCommonSpecs = null;
+        }
+
+        private void TurnOnAutocomplete()
+        {
+            List<PRODUCT> arrayOfWowrds1 = new List<PRODUCT>();
+            try
+            {
+                //Read in data Autocomplete list to a string[]
+                arrayOfWowrds1 = ProductServices.Instance.GetPRODUCTs().Where(item => item.IN_WAREHOUSE == true).ToList();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "File Missing", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            AddAutoCompleteCource(Serial_ComboBox, arrayOfWowrds1);
+        }
+
+        public void AddAutoCompleteCource(ComboBox textBox, IList<PRODUCT> products)
+        {
+            textBox.AutoCompleteSource = AutoCompleteSource.ListItems;
+            textBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            
+            /*AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            collection.AddRange(strings);
+            textBox.AutoCompleteCustomSource = collection;*/
+            textBox.DataSource = products;
+            textBox.ValueMember = "PRODUCT_ID";
+            textBox.DisplayMember = "SERIAL_ID";
         }
     }
 }

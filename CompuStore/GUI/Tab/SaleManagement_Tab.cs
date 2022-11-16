@@ -38,7 +38,7 @@ namespace CompuStore.Tab
             this.GridDataTable.AutoGenerateColumns = false;
             this.GridDataTable.DataSource = bindingSource1;
             this.GridDataTable.CellDoubleClick += DataTable_CellDoubleClick;
-            this.Load += SaleManagement_Tab_Load;
+            //this.Load += SaleManagement_Tab_Load;
             this.GridDataTable.Height = 690;
         }
 

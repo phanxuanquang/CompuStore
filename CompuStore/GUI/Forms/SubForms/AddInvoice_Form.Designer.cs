@@ -40,17 +40,17 @@
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.Save_Button = new Guna.UI2.WinForms.Guna2Button();
             this.ItemTable = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Print_Button = new Guna.UI2.WinForms.Guna2Button();
             this.Email_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Address_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Name_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbStaffName = new System.Windows.Forms.Label();
             this.lbDate = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.AddItemToTable_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.Serial_ComboBox = new CompuStore.Control.ComboBoxCustom();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemTable)).BeginInit();
             this.SuspendLayout();
@@ -285,6 +285,24 @@
             this.ItemTable.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.ItemTable.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Số sê-ri";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Tên sản phẩm";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Giá tiền";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
             // Print_Button
             // 
             this.Print_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -450,45 +468,6 @@
             this.lbDate.Text = "Ngày lập:";
             this.lbDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Số sê-ri";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Tên sản phẩm";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Giá tiền";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // guna2ComboBox1
-            // 
-            this.guna2ComboBox1.Animated = true;
-            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.Empty;
-            this.guna2ComboBox1.FocusedState.Parent = this.guna2ComboBox1;
-            this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.guna2ComboBox1.FormattingEnabled = true;
-            this.guna2ComboBox1.HoverState.Parent = this.guna2ComboBox1;
-            this.guna2ComboBox1.ItemHeight = 30;
-            this.guna2ComboBox1.ItemsAppearance.Parent = this.guna2ComboBox1;
-            this.guna2ComboBox1.Location = new System.Drawing.Point(36, 233);
-            this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.ShadowDecoration.Parent = this.guna2ComboBox1;
-            this.guna2ComboBox1.Size = new System.Drawing.Size(426, 36);
-            this.guna2ComboBox1.TabIndex = 41;
-            this.guna2ComboBox1.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            // 
             // AddItemToTable_Button
             // 
             this.AddItemToTable_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -511,13 +490,24 @@
             this.AddItemToTable_Button.Text = "THÊM";
             this.AddItemToTable_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             // 
+            // Serial_ComboBox
+            // 
+            this.Serial_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.Serial_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.Serial_ComboBox.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Serial_ComboBox.FormattingEnabled = true;
+            this.Serial_ComboBox.Location = new System.Drawing.Point(36, 233);
+            this.Serial_ComboBox.Name = "Serial_ComboBox";
+            this.Serial_ComboBox.Size = new System.Drawing.Size(426, 36);
+            this.Serial_ComboBox.TabIndex = 43;
+            // 
             // AddInvoice_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 677);
+            this.Controls.Add(this.Serial_ComboBox);
             this.Controls.Add(this.AddItemToTable_Button);
-            this.Controls.Add(this.guna2ComboBox1);
             this.Controls.Add(this.lbDate);
             this.Controls.Add(this.lbStaffName);
             this.Controls.Add(this.Print_Button);
@@ -562,7 +552,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
         private Guna.UI2.WinForms.Guna2Button AddItemToTable_Button;
+        private Control.ComboBoxCustom Serial_ComboBox;
     }
 }
