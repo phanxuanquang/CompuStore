@@ -19,26 +19,49 @@ namespace CompuStore.Tab
     public partial class SaleManagement_Tab : BaseTab
     {
         public static string nameIdCommonSpecs;
-        BindingList<ModelProduct> productList;
+        BindingList<ModelSale> productList;
         public static Dictionary<COMMON_SPECS, int> listProduct = new Dictionary<COMMON_SPECS, int>();
         protected Dictionary<string, string> listItemViews = new Dictionary<string, string>()
         {
            { "Name", "Tên sản phẩm" },
            { "Price", "Giá bán" },
+            {"Color", "Màu sắc" },
             {"Size", "Kích thước màn hình" },
             {"Resolution", "Độ phân giải" },
             { "CPU", "CPU" },
            { "RAMString", "RAM" },
            { "GPU", "GPU" },
-           { "TypeStorage", "Chuẩn ổ cứng" },
            { "StorageCapacity", "Dung lượng ổ cứng|Đơn vị: GB" },
         };
+
+        public class ModelSale
+        {
+            public string serialID { get; set; }
+            public string name { get; set; }
+            public double price{ get; set; }
+
+            public string resolution{ get; set; }
+
+            public double sizePanel{ get; set; }
+
+            public string cpu{ get; set; }
+
+            public string memory{ get; set; }
+
+            public string gpu{ get; set; }
+
+           public string color{ get; set; }
+
+            public int storagecap{ get; set; }
+        }
+
         public SaleManagement_Tab()
         {
             InitializeComponent();
             this.DataTable.AutoGenerateColumns = false;
             this.DataTable.DataSource = bindingSource1;
             this.DataTable.CellDoubleClick += DataTable_CellDoubleClick;
+            this.DataTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.Load += SaleManagement_Tab_Load;
         }
 
@@ -46,11 +69,11 @@ namespace CompuStore.Tab
         {
             if (e.RowIndex >= 0)
             {
-                ModelProduct model = productList[e.RowIndex];
+                PRODUCT pro = Database.DataProvider.Instance.Database.PRODUCTs.Where(item => item.SERIAL_ID == productList[e.RowIndex].serialID).FirstOrDefault();
+                ModelProduct model = ModelProduct.DatabaseToModel(pro, Database.DataProvider.Instance.Database.DETAIL_IMPORT_WAREHOUSE.FirstOrDefault(item => item.PRODUCT_ID == pro.PRODUCT_ID), pro.DETAIL_SPECS.COMMON_SPECS.LINE_UP, pro.DETAIL_SPECS.UNIQUE_SPECS.DISPLAY_SPECS, pro.DETAIL_SPECS.UNIQUE_SPECS, pro.DETAIL_SPECS.COMMON_SPECS, pro.DETAIL_SPECS.COLOR);
                 BaseDetailSpecsProduct_Form detailSpecs = null;
                 detailSpecs = new OverviewDetailSpecsProduct_Form();
-                IList<ModelProduct> models = productList.Where(item => item.CompareSpecs(model)).ToList();
-                detailSpecs.ShowDialog(this, models);
+                detailSpecs.ShowDialog(this, model.ToList());
             }
         }
 
@@ -86,30 +109,30 @@ namespace CompuStore.Tab
 
         }
 
-        private void View(BindingList<ModelProduct> productList)
+        private void View(BindingList<ModelSale> productList)
         {
             bindingSource1.ResetBindings(true);
             bindingSource1.DataSource = productList;
             foreach (DataGridViewRow row in DataTable.Rows)
             {
-                ModelProduct selected = row.DataBoundItem as ModelProduct;
+                ModelSale selected = row.DataBoundItem as ModelSale;
                 if (selected != null)
                 {
-                    row.Cells["Name"].Value = selected.NameProduct;
-                    row.Cells["Price"].Value = selected.Price;
-                    row.Cells["Size"].Value = selected.SizeProductString;
-                    row.Cells["Resolution"].Value = selected.ResolutionString;
-                    row.Cells["CPU"].Value = selected.CPU;
-                    row.Cells["RAMString"].Value = selected.RAMString;
-                    row.Cells["GPU"].Value = selected.GPU;
-                    row.Cells["TypeStorage"].Value = selected.TypeStorage;
-                    row.Cells["StorageCapacity"].Value = selected.StorageCapacity;
+                    row.Cells["Name"].Value = selected.name;
+                    row.Cells["Price"].Value = selected.price;
+                    row.Cells["Size"].Value = selected.sizePanel;
+                    row.Cells["Resolution"].Value = selected.resolution;
+                    row.Cells["CPU"].Value = selected.cpu;
+                    row.Cells["RAMString"].Value = selected.memory;
+                    row.Cells["GPU"].Value = selected.gpu;
+                    row.Cells["StorageCapacity"].Value = selected.storagecap;
+                    row.Cells["Color"].Value = selected.color;
                   
                 }
             }
         }
 
-        public void Run(BindingList<ModelProduct> productList)
+        public void Run(BindingList<ModelSale> productList)
         {
             if (DataTable.InvokeRequired)
             {
@@ -133,26 +156,44 @@ namespace CompuStore.Tab
             }
         }
 
-        private BindingList<ModelProduct> GetListView()
+        private BindingList<ModelSale> GetListView()
         {
-             productList = new BindingList<ModelProduct>();
-            List<DETAIL_SPECS> detailSpecs = Database.DataProvider.Instance.Database.DETAIL_SPECS.Select(item => item).ToList();
-            foreach (DETAIL_SPECS detail in detailSpecs)
-            {
-                UNIQUE_SPECS uniqueSpecs = detail.UNIQUE_SPECS;
-                DISPLAY_SPECS display = uniqueSpecs.DISPLAY_SPECS;
-                COLOR color = detail.COLOR;
-                COMMON_SPECS commonSpecs = detail.COMMON_SPECS;
-                LINE_UP lineup = commonSpecs.LINE_UP;
-                ICollection<PRODUCT> products = detail.PRODUCTs;
+             productList = new BindingList<ModelSale>();
+            //List<DETAIL_SPECS> detailSpecs = Database.DataProvider.Instance.Database.DETAIL_SPECS.Select(item => item).ToList();
+            //foreach (DETAIL_SPECS detail in detailSpecs)
+            //{
+            //    UNIQUE_SPECS uniqueSpecs = detail.UNIQUE_SPECS;
+            //    DISPLAY_SPECS display = uniqueSpecs.DISPLAY_SPECS;
+            //    COLOR color = detail.COLOR;
+            //    COMMON_SPECS commonSpecs = detail.COMMON_SPECS;
+            //    LINE_UP lineup = commonSpecs.LINE_UP;
+            //    ICollection<PRODUCT> products = detail.PRODUCTs;
 
-                foreach (PRODUCT product in products)
-                {
-                    DETAIL_IMPORT_WAREHOUSE detailImport = product.DETAIL_IMPORT_WAREHOUSE.First(item => item.PRODUCT_ID == product.PRODUCT_ID);
-                    ModelProduct productMD = ModelProduct.DatabaseToModel(product, detailImport, lineup, display, uniqueSpecs, commonSpecs, color);
-                    productMD.Price = detail.PRICE;
-                    productList.Add(productMD);
-                }
+            //    foreach (PRODUCT product in products)
+            //    {
+            //        DETAIL_IMPORT_WAREHOUSE detailImport = product.DETAIL_IMPORT_WAREHOUSE.First(item => item.PRODUCT_ID == product.PRODUCT_ID);
+            //        ModelProduct productMD = ModelProduct.DatabaseToModel(product, detailImport, lineup, display, uniqueSpecs, commonSpecs, color);
+            //        productMD.Price = detail.PRICE;
+            //        productList.Add(productMD);
+            //    }
+            //}
+            IList<PRODUCT> products = Database.DataProvider.Instance.Database.PRODUCTs.ToList();
+            foreach (var product in products)
+            {
+                productList.Add(new ModelSale() { 
+                    serialID = product.SERIAL_ID,
+                    name = product.DETAIL_SPECS.COMMON_SPECS.NAME,
+                    price = product.DETAIL_SPECS.PRICE.Value,
+                    sizePanel = product.DETAIL_SPECS.UNIQUE_SPECS.DISPLAY_SPECS.SIZE.Value,
+                    cpu = product.DETAIL_SPECS.UNIQUE_SPECS.CPU,
+                    gpu = product.DETAIL_SPECS.UNIQUE_SPECS.GPU,
+                    memory = product.DETAIL_SPECS.UNIQUE_SPECS.RAM,
+                    resolution = product.DETAIL_SPECS.UNIQUE_SPECS.DISPLAY_SPECS.RESOLUTION,
+                    storagecap = product.DETAIL_SPECS.UNIQUE_SPECS.STORAGE_CAPACITY.Value,
+                    color = product.DETAIL_SPECS.COLOR.COLOR_NAME
+                    
+                });
+                
             }
             return productList;
         }
