@@ -59,7 +59,7 @@ namespace CompuStore
         {
             if (isValidSerialID(detail))
             {
-                Exception res =  WarrantyServices.Instance.SaveWarrantyToDB(detail.ID_INVOICE, currentStaff.ID, Database.DataProvider.Instance.Database.PRODUCTs.FirstOrDefault(item => item.SERIAL_ID == ItemSerial_Box.Text).PRODUCT_ID, null, DateTime.Now, WarrantyDoneDate_Picker.Value, null);
+                Exception res =  WarrantyServices.Instance.SaveWarrantyToDB(detail.ID_INVOICE, currentStaff.ID, Database.DataProvider.Instance.Database.PRODUCTs.FirstOrDefault(item => item.SERIAL_ID == ItemSerial_Box.Text).PRODUCT_ID, null, DateTime.Now, WarrantyDoneDate_Picker.Value, 0);
                 if (res.Message == "done")
                 {
                     MessageBox.Show("Lưu thành công");

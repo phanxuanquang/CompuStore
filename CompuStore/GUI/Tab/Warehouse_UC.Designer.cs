@@ -26,7 +26,7 @@
         /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private void InitializeComponent() 
         {
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.StatusImportWarehouse = new System.Windows.Forms.StatusStrip();
@@ -61,7 +61,7 @@
             this.Controls.Add(this.StatusImportWarehouse);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Warehouse_UC";
-            this.Size = new System.Drawing.Size(2468, 1356);
+            //this.Size = new System.Drawing.Size(2468, 1356);
             this.Load += new System.EventHandler(this.Warehouse_UC_Load);
             this.StatusImportWarehouse.ResumeLayout(false);
             this.StatusImportWarehouse.PerformLayout();

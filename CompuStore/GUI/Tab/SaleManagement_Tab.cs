@@ -113,7 +113,7 @@ namespace CompuStore.Tab
         {
             bindingSource1.ResetBindings(true);
             bindingSource1.DataSource = productList;
-            foreach (DataGridViewRow row in DataTable.Rows)
+            foreach (DataGridViewRow row in GridDataTable.Rows)
             {
                 ModelSale selected = row.DataBoundItem as ModelSale;
                 if (selected != null)
@@ -134,9 +134,9 @@ namespace CompuStore.Tab
 
         public void Run(BindingList<ModelSale> productList)
         {
-            if (DataTable.InvokeRequired)
+            if (GridDataTable.InvokeRequired)
             {
-                DataTable.Invoke(new Action(() => View(productList)));
+                GridDataTable.Invoke(new Action(() => View(productList)));
             }
             else
             {
@@ -152,7 +152,7 @@ namespace CompuStore.Tab
                 DataGridViewTextBoxColumn dataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
                 dataGridViewTextBoxColumn.Name = item.Key;
                 dataGridViewTextBoxColumn.HeaderText = item.Value;
-                DataTable.Columns.Add(dataGridViewTextBoxColumn);
+                GridDataTable.Columns.Add(dataGridViewTextBoxColumn);
             }
         }
 
@@ -211,7 +211,7 @@ namespace CompuStore.Tab
         {
             /*BaseDetailSpecsProduct_Form detailSpecsProduct_Form = new BaseDetailSpecsProduct_Form(*//*DataTable.CurrentRow.Cells[0].Value.ToString()*//*);
             detailSpecsProduct_Form.ShowDialog();*/
-            nameIdCommonSpecs = DataTable.CurrentRow.Cells[0].Value.ToString();
+            nameIdCommonSpecs = GridDataTable.CurrentRow.Cells[0].Value.ToString();
             COMMON_SPECS commonSpecs = Database.Services.CommonSpecsServices.Instance.GetCommonSpecsByNameID(nameIdCommonSpecs);
             if (commonSpecs != null)
             {

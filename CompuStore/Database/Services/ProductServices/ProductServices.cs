@@ -20,6 +20,11 @@ namespace CompuStore.Database.Services.ProductServices
 
         private ProductServices() { }
 
+        public List<PRODUCT> GetPRODUCTs()
+        {
+            return DataProvider.Instance.Database.PRODUCTs.ToList();
+        }
+
         public PRODUCT GetProductBySerial(string serial) => DataProvider.Instance.Database.PRODUCTs.Where(item => item.SERIAL_ID == serial).FirstOrDefault();
 
         public async Task<PRODUCT> ImportProduct(ModelProduct product)

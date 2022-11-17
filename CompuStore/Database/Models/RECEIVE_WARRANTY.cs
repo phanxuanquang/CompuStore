@@ -22,7 +22,7 @@ namespace CompuStore.Database.Models
         public string REASON_WARRANTY { get; set; }
         public Nullable<System.DateTime> RECEIVE_DATE { get; set; }
         public Nullable<System.DateTime> RETURN_DATE { get; set; }
-        public string STATUS_WARRANTY { get; set; }
+        public Nullable<int> STATUS_WARRANTY { get; set; }
     
         public virtual INVOICE INVOICE { get; set; }
         public virtual PRODUCT PRODUCT { get; set; }
