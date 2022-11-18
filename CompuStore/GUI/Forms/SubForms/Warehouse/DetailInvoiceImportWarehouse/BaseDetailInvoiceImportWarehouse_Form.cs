@@ -355,29 +355,54 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
         private void Control_SelectedValueChanged(object sender, EventArgs e)
         {
-            ComboBox control = sender as ComboBox;
-            BindingList<ComboBoxBinding> binding = control.DataSource as BindingList<ComboBoxBinding>;
-            int? selectedValue = control.SelectedValue as int?;
-            ComboBoxBinding selected = binding.FirstOrDefault(item => item.ID == selectedValue);
+            CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[TableData_DataGridView.DataSource];
+            currencyManager1.SuspendBinding();
+            Dictionary<DataGridViewRow, bool> passedFilter = new Dictionary<DataGridViewRow, bool>();
 
-            KeyValuePair<string, System.Windows.Forms.Control> key = listFilter.FirstOrDefault(item => item.Value.Equals(control));
-            if (key.Key != null && selected != null)
+            foreach (DataGridViewRow row in TableData_DataGridView.Rows)
             {
-                CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[TableData_DataGridView.DataSource];
-                currencyManager1.SuspendBinding();
-                foreach (DataGridViewRow row in TableData_DataGridView.Rows)
+                if (!passedFilter.ContainsKey(row))
                 {
-                    ModelProduct product = row.DataBoundItem as ModelProduct;
-                    if (product.GetType().GetProperty(key.Key).GetValue(product, null)?.ToString() != selected.Value)
+                    passedFilter.Add(row, true);
+                }
+            }
+
+            foreach (KeyValuePair<string, System.Windows.Forms.Control> key in listFilter)
+            {
+                ComboBox control = key.Value as ComboBox;
+                BindingList<ComboBoxBinding> binding = control?.DataSource as BindingList<ComboBoxBinding>;
+                ComboBoxBinding selectedItem = control?.SelectedItem as ComboBoxBinding;
+
+                if (control != null && binding != null && selectedItem != null && selectedItem.ID != 0)
+                {
+                    foreach (DataGridViewRow row in TableData_DataGridView.Rows)
                     {
-                        row.Visible = false;
-                    }
-                    else
-                    {
-                        row.Visible = true;
+                        if (passedFilter[row])
+                        {
+                            ModelProduct product = row.DataBoundItem as ModelProduct;
+                            if (product.GetType().GetProperty(key.Key).GetValue(product, null)?.ToString() != selectedItem.Value)
+                            {
+                                passedFilter[row] = false;
+                            }
+                        }
                     }
                 }
-                currencyManager1.ResumeBinding();
+            }
+
+            foreach (KeyValuePair<DataGridViewRow, bool> key in passedFilter)
+            {
+                key.Key.Visible = key.Value;
+            }
+
+            currencyManager1.ResumeBinding();
+        }
+
+        private void ResetFilter_Click(object sender, EventArgs e)
+        {
+            foreach (KeyValuePair<string, System.Windows.Forms.Control> key in listFilter)
+            {
+                ComboBox control = key.Value as ComboBox;
+                control.SelectedValue = 0;
             }
         }
 

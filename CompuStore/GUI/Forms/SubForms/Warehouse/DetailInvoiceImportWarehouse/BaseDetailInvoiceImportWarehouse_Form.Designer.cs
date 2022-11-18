@@ -55,6 +55,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.LineUp = new System.Windows.Forms.Label();
             this.ReleaseDate_DateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.Filter_FlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.ResetFilter = new Guna.UI2.WinForms.Guna2Button();
             this.LineUp_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.NameProduct_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.Manufacturer_ComboBox = new CompuStore.Control.ComboBoxCustom();
@@ -407,8 +408,31 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Filter_FlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.Filter_FlowLayoutPanel.Location = new System.Drawing.Point(0, 400);
             this.Filter_FlowLayoutPanel.Name = "Filter_FlowLayoutPanel";
-            this.Filter_FlowLayoutPanel.Size = new System.Drawing.Size(2468, 75);
+            this.Filter_FlowLayoutPanel.Size = new System.Drawing.Size(2299, 75);
             this.Filter_FlowLayoutPanel.TabIndex = 31;
+            // 
+            // ResetFilter
+            // 
+            this.ResetFilter.Animated = true;
+            this.ResetFilter.BorderRadius = 5;
+            this.ResetFilter.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.ResetFilter.CheckedState.Parent = this.ResetFilter;
+            this.ResetFilter.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ResetFilter.CustomImages.Parent = this.ResetFilter;
+            this.ResetFilter.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.ResetFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ResetFilter.ForeColor = System.Drawing.Color.White;
+            this.ResetFilter.HoverState.Parent = this.ResetFilter;
+            this.ResetFilter.Location = new System.Drawing.Point(2307, 400);
+            this.ResetFilter.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.ResetFilter.Name = "ResetFilter";
+            this.ResetFilter.PressedDepth = 5;
+            this.ResetFilter.ShadowDecoration.Parent = this.ResetFilter;
+            this.ResetFilter.Size = new System.Drawing.Size(147, 75);
+            this.ResetFilter.TabIndex = 32;
+            this.ResetFilter.Text = "Đặt lại bộ loc";
+            this.ResetFilter.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.ResetFilter.Click += new System.EventHandler(this.ResetFilter_Click);
             // 
             // LineUp_ComboBox
             // 
@@ -455,6 +479,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(2468, 1347);
+            this.Controls.Add(this.ResetFilter);
             this.Controls.Add(this.Filter_FlowLayoutPanel);
             this.Controls.Add(this.ReleaseDate_DateTimePicker);
             this.Controls.Add(this.LineUp_ComboBox);
@@ -513,5 +538,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         protected ComboBoxCustom LineUp_ComboBox;
         protected System.Windows.Forms.DateTimePicker ReleaseDate_DateTimePicker;
         private System.Windows.Forms.FlowLayoutPanel Filter_FlowLayoutPanel;
+        protected Guna.UI2.WinForms.Guna2Button ResetFilter;
     }
 }

@@ -17,6 +17,8 @@ namespace CompuStore.GUI
         public MainWindow()
         {
             InitializeComponent();
+
+            /*this.Size = new System.Drawing.Size(1440, 1000);*/
             this.AutoScaleMode = AutoScaleMode.Dpi;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 
@@ -26,7 +28,6 @@ namespace CompuStore.GUI
             warehouseManage_Tab = null;
 
             SetHeaderState_From(SaleManage_Button);
-            /*this.Size = new System.Drawing.Size(1440, 1000);*/
         }
 
         protected override CreateParams CreateParams
