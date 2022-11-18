@@ -46,7 +46,6 @@
             this.GridDataTable.AllowUserToAddRows = false;
             this.GridDataTable.AllowUserToDeleteRows = false;
             this.GridDataTable.AllowUserToResizeColumns = false;
-            this.GridDataTable.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.GridDataTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.GridDataTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;

@@ -26,12 +26,12 @@ namespace CompuStore.Tab
            { "Name", "Tên sản phẩm" },
            { "Price", "Giá bán" },
             {"Color", "Màu sắc" },
-            {"Size", "Kích thước màn hình" },
+            {"Size", "Kích thước" },
             {"Resolution", "Độ phân giải" },
             { "CPU", "CPU" },
            { "RAMString", "RAM" },
            { "GPU", "GPU" },
-           { "StorageCapacity", "Dung lượng ổ cứng|Đơn vị: GB" },
+           { "StorageCapacity", "Ổ cứng" },
         };
 
         public class ModelSale
@@ -58,11 +58,13 @@ namespace CompuStore.Tab
         public SaleManagement_Tab()
         {
             InitializeComponent();
-            this.DataTable.AutoGenerateColumns = false;
-            this.DataTable.DataSource = bindingSource1;
-            this.DataTable.CellDoubleClick += DataTable_CellDoubleClick;
-            this.DataTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.GridDataTable.AutoGenerateColumns = false;
+            this.GridDataTable.DataSource = bindingSource1;
+            this.GridDataTable.CellDoubleClick += DataTable_CellDoubleClick;
+            this.GridDataTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             this.Load += SaleManagement_Tab_Load;
+            this.GridDataTable.Height = 690;
+            this.GridDataTable.Dock = DockStyle.Bottom;
         }
 
         private void DataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -120,12 +122,12 @@ namespace CompuStore.Tab
                 {
                     row.Cells["Name"].Value = selected.name;
                     row.Cells["Price"].Value = selected.price;
-                    row.Cells["Size"].Value = selected.sizePanel;
+                    row.Cells["Size"].Value = selected.sizePanel + " inch";
                     row.Cells["Resolution"].Value = selected.resolution;
                     row.Cells["CPU"].Value = selected.cpu;
                     row.Cells["RAMString"].Value = selected.memory;
                     row.Cells["GPU"].Value = selected.gpu;
-                    row.Cells["StorageCapacity"].Value = selected.storagecap;
+                    row.Cells["StorageCapacity"].Value = selected.storagecap + " GB";
                     row.Cells["Color"].Value = selected.color;
                   
                 }
@@ -235,6 +237,81 @@ namespace CompuStore.Tab
         {
             InvoiceList_Form invoiceList_Form = new InvoiceList_Form();
             invoiceList_Form.ShowDialog();
+        }
+
+        void Search()
+        {
+            string size = Size_ComboBox.SelectedIndex == 0 ? size = string.Empty : Size_ComboBox.Text.ToLower();
+            string resolution = Resolution_ComboBox.SelectedIndex == 0 ? resolution = string.Empty : Resolution_ComboBox.Text;
+            string cpu = CPU_ComboBox.SelectedIndex == 0 ? cpu = string.Empty : CPU_ComboBox.Text;
+            string vga = VGA_ComboBox.SelectedIndex == 0 ? vga = string.Empty : VGA_ComboBox.Text;
+            string ram = RAM_ComboBox.SelectedIndex == 0 ? ram = string.Empty : RAM_ComboBox.Text;
+            string storage = Storage_ComboBox.SelectedIndex == 0 ? storage = string.Empty : Storage_ComboBox.Text;
+
+            try
+            {
+                CurrencyManager cm = (CurrencyManager)BindingContext[GridDataTable.DataSource];
+                cm.SuspendBinding();
+
+                foreach (DataGridViewRow row in GridDataTable.Rows)
+                {
+                    if (row.Cells["Name"].Value.ToString().ToLower().Contains(SearchBox.Text.ToLower()) && 
+                        row.Cells["Size"].Value.ToString().Contains(size) &&
+                        row.Cells["Resolution"].Value.ToString().Contains(resolution) &&
+                        row.Cells["CPU"].Value.ToString().Contains(cpu) &&
+                        row.Cells["RAMString"].Value.ToString().Contains(ram) &&
+                        row.Cells["StorageCapacity"].Value.ToString().Contains(storage)
+                       // && row.Cells["GPU"].Value.ToString().Contains(vga)
+                    )
+                    {
+                        row.Visible = true;
+                    }
+                    else
+                    {
+                        row.Visible = false;
+                    }
+                }
+                cm.ResumeBinding();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void SearchBox_TextChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void Size_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void CPU_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void VGA_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void RAM_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void Storage_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void Resolution_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Search();
         }
     }
 }

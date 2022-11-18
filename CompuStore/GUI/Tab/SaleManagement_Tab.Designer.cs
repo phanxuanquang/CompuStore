@@ -54,6 +54,7 @@
             this.SearchBox.PlaceholderText = "Tìm kiếm sản phẩm theo mã hoặc tên";
             this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
             this.SearchBox.Size = new System.Drawing.Size(759, 37);
+            this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             // 
             // Button_2
             // 
@@ -140,7 +141,13 @@
             this.Size_ComboBox.HoverState.Parent = this.Size_ComboBox;
             this.Size_ComboBox.ItemHeight = 30;
             this.Size_ComboBox.Items.AddRange(new object[] {
-            "Kích thước"});
+            "Kích thước",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17"});
             this.Size_ComboBox.ItemsAppearance.Parent = this.Size_ComboBox;
             this.Size_ComboBox.Location = new System.Drawing.Point(185, 63);
             this.Size_ComboBox.Name = "Size_ComboBox";
@@ -149,6 +156,7 @@
             this.Size_ComboBox.StartIndex = 0;
             this.Size_ComboBox.TabIndex = 43;
             this.Size_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Size_ComboBox.SelectedIndexChanged += new System.EventHandler(this.Size_ComboBox_SelectedIndexChanged);
             // 
             // CPU_ComboBox
             // 
@@ -164,7 +172,17 @@
             this.CPU_ComboBox.HoverState.Parent = this.CPU_ComboBox;
             this.CPU_ComboBox.ItemHeight = 30;
             this.CPU_ComboBox.Items.AddRange(new object[] {
-            "CPU"});
+            "CPU",
+            "Intel",
+            "AMD",
+            "Intel Core i3",
+            "Intel Core i5",
+            "Intel Core i7",
+            "Intel Core i9",
+            "Ryzen 3",
+            "Ryzen 5",
+            "Ryzen 7",
+            "Ryzen 9"});
             this.CPU_ComboBox.ItemsAppearance.Parent = this.CPU_ComboBox;
             this.CPU_ComboBox.Location = new System.Drawing.Point(361, 63);
             this.CPU_ComboBox.Name = "CPU_ComboBox";
@@ -173,6 +191,7 @@
             this.CPU_ComboBox.StartIndex = 0;
             this.CPU_ComboBox.TabIndex = 44;
             this.CPU_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.CPU_ComboBox.SelectedIndexChanged += new System.EventHandler(this.CPU_ComboBox_SelectedIndexChanged);
             // 
             // VGA_ComboBox
             // 
@@ -188,7 +207,12 @@
             this.VGA_ComboBox.HoverState.Parent = this.VGA_ComboBox;
             this.VGA_ComboBox.ItemHeight = 30;
             this.VGA_ComboBox.Items.AddRange(new object[] {
-            "VGA"});
+            "VGA",
+            "NVIDIA",
+            "AMD",
+            "Intel",
+            "RTX",
+            "GTX"});
             this.VGA_ComboBox.ItemsAppearance.Parent = this.VGA_ComboBox;
             this.VGA_ComboBox.Location = new System.Drawing.Point(537, 63);
             this.VGA_ComboBox.Name = "VGA_ComboBox";
@@ -197,6 +221,7 @@
             this.VGA_ComboBox.StartIndex = 0;
             this.VGA_ComboBox.TabIndex = 45;
             this.VGA_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.VGA_ComboBox.SelectedIndexChanged += new System.EventHandler(this.VGA_ComboBox_SelectedIndexChanged);
             // 
             // RAM_ComboBox
             // 
@@ -212,7 +237,12 @@
             this.RAM_ComboBox.HoverState.Parent = this.RAM_ComboBox;
             this.RAM_ComboBox.ItemHeight = 30;
             this.RAM_ComboBox.Items.AddRange(new object[] {
-            "RAM"});
+            "RAM",
+            "2",
+            "4",
+            "8",
+            "16",
+            "32"});
             this.RAM_ComboBox.ItemsAppearance.Parent = this.RAM_ComboBox;
             this.RAM_ComboBox.Location = new System.Drawing.Point(713, 63);
             this.RAM_ComboBox.Name = "RAM_ComboBox";
@@ -221,6 +251,7 @@
             this.RAM_ComboBox.StartIndex = 0;
             this.RAM_ComboBox.TabIndex = 46;
             this.RAM_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.RAM_ComboBox.SelectedIndexChanged += new System.EventHandler(this.RAM_ComboBox_SelectedIndexChanged);
             // 
             // Storage_ComboBox
             // 
@@ -236,7 +267,12 @@
             this.Storage_ComboBox.HoverState.Parent = this.Storage_ComboBox;
             this.Storage_ComboBox.ItemHeight = 30;
             this.Storage_ComboBox.Items.AddRange(new object[] {
-            "Ổ cứng"});
+            "Ổ cứng",
+            "128",
+            "256",
+            "512",
+            "1024",
+            "2048"});
             this.Storage_ComboBox.ItemsAppearance.Parent = this.Storage_ComboBox;
             this.Storage_ComboBox.Location = new System.Drawing.Point(889, 63);
             this.Storage_ComboBox.Name = "Storage_ComboBox";
@@ -245,6 +281,7 @@
             this.Storage_ComboBox.StartIndex = 0;
             this.Storage_ComboBox.TabIndex = 47;
             this.Storage_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Storage_ComboBox.SelectedIndexChanged += new System.EventHandler(this.Storage_ComboBox_SelectedIndexChanged);
             // 
             // Resolution_ComboBox
             // 
@@ -260,7 +297,10 @@
             this.Resolution_ComboBox.HoverState.Parent = this.Resolution_ComboBox;
             this.Resolution_ComboBox.ItemHeight = 30;
             this.Resolution_ComboBox.Items.AddRange(new object[] {
-            "Độ phân giải"});
+            "Độ phân giải",
+            "1280",
+            "1920",
+            "2560"});
             this.Resolution_ComboBox.ItemsAppearance.Parent = this.Resolution_ComboBox;
             this.Resolution_ComboBox.Location = new System.Drawing.Point(1065, 63);
             this.Resolution_ComboBox.Name = "Resolution_ComboBox";
@@ -269,6 +309,7 @@
             this.Resolution_ComboBox.StartIndex = 0;
             this.Resolution_ComboBox.TabIndex = 48;
             this.Resolution_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Resolution_ComboBox.SelectedIndexChanged += new System.EventHandler(this.Resolution_ComboBox_SelectedIndexChanged);
             // 
             // SaleManagement_Tab
             // 
