@@ -65,6 +65,8 @@ namespace CompuStore.Tab
             this.Load += SaleManagement_Tab_Load;
             this.GridDataTable.Height = 690;
             this.GridDataTable.Dock = DockStyle.Bottom;
+            PriceLimit_TrackBar.Value = PriceLimit_TrackBar.Maximum;
+            PriceLimit_Label.Text = PriceLimit_TrackBar.Value.ToString() + "0.000.000";
         }
 
         private void DataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -125,7 +127,7 @@ namespace CompuStore.Tab
                     row.Cells["Size"].Value = selected.sizePanel + " inch";
                     row.Cells["Resolution"].Value = selected.resolution;
                     row.Cells["CPU"].Value = selected.cpu;
-                    row.Cells["RAMString"].Value = selected.memory;
+                    row.Cells["RAMString"].Value = selected.memory.ToString().Substring(0, 4);
                     row.Cells["GPU"].Value = selected.gpu;
                     row.Cells["StorageCapacity"].Value = selected.storagecap + " GB";
                     row.Cells["Color"].Value = selected.color;
@@ -247,7 +249,7 @@ namespace CompuStore.Tab
             string vga = VGA_ComboBox.SelectedIndex == 0 ? vga = string.Empty : VGA_ComboBox.Text;
             string ram = RAM_ComboBox.SelectedIndex == 0 ? ram = string.Empty : RAM_ComboBox.Text;
             string storage = Storage_ComboBox.SelectedIndex == 0 ? storage = string.Empty : Storage_ComboBox.Text;
-
+            int priceLimit = PriceLimit_TrackBar.Value * 10000000;
             try
             {
                 CurrencyManager cm = (CurrencyManager)BindingContext[GridDataTable.DataSource];
@@ -255,13 +257,15 @@ namespace CompuStore.Tab
 
                 foreach (DataGridViewRow row in GridDataTable.Rows)
                 {
-                    if (row.Cells["Name"].Value.ToString().ToLower().Contains(SearchBox.Text.ToLower()) && 
+                    if (row.Cells["Name"].Value.ToString().ToLower().Contains(SearchBox.Text) &&
+                        row.Cells["Color"].Value.ToString().ToLower().Contains(ColorSearch_Box.Text) &&
                         row.Cells["Size"].Value.ToString().Contains(size) &&
                         row.Cells["Resolution"].Value.ToString().Contains(resolution) &&
                         row.Cells["CPU"].Value.ToString().Contains(cpu) &&
-                        row.Cells["RAMString"].Value.ToString().Contains(ram) &&
-                        row.Cells["StorageCapacity"].Value.ToString().Contains(storage)
-                       // && row.Cells["GPU"].Value.ToString().Contains(vga)
+                        row.Cells["RAMString"].Value.ToString().Trim().Contains(ram) &&
+                        row.Cells["StorageCapacity"].Value.ToString().Contains(storage) 
+                        //&& int.Parse(row.Cells["Price"].Value.ToString().Trim()) <= priceLimit
+                    // && row.Cells["GPU"].Value.ToString().Contains(vga)
                     )
                     {
                         row.Visible = true;
@@ -311,6 +315,17 @@ namespace CompuStore.Tab
 
         private void Resolution_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Search();
+        }
+
+        private void ColorSearch_Box_TextChanged(object sender, EventArgs e)
+        {
+            Search();
+        }
+
+        private void PriceLimit_TrackBar_ValueChanged(object sender, EventArgs e)
+        {
+            PriceLimit_Label.Text = PriceLimit_TrackBar.Value.ToString() + "0.000.000";
             Search();
         }
     }
