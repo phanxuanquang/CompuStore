@@ -33,45 +33,6 @@
             this.StatusImportWarehouse.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Button_2
-            // 
-            this.Button_2.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
-            this.Button_2.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Button_2.CheckedState.Parent = this.Button_2;
-            this.Button_2.CustomImages.Parent = this.Button_2;
-            this.Button_2.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.Button_2.HoverState.Parent = this.Button_2;
-            this.Button_2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Button_2.ShadowDecoration.Parent = this.Button_2;
-            this.Button_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Button_2.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
-            // 
-            // Bottom_1
-            // 
-            this.Bottom_1.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
-            this.Bottom_1.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Bottom_1.CheckedState.Parent = this.Bottom_1;
-            this.Bottom_1.CustomImages.Parent = this.Bottom_1;
-            this.Bottom_1.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.Bottom_1.HoverState.Parent = this.Bottom_1;
-            this.Bottom_1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Bottom_1.ShadowDecoration.Parent = this.Bottom_1;
-            this.Bottom_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Bottom_1.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
-            // 
-            // Button_3
-            // 
-            this.Button_3.ButtonMode = Guna.UI2.WinForms.Enums.ButtonMode.DefaultButton;
-            this.Button_3.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Button_3.CheckedState.Parent = this.Button_3;
-            this.Button_3.CustomImages.Parent = this.Button_3;
-            this.Button_3.DialogResult = System.Windows.Forms.DialogResult.None;
-            this.Button_3.HoverState.Parent = this.Button_3;
-            this.Button_3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Button_3.ShadowDecoration.Parent = this.Button_3;
-            this.Button_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Button_3.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
-            // 
             // toolStripProgressBar1
             // 
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
@@ -101,11 +62,6 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Warehouse_UC";
             this.Load += new System.EventHandler(this.Warehouse_UC_Load);
-            this.Controls.SetChildIndex(this.StatusImportWarehouse, 0);
-            this.Controls.SetChildIndex(this.Button_3, 0);
-            this.Controls.SetChildIndex(this.Button_2, 0);
-            this.Controls.SetChildIndex(this.Bottom_1, 0);
-            this.Controls.SetChildIndex(this.SearchBox, 0);
             this.StatusImportWarehouse.ResumeLayout(false);
             this.StatusImportWarehouse.PerformLayout();
             this.ResumeLayout(false);
