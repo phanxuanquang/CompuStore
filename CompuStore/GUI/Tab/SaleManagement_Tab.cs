@@ -257,14 +257,14 @@ namespace CompuStore.Tab
 
                 foreach (DataGridViewRow row in GridDataTable.Rows)
                 {
-                    if (row.Cells["Name"].Value.ToString().ToLower().Contains(SearchBox.Text) &&
-                        row.Cells["Color"].Value.ToString().ToLower().Contains(ColorSearch_Box.Text) &&
+                    if (row.Cells["Name"].Value.ToString().ToLower().Contains(SearchBox.Text.ToLower()) &&
+                        row.Cells["Color"].Value.ToString().ToLower().Contains(ColorSearch_Box.Text.ToLower()) &&
                         row.Cells["Size"].Value.ToString().Contains(size) &&
                         row.Cells["Resolution"].Value.ToString().Contains(resolution) &&
                         row.Cells["CPU"].Value.ToString().Contains(cpu) &&
                         row.Cells["RAMString"].Value.ToString().Trim().Contains(ram) &&
-                        row.Cells["StorageCapacity"].Value.ToString().Contains(storage) 
-                        //&& int.Parse(row.Cells["Price"].Value.ToString().Trim()) <= priceLimit
+                        row.Cells["StorageCapacity"].Value.ToString().Contains(storage)
+                    //&& int.Parse(row.Cells["Price"].Value.ToString().Trim()) <= (PriceLimit_TrackBar.Value * 10000000);
                     // && row.Cells["GPU"].Value.ToString().Contains(vga)
                     )
                     {
@@ -325,7 +325,6 @@ namespace CompuStore.Tab
 
         private void PriceLimit_TrackBar_ValueChanged(object sender, EventArgs e)
         {
-            PriceLimit_Label.Text = PriceLimit_TrackBar.Value.ToString() + "0.000.000";
             Search();
         }
     }
