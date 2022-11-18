@@ -63,83 +63,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Database\Services\ChangeOrRefundProductServices.cs" />
-    <Compile Include="Database\Services\DetailInvoiceServices.cs" />
-    <Compile Include="Database\Services\WarrantyServices.cs" />
-    <Compile Include="GUI\Forms\SubForms\AddReturn_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Forms\SubForms\AddReturn_Form.Designer.cs">
-      <DependentUpon>AddReturn_Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Forms\SubForms\AddWarranty_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Forms\SubForms\AddWarranty_Form.Designer.cs">
-      <DependentUpon>AddWarranty_Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Control\ComboBoxCustom.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Database\Services\ProductServices\ColorServices.cs" />
-    <Compile Include="Database\Services\ProductServices\CommonSpecsServices.cs" />
-    <Compile Include="Database\Services\CustomerServices.cs" />
-    <Compile Include="Database\Services\DistributorServices.cs" />
-    <Compile Include="Database\Services\InvoiceServices.cs" />
-    <Compile Include="Database\Services\ProductServices\Controller.cs" />
-    <Compile Include="Database\Services\ProductServices\DetailImportWarehouseServices.cs" />
-    <Compile Include="Database\Services\ProductServices\DetailSpecsServices.cs" />
-    <Compile Include="Database\Services\ProductServices\DisplaySpecsServices.cs" />
-    <Compile Include="Database\Services\ProductServices\ImportWarehouseServices.cs" />
-    <Compile Include="Database\Services\ProductServices\LineUpServices.cs" />
-    <Compile Include="Database\Services\ProductServices\MappingModelProduct.cs" />
-    <Compile Include="Database\Services\StoreServices.cs" />
-    <Compile Include="Database\Services\ProductServices\UniqueSpecsServices.cs" />
-    <Compile Include="GUI\Forms\SubForms\AddInvoice_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Forms\SubForms\AddInvoice_Form.Designer.cs">
-      <DependentUpon>AddInvoice_Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailInvoiceImportWarehouse\AddDetailInvoiceImportWarehouse_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailInvoiceImportWarehouse\EditDetailInvoiceImportWarehouse_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\ImportDetailSpecsProduct_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\OverviewDetailSpecsProduct_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Forms\SubForms\Warehouse\InvoiceImportWarehouse\AddInvoiceImportWarehouse_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Forms\SubForms\Warehouse\InvoiceImportWarehouse\EditInvoiceImportWarehouse_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Forms\Waiting_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Forms\Waiting_Form.Designer.cs">
-      <DependentUpon>Waiting_Form.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Tab\SaleManagement_Tab.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\Tab\SaleManagement_Tab.Designer.cs">
-      <DependentUpon>SaleManagement_Tab.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Tab\BaseTab.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\Tab\BaseTab.Designer.cs">
-      <DependentUpon>BaseTab.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Database\DataProvider.cs" />
-    <Compile Include="Database\Hash.cs" />
-    <Compile Include="Database\Services\LoginServices.cs" />
     <Compile Include="Database\Models\CHANGE_OR_REFUND_PRODUCT.cs">
       <DependentUpon>CompuStoreModel.tt</DependentUpon>
     </Compile>
@@ -221,6 +144,83 @@
     <Compile Include="Database\Models\USERROLE.cs">
       <DependentUpon>CompuStoreModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\Services\ChangeOrRefundProductServices.cs" />
+    <Compile Include="Database\Services\DetailInvoiceServices.cs" />
+    <Compile Include="Database\Services\WarrantyServices.cs" />
+    <Compile Include="GUI\Forms\SubForms\AddReturn_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\AddReturn_Form.Designer.cs">
+      <DependentUpon>AddReturn_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\AddWarranty_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\AddWarranty_Form.Designer.cs">
+      <DependentUpon>AddWarranty_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ComboBoxCustom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Database\Services\ProductServices\ColorServices.cs" />
+    <Compile Include="Database\Services\ProductServices\CommonSpecsServices.cs" />
+    <Compile Include="Database\Services\CustomerServices.cs" />
+    <Compile Include="Database\Services\DistributorServices.cs" />
+    <Compile Include="Database\Services\InvoiceServices.cs" />
+    <Compile Include="Database\Services\ProductServices\Controller.cs" />
+    <Compile Include="Database\Services\ProductServices\DetailImportWarehouseServices.cs" />
+    <Compile Include="Database\Services\ProductServices\DetailSpecsServices.cs" />
+    <Compile Include="Database\Services\ProductServices\DisplaySpecsServices.cs" />
+    <Compile Include="Database\Services\ProductServices\ImportWarehouseServices.cs" />
+    <Compile Include="Database\Services\ProductServices\LineUpServices.cs" />
+    <Compile Include="Database\Services\ProductServices\MappingModelProduct.cs" />
+    <Compile Include="Database\Services\StoreServices.cs" />
+    <Compile Include="Database\Services\ProductServices\UniqueSpecsServices.cs" />
+    <Compile Include="GUI\Forms\SubForms\AddInvoice_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\AddInvoice_Form.Designer.cs">
+      <DependentUpon>AddInvoice_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailInvoiceImportWarehouse\AddDetailInvoiceImportWarehouse_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailInvoiceImportWarehouse\EditDetailInvoiceImportWarehouse_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\ImportDetailSpecsProduct_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\OverviewDetailSpecsProduct_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\Warehouse\InvoiceImportWarehouse\AddInvoiceImportWarehouse_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\Warehouse\InvoiceImportWarehouse\EditInvoiceImportWarehouse_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\Waiting_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\Waiting_Form.Designer.cs">
+      <DependentUpon>Waiting_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Tab\SaleManagement_Tab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Tab\SaleManagement_Tab.Designer.cs">
+      <DependentUpon>SaleManagement_Tab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Tab\BaseTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Tab\BaseTab.Designer.cs">
+      <DependentUpon>BaseTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Database\DataProvider.cs" />
+    <Compile Include="Database\Hash.cs" />
+    <Compile Include="Database\Services\LoginServices.cs" />
     <Compile Include="Database\Services\ProductServices\ProductServices.cs" />
     <Compile Include="Database\Services\StaffRoleServices.cs" />
     <Compile Include="Database\Services\StaffServices.cs" />
@@ -364,11 +364,11 @@
     <EmbeddedResource Include="GUI\Tab\Warehouse_UC.resx">
       <DependentUpon>Warehouse_UC.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.manifest" />
     <EntityDeploy Include="Database\Models\CompuStoreModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CompuStoreModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="app.manifest" />
     <None Include="Database\Models\CompuStoreModel.edmx.diagram">
       <DependentUpon>CompuStoreModel.edmx</DependentUpon>
     </None>
@@ -400,18 +400,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\Icons\Exit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Database\Models\CompuStoreModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CompuStoreModel.edmx</DependentUpon>
-      <LastGenOutput>CompuStoreModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Database\Models\CompuStoreModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CompuStoreModel.edmx</DependentUpon>
-      <LastGenOutput>CompuStoreModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\Icons\Close.png" />
@@ -451,6 +439,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="assets\Icons\Menu\Service - Header.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\Models\CompuStoreModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CompuStoreModel.edmx</DependentUpon>
+      <LastGenOutput>CompuStoreModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Database\Models\CompuStoreModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CompuStoreModel.edmx</DependentUpon>
+      <LastGenOutput>CompuStoreModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

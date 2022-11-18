@@ -54,6 +54,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Finish_Button = new Guna.UI2.WinForms.Guna2Button();
             this.LineUp = new System.Windows.Forms.Label();
             this.ReleaseDate_DateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.Filter_FlowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.LineUp_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.NameProduct_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.Manufacturer_ComboBox = new CompuStore.Control.ComboBoxCustom();
@@ -257,7 +258,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.TableData_DataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.TableData_DataGridView.EnableHeadersVisualStyles = false;
             this.TableData_DataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.TableData_DataGridView.Location = new System.Drawing.Point(0, 415);
+            this.TableData_DataGridView.Location = new System.Drawing.Point(0, 476);
             this.TableData_DataGridView.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.TableData_DataGridView.MultiSelect = false;
             this.TableData_DataGridView.Name = "TableData_DataGridView";
@@ -282,7 +283,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.TableData_DataGridView.RowTemplate.Height = 48;
             this.TableData_DataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.TableData_DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TableData_DataGridView.Size = new System.Drawing.Size(2468, 932);
+            this.TableData_DataGridView.Size = new System.Drawing.Size(2468, 871);
             this.TableData_DataGridView.TabIndex = 20;
             this.TableData_DataGridView.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.TableData_DataGridView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -400,6 +401,15 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.ReleaseDate_DateTimePicker.TabIndex = 30;
             this.ReleaseDate_DateTimePicker.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             // 
+            // Filter_FlowLayoutPanel
+            // 
+            this.Filter_FlowLayoutPanel.AutoScroll = true;
+            this.Filter_FlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.Filter_FlowLayoutPanel.Location = new System.Drawing.Point(0, 400);
+            this.Filter_FlowLayoutPanel.Name = "Filter_FlowLayoutPanel";
+            this.Filter_FlowLayoutPanel.Size = new System.Drawing.Size(2468, 75);
+            this.Filter_FlowLayoutPanel.TabIndex = 31;
+            // 
             // LineUp_ComboBox
             // 
             this.LineUp_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
@@ -445,6 +455,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(2468, 1347);
+            this.Controls.Add(this.Filter_FlowLayoutPanel);
             this.Controls.Add(this.ReleaseDate_DateTimePicker);
             this.Controls.Add(this.LineUp_ComboBox);
             this.Controls.Add(this.LineUp);
@@ -501,5 +512,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         protected Guna.UI2.WinForms.Guna2DataGridView TableData_DataGridView;
         protected ComboBoxCustom LineUp_ComboBox;
         protected System.Windows.Forms.DateTimePicker ReleaseDate_DateTimePicker;
+        private System.Windows.Forms.FlowLayoutPanel Filter_FlowLayoutPanel;
     }
 }

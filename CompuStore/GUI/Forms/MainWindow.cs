@@ -26,7 +26,7 @@ namespace CompuStore.GUI
             warehouseManage_Tab = null;
 
             SetHeaderState_From(SaleManage_Button);
-            this.Size = new System.Drawing.Size(1440, 1000);
+            /*this.Size = new System.Drawing.Size(1440, 1000);*/
         }
 
         protected override CreateParams CreateParams
