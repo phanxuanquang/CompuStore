@@ -22,7 +22,7 @@ namespace CompuStore.Database
             Database = new CompuStoreDBEntities();
         }
 
-        public static bool ChangeDatabase(string configConnectionStringName)
+        public async Task<bool> ChangeDatabase(string configConnectionStringName)
         {
             try
             {
@@ -32,8 +32,29 @@ namespace CompuStore.Database
 
                 var sqlCnxStringBuilder = new SqlConnectionStringBuilder(entityCnxStringBuilder.ProviderConnectionString);
 
-                Instance.Database.Database.Connection.ConnectionString = sqlCnxStringBuilder.ConnectionString;
-                return true;
+                bool existsDatabase = true;
+                await Task.Factory.StartNew(() =>
+                {
+                    using (SqlConnection cnx = new SqlConnection(sqlCnxStringBuilder.ConnectionString))
+                    {
+                        try
+                        {
+                            cnx.Open();
+                            cnx.Close();
+                        }
+                        catch (Exception ex)
+                        {
+                            existsDatabase = false;
+                        }
+                    }
+                });
+
+                if (existsDatabase)
+                {
+                    Instance.Database.Database.Connection.ConnectionString = sqlCnxStringBuilder.ConnectionString;
+                    return true;
+                }
+                return false;
             }
             catch (Exception ex)
             {
