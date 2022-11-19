@@ -1,4 +1,5 @@
-﻿using CompuStore.Database.Models;
+﻿using CompuStore.Database;
+using CompuStore.Database.Models;
 using CompuStore.Database.Services.ProductServices;
 using CompuStore.GUI;
 using CompuStore.GUI.Forms.SubForms.Warehouse;
@@ -330,8 +331,8 @@ namespace CompuStore.Tab
                 switch (seeWhat)
                 {
                     case SEE_WHAT.COMMON_SPECS:
-                        string nameIdCommonSpecs = (sender as DataGridView).Rows[e.RowIndex].Cells["NAME_ID"].Value as string;
-                        COMMON_SPECS commonSpecs = Database.Services.CommonSpecsServices.Instance.GetCommonSpecsByNameID(nameIdCommonSpecs);
+                        CommonSpecsCustom selectedCommon = (sender as DataGridView).Rows[e.RowIndex].DataBoundItem as CommonSpecsCustom;
+                        COMMON_SPECS commonSpecs = Database.Services.CommonSpecsServices.Instance.GetCommonSpecsByNameID(selectedCommon.NAME_ID);
                         if (commonSpecs != null)
                         {
                             BaseDetailInvoiceImportWarehouse_Form form = new EditDetailInvoiceImportWarehouse_Form();
@@ -339,8 +340,8 @@ namespace CompuStore.Tab
                         }
                         break;
                     case SEE_WHAT.IMPORT_WAREHOUSE:
-                        string nameIdImportWarehouse = (sender as DataGridView).Rows[e.RowIndex].Cells["NAME_ID"].Value as string;
-                        IMPORT_WAREHOUSE importWarehouse = ImportWarehouseServices.Instance.GetImportWarehouseByNameID(nameIdImportWarehouse);
+                        ImportWarehouseCustom selectedImport = (sender as DataGridView).Rows[e.RowIndex].DataBoundItem as ImportWarehouseCustom;
+                        IMPORT_WAREHOUSE importWarehouse = ImportWarehouseServices.Instance.GetImportWarehouseByNameID(selectedImport.NameID);
                         if (importWarehouse != null)
                         {
                             BaseInvoiceImportWarehouse_Form form = new EditInvoiceImportWarehouse_Form();
