@@ -100,7 +100,7 @@ namespace CompuStore.Tab
                 }
             };
 
-            waiting.ShowDialog(this);
+            waiting.ShowDialog(this);   
         }
 
         public Task LoadDB(IProgress<bool> progress)
