@@ -1,4 +1,5 @@
-﻿using CompuStore.Database.Models;
+﻿using CompuStore.Control;
+using CompuStore.Database.Models;
 using CompuStore.Database.Services;
 using CompuStore.GUI;
 using CompuStore.ImportData;
@@ -239,118 +240,41 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 MessageBox.Show("Lỗi");
             }
         }
-        #endregion
 
-        #region Loading data
-        private Task LoadingData(IProgress<bool> progress)
+        private void ComboBox_ChangeSelectedBackgroundColor(object sender, EventArgs e)
         {
-            return Task.Factory.StartNew(() =>
+            ComboBox control = sender as ComboBox;
+            ComboBoxBinding item = control.SelectedItem as ComboBoxBinding;
+            if (item.ID != 0)
             {
-                IQueryable<LINE_UP> lineupQueryable = Database.DataProvider.Instance.Database.LINE_UP;
-                foreach (LINE_UP lineup in lineupQueryable)
-                {
-                    if (bindingLineUp != null)
-                    {
-                        bindingLineUp.Add(new ComboBoxBinding { ID = lineup.ID, Value = lineup.NAME });
-                        bindingManufacturer.Add(new ComboBoxBinding { ID = lineup.ID, Value = lineup.MANUFACTURER });
-                    }
-                }
-
-                IQueryable<COMMON_SPECS> commonSpecsQueryable = Database.DataProvider.Instance.Database.COMMON_SPECS;
-                foreach (COMMON_SPECS commonSpecs in commonSpecsQueryable)
-                {
-                    if (bindingNameProduct != null)
-                    {
-                        bindingNameProduct.Add(new ComboBoxBinding { ID = commonSpecs.ID, Value = commonSpecs.NAME });
-                    }
-                }
-
-                progress.Report(true);
-            });
-        }
-
-        private void DetailInvoiceImportWarehouse_Form_Load(object sender, EventArgs e)
-        {
-            bindingTable = new BindingList<ModelProduct>();
-            bindingNameProduct = new BindingList<ComboBoxBinding>();
-            bindingLineUp = new BindingList<ComboBoxBinding>();
-            bindingManufacturer = new BindingList<ComboBoxBinding>();
-            TableData_DataGridView.DataSource = bindingTable;
-            Progress<bool> progress = new Progress<bool>();
-            Waiting_Form waiting = new Waiting_Form();
-            waiting.FormClosing += (owner, ev) =>
-            {
-                LineUp_ComboBox.DataSource = bindingLineUp;
-                LineUp_ComboBox.ValueMember = "ID";
-                LineUp_ComboBox.DisplayMember = "Value";
-
-                NameProduct_ComboBox.DataSource = bindingNameProduct;
-                NameProduct_ComboBox.ValueMember = "ID";
-                NameProduct_ComboBox.DisplayMember = "Value";
-
-                Manufacturer_ComboBox.DataSource = bindingManufacturer;
-                Manufacturer_ComboBox.ValueMember = "ID";
-                Manufacturer_ComboBox.DisplayMember = "Value";
-            };
-
-            Task runLoading = LoadingData(progress);
-
-            runLoading.GetAwaiter().OnCompleted(() => waiting.Close());
-
-            progress.ProgressChanged += (owner, value) =>
-            {
-                if (value && !waiting.IsDisposed && waiting.shown)
-                {
-                    waiting.Close();
-                }
-            };
-
-            waiting.ShowDialog(this);
-        }
-
-        private void TableData_DataGridView_DataSourceChanged(object sender, EventArgs e)
-        {
-            DataGridView grid = sender as DataGridView;
-            grid.SuspendLayout();
-            foreach (DataGridViewColumn column in grid.Columns)
-            {
-                if (translater.ContainsKey(column.Name))
-                {
-                    if (column.Name == "ReleaseDate")
-                    {
-                        column.DefaultCellStyle.Format = "yyyy";
-                    }
-                    string headerText = translater[column.Name];
-                    string[] split = headerText.Split('|');
-                    column.HeaderText = split[0];
-                    if (split.Length > 1)
-                    {
-                        column.ToolTipText = split[1];
-                    }
-                    if (!listFilter.ContainsKey(column.Name))
-                    {
-                        ComboBox control = new ComboBox();
-                        control.Size = new Size(200, 50);
-                        BindingList<ComboBoxBinding> binding = new BindingList<ComboBoxBinding>();
-                        binding.Add(new ComboBoxBinding { ID = 0, Value = string.Format("Lọc: {0}", column.Name) });
-                        control.DataSource = binding;
-                        control.ValueMember = "ID";
-                        control.DisplayMember = "Value";
-                        control.SelectedValueChanged += Control_SelectedValueChanged;
-                        listFilter.Add(column.Name, control);
-                        Filter_FlowLayoutPanel.SuspendLayout();
-                        Filter_FlowLayoutPanel.Controls.Add(control);
-                        Filter_FlowLayoutPanel.ResumeLayout(false);
-                        Filter_FlowLayoutPanel.PerformLayout();
-                    }
-                }
-                else
-                {
-                    column.Visible = false;
-                }
+                control.BackColor = System.Drawing.Color.FromArgb(Convert.ToInt32("0xFF" + item.Value.Substring(1), 16));
+                control.ForeColor = control.BackColor;
             }
-            grid.ResumeLayout(false);
-            grid.PerformLayout();
+            else
+            {
+                control.BackColor = Color.White;
+                control.ForeColor = Color.Black;
+            }
+        }
+
+        private void Control_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            ComboBox control = sender as ComboBox;
+
+            int index = e.Index >= 0 ? e.Index : 0;
+            ComboBoxBinding item = control.Items[index] as ComboBoxBinding;
+
+            Brush brush = null;
+            e.DrawBackground();
+            brush = item.ID == 0 ? Brushes.White : new SolidBrush(System.Drawing.Color.FromArgb(Convert.ToInt32("0xFF" + item.Value.Substring(1), 16)));
+            e.Graphics.FillRectangle(brush, e.Bounds);
+            if (item.ID == 0)
+            {
+                brush = Brushes.Black;
+                e.Graphics.DrawString(item.Value, e.Font, brush, e.Bounds, StringFormat.GenericDefault);
+            }
+
+            e.DrawFocusRectangle();
         }
 
         private void Control_SelectedValueChanged(object sender, EventArgs e)
@@ -405,6 +329,129 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 control.SelectedValue = 0;
             }
         }
+        #endregion
+
+        #region Loading data
+        private Task LoadingData(IProgress<bool> progress)
+        {
+            return Task.Factory.StartNew(() =>
+            {
+                IQueryable<LINE_UP> lineupQueryable = Database.DataProvider.Instance.Database.LINE_UP;
+                foreach (LINE_UP lineup in lineupQueryable)
+                {
+                    if (bindingLineUp != null)
+                    {
+                        bindingLineUp.Add(new ComboBoxBinding { ID = lineup.ID, Value = lineup.NAME });
+                        bindingManufacturer.Add(new ComboBoxBinding { ID = lineup.ID, Value = lineup.MANUFACTURER });
+                    }
+                }
+
+                IQueryable<COMMON_SPECS> commonSpecsQueryable = Database.DataProvider.Instance.Database.COMMON_SPECS;
+                foreach (COMMON_SPECS commonSpecs in commonSpecsQueryable)
+                {
+                    if (bindingNameProduct != null)
+                    {
+                        bindingNameProduct.Add(new ComboBoxBinding { ID = commonSpecs.ID, Value = commonSpecs.NAME });
+                    }
+                }
+
+                progress.Report(true);
+            });
+        }
+
+        private void DetailInvoiceImportWarehouse_Form_Load(object sender, EventArgs e)
+        {
+            bindingTable = new BindingList<ModelProduct>();
+            bindingNameProduct = new BindingList<ComboBoxBinding>();
+            bindingLineUp = new BindingList<ComboBoxBinding>();
+            bindingManufacturer = new BindingList<ComboBoxBinding>();
+            TableData_DataGridView.DataSource = bindingTable;
+            Progress<bool> progress = new Progress<bool>();
+            Waiting_Form waiting = new Waiting_Form();
+            waiting.FormClosing += (owner, ev) =>
+            {
+                LineUp_ComboBox.DataSource = bindingLineUp;
+                LineUp_ComboBox.ValueMember = "ID";
+                LineUp_ComboBox.DisplayMember = "Value";
+
+                NameProduct_ComboBox.DataSource = bindingNameProduct;
+                NameProduct_ComboBox.ValueMember = "ID";
+                NameProduct_ComboBox.DisplayMember = "Value";
+
+                Manufacturer_ComboBox.DataSource = bindingManufacturer;
+                Manufacturer_ComboBox.ValueMember = "ID";
+                Manufacturer_ComboBox.DisplayMember = "Value";
+
+                this.Focus();
+            };
+
+            Task runLoading = LoadingData(progress);
+
+            runLoading.GetAwaiter().OnCompleted(() => waiting.Close());
+
+            progress.ProgressChanged += (owner, value) =>
+            {
+                if (value && !waiting.IsDisposed && waiting.shown)
+                {
+                    waiting.Close();
+                }
+            };
+
+            waiting.ShowDialog(this);
+        }
+
+        private void TableData_DataGridView_DataSourceChanged(object sender, EventArgs e)
+        {
+            DataGridView grid = sender as DataGridView;
+            grid.SuspendLayout();
+            foreach (DataGridViewColumn column in grid.Columns)
+            {
+                if (translater.ContainsKey(column.Name))
+                {
+                    if (column.Name == "ReleaseDate")
+                    {
+                        column.DefaultCellStyle.Format = "yyyy";
+                    }
+                    string headerText = translater[column.Name];
+                    string[] split = headerText.Split('|');
+                    column.HeaderText = split[0];
+                    if (split.Length > 1)
+                    {
+                        column.ToolTipText = split[1];
+                    }
+                    if (!listFilter.ContainsKey(column.Name))
+                    {
+                        ComboBoxCustom control = new ComboBoxCustom();
+                        control.Size = new Size(200, 50);
+                        BindingList<ComboBoxBinding> binding = new BindingList<ComboBoxBinding>();
+                        binding.Add(new ComboBoxBinding { ID = 0, Value = string.Format("Lọc: {0}", split[0]) });
+                        control.Width = TextRenderer.MeasureText(binding.First().Value, control.Font).Width + control.Height * 2;
+                        control.DropDownWidth = control.Width;
+                        control.DataSource = binding;
+                        control.ValueMember = "ID";
+                        control.DisplayMember = "Value";
+                        control.SelectedValueChanged += Control_SelectedValueChanged;
+                        if (column.Name == "ColorCode")
+                        {
+                            control.DrawMode = DrawMode.OwnerDrawVariable;
+                            control.DrawItem += Control_DrawItem;
+                            control.SelectedIndexChanged += ComboBox_ChangeSelectedBackgroundColor;
+                        }
+                        listFilter.Add(column.Name, control);
+                        Filter_FlowLayoutPanel.SuspendLayout();
+                        Filter_FlowLayoutPanel.Controls.Add(control);
+                        Filter_FlowLayoutPanel.ResumeLayout(false);
+                        Filter_FlowLayoutPanel.PerformLayout();
+                    }
+                }
+                else
+                {
+                    column.Visible = false;
+                }
+            }
+            grid.ResumeLayout(false);
+            grid.PerformLayout();
+        }
 
         protected virtual void Custom_Load(object sender, EventArgs e) { }
 
@@ -431,11 +478,18 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 {
                     if (listFilter.TryGetValue(property[index].Name, out System.Windows.Forms.Control control))
                     {
-                        BindingList<ComboBoxBinding> binding = (control as ComboBox)?.DataSource as BindingList<ComboBoxBinding>;
+                        ComboBox combo = control as ComboBox;
+                        BindingList<ComboBoxBinding> binding = combo.DataSource as BindingList<ComboBoxBinding>;
                         string value = property[index].GetValue(added, null)?.ToString();
                         if (!string.IsNullOrEmpty(value) && binding.FirstOrDefault(item => item.Value == value) == null)
                         {
                             binding.Add(new ComboBoxBinding { ID = binding.Count, Value = value });
+                            int width = TextRenderer.MeasureText(value, combo.Font).Width;
+                            if (combo.Width < width)
+                            {
+                                combo.Width = width + combo.Height * 2;
+                                combo.DropDownWidth = combo.Width;
+                            }
                         }
                     }
                 }

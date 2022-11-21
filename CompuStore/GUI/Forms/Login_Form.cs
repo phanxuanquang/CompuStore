@@ -21,6 +21,7 @@ namespace CompuStore.GUI
         public Login_Form()
         {
             InitializeComponent();
+            Database.DataProvider.Instance.ChangeDatabase("CompuStoreDBEntities_Backup");
         }
 
         protected override CreateParams CreateParams
