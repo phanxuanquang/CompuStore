@@ -16,12 +16,23 @@ namespace CompuStore.GUI
 {
     public partial class Login_Form : Form
     {
+        private class ServerComboBoxBinding
+        {
+            public int ID { get; set; }
+            public string Value { get; set; }
+            public string ConnectionString;
+        }
 
-        
         public Login_Form()
         {
             InitializeComponent();
-            Database.DataProvider.Instance.ChangeDatabase("CompuStoreDBEntities_Backup");
+            BindingList<ServerComboBoxBinding> binding = new BindingList<ServerComboBoxBinding>();
+            binding.Add(new ServerComboBoxBinding { ID = 1, Value = "Server chính - kitaz.database.windows.net", ConnectionString = "CompuStoreDBEntities" });
+            binding.Add(new ServerComboBoxBinding { ID = 2, Value = "Server backup - Local", ConnectionString = "CompuStoreDBEntities_Backup" });
+            ServerDatabase_ComboBox.ValueMember = "ID";
+            ServerDatabase_ComboBox.DisplayMember = "Value";
+            ServerDatabase_ComboBox.DataSource = binding;
+            ServerDatabase_ComboBox.SelectedIndexChanged += ServerDatabase_ComboBox_SelectedIndexChanged;
         }
 
         protected override CreateParams CreateParams
@@ -91,7 +102,7 @@ namespace CompuStore.GUI
                 waiting.Close();
                 waiting.Dispose();
 
-                if (Remember_CheckBox.Checked)
+                if (RememberAccount_CheckBox.Checked)
                 {
                     LoginServices.Instance.RememberAccount(Username_Box.Text, Password_Box.Text);
                 }
@@ -114,7 +125,7 @@ namespace CompuStore.GUI
                     Username_Box.Text = Password_Box.Text = String.Empty;
                     MessageBox.Show("Tên đăng nhập hoặc mật khẩu không chính xác.\nVui lòng điền lại thông tin đăng nhập.", "Đăng nhập thất bại", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
-                if (Remember_CheckBox.Checked)
+                if (RememberAccount_CheckBox.Checked)
                 {
                     File.WriteAllText("rem.loginf", "1");
                 }
@@ -148,11 +159,30 @@ namespace CompuStore.GUI
                 }
                 if (isRememberLogin == "1")
                 {
-                    Remember_CheckBox.Checked = true;
+                    RememberAccount_CheckBox.Checked = true;
                     Username_Box.Text = LoginServices.Instance.GetRememberAccount().Item1;
                     Password_Box.Text = LoginServices.Instance.GetRememberAccount().Item2;
                 }
             }
+        }
+
+        private void ServerDatabase_ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox control = sender as ComboBox;
+            ServerComboBoxBinding binding = control.SelectedItem as ServerComboBoxBinding;
+            Waiting_Form form = new Waiting_Form();
+            Task<bool> task = Database.DataProvider.Instance.ChangeDatabase(binding.ConnectionString);
+            task.GetAwaiter().OnCompleted(() =>
+            {
+                form.Close();
+                MessageBox.Show(string.Format("Chuyển Server {0}", task.Result ? "thành công" : "thất bại"));
+            });
+            form.ShowDialog();
+        }
+
+        private void CheckBox_Panel_Click(object sender, EventArgs e)
+        {
+            RememberAccount_CheckBox.Checked = !RememberAccount_CheckBox.Checked;
         }
     }
 }

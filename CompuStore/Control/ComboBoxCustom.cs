@@ -16,6 +16,7 @@ namespace CompuStore.Control
         {
             AutoCompleteMode = AutoCompleteMode.Suggest;
             AutoCompleteSource = AutoCompleteSource.ListItems;
+            FlatStyle= FlatStyle.Flat;
             KeyUp += ComboBoxCustom_KeyUp;
         }
 
