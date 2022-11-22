@@ -57,6 +57,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             // 
             this.Serial_Label.AutoSize = true;
             this.Serial_Label.Margin = new System.Windows.Forms.Padding(150 * DeviceDpi / 96, 3 * DeviceDpi / 96, 10 * DeviceDpi / 96, 3 * DeviceDpi / 96);
+            this.Serial_Label.Padding = new Padding(5 * DeviceDpi / 96);
             this.Serial_Label.Name = "Serial_Label";
             this.Serial_Label.Size = new System.Drawing.Size(124 * DeviceDpi / 96, 32);
             this.Serial_Label.TabIndex = 134;
@@ -67,6 +68,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.UnitPrice_Label.AutoSize = true;
             this.UnitPrice_Label.ForeColor = System.Drawing.Color.Black;
             this.UnitPrice_Label.Margin = new System.Windows.Forms.Padding(0, 3 * DeviceDpi / 96, 0, 3 * DeviceDpi / 96);
+            this.UnitPrice_Label.Padding = new Padding(5 * DeviceDpi / 96);
             this.UnitPrice_Label.Name = "UnitPrice_Label";
             this.UnitPrice_Label.Size = new System.Drawing.Size(64 * DeviceDpi / 96, 32);
             this.UnitPrice_Label.TabIndex = 134;
@@ -77,6 +79,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Price_Label.AutoSize = true;
             this.Price_Label.ForeColor = System.Drawing.Color.Black;
             this.Price_Label.Margin = new System.Windows.Forms.Padding(450 * DeviceDpi / 96, 3 * DeviceDpi / 96, 10 * DeviceDpi / 96, 3 * DeviceDpi / 96);
+            this.Price_Label.Padding = new Padding(5 * DeviceDpi / 96);
             this.Price_Label.Name = "Price_Label";
             this.Price_Label.Size = new System.Drawing.Size(96 * DeviceDpi / 96, 32);
             this.Price_Label.TabIndex = 133;
