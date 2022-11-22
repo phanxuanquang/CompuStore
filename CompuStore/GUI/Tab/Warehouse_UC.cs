@@ -175,7 +175,7 @@ namespace CompuStore.Tab
             SearchBox.TextChanged += SearchBox_TextChanged;
             GridDataTable.DataSourceChanged += GridDataTable_DataSourceChanged;
             GridDataTable.CellDoubleClick += GridDataTable_CellDoubleClick;
-            InitializeComponent();
+            Load += Warehouse_UC_Load;
         }
 
         #region Loading data

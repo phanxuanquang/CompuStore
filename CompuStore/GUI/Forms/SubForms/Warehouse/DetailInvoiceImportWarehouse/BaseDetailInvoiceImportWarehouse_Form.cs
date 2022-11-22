@@ -252,7 +252,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
             else
             {
-                control.BackColor = Color.White;
+                control.BackColor = Color.WhiteSmoke;
                 control.ForeColor = Color.Black;
             }
         }
@@ -266,7 +266,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
             Brush brush = null;
             e.DrawBackground();
-            brush = item.ID == 0 ? Brushes.White : new SolidBrush(System.Drawing.Color.FromArgb(Convert.ToInt32("0xFF" + item.Value.Substring(1), 16)));
+            brush = item.ID == 0 ? Brushes.WhiteSmoke : new SolidBrush(System.Drawing.Color.FromArgb(Convert.ToInt32("0xFF" + item.Value.Substring(1), 16)));
             e.Graphics.FillRectangle(brush, e.Bounds);
             if (item.ID == 0)
             {

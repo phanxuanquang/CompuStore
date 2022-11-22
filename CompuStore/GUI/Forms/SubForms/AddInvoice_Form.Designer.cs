@@ -74,7 +74,7 @@
             this.PhoneNumber_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.PhoneNumber_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.PhoneNumber_Box.FocusedState.Parent = this.PhoneNumber_Box;
-            this.PhoneNumber_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.PhoneNumber_Box.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PhoneNumber_Box.ForeColor = System.Drawing.Color.Black;
             this.PhoneNumber_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.PhoneNumber_Box.HoverState.Parent = this.PhoneNumber_Box;
@@ -98,7 +98,7 @@
             // 
             this.Header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
             this.Header.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Header.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Header.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Header.ForeColor = System.Drawing.Color.White;
             this.Header.Location = new System.Drawing.Point(0, 0);
             this.Header.Name = "Header";
@@ -128,7 +128,7 @@
             this.Identity_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Identity_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Identity_Box.FocusedState.Parent = this.Identity_Box;
-            this.Identity_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Identity_Box.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Identity_Box.ForeColor = System.Drawing.Color.Black;
             this.Identity_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.Identity_Box.HoverState.Parent = this.Identity_Box;
@@ -187,7 +187,7 @@
             this.Save_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Save_Button.CustomImages.Parent = this.Save_Button;
             this.Save_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Save_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Save_Button.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Save_Button.ForeColor = System.Drawing.Color.White;
             this.Save_Button.HoverState.Parent = this.Save_Button;
             this.Save_Button.Location = new System.Drawing.Point(36, 600);
@@ -313,7 +313,7 @@
             this.Print_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Print_Button.CustomImages.Parent = this.Print_Button;
             this.Print_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Print_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Print_Button.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Print_Button.ForeColor = System.Drawing.Color.White;
             this.Print_Button.HoverState.Parent = this.Print_Button;
             this.Print_Button.Location = new System.Drawing.Point(36, 537);
@@ -344,7 +344,7 @@
             this.Email_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Email_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Email_Box.FocusedState.Parent = this.Email_Box;
-            this.Email_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Email_Box.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Email_Box.ForeColor = System.Drawing.Color.Black;
             this.Email_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.Email_Box.HoverState.Parent = this.Email_Box;
@@ -383,7 +383,7 @@
             this.Address_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Address_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Address_Box.FocusedState.Parent = this.Address_Box;
-            this.Address_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Address_Box.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Address_Box.ForeColor = System.Drawing.Color.Black;
             this.Address_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.Address_Box.HoverState.Parent = this.Address_Box;
@@ -422,7 +422,7 @@
             this.Name_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Name_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Name_Box.FocusedState.Parent = this.Name_Box;
-            this.Name_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Name_Box.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name_Box.ForeColor = System.Drawing.Color.Black;
             this.Name_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.Name_Box.HoverState.Parent = this.Name_Box;
@@ -446,11 +446,11 @@
             // 
             this.lbStaffName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbStaffName.AutoSize = true;
-            this.lbStaffName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbStaffName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbStaffName.Location = new System.Drawing.Point(32, 475);
             this.lbStaffName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbStaffName.Name = "lbStaffName";
-            this.lbStaffName.Size = new System.Drawing.Size(89, 20);
+            this.lbStaffName.Size = new System.Drawing.Size(91, 21);
             this.lbStaffName.TabIndex = 39;
             this.lbStaffName.Text = "Người lập:";
             this.lbStaffName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -459,11 +459,11 @@
             // 
             this.lbDate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbDate.AutoSize = true;
-            this.lbDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.lbDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDate.Location = new System.Drawing.Point(32, 502);
             this.lbDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDate.Name = "lbDate";
-            this.lbDate.Size = new System.Drawing.Size(83, 20);
+            this.lbDate.Size = new System.Drawing.Size(83, 21);
             this.lbDate.TabIndex = 40;
             this.lbDate.Text = "Ngày lập:";
             this.lbDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -478,7 +478,7 @@
             this.AddItemToTable_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AddItemToTable_Button.CustomImages.Parent = this.AddItemToTable_Button;
             this.AddItemToTable_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.AddItemToTable_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.AddItemToTable_Button.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddItemToTable_Button.ForeColor = System.Drawing.Color.White;
             this.AddItemToTable_Button.HoverState.Parent = this.AddItemToTable_Button;
             this.AddItemToTable_Button.Location = new System.Drawing.Point(468, 233);
@@ -494,11 +494,13 @@
             // 
             this.Serial_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.Serial_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.Serial_ComboBox.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Serial_ComboBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Serial_ComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Serial_ComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Serial_ComboBox.FormattingEnabled = true;
             this.Serial_ComboBox.Location = new System.Drawing.Point(36, 233);
             this.Serial_ComboBox.Name = "Serial_ComboBox";
-            this.Serial_ComboBox.Size = new System.Drawing.Size(426, 36);
+            this.Serial_ComboBox.Size = new System.Drawing.Size(426, 23);
             this.Serial_ComboBox.TabIndex = 43;
             // 
             // AddInvoice_Form

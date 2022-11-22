@@ -312,9 +312,6 @@
     <Compile Include="GUI\Tab\Warehouse_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="GUI\Tab\Warehouse_UC.Designer.cs">
-      <DependentUpon>Warehouse_UC.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\Tab\ServiceManagement_Tab.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -381,9 +378,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\BaseDetailSpecsProduct_Form.resx">
       <DependentUpon>BaseDetailSpecsProduct_Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Tab\Warehouse_UC.resx">
-      <DependentUpon>Warehouse_UC.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <EntityDeploy Include="Database\Models\CompuStoreModel.edmx">

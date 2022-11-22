@@ -43,7 +43,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.ImportPanel.Location = new System.Drawing.Point(10, 0);
             this.ImportPanel.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.ImportPanel.Name = "ImportPanel";
-            this.ImportPanel.Size = new System.Drawing.Size(1935, 100);
+            this.ImportPanel.Size = new System.Drawing.Size(this.Size.Width, 70);
             this.ImportPanel.TabIndex = 134;
             // 
             // Serial_TextBox
@@ -52,7 +52,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Serial_TextBox.Location = new System.Drawing.Point(234, 30);
             this.Serial_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Serial_TextBox.Name = "Serial_TextBox";
-            this.Serial_TextBox.Size = new System.Drawing.Size(464, 39);
+            this.Serial_TextBox.Size = new System.Drawing.Size(232, 39);
             this.Serial_TextBox.TabIndex = 133;
             // 
             // Serial_Label
@@ -99,6 +99,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.MainFlowLayoutPanel.Controls.Clear();
             this.MainFlowLayoutPanel.Controls.Add(ImportPanel);
             this.MainFlowLayoutPanel.Controls.Add(SpecsPanel);
+            this.Size = new Size(this.Size.Width, this.Size.Height + 70);
+            this.MainFlowLayoutPanel.Size = new Size(this.MainFlowLayoutPanel.Size.Width, this.MainFlowLayoutPanel.Size.Height + 70);
             this.ImportPanel.ResumeLayout(false);
             this.ImportPanel.PerformLayout();
             this.MainFlowLayoutPanel.ResumeLayout(false);
