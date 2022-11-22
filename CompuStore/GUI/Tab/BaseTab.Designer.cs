@@ -34,10 +34,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.GridDataTable = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.SearchBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.Bottom_1 = new Guna.UI2.WinForms.Guna2Button();
             this.Button_2 = new Guna.UI2.WinForms.Guna2Button();
             this.Button_3 = new Guna.UI2.WinForms.Guna2Button();
+            this.SearchBox = new Guna.UI2.WinForms.Guna2TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.GridDataTable)).BeginInit();
             this.SuspendLayout();
             // 
@@ -121,35 +121,6 @@
             this.GridDataTable.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.GridDataTable.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             // 
-            // SearchBox
-            // 
-            this.SearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchBox.Animated = true;
-            this.SearchBox.BorderRadius = 5;
-            this.SearchBox.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.SearchBox.DefaultText = "";
-            this.SearchBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.SearchBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.SearchBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.SearchBox.DisabledState.Parent = this.SearchBox;
-            this.SearchBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.SearchBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.SearchBox.FocusedState.Parent = this.SearchBox;
-            this.SearchBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.SearchBox.HoverState.Parent = this.SearchBox;
-            this.SearchBox.IconLeft = global::CompuStore.Properties.Resources.Exit;
-            this.SearchBox.Location = new System.Drawing.Point(25, 19);
-            this.SearchBox.Margin = new System.Windows.Forms.Padding(6);
-            this.SearchBox.Name = "SearchBox";
-            this.SearchBox.PasswordChar = '\0';
-            this.SearchBox.PlaceholderText = "Tìm kiếm ";
-            this.SearchBox.SelectedText = "";
-            this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
-            this.SearchBox.Size = new System.Drawing.Size(749, 37);
-            this.SearchBox.TabIndex = 14;
-            this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
-            // 
             // Bottom_1
             // 
             this.Bottom_1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -215,6 +186,37 @@
             this.Button_3.TabIndex = 12;
             this.Button_3.Text = "Delete";
             this.Button_3.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            // 
+            // SearchBox
+            // 
+            this.SearchBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SearchBox.Animated = true;
+            this.SearchBox.BorderRadius = 8;
+            this.SearchBox.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.SearchBox.DefaultText = "";
+            this.SearchBox.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.SearchBox.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.SearchBox.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.SearchBox.DisabledState.Parent = this.SearchBox;
+            this.SearchBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.SearchBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.SearchBox.FocusedState.Parent = this.SearchBox;
+            this.SearchBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.SearchBox.HoverState.Parent = this.SearchBox;
+            this.SearchBox.IconLeft = global::CompuStore.Properties.Resources.Search_Icon;
+            this.SearchBox.IconLeftOffset = new System.Drawing.Point(4, 0);
+            this.SearchBox.IconLeftSize = new System.Drawing.Size(24, 24);
+            this.SearchBox.Location = new System.Drawing.Point(25, 19);
+            this.SearchBox.Margin = new System.Windows.Forms.Padding(6);
+            this.SearchBox.Name = "SearchBox";
+            this.SearchBox.PasswordChar = '\0';
+            this.SearchBox.PlaceholderText = "Tìm kiếm ";
+            this.SearchBox.SelectedText = "";
+            this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
+            this.SearchBox.Size = new System.Drawing.Size(749, 37);
+            this.SearchBox.TabIndex = 14;
+            this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             // 
             // BaseTab
             // 

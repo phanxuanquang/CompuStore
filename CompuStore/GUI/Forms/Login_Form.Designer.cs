@@ -36,11 +36,11 @@
             this.CheckBox_Panel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.MainPanel = new System.Windows.Forms.Panel();
+            this.Exit_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.Welcome_Label = new System.Windows.Forms.Label();
             this.Password_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Username_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Background = new System.Windows.Forms.Panel();
-            this.Welcome_Label = new System.Windows.Forms.Label();
-            this.Exit_Button = new Guna.UI2.WinForms.Guna2Button();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.ServerDatabase_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.CheckBox_Panel.SuspendLayout();
@@ -138,6 +138,44 @@
             this.MainPanel.Size = new System.Drawing.Size(600, 412);
             this.MainPanel.TabIndex = 10;
             // 
+            // Exit_Button
+            // 
+            this.Exit_Button.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Exit_Button.Animated = true;
+            this.Exit_Button.AutoRoundedCorners = true;
+            this.Exit_Button.BorderRadius = 23;
+            this.Exit_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Exit_Button.CheckedState.Parent = this.Exit_Button;
+            this.Exit_Button.CustomImages.Parent = this.Exit_Button;
+            this.Exit_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(204)))));
+            this.Exit_Button.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Exit_Button.ForeColor = System.Drawing.Color.White;
+            this.Exit_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
+            this.Exit_Button.HoverState.Parent = this.Exit_Button;
+            this.Exit_Button.Location = new System.Drawing.Point(105, 304);
+            this.Exit_Button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Exit_Button.Name = "Exit_Button";
+            this.Exit_Button.PressedDepth = 10;
+            this.Exit_Button.ShadowDecoration.Parent = this.Exit_Button;
+            this.Exit_Button.Size = new System.Drawing.Size(390, 49);
+            this.Exit_Button.TabIndex = 11;
+            this.Exit_Button.Text = "THOÁT";
+            this.Exit_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Exit_Button.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
+            this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click_1);
+            // 
+            // Welcome_Label
+            // 
+            this.Welcome_Label.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Welcome_Label.Font = new System.Drawing.Font("Arial", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Welcome_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(79)))), ((int)(((byte)(180)))));
+            this.Welcome_Label.Location = new System.Drawing.Point(0, 0);
+            this.Welcome_Label.Name = "Welcome_Label";
+            this.Welcome_Label.Size = new System.Drawing.Size(600, 89);
+            this.Welcome_Label.TabIndex = 10;
+            this.Welcome_Label.Text = "CHÀO MỪNG";
+            this.Welcome_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Password_Box
             // 
             this.Password_Box.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -169,7 +207,7 @@
             this.Password_Box.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Password_Box.Name = "Password_Box";
             this.Password_Box.PasswordChar = '\0';
-            this.Password_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.Password_Box.PlaceholderForeColor = System.Drawing.Color.White;
             this.Password_Box.PlaceholderText = "Mật khẩu";
             this.Password_Box.SelectedText = "";
             this.Password_Box.ShadowDecoration.Parent = this.Password_Box;
@@ -209,7 +247,7 @@
             this.Username_Box.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Username_Box.Name = "Username_Box";
             this.Username_Box.PasswordChar = '\0';
-            this.Username_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.Username_Box.PlaceholderForeColor = System.Drawing.Color.White;
             this.Username_Box.PlaceholderText = "Tên đăng nhập";
             this.Username_Box.SelectedText = "";
             this.Username_Box.ShadowDecoration.Parent = this.Username_Box;
@@ -226,44 +264,6 @@
             this.Background.Name = "Background";
             this.Background.Size = new System.Drawing.Size(600, 415);
             this.Background.TabIndex = 11;
-            // 
-            // Welcome_Label
-            // 
-            this.Welcome_Label.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Welcome_Label.Font = new System.Drawing.Font("Arial", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.Welcome_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(79)))), ((int)(((byte)(180)))));
-            this.Welcome_Label.Location = new System.Drawing.Point(0, 0);
-            this.Welcome_Label.Name = "Welcome_Label";
-            this.Welcome_Label.Size = new System.Drawing.Size(600, 89);
-            this.Welcome_Label.TabIndex = 10;
-            this.Welcome_Label.Text = "CHÀO MỪNG";
-            this.Welcome_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Exit_Button
-            // 
-            this.Exit_Button.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Exit_Button.Animated = true;
-            this.Exit_Button.AutoRoundedCorners = true;
-            this.Exit_Button.BorderRadius = 23;
-            this.Exit_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Exit_Button.CheckedState.Parent = this.Exit_Button;
-            this.Exit_Button.CustomImages.Parent = this.Exit_Button;
-            this.Exit_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(204)))));
-            this.Exit_Button.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.Exit_Button.ForeColor = System.Drawing.Color.White;
-            this.Exit_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
-            this.Exit_Button.HoverState.Parent = this.Exit_Button;
-            this.Exit_Button.Location = new System.Drawing.Point(105, 304);
-            this.Exit_Button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Exit_Button.Name = "Exit_Button";
-            this.Exit_Button.PressedDepth = 10;
-            this.Exit_Button.ShadowDecoration.Parent = this.Exit_Button;
-            this.Exit_Button.Size = new System.Drawing.Size(390, 49);
-            this.Exit_Button.TabIndex = 11;
-            this.Exit_Button.Text = "THOÁT";
-            this.Exit_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            this.Exit_Button.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
-            this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click_1);
             // 
             // guna2DragControl1
             // 

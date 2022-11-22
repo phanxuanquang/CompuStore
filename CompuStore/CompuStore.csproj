@@ -484,6 +484,8 @@
       <DependentUpon>CompuStoreModel.edmx</DependentUpon>
       <LastGenOutput>CompuStoreModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\Search_Icon.png" />
+    <None Include="Resources\Search.png" />
     <None Include="Resources\Background-01.png" />
     <None Include="Resources\Password.png" />
     <None Include="Resources\Username.png" />

@@ -179,7 +179,7 @@
             // HeaderIcon
             // 
             this.HeaderIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.HeaderIcon.BackgroundImage = global::CompuStore.Properties.Resources.Staff___Header;
+            this.HeaderIcon.BackgroundImage = global::CompuStore.Properties.Resources.Sale___Header;
             this.HeaderIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.HeaderIcon.Location = new System.Drawing.Point(9, 9);
             this.HeaderIcon.Margin = new System.Windows.Forms.Padding(0);
