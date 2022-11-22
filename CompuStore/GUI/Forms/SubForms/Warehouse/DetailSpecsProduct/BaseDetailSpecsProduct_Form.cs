@@ -126,6 +126,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             TypeScreen_ComboBox.Enabled = editable;
             TouchScreen_CheckBox.Enabled = editable;
             HasCodeDisplay_CheckBox.Enabled = editable;
+            CodeDisplay_ComboBox.Enabled = editable;
             TypeStorage_ComboBox.Enabled = editable;
             StorageCapacity_ComboBox.Enabled = editable;
             WifiStandard_ComboBox.Enabled = editable;
@@ -189,17 +190,14 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 if (product.SpaceColor.TryGetValue(ModelProduct.ENUM_SPACE_COLOR.sRGB, out double sRGB))
                 {
                     ColorSpace_sRGB_TextBox.Text = sRGB.ToString();
-                    ColorSpace_sRGB_TextBox.Enabled = true;
                 }
                 if (product.SpaceColor.TryGetValue(ModelProduct.ENUM_SPACE_COLOR.DCI_P3, out double dcip3))
                 {
                     ColorSpace_DCIP3_TextBox.Text = dcip3.ToString();
-                    ColorSpace_DCIP3_TextBox.Enabled = true;
                 }
                 if (product.SpaceColor.TryGetValue(ModelProduct.ENUM_SPACE_COLOR.AdobeRGBProfile, out double adobe))
                 {
                     ColorSpace_AdobeRGB_TextBox.Text = adobe.ToString();
-                    ColorSpace_AdobeRGB_TextBox.Enabled = true;
                 }
             }
 
@@ -418,13 +416,16 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             HasCodeDisplay_CheckBox.Checked = false;
             await LoadingData();
             SetDefaultData();
-            SetEditable(this.editable);
+            if (string.IsNullOrEmpty(product.Serial))
+            {
+                Edit_Button_Click(null, null);
+            }
         }
 
         private void Edit_Button_Click(object sender, EventArgs e)
         {
-            editable = !editable;
             SetEditable(editable);
+            editable = !editable;
         }
 
         private void AddNewItemToComboBox(object sender, string value)
@@ -503,17 +504,14 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                         if (model.SpaceColor.TryGetValue(ModelProduct.ENUM_SPACE_COLOR.sRGB, out double sRGB))
                         {
                             ColorSpace_sRGB_TextBox.Text = sRGB.ToString();
-                            ColorSpace_sRGB_TextBox.Enabled = true;
                         }
                         if (model.SpaceColor.TryGetValue(ModelProduct.ENUM_SPACE_COLOR.DCI_P3, out double dcip3))
                         {
                             ColorSpace_DCIP3_TextBox.Text = dcip3.ToString();
-                            ColorSpace_DCIP3_TextBox.Enabled = true;
                         }
                         if (model.SpaceColor.TryGetValue(ModelProduct.ENUM_SPACE_COLOR.AdobeRGBProfile, out double adobe))
                         {
                             ColorSpace_AdobeRGB_TextBox.Text = adobe.ToString();
-                            ColorSpace_AdobeRGB_TextBox.Enabled = true;
                         }
                     }
                     string[] pixels = selected.RESOLUTION.Split('x');
