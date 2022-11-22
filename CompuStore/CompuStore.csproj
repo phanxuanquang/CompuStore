@@ -321,6 +321,18 @@
     <Compile Include="GUI\Tab\ServiceManagement_Tab.Designer.cs">
       <DependentUpon>ServiceManagement_Tab.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Forms\SubForms\WarrantyDetail_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\WarrantyDetail_Form.Designer.cs">
+      <DependentUpon>WarrantyDetail_Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\ReturnDetail_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\ReturnDetail_Form.Designer.cs">
+      <DependentUpon>ReturnDetail_Form.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="GUI\Forms\SubForms\AddReturn_Form.resx">
       <DependentUpon>AddReturn_Form.cs</DependentUpon>
     </EmbeddedResource>
@@ -384,6 +396,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Tab\Warehouse_UC.resx">
       <DependentUpon>Warehouse_UC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Forms\SubForms\WarrantyDetail_Form.resx">
+      <DependentUpon>WarrantyDetail_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Forms\SubForms\ReturnDetail_Form.resx">
+      <DependentUpon>ReturnDetail_Form.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <EntityDeploy Include="Database\Models\CompuStoreModel.edmx">

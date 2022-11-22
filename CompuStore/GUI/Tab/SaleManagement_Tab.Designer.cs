@@ -216,7 +216,6 @@
             this.RAM_ComboBox.ItemHeight = 30;
             this.RAM_ComboBox.Items.AddRange(new object[] {
             "RAM",
-            "2GB",
             "4GB",
             "8GB",
             "16GB",
