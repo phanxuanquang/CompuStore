@@ -159,6 +159,7 @@
             // 
             this.ServerDatabase_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.ServerDatabase_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ServerDatabase_ComboBox.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ServerDatabase_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ServerDatabase_ComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ServerDatabase_ComboBox.FormattingEnabled = true;
@@ -216,8 +217,8 @@
             // 
             // Login_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(861, 741);
             this.Controls.Add(this.CheckBox_Panel);

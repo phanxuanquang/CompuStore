@@ -23,7 +23,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         #region Private Component
         protected override void AddInitializeComponent()
         {
-            this.ImportPanel = new System.Windows.Forms.Panel();
+            this.ImportPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.Serial_TextBox = new System.Windows.Forms.TextBox();
             this.Serial_Label = new System.Windows.Forms.Label();
             this.UnitPrice_Label = new System.Windows.Forms.Label();
@@ -35,33 +35,30 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             // 
             // ImportPanel
             // 
-            this.ImportPanel.Controls.Add(this.UnitPrice_Label);
+            this.ImportPanel.Controls.Add(this.Serial_Label);
             this.ImportPanel.Controls.Add(this.Serial_TextBox);
             this.ImportPanel.Controls.Add(this.Price_Label);
             this.ImportPanel.Controls.Add(this.Price_TextBox);
-            this.ImportPanel.Controls.Add(this.Serial_Label);
-            this.ImportPanel.Location = new System.Drawing.Point(10, 0);
+            this.ImportPanel.Controls.Add(this.UnitPrice_Label);
             this.ImportPanel.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.ImportPanel.Name = "ImportPanel";
-            this.ImportPanel.Size = new System.Drawing.Size(1935, 100);
+            this.ImportPanel.Size = new System.Drawing.Size(this.Size.Width, 70);
             this.ImportPanel.TabIndex = 134;
             // 
             // Serial_TextBox
             // 
             this.Serial_TextBox.Enabled = false;
-            this.Serial_TextBox.Location = new System.Drawing.Point(234, 30);
-            this.Serial_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Serial_TextBox.Margin = new System.Windows.Forms.Padding(5 * DeviceDpi / 96);
             this.Serial_TextBox.Name = "Serial_TextBox";
-            this.Serial_TextBox.Size = new System.Drawing.Size(464, 39);
+            this.Serial_TextBox.Size = new System.Drawing.Size(232 * DeviceDpi / 96, 39);
             this.Serial_TextBox.TabIndex = 133;
             // 
             // Serial_Label
             // 
             this.Serial_Label.AutoSize = true;
-            this.Serial_Label.Location = new System.Drawing.Point(34, 33);
-            this.Serial_Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Serial_Label.Margin = new System.Windows.Forms.Padding(150 * DeviceDpi / 96, 3 * DeviceDpi / 96, 10 * DeviceDpi / 96, 3 * DeviceDpi / 96);
             this.Serial_Label.Name = "Serial_Label";
-            this.Serial_Label.Size = new System.Drawing.Size(124, 32);
+            this.Serial_Label.Size = new System.Drawing.Size(124 * DeviceDpi / 96, 32);
             this.Serial_Label.TabIndex = 134;
             this.Serial_Label.Text = "Serial máy";
             // 
@@ -69,10 +66,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             // 
             this.UnitPrice_Label.AutoSize = true;
             this.UnitPrice_Label.ForeColor = System.Drawing.Color.Black;
-            this.UnitPrice_Label.Location = new System.Drawing.Point(1287, 30);
-            this.UnitPrice_Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.UnitPrice_Label.Margin = new System.Windows.Forms.Padding(0, 3 * DeviceDpi / 96, 0, 3 * DeviceDpi / 96);
             this.UnitPrice_Label.Name = "UnitPrice_Label";
-            this.UnitPrice_Label.Size = new System.Drawing.Size(64, 32);
+            this.UnitPrice_Label.Size = new System.Drawing.Size(64 * DeviceDpi / 96, 32);
             this.UnitPrice_Label.TabIndex = 134;
             this.UnitPrice_Label.Text = "VNĐ";
             // 
@@ -80,10 +76,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             // 
             this.Price_Label.AutoSize = true;
             this.Price_Label.ForeColor = System.Drawing.Color.Black;
-            this.Price_Label.Location = new System.Drawing.Point(908, 33);
-            this.Price_Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Price_Label.Margin = new System.Windows.Forms.Padding(450 * DeviceDpi / 96, 3 * DeviceDpi / 96, 10 * DeviceDpi / 96, 3 * DeviceDpi / 96);
             this.Price_Label.Name = "Price_Label";
-            this.Price_Label.Size = new System.Drawing.Size(96, 32);
+            this.Price_Label.Size = new System.Drawing.Size(96 * DeviceDpi / 96, 32);
             this.Price_Label.TabIndex = 133;
             this.Price_Label.Text = "Giá tiền";
             // 
@@ -91,14 +86,15 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             // 
             this.Price_TextBox.Enabled = false;
             this.Price_TextBox.ForeColor = System.Drawing.Color.Black;
-            this.Price_TextBox.Location = new System.Drawing.Point(1019, 30);
-            this.Price_TextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.Price_TextBox.Margin = new System.Windows.Forms.Padding(5 * DeviceDpi / 96);
             this.Price_TextBox.Name = "Price_TextBox";
-            this.Price_TextBox.Size = new System.Drawing.Size(259, 39);
+            this.Price_TextBox.Size = new System.Drawing.Size(259 * DeviceDpi / 96, 39);
             this.Price_TextBox.TabIndex = 132;
             this.MainFlowLayoutPanel.Controls.Clear();
             this.MainFlowLayoutPanel.Controls.Add(ImportPanel);
             this.MainFlowLayoutPanel.Controls.Add(SpecsPanel);
+            this.Size = new Size(this.Size.Width, this.Size.Height + 70);
+            this.MainFlowLayoutPanel.Size = new Size(this.MainFlowLayoutPanel.Size.Width, this.MainFlowLayoutPanel.Size.Height + 70);
             this.ImportPanel.ResumeLayout(false);
             this.ImportPanel.PerformLayout();
             this.MainFlowLayoutPanel.ResumeLayout(false);

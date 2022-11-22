@@ -89,6 +89,11 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         public BaseDetailInvoiceImportWarehouse_Form()
         {
             InitializeComponent();
+            if (DeviceDpi > 96)
+            {
+                TableData_DataGridView.ColumnHeadersHeight = 48;
+                TableData_DataGridView.RowTemplate.Height = 48;
+            }
             listFilter = new Dictionary<string, System.Windows.Forms.Control>();
             AddProductByExcel_Button.Click += AddProductByExcel_Button_Click;
             AddProduct_Button.Click += AddProduct_Button_Click;
@@ -252,7 +257,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
             else
             {
-                control.BackColor = Color.White;
+                control.BackColor = Color.WhiteSmoke;
                 control.ForeColor = Color.Black;
             }
         }
@@ -266,7 +271,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
             Brush brush = null;
             e.DrawBackground();
-            brush = item.ID == 0 ? Brushes.White : new SolidBrush(System.Drawing.Color.FromArgb(Convert.ToInt32("0xFF" + item.Value.Substring(1), 16)));
+            brush = item.ID == 0 ? Brushes.WhiteSmoke : new SolidBrush(System.Drawing.Color.FromArgb(Convert.ToInt32("0xFF" + item.Value.Substring(1), 16)));
             e.Graphics.FillRectangle(brush, e.Bounds);
             if (item.ID == 0)
             {

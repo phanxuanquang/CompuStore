@@ -96,7 +96,7 @@
             this.GridDataTable.RowTemplate.ReadOnly = true;
             this.GridDataTable.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.GridDataTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridDataTable.Size = new System.Drawing.Size(1440, 722);
+            this.GridDataTable.Size = new System.Drawing.Size(1425, 722);
             this.GridDataTable.TabIndex = 1;
             this.GridDataTable.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.GridDataTable.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -146,7 +146,7 @@
             this.SearchBox.PlaceholderText = "Tìm kiếm ";
             this.SearchBox.SelectedText = "";
             this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
-            this.SearchBox.Size = new System.Drawing.Size(764, 37);
+            this.SearchBox.Size = new System.Drawing.Size(749, 37);
             this.SearchBox.TabIndex = 14;
             this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             // 
@@ -163,7 +163,7 @@
             this.Bottom_1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Bottom_1.ForeColor = System.Drawing.Color.White;
             this.Bottom_1.HoverState.Parent = this.Bottom_1;
-            this.Bottom_1.Location = new System.Drawing.Point(795, 19);
+            this.Bottom_1.Location = new System.Drawing.Point(780, 19);
             this.Bottom_1.Name = "Bottom_1";
             this.Bottom_1.PressedDepth = 5;
             this.Bottom_1.ShadowDecoration.Parent = this.Bottom_1;
@@ -185,7 +185,7 @@
             this.Button_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Button_2.ForeColor = System.Drawing.Color.White;
             this.Button_2.HoverState.Parent = this.Button_2;
-            this.Button_2.Location = new System.Drawing.Point(1004, 19);
+            this.Button_2.Location = new System.Drawing.Point(989, 19);
             this.Button_2.Name = "Button_2";
             this.Button_2.PressedDepth = 5;
             this.Button_2.ShadowDecoration.Parent = this.Button_2;
@@ -207,7 +207,7 @@
             this.Button_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Button_3.ForeColor = System.Drawing.Color.White;
             this.Button_3.HoverState.Parent = this.Button_3;
-            this.Button_3.Location = new System.Drawing.Point(1213, 19);
+            this.Button_3.Location = new System.Drawing.Point(1198, 19);
             this.Button_3.Name = "Button_3";
             this.Button_3.PressedDepth = 5;
             this.Button_3.ShadowDecoration.Parent = this.Button_3;
@@ -227,7 +227,7 @@
             this.Controls.Add(this.GridDataTable);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "BaseTab";
-            this.Size = new System.Drawing.Size(1440, 800);
+            this.Size = new System.Drawing.Size(1425, 800);
             ((System.ComponentModel.ISupportInitialize)(this.GridDataTable)).EndInit();
             this.ResumeLayout(false);
 

@@ -35,15 +35,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.DataTable = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.iNVOICEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.SearchBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.ViewDetail_Button = new Guna.UI2.WinForms.Guna2Button();
             this.HeaderIcon = new System.Windows.Forms.PictureBox();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.Header = new System.Windows.Forms.Label();
+            this.iNVOICEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DataTable)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iNVOICEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iNVOICEBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // DataTable
@@ -127,10 +127,6 @@
             this.DataTable.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.DataTable.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             // 
-            // iNVOICEBindingSource
-            // 
-            this.iNVOICEBindingSource.DataSource = typeof(CompuStore.Database.Models.INVOICE);
-            // 
             // SearchBox
             // 
             this.SearchBox.Animated = true;
@@ -144,6 +140,7 @@
             this.SearchBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.SearchBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.SearchBox.FocusedState.Parent = this.SearchBox;
+            this.SearchBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.SearchBox.HoverState.Parent = this.SearchBox;
             this.SearchBox.IconLeft = global::CompuStore.Properties.Resources.Exit;
@@ -166,7 +163,7 @@
             this.ViewDetail_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ViewDetail_Button.CustomImages.Parent = this.ViewDetail_Button;
             this.ViewDetail_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.ViewDetail_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ViewDetail_Button.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ViewDetail_Button.ForeColor = System.Drawing.Color.White;
             this.ViewDetail_Button.HoverState.Parent = this.ViewDetail_Button;
             this.ViewDetail_Button.Location = new System.Drawing.Point(982, 56);
@@ -212,7 +209,7 @@
             // 
             this.Header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
             this.Header.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Header.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Header.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Header.ForeColor = System.Drawing.Color.White;
             this.Header.Location = new System.Drawing.Point(0, 0);
             this.Header.Name = "Header";
@@ -223,10 +220,14 @@
             this.Header.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Header.UseCompatibleTextRendering = true;
             // 
+            // iNVOICEBindingSource
+            // 
+            this.iNVOICEBindingSource.DataSource = typeof(CompuStore.Database.Models.INVOICE);
+            // 
             // InvoiceList_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1198, 720);
             this.Controls.Add(this.HeaderIcon);
             this.Controls.Add(this.Exit_Button);
@@ -238,8 +239,8 @@
             this.Name = "InvoiceList_Form";
             this.Text = "InvoiceList_Form";
             ((System.ComponentModel.ISupportInitialize)(this.DataTable)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iNVOICEBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iNVOICEBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

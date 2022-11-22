@@ -55,7 +55,7 @@
             // 
             this.Header.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
             this.Header.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Header.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Header.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Header.ForeColor = System.Drawing.Color.White;
             this.Header.Location = new System.Drawing.Point(0, 0);
             this.Header.Name = "Header";
@@ -86,7 +86,7 @@
             this.PhoneNumber_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.PhoneNumber_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.PhoneNumber_Box.FocusedState.Parent = this.PhoneNumber_Box;
-            this.PhoneNumber_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.PhoneNumber_Box.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PhoneNumber_Box.ForeColor = System.Drawing.Color.Black;
             this.PhoneNumber_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.PhoneNumber_Box.HoverState.Parent = this.PhoneNumber_Box;
@@ -129,7 +129,7 @@
             this.Identity_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Identity_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Identity_Box.FocusedState.Parent = this.Identity_Box;
-            this.Identity_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Identity_Box.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Identity_Box.ForeColor = System.Drawing.Color.Black;
             this.Identity_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.Identity_Box.HoverState.Parent = this.Identity_Box;
@@ -168,7 +168,7 @@
             this.Email_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Email_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Email_Box.FocusedState.Parent = this.Email_Box;
-            this.Email_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Email_Box.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Email_Box.ForeColor = System.Drawing.Color.Black;
             this.Email_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.Email_Box.HoverState.Parent = this.Email_Box;
@@ -207,7 +207,7 @@
             this.Address_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Address_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Address_Box.FocusedState.Parent = this.Address_Box;
-            this.Address_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Address_Box.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Address_Box.ForeColor = System.Drawing.Color.Black;
             this.Address_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.Address_Box.HoverState.Parent = this.Address_Box;
@@ -250,7 +250,7 @@
             this.Name_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Name_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Name_Box.FocusedState.Parent = this.Name_Box;
-            this.Name_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Name_Box.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name_Box.ForeColor = System.Drawing.Color.Black;
             this.Name_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.Name_Box.HoverState.Parent = this.Name_Box;
@@ -288,7 +288,7 @@
             this.Apartment_ComboBox.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
             this.Apartment_ComboBox.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Apartment_ComboBox.FocusedState.Parent = this.Apartment_ComboBox;
-            this.Apartment_ComboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.Apartment_ComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Apartment_ComboBox.ForeColor = System.Drawing.Color.Black;
             this.Apartment_ComboBox.FormattingEnabled = true;
             this.Apartment_ComboBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -350,7 +350,7 @@
             this.DateTimeImportWarehouse_DateTimePicker.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DateTimeImportWarehouse_DateTimePicker.CustomFormat = " dd/MM/yyyy";
             this.DateTimeImportWarehouse_DateTimePicker.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.DateTimeImportWarehouse_DateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.DateTimeImportWarehouse_DateTimePicker.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateTimeImportWarehouse_DateTimePicker.ForeColor = System.Drawing.Color.Black;
             this.DateTimeImportWarehouse_DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.DateTimeImportWarehouse_DateTimePicker.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -380,7 +380,7 @@
             this.Edit_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Edit_Button.CustomImages.Parent = this.Edit_Button;
             this.Edit_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Edit_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Edit_Button.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Edit_Button.ForeColor = System.Drawing.Color.White;
             this.Edit_Button.HoverState.Parent = this.Edit_Button;
             this.Edit_Button.Location = new System.Drawing.Point(42, 311);
@@ -395,8 +395,8 @@
             // 
             // StaffEdit_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(525, 407);
             this.Controls.Add(this.DateTimeImportWarehouse_DateTimePicker);

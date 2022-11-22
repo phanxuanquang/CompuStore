@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace CompuStore.Control
             AutoCompleteSource = AutoCompleteSource.ListItems;
             FlatStyle= FlatStyle.Flat;
             KeyUp += ComboBoxCustom_KeyUp;
+            BackColor = Color.WhiteSmoke;
         }
 
         private void ComboBoxCustom_KeyUp(object sender, KeyEventArgs e)

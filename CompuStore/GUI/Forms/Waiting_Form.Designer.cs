@@ -41,8 +41,10 @@
             this.Loading_ProgressBar.Name = "Loading_ProgressBar";
             this.Loading_ProgressBar.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
             this.Loading_ProgressBar.ProgressColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Loading_ProgressBar.ProgressThickness = 20;
             this.Loading_ProgressBar.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.Loading_ProgressBar.ShadowDecoration.Parent = this.Loading_ProgressBar;
+            this.Loading_ProgressBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
             this.Loading_ProgressBar.UseTransparentBackground = true;
             this.Loading_ProgressBar.UseWaitCursor = true;
             this.Loading_ProgressBar.ValueChanged += new System.EventHandler(this.Loading_ProgressBar_ValueChanged);
@@ -50,7 +52,7 @@
             // Waiting_Form
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.Black;
             this.Controls.Add(this.Loading_ProgressBar);
             this.DoubleBuffered = true;
