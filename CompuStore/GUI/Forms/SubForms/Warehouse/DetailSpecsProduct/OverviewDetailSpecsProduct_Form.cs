@@ -57,7 +57,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.MainFlowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Serial_DataGridView)).BeginInit();
-
             // 
             // Serials_GroupBox
             // 
@@ -71,7 +70,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Serials_GroupBox.Margin = new System.Windows.Forms.Padding(50, 0, 0, 0);
             this.Serials_GroupBox.Name = "Serials_GroupBox";
             this.Serials_GroupBox.ShadowDecoration.Parent = this.Serials_GroupBox;
-            this.Serials_GroupBox.Size = new System.Drawing.Size(this.Size.Width - 100, 150);
+            this.Serials_GroupBox.Size = new System.Drawing.Size(this.Size.Width - 100, 150 * DeviceDpi / 96);
             this.Serials_GroupBox.TabIndex = 131;
             this.Serials_GroupBox.Text = "Thông tin máy";
             // 
@@ -100,7 +99,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.Serial_DataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.Serial_DataGridView.ColumnHeadersHeight = 35;
+            this.Serial_DataGridView.ColumnHeadersHeight = DeviceDpi > 96 ? 48 : 35;
             this.Serial_DataGridView.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
@@ -135,10 +134,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Serial_DataGridView.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.Serial_DataGridView.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.Serial_DataGridView.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5);
-            this.Serial_DataGridView.RowTemplate.Height = 30;
+            this.Serial_DataGridView.RowTemplate.Height = DeviceDpi > 96 ? 48 : 30;
             this.Serial_DataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Serial_DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.Serial_DataGridView.Size = new System.Drawing.Size(this.Size.Width - 100, 100);
+            this.Serial_DataGridView.Size = new System.Drawing.Size(this.Size.Width - 100, 100 * DeviceDpi / 96);
             this.Serial_DataGridView.TabIndex = 65;
             this.Serial_DataGridView.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.Serial_DataGridView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -153,20 +152,20 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Serial_DataGridView.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Serial_DataGridView.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.Serial_DataGridView.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.Serial_DataGridView.ThemeStyle.HeaderStyle.Height = 35;
+            this.Serial_DataGridView.ThemeStyle.HeaderStyle.Height = DeviceDpi > 96 ? 48 : 35;
             this.Serial_DataGridView.ThemeStyle.ReadOnly = true;
             this.Serial_DataGridView.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.Serial_DataGridView.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.Serial_DataGridView.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Serial_DataGridView.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.Serial_DataGridView.ThemeStyle.RowsStyle.Height = 30;
+            this.Serial_DataGridView.ThemeStyle.RowsStyle.Height = DeviceDpi > 96 ? 48 : 30;
             this.Serial_DataGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Serial_DataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.MainFlowLayoutPanel.Controls.Clear();
             this.MainFlowLayoutPanel.Controls.Add(this.Serials_GroupBox);
             this.MainFlowLayoutPanel.Controls.Add(base.SpecsPanel);
-            this.Size = new Size(this.Size.Width, this.Size.Height + 150);
-            this.MainFlowLayoutPanel.Size = new Size(this.MainFlowLayoutPanel.Size.Width, this.MainFlowLayoutPanel.Size.Height + 150);
+            this.Size = new Size(this.Size.Width, this.Size.Height + 150 * DeviceDpi / 96);
+            this.MainFlowLayoutPanel.Size = new Size(this.MainFlowLayoutPanel.Size.Width, this.MainFlowLayoutPanel.Size.Height + 150 * DeviceDpi / 96);
             ((System.ComponentModel.ISupportInitialize)(this.Serial_DataGridView)).EndInit();
             this.Serials_GroupBox.ResumeLayout(false);
             this.Serials_GroupBox.PerformLayout();

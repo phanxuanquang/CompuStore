@@ -89,6 +89,11 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         public BaseDetailInvoiceImportWarehouse_Form()
         {
             InitializeComponent();
+            if (DeviceDpi > 96)
+            {
+                TableData_DataGridView.ColumnHeadersHeight = 48;
+                TableData_DataGridView.RowTemplate.Height = 48;
+            }
             listFilter = new Dictionary<string, System.Windows.Forms.Control>();
             AddProductByExcel_Button.Click += AddProductByExcel_Button_Click;
             AddProduct_Button.Click += AddProduct_Button_Click;

@@ -76,6 +76,11 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         {
             InitializeComponent();
             AddInitializeComponent();
+            if (DeviceDpi > 96)
+            {
+                Ports_DataGridView.ColumnHeadersHeight = 48;
+                Ports_DataGridView.RowTemplate.Height = 48;
+            }
         }
 
         protected override CreateParams CreateParams
