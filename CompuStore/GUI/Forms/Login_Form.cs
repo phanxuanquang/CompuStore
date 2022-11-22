@@ -63,11 +63,6 @@ namespace CompuStore.GUI
             }
         }
 
-        private void Exit_Button_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private Task<(bool, string)> LoginVerification(string userName, string password)
         {
             return Task<(bool, string)>.Factory.StartNew(() =>
@@ -183,6 +178,11 @@ namespace CompuStore.GUI
         private void CheckBox_Panel_Click(object sender, EventArgs e)
         {
             RememberAccount_CheckBox.Checked = !RememberAccount_CheckBox.Checked;
+        }
+
+        private void Exit_Button_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

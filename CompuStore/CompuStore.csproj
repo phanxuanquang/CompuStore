@@ -484,6 +484,9 @@
       <DependentUpon>CompuStoreModel.edmx</DependentUpon>
       <LastGenOutput>CompuStoreModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\Background-01.png" />
+    <None Include="Resources\Password.png" />
+    <None Include="Resources\Username.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
