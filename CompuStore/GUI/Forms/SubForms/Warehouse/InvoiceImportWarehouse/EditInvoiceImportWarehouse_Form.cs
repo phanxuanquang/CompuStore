@@ -214,15 +214,15 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         private void NavToEdit(object sender, EventArgs e)
         {
             BaseInvoiceImportWarehouse_Form editInvoice = new AddInvoiceImportWarehouse_Form();
-            editInvoice.ShowDialog(this, importWarehouse, true);
+            hasChanged = editInvoice.ShowDialog(this, importWarehouse, true);
         }
         #endregion
 
         #region IO Handle
-        public override void ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, bool edit = false)
+        public override bool ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, bool edit = false)
         {
             this.importWarehouse = importWarehouse;
-            base.ShowDialog(owner, importWarehouse, false);
+            return base.ShowDialog(owner, importWarehouse, false) || hasChanged;
         }
         #endregion
     }

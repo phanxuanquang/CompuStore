@@ -1,4 +1,5 @@
 ﻿using CompuStore.Database.Models;
+using CompuStore.Database.Services.ProductServices;
 using CompuStore.ImportData;
 using Guna.UI2.WinForms;
 using System;
@@ -170,7 +171,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
         }
 
-        protected virtual void SetDefaultData()
+        protected virtual async void SetDefaultData()
         {
             NameProductValue_Label.Text = product?.NameProduct;
             Weight_TextBox.Text = product?.Weight?.ToString();
@@ -230,7 +231,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             SetDefaultComboBox(StorageCapacity_ComboBox, product?.StorageCapacity.ToString());
             SetDefaultComboBox(WifiStandard_ComboBox, product?.Wifi);
             SetDefaultComboBox(BluetoothStandard_ComboBox, product?.Bluetooth);
-            SetDefaultComboBox(CodeDisplay_ComboBox, bindingCodeDisplay.FirstOrDefault(item => item.CODE_DISPLAY == product?.IdPanel));
+            if (bindingCodeDisplay != null)
+                SetDefaultComboBox(CodeDisplay_ComboBox, bindingCodeDisplay?.FirstOrDefault(item => item.CODE_DISPLAY == product.IdPanel));
+            else 
+                SetDefaultComboBox(CodeDisplay_ComboBox, product?.IdPanel);
         }
         #endregion
 
@@ -286,6 +290,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         {
             return Task.Factory.StartNew(() =>
             {
+                if (this is OverviewDetailSpecsProduct_Form) return;
                 IQueryable<COMMON_SPECS> commonSpecsQueryable = Database.DataProvider.Instance.Database.COMMON_SPECS;
                 IQueryable<LINE_UP> lineupQueryable = Database.DataProvider.Instance.Database.LINE_UP;
                 IQueryable<DISPLAY_SPECS> displaySpecsQueryable = Database.DataProvider.Instance.Database.DISPLAY_SPECS;

@@ -455,10 +455,11 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         #endregion
 
         #region IO Handle
-        public override void ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, bool edit = true)
+
+        public override bool ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, bool edit = true)
         {
             this.importWarehouse = importWarehouse;
-            base.ShowDialog(owner, importWarehouse, edit);
+            return base.ShowDialog(owner, importWarehouse, edit);
         }
 
         protected async override void Exit_Clicked(object sender, EventArgs e)
@@ -516,6 +517,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                         await ImportWarehouseServices.Instance.UpdateImportWarehouse(importWarehouse, store, staff, distributor, importDate);
                     }*/
                     base.Exit_Clicked(sender, e);
+                    hasChanged = true;
                 }
             }
         }

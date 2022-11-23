@@ -294,7 +294,9 @@ namespace CompuStore.Tab
         protected void ImportWarehouse_Click(object sender, EventArgs e)
         {
             BaseInvoiceImportWarehouse_Form import = new AddInvoiceImportWarehouse_Form();
-            import.ShowDialog(this, null, false);
+            bool hasChanged = import.ShowDialog(this, null, false);
+            if (hasChanged)
+                Warehouse_UC_Load(null, null);
         }
 
         protected void SeeProduct_Click(object sender, EventArgs e)

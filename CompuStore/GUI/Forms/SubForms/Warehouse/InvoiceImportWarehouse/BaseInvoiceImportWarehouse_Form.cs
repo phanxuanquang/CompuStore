@@ -314,10 +314,14 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             return result;
         }
 
-        public virtual void ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, bool edit)
+        protected bool hasChanged = false;
+        public virtual bool ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, bool edit)
         {
             if ((edit && this is AddInvoiceImportWarehouse_Form) || !edit)
+            {
                 base.ShowDialog();
+                return hasChanged;
+            }
             else
                 throw new InvalidOperationException();
         }
