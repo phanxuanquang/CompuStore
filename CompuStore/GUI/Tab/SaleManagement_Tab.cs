@@ -1,5 +1,6 @@
 ﻿using CompuStore.Database.Models;
 using CompuStore.Database.Services;
+using CompuStore.Database.Services.ProductServices;
 using CompuStore.GUI;
 using CompuStore.GUI.Forms;
 using CompuStore.GUI.Forms.SubForms.Warehouse;
@@ -73,7 +74,8 @@ namespace CompuStore.Tab
         {
             if (e.RowIndex >= 0)
             {
-                PRODUCT pro = Database.DataProvider.Instance.Database.PRODUCTs.Where(item => item.SERIAL_ID == productList[e.RowIndex].serialID).FirstOrDefault();
+                string serialID = productList[e.RowIndex].serialID;
+                PRODUCT pro = ProductServices.Instance.GetProductBySerial(serialID);
                 ModelProduct model = ModelProduct.DatabaseToModel(pro, Database.DataProvider.Instance.Database.DETAIL_IMPORT_WAREHOUSE.FirstOrDefault(item => item.PRODUCT_ID == pro.PRODUCT_ID), pro.DETAIL_SPECS.COMMON_SPECS.LINE_UP, pro.DETAIL_SPECS.UNIQUE_SPECS.DISPLAY_SPECS, pro.DETAIL_SPECS.UNIQUE_SPECS, pro.DETAIL_SPECS.COMMON_SPECS, pro.DETAIL_SPECS.COLOR);
                 BaseDetailSpecsProduct_Form detailSpecs = null;
                 detailSpecs = new OverviewDetailSpecsProduct_Form();
@@ -265,8 +267,8 @@ namespace CompuStore.Tab
                         row.Cells["CPU"].Value.ToString().Contains(cpu) &&
                         row.Cells["RAMString"].Value.ToString().Trim().Contains(ram) &&
                         row.Cells["StorageCapacity"].Value.ToString().Contains(storage)
-                    //&& int.Parse(row.Cells["Price"].Value.ToString().Trim()) <= (PriceLimit_TrackBar.Value * 10000000);
-                    // && row.Cells["GPU"].Value.ToString().Contains(vga)
+                    // && int.Parse(row.Cells["Price"].Value.ToString().Trim()) <= (PriceLimit_TrackBar.Value * 10000000);
+                    // && (row.Cells["GPU"].Value.ToString().Contains(vga) && row.Cells["GPU"].Value != null)
                     )
                     {
                         row.Visible = true;

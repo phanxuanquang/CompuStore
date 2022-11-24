@@ -55,7 +55,7 @@
             this.SearchBox.HoverState.Parent = this.SearchBox;
             this.SearchBox.PlaceholderText = "Tìm kiếm sản phẩm theo mã hoặc tên";
             this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
-            this.SearchBox.Size = new System.Drawing.Size(759, 37);
+            this.SearchBox.Size = new System.Drawing.Size(744, 37);
             this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             // 
             // Button_2
@@ -67,6 +67,7 @@
             this.Button_2.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Button_2.HoverState.Parent = this.Button_2;
             this.Button_2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Button_2.Location = new System.Drawing.Point(988, 19);
             this.Button_2.ShadowDecoration.Parent = this.Button_2;
             this.Button_2.Text = "Xem cấu hình";
             this.Button_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -82,7 +83,7 @@
             this.Bottom_1.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Bottom_1.HoverState.Parent = this.Bottom_1;
             this.Bottom_1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Bottom_1.Location = new System.Drawing.Point(794, 19);
+            this.Bottom_1.Location = new System.Drawing.Point(779, 19);
             this.Bottom_1.Margin = new System.Windows.Forms.Padding(4);
             this.Bottom_1.ShadowDecoration.Parent = this.Bottom_1;
             this.Bottom_1.Text = "Tạo đơn hàng";
@@ -99,6 +100,7 @@
             this.Button_3.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Button_3.HoverState.Parent = this.Button_3;
             this.Button_3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Button_3.Location = new System.Drawing.Point(1197, 19);
             this.Button_3.ShadowDecoration.Parent = this.Button_3;
             this.Button_3.Text = "Danh sách đơn hàng";
             this.Button_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -177,6 +179,7 @@
             this.VGA_ComboBox.BackColor = System.Drawing.Color.Transparent;
             this.VGA_ComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.VGA_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.VGA_ComboBox.Enabled = false;
             this.VGA_ComboBox.FocusedColor = System.Drawing.Color.Empty;
             this.VGA_ComboBox.FocusedState.Parent = this.VGA_ComboBox;
             this.VGA_ComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -319,6 +322,7 @@
             // PriceLimit_TrackBar
             // 
             this.PriceLimit_TrackBar.BackColor = System.Drawing.Color.Transparent;
+            this.PriceLimit_TrackBar.Enabled = false;
             this.PriceLimit_TrackBar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
             this.PriceLimit_TrackBar.HoverState.Parent = this.PriceLimit_TrackBar;
             this.PriceLimit_TrackBar.Location = new System.Drawing.Point(25, 65);
@@ -334,6 +338,7 @@
             // 
             // PriceLimit_Label
             // 
+            this.PriceLimit_Label.Enabled = false;
             this.PriceLimit_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.PriceLimit_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
             this.PriceLimit_Label.Location = new System.Drawing.Point(213, 65);
