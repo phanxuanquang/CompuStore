@@ -98,7 +98,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                         Manufacturer = product.Manufacturer;
                         ReleaseDate = product.ReleaseDate;
                         NameCommonSpecs = product.NameProduct;
-                        RangeTotal = string.Format("{0} - {1} {2}", group.minTotal, group.maxTotal, "VNĐ");
+                        RangeTotal = string.Format("{0:n3} - {1:n3} {2}", group.minTotal, group.maxTotal, "VNĐ");
                         Quantity = group.detailSpecs.Count;
                     }
                 }
@@ -175,6 +175,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         ImportWarehouseCustom convertImportWarehouse = null;
         List<ModelProduct> initProducts;
         IMPORT_WAREHOUSE importWarehouse;
+        Timer timerUpdateImportDate = null;
         #endregion
 
         public AddInvoiceImportWarehouse_Form()
@@ -185,6 +186,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             AddProduct_Button.Click += AddProduct_Button_Click;
             Load += AddInvoiceImportWarehouse_Form_Load;
             DeleteProduct_Button.Click += DeleteProduct_Button_Click;
+            DateTimeImportWarehouse_DateTimePicker.ValueChanged += DateTimeImportWarehouse_DateTimePicker_ValueChanged;
         }
 
         protected override CreateParams CreateParams
@@ -364,6 +366,24 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             commonSpecsGroups = new Dictionary<ModelProductGroupBy, ICommonSpecsGroup<ModelProduct>>();
             bindingTable = new BindingList<ICommonSpecsCustom>();
             TableData_DataGridView.DataSource = bindingTable;
+            if (importWarehouse == null)
+            {
+                timerUpdateImportDate = new System.Windows.Forms.Timer();
+                timerUpdateImportDate.Interval = 1000;
+                timerUpdateImportDate.Tick += (owner, ea) =>
+                {
+                    DateTimeImportWarehouse_DateTimePicker.ValueChanged -= DateTimeImportWarehouse_DateTimePicker_ValueChanged;
+                    DateTimeImportWarehouse_DateTimePicker.Value = DateTime.Now;
+                    DateTimeImportWarehouse_DateTimePicker.ValueChanged += DateTimeImportWarehouse_DateTimePicker_ValueChanged;
+                };
+                timerUpdateImportDate.Start();
+            }
+            else if (timerUpdateImportDate != null)
+            {
+                timerUpdateImportDate.Stop();
+                timerUpdateImportDate.Dispose();
+                timerUpdateImportDate = null;
+            }
 
             if (importWarehouse != null && initProducts == null)
             {
@@ -378,7 +398,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                         Distributor_ComboBox.SelectedValue = convertImportWarehouse.IDDistributor;
                         DateTimeImportWarehouse_DateTimePicker.Value = convertImportWarehouse.ImportDate.Value;
                         ImportToStore_ComboBox.SelectedValue = convertImportWarehouse.IDStore;
-                        TotalImportWarehouse_Value.Text = convertImportWarehouse.Total.ToString();
+                        TotalImportWarehouse_Value.Text = string.Format("{0:n3} VND", convertImportWarehouse.Total);
                         IDImportWarehouse_Value.Text = convertImportWarehouse.NameIDImportWarehouse;
                     }
                 };
@@ -396,6 +416,16 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 };
 
                 waiting.ShowDialog(this);
+            }
+        }
+
+        private void DateTimeImportWarehouse_DateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            if (timerUpdateImportDate != null)
+            {
+                timerUpdateImportDate.Stop();
+                timerUpdateImportDate.Dispose();
+                timerUpdateImportDate= null;
             }
         }
 

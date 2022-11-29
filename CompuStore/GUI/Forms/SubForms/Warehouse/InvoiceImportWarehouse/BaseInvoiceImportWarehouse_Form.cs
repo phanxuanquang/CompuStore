@@ -17,8 +17,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         #region Interface
         protected interface ICommonSpecsGroup<TModel> where TModel : class
         {
-            double? maxTotal { get;}
-            double? minTotal { get;}
+            double? maxTotal { get; }
+            double? minTotal { get; }
             TModel Represent { get; }
             IList<TModel> detailSpecs { get; set; }
         }
@@ -101,13 +101,13 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         #endregion
 
         #region Translater
-        private static readonly Dictionary<string, string> translater = new Dictionary<string, string> {
-            { "NameCommonSpecs", "Tên sản phẩm" },
-            { "LineUp", "Dòng sản phẩm" },
-            { "Manufacturer", "Nhà sản xuất" },
-            { "ReleaseDate", "Năm ra mắt" },
-            { "Quantity", "Số lượng|Số lượng sản phẩm nhập" },
-            { "RangeTotal", "Giá tiền|Khoảng giá từ cấu hình thấp đến cao nhất" }};
+        private static readonly Dictionary<string, (string, DataGridViewContentAlignment)> translater = new Dictionary<string, (string, DataGridViewContentAlignment)> {
+            { "NameCommonSpecs", ("Tên sản phẩm", DataGridViewContentAlignment.MiddleLeft) },
+            { "LineUp", ("Dòng sản phẩm", DataGridViewContentAlignment.MiddleLeft) },
+            { "Manufacturer", ("Nhà sản xuất", DataGridViewContentAlignment.MiddleLeft) },
+            { "ReleaseDate", ("Năm ra mắt", DataGridViewContentAlignment.MiddleCenter) },
+            { "Quantity", ("Số lượng|Số lượng sản phẩm nhập", DataGridViewContentAlignment.MiddleCenter) },
+            { "RangeTotal", ("Giá tiền|Khoảng giá từ cấu hình thấp đến cao nhất", DataGridViewContentAlignment.MiddleRight) }};
         #endregion
 
         #region Set default if View | Edit
@@ -229,6 +229,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         {
             DataGridView grid = sender as DataGridView;
             grid.SuspendLayout();
+            //grid.DefaultCellStyle.Alignment = DataGridViewContentAlignment.NotSet;
             foreach (DataGridViewColumn column in grid.Columns)
             {
                 if (translater.ContainsKey(column.Name))
@@ -237,13 +238,16 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     {
                         column.DefaultCellStyle.Format = "yyyy";
                     }
-                    string headerText = translater[column.Name];
+                    (string, DataGridViewContentAlignment) itemTranslater = translater[column.Name];
+                    string headerText = itemTranslater.Item1;
                     string[] split = headerText.Split('|');
                     column.HeaderText = split[0];
                     if (split.Length > 1)
                     {
                         column.ToolTipText = split[1];
                     }
+                    //not alignment yet
+                    //column.DefaultCellStyle.Alignment = itemTranslater.Item2;
                 }
                 else
                 {

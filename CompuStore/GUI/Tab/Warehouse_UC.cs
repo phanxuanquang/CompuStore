@@ -150,18 +150,18 @@ namespace CompuStore.Tab
         #endregion
 
         #region Translater
-        protected static readonly Dictionary<string, string> columnVisiableImportWarehouse = new Dictionary<string, string> {
-            { "NameID", "Mã nhập hàng" },
-            { "ImportDate", "Ngày nhập hàng" },
-            { "Total", "Tổng giá trị" },
-            { "Quantity", "Số lượng" },
-            { "DistributorName", "Nhà phân phối" } };
-        protected static readonly Dictionary<string, string> columnVisiableCommonSpecs = new Dictionary<string, string> {
+        protected static readonly Dictionary<string, (string, DataGridViewContentAlignment)> columnVisibleImportWarehouse = new Dictionary<string, (string, DataGridViewContentAlignment)> {
+            { "NameID", ("Mã nhập hàng", DataGridViewContentAlignment.MiddleCenter) },
+            { "ImportDate", ("Ngày nhập hàng", DataGridViewContentAlignment.MiddleCenter) },
+            { "Total", ("Tổng giá trị", DataGridViewContentAlignment.MiddleRight) },
+            { "Quantity", ("Số lượng", DataGridViewContentAlignment.MiddleRight) },
+            { "DistributorName", ("Nhà phân phối", DataGridViewContentAlignment.MiddleLeft) } };
+        protected static readonly Dictionary<string, (string, DataGridViewContentAlignment)> columnVisibleCommonSpecs = new Dictionary<string, (string, DataGridViewContentAlignment)> {
             //{ "NAME_ID", "Mã sản phẩm" },
-            { "NAME", "Tên sản phẩm" },
-            { "NAME_LINE_UP", "Dòng sản phẩm" },
-            { "MANUFACTURER", "Nhà sản xuất" },
-            { "ReleasedYear", "Năm ra mắt" } };
+            { "NAME", ("Tên sản phẩm" , DataGridViewContentAlignment.MiddleLeft)},
+            { "NAME_LINE_UP", ("Dòng sản phẩm", DataGridViewContentAlignment.MiddleLeft) },
+            { "MANUFACTURER", ("Nhà sản xuất", DataGridViewContentAlignment.MiddleLeft) },
+            { "ReleasedYear", ("Năm ra mắt", DataGridViewContentAlignment.MiddleCenter) } };
         #endregion
 
         public Warehouse_UC()
@@ -241,16 +241,23 @@ namespace CompuStore.Tab
         {
             DataGridView grid = sender as DataGridView;
             grid.SuspendLayout();
-            Dictionary<string, string> columnVisible = seeWhat == SEE_WHAT.COMMON_SPECS ? columnVisiableCommonSpecs : columnVisiableImportWarehouse;
+            grid.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.NotSet;
+            Dictionary<string, (string, DataGridViewContentAlignment)> columnVisible = seeWhat == SEE_WHAT.COMMON_SPECS ? columnVisibleCommonSpecs : columnVisibleImportWarehouse;
             foreach (DataGridViewColumn column in grid.Columns)
             {
                 if (columnVisible.ContainsKey(column.Name))
                 {
-                    if (column.Name == "RELEASED_YEAR")
+                    if (column.Name == "ReleasedYear")
                     {
                         column.DefaultCellStyle.Format = "yyyy";
                     }
-                    column.HeaderText = columnVisible[column.Name];
+                    if(column.Name == "Total")
+                    {
+                        column.DefaultCellStyle.Format = "#,#";
+                    }
+                    (string, DataGridViewContentAlignment) translater = columnVisible[column.Name];
+                    column.HeaderText = translater.Item1;
+                    column.DefaultCellStyle.Alignment = translater.Item2;
                 }
                 else
                 {
@@ -273,7 +280,7 @@ namespace CompuStore.Tab
 
                 foreach (DataGridViewRow row in GridDataTable.Rows)
                 {
-                    if(seeWhat == SEE_WHAT.COMMON_SPECS)
+                    if (seeWhat == SEE_WHAT.COMMON_SPECS)
                     {
                         CommonSpecsCustom binding = row.DataBoundItem as CommonSpecsCustom;
                         row.Visible = binding.NAME.ToLower().Contains(search);

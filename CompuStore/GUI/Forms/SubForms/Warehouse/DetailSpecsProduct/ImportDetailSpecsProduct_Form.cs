@@ -93,6 +93,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Price_TextBox.Name = "Price_TextBox";
             this.Price_TextBox.Size = new System.Drawing.Size(259 * DeviceDpi / 96, 39);
             this.Price_TextBox.TabIndex = 132;
+            this.Price_TextBox.Enter += Price_TextBox_Enter;
+            this.Price_TextBox.Leave += Price_TextBox_Leave;
             this.MainFlowLayoutPanel.Controls.Clear();
             this.MainFlowLayoutPanel.Controls.Add(ImportPanel);
             this.MainFlowLayoutPanel.Controls.Add(SpecsPanel);
@@ -129,6 +131,34 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         public override ResultDetailSpecsProduct ShowDialog(IWin32Window owner, IList<ModelProduct> payload, bool editable = true)
         {
             return base.ShowDialog(owner, payload, editable);
+        }
+        #endregion
+
+        #region Event
+        private void Price_TextBox_Leave(object sender, EventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if (control != null && !string.IsNullOrEmpty(control.Text) && double.TryParse(control.Text, out double value))
+            {
+                control.Text = string.Format("{0:n3}", value);
+            }
+            else
+            {
+                MessageBox.Show("Tiền tệ yêu cầu số thực");
+            }
+        }
+
+        private void Price_TextBox_Enter(object sender, EventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if (control != null && !string.IsNullOrEmpty(control.Text) && double.TryParse(control.Text, out double value))
+            {
+                control.Text = value.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Tiền tệ yêu cầu số thực");
+            }
         }
         #endregion
 

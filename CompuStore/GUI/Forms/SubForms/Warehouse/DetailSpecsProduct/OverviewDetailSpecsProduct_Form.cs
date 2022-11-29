@@ -200,8 +200,11 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     column.HeaderText = split[0];
                     if (split.Length > 1)
                         column.ToolTipText = split[1];
-                    if (headerText == "STT")
+                    if (column.Name == "STT")
                         column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    else if (column.Name == "Price")
+                        column.DefaultCellStyle.Format = "#,# VND";
+
                 }
                 else
                 {
