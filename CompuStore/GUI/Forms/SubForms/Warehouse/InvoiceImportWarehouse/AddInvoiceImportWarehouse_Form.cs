@@ -366,7 +366,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             commonSpecsGroups = new Dictionary<ModelProductGroupBy, ICommonSpecsGroup<ModelProduct>>();
             bindingTable = new BindingList<ICommonSpecsCustom>();
             TableData_DataGridView.DataSource = bindingTable;
-            if (importWarehouse == null)
+            if (importWarehouse == null && timerUpdateImportDate == null)
             {
                 timerUpdateImportDate = new System.Windows.Forms.Timer();
                 timerUpdateImportDate.Interval = 1000;
@@ -378,12 +378,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 };
                 timerUpdateImportDate.Start();
             }
-            else if (timerUpdateImportDate != null)
-            {
-                timerUpdateImportDate.Stop();
-                timerUpdateImportDate.Dispose();
-                timerUpdateImportDate = null;
-            }
+            else DisposeTimer();
 
             if (importWarehouse != null && initProducts == null)
             {
@@ -419,14 +414,19 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
         }
 
-        private void DateTimeImportWarehouse_DateTimePicker_ValueChanged(object sender, EventArgs e)
+        private void DisposeTimer()
         {
             if (timerUpdateImportDate != null)
             {
                 timerUpdateImportDate.Stop();
                 timerUpdateImportDate.Dispose();
-                timerUpdateImportDate= null;
+                timerUpdateImportDate = null;
             }
+        }
+
+        private void DateTimeImportWarehouse_DateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            DisposeTimer();
         }
 
         private void ReloadBinding()
