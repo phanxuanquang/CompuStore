@@ -45,6 +45,7 @@
             this.DateTimeImportWarehouse_DateTimePicker = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.sTAFFBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Edit_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.Status_ComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.iNFORBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sTAFFROLEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
@@ -92,7 +93,7 @@
             this.PhoneNumber_Box.HoverState.Parent = this.PhoneNumber_Box;
             this.PhoneNumber_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.PhoneNumber_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.PhoneNumber_Box.Location = new System.Drawing.Point(265, 112);
+            this.PhoneNumber_Box.Location = new System.Drawing.Point(265, 145);
             this.PhoneNumber_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PhoneNumber_Box.Name = "PhoneNumber_Box";
             this.PhoneNumber_Box.PasswordChar = '\0';
@@ -135,7 +136,7 @@
             this.Identity_Box.HoverState.Parent = this.Identity_Box;
             this.Identity_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Identity_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Identity_Box.Location = new System.Drawing.Point(42, 112);
+            this.Identity_Box.Location = new System.Drawing.Point(42, 145);
             this.Identity_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Identity_Box.Name = "Identity_Box";
             this.Identity_Box.PasswordChar = '\0';
@@ -174,7 +175,7 @@
             this.Email_Box.HoverState.Parent = this.Email_Box;
             this.Email_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Email_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Email_Box.Location = new System.Drawing.Point(42, 155);
+            this.Email_Box.Location = new System.Drawing.Point(42, 188);
             this.Email_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Email_Box.Name = "Email_Box";
             this.Email_Box.PasswordChar = '\0';
@@ -213,7 +214,7 @@
             this.Address_Box.HoverState.Parent = this.Address_Box;
             this.Address_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Address_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Address_Box.Location = new System.Drawing.Point(42, 198);
+            this.Address_Box.Location = new System.Drawing.Point(42, 231);
             this.Address_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Address_Box.Name = "Address_Box";
             this.Address_Box.PasswordChar = '\0';
@@ -256,7 +257,7 @@
             this.Name_Box.HoverState.Parent = this.Name_Box;
             this.Name_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Name_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Name_Box.Location = new System.Drawing.Point(42, 69);
+            this.Name_Box.Location = new System.Drawing.Point(42, 102);
             this.Name_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name_Box.Name = "Name_Box";
             this.Name_Box.PasswordChar = '\0';
@@ -297,7 +298,7 @@
             this.Apartment_ComboBox.HoverState.Parent = this.Apartment_ComboBox;
             this.Apartment_ComboBox.ItemHeight = 32;
             this.Apartment_ComboBox.ItemsAppearance.Parent = this.Apartment_ComboBox;
-            this.Apartment_ComboBox.Location = new System.Drawing.Point(42, 244);
+            this.Apartment_ComboBox.Location = new System.Drawing.Point(42, 277);
             this.Apartment_ComboBox.Margin = new System.Windows.Forms.Padding(0);
             this.Apartment_ComboBox.Name = "Apartment_ComboBox";
             this.Apartment_ComboBox.ShadowDecoration.Parent = this.Apartment_ComboBox;
@@ -355,7 +356,7 @@
             this.DateTimeImportWarehouse_DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.DateTimeImportWarehouse_DateTimePicker.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
             this.DateTimeImportWarehouse_DateTimePicker.HoverState.Parent = this.DateTimeImportWarehouse_DateTimePicker;
-            this.DateTimeImportWarehouse_DateTimePicker.Location = new System.Drawing.Point(265, 155);
+            this.DateTimeImportWarehouse_DateTimePicker.Location = new System.Drawing.Point(265, 188);
             this.DateTimeImportWarehouse_DateTimePicker.Margin = new System.Windows.Forms.Padding(0);
             this.DateTimeImportWarehouse_DateTimePicker.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.DateTimeImportWarehouse_DateTimePicker.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -383,7 +384,7 @@
             this.Edit_Button.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Edit_Button.ForeColor = System.Drawing.Color.White;
             this.Edit_Button.HoverState.Parent = this.Edit_Button;
-            this.Edit_Button.Location = new System.Drawing.Point(42, 311);
+            this.Edit_Button.Location = new System.Drawing.Point(42, 377);
             this.Edit_Button.Name = "Edit_Button";
             this.Edit_Button.PressedDepth = 5;
             this.Edit_Button.ShadowDecoration.Parent = this.Edit_Button;
@@ -393,12 +394,51 @@
             this.Edit_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.Edit_Button.Click += new System.EventHandler(this.Edit_Button_Click);
             // 
+            // Status_ComboBox
+            // 
+            this.Status_ComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Status_ComboBox.Animated = true;
+            this.Status_ComboBox.BackColor = System.Drawing.Color.Transparent;
+            this.Status_ComboBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.Status_ComboBox.BorderRadius = 4;
+            this.Status_ComboBox.BorderThickness = 2;
+            this.Status_ComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Status_ComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.Status_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Status_ComboBox.Enabled = false;
+            this.Status_ComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Status_ComboBox.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.Status_ComboBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.Status_ComboBox.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.Status_ComboBox.FocusedState.ForeColor = System.Drawing.Color.Black;
+            this.Status_ComboBox.FocusedState.Parent = this.Status_ComboBox;
+            this.Status_ComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Status_ComboBox.ForeColor = System.Drawing.Color.Black;
+            this.Status_ComboBox.FormattingEnabled = true;
+            this.Status_ComboBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.Status_ComboBox.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.Status_ComboBox.HoverState.ForeColor = System.Drawing.Color.Black;
+            this.Status_ComboBox.HoverState.Parent = this.Status_ComboBox;
+            this.Status_ComboBox.ItemHeight = 32;
+            this.Status_ComboBox.ItemsAppearance.Parent = this.Status_ComboBox;
+            this.Status_ComboBox.Location = new System.Drawing.Point(42, 325);
+            this.Status_ComboBox.Margin = new System.Windows.Forms.Padding(0);
+            this.Status_ComboBox.Name = "Status_ComboBox";
+            this.Status_ComboBox.ShadowDecoration.Parent = this.Status_ComboBox;
+            this.Status_ComboBox.Size = new System.Drawing.Size(440, 38);
+            this.Status_ComboBox.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.Status_ComboBox.TabIndex = 25;
+            this.Status_ComboBox.TextOffset = new System.Drawing.Point(5, 0);
+            this.Status_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Status_ComboBox.ValueMember = "ID";
+            // 
             // StaffEdit_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(525, 407);
+            this.ClientSize = new System.Drawing.Size(525, 472);
+            this.Controls.Add(this.Status_ComboBox);
             this.Controls.Add(this.DateTimeImportWarehouse_DateTimePicker);
             this.Controls.Add(this.Edit_Button);
             this.Controls.Add(this.Apartment_ComboBox);
@@ -441,5 +481,6 @@
         private Guna.UI2.WinForms.Guna2Button Edit_Button;
         private System.Windows.Forms.BindingSource iNFORBindingSource;
         private System.Windows.Forms.BindingSource sTAFFBindingSource;
+        private Guna.UI2.WinForms.Guna2ComboBox Status_ComboBox;
     }
 }
