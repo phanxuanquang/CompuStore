@@ -218,7 +218,7 @@
             this.ItemTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(151)))), ((int)(((byte)(232)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -272,7 +272,7 @@
             this.ItemTable.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.ItemTable.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
             this.ItemTable.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.ItemTable.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ItemTable.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ItemTable.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.ItemTable.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.ItemTable.ThemeStyle.HeaderStyle.Height = 25;
@@ -324,6 +324,7 @@
             this.Print_Button.TabIndex = 38;
             this.Print_Button.Text = "IN HÓA ĐƠN";
             this.Print_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Print_Button.Click += new System.EventHandler(this.Print_Button_Click);
             // 
             // Email_Box
             // 
@@ -495,12 +496,15 @@
             this.Serial_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.Serial_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.Serial_ComboBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Serial_ComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.Serial_ComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Serial_ComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Serial_ComboBox.FormattingEnabled = true;
-            this.Serial_ComboBox.Location = new System.Drawing.Point(36, 233);
+            this.Serial_ComboBox.ItemHeight = 29;
+            this.Serial_ComboBox.Location = new System.Drawing.Point(36, 234);
+            this.Serial_ComboBox.Margin = new System.Windows.Forms.Padding(0);
             this.Serial_ComboBox.Name = "Serial_ComboBox";
-            this.Serial_ComboBox.Size = new System.Drawing.Size(426, 23);
+            this.Serial_ComboBox.Size = new System.Drawing.Size(426, 35);
             this.Serial_ComboBox.TabIndex = 43;
             // 
             // AddInvoice_Form

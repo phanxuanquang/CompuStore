@@ -95,7 +95,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(35, 299);
+            this.label1.Location = new System.Drawing.Point(35, 261);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(229, 24);
@@ -117,7 +117,7 @@
             this.WarrantyDoneDate_Picker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.WarrantyDoneDate_Picker.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
             this.WarrantyDoneDate_Picker.HoverState.Parent = this.WarrantyDoneDate_Picker;
-            this.WarrantyDoneDate_Picker.Location = new System.Drawing.Point(265, 299);
+            this.WarrantyDoneDate_Picker.Location = new System.Drawing.Point(266, 264);
             this.WarrantyDoneDate_Picker.Margin = new System.Windows.Forms.Padding(0);
             this.WarrantyDoneDate_Picker.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.WarrantyDoneDate_Picker.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -153,7 +153,7 @@
             this.ItemSerial_Box.HoverState.Parent = this.ItemSerial_Box;
             this.ItemSerial_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.ItemSerial_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.ItemSerial_Box.Location = new System.Drawing.Point(39, 82);
+            this.ItemSerial_Box.Location = new System.Drawing.Point(39, 61);
             this.ItemSerial_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ItemSerial_Box.Name = "ItemSerial_Box";
             this.ItemSerial_Box.PasswordChar = '\0';
@@ -171,7 +171,7 @@
             this.lbDate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbDate.AutoSize = true;
             this.lbDate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDate.Location = new System.Drawing.Point(34, 372);
+            this.lbDate.Location = new System.Drawing.Point(34, 330);
             this.lbDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDate.Name = "lbDate";
             this.lbDate.Size = new System.Drawing.Size(75, 20);
@@ -192,7 +192,7 @@
             this.Print_Button.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Print_Button.ForeColor = System.Drawing.Color.White;
             this.Print_Button.HoverState.Parent = this.Print_Button;
-            this.Print_Button.Location = new System.Drawing.Point(38, 414);
+            this.Print_Button.Location = new System.Drawing.Point(38, 372);
             this.Print_Button.Name = "Print_Button";
             this.Print_Button.PressedDepth = 5;
             this.Print_Button.ShadowDecoration.Parent = this.Print_Button;
@@ -200,6 +200,7 @@
             this.Print_Button.TabIndex = 84;
             this.Print_Button.Text = "IN HÓA ĐƠN";
             this.Print_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Print_Button.Click += new System.EventHandler(this.Print_Button_Click);
             // 
             // Email_Box
             // 
@@ -226,7 +227,7 @@
             this.Email_Box.HoverState.Parent = this.Email_Box;
             this.Email_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Email_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Email_Box.Location = new System.Drawing.Point(39, 205);
+            this.Email_Box.Location = new System.Drawing.Point(39, 184);
             this.Email_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Email_Box.Name = "Email_Box";
             this.Email_Box.PasswordChar = '\0';
@@ -265,7 +266,7 @@
             this.Name_Box.HoverState.Parent = this.Name_Box;
             this.Name_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Name_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Name_Box.Location = new System.Drawing.Point(39, 164);
+            this.Name_Box.Location = new System.Drawing.Point(39, 143);
             this.Name_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name_Box.Name = "Name_Box";
             this.Name_Box.PasswordChar = '\0';
@@ -284,7 +285,7 @@
             this.lbStaffName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbStaffName.AutoSize = true;
             this.lbStaffName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStaffName.Location = new System.Drawing.Point(34, 336);
+            this.lbStaffName.Location = new System.Drawing.Point(34, 298);
             this.lbStaffName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbStaffName.Name = "lbStaffName";
             this.lbStaffName.Size = new System.Drawing.Size(82, 20);
@@ -317,7 +318,7 @@
             this.PhoneNumber_Box.HoverState.Parent = this.PhoneNumber_Box;
             this.PhoneNumber_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.PhoneNumber_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.PhoneNumber_Box.Location = new System.Drawing.Point(356, 164);
+            this.PhoneNumber_Box.Location = new System.Drawing.Point(356, 143);
             this.PhoneNumber_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PhoneNumber_Box.Name = "PhoneNumber_Box";
             this.PhoneNumber_Box.PasswordChar = '\0';
@@ -356,7 +357,7 @@
             this.Identity_Box.HoverState.Parent = this.Identity_Box;
             this.Identity_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Identity_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Identity_Box.Location = new System.Drawing.Point(38, 123);
+            this.Identity_Box.Location = new System.Drawing.Point(38, 102);
             this.Identity_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Identity_Box.Name = "Identity_Box";
             this.Identity_Box.PasswordChar = '\0';
@@ -383,7 +384,7 @@
             this.Save_Button.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Save_Button.ForeColor = System.Drawing.Color.White;
             this.Save_Button.HoverState.Parent = this.Save_Button;
-            this.Save_Button.Location = new System.Drawing.Point(39, 477);
+            this.Save_Button.Location = new System.Drawing.Point(39, 435);
             this.Save_Button.Name = "Save_Button";
             this.Save_Button.PressedDepth = 5;
             this.Save_Button.ShadowDecoration.Parent = this.Save_Button;
@@ -418,7 +419,7 @@
             this.WarrantyReason.HoverState.Parent = this.WarrantyReason;
             this.WarrantyReason.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.WarrantyReason.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.WarrantyReason.Location = new System.Drawing.Point(38, 246);
+            this.WarrantyReason.Location = new System.Drawing.Point(38, 225);
             this.WarrantyReason.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.WarrantyReason.Name = "WarrantyReason";
             this.WarrantyReason.PasswordChar = '\0';
@@ -433,7 +434,7 @@
             // 
             // AddInfor_Button
             // 
-            this.AddInfor_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.AddInfor_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.AddInfor_Button.Animated = true;
             this.AddInfor_Button.BorderRadius = 3;
             this.AddInfor_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
@@ -441,16 +442,16 @@
             this.AddInfor_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AddInfor_Button.CustomImages.Parent = this.AddInfor_Button;
             this.AddInfor_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.AddInfor_Button.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddInfor_Button.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.AddInfor_Button.ForeColor = System.Drawing.Color.White;
             this.AddInfor_Button.HoverState.Parent = this.AddInfor_Button;
-            this.AddInfor_Button.Location = new System.Drawing.Point(452, 82);
+            this.AddInfor_Button.Location = new System.Drawing.Point(452, 61);
             this.AddInfor_Button.Name = "AddInfor_Button";
             this.AddInfor_Button.PressedDepth = 5;
             this.AddInfor_Button.ShadowDecoration.Parent = this.AddInfor_Button;
             this.AddInfor_Button.Size = new System.Drawing.Size(136, 36);
             this.AddInfor_Button.TabIndex = 91;
-            this.AddInfor_Button.Text = "Thêm thông tin";
+            this.AddInfor_Button.Text = "THÊM";
             this.AddInfor_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.AddInfor_Button.Click += new System.EventHandler(this.AddInfor_Button_Click);
             // 
@@ -458,7 +459,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 572);
+            this.ClientSize = new System.Drawing.Size(623, 530);
             this.Controls.Add(this.AddInfor_Button);
             this.Controls.Add(this.WarrantyReason);
             this.Controls.Add(this.label1);

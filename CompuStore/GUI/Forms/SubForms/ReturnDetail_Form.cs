@@ -38,5 +38,10 @@ namespace CompuStore
                 EditAndSave_Button.Text = "SỬA HÓA ĐƠN";
             }
         }
+
+        private void Print_Button_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Không tim thấy máy in. Vui lòng thử lại sau.", "Không tìm thấy máy in", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
     }
 }

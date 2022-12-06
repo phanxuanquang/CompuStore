@@ -57,17 +57,17 @@
             this.GridDataTable.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(151)))), ((int)(((byte)(232)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.GridDataTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.GridDataTable.ColumnHeadersHeight = 48;
+            this.GridDataTable.ColumnHeadersHeight = 35;
             this.GridDataTable.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
@@ -96,7 +96,7 @@
             this.GridDataTable.RowTemplate.ReadOnly = true;
             this.GridDataTable.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.GridDataTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridDataTable.Size = new System.Drawing.Size(1425, 722);
+            this.GridDataTable.Size = new System.Drawing.Size(1700, 722);
             this.GridDataTable.TabIndex = 1;
             this.GridDataTable.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.GridDataTable.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -108,14 +108,14 @@
             this.GridDataTable.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.GridDataTable.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
             this.GridDataTable.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.GridDataTable.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.GridDataTable.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GridDataTable.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.GridDataTable.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.GridDataTable.ThemeStyle.HeaderStyle.Height = 48;
+            this.GridDataTable.ThemeStyle.HeaderStyle.Height = 35;
             this.GridDataTable.ThemeStyle.ReadOnly = true;
             this.GridDataTable.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.GridDataTable.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.GridDataTable.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.GridDataTable.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.GridDataTable.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
             this.GridDataTable.ThemeStyle.RowsStyle.Height = 22;
             this.GridDataTable.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
@@ -131,10 +131,10 @@
             this.Bottom_1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Bottom_1.CustomImages.Parent = this.Bottom_1;
             this.Bottom_1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Bottom_1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Bottom_1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Bottom_1.ForeColor = System.Drawing.Color.White;
             this.Bottom_1.HoverState.Parent = this.Bottom_1;
-            this.Bottom_1.Location = new System.Drawing.Point(780, 19);
+            this.Bottom_1.Location = new System.Drawing.Point(1055, 19);
             this.Bottom_1.Name = "Bottom_1";
             this.Bottom_1.PressedDepth = 5;
             this.Bottom_1.ShadowDecoration.Parent = this.Bottom_1;
@@ -153,10 +153,10 @@
             this.Button_2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Button_2.CustomImages.Parent = this.Button_2;
             this.Button_2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Button_2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Button_2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Button_2.ForeColor = System.Drawing.Color.White;
             this.Button_2.HoverState.Parent = this.Button_2;
-            this.Button_2.Location = new System.Drawing.Point(989, 19);
+            this.Button_2.Location = new System.Drawing.Point(1264, 19);
             this.Button_2.Name = "Button_2";
             this.Button_2.PressedDepth = 5;
             this.Button_2.ShadowDecoration.Parent = this.Button_2;
@@ -175,10 +175,10 @@
             this.Button_3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Button_3.CustomImages.Parent = this.Button_3;
             this.Button_3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Button_3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Button_3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Button_3.ForeColor = System.Drawing.Color.White;
             this.Button_3.HoverState.Parent = this.Button_3;
-            this.Button_3.Location = new System.Drawing.Point(1198, 19);
+            this.Button_3.Location = new System.Drawing.Point(1473, 19);
             this.Button_3.Name = "Button_3";
             this.Button_3.PressedDepth = 5;
             this.Button_3.ShadowDecoration.Parent = this.Button_3;
@@ -214,7 +214,7 @@
             this.SearchBox.PlaceholderText = "Tìm kiếm ";
             this.SearchBox.SelectedText = "";
             this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
-            this.SearchBox.Size = new System.Drawing.Size(749, 37);
+            this.SearchBox.Size = new System.Drawing.Size(1024, 37);
             this.SearchBox.TabIndex = 14;
             this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             // 
@@ -229,7 +229,7 @@
             this.Controls.Add(this.GridDataTable);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "BaseTab";
-            this.Size = new System.Drawing.Size(1425, 800);
+            this.Size = new System.Drawing.Size(1700, 800);
             ((System.ComponentModel.ISupportInitialize)(this.GridDataTable)).EndInit();
             this.ResumeLayout(false);
 

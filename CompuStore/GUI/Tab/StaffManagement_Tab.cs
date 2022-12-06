@@ -28,7 +28,8 @@ namespace CompuStore.Tab
             InitializeComponent();
             this.GridDataTable.DataSource = sTAFFBindingSource;
             this.Load += StaffManagement_Tab_Load;
-            
+
+
         }
 
         private void StaffManagement_Tab_Load(object sender, EventArgs e)

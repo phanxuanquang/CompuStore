@@ -200,6 +200,7 @@
             this.Print_Button.TabIndex = 131;
             this.Print_Button.Text = "IN HÓA ĐƠN";
             this.Print_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Print_Button.Click += new System.EventHandler(this.Print_Button_Click);
             // 
             // Email_Box
             // 
@@ -441,7 +442,7 @@
             this.AddInfor_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AddInfor_Button.CustomImages.Parent = this.AddInfor_Button;
             this.AddInfor_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.AddInfor_Button.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddInfor_Button.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.AddInfor_Button.ForeColor = System.Drawing.Color.White;
             this.AddInfor_Button.HoverState.Parent = this.AddInfor_Button;
             this.AddInfor_Button.Location = new System.Drawing.Point(444, 61);
@@ -450,7 +451,7 @@
             this.AddInfor_Button.ShadowDecoration.Parent = this.AddInfor_Button;
             this.AddInfor_Button.Size = new System.Drawing.Size(136, 36);
             this.AddInfor_Button.TabIndex = 137;
-            this.AddInfor_Button.Text = "Thêm thông tin";
+            this.AddInfor_Button.Text = "THÊM";
             this.AddInfor_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.AddInfor_Button.Click += new System.EventHandler(this.AddInfor_Button_Click);
             // 

@@ -172,6 +172,7 @@
             this.Print_Button.TabIndex = 84;
             this.Print_Button.Text = "IN HÓA ĐƠN";
             this.Print_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Print_Button.Click += new System.EventHandler(this.Print_Button_Click);
             // 
             // Email_Box
             // 

@@ -106,7 +106,7 @@ namespace CompuStore
                 customer = CustomerServices.Instance.GetCustomerByIDCode(Identity_Box.Text);
                 if (!isValidCustomer(customer))
                 {
-                    DialogResult dialogResult = MessageBox.Show("CMND/CCCD của khách hàng này không tồn tại.\nBạn có muốn thêm khách hàng mới?", "CMND/CCCD không tồn tại", MessageBoxButtons.YesNo);
+                    DialogResult dialogResult = MessageBox.Show("CMND/CCCD của khách hàng này không tồn tại.\nBạn có muốn thêm khách hàng mới?", "CMND/CCCD không tồn tại", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                     if (dialogResult == DialogResult.Yes)
                     {
                         Name_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = false;
@@ -134,7 +134,7 @@ namespace CompuStore
             Exception res = InvoiceServices.Instance.SaveInvoiceToDB(productList, customer.ID, currentStaff.ID, DateTime.Now, 10);
             if (res.Message == "done")
             {
-                MessageBox.Show("Lưu thành công");
+                MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -176,6 +176,11 @@ namespace CompuStore
             textBox.DataSource = products;
             textBox.ValueMember = "PRODUCT_ID";
             textBox.DisplayMember = "SERIAL_ID";
+        }
+
+        private void Print_Button_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Không tim thấy máy in. Vui lòng thử lại sau.", "Không tìm thấy máy in", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
     }
 }

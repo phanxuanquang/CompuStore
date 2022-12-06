@@ -285,18 +285,6 @@
     <Compile Include="GUI\Tab\StaffManagement_Tab.Designer.cs">
       <DependentUpon>StaffManagement_Tab.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Tab\CaiGiChuaBiet\SalesManage_Tab.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\Tab\CaiGiChuaBiet\SalesManage_Tab.Designer.cs">
-      <DependentUpon>SalesManage_Tab.cs</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Tab\CaiGiChuaBiet\StaffManage_Tab.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="GUI\Tab\CaiGiChuaBiet\StaffManage_Tab.Designer.cs">
-      <DependentUpon>StaffManage_Tab.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\Forms\SubForms\Warehouse\DetailInvoiceImportWarehouse\BaseDetailInvoiceImportWarehouse_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -378,12 +366,6 @@
     </Compile>
     <EmbeddedResource Include="GUI\Tab\StaffManagement_Tab.resx">
       <DependentUpon>StaffManagement_Tab.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Tab\CaiGiChuaBiet\SalesManage_Tab.resx">
-      <DependentUpon>SalesManage_Tab.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Tab\CaiGiChuaBiet\StaffManage_Tab.resx">
-      <DependentUpon>StaffManage_Tab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Forms\SubForms\Warehouse\DetailInvoiceImportWarehouse\BaseDetailInvoiceImportWarehouse_Form.resx">
       <DependentUpon>BaseDetailInvoiceImportWarehouse_Form.cs</DependentUpon>

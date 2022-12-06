@@ -52,10 +52,10 @@
             this.MenuPanel.Controls.Add(this.StaffManage_Button);
             this.MenuPanel.Controls.Add(this.StorageManage_Button);
             this.MenuPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.MenuPanel.Location = new System.Drawing.Point(0, 840);
+            this.MenuPanel.Location = new System.Drawing.Point(0, 990);
             this.MenuPanel.Margin = new System.Windows.Forms.Padding(6);
             this.MenuPanel.Name = "MenuPanel";
-            this.MenuPanel.Size = new System.Drawing.Size(1425, 10);
+            this.MenuPanel.Size = new System.Drawing.Size(1700, 10);
             this.MenuPanel.TabIndex = 3;
             // 
             // ServiceManage_Button
@@ -75,7 +75,7 @@
             this.ServiceManage_Button.Image = ((System.Drawing.Image)(resources.GetObject("ServiceManage_Button.Image")));
             this.ServiceManage_Button.ImageOffset = new System.Drawing.Point(0, 10);
             this.ServiceManage_Button.ImageSize = new System.Drawing.Size(55, 55);
-            this.ServiceManage_Button.Location = new System.Drawing.Point(712, -1);
+            this.ServiceManage_Button.Location = new System.Drawing.Point(850, -1);
             this.ServiceManage_Button.Margin = new System.Windows.Forms.Padding(0);
             this.ServiceManage_Button.Name = "ServiceManage_Button";
             this.ServiceManage_Button.ShadowDecoration.Parent = this.ServiceManage_Button;
@@ -103,7 +103,7 @@
             this.SaleManage_Button.Image = ((System.Drawing.Image)(resources.GetObject("SaleManage_Button.Image")));
             this.SaleManage_Button.ImageOffset = new System.Drawing.Point(0, 10);
             this.SaleManage_Button.ImageSize = new System.Drawing.Size(55, 55);
-            this.SaleManage_Button.Location = new System.Drawing.Point(352, -1);
+            this.SaleManage_Button.Location = new System.Drawing.Point(490, -1);
             this.SaleManage_Button.Margin = new System.Windows.Forms.Padding(0);
             this.SaleManage_Button.Name = "SaleManage_Button";
             this.SaleManage_Button.ShadowDecoration.Parent = this.SaleManage_Button;
@@ -131,7 +131,7 @@
             this.StaffManage_Button.Image = ((System.Drawing.Image)(resources.GetObject("StaffManage_Button.Image")));
             this.StaffManage_Button.ImageOffset = new System.Drawing.Point(0, 10);
             this.StaffManage_Button.ImageSize = new System.Drawing.Size(55, 55);
-            this.StaffManage_Button.Location = new System.Drawing.Point(-8, -1);
+            this.StaffManage_Button.Location = new System.Drawing.Point(130, -1);
             this.StaffManage_Button.Margin = new System.Windows.Forms.Padding(0);
             this.StaffManage_Button.Name = "StaffManage_Button";
             this.StaffManage_Button.ShadowDecoration.Parent = this.StaffManage_Button;
@@ -159,7 +159,7 @@
             this.StorageManage_Button.Image = ((System.Drawing.Image)(resources.GetObject("StorageManage_Button.Image")));
             this.StorageManage_Button.ImageOffset = new System.Drawing.Point(0, 8);
             this.StorageManage_Button.ImageSize = new System.Drawing.Size(50, 50);
-            this.StorageManage_Button.Location = new System.Drawing.Point(1072, -1);
+            this.StorageManage_Button.Location = new System.Drawing.Point(1210, -1);
             this.StorageManage_Button.Margin = new System.Windows.Forms.Padding(0);
             this.StorageManage_Button.Name = "StorageManage_Button";
             this.StorageManage_Button.ShadowDecoration.Parent = this.StorageManage_Button;
@@ -179,7 +179,7 @@
             this.Header.Location = new System.Drawing.Point(0, 0);
             this.Header.Name = "Header";
             this.Header.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.Header.Size = new System.Drawing.Size(1425, 40);
+            this.Header.Size = new System.Drawing.Size(1700, 40);
             this.Header.TabIndex = 4;
             this.Header.Text = "Tab name";
             this.Header.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -194,7 +194,7 @@
             this.ContainerPanel.Location = new System.Drawing.Point(0, 40);
             this.ContainerPanel.Margin = new System.Windows.Forms.Padding(0);
             this.ContainerPanel.Name = "ContainerPanel";
-            this.ContainerPanel.Size = new System.Drawing.Size(1425, 800);
+            this.ContainerPanel.Size = new System.Drawing.Size(1700, 950);
             this.ContainerPanel.TabIndex = 7;
             // 
             // HeaderIcon
@@ -219,7 +219,7 @@
             this.Exit_Button.HoverState.Parent = this.Exit_Button;
             this.Exit_Button.Image = global::CompuStore.Properties.Resources.Close;
             this.Exit_Button.ImageSize = new System.Drawing.Size(27, 27);
-            this.Exit_Button.Location = new System.Drawing.Point(1385, 0);
+            this.Exit_Button.Location = new System.Drawing.Point(1660, 0);
             this.Exit_Button.Margin = new System.Windows.Forms.Padding(6);
             this.Exit_Button.Name = "Exit_Button";
             this.Exit_Button.PressedState.Parent = this.Exit_Button;
@@ -232,7 +232,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1425, 850);
+            this.ClientSize = new System.Drawing.Size(1700, 1000);
             this.Controls.Add(this.Exit_Button);
             this.Controls.Add(this.ContainerPanel);
             this.Controls.Add(this.HeaderIcon);

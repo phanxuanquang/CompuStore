@@ -53,9 +53,10 @@
             this.SearchBox.FocusedState.Parent = this.SearchBox;
             this.SearchBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.SearchBox.HoverState.Parent = this.SearchBox;
+            this.SearchBox.Location = new System.Drawing.Point(33, 19);
             this.SearchBox.PlaceholderText = "Tìm kiếm sản phẩm theo mã hoặc tên";
             this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
-            this.SearchBox.Size = new System.Drawing.Size(744, 37);
+            this.SearchBox.Size = new System.Drawing.Size(1004, 37);
             this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             // 
             // Button_2
@@ -67,7 +68,7 @@
             this.Button_2.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Button_2.HoverState.Parent = this.Button_2;
             this.Button_2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Button_2.Location = new System.Drawing.Point(988, 19);
+            this.Button_2.Location = new System.Drawing.Point(1256, 19);
             this.Button_2.ShadowDecoration.Parent = this.Button_2;
             this.Button_2.Text = "Xem cấu hình";
             this.Button_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -83,7 +84,7 @@
             this.Bottom_1.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Bottom_1.HoverState.Parent = this.Bottom_1;
             this.Bottom_1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Bottom_1.Location = new System.Drawing.Point(779, 19);
+            this.Bottom_1.Location = new System.Drawing.Point(1047, 19);
             this.Bottom_1.Margin = new System.Windows.Forms.Padding(4);
             this.Bottom_1.ShadowDecoration.Parent = this.Bottom_1;
             this.Bottom_1.Text = "Tạo đơn hàng";
@@ -100,7 +101,7 @@
             this.Button_3.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Button_3.HoverState.Parent = this.Button_3;
             this.Button_3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Button_3.Location = new System.Drawing.Point(1197, 19);
+            this.Button_3.Location = new System.Drawing.Point(1465, 19);
             this.Button_3.ShadowDecoration.Parent = this.Button_3;
             this.Button_3.Text = "Danh sách đơn hàng";
             this.Button_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;

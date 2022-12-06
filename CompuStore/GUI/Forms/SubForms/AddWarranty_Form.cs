@@ -62,7 +62,7 @@ namespace CompuStore
                 Exception res =  WarrantyServices.Instance.SaveWarrantyToDB(detail.ID_INVOICE, currentStaff.ID, Database.DataProvider.Instance.Database.PRODUCTs.FirstOrDefault(item => item.SERIAL_ID == ItemSerial_Box.Text).PRODUCT_ID, null, DateTime.Now, WarrantyDoneDate_Picker.Value, 0);
                 if (res.Message == "done")
                 {
-                    MessageBox.Show("Lưu thành công");
+                    MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 else
@@ -112,7 +112,7 @@ namespace CompuStore
             detail = InvoiceServices.Instance.GetDetailBySerialID((ItemSerial_Box.Text));
             if (!isValidSerialID(detail))
             {
-                MessageBox.Show("Không tìm thấy hóa đơn bán sản phẩm này");
+                MessageBox.Show("Không tìm thấy hóa đơn bán sản phẩm này.", "Không tìm thấy", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -122,6 +122,11 @@ namespace CompuStore
                 PhoneNumber_Box.Text = customer.INFOR.PHONE_NUMBER;
                 Email_Box.Text = customer.INFOR.EMAIL;
             }
+        }
+
+        private void Print_Button_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Không tim thấy máy in. Vui lòng thử lại sau.", "Không tìm thấy máy in", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
     }
 }

@@ -57,13 +57,13 @@ namespace CompuStore
             {
                 if (Database.DataProvider.Instance.Database.PRODUCTs.FirstOrDefault(item => item.SERIAL_ID == NewItemSerial_Box.Text) == null)
                 {
-                    MessageBox.Show("Không tìm thấy sản phẩm mới trong kho");
+                    MessageBox.Show("Không tìm thấy sản phẩm mới trong kho.", "Không tìm thấy sản phẩm", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 Exception res = ChangeOrRefundProductServices.Instance.SaveCOrreFundToDB(detail.ID_INVOICE, currentStaff.ID, Database.DataProvider.Instance.Database.PRODUCTs.FirstOrDefault(item => item.SERIAL_ID == OldItemSerial_Box.Text).PRODUCT_ID, Database.DataProvider.Instance.Database.PRODUCTs.FirstOrDefault(item => item.SERIAL_ID == NewItemSerial_Box.Text).PRODUCT_ID, ReturnReason.Text, DateTime.Now);
                 if (res.Message == "done")
                 {
-                    MessageBox.Show("Lưu thành công");
+                    MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
                 else
@@ -112,7 +112,7 @@ namespace CompuStore
             detail = InvoiceServices.Instance.GetDetailBySerialID((OldItemSerial_Box.Text));
             if (!isValidSerialID(detail))
             {
-                MessageBox.Show("Không tìm thấy hóa đơn bán sản phẩm này");
+                MessageBox.Show("Không tìm thấy hóa đơn bán sản phẩm này.", "Không tìm thấy", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -122,6 +122,11 @@ namespace CompuStore
                 PhoneNumber_Box.Text = customer.INFOR.PHONE_NUMBER;
                 Email_Box.Text = customer.INFOR.EMAIL;
             }
+        }
+
+        private void Print_Button_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Không tim thấy máy in. Vui lòng thử lại sau.", "Không tìm thấy máy in", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
     }
 }
