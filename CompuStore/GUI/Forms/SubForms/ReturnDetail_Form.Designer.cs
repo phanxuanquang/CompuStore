@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Header = new System.Windows.Forms.Label();
             this.Print_Button = new Guna.UI2.WinForms.Guna2Button();
             this.EditAndSave_Button = new Guna.UI2.WinForms.Guna2Button();
@@ -43,6 +44,7 @@
             this.PhoneNumber_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Identity_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.AddInfor_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -454,6 +456,10 @@
             this.AddInfor_Button.Text = "Thêm thông tin";
             this.AddInfor_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.TargetControl = this.Header;
+            // 
             // ReturnDetail_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -501,5 +507,6 @@
         private Guna.UI2.WinForms.Guna2TextBox PhoneNumber_Box;
         private Guna.UI2.WinForms.Guna2TextBox Identity_Box;
         private Guna.UI2.WinForms.Guna2Button AddInfor_Button;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }

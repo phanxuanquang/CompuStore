@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -51,6 +52,7 @@
             this.lbDate = new System.Windows.Forms.Label();
             this.AddItemToTable_Button = new Guna.UI2.WinForms.Guna2Button();
             this.Serial_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemTable)).BeginInit();
             this.SuspendLayout();
@@ -507,6 +509,10 @@
             this.Serial_ComboBox.Size = new System.Drawing.Size(426, 35);
             this.Serial_ComboBox.TabIndex = 43;
             // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.TargetControl = this.Header;
+            // 
             // AddInvoice_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -560,5 +566,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private Guna.UI2.WinForms.Guna2Button AddItemToTable_Button;
         private Control.ComboBoxCustom Serial_ComboBox;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }
