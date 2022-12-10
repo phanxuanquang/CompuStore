@@ -41,6 +41,7 @@
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.Header = new System.Windows.Forms.Label();
             this.iNVOICEBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DataTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iNVOICEBindingSource)).BeginInit();
@@ -224,6 +225,10 @@
             // 
             this.iNVOICEBindingSource.DataSource = typeof(CompuStore.Database.Models.INVOICE);
             // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.TargetControl = this.Header;
+            // 
             // InvoiceList_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -237,6 +242,7 @@
             this.Controls.Add(this.DataTable);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "InvoiceList_Form";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "InvoiceList_Form";
             ((System.ComponentModel.ISupportInitialize)(this.DataTable)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).EndInit();
@@ -254,5 +260,6 @@
         private Guna.UI2.WinForms.Guna2ImageButton Exit_Button;
         private System.Windows.Forms.Label Header;
         private System.Windows.Forms.BindingSource iNVOICEBindingSource;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }

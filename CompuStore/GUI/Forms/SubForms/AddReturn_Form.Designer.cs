@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Header = new System.Windows.Forms.Label();
             this.HeaderIcon = new System.Windows.Forms.PictureBox();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
@@ -43,6 +44,7 @@
             this.Save_Button = new Guna.UI2.WinForms.Guna2Button();
             this.ReturnReason = new Guna.UI2.WinForms.Guna2TextBox();
             this.AddInfor_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -455,6 +457,10 @@
             this.AddInfor_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.AddInfor_Button.Click += new System.EventHandler(this.AddInfor_Button_Click);
             // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.TargetControl = this.Header;
+            // 
             // AddReturn_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -501,5 +507,6 @@
         private Guna.UI2.WinForms.Guna2Button Save_Button;
         private Guna.UI2.WinForms.Guna2TextBox ReturnReason;
         private Guna.UI2.WinForms.Guna2Button AddInfor_Button;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }

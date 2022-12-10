@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Header = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.WarrantyDoneDate_Picker = new Guna.UI2.WinForms.Guna2DateTimePicker();
@@ -44,6 +45,7 @@
             this.HeaderIcon = new System.Windows.Forms.PictureBox();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.AddInfor_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -456,6 +458,10 @@
             this.AddInfor_Button.Text = "Thêm thông tin";
             this.AddInfor_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             // 
+            // guna2DragControl1
+            // 
+            this.guna2DragControl1.TargetControl = this.Header;
+            // 
             // WarrantyDetail_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -505,5 +511,6 @@
         private Guna.UI2.WinForms.Guna2TextBox WarrantyReason;
         private Guna.UI2.WinForms.Guna2Button EditAndSave_Button;
         private Guna.UI2.WinForms.Guna2Button AddInfor_Button;
+        private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
     }
 }
