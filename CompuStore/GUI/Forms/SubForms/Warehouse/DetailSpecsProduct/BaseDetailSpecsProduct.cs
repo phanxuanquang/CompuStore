@@ -1,19 +1,19 @@
 ﻿using CompuStore.Database.Models;
-using CompuStore.Database.Services.ProductServices;
 using CompuStore.ImportData;
-using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CompuStore.GUI.Forms.SubForms.Warehouse
+namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
 {
-    public partial class BaseDetailSpecsProduct_Form : Form
+    public partial class BaseDetailSpecsProduct : Form
     {
         #region Class
         public class ResultDetailSpecsProduct
@@ -62,6 +62,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         protected BindingList<ModelProduct.Port> bindingPorts;
         protected ResultDetailSpecsProduct resultChanged;
         private BindingList<DISPLAY_SPECS> bindingCodeDisplay = null;
+        private IDictionary<System.Windows.Forms.Control, System.Windows.Forms.Control> syncTabs = null;
         #endregion
 
         #region Translater
@@ -73,7 +74,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
         protected virtual void AddInitializeComponent() { }
 
-        protected BaseDetailSpecsProduct_Form()
+        protected BaseDetailSpecsProduct()
         {
             InitializeComponent();
             AddInitializeComponent();
@@ -82,6 +83,15 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 Ports_DataGridView.ColumnHeadersHeight = 48;
                 Ports_DataGridView.RowTemplate.Height = 48;
             }
+            syncTabs = new Dictionary<System.Windows.Forms.Control, System.Windows.Forms.Control>
+            {
+                {X_Pixel_ComboBox, X_Pixel_Overview_ComboBox },
+                {Y_Pixel_ComboBox, Y_Pixel_Overview_ComboBox },
+                {StorageCapacity_ComboBox, StorageCapacity_Overview_ComboBox },
+                {SizePanel_ComboBox, SizePanel_Overview_ComboBox },
+                {RefreshRate_ComboBox, RefreshRate_Overview_ComboBox },
+                {ColorPicker_Button, ColorPicker_Overview_Button },
+            };
         }
 
         protected override CreateParams CreateParams
@@ -114,9 +124,13 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             Webcam_ComboBox.Enabled = editable;
             OS_ComboBox.Enabled = editable;
             X_Pixel_ComboBox.Enabled = editable;
+            X_Pixel_Overview_ComboBox.Enabled = editable;
             Y_Pixel_ComboBox.Enabled = editable;
+            Y_Pixel_Overview_ComboBox.Enabled = editable;
             RefreshRate_ComboBox.Enabled = editable;
+            RefreshRate_Overview_ComboBox.Enabled = editable;
             SizePanel_ComboBox.Enabled = editable;
+            SizePanel_Overview_ComboBox.Enabled = editable;
             ColorSpace_sRGB_TextBox.Enabled = editable;
             ColorSpace_AdobeRGB_TextBox.Enabled = editable;
             ColorSpace_DCIP3_TextBox.Enabled = editable;
@@ -130,14 +144,20 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             CodeDisplay_ComboBox.Enabled = editable;
             TypeStorage_ComboBox.Enabled = editable;
             StorageCapacity_ComboBox.Enabled = editable;
+            StorageCapacity_Overview_ComboBox.Enabled = editable;
             WifiStandard_ComboBox.Enabled = editable;
             BluetoothStandard_ComboBox.Enabled = editable;
             BatteryCapacity_TextBox.Enabled = editable;
             if (editable)
             {
+                ColorPicker_Overview_Button.Click += ColorPicker_Button_Click;
                 ColorPicker_Button.Click += ColorPicker_Button_Click;
             }
-            else ColorPicker_Button.Click -= ColorPicker_Button_Click;
+            else
+            {
+                ColorPicker_Overview_Button.Click -= ColorPicker_Button_Click;
+                ColorPicker_Button.Click -= ColorPicker_Button_Click;
+            }
             NameColor_TextBox.Enabled = editable;
             Ports_DataGridView.ReadOnly = !editable;
         }
@@ -183,6 +203,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             HasCodeDisplay_CheckBox.Checked = false;
             ColorDialog.Color = product?.ColorModel?.ColorCode ?? Color.Black;
             ColorPicker_Button.FillColor = ColorDialog.Color;
+            ColorPicker_Overview_Button.FillColor = ColorDialog.Color;
             NameColor_TextBox.Text = product?.ColorModel?.ColorName;
             BatteryCapacity_TextBox.Text = product?.BatteryCapacity?.ToString();
 
@@ -221,19 +242,24 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             SetDefaultComboBox(OS_ComboBox, product?.OS);
             SetDefaultComboBox(X_Pixel_ComboBox, product?.Resolution?[0].ToString());
             SetDefaultComboBox(Y_Pixel_ComboBox, product?.Resolution?[1].ToString());
+            SetDefaultComboBox(X_Pixel_Overview_ComboBox, product?.Resolution?[0].ToString());
+            SetDefaultComboBox(Y_Pixel_Overview_ComboBox, product?.Resolution?[1].ToString());
             SetDefaultComboBox(TypePanel_ComboBox, product?.TypePanel);
             SetDefaultComboBox(RefreshRate_ComboBox, product?.RefreshRate.ToString());
+            SetDefaultComboBox(RefreshRate_Overview_ComboBox, product?.RefreshRate.ToString());
             SetDefaultComboBox(SizePanel_ComboBox, product?.SizePanel.ToString());
+            SetDefaultComboBox(SizePanel_Overview_ComboBox, product?.SizePanel.ToString());
             SetDefaultComboBox(X_Ratio_ComboBox, product?.RatioPanel?[0].ToString());
             SetDefaultComboBox(Y_Ratio_ComboBox, product?.RatioPanel?[1].ToString());
             SetDefaultComboBox(TypeScreen_ComboBox, product?.TypeScreen);
             SetDefaultComboBox(TypeStorage_ComboBox, product?.TypeStorage);
             SetDefaultComboBox(StorageCapacity_ComboBox, product?.StorageCapacity.ToString());
+            SetDefaultComboBox(StorageCapacity_Overview_ComboBox, product?.StorageCapacity.ToString());
             SetDefaultComboBox(WifiStandard_ComboBox, product?.Wifi);
             SetDefaultComboBox(BluetoothStandard_ComboBox, product?.Bluetooth);
             if (bindingCodeDisplay != null)
                 SetDefaultComboBox(CodeDisplay_ComboBox, bindingCodeDisplay?.FirstOrDefault(item => item.CODE_DISPLAY == product.IdPanel));
-            else 
+            else
                 SetDefaultComboBox(CodeDisplay_ComboBox, product?.IdPanel);
         }
         #endregion
@@ -255,6 +281,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             GPU_ComboBox.DataSource = binding.gpu;
             TypeStorage_ComboBox.DataSource = binding.typeStorage;
             StorageCapacity_ComboBox.DataSource = binding.storageCapacity;
+            StorageCapacity_Overview_ComboBox.DataSource = binding.storageCapacity;
             Material_ComboBox.DataSource = binding.material;
             Webcam_ComboBox.DataSource = binding.webcam;
             OS_ComboBox.DataSource = binding.os;
@@ -262,6 +289,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             BluetoothStandard_ComboBox.DataSource = binding.bluetooth;
             RefreshRate_ComboBox.DataSource = binding.refreshRate;
             SizePanel_ComboBox.DataSource = binding.sizePanel;
+            RefreshRate_Overview_ComboBox.DataSource = binding.refreshRate;
+            SizePanel_Overview_ComboBox.DataSource = binding.sizePanel;
             TypePanel_ComboBox.DataSource = binding.typePanel;
             TypeScreen_ComboBox.DataSource = binding.typeScreen;
             Capacity_RAM_ComboBox.DataSource = binding.ramCapacity;
@@ -269,6 +298,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             BusRAM_ComboBox.DataSource = binding.busRAM;
             X_Pixel_ComboBox.DataSource = binding.xResolution;
             Y_Pixel_ComboBox.DataSource = binding.yResolution;
+            X_Pixel_Overview_ComboBox.DataSource = binding.xResolution;
+            Y_Pixel_Overview_ComboBox.DataSource = binding.yResolution;
             X_Ratio_ComboBox.DataSource = binding.xRatioPanel;
             Y_Ratio_ComboBox.DataSource = binding.yRatioPanel;
             AssignBinding(CodeDisplay_ComboBox, bindingCodeDisplay);
@@ -410,6 +441,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             if (ColorDialog.ShowDialog() == DialogResult.OK)
             {
                 ColorPicker_Button.FillColor = ColorDialog.Color;
+                ColorPicker_Overview_Button.FillColor = ColorDialog.Color;
             }
         }
 
@@ -523,9 +555,13 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     string[] ratioPanel = selected.RATIO.Split(':');
                     SetDefaultComboBox(X_Pixel_ComboBox, pixels[0].ToString());
                     SetDefaultComboBox(Y_Pixel_ComboBox, pixels[1].ToString());
+                    SetDefaultComboBox(X_Pixel_Overview_ComboBox, pixels[0].ToString());
+                    SetDefaultComboBox(Y_Pixel_Overview_ComboBox, pixels[1].ToString());
                     SetDefaultComboBox(TypePanel_ComboBox, selected.PANEL);
                     SetDefaultComboBox(RefreshRate_ComboBox, selected.REFRESH_RATE.Value.ToString());
                     SetDefaultComboBox(SizePanel_ComboBox, selected.SIZE.Value.ToString());
+                    SetDefaultComboBox(RefreshRate_Overview_ComboBox, selected.REFRESH_RATE.Value.ToString());
+                    SetDefaultComboBox(SizePanel_Overview_ComboBox, selected.SIZE.Value.ToString());
                     SetDefaultComboBox(X_Ratio_ComboBox, ratioPanel[0].ToString());
                     SetDefaultComboBox(Y_Ratio_ComboBox, ratioPanel[1].ToString());
                     SetDefaultComboBox(TypeScreen_ComboBox, selected.SCREEN_TYPE);

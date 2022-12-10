@@ -209,6 +209,12 @@
     <Compile Include="GUI\Forms\SubForms\Warehouse\DetailInvoiceImportWarehouse\EditDetailInvoiceImportWarehouse_Form.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\BaseDetailSpecsProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\BaseDetailSpecsProduct.Designer.cs">
+      <DependentUpon>BaseDetailSpecsProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\ImportDetailSpecsProduct_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -291,12 +297,6 @@
     <Compile Include="GUI\Forms\SubForms\Warehouse\DetailInvoiceImportWarehouse\BaseDetailInvoiceImportWarehouse_Form.Designer.cs">
       <DependentUpon>BaseDetailInvoiceImportWarehouse_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\BaseDetailSpecsProduct_Form.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\BaseDetailSpecsProduct_Form.Designer.cs">
-      <DependentUpon>BaseDetailSpecsProduct_Form.cs</DependentUpon>
-    </Compile>
     <Compile Include="GUI\Tab\Warehouse_UC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -326,6 +326,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Forms\SubForms\AddInvoice_Form.resx">
       <DependentUpon>AddInvoice_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\BaseDetailSpecsProduct.resx">
+      <DependentUpon>BaseDetailSpecsProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Forms\Waiting_Form.resx">
       <DependentUpon>Waiting_Form.cs</DependentUpon>
@@ -369,9 +372,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Forms\SubForms\Warehouse\DetailInvoiceImportWarehouse\BaseDetailInvoiceImportWarehouse_Form.resx">
       <DependentUpon>BaseDetailInvoiceImportWarehouse_Form.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\BaseDetailSpecsProduct_Form.resx">
-      <DependentUpon>BaseDetailSpecsProduct_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Forms\SubForms\WarrantyDetail_Form.resx">
       <DependentUpon>WarrantyDetail_Form.cs</DependentUpon>

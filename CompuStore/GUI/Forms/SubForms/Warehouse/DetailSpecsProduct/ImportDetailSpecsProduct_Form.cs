@@ -1,4 +1,5 @@
-﻿using CompuStore.ImportData;
+﻿using CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct;
+using CompuStore.ImportData;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,10 +13,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
-    public class ImportDetailSpecsProduct_Form : BaseDetailSpecsProduct_Form
+    public class ImportDetailSpecsProduct_Form : BaseDetailSpecsProduct
     {
         #region Variable
-        private System.Windows.Forms.Panel ImportPanel;
         private System.Windows.Forms.TextBox Serial_TextBox, Price_TextBox;
         private System.Windows.Forms.Label Serial_Label, UnitPrice_Label, Price_Label;
         #endregion
@@ -23,27 +23,25 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         #region Private Component
         protected override void AddInitializeComponent()
         {
-            this.ImportPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.Serial_TextBox = new System.Windows.Forms.TextBox();
             this.Serial_Label = new System.Windows.Forms.Label();
             this.UnitPrice_Label = new System.Windows.Forms.Label();
             this.Price_Label = new System.Windows.Forms.Label();
             this.Price_TextBox = new System.Windows.Forms.TextBox();
-            this.ImportPanel.SuspendLayout();
-            this.MainFlowLayoutPanel.SuspendLayout();
+            this.Placeholder_FlowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // ImportPanel
+            // Placeholder_FlowLayoutPanel
             // 
-            this.ImportPanel.Controls.Add(this.Serial_Label);
-            this.ImportPanel.Controls.Add(this.Serial_TextBox);
-            this.ImportPanel.Controls.Add(this.Price_Label);
-            this.ImportPanel.Controls.Add(this.Price_TextBox);
-            this.ImportPanel.Controls.Add(this.UnitPrice_Label);
-            this.ImportPanel.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.ImportPanel.Name = "ImportPanel";
-            this.ImportPanel.Size = new System.Drawing.Size(this.Size.Width, 70);
-            this.ImportPanel.TabIndex = 134;
+            this.Placeholder_FlowLayoutPanel.Controls.Add(this.Serial_Label);
+            this.Placeholder_FlowLayoutPanel.Controls.Add(this.Serial_TextBox);
+            this.Placeholder_FlowLayoutPanel.Controls.Add(this.Price_Label);
+            this.Placeholder_FlowLayoutPanel.Controls.Add(this.Price_TextBox);
+            this.Placeholder_FlowLayoutPanel.Controls.Add(this.UnitPrice_Label);
+            this.Placeholder_FlowLayoutPanel.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.Placeholder_FlowLayoutPanel.Name = "Placeholder_FlowLayoutPanel";
+            this.Placeholder_FlowLayoutPanel.Size = new System.Drawing.Size(this.Size.Width, 70);
+            this.Placeholder_FlowLayoutPanel.TabIndex = 134;
             // 
             // Serial_TextBox
             // 
@@ -95,15 +93,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Price_TextBox.TabIndex = 132;
             this.Price_TextBox.Enter += Price_TextBox_Enter;
             this.Price_TextBox.Leave += Price_TextBox_Leave;
-            this.MainFlowLayoutPanel.Controls.Clear();
-            this.MainFlowLayoutPanel.Controls.Add(ImportPanel);
-            this.MainFlowLayoutPanel.Controls.Add(SpecsPanel);
             this.Size = new Size(this.Size.Width, this.Size.Height + 70);
-            this.MainFlowLayoutPanel.Size = new Size(this.MainFlowLayoutPanel.Size.Width, this.MainFlowLayoutPanel.Size.Height + 70);
-            this.ImportPanel.ResumeLayout(false);
-            this.ImportPanel.PerformLayout();
-            this.MainFlowLayoutPanel.ResumeLayout(false);
-            this.MainFlowLayoutPanel.PerformLayout();
+            this.Placeholder_FlowLayoutPanel.ResumeLayout(false);
+            this.Placeholder_FlowLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
@@ -185,12 +177,12 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             checkModel.CaseMaterial = Material_ComboBox.SelectedItem?.ToString();
             checkModel.Webcam = Webcam_ComboBox.SelectedItem?.ToString();
             checkModel.ResolutionString = string.Format("{0}x{1}",
-                X_Pixel_ComboBox.SelectedItem?.ToString(),
-                Y_Pixel_ComboBox.SelectedItem?.ToString());
+                X_Pixel_Overview_ComboBox.SelectedItem?.ToString(),
+                Y_Pixel_Overview_ComboBox.SelectedItem?.ToString());
             checkModel.TypePanel = TypePanel_ComboBox.SelectedItem?.ToString();
-            checkModel.RefreshRate = int.Parse(RefreshRate_ComboBox.SelectedItem?.ToString());
+            checkModel.RefreshRate = int.Parse(RefreshRate_Overview_ComboBox.SelectedItem?.ToString());
             checkModel.Brightness = int.Parse(Brightness_TextBox.Text);
-            checkModel.SizePanel = double.Parse(SizePanel_ComboBox.SelectedItem?.ToString());
+            checkModel.SizePanel = double.Parse(SizePanel_Overview_ComboBox.SelectedItem?.ToString());
             checkModel.RatioPanelString = string.Format("{0}:{1}",
                 X_Ratio_ComboBox.SelectedItem?.ToString(),
                 Y_Ratio_ComboBox.SelectedItem?.ToString());
@@ -205,7 +197,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 checkModel.IdPanel = CodeDisplay_ComboBox.SelectedItem?.ToString();
             }
             checkModel.TypeStorage = TypeStorage_ComboBox.SelectedItem?.ToString();
-            checkModel.StorageCapacity = int.Parse(StorageCapacity_ComboBox.SelectedItem?.ToString());
+            checkModel.StorageCapacity = int.Parse(StorageCapacity_Overview_ComboBox.SelectedItem?.ToString());
             checkModel.Wifi = WifiStandard_ComboBox.SelectedItem?.ToString();
             checkModel.Bluetooth = BluetoothStandard_ComboBox.SelectedItem?.ToString();
             checkModel.ColorName = NameColor_TextBox.Text;

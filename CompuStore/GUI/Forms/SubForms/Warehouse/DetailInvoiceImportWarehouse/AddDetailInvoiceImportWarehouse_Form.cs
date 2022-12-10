@@ -1,4 +1,5 @@
 ﻿using CompuStore.Database.Models;
+using CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct;
 using CompuStore.ImportData;
 using System;
 using System.Collections.Generic;
@@ -93,21 +94,21 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 if (model != null)
                 {
                     ModelProduct[] parameter = new ModelProduct[] { model };
-                    BaseDetailSpecsProduct_Form detailSpecs = new ImportDetailSpecsProduct_Form();
-                    BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct afterEdit = detailSpecs.ShowDialog(this, parameter.ToList());
+                    BaseDetailSpecsProduct detailSpecs = new ImportDetailSpecsProduct_Form();
+                    BaseDetailSpecsProduct.ResultDetailSpecsProduct afterEdit = detailSpecs.ShowDialog(this, parameter.ToList());
                     Thread.Sleep(1000);
                     bool reload = true;
                     switch (afterEdit.typeReturn)
                     {
-                        case BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct.TypeReturn.NewProduct:
+                        case BaseDetailSpecsProduct.ResultDetailSpecsProduct.TypeReturn.NewProduct:
                             productList.Add(afterEdit.receivePayload);
                             break;
-                        case BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct.TypeReturn.ProductChanged:
+                        case BaseDetailSpecsProduct.ResultDetailSpecsProduct.TypeReturn.ProductChanged:
                             int index = bindingTable.IndexOf(afterEdit.sendPayload);
                             productList.Remove(afterEdit.sendPayload);
                             productList.Insert(index, afterEdit.receivePayload);
                             break;
-                        case BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct.TypeReturn.SpecsChanged:
+                        case BaseDetailSpecsProduct.ResultDetailSpecsProduct.TypeReturn.SpecsChanged:
                             afterEdit.sendPayload.OverrideData(afterEdit.receivePayload);
                             break;
                         default:

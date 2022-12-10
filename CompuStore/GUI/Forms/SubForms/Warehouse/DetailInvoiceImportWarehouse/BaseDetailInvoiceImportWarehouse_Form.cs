@@ -2,6 +2,7 @@
 using CompuStore.Database.Models;
 using CompuStore.Database.Services;
 using CompuStore.GUI;
+using CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct;
 using CompuStore.ImportData;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static CompuStore.GUI.Forms.SubForms.Warehouse.BaseDetailSpecsProduct_Form;
 
 namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
@@ -162,7 +162,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
             else
             {
-                BaseDetailSpecsProduct_Form importManual = new ImportDetailSpecsProduct_Form();
+                BaseDetailSpecsProduct importManual = new ImportDetailSpecsProduct_Form();
                 List<ModelProduct> temp = new List<ModelProduct>();
                 temp.Add(new ModelProduct
                 {
@@ -180,12 +180,12 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     Wifi = productList?.FirstOrDefault()?.Wifi,
                     Bluetooth = productList?.FirstOrDefault()?.Bluetooth,
                 });
-                BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct afterEdit = importManual.ShowDialog(this, temp);
+                BaseDetailSpecsProduct.ResultDetailSpecsProduct afterEdit = importManual.ShowDialog(this, temp);
                 Thread.Sleep(1000);
                 bool reload = true;
                 switch (afterEdit.typeReturn)
                 {
-                    case BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct.TypeReturn.NewProduct:
+                    case BaseDetailSpecsProduct.ResultDetailSpecsProduct.TypeReturn.NewProduct:
                         productList.Add(afterEdit.receivePayload);
                         break;
                     default:
@@ -554,19 +554,19 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     {
                         if (MessageBox.Show("Bạn muốn sửa chửa(Yes) hay xóa sản phẩm bị trùng?", "Trùng Serial máy", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
-                            BaseDetailSpecsProduct_Form detailSpecs = new ImportDetailSpecsProduct_Form();
-                            BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct afterEdit = detailSpecs.ShowDialog(this, added.ToList());
+                            BaseDetailSpecsProduct detailSpecs = new ImportDetailSpecsProduct_Form();
+                            BaseDetailSpecsProduct.ResultDetailSpecsProduct afterEdit = detailSpecs.ShowDialog(this, added.ToList());
                             switch (afterEdit.typeReturn)
                             {
-                                case BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct.TypeReturn.NewProduct:
+                                case BaseDetailSpecsProduct.ResultDetailSpecsProduct.TypeReturn.NewProduct:
                                     owner.Add(afterEdit.receivePayload);
                                     break;
-                                case BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct.TypeReturn.ProductChanged:
+                                case BaseDetailSpecsProduct.ResultDetailSpecsProduct.TypeReturn.ProductChanged:
                                     int index = owner.IndexOf(afterEdit.sendPayload);
                                     owner.Remove(afterEdit.sendPayload);
                                     owner.Insert(index, afterEdit.receivePayload);
                                     break;
-                                case BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct.TypeReturn.SpecsChanged:
+                                case BaseDetailSpecsProduct.ResultDetailSpecsProduct.TypeReturn.SpecsChanged:
                                     afterEdit.sendPayload.OverrideData(afterEdit.receivePayload);
                                     break;
                             }

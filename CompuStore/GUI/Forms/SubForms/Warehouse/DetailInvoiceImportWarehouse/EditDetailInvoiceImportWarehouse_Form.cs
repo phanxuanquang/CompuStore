@@ -1,4 +1,5 @@
 ﻿using CompuStore.Database.Models;
+using CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct;
 using CompuStore.ImportData;
 using System;
 using System.Collections.Generic;
@@ -149,7 +150,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 ModelProduct model = bindingTable[e.RowIndex];
                 if (model != null)
                 {
-                    BaseDetailSpecsProduct_Form detailSpecs = null;
+                    BaseDetailSpecsProduct detailSpecs = null;
                     if (importWarehouse == null)
                     {
                         detailSpecs = new OverviewDetailSpecsProduct_Form();
