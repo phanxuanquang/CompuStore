@@ -94,21 +94,21 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 if (model != null)
                 {
                     ModelProduct[] parameter = new ModelProduct[] { model };
-                    BaseDetailSpecsProduct detailSpecs = new ImportDetailSpecsProduct_Form();
-                    BaseDetailSpecsProduct.ResultDetailSpecsProduct afterEdit = detailSpecs.ShowDialog(this, parameter.ToList());
+                    BaseDetailSpecsProduct_Form detailSpecs = new ImportDetailSpecsProduct_Form();
+                    BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct afterEdit = detailSpecs.ShowDialog(this, parameter.ToList());
                     Thread.Sleep(1000);
                     bool reload = true;
                     switch (afterEdit.typeReturn)
                     {
-                        case BaseDetailSpecsProduct.ResultDetailSpecsProduct.TypeReturn.NewProduct:
+                        case BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct.TypeReturn.NewProduct:
                             productList.Add(afterEdit.receivePayload);
                             break;
-                        case BaseDetailSpecsProduct.ResultDetailSpecsProduct.TypeReturn.ProductChanged:
+                        case BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct.TypeReturn.ProductChanged:
                             int index = bindingTable.IndexOf(afterEdit.sendPayload);
                             productList.Remove(afterEdit.sendPayload);
                             productList.Insert(index, afterEdit.receivePayload);
                             break;
-                        case BaseDetailSpecsProduct.ResultDetailSpecsProduct.TypeReturn.SpecsChanged:
+                        case BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct.TypeReturn.SpecsChanged:
                             afterEdit.sendPayload.OverrideData(afterEdit.receivePayload);
                             break;
                         default:

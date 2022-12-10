@@ -209,11 +209,11 @@
     <Compile Include="GUI\Forms\SubForms\Warehouse\DetailInvoiceImportWarehouse\EditDetailInvoiceImportWarehouse_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\BaseDetailSpecsProduct.cs">
+    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\BaseDetailSpecsProduct_Form.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\BaseDetailSpecsProduct.Designer.cs">
-      <DependentUpon>BaseDetailSpecsProduct.cs</DependentUpon>
+    <Compile Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\BaseDetailSpecsProduct_Form.Designer.cs">
+      <DependentUpon>BaseDetailSpecsProduct_Form.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\ImportDetailSpecsProduct_Form.cs">
       <SubType>Form</SubType>
@@ -327,8 +327,8 @@
     <EmbeddedResource Include="GUI\Forms\SubForms\AddInvoice_Form.resx">
       <DependentUpon>AddInvoice_Form.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\BaseDetailSpecsProduct.resx">
-      <DependentUpon>BaseDetailSpecsProduct.cs</DependentUpon>
+    <EmbeddedResource Include="GUI\Forms\SubForms\Warehouse\DetailSpecsProduct\BaseDetailSpecsProduct_Form.resx">
+      <DependentUpon>BaseDetailSpecsProduct_Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Forms\Waiting_Form.resx">
       <DependentUpon>Waiting_Form.cs</DependentUpon>

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
 {
-    public partial class BaseDetailSpecsProduct : Form
+    public partial class BaseDetailSpecsProduct_Form : Form
     {
         #region Class
         public class ResultDetailSpecsProduct
@@ -74,7 +74,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
 
         protected virtual void AddInitializeComponent() { }
 
-        protected BaseDetailSpecsProduct()
+        protected BaseDetailSpecsProduct_Form()
         {
             InitializeComponent();
             AddInitializeComponent();

@@ -150,7 +150,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 ModelProduct model = bindingTable[e.RowIndex];
                 if (model != null)
                 {
-                    BaseDetailSpecsProduct detailSpecs = null;
+                    BaseDetailSpecsProduct_Form detailSpecs = null;
                     if (importWarehouse == null)
                     {
                         detailSpecs = new OverviewDetailSpecsProduct_Form();

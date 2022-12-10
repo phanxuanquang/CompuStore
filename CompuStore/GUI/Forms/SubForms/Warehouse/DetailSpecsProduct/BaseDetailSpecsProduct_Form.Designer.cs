@@ -2,7 +2,7 @@
 
 namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
 {
-    partial class BaseDetailSpecsProduct
+    partial class BaseDetailSpecsProduct_Form
     {
         /// <summary>
         /// Required designer variable.

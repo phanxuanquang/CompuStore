@@ -13,7 +13,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
-    public class ImportDetailSpecsProduct_Form : BaseDetailSpecsProduct
+    public class ImportDetailSpecsProduct_Form : BaseDetailSpecsProduct_Form
     {
         #region Variable
         private System.Windows.Forms.TextBox Serial_TextBox, Price_TextBox;

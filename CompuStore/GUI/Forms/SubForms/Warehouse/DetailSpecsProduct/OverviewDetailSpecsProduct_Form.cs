@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
-    public class OverviewDetailSpecsProduct_Form : BaseDetailSpecsProduct
+    public class OverviewDetailSpecsProduct_Form : BaseDetailSpecsProduct_Form
     {
         #region Class
         private class SerialBinding
