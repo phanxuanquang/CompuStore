@@ -2,7 +2,9 @@
 using CompuStore.Database.Services.ProductServices;
 using CompuStore.ImportData;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -43,6 +45,11 @@ namespace CompuStore.Database.Services
                 item.BLUETOOTH == model.BLUETOOTH,
                 model
                 );
+        }
+
+        public COMMON_SPECS GetCommonSpecsBySerial(string serialID)
+        {
+            return DataProvider.Instance.Database.PRODUCTs.FirstOrDefault(item => item.SERIAL_ID == serialID)?.DETAIL_SPECS.COMMON_SPECS;
         }
 
         public Task<int> UpdateCommonSpecs(COMMON_SPECS target)
