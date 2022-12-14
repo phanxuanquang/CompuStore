@@ -22,7 +22,6 @@ namespace CompuStore.Tab
     {
         public static string nameIdCommonSpecs;
         BindingList<ModelSale> productList;
-        public static Dictionary<COMMON_SPECS, int> listProduct = new Dictionary<COMMON_SPECS, int>();
         protected Dictionary<string, string> listItemViews = new Dictionary<string, string>()
         {
            { "Name", "Tên sản phẩm" },
@@ -166,24 +165,6 @@ namespace CompuStore.Tab
         private BindingList<ModelSale> GetListView()
         {
             productList = new BindingList<ModelSale>();
-            //List<DETAIL_SPECS> detailSpecs = Database.DataProvider.Instance.Database.DETAIL_SPECS.Select(item => item).ToList();
-            //foreach (DETAIL_SPECS detail in detailSpecs)
-            //{
-            //    UNIQUE_SPECS uniqueSpecs = detail.UNIQUE_SPECS;
-            //    DISPLAY_SPECS display = uniqueSpecs.DISPLAY_SPECS;
-            //    COLOR color = detail.COLOR;
-            //    COMMON_SPECS commonSpecs = detail.COMMON_SPECS;
-            //    LINE_UP lineup = commonSpecs.LINE_UP;
-            //    ICollection<PRODUCT> products = detail.PRODUCTs;
-
-            //    foreach (PRODUCT product in products)
-            //    {
-            //        DETAIL_IMPORT_WAREHOUSE detailImport = product.DETAIL_IMPORT_WAREHOUSE.First(item => item.PRODUCT_ID == product.PRODUCT_ID);
-            //        ModelProduct productMD = ModelProduct.DatabaseToModel(product, detailImport, lineup, display, uniqueSpecs, commonSpecs, color);
-            //        productMD.Price = detail.PRICE;
-            //        productList.Add(productMD);
-            //    }
-            //}
             IList<PRODUCT> products = Database.DataProvider.Instance.Database.PRODUCTs.ToList();
             foreach (var product in products)
             {
@@ -234,8 +215,7 @@ namespace CompuStore.Tab
 
         private void AddNew_Buttom_Click(object sender, EventArgs e)
         {
-            ViewProduct();
-            AddInvoice_Form addInvoice_Form = new AddInvoice_Form(listProduct);
+            AddInvoice_Form addInvoice_Form = new AddInvoice_Form();
             addInvoice_Form.ShowDialog();
         }
 

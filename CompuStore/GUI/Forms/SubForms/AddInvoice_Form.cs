@@ -37,21 +37,22 @@ namespace CompuStore
         }
 
         CUSTOMER customer;
-        public Dictionary<COMMON_SPECS, int> listProduct = new Dictionary<COMMON_SPECS, int>();
+        List<string> addedProduct = new List<string>();
         List<PRODUCT> productList = new List<PRODUCT>();
         STAFF currentStaff;
+        DataTable adjustmentTable;
 
-        public AddInvoice_Form(Dictionary<COMMON_SPECS, int> listProduct)
+        public AddInvoice_Form()
         {
             InitializeComponent();
-            this.listProduct = listProduct;
             this.Load += AddInvoice_Form_Load;
         }
 
         private void AddInvoice_Form_Load(object sender, EventArgs e)
         {
-            LoadData();
+            InitDGV();
             TurnOnAutocomplete();
+            LoadLabel();
         }
 
         private void LoadLabel()
@@ -71,6 +72,29 @@ namespace CompuStore
             }
         }
 
+        private void InitDGV()
+        {
+            adjustmentTable = new DataTable();
+            DataColumn dataColumn = new DataColumn();
+            dataColumn = new DataColumn("Số se-ri", typeof(string));
+            adjustmentTable.Columns.Add(dataColumn);
+            dataColumn = new DataColumn("Tên sản phẩm", typeof(string));
+            adjustmentTable.Columns.Add(dataColumn);
+            dataColumn = new DataColumn("Giá tiền", typeof(double));
+            adjustmentTable.Columns.Add(dataColumn);
+            ItemTable.DataSource = adjustmentTable;
+            ItemTable.CellDoubleClick += ItemTable_CellDoubleClick;
+        }
+
+        private void ItemTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                ItemTable.Rows.RemoveAt(e.RowIndex);
+                addedProduct.RemoveAt(e.RowIndex);
+            }    
+        }
+
         private void Exit_Button_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -87,37 +111,36 @@ namespace CompuStore
 
         private void LoadData()
         {
-            ItemTable.Rows.Clear();
-            int count = 1;
-            double temp = 0;
-            List<double> prices = new List<double>();
-            foreach (var item in listProduct)
+            ItemTable.DataSource = GetAdjustmentTable();
+        }
+
+        private DataTable GetAdjustmentTable()
+        {
+            string serial = Serial_ComboBox.SelectedValue.ToString();
+            if (!addedProduct.Contains(serial))
             {
-                var detail = Database.DataProvider.Instance.Database.DETAIL_SPECS.Where(x => x.ID_COMMON_SPECS == item.Key.ID).FirstOrDefault();
-                if (detail.PRICE != null)
+                addedProduct.Add(serial);
+                DataRow dataRow = adjustmentTable.NewRow();
+                dataRow[0] = serial;
+                BindingSerialModel selectedItem = NameProduct_ComboBox.SelectedItem as BindingSerialModel;
+                dataRow[1] = selectedItem.NAME;
+                PRODUCT product = Database.DataProvider.Instance.Database.PRODUCTs.Where(item => item.SERIAL_ID == serial).FirstOrDefault();
+                if (product.DETAIL_SPECS.PRICE != null)
                 {
-                    prices.Add((double)detail.PRICE);
+                    dataRow[2] = product.DETAIL_SPECS.PRICE;
                 }
                 else
                 {
-                    prices.Add(100000);
-                }    
-            }    
-            foreach (var item in listProduct)
+                    dataRow[2] = 10000000;
+                }
+                int insertPosition = adjustmentTable.Rows.Count;
+                adjustmentTable.Rows.InsertAt(dataRow, insertPosition);
+            }
+            else
             {
-                DataGridViewRow newRow = new DataGridViewRow();
-
-                newRow.CreateCells(ItemTable);
-                newRow.Cells[0].Value = count;
-                newRow.Cells[1].Value = item.Key.NAME;
-                newRow.Cells[2].Value = item.Value;
-                temp = prices[count - 1];
-                newRow.Cells[3].Value = temp;
-                newRow.Cells[4].Value = temp * item.Value;
-                count++;
-                ItemTable.Rows.Add(newRow);
+                MessageBox.Show("Sản phẩm đã được thêm");
             }    
- 
+            return adjustmentTable;
         }
 
         private void Identity_Box_KeyPress(object sender, KeyPressEventArgs e)
@@ -131,21 +154,32 @@ namespace CompuStore
                     if (dialogResult == DialogResult.Yes)
                     {
                         Name_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = false;
-                        Identity_Box.Text = String.Empty;
+                        Name_Box.Clear();
+                        PhoneNumber_Box.Clear();
+                        Email_Box.Clear();
+                        Address_Box.Clear();
                     }
                     else if (dialogResult == DialogResult.No)
                     {
                         return;
                     }
                 }
+                else
+                {
+                    Name_Box.Text = customer.INFOR.NAME;
+                    PhoneNumber_Box.Text = customer.INFOR.PHONE_NUMBER;
+                    Email_Box.Text = customer.INFOR.EMAIL;
+                    Address_Box.Text = customer.INFOR.ADDRESS;
+                    Name_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = true;
+                }
             }
         }
 
         private void Save_Button_Click(object sender, EventArgs e)
         {
-            foreach (var item in listProduct)
+            foreach (var item in addedProduct)
             {
-                productList.Add(Database.DataProvider.Instance.Database.PRODUCTs.Where(prod => prod.DETAIL_SPECS.ID_COMMON_SPECS == item.Key.ID).FirstOrDefault());
+                productList.Add(Database.DataProvider.Instance.Database.PRODUCTs.Where(prod => prod.SERIAL_ID == item).FirstOrDefault());
             }    
 
             if (customer == null)
@@ -166,7 +200,6 @@ namespace CompuStore
 
         private void AddInvoice_Form_FormClosing(object sender, FormClosingEventArgs e)
         {
-            CompuStore.Tab.SaleManagement_Tab.listProduct.Clear();
             CompuStore.Tab.SaleManagement_Tab.nameIdCommonSpecs = null;
         }
 
@@ -201,7 +234,27 @@ namespace CompuStore
 
         private void Print_Button_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Không tim thấy máy in. Vui lòng thử lại sau.", "Không tìm thấy máy in", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            //MessageBox.Show("Không tim thấy máy in. Vui lòng thử lại sau.", "Không tìm thấy máy in", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            foreach (var item in addedProduct)
+            {
+                productList.Add(Database.DataProvider.Instance.Database.PRODUCTs.Where(prod => prod.SERIAL_ID == item).FirstOrDefault());
+            }
+
+            if (customer == null)
+            {
+                customer = CustomerServices.Instance.SaveCustomerToDB(Name_Box.Text, PhoneNumber_Box.Text, Email_Box.Text, Identity_Box.Text, Address_Box.Text);
+            }
+            Exception res = InvoiceServices.Instance.SaveInvoiceToDB(productList, customer.ID, currentStaff.ID, DateTime.Now, 10);
+            if (res.Message == "done")
+            {
+                MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show(res.Message);
+            }
+            this.Close();
         }
 
         private void NameProduct_ComboBox_Leave(object sender, EventArgs e)
@@ -270,6 +323,11 @@ namespace CompuStore
                 if (found != null)
                     Serial_ComboBox.SelectedItem = found;
             }
+        }
+
+        private void AddItemToTable_Button_Click(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }
