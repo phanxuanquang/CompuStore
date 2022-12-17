@@ -25,9 +25,9 @@ namespace CompuStore.Database.Services
             return DataProvider.Instance.Database.INVOICEs.ToList();
         }
 
-        public DETAIL_INVOICE GetDetailBySerialID(int productID)
+        public DETAIL_INVOICE GetDetailBySerialID(string serialID)
         {
-            return Database.DataProvider.Instance.Database.DETAIL_INVOICE.Where(detail => detail.PRODUCT_ID == productID).FirstOrDefault();
+            return Database.DataProvider.Instance.Database.DETAIL_INVOICE.Where(detail => detail.PRODUCT.SERIAL_ID == serialID).FirstOrDefault();
         }
 
         public Exception SaveInvoiceToDB(List<PRODUCT> listProduct, int idCustomer, int idStaff, DateTime invoiceDate, double vat, string idStore = null)

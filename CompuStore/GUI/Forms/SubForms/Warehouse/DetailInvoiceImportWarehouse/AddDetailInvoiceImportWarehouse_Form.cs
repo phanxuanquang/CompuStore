@@ -1,4 +1,5 @@
 ﻿using CompuStore.Database.Models;
+using CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct;
 using CompuStore.ImportData;
 using System;
 using System.Collections.Generic;

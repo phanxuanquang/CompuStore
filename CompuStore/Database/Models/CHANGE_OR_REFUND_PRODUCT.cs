@@ -17,15 +17,15 @@ namespace CompuStore.Database.Models
         public int ID { get; set; }
         public string NAME_ID { get; set; }
         public int ID_HANDLING_STAFF { get; set; }
-        public int ID_WAREHOUSE_STAFF { get; set; }
         public int ID_INVOICE { get; set; }
         public int PRODUCT_ID { get; set; }
         public string REASON { get; set; }
         public Nullable<System.DateTime> RETURN_DATE { get; set; }
+        public Nullable<int> PRODUCT_ID_RE { get; set; }
     
         public virtual STAFF STAFF { get; set; }
         public virtual INVOICE INVOICE { get; set; }
-        public virtual STAFF STAFF1 { get; set; }
         public virtual PRODUCT PRODUCT { get; set; }
+        public virtual PRODUCT PRODUCT1 { get; set; }
     }
 }

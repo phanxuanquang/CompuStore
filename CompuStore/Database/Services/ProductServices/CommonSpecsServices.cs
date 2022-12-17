@@ -2,7 +2,9 @@
 using CompuStore.Database.Services.ProductServices;
 using CompuStore.ImportData;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,17 +34,22 @@ namespace CompuStore.Database.Services
             return await Controller.Instance.GetData(DataProvider.Instance.Database.COMMON_SPECS,
                 item =>
                 item.ID_LINE_UP == model.ID_LINE_UP &&
-                item.NAME == model.NAME &&
+                item.NAME == model.NAME && 
                 item.RELEASED_YEAR == model.RELEASED_YEAR &&
                 item.CASE_MATERIAL == model.CASE_MATERIAL &&
                 item.PORT == model.PORT &&
                 item.WEBCAM == model.WEBCAM &&
-                item.DIMENSIONS == model.DIMENSIONS &&
+                item.DIMENSIONS == model.DIMENSIONS && 
                 item.OS == model.OS &&
                 item.WIFI == model.WIFI &&
                 item.BLUETOOTH == model.BLUETOOTH,
                 model
                 );
+        }
+
+        public COMMON_SPECS GetCommonSpecsBySerial(string serialID)
+        {
+            return DataProvider.Instance.Database.PRODUCTs.FirstOrDefault(item => item.SERIAL_ID == serialID)?.DETAIL_SPECS.COMMON_SPECS;
         }
 
         public Task<int> UpdateCommonSpecs(COMMON_SPECS target)

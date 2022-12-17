@@ -17,8 +17,6 @@ namespace CompuStore.GUI
         public MainWindow()
         {
             InitializeComponent();
-            this.AutoScaleMode = AutoScaleMode.Dpi;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 
             staffManage_Tab = null;
             salesManage_Tab = null;
@@ -105,12 +103,12 @@ namespace CompuStore.GUI
 
         private void StaffManage_Button_MouseEnter(object sender, EventArgs e)
         {
-            MenuPanel.Height = 120;
+            MenuPanel.Height = DeviceDpi > 96 ? 225 : 120;
         }
 
         private void StaffManage_Button_MouseLeave(object sender, EventArgs e)
         {
-            MenuPanel.Height = 10;
+            MenuPanel.Height = DeviceDpi > 96 ? 20 : 10;
         }
     }
 }

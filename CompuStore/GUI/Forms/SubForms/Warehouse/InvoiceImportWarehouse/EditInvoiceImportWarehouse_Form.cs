@@ -85,7 +85,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                         Manufacturer = lineup.MANUFACTURER;
                         ReleaseDate = common.RELEASED_YEAR;
                         NameCommonSpecs = common.NAME;
-                        RangeTotal = string.Format("{0} - {1} {2}", group.minTotal, group.maxTotal, "VNĐ");
+                        RangeTotal = string.Format("{0:n3} - {1:n3} {2}", group.minTotal, group.maxTotal, "VNĐ");
                         Quantity = group.detailSpecs.Count;
                     }
                 }
@@ -178,7 +178,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     Distributor_ComboBox.SelectedValue = convertImportWarehouse.IDDistributor;
                     DateTimeImportWarehouse_DateTimePicker.Value = convertImportWarehouse.ImportDate.Value;
                     ImportToStore_ComboBox.SelectedValue = convertImportWarehouse.IDStore;
-                    TotalImportWarehouse_Value.Text = convertImportWarehouse.Total.ToString();
+                    TotalImportWarehouse_Value.Text = string.Format("{0:n3} VND", convertImportWarehouse.Total);
                     IDImportWarehouse_Value.Text = convertImportWarehouse.NameIDImportWarehouse;
                 }
             };
@@ -214,15 +214,15 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         private void NavToEdit(object sender, EventArgs e)
         {
             BaseInvoiceImportWarehouse_Form editInvoice = new AddInvoiceImportWarehouse_Form();
-            editInvoice.ShowDialog(this, importWarehouse, true);
+            hasChanged = editInvoice.ShowDialog(this, importWarehouse, true);
         }
         #endregion
 
         #region IO Handle
-        public override void ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, bool edit = false)
+        public override bool ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, bool edit = false)
         {
             this.importWarehouse = importWarehouse;
-            base.ShowDialog(owner, importWarehouse, false);
+            return base.ShowDialog(owner, importWarehouse, false) || hasChanged;
         }
         #endregion
     }

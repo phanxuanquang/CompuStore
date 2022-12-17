@@ -1,10 +1,12 @@
 ﻿using CompuStore.Database.Models;
 using CompuStore.Database.Services;
 using CompuStore.Database.Services.ProductServices;
+using CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct;
 using CompuStore.ImportData;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,9 +29,19 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
         #region Variable
         private BindingList<SerialBinding> binding;
-        private Guna.UI2.WinForms.Guna2GroupBox Serials_GroupBox;
         private Guna.UI2.WinForms.Guna2DataGridView Serial_DataGridView;
+        private System.Windows.Forms.TabPage tabPage6;
         private IList<ModelProduct> products;
+        #endregion
+
+        #region Translater
+        protected static readonly Dictionary<string, string> serialTranslater = new Dictionary<string, string> {
+            { "STT", "STT" },
+            { "Serial", "Serial máy|Mỗi máy có một số định danh duy nhất được nhán ở đáy máy" },
+            { "NameIDImportWarehouse", "Mã nhập hàng|Sản phẩm được nhập ở lần nhập có mã nhập hàng" },
+            { "ImportDate", "Ngày nhập hàng" },
+            { "Price", "Giá tiền" }
+        };
         #endregion
 
         #region Private component
@@ -40,29 +52,26 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.Serials_GroupBox = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.tabControl1.SuspendLayout();
+            this.tabPage6.SuspendLayout();
             this.Serial_DataGridView = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.Serials_GroupBox.SuspendLayout();
-            this.MainFlowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Serial_DataGridView)).BeginInit();
-
             // 
-            // Serials_GroupBox
+            // tabControl1
             // 
-            this.Serials_GroupBox.BackColor = System.Drawing.Color.White;
-            this.Serials_GroupBox.BorderRadius = 10;
-            this.Serials_GroupBox.Controls.Add(this.Serial_DataGridView);
-            this.Serials_GroupBox.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Serials_GroupBox.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.Serials_GroupBox.ForeColor = System.Drawing.Color.White;
-            this.Serials_GroupBox.Location = new System.Drawing.Point(50, 0);
-            this.Serials_GroupBox.Margin = new System.Windows.Forms.Padding(50, 0, 0, 0);
-            this.Serials_GroupBox.Name = "Serials_GroupBox";
-            this.Serials_GroupBox.ShadowDecoration.Parent = this.Serials_GroupBox;
-            this.Serials_GroupBox.Size = new System.Drawing.Size(1892, 292);
-            this.Serials_GroupBox.TabIndex = 131;
-            this.Serials_GroupBox.Text = "Thông tin máy";
+            this.tabControl1.Controls.Add(this.tabPage6);
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.Serial_DataGridView);
+            this.tabPage6.Location = new System.Drawing.Point(8, 46);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Size = new System.Drawing.Size(1279, 908);
+            this.tabPage6.TabIndex = 4;
+            this.tabPage6.Text = "Thông tin nhập kho";
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // Serial_DataGridView
             // 
@@ -89,7 +98,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.Serial_DataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.Serial_DataGridView.ColumnHeadersHeight = 48;
+            this.Serial_DataGridView.ColumnHeadersHeight = DeviceDpi > 96 ? 48 : 35;
             this.Serial_DataGridView.Cursor = System.Windows.Forms.Cursors.Hand;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
@@ -101,8 +110,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.Serial_DataGridView.DefaultCellStyle = dataGridViewCellStyle8;
             this.Serial_DataGridView.EnableHeadersVisualStyles = false;
+            this.Serial_DataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Serial_DataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.Serial_DataGridView.Location = new System.Drawing.Point(0, 37);
+            /*this.Serial_DataGridView.Location = new System.Drawing.Point(0, 37);*/
+            this.Serial_DataGridView.Location = new System.Drawing.Point(0, 0);
             this.Serial_DataGridView.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Serial_DataGridView.MultiSelect = false;
             this.Serial_DataGridView.Name = "Serial_DataGridView";
@@ -124,10 +135,11 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Serial_DataGridView.RowsDefaultCellStyle = dataGridViewCellStyle10;
             this.Serial_DataGridView.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.Serial_DataGridView.RowTemplate.DefaultCellStyle.Padding = new System.Windows.Forms.Padding(5);
-            this.Serial_DataGridView.RowTemplate.Height = 48;
+            this.Serial_DataGridView.RowTemplate.Height = DeviceDpi > 96 ? 48 : 30;
             this.Serial_DataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Serial_DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.Serial_DataGridView.Size = new System.Drawing.Size(1892, 247);
+            /*this.Serial_DataGridView.Size = new System.Drawing.Size(this.Size.Width - 100, 100 * DeviceDpi / 96);*/
+            this.Serial_DataGridView.Size = new System.Drawing.Size(1279, 908);
             this.Serial_DataGridView.TabIndex = 65;
             this.Serial_DataGridView.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.Serial_DataGridView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -142,23 +154,17 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Serial_DataGridView.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Serial_DataGridView.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.Serial_DataGridView.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.Serial_DataGridView.ThemeStyle.HeaderStyle.Height = 48;
+            this.Serial_DataGridView.ThemeStyle.HeaderStyle.Height = DeviceDpi > 96 ? 48 : 35;
             this.Serial_DataGridView.ThemeStyle.ReadOnly = true;
             this.Serial_DataGridView.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.Serial_DataGridView.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.Serial_DataGridView.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.Serial_DataGridView.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.Black;
-            this.Serial_DataGridView.ThemeStyle.RowsStyle.Height = 48;
+            this.Serial_DataGridView.ThemeStyle.RowsStyle.Height = DeviceDpi > 96 ? 48 : 30;
             this.Serial_DataGridView.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Serial_DataGridView.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.MainFlowLayoutPanel.Controls.Clear();
-            this.MainFlowLayoutPanel.Controls.Add(this.Serials_GroupBox);
-            this.MainFlowLayoutPanel.Controls.Add(base.SpecsPanel);
+            this.Size = new Size(this.Size.Width, this.Size.Height + 150 * DeviceDpi / 96);
             ((System.ComponentModel.ISupportInitialize)(this.Serial_DataGridView)).EndInit();
-            this.Serials_GroupBox.ResumeLayout(false);
-            this.Serials_GroupBox.PerformLayout();
-            this.MainFlowLayoutPanel.ResumeLayout(false);
-            this.MainFlowLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
@@ -178,7 +184,29 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         private void Serial_DataGridView_DataSourceChanged(object sender, EventArgs e)
         {
             DataGridView grid = sender as DataGridView;
-            grid.Columns["STT"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            grid.SuspendLayout();
+            foreach (DataGridViewColumn column in grid.Columns)
+            {
+                if (serialTranslater.ContainsKey(column.Name))
+                {
+                    string headerText = serialTranslater[column.Name];
+                    string[] split = headerText.Split('|');
+                    column.HeaderText = split[0];
+                    if (split.Length > 1)
+                        column.ToolTipText = split[1];
+                    if (column.Name == "STT")
+                        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                    else if (column.Name == "Price")
+                        column.DefaultCellStyle.Format = "#,# VND";
+
+                }
+                else
+                {
+                    column.Visible = false;
+                }
+            }
+            grid.ResumeLayout(false);
+            grid.PerformLayout();
         }
 
         private Task LoadingData(IProgress<int> progress)

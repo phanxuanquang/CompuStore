@@ -29,6 +29,8 @@ namespace CompuStore.GUI.Forms
             ShadowForm.SetShadowForm(this);
             Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = !notReadOnly;
             DateTimeImportWarehouse_DateTimePicker.Enabled = notReadOnly;
+            Apartment_ComboBox.Enabled = notReadOnly;
+            Status_ComboBox.Enabled = false;
             Header.Text = headerName;
             if (headerName == "THÊM NHÂN VIÊN")
             {
@@ -42,6 +44,7 @@ namespace CompuStore.GUI.Forms
             {
                 Edit_Button.Text = "LƯU";
             }
+
         }
         protected override CreateParams CreateParams
         {
@@ -61,16 +64,52 @@ namespace CompuStore.GUI.Forms
 
         private void Edit_Button_Click(object sender, EventArgs e)
         {
-            if(Edit_Button.Text == "LƯU")
+            if (Header.Text == "CHỈNH SỬA THÔNG TIN")
             {
-                SaveFromTextboxToDB();
-                this.Close();
-                return;
+                if (Edit_Button.Text == "LƯU")
+                {
+                    if (CheckEmptyInput())
+                    {
+                        MessageBox.Show("Vui lòng nhập đầy đủ thông tin.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+
+                    if (!CheckEmail(Email_Box.Text))
+                    {
+                        MessageBox.Show("E-mail không hợp lệ. Vui lòng kiểm tra lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                    try
+                    {
+                        staffCurrent.WORKING_STATUS = (int?)Status_ComboBox.SelectedValue;
+                        staffCurrent.ID_STAFFROLE = (int?)Apartment_ComboBox.SelectedValue;
+                        Database.DataProvider.Instance.Database.SaveChanges();
+                        MessageBox.Show("Chỉnh sửa thông tin thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception)
+                    {
+
+                        MessageBox.Show("Có lỗi xảy ra. Vui lòng thử lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    this.Close();
+                }
             }
+            else
+            {
+                if (Edit_Button.Text == "LƯU")
+                {
+                    SaveFromTextboxToDB();
+                    this.Close();
+                    return;
+                } 
+            }
+
             Edit_Button.Text = "LƯU";
             Header.Text = "CHỈNH SỬA THÔNG TIN";
             Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = false;
             DateTimeImportWarehouse_DateTimePicker.Enabled = true;
+            Apartment_ComboBox.Enabled = true;
+            Status_ComboBox.Enabled = true;
         }
 
         private void SaveFromTextboxToDB()
@@ -125,17 +164,42 @@ namespace CompuStore.GUI.Forms
 
         private void StaffEdit_Form_Load(object sender, EventArgs e)
         {
+            sTAFFROLEBindingSource.DataSource = StaffRoleServices.Instance.GetSTAFFROLEs();
             if (staffCurrent != null)
             {
                 iNFORBindingSource.DataSource = staffCurrent.INFOR;
-                Apartment_ComboBox.DisplayMember = "ROLE";
                 Apartment_ComboBox.SelectedValue = staffCurrent.STAFFROLE.ID;
+               
             }
             else
             {
                 DateTimeImportWarehouse_DateTimePicker.Value = DateTime.Today;
             }
-            sTAFFROLEBindingSource.DataSource = StaffRoleServices.Instance.GetSTAFFROLEs();
+            SetupCombobox();
+            
+        }
+
+        private void SetupCombobox()
+        {
+            var listStatus = new[]
+            {
+                new { id = 1, value = "Đang làm việc" },
+                new { id = 0, value = "Đã nghỉ việc" },
+
+            }.ToList();
+            Status_ComboBox.DisplayMember = "value";
+            Status_ComboBox.ValueMember = "id";
+            Status_ComboBox.DataSource = listStatus;
+            if (staffCurrent != null)
+            {
+                Status_ComboBox.SelectedValue = staffCurrent.WORKING_STATUS;
+            }
+            else
+            {
+                Status_ComboBox.SelectedValue = 1;
+            }
+            
+
         }
     }
 }

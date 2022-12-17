@@ -46,6 +46,7 @@
             this.SearchBox.HoverState.Parent = this.SearchBox;
             this.SearchBox.PlaceholderText = "Tìm kiếm phiếu bảo hành theo số điện thoại ";
             this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
+            this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             // 
             // Button_2
             // 

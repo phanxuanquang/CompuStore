@@ -1,10 +1,14 @@
-﻿using CompuStore.Database.Models;
+﻿using CompuStore.Database;
+using CompuStore.Database.Models;
 using CompuStore.Database.Services.ProductServices;
 using CompuStore.GUI;
 using CompuStore.GUI.Forms.SubForms.Warehouse;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -67,8 +71,6 @@ namespace CompuStore.Tab
         protected class CommonSpecsCustom
         {
             public int id;
-            public string nameId;
-            public string name;
             public int lineupID;
             public string lineupName;
             public string lineupManufacturer;
@@ -84,29 +86,9 @@ namespace CompuStore.Tab
                 }
             }
 
-            public string NAME_ID
-            {
-                get
-                {
-                    return nameId;
-                }
-                set
-                {
-                    nameId = value;
-                }
-            }
+            public string NAME_ID { get; set; }
 
-            public string NAME
-            {
-                get
-                {
-                    return name;
-                }
-                set
-                {
-                    name = value;
-                }
-            }
+            public string NAME { get; set; }
 
             public string NAME_LINE_UP
             {
@@ -168,18 +150,18 @@ namespace CompuStore.Tab
         #endregion
 
         #region Translater
-        protected static readonly Dictionary<string, string> columnVisiableImportWarehouse = new Dictionary<string, string> {
-            { "NameID", "Mã nhập hàng" },
-            { "ImportDate", "Ngày nhập hàng" },
-            { "Total", "Tổng giá trị" },
-            { "Quantity", "Số lượng" },
-            { "DISTRIBUTOR_NAME", "Nhà phân phối" } };
-        protected static readonly Dictionary<string, string> columnVisiableCommonSpecs = new Dictionary<string, string> {
-            { "NAME_ID", "Mã sản phẩm" },
-            { "NAME", "Tên sản phẩm" },
-            { "NAME_LINE_UP", "Dòng sản phẩm" },
-            { "MANUFACTURER", "Nhà sản xuất" },
-            { "ReleasedYear", "Năm ra mắt" } };
+        protected static readonly Dictionary<string, (string, DataGridViewContentAlignment)> columnVisibleImportWarehouse = new Dictionary<string, (string, DataGridViewContentAlignment)> {
+            { "NameID", ("Mã nhập hàng", DataGridViewContentAlignment.MiddleCenter) },
+            { "ImportDate", ("Ngày nhập hàng", DataGridViewContentAlignment.MiddleCenter) },
+            { "Total", ("Tổng giá trị", DataGridViewContentAlignment.MiddleRight) },
+            { "Quantity", ("Số lượng", DataGridViewContentAlignment.MiddleRight) },
+            { "DistributorName", ("Nhà phân phối", DataGridViewContentAlignment.MiddleLeft) } };
+        protected static readonly Dictionary<string, (string, DataGridViewContentAlignment)> columnVisibleCommonSpecs = new Dictionary<string, (string, DataGridViewContentAlignment)> {
+            //{ "NAME_ID", "Mã sản phẩm" },
+            { "NAME", ("Tên sản phẩm" , DataGridViewContentAlignment.MiddleLeft)},
+            { "NAME_LINE_UP", ("Dòng sản phẩm", DataGridViewContentAlignment.MiddleLeft) },
+            { "MANUFACTURER", ("Nhà sản xuất", DataGridViewContentAlignment.MiddleLeft) },
+            { "ReleasedYear", ("Năm ra mắt", DataGridViewContentAlignment.MiddleCenter) } };
         #endregion
 
         public Warehouse_UC()
@@ -190,9 +172,10 @@ namespace CompuStore.Tab
             Bottom_1.Click += SeeInvoiceImportWarehouse_Click;
             Button_2.Click += SeeProduct_Click;
             Button_3.Click += ImportWarehouse_Click;
-            DataTable.DataSourceChanged += DataTable_DataSourceChanged;
-            DataTable.CellDoubleClick += DataTable_CellDoubleClick;
-            InitializeComponent();
+            SearchBox.TextChanged += SearchBox_TextChanged;
+            GridDataTable.DataSourceChanged += GridDataTable_DataSourceChanged;
+            GridDataTable.CellDoubleClick += GridDataTable_CellDoubleClick;
+            Load += Warehouse_UC_Load;
         }
 
         #region Loading data
@@ -254,20 +237,27 @@ namespace CompuStore.Tab
             waiting.ShowDialog(this);
         }
 
-        protected void DataTable_DataSourceChanged(object sender, EventArgs e)
+        protected void GridDataTable_DataSourceChanged(object sender, EventArgs e)
         {
             DataGridView grid = sender as DataGridView;
             grid.SuspendLayout();
-            Dictionary<string, string> columnVisible = seeWhat == SEE_WHAT.COMMON_SPECS ? columnVisiableCommonSpecs : columnVisiableImportWarehouse;
+            grid.RowsDefaultCellStyle.Alignment = DataGridViewContentAlignment.NotSet;
+            Dictionary<string, (string, DataGridViewContentAlignment)> columnVisible = seeWhat == SEE_WHAT.COMMON_SPECS ? columnVisibleCommonSpecs : columnVisibleImportWarehouse;
             foreach (DataGridViewColumn column in grid.Columns)
             {
                 if (columnVisible.ContainsKey(column.Name))
                 {
-                    if (column.Name == "RELEASED_YEAR")
+                    if (column.Name == "ReleasedYear")
                     {
                         column.DefaultCellStyle.Format = "yyyy";
                     }
-                    column.HeaderText = columnVisible[column.Name];
+                    if(column.Name == "Total")
+                    {
+                        column.DefaultCellStyle.Format = "#,#";
+                    }
+                    (string, DataGridViewContentAlignment) translater = columnVisible[column.Name];
+                    column.HeaderText = translater.Item1;
+                    column.DefaultCellStyle.Alignment = translater.Item2;
                 }
                 else
                 {
@@ -279,10 +269,41 @@ namespace CompuStore.Tab
         #endregion
 
         #region Event
+        private void SearchBox_TextChanged(object sender, EventArgs e)
+        {
+            Guna2TextBox control = sender as Guna2TextBox;
+            if (control != null)
+            {
+                string search = control.Text;
+                CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[GridDataTable.DataSource];
+                currencyManager1.SuspendBinding();
+
+                foreach (DataGridViewRow row in GridDataTable.Rows)
+                {
+                    if (seeWhat == SEE_WHAT.COMMON_SPECS)
+                    {
+                        CommonSpecsCustom binding = row.DataBoundItem as CommonSpecsCustom;
+                        row.Visible = binding.NAME.ToLower().Contains(search);
+                    }
+                    else
+                    {
+                        ImportWarehouseCustom binding = row.DataBoundItem as ImportWarehouseCustom;
+                        row.Visible = binding.NameID.ToLower().StartsWith(search) ||
+                            binding.DistributorName.ToLower().Contains(search) ||
+                            binding.ImportDate.Value.ToString("dd/MM/yyyy").StartsWith(search);
+                    }
+                }
+
+                currencyManager1.ResumeBinding();
+            }
+        }
+
         protected void ImportWarehouse_Click(object sender, EventArgs e)
         {
             BaseInvoiceImportWarehouse_Form import = new AddInvoiceImportWarehouse_Form();
-            import.ShowDialog(this, null, false);
+            bool hasChanged = import.ShowDialog(this, null, false);
+            if (hasChanged)
+                Warehouse_UC_Load(null, null);
         }
 
         protected void SeeProduct_Click(object sender, EventArgs e)
@@ -299,28 +320,28 @@ namespace CompuStore.Tab
 
         protected void AddBindingToDataGridView(IBindingList binding)
         {
-            if (DataTable.InvokeRequired)
+            if (GridDataTable.InvokeRequired)
             {
-                DataTable.Invoke(new Action(() =>
+                GridDataTable.Invoke(new Action(() =>
                 {
-                    DataTable.DataSource = binding;
+                    GridDataTable.DataSource = binding;
                 }));
             }
             else
             {
-                DataTable.DataSource = binding;
+                GridDataTable.DataSource = binding;
             }
         }
 
-        protected void DataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        protected void GridDataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1)
             {
                 switch (seeWhat)
                 {
                     case SEE_WHAT.COMMON_SPECS:
-                        string nameIdCommonSpecs = (sender as DataGridView).Rows[e.RowIndex].Cells[0].Value as string;
-                        COMMON_SPECS commonSpecs = Database.Services.CommonSpecsServices.Instance.GetCommonSpecsByNameID(nameIdCommonSpecs);
+                        CommonSpecsCustom selectedCommon = (sender as DataGridView).Rows[e.RowIndex].DataBoundItem as CommonSpecsCustom;
+                        COMMON_SPECS commonSpecs = Database.Services.CommonSpecsServices.Instance.GetCommonSpecsByNameID(selectedCommon.NAME_ID);
                         if (commonSpecs != null)
                         {
                             BaseDetailInvoiceImportWarehouse_Form form = new EditDetailInvoiceImportWarehouse_Form();
@@ -328,8 +349,8 @@ namespace CompuStore.Tab
                         }
                         break;
                     case SEE_WHAT.IMPORT_WAREHOUSE:
-                        string nameIdImportWarehouse = (sender as DataGridView).Rows[e.RowIndex].Cells[0].Value as string;
-                        IMPORT_WAREHOUSE importWarehouse = ImportWarehouseServices.Instance.GetImportWarehouseByNameID(nameIdImportWarehouse);
+                        ImportWarehouseCustom selectedImport = (sender as DataGridView).Rows[e.RowIndex].DataBoundItem as ImportWarehouseCustom;
+                        IMPORT_WAREHOUSE importWarehouse = ImportWarehouseServices.Instance.GetImportWarehouseByNameID(selectedImport.NameID);
                         if (importWarehouse != null)
                         {
                             BaseInvoiceImportWarehouse_Form form = new EditInvoiceImportWarehouse_Form();

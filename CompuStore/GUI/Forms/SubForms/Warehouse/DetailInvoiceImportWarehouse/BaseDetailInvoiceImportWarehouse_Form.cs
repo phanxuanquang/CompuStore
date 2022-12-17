@@ -1,6 +1,8 @@
-﻿using CompuStore.Database.Models;
+﻿using CompuStore.Control;
+using CompuStore.Database.Models;
 using CompuStore.Database.Services;
 using CompuStore.GUI;
+using CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct;
 using CompuStore.ImportData;
 using System;
 using System.Collections.Generic;
@@ -19,7 +21,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static CompuStore.GUI.Forms.SubForms.Warehouse.BaseDetailSpecsProduct_Form;
 
 namespace CompuStore.GUI.Forms.SubForms.Warehouse
 {
@@ -60,22 +61,18 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         BindingList<ComboBoxBinding> bindingLineUp = null;
         BindingList<ComboBoxBinding> bindingManufacturer = null;
         protected ResultDetailInvoiceImportWarehouse resultChanged;
+        private Dictionary<string, System.Windows.Forms.Control> listFilter = null;
         #endregion
 
         #region Translater
         protected static readonly Dictionary<string, string> translater = new Dictionary<string, string> {
             { "Serial", "Serial máy" },
             { "Price", "Giá bán" },
-            { "LineUp", "Dòng sản phẩm" },
-            { "Country", "Nơi sản xuất" },
-            { "Manufacturer", "Nhà sản xuất" },
-            { "SizePanel", "Kích thước màn hình|Đơn vị: inch" },
             { "Brightness", "Độ sáng|Đơn vị: nit" },
             { "TypePanel", "Tấm nền" },
             { "SpaceColorString", "Độ phủ màu|Độ chính xác màu hiện thị trên màn hình so với khi in ấn" },
             { "RefreshRate", "Tốc độ làm tươi|Đơn vị: Hz" },
             { "CanTouchPanel", "Cảm ứng" },
-            { "RatioPanelString", "Tỉ lệ màn hình" },
             { "CPU", "CPU" },
             { "GPU", "GPU" },
             { "RAMString", "RAM" },
@@ -84,15 +81,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             { "StorageCapacity", "Dung lượng ổ cứng|Đơn vị: GB" },
             { "GPUString", "Card đồ hoại rời" },
             { "Weight", "Khối lượng|Đơn vị: Kg" },
-            { "NameProduct", "Tên sản phẩm" },
-            { "ReleaseDate", "Năm ra mắt|Năm hãng ra mắt đến công chúng" },
-            { "CaseMaterial", "Vật liệu vỏ" },
-            { "PortString", "Cổng kết nối" },
-            { "Webcam", "Webcam" },
-            { "SizeProductString", "Kích thước máy|Đơn vị: mm" },
-            { "OS", "Hệ điều hành" },
-            { "Wifi", "Chuẩn Wifi" },
-            { "Bluetooth", "Chuẩn Bluetooth" },
             { "TypeScreen", "Loại màn hình" },
             { "BatteryCapacity", "Dung lượng pin|Đơn vị: Wh" },
             { "ColorCode", "Màu sắc" }};
@@ -101,6 +89,12 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         public BaseDetailInvoiceImportWarehouse_Form()
         {
             InitializeComponent();
+            if (DeviceDpi > 96)
+            {
+                TableData_DataGridView.ColumnHeadersHeight = 48;
+                TableData_DataGridView.RowTemplate.Height = 48;
+            }
+            listFilter = new Dictionary<string, System.Windows.Forms.Control>();
             AddProductByExcel_Button.Click += AddProductByExcel_Button_Click;
             AddProduct_Button.Click += AddProduct_Button_Click;
             DeleteProduct_Button.Click += DeleteProduct_Button_Click;
@@ -251,6 +245,95 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 MessageBox.Show("Lỗi");
             }
         }
+
+        private void ComboBox_ChangeSelectedBackgroundColor(object sender, EventArgs e)
+        {
+            ComboBox control = sender as ComboBox;
+            ComboBoxBinding item = control.SelectedItem as ComboBoxBinding;
+            if (item.ID != 0)
+            {
+                control.BackColor = System.Drawing.Color.FromArgb(Convert.ToInt32("0xFF" + item.Value.Substring(1), 16));
+                control.ForeColor = control.BackColor;
+            }
+            else
+            {
+                control.BackColor = Color.WhiteSmoke;
+                control.ForeColor = Color.Black;
+            }
+        }
+
+        private void Control_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            ComboBox control = sender as ComboBox;
+
+            int index = e.Index >= 0 ? e.Index : 0;
+            ComboBoxBinding item = control.Items[index] as ComboBoxBinding;
+
+            Brush brush = null;
+            e.DrawBackground();
+            brush = item.ID == 0 ? Brushes.WhiteSmoke : new SolidBrush(System.Drawing.Color.FromArgb(Convert.ToInt32("0xFF" + item.Value.Substring(1), 16)));
+            e.Graphics.FillRectangle(brush, e.Bounds);
+            if (item.ID == 0)
+            {
+                brush = Brushes.Black;
+                e.Graphics.DrawString(item.Value, e.Font, brush, e.Bounds, StringFormat.GenericDefault);
+            }
+
+            e.DrawFocusRectangle();
+        }
+
+        private void Control_SelectedValueChanged(object sender, EventArgs e)
+        {
+            CurrencyManager currencyManager1 = (CurrencyManager)BindingContext[TableData_DataGridView.DataSource];
+            currencyManager1.SuspendBinding();
+            Dictionary<DataGridViewRow, bool> passedFilter = new Dictionary<DataGridViewRow, bool>();
+
+            foreach (DataGridViewRow row in TableData_DataGridView.Rows)
+            {
+                if (!passedFilter.ContainsKey(row))
+                {
+                    passedFilter.Add(row, true);
+                }
+            }
+
+            foreach (KeyValuePair<string, System.Windows.Forms.Control> key in listFilter)
+            {
+                ComboBox control = key.Value as ComboBox;
+                BindingList<ComboBoxBinding> binding = control?.DataSource as BindingList<ComboBoxBinding>;
+                ComboBoxBinding selectedItem = control?.SelectedItem as ComboBoxBinding;
+
+                if (control != null && binding != null && selectedItem != null && selectedItem.ID != 0)
+                {
+                    foreach (DataGridViewRow row in TableData_DataGridView.Rows)
+                    {
+                        if (passedFilter[row])
+                        {
+                            ModelProduct product = row.DataBoundItem as ModelProduct;
+                            if (product.GetType().GetProperty(key.Key).GetValue(product, null)?.ToString() != selectedItem.Value)
+                            {
+                                passedFilter[row] = false;
+                            }
+                        }
+                    }
+                }
+            }
+
+            foreach (KeyValuePair<DataGridViewRow, bool> key in passedFilter)
+            {
+                key.Key.Visible = key.Value;
+            }
+
+            currencyManager1.ResumeBinding();
+        }
+
+        private void ResetFilter_Click(object sender, EventArgs e)
+        {
+            foreach (KeyValuePair<string, System.Windows.Forms.Control> key in listFilter)
+            {
+                ComboBox control = key.Value as ComboBox;
+                control.SelectedValue = 0;
+            }
+        }
         #endregion
 
         #region Loading data
@@ -303,6 +386,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 Manufacturer_ComboBox.DataSource = bindingManufacturer;
                 Manufacturer_ComboBox.ValueMember = "ID";
                 Manufacturer_ComboBox.DisplayMember = "Value";
+
+                this.Focus();
             };
 
             Task runLoading = LoadingData(progress);
@@ -339,6 +424,30 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     {
                         column.ToolTipText = split[1];
                     }
+                    if (!listFilter.ContainsKey(column.Name))
+                    {
+                        ComboBoxCustom control = new ComboBoxCustom();
+                        control.Size = new Size(200, 50);
+                        BindingList<ComboBoxBinding> binding = new BindingList<ComboBoxBinding>();
+                        binding.Add(new ComboBoxBinding { ID = 0, Value = string.Format("Lọc: {0}", split[0]) });
+                        control.Width = TextRenderer.MeasureText(binding.First().Value, control.Font).Width + control.Height * 2;
+                        control.DropDownWidth = control.Width;
+                        control.DataSource = binding;
+                        control.ValueMember = "ID";
+                        control.DisplayMember = "Value";
+                        control.SelectedValueChanged += Control_SelectedValueChanged;
+                        if (column.Name == "ColorCode")
+                        {
+                            control.DrawMode = DrawMode.OwnerDrawVariable;
+                            control.DrawItem += Control_DrawItem;
+                            control.SelectedIndexChanged += ComboBox_ChangeSelectedBackgroundColor;
+                        }
+                        listFilter.Add(column.Name, control);
+                        Filter_FlowLayoutPanel.SuspendLayout();
+                        Filter_FlowLayoutPanel.Controls.Add(control);
+                        Filter_FlowLayoutPanel.ResumeLayout(false);
+                        Filter_FlowLayoutPanel.PerformLayout();
+                    }
                 }
                 else
                 {
@@ -366,6 +475,29 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 DataGridViewCellStyle style = cell.Style;
                 cell.ToolTipText = toolTipColor.Value?.ToString();
                 style.ForeColor = style.SelectionForeColor = style.BackColor = style.SelectionBackColor = (color.Value as ImportData.ModelProduct.Color).ColorCode;
+
+                ModelProduct added = grid.Rows[e.RowIndex].DataBoundItem as ModelProduct;
+
+                PropertyInfo[] property = added.GetType().GetProperties();
+                for (int index = 0; index < property.Length; index++)
+                {
+                    if (listFilter.TryGetValue(property[index].Name, out System.Windows.Forms.Control control))
+                    {
+                        ComboBox combo = control as ComboBox;
+                        BindingList<ComboBoxBinding> binding = combo.DataSource as BindingList<ComboBoxBinding>;
+                        string value = property[index].GetValue(added, null)?.ToString();
+                        if (!string.IsNullOrEmpty(value) && binding.FirstOrDefault(item => item.Value == value) == null)
+                        {
+                            binding.Add(new ComboBoxBinding { ID = binding.Count, Value = value });
+                            int width = TextRenderer.MeasureText(value, combo.Font).Width;
+                            if (combo.Width < width)
+                            {
+                                combo.Width = width + combo.Height * 2;
+                                combo.DropDownWidth = combo.Width;
+                            }
+                        }
+                    }
+                }
             }
         }
         #endregion

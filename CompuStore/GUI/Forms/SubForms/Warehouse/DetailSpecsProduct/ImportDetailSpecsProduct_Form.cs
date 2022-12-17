@@ -1,4 +1,5 @@
-﻿using CompuStore.ImportData;
+﻿using CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct;
+using CompuStore.ImportData;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
     public class ImportDetailSpecsProduct_Form : BaseDetailSpecsProduct_Form
     {
         #region Variable
-        private System.Windows.Forms.Panel ImportPanel;
         private System.Windows.Forms.TextBox Serial_TextBox, Price_TextBox;
         private System.Windows.Forms.Label Serial_Label, UnitPrice_Label, Price_Label;
         #endregion
@@ -23,45 +23,41 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         #region Private Component
         protected override void AddInitializeComponent()
         {
-            this.ImportPanel = new System.Windows.Forms.Panel();
             this.Serial_TextBox = new System.Windows.Forms.TextBox();
             this.Serial_Label = new System.Windows.Forms.Label();
             this.UnitPrice_Label = new System.Windows.Forms.Label();
             this.Price_Label = new System.Windows.Forms.Label();
             this.Price_TextBox = new System.Windows.Forms.TextBox();
-            this.ImportPanel.SuspendLayout();
-            this.MainFlowLayoutPanel.SuspendLayout();
+            this.Placeholder_FlowLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // ImportPanel
+            // Placeholder_FlowLayoutPanel
             // 
-            this.ImportPanel.Controls.Add(this.UnitPrice_Label);
-            this.ImportPanel.Controls.Add(this.Serial_TextBox);
-            this.ImportPanel.Controls.Add(this.Price_Label);
-            this.ImportPanel.Controls.Add(this.Price_TextBox);
-            this.ImportPanel.Controls.Add(this.Serial_Label);
-            this.ImportPanel.Location = new System.Drawing.Point(10, 0);
-            this.ImportPanel.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.ImportPanel.Name = "ImportPanel";
-            this.ImportPanel.Size = new System.Drawing.Size(1935, 100);
-            this.ImportPanel.TabIndex = 134;
+            this.Placeholder_FlowLayoutPanel.Controls.Add(this.Serial_Label);
+            this.Placeholder_FlowLayoutPanel.Controls.Add(this.Serial_TextBox);
+            this.Placeholder_FlowLayoutPanel.Controls.Add(this.Price_Label);
+            this.Placeholder_FlowLayoutPanel.Controls.Add(this.Price_TextBox);
+            this.Placeholder_FlowLayoutPanel.Controls.Add(this.UnitPrice_Label);
+            this.Placeholder_FlowLayoutPanel.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.Placeholder_FlowLayoutPanel.Name = "Placeholder_FlowLayoutPanel";
+            this.Placeholder_FlowLayoutPanel.Size = new System.Drawing.Size(this.Size.Width, 70);
+            this.Placeholder_FlowLayoutPanel.TabIndex = 134;
             // 
             // Serial_TextBox
             // 
             this.Serial_TextBox.Enabled = false;
-            this.Serial_TextBox.Location = new System.Drawing.Point(234, 30);
-            this.Serial_TextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Serial_TextBox.Margin = new System.Windows.Forms.Padding(5 * DeviceDpi / 96);
             this.Serial_TextBox.Name = "Serial_TextBox";
-            this.Serial_TextBox.Size = new System.Drawing.Size(464, 39);
+            this.Serial_TextBox.Size = new System.Drawing.Size(232 * DeviceDpi / 96, 39);
             this.Serial_TextBox.TabIndex = 133;
             // 
             // Serial_Label
             // 
             this.Serial_Label.AutoSize = true;
-            this.Serial_Label.Location = new System.Drawing.Point(34, 33);
-            this.Serial_Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Serial_Label.Margin = new System.Windows.Forms.Padding(150 * DeviceDpi / 96, 3 * DeviceDpi / 96, 10 * DeviceDpi / 96, 3 * DeviceDpi / 96);
+            this.Serial_Label.Padding = new Padding(5 * DeviceDpi / 96);
             this.Serial_Label.Name = "Serial_Label";
-            this.Serial_Label.Size = new System.Drawing.Size(124, 32);
+            this.Serial_Label.Size = new System.Drawing.Size(124 * DeviceDpi / 96, 32);
             this.Serial_Label.TabIndex = 134;
             this.Serial_Label.Text = "Serial máy";
             // 
@@ -69,10 +65,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             // 
             this.UnitPrice_Label.AutoSize = true;
             this.UnitPrice_Label.ForeColor = System.Drawing.Color.Black;
-            this.UnitPrice_Label.Location = new System.Drawing.Point(1287, 30);
-            this.UnitPrice_Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.UnitPrice_Label.Margin = new System.Windows.Forms.Padding(0, 3 * DeviceDpi / 96, 0, 3 * DeviceDpi / 96);
+            this.UnitPrice_Label.Padding = new Padding(5 * DeviceDpi / 96);
             this.UnitPrice_Label.Name = "UnitPrice_Label";
-            this.UnitPrice_Label.Size = new System.Drawing.Size(64, 32);
+            this.UnitPrice_Label.Size = new System.Drawing.Size(64 * DeviceDpi / 96, 32);
             this.UnitPrice_Label.TabIndex = 134;
             this.UnitPrice_Label.Text = "VNĐ";
             // 
@@ -80,10 +76,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             // 
             this.Price_Label.AutoSize = true;
             this.Price_Label.ForeColor = System.Drawing.Color.Black;
-            this.Price_Label.Location = new System.Drawing.Point(908, 33);
-            this.Price_Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Price_Label.Margin = new System.Windows.Forms.Padding(450 * DeviceDpi / 96, 3 * DeviceDpi / 96, 10 * DeviceDpi / 96, 3 * DeviceDpi / 96);
+            this.Price_Label.Padding = new Padding(5 * DeviceDpi / 96);
             this.Price_Label.Name = "Price_Label";
-            this.Price_Label.Size = new System.Drawing.Size(96, 32);
+            this.Price_Label.Size = new System.Drawing.Size(96 * DeviceDpi / 96, 32);
             this.Price_Label.TabIndex = 133;
             this.Price_Label.Text = "Giá tiền";
             // 
@@ -91,18 +87,15 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             // 
             this.Price_TextBox.Enabled = false;
             this.Price_TextBox.ForeColor = System.Drawing.Color.Black;
-            this.Price_TextBox.Location = new System.Drawing.Point(1019, 30);
-            this.Price_TextBox.Margin = new System.Windows.Forms.Padding(5);
+            this.Price_TextBox.Margin = new System.Windows.Forms.Padding(5 * DeviceDpi / 96);
             this.Price_TextBox.Name = "Price_TextBox";
-            this.Price_TextBox.Size = new System.Drawing.Size(259, 39);
+            this.Price_TextBox.Size = new System.Drawing.Size(259 * DeviceDpi / 96, 39);
             this.Price_TextBox.TabIndex = 132;
-            this.MainFlowLayoutPanel.Controls.Clear();
-            this.MainFlowLayoutPanel.Controls.Add(ImportPanel);
-            this.MainFlowLayoutPanel.Controls.Add(SpecsPanel);
-            this.ImportPanel.ResumeLayout(false);
-            this.ImportPanel.PerformLayout();
-            this.MainFlowLayoutPanel.ResumeLayout(false);
-            this.MainFlowLayoutPanel.PerformLayout();
+            this.Price_TextBox.Enter += Price_TextBox_Enter;
+            this.Price_TextBox.Leave += Price_TextBox_Leave;
+            this.Size = new Size(this.Size.Width, this.Size.Height + 70);
+            this.Placeholder_FlowLayoutPanel.ResumeLayout(false);
+            this.Placeholder_FlowLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
@@ -133,6 +126,34 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         }
         #endregion
 
+        #region Event
+        private void Price_TextBox_Leave(object sender, EventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if (control != null && !string.IsNullOrEmpty(control.Text) && double.TryParse(control.Text, out double value))
+            {
+                control.Text = string.Format("{0:n3}", value);
+            }
+            else
+            {
+                MessageBox.Show("Tiền tệ yêu cầu số thực");
+            }
+        }
+
+        private void Price_TextBox_Enter(object sender, EventArgs e)
+        {
+            TextBox control = sender as TextBox;
+            if (control != null && !string.IsNullOrEmpty(control.Text) && double.TryParse(control.Text, out double value))
+            {
+                control.Text = value.ToString();
+            }
+            else
+            {
+                MessageBox.Show("Tiền tệ yêu cầu số thực");
+            }
+        }
+        #endregion
+
         #region Validation
         protected override void CheckChange()
         {
@@ -156,12 +177,12 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             checkModel.CaseMaterial = Material_ComboBox.SelectedItem?.ToString();
             checkModel.Webcam = Webcam_ComboBox.SelectedItem?.ToString();
             checkModel.ResolutionString = string.Format("{0}x{1}",
-                X_Pixel_ComboBox.SelectedItem?.ToString(),
-                Y_Pixel_ComboBox.SelectedItem?.ToString());
+                X_Pixel_Overview_ComboBox.SelectedItem?.ToString(),
+                Y_Pixel_Overview_ComboBox.SelectedItem?.ToString());
             checkModel.TypePanel = TypePanel_ComboBox.SelectedItem?.ToString();
-            checkModel.RefreshRate = int.Parse(RefreshRate_ComboBox.SelectedItem?.ToString());
+            checkModel.RefreshRate = int.Parse(RefreshRate_Overview_ComboBox.SelectedItem?.ToString());
             checkModel.Brightness = int.Parse(Brightness_TextBox.Text);
-            checkModel.SizePanel = double.Parse(SizePanel_ComboBox.SelectedItem?.ToString());
+            checkModel.SizePanel = double.Parse(SizePanel_Overview_ComboBox.SelectedItem?.ToString());
             checkModel.RatioPanelString = string.Format("{0}:{1}",
                 X_Ratio_ComboBox.SelectedItem?.ToString(),
                 Y_Ratio_ComboBox.SelectedItem?.ToString());
@@ -176,7 +197,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 checkModel.IdPanel = CodeDisplay_ComboBox.SelectedItem?.ToString();
             }
             checkModel.TypeStorage = TypeStorage_ComboBox.SelectedItem?.ToString();
-            checkModel.StorageCapacity = int.Parse(StorageCapacity_ComboBox.SelectedItem?.ToString());
+            checkModel.StorageCapacity = int.Parse(StorageCapacity_Overview_ComboBox.SelectedItem?.ToString());
             checkModel.Wifi = WifiStandard_ComboBox.SelectedItem?.ToString();
             checkModel.Bluetooth = BluetoothStandard_ComboBox.SelectedItem?.ToString();
             checkModel.ColorName = NameColor_TextBox.Text;
@@ -271,6 +292,25 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 result.Add("Chưa nhập giá máy");
             result.AddRange(base.ValidationDetailSpecs());
             return result;
+        }
+        #endregion
+
+        #region IO handle
+        protected override void Exit_Clicked(object sender, EventArgs e)
+        {
+            List<string> checkValidation = ValidationDetailSpecs();
+            if (checkValidation?.Count > 0)
+            {
+                if (MessageBox.Show(string.Join("\n", checkValidation) + "\n\n" + "Quay trở lại(Yes) hay hủy thay đổi(No)?", "Thiếu thông tin", MessageBoxButtons.YesNo) == DialogResult.No)
+                {
+                    base.Exit_Clicked(sender, e);
+                }
+            }
+            else
+            {
+                CheckChange();
+                base.Exit_Clicked(sender, e);
+            }
         }
         #endregion
     }
