@@ -1,4 +1,5 @@
-﻿using CompuStore.Tab;
+﻿using CompuStore.GUI.Tab;
+using CompuStore.Tab;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ namespace CompuStore.GUI
 {
     public partial class MainWindow : Form
     {
-        BaseTab staffManage_Tab, salesManage_Tab, serviceManage_Tab, warehouseManage_Tab;
+        UserControl staffManage_Tab, salesManage_Tab, serviceManage_Tab, warehouseManage_Tab, statistics_Tab;
         public MainWindow()
         {
             InitializeComponent();
@@ -22,6 +23,7 @@ namespace CompuStore.GUI
             salesManage_Tab = null;
             serviceManage_Tab = null;
             warehouseManage_Tab = null;
+            statistics_Tab = null;
 
             SetHeaderState_From(SaleManage_Button);
         }
@@ -89,6 +91,16 @@ namespace CompuStore.GUI
                 warehouseManage_Tab = new Warehouse_UC();
             }
             LoadTab(warehouseManage_Tab);
+        }
+
+        private void Statistics_Button_Click(object sender, EventArgs e)
+        {
+            SetHeaderState_From(StorageManage_Button);
+            if (statistics_Tab == null)
+            {
+                statistics_Tab = new Statistics_Tab();
+            }
+            LoadTab(statistics_Tab);
         }
 
         private void Exit_Button_Click(object sender, EventArgs e)

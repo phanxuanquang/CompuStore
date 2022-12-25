@@ -72,6 +72,7 @@
     </Reference>
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -258,6 +259,13 @@
     <Compile Include="GUI\Forms\SubForms\Warehouse\InvoiceImportWarehouse\BaseInvoiceImportWarehouse_Form.Designer.cs">
       <DependentUpon>BaseInvoiceImportWarehouse_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Tab\Statistics_Tab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\Tab\Statistics_Tab.Designer.cs">
+      <DependentUpon>Statistics_Tab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportData\Dashboard.cs" />
     <Compile Include="ImportData\ModelProduct.cs" />
     <Compile Include="GUI\Forms\SubForms\StaffEdit_Form.cs">
       <SubType>Form</SubType>
@@ -356,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Forms\SubForms\InvoiceList_Form.resx">
       <DependentUpon>InvoiceList_Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Tab\Statistics_Tab.resx">
+      <DependentUpon>Statistics_Tab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

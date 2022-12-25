@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.MenuPanel = new System.Windows.Forms.Panel();
+            this.Statistics_Button = new Guna.UI2.WinForms.Guna2TileButton();
             this.ServiceManage_Button = new Guna.UI2.WinForms.Guna2TileButton();
             this.SaleManage_Button = new Guna.UI2.WinForms.Guna2TileButton();
             this.StaffManage_Button = new Guna.UI2.WinForms.Guna2TileButton();
@@ -47,6 +48,7 @@
             // MenuPanel
             // 
             this.MenuPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            this.MenuPanel.Controls.Add(this.Statistics_Button);
             this.MenuPanel.Controls.Add(this.ServiceManage_Button);
             this.MenuPanel.Controls.Add(this.SaleManage_Button);
             this.MenuPanel.Controls.Add(this.StaffManage_Button);
@@ -57,6 +59,32 @@
             this.MenuPanel.Name = "MenuPanel";
             this.MenuPanel.Size = new System.Drawing.Size(1700, 10);
             this.MenuPanel.TabIndex = 3;
+            // 
+            // Statistics_Button
+            // 
+            this.Statistics_Button.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.Statistics_Button.Animated = true;
+            this.Statistics_Button.CheckedState.FillColor = System.Drawing.Color.White;
+            this.Statistics_Button.CheckedState.Parent = this.Statistics_Button;
+            this.Statistics_Button.CustomImages.Parent = this.Statistics_Button;
+            this.Statistics_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(242)))), ((int)(((byte)(245)))));
+            this.Statistics_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Statistics_Button.ForeColor = System.Drawing.Color.Black;
+            this.Statistics_Button.HoverState.FillColor = System.Drawing.Color.White;
+            this.Statistics_Button.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Statistics_Button.HoverState.Image = global::CompuStore.Properties.Resources.Storage___Hover;
+            this.Statistics_Button.HoverState.Parent = this.Statistics_Button;
+            this.Statistics_Button.Image = ((System.Drawing.Image)(resources.GetObject("Statistics_Button.Image")));
+            this.Statistics_Button.ImageOffset = new System.Drawing.Point(0, 8);
+            this.Statistics_Button.ImageSize = new System.Drawing.Size(50, 50);
+            this.Statistics_Button.Location = new System.Drawing.Point(1362, -1);
+            this.Statistics_Button.Margin = new System.Windows.Forms.Padding(0);
+            this.Statistics_Button.Name = "Statistics_Button";
+            this.Statistics_Button.ShadowDecoration.Parent = this.Statistics_Button;
+            this.Statistics_Button.Size = new System.Drawing.Size(340, 120);
+            this.Statistics_Button.TabIndex = 7;
+            this.Statistics_Button.Text = "THỐNG KÊ";
+            this.Statistics_Button.Click += new System.EventHandler(this.Statistics_Button_Click);
             // 
             // ServiceManage_Button
             // 
@@ -75,11 +103,11 @@
             this.ServiceManage_Button.Image = ((System.Drawing.Image)(resources.GetObject("ServiceManage_Button.Image")));
             this.ServiceManage_Button.ImageOffset = new System.Drawing.Point(0, 10);
             this.ServiceManage_Button.ImageSize = new System.Drawing.Size(55, 55);
-            this.ServiceManage_Button.Location = new System.Drawing.Point(850, -1);
+            this.ServiceManage_Button.Location = new System.Drawing.Point(682, -1);
             this.ServiceManage_Button.Margin = new System.Windows.Forms.Padding(0);
             this.ServiceManage_Button.Name = "ServiceManage_Button";
             this.ServiceManage_Button.ShadowDecoration.Parent = this.ServiceManage_Button;
-            this.ServiceManage_Button.Size = new System.Drawing.Size(360, 120);
+            this.ServiceManage_Button.Size = new System.Drawing.Size(340, 120);
             this.ServiceManage_Button.TabIndex = 6;
             this.ServiceManage_Button.Text = "CHĂM SÓC KHÁCH HÀNG";
             this.ServiceManage_Button.Click += new System.EventHandler(this.ServiceManage_Button_Click);
@@ -103,11 +131,11 @@
             this.SaleManage_Button.Image = ((System.Drawing.Image)(resources.GetObject("SaleManage_Button.Image")));
             this.SaleManage_Button.ImageOffset = new System.Drawing.Point(0, 10);
             this.SaleManage_Button.ImageSize = new System.Drawing.Size(55, 55);
-            this.SaleManage_Button.Location = new System.Drawing.Point(490, -1);
+            this.SaleManage_Button.Location = new System.Drawing.Point(342, -1);
             this.SaleManage_Button.Margin = new System.Windows.Forms.Padding(0);
             this.SaleManage_Button.Name = "SaleManage_Button";
             this.SaleManage_Button.ShadowDecoration.Parent = this.SaleManage_Button;
-            this.SaleManage_Button.Size = new System.Drawing.Size(360, 120);
+            this.SaleManage_Button.Size = new System.Drawing.Size(340, 120);
             this.SaleManage_Button.TabIndex = 5;
             this.SaleManage_Button.Text = "BÁN HÀNG";
             this.SaleManage_Button.Click += new System.EventHandler(this.SaleManage_Button_Click);
@@ -131,11 +159,11 @@
             this.StaffManage_Button.Image = ((System.Drawing.Image)(resources.GetObject("StaffManage_Button.Image")));
             this.StaffManage_Button.ImageOffset = new System.Drawing.Point(0, 10);
             this.StaffManage_Button.ImageSize = new System.Drawing.Size(55, 55);
-            this.StaffManage_Button.Location = new System.Drawing.Point(130, -1);
+            this.StaffManage_Button.Location = new System.Drawing.Point(2, -1);
             this.StaffManage_Button.Margin = new System.Windows.Forms.Padding(0);
             this.StaffManage_Button.Name = "StaffManage_Button";
             this.StaffManage_Button.ShadowDecoration.Parent = this.StaffManage_Button;
-            this.StaffManage_Button.Size = new System.Drawing.Size(360, 120);
+            this.StaffManage_Button.Size = new System.Drawing.Size(340, 120);
             this.StaffManage_Button.TabIndex = 4;
             this.StaffManage_Button.Text = "NHÂN SỰ";
             this.StaffManage_Button.Click += new System.EventHandler(this.StaffManage_Button_Click);
@@ -159,11 +187,11 @@
             this.StorageManage_Button.Image = ((System.Drawing.Image)(resources.GetObject("StorageManage_Button.Image")));
             this.StorageManage_Button.ImageOffset = new System.Drawing.Point(0, 8);
             this.StorageManage_Button.ImageSize = new System.Drawing.Size(50, 50);
-            this.StorageManage_Button.Location = new System.Drawing.Point(1210, -1);
+            this.StorageManage_Button.Location = new System.Drawing.Point(1022, -1);
             this.StorageManage_Button.Margin = new System.Windows.Forms.Padding(0);
             this.StorageManage_Button.Name = "StorageManage_Button";
             this.StorageManage_Button.ShadowDecoration.Parent = this.StorageManage_Button;
-            this.StorageManage_Button.Size = new System.Drawing.Size(360, 120);
+            this.StorageManage_Button.Size = new System.Drawing.Size(340, 120);
             this.StorageManage_Button.TabIndex = 3;
             this.StorageManage_Button.Text = "KHO VẬN";
             this.StorageManage_Button.Click += new System.EventHandler(this.StorageManage_Button_Click);
@@ -262,5 +290,6 @@
         private System.Windows.Forms.PictureBox HeaderIcon;
         private Guna.UI2.WinForms.Guna2DragControl DragControl;
         private System.Windows.Forms.Panel ContainerPanel;
+        private Guna.UI2.WinForms.Guna2TileButton Statistics_Button;
     }
 }
