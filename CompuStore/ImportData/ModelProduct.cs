@@ -1,5 +1,4 @@
 ﻿using CompuStore.Database.Models;
-using Microsoft.VisualBasic.Devices;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Drawing2D;

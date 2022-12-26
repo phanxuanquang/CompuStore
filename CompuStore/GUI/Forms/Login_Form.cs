@@ -1,5 +1,6 @@
 ﻿using CompuStore.Database.Services;
 using CompuStore.GUI;
+using CompuStore.Utilities.ExportPDF;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
