@@ -429,6 +429,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\CompuStore.Database.Models.INFOR.datasource" />
     <None Include="Properties\DataSources\CompuStore.Database.Models.INVOICE.datasource" />
+    <None Include="Properties\DataSources\CompuStore.Database.Models.PRODUCT.datasource" />
     <None Include="Properties\DataSources\CompuStore.Database.Models.RECEIVE_WARRANTY.datasource" />
     <None Include="Properties\DataSources\CompuStore.Database.Models.STAFF.datasource" />
     <None Include="Properties\DataSources\CompuStore.Database.Models.STAFFROLE.datasource" />

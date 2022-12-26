@@ -12,7 +12,7 @@ namespace CompuStore
 {
     public partial class ReturnDetail_Form : Form
     {
-        public ReturnDetail_Form()
+        public ReturnDetail_Form(object returnD)
         {
             InitializeComponent();
         }

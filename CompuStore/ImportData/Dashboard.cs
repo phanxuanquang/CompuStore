@@ -60,7 +60,7 @@ namespace CompuStore.ImportData
                            );
                 TotalRevenue += (decimal)item.TotalAmount;
             }
-            TotalProfit = TotalRevenue * 0.2m;
+            
             //Group by Hours
             if (numberDays <= 1)
             {

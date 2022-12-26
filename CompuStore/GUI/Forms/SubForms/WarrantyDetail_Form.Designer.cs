@@ -32,10 +32,13 @@
             this.Header = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.WarrantyDoneDate_Picker = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.warrantyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ItemSerial_Box = new Guna.UI2.WinForms.Guna2TextBox();
+            this.pRODUCTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lbDate = new System.Windows.Forms.Label();
             this.Print_Button = new Guna.UI2.WinForms.Guna2Button();
             this.Email_Box = new Guna.UI2.WinForms.Guna2TextBox();
+            this.iNFORBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Name_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbStaffName = new System.Windows.Forms.Label();
             this.PhoneNumber_Box = new Guna.UI2.WinForms.Guna2TextBox();
@@ -46,6 +49,10 @@
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.AddInfor_Button = new Guna.UI2.WinForms.Guna2Button();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.Status_ComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
+            ((System.ComponentModel.ISupportInitialize)(this.warrantyBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pRODUCTBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iNFORBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,6 +91,7 @@
             this.WarrantyDoneDate_Picker.CheckedState.Parent = this.WarrantyDoneDate_Picker;
             this.WarrantyDoneDate_Picker.Cursor = System.Windows.Forms.Cursors.Hand;
             this.WarrantyDoneDate_Picker.CustomFormat = " dd/MM/yyyy";
+            this.WarrantyDoneDate_Picker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.warrantyBindingSource, "RETURN_DATE", true));
             this.WarrantyDoneDate_Picker.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.WarrantyDoneDate_Picker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.WarrantyDoneDate_Picker.ForeColor = System.Drawing.Color.Black;
@@ -101,6 +109,10 @@
             this.WarrantyDoneDate_Picker.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.WarrantyDoneDate_Picker.Value = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
             // 
+            // warrantyBindingSource
+            // 
+            this.warrantyBindingSource.DataSource = typeof(CompuStore.Database.Models.RECEIVE_WARRANTY);
+            // 
             // ItemSerial_Box
             // 
             this.ItemSerial_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -110,6 +122,7 @@
             this.ItemSerial_Box.BorderRadius = 8;
             this.ItemSerial_Box.BorderThickness = 2;
             this.ItemSerial_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.ItemSerial_Box.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUCTBindingSource, "SERIAL_ID", true));
             this.ItemSerial_Box.DefaultText = "";
             this.ItemSerial_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.ItemSerial_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -139,6 +152,10 @@
             this.ItemSerial_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.ItemSerial_Box.TabIndex = 87;
             this.ItemSerial_Box.TextOffset = new System.Drawing.Point(5, 0);
+            // 
+            // pRODUCTBindingSource
+            // 
+            this.pRODUCTBindingSource.DataSource = typeof(CompuStore.Database.Models.PRODUCT);
             // 
             // lbDate
             // 
@@ -185,6 +202,7 @@
             this.Email_Box.BorderRadius = 8;
             this.Email_Box.BorderThickness = 2;
             this.Email_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Email_Box.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.iNFORBindingSource, "EMAIL", true));
             this.Email_Box.DefaultText = "";
             this.Email_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.Email_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -215,6 +233,10 @@
             this.Email_Box.TabIndex = 81;
             this.Email_Box.TextOffset = new System.Drawing.Point(5, 0);
             // 
+            // iNFORBindingSource
+            // 
+            this.iNFORBindingSource.DataSource = typeof(CompuStore.Database.Models.INFOR);
+            // 
             // Name_Box
             // 
             this.Name_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -224,6 +246,7 @@
             this.Name_Box.BorderRadius = 8;
             this.Name_Box.BorderThickness = 2;
             this.Name_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Name_Box.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.iNFORBindingSource, "NAME", true));
             this.Name_Box.DefaultText = "";
             this.Name_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.Name_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -276,6 +299,7 @@
             this.PhoneNumber_Box.BorderRadius = 8;
             this.PhoneNumber_Box.BorderThickness = 2;
             this.PhoneNumber_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.PhoneNumber_Box.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.iNFORBindingSource, "PHONE_NUMBER", true));
             this.PhoneNumber_Box.DefaultText = "";
             this.PhoneNumber_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.PhoneNumber_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -315,6 +339,7 @@
             this.Identity_Box.BorderRadius = 8;
             this.Identity_Box.BorderThickness = 2;
             this.Identity_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Identity_Box.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.iNFORBindingSource, "IDENTITY_CODE", true));
             this.Identity_Box.DefaultText = "";
             this.Identity_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.Identity_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -354,6 +379,7 @@
             this.WarrantyReason.BorderRadius = 8;
             this.WarrantyReason.BorderThickness = 2;
             this.WarrantyReason.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.WarrantyReason.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.warrantyBindingSource, "REASON_WARRANTY", true));
             this.WarrantyReason.DefaultText = "";
             this.WarrantyReason.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.WarrantyReason.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -379,7 +405,7 @@
             this.WarrantyReason.ReadOnly = true;
             this.WarrantyReason.SelectedText = "";
             this.WarrantyReason.ShadowDecoration.Parent = this.WarrantyReason;
-            this.WarrantyReason.Size = new System.Drawing.Size(550, 37);
+            this.WarrantyReason.Size = new System.Drawing.Size(313, 37);
             this.WarrantyReason.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.WarrantyReason.TabIndex = 90;
             this.WarrantyReason.TextOffset = new System.Drawing.Point(5, 0);
@@ -462,11 +488,51 @@
             // 
             this.guna2DragControl1.TargetControl = this.Header;
             // 
+            // Status_ComboBox
+            // 
+            this.Status_ComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Status_ComboBox.Animated = true;
+            this.Status_ComboBox.BackColor = System.Drawing.Color.Transparent;
+            this.Status_ComboBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.Status_ComboBox.BorderRadius = 4;
+            this.Status_ComboBox.BorderThickness = 2;
+            this.Status_ComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Status_ComboBox.DisplayMember = "ID";
+            this.Status_ComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.Status_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Status_ComboBox.Enabled = false;
+            this.Status_ComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Status_ComboBox.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.Status_ComboBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.Status_ComboBox.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.Status_ComboBox.FocusedState.ForeColor = System.Drawing.Color.Black;
+            this.Status_ComboBox.FocusedState.Parent = this.Status_ComboBox;
+            this.Status_ComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Status_ComboBox.ForeColor = System.Drawing.Color.Black;
+            this.Status_ComboBox.FormattingEnabled = true;
+            this.Status_ComboBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.Status_ComboBox.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.Status_ComboBox.HoverState.ForeColor = System.Drawing.Color.Black;
+            this.Status_ComboBox.HoverState.Parent = this.Status_ComboBox;
+            this.Status_ComboBox.ItemHeight = 32;
+            this.Status_ComboBox.ItemsAppearance.Parent = this.Status_ComboBox;
+            this.Status_ComboBox.Location = new System.Drawing.Point(356, 225);
+            this.Status_ComboBox.Margin = new System.Windows.Forms.Padding(0);
+            this.Status_ComboBox.Name = "Status_ComboBox";
+            this.Status_ComboBox.ShadowDecoration.Parent = this.Status_ComboBox;
+            this.Status_ComboBox.Size = new System.Drawing.Size(231, 38);
+            this.Status_ComboBox.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
+            this.Status_ComboBox.TabIndex = 139;
+            this.Status_ComboBox.TextOffset = new System.Drawing.Point(5, 0);
+            this.Status_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Status_ComboBox.ValueMember = "ID";
+            // 
             // WarrantyDetail_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 468);
+            this.Controls.Add(this.Status_ComboBox);
             this.Controls.Add(this.EditAndSave_Button);
             this.Controls.Add(this.WarrantyReason);
             this.Controls.Add(this.label1);
@@ -488,6 +554,9 @@
             this.Name = "WarrantyDetail_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddWarranty_Form";
+            ((System.ComponentModel.ISupportInitialize)(this.warrantyBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pRODUCTBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iNFORBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -512,5 +581,9 @@
         private Guna.UI2.WinForms.Guna2Button EditAndSave_Button;
         private Guna.UI2.WinForms.Guna2Button AddInfor_Button;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private System.Windows.Forms.BindingSource warrantyBindingSource;
+        private System.Windows.Forms.BindingSource pRODUCTBindingSource;
+        private System.Windows.Forms.BindingSource iNFORBindingSource;
+        private Guna.UI2.WinForms.Guna2ComboBox Status_ComboBox;
     }
 }
