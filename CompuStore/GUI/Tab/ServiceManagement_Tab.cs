@@ -13,6 +13,8 @@ using System.Windows.Forms;
 
 namespace CompuStore
 {
+    using CompuStore.Database.Services.ProductServices;
+    using CompuStore.GUI.Forms.SubForms.Warehouse;
     using Database.Models;
     using System.Security.Cryptography.Pkcs;
 
@@ -23,6 +25,7 @@ namespace CompuStore
             this.GridDataTable.AutoGenerateColumns = false;
             InitializeComponent();
             this.GridDataTable.DataSource = warrantyBindingSource;
+            GridDataTable.CellDoubleClick += GridDataTable_CellDoubleClick;
             this.Load += ServiceManagement_Tab_Load;
         }
 
@@ -289,6 +292,24 @@ namespace CompuStore
             }
 
             currencyManager1.ResumeBinding();
+        }
+        protected void GridDataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                if (Button_3.Text == "Danh sách đổi trả")
+                {
+                    WarrantyDetail_Form warrantyDetail_Form = new WarrantyDetail_Form(warrantyBindingSource.Current);
+                    warrantyDetail_Form.ShowDialog();
+                    LoadWarranty();
+                }
+                else
+                {
+                    ReturnDetail_Form returnDetail_Form = new ReturnDetail_Form(warrantyBindingSource.Current);
+                    returnDetail_Form.ShowDialog();
+                    LoadCOrRefund();
+                }
+            }
         }
     }
 }

@@ -88,7 +88,6 @@ namespace CompuStore.GUI.Forms
                     }
                     catch (Exception)
                     {
-
                         MessageBox.Show("Có lỗi xảy ra. Vui lòng thử lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     this.Close();
@@ -167,6 +166,7 @@ namespace CompuStore.GUI.Forms
             sTAFFROLEBindingSource.DataSource = StaffRoleServices.Instance.GetSTAFFROLEs();
             if (staffCurrent != null)
             {
+                sTAFFBindingSource.DataSource = staffCurrent;
                 iNFORBindingSource.DataSource = staffCurrent.INFOR;
                 Apartment_ComboBox.SelectedValue = staffCurrent.STAFFROLE.ID;
                

@@ -350,6 +350,7 @@
             this.DateTimeImportWarehouse_DateTimePicker.CheckedState.Parent = this.DateTimeImportWarehouse_DateTimePicker;
             this.DateTimeImportWarehouse_DateTimePicker.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DateTimeImportWarehouse_DateTimePicker.CustomFormat = " dd/MM/yyyy";
+            this.DateTimeImportWarehouse_DateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.sTAFFBindingSource, "STAFFDATE", true));
             this.DateTimeImportWarehouse_DateTimePicker.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.DateTimeImportWarehouse_DateTimePicker.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateTimeImportWarehouse_DateTimePicker.ForeColor = System.Drawing.Color.Black;
@@ -403,6 +404,7 @@
             this.Status_ComboBox.BorderRadius = 4;
             this.Status_ComboBox.BorderThickness = 2;
             this.Status_ComboBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Status_ComboBox.DisplayMember = "ID";
             this.Status_ComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.Status_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Status_ComboBox.Enabled = false;
