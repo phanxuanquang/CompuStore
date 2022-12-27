@@ -35,13 +35,13 @@ namespace CompuStore.Database.Services
                 IDENTITY_CODE = identity_code,
                 ADDRESS = addtress
             };
+            DataProvider.Instance.Database.INFORs.Add(infor);
             CUSTOMER customer = new CUSTOMER() 
             {
                 ID_INFOR = infor.ID,
                 ID_RANK = null,
                 PURCHASED_QUANTITY = purchased
             };
-            DataProvider.Instance.Database.INFORs.Add(infor);
             DataProvider.Instance.Database.CUSTOMERs.Add(customer);
             try
             {

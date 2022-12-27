@@ -42,13 +42,19 @@ namespace CompuStore.Database.Services
             Database.DataProvider.Instance.Database.INVOICEs.Add(invoice);
             foreach(var product in listProduct)
             {
+                double? price = product.DETAIL_SPECS.PRICE;
+                if (price == null)
+                {
+                    price = 1000000;
+                }
                 DETAIL_INVOICE detail = new DETAIL_INVOICE()
                 {
                     ID_INVOICE = invoice.ID,
                     PRODUCT_ID = product.PRODUCT_ID,
-                    PRICE_PER_UNIT = 100000
+                    PRICE_PER_UNIT = (double)price
                 };
                 Database.DataProvider.Instance.Database.DETAIL_INVOICE.Add(detail);
+                product.IN_WAREHOUSE = false;
             }
             try
             {

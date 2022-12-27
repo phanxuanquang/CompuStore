@@ -180,13 +180,31 @@ namespace CompuStore
             foreach (var item in addedProduct)
             {
                 productList.Add(Database.DataProvider.Instance.Database.PRODUCTs.Where(prod => prod.SERIAL_ID == item).FirstOrDefault());
-            }    
-
-            if (customer == null)
-            {
-                customer = CustomerServices.Instance.SaveCustomerToDB(Name_Box.Text, PhoneNumber_Box.Text, Email_Box.Text, Identity_Box.Text, Address_Box.Text);
             }
-            Exception res = InvoiceServices.Instance.SaveInvoiceToDB(productList, customer.ID, currentStaff.ID, DateTime.Now, 10);
+            List<CUSTOMER> listCus = new List<CUSTOMER>();
+           
+            {
+                for (int i = 1; i < 4; i++)
+                {
+                    string name = "Nguyen Van" + ((int)'A' + i).ToString();
+                    string phoneNumber = "0101020203";
+                    string email = "abc@gmail.com";
+                    string iden = "1093412" + i * 10 + 34;
+                    string address = "Thủ Đức, TP HCM";
+                    customer = CustomerServices.Instance.SaveCustomerToDB(name, phoneNumber, email, iden, address);
+                    listCus.Add(customer);
+                }    
+                
+            }
+            Exception res = new Exception();
+            foreach (var item in listCus)
+            {
+                for (int i = 1; i < 32; i++)
+                {
+                    DateTime x = new DateTime(2022, 12, i, DateTime.Now.Hour, DateTime.Now.Minute + i, DateTime.Now.Second);
+                    res = InvoiceServices.Instance.SaveInvoiceToDB(productList, item.ID, currentStaff.ID, x, 10);
+                }    
+            }    
             if (res.Message == "done")
             {
                 MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -240,12 +258,36 @@ namespace CompuStore
             {
                 productList.Add(Database.DataProvider.Instance.Database.PRODUCTs.Where(prod => prod.SERIAL_ID == item).FirstOrDefault());
             }
+            List<CUSTOMER> listCus = new List<CUSTOMER>();
 
-            if (customer == null)
             {
-                customer = CustomerServices.Instance.SaveCustomerToDB(Name_Box.Text, PhoneNumber_Box.Text, Email_Box.Text, Identity_Box.Text, Address_Box.Text);
+                for (int i = 1; i < 4; i++)
+                {
+                    string name = "Nguyen Van" + ((int)'A' + i).ToString();
+                    string phoneNumber = "0101020203";
+                    string email = "abc@gmail.com";
+                    string iden = "1093412" + i * 10 + 34;
+                    string address = "Thủ Đức, TP HCM";
+                    customer = CustomerServices.Instance.SaveCustomerToDB(name, phoneNumber, email, iden, address);
+                    listCus.Add(customer);
+                }
             }
-            Exception res = InvoiceServices.Instance.SaveInvoiceToDB(productList, customer.ID, currentStaff.ID, DateTime.Now, 10);
+            Exception res = new Exception();
+            try
+            {
+                foreach (var item in listCus)
+                {
+                    for (int i = 1; i < 32; i++)
+                    {
+                        DateTime x = new DateTime(2022, 12, i, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+                        res = InvoiceServices.Instance.SaveInvoiceToDB(productList, item.ID, currentStaff.ID, x, 10);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             if (res.Message == "done")
             {
                 MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
