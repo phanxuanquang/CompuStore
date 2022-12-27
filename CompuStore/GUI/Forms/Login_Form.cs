@@ -1,5 +1,6 @@
 ﻿using CompuStore.Database.Services;
 using CompuStore.GUI;
+using CompuStore.Utilities.ExportPDF;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -180,9 +181,36 @@ namespace CompuStore.GUI
             RememberAccount_CheckBox.Checked = !RememberAccount_CheckBox.Checked;
         }
 
-        private void Exit_Button_Click_1(object sender, EventArgs e)
+        private async void Exit_Button_Click_1(object sender, EventArgs e)
         {
-            Application.Exit();
+            /*Application.Exit();*/
+            ExportPDF export = new ExportPDF();
+            IDataExport data = new ProductPDF
+            {
+                ExportPath = "./export.html",
+                DataBindingTemplate = new
+                {
+                    data = new
+                    {
+                        name = "Dell Precision 7770",
+                        price = "21.000.000",
+                        properties = new Object[]
+                        {
+                            new
+                            {
+                                key = "CPU",
+                                value = "Intel Core i9-12950H"
+                            },
+                            new
+                            {
+                                key = "RAM",
+                                value = "16GB DDR5 5200MHz"
+                            }
+                        }
+                    }
+                }
+            };
+            await export.RunExport(data);
         }
     }
 }
