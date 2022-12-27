@@ -30,6 +30,7 @@ namespace CompuStore
         {
             this.id = id;
             InitializeComponent();
+            guna2ShadowForm1.SetShadowForm(this);
             this.Load += AddInvoice_Form_Load;
         }
 

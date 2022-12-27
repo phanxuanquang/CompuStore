@@ -51,13 +51,13 @@
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.NameProduct_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.Serial_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemTable)).BeginInit();
             this.SuspendLayout();
             // 
             // PhoneNumber_Box
             // 
-            this.PhoneNumber_Box.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.PhoneNumber_Box.Animated = true;
             this.PhoneNumber_Box.BackColor = System.Drawing.Color.Transparent;
             this.PhoneNumber_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -111,7 +111,6 @@
             // 
             // Identity_Box
             // 
-            this.Identity_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.Identity_Box.Animated = true;
             this.Identity_Box.BackColor = System.Drawing.Color.Transparent;
             this.Identity_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -190,7 +189,7 @@
             this.Save_Button.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Save_Button.ForeColor = System.Drawing.Color.White;
             this.Save_Button.HoverState.Parent = this.Save_Button;
-            this.Save_Button.Location = new System.Drawing.Point(36, 600);
+            this.Save_Button.Location = new System.Drawing.Point(36, 606);
             this.Save_Button.Name = "Save_Button";
             this.Save_Button.PressedDepth = 5;
             this.Save_Button.ShadowDecoration.Parent = this.Save_Button;
@@ -208,7 +207,6 @@
             this.ItemTable.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.ItemTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.ItemTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ItemTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ItemTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.ItemTable.BackgroundColor = System.Drawing.Color.White;
@@ -283,7 +281,6 @@
             // 
             // Print_Button
             // 
-            this.Print_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.Print_Button.Animated = true;
             this.Print_Button.BorderRadius = 3;
             this.Print_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
@@ -306,7 +303,6 @@
             // 
             // Email_Box
             // 
-            this.Email_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.Email_Box.Animated = true;
             this.Email_Box.BackColor = System.Drawing.Color.Transparent;
             this.Email_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -345,7 +341,6 @@
             // 
             // Address_Box
             // 
-            this.Address_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.Address_Box.Animated = true;
             this.Address_Box.BackColor = System.Drawing.Color.Transparent;
             this.Address_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -384,7 +379,6 @@
             // 
             // Name_Box
             // 
-            this.Name_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.Name_Box.Animated = true;
             this.Name_Box.BackColor = System.Drawing.Color.Transparent;
             this.Name_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -423,7 +417,6 @@
             // 
             // lbStaffName
             // 
-            this.lbStaffName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbStaffName.AutoSize = true;
             this.lbStaffName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbStaffName.Location = new System.Drawing.Point(32, 475);
@@ -436,7 +429,6 @@
             // 
             // lbDate
             // 
-            this.lbDate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbDate.AutoSize = true;
             this.lbDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbDate.Location = new System.Drawing.Point(32, 502);
@@ -449,7 +441,6 @@
             // 
             // AddItemToTable_Button
             // 
-            this.AddItemToTable_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.AddItemToTable_Button.Animated = true;
             this.AddItemToTable_Button.BorderRadius = 3;
             this.AddItemToTable_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
@@ -514,7 +505,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 572);
+            this.ClientSize = new System.Drawing.Size(623, 689);
             this.Controls.Add(this.NameProduct_ComboBox);
             this.Controls.Add(this.Serial_ComboBox);
             this.Controls.Add(this.AddItemToTable_Button);
@@ -563,5 +554,6 @@
         private Control.ComboBoxCustom Serial_ComboBox;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Control.ComboBoxCustom NameProduct_ComboBox;
+        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
     }
 }

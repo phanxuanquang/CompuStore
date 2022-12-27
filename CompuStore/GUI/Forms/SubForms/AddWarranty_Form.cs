@@ -23,6 +23,7 @@ namespace CompuStore
         public AddWarranty_Form()
         {
             InitializeComponent();
+            guna2ShadowForm1.SetShadowForm(this);
             this.Load += AddWarranty_Form_Load;
             
         }
