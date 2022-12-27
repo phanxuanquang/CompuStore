@@ -1,4 +1,5 @@
-﻿using CompuStore.Database.Services;
+﻿using CompuStore.Database.Models;
+using CompuStore.Database.Services;
 using CompuStore.GUI;
 using CompuStore.Utilities.ExportPDF;
 using System;
@@ -185,32 +186,108 @@ namespace CompuStore.GUI
         {
             /*Application.Exit();*/
             ExportPDF export = new ExportPDF();
-            IDataExport data = new ProductPDF
+            IDataExport data = new InvoicePDF
             {
                 ExportPath = "./export.html",
                 DataBindingTemplate = new
                 {
                     data = new
                     {
-                        name = "Dell Precision 7770",
-                        price = "21.000.000",
-                        properties = new Object[]
+                        id_invoice = "INVOICE#1123",
+                        date = DateTime.Now,
+                        customer_name = "Tran Van A",
+                        phone_customer = "0944837525",
+                        company = "XL COMPANY",
+                        address = "123 KTX KHU A",
+                        phone_company = "382765235",
+                        total = "43874632552",
+                        products = new Object[]
                         {
                             new
                             {
-                                key = "CPU",
-                                value = "Intel Core i9-12950H"
+                                name = "CPU",
+                                price = "Intel Core i9-12950H"
                             },
                             new
                             {
-                                key = "RAM",
-                                value = "16GB DDR5 5200MHz"
-                            }
+                                name = "RAM",
+                                price = "16GB DDR5 5200MHz"
+                            },
+                            new
+                            {
+                                name = "CPU",
+                                price = "Intel Core i9-12950H"
+                            },
+                            new
+                            {
+                                name = "RAM",
+                                price = "16GB DDR5 5200MHz"
+                            },
+                            new
+                            {
+                                name = "CPU",
+                                price = "Intel Core i9-12950H"
+                            },
+                            new
+                            {
+                                name = "RAM",
+                                price = "16GB DDR5 5200MHz"
+                            },
+                            new
+                            {
+                                name = "CPU",
+                                price = "Intel Core i9-12950H"
+                            },
+                            new
+                            {
+                                name = "RAM",
+                                price = "16GB DDR5 5200MHz"
+                            },
+                            new
+                            {
+                                name = "CPU",
+                                price = "Intel Core i9-12950H"
+                            },
+                            new
+                            {
+                                name = "RAM",
+                                price = "16GB DDR5 5200MHz"
+                            },
+                            new
+                            {
+                                name = "CPU",
+                                price = "Intel Core i9-12950H"
+                            },
+                            new
+                            {
+                                name = "RAM",
+                                price = "16GB DDR5 5200MHz"
+                            },
                         }
                     }
                 }
             };
             await export.RunExport(data);
+            /*await Task.Factory.StartNew(() =>
+            {
+                int[] id = { 7, 8, 9 };
+
+                string message = string.Empty;
+                DateTime now = new DateTime(2022, 12, 23);
+                for (int index = 0; index < 10; index++)
+                {
+                    List<PRODUCT> items = Database.DataProvider.Instance.Database.PRODUCTs.Where(item => item.IN_WAREHOUSE == true && item.DETAIL_SPECS.COMMON_SPECS.NAME == "LG Gram 17 (2022)").Take(1).ToList();
+                    now = now.AddDays(1);
+                    try
+                    {
+                        InvoiceServices.Instance.SaveInvoiceToDB(items, id[id.Length % 3], 5, now, 10);
+                    }
+                    catch (Exception ex)
+                    {
+                        message += ex;
+                    }
+                }
+            });*/
         }
     }
 }

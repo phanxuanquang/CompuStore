@@ -175,14 +175,37 @@ namespace CompuStore
             }
         }
 
-        private void Save_Button_Click(object sender, EventArgs e)
+        private async void Save_Button_Click(object sender, EventArgs e)
         {
-            foreach (var item in addedProduct)
+            await Task.Factory.StartNew(() =>
+            {
+                int[] id = { 7, 8, 9 };
+
+                string message = string.Empty;
+                DateTime now = new DateTime(2022, 12, 1);
+                for (int index = 0; index < 10; index++)
+                {
+                    List<PRODUCT> items = Database.DataProvider.Instance.Database.PRODUCTs.Where(item => item.IN_WAREHOUSE == true).Take(1).ToList();
+                    for (int i = 1; i < 32; i++)
+                    {
+                        now = now.AddDays(1);
+                        try
+                        {
+                            InvoiceServices.Instance.SaveInvoiceToDB(items, id[id.Length % 3], currentStaff.ID, now, 10);
+                        }
+                        catch (Exception ex)
+                        {
+                            message += ex;
+                        }
+                    }
+                }
+            });
+            /*foreach (var item in addedProduct)
             {
                 productList.Add(Database.DataProvider.Instance.Database.PRODUCTs.Where(prod => prod.SERIAL_ID == item).FirstOrDefault());
             }
             List<CUSTOMER> listCus = new List<CUSTOMER>();
-           
+
             {
                 for (int i = 1; i < 4; i++)
                 {
@@ -193,8 +216,8 @@ namespace CompuStore
                     string address = "Thủ Đức, TP HCM";
                     customer = CustomerServices.Instance.SaveCustomerToDB(name, phoneNumber, email, iden, address);
                     listCus.Add(customer);
-                }    
-                
+                }
+
             }
             Exception res = new Exception();
             foreach (var item in listCus)
@@ -212,7 +235,7 @@ namespace CompuStore
             else
             {
                 MessageBox.Show(res.Message);
-            }
+            }*/
             this.Close();
         }
 
@@ -250,7 +273,7 @@ namespace CompuStore
             NameProduct_ComboBox.DisplayMember = "NAME";
         }
 
-        private void Print_Button_Click(object sender, EventArgs e)
+        private async void Print_Button_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("Không tim thấy máy in. Vui lòng thử lại sau.", "Không tìm thấy máy in", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
@@ -258,7 +281,7 @@ namespace CompuStore
             //{
             //    productList.Add(Database.DataProvider.Instance.Database.PRODUCTs.Where(prod => prod.SERIAL_ID == item).FirstOrDefault());
             //}
-            List<CUSTOMER> listCus = new List<CUSTOMER>();
+            /*List<CUSTOMER> listCus = new List<CUSTOMER>();
 
             {
                 for (int i = 1; i < 4; i++)
@@ -302,7 +325,27 @@ namespace CompuStore
             else
             {
                 MessageBox.Show(res.Message);
-            }
+            }*/
+            await Task.Factory.StartNew(() =>
+            {
+                int[] id = { 7, 8, 9 };
+
+                string message = string.Empty;
+                DateTime now = new DateTime(2022, 12, 1);
+                for (int index = 0; index < 10; index++)
+                {
+                    List<PRODUCT> items = Database.DataProvider.Instance.Database.PRODUCTs.Where(item => item.IN_WAREHOUSE == true && item.DETAIL_SPECS.COMMON_SPECS.NAME == "Apple MacBook Pro 15 (2018)").Take(1).ToList();
+                    now = now.AddDays(1);
+                    try
+                    {
+                        InvoiceServices.Instance.SaveInvoiceToDB(items, id[id.Length % 3], currentStaff.ID, now, 10);
+                    }
+                    catch (Exception ex)
+                    {
+                        message += ex;
+                    }
+                }
+            });
             this.Close();
         }
 

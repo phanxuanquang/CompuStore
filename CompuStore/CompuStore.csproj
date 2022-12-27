@@ -360,6 +360,7 @@
     </Compile>
     <Compile Include="Utilities\ExportPDF\ExportPDF.cs" />
     <Compile Include="Utilities\ExportPDF\IDataExport.cs" />
+    <Compile Include="Utilities\ExportPDF\InvoicePDF.cs" />
     <Compile Include="Utilities\ExportPDF\ProductPDF.cs" />
     <EmbeddedResource Include="GUI\Forms\SubForms\InvoiceDetail_Form.resx">
       <DependentUpon>InvoiceDetail_Form.cs</DependentUpon>
