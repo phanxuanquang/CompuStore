@@ -358,7 +358,8 @@
     <Compile Include="GUI\Forms\SubForms\ReturnDetail_Form.Designer.cs">
       <DependentUpon>ReturnDetail_Form.cs</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\ExportPDF\IExportPDF.cs" />
+    <Compile Include="Utilities\ExportPDF\ExportPDF.cs" />
+    <Compile Include="Utilities\ExportPDF\IDataExport.cs" />
     <Compile Include="Utilities\ExportPDF\ProductPDF.cs" />
     <EmbeddedResource Include="GUI\Forms\SubForms\InvoiceDetail_Form.resx">
       <DependentUpon>InvoiceDetail_Form.cs</DependentUpon>

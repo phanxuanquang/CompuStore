@@ -66,10 +66,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
         #endregion
 
         #region Translater
-        protected static readonly Dictionary<string, string> portTranslater = new Dictionary<string, string> {
-            { "PortPhysic", "Chuẩn giao tiếp" },
-            { "PortProtocol", "Chuẩn vật lý" },
-            { "Quantity", "Số lượng" }};
+        protected static readonly Dictionary<string, (string, DataGridViewContentAlignment)> portTranslater = new Dictionary<string, (string, DataGridViewContentAlignment)> {
+            { "PortPhysic", ("Chuẩn giao tiếp", DataGridViewContentAlignment.MiddleLeft) },
+            { "PortProtocol", ("Chuẩn vật lý", DataGridViewContentAlignment.MiddleLeft) },
+            { "Quantity", ("Số lượng", DataGridViewContentAlignment.MiddleRight)}};
         #endregion
 
         protected virtual void AddInitializeComponent() { }
@@ -401,9 +401,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             {
                 if (portTranslater.ContainsKey(column.Name))
                 {
-                    string headerText = portTranslater[column.Name];
-                    string[] split = headerText.Split('|');
+                    (string, DataGridViewContentAlignment) keyValue = portTranslater[column.Name];
+                    string[] split = keyValue.Item1.Split('|');
                     column.HeaderText = split[0];
+                    column.CellTemplate.Style.Alignment = keyValue.Item2;
                     if (split.Length > 1)
                     {
                         column.ToolTipText = split[1];

@@ -65,25 +65,25 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         #endregion
 
         #region Translater
-        protected static readonly Dictionary<string, string> translater = new Dictionary<string, string> {
-            { "Serial", "Serial máy" },
-            { "Price", "Giá bán" },
-            { "Brightness", "Độ sáng|Đơn vị: nit" },
-            { "TypePanel", "Tấm nền" },
-            { "SpaceColorString", "Độ phủ màu|Độ chính xác màu hiện thị trên màn hình so với khi in ấn" },
-            { "RefreshRate", "Tốc độ làm tươi|Đơn vị: Hz" },
-            { "CanTouchPanel", "Cảm ứng" },
-            { "CPU", "CPU" },
-            { "GPU", "GPU" },
-            { "RAMString", "RAM" },
-            { "iGPU", "iGPU" },
-            { "TypeStorage", "Chuẩn ổ cứng" },
-            { "StorageCapacity", "Dung lượng ổ cứng|Đơn vị: GB" },
-            { "GPUString", "Card đồ hoại rời" },
-            { "Weight", "Khối lượng|Đơn vị: Kg" },
-            { "TypeScreen", "Loại màn hình" },
-            { "BatteryCapacity", "Dung lượng pin|Đơn vị: Wh" },
-            { "ColorCode", "Màu sắc" }};
+        protected static readonly IDictionary<string, (string, DataGridViewContentAlignment)> translater = new Dictionary<string, (string, DataGridViewContentAlignment)> {
+            { "Serial", ("Serial máy", DataGridViewContentAlignment.MiddleCenter) },
+            { "Price", ("Giá bán",DataGridViewContentAlignment.MiddleCenter) },
+            { "Brightness", ("Độ sáng|Đơn vị: nit",DataGridViewContentAlignment.MiddleCenter) },
+            { "TypePanel", ("Tấm nền",DataGridViewContentAlignment.MiddleCenter) },
+            { "SpaceColorString", ("Độ phủ màu|Độ chính xác màu hiện thị trên màn hình so với khi in ấn",DataGridViewContentAlignment.MiddleLeft) },
+            { "RefreshRate", ("Tốc độ làm tươi|Đơn vị: Hz",DataGridViewContentAlignment.MiddleCenter) },
+            { "CanTouchPanel", ("Cảm ứng",DataGridViewContentAlignment.MiddleCenter) },
+            { "CPU", ("CPU",DataGridViewContentAlignment.MiddleCenter) },
+            { "GPU", ("GPU",DataGridViewContentAlignment.MiddleCenter) },
+            { "RAMString", ("RAM",DataGridViewContentAlignment.MiddleCenter) },
+            { "iGPU", ("iGPU",DataGridViewContentAlignment.MiddleCenter) },
+            { "TypeStorage", ("Chuẩn ổ cứng",DataGridViewContentAlignment.MiddleCenter) },
+            { "StorageCapacity", ("Dung lượng ổ cứng|Đơn vị: GB",DataGridViewContentAlignment.MiddleCenter) },
+            { "GPUString", ("Card đồ hoại rời",DataGridViewContentAlignment.MiddleCenter) },
+            { "Weight", ("Khối lượng|Đơn vị: Kg",DataGridViewContentAlignment.MiddleCenter) },
+            { "TypeScreen", ("Loại màn hình",DataGridViewContentAlignment.MiddleLeft) },
+            { "BatteryCapacity", ("Dung lượng pin|Đơn vị: Wh",DataGridViewContentAlignment.MiddleCenter) },
+            { "ColorCode", ("Màu sắc" ,DataGridViewContentAlignment.MiddleCenter)}};
         #endregion
 
         public BaseDetailInvoiceImportWarehouse_Form()
@@ -417,9 +417,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     {
                         column.DefaultCellStyle.Format = "yyyy";
                     }
-                    string headerText = translater[column.Name];
-                    string[] split = headerText.Split('|');
+                    (string, DataGridViewContentAlignment) keyValue = translater[column.Name];
+                    string[] split = keyValue.Item1.Split('|');
                     column.HeaderText = split[0];
+                    column.CellTemplate.Style.Alignment=keyValue.Item2;
                     if (split.Length > 1)
                     {
                         column.ToolTipText = split[1];

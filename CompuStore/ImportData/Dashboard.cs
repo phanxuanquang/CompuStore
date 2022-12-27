@@ -1,4 +1,5 @@
-﻿using Guna.UI2.WinForms;
+﻿using CompuStore.Database.Models;
+using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -41,7 +42,28 @@ namespace CompuStore.ImportData
             NumProducts = Database.DataProvider.Instance.Database.PRODUCTs.Count();
             NumOrders = Database.DataProvider.Instance.Database.INVOICEs.Where(item => item.INVOICE_DATE >= startDate && item.INVOICE_DATE <= endDate).Count();
         }
-        private void GetOrderAnalisys()
+
+        private void GetProductAnalisys()
+        {
+            TopProductsList = new List<KeyValuePair<string, int>>();
+            UnderstockList = new List<KeyValuePair<string, int>>();
+
+            //Get Top 5 products
+            var list = Database.DataProvider.Instance.Database.DETAIL_INVOICE.Where(item => item.INVOICE.INVOICE_DATE >= startDate && item.INVOICE.INVOICE_DATE <= endDate).GroupBy(product => product.PRODUCT.DETAIL_SPECS.COMMON_SPECS.NAME).Select(g => new
+            {
+                PRODUCT_NAME = g.Key,
+                Quanlity = g.Count()
+            }).OrderBy(t => t.Quanlity).Take(5);
+            foreach (var item in list)
+            {
+                TopProductsList.Add(
+                            new KeyValuePair<string, int>(item.PRODUCT_NAME.ToString(), item.Quanlity));
+             
+            }
+            //Get Understock
+
+        }
+            private void GetOrderAnalisys()
         {
             GrossRevenueList = new List<RevenueByDate>();
             TotalProfit = 0;
@@ -51,7 +73,13 @@ namespace CompuStore.ImportData
             {
                 INVOICE_DATE = g.Key,
                 TotalAmount = g.Sum(gg => gg.TOTAL)
+              
             });
+            var listd = Database.DataProvider.Instance.Database.DETAIL_INVOICE.Where(item => item.INVOICE.INVOICE_DATE >= startDate && item.INVOICE.INVOICE_DATE <= endDate);
+            foreach (var item in listd)
+            {
+                TotalProfit +=  (decimal)item.PRICE_PER_UNIT * (decimal)item.PRODUCT.DETAIL_SPECS.COMMON_SPECS.LINE_UP.PROFIT_RATIO;
+            }
             var resultTable = new List<KeyValuePair<DateTime, decimal>>();
             foreach (var item in list)
             {
@@ -59,6 +87,7 @@ namespace CompuStore.ImportData
                            new KeyValuePair<DateTime, decimal>((DateTime)item.INVOICE_DATE, (decimal)item.TotalAmount)
                            );
                 TotalRevenue += (decimal)item.TotalAmount;
+                
             }
             
             //Group by Hours
@@ -134,6 +163,7 @@ namespace CompuStore.ImportData
                 this.endDate = endDate;
                 this.numberDays = (endDate - startDate).Days;
                 GetNumberItems();
+                GetProductAnalisys();
                 GetOrderAnalisys();
                 Console.WriteLine("Refreshed data: {0} - {1}", startDate.ToString(), endDate.ToString());
                 return true;

@@ -31,8 +31,8 @@ namespace CompuStore.GUI.Tab
             if (refreshData == true)
             {
                 lblNumOrders.Text = model.NumOrders.ToString();
-                lblTotalRevenue.Text = model.TotalRevenue.ToString() + "VND";
-                lblTotalProfit.Text = model.TotalProfit.ToString() + "VND";
+                lblTotalRevenue.Text =  String.Format("{0:0,0}", model.TotalRevenue) + "VND";
+                lblTotalProfit.Text = String.Format("{0:0,0}", model.TotalProfit) + "VND";
                 lblNumCustomers.Text = model.NumCustomers.ToString();
                 lblNumSuppliers.Text = model.NumSuppliers.ToString();
                 lblNumProducts.Text = model.NumProducts.ToString();
@@ -40,11 +40,11 @@ namespace CompuStore.GUI.Tab
                 chartGrossRevenue.Series[0].XValueMember = "Date";
                 chartGrossRevenue.Series[0].YValueMembers = "TotalAmount";
                 chartGrossRevenue.DataBind();
-                /*chartTopProducts.DataSource = model.TopProductsList;
+                chartTopProducts.DataSource = model.TopProductsList;
                 chartTopProducts.Series[0].XValueMember = "Key";
                 chartTopProducts.Series[0].YValueMembers = "Value";
                 chartTopProducts.DataBind();
-                dgvUnderstock.DataSource = model.UnderstockList;
+               /* dgvUnderstock.DataSource = model.UnderstockList;
                 dgvUnderstock.Columns[0].HeaderText = "Item";
                 dgvUnderstock.Columns[1].HeaderText = "Units";*/
                 Console.WriteLine("Loaded view :)");

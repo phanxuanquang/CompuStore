@@ -106,7 +106,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             { "LineUp", ("Dòng sản phẩm", DataGridViewContentAlignment.MiddleLeft) },
             { "Manufacturer", ("Nhà sản xuất", DataGridViewContentAlignment.MiddleLeft) },
             { "ReleaseDate", ("Năm ra mắt", DataGridViewContentAlignment.MiddleCenter) },
-            { "Quantity", ("Số lượng|Số lượng sản phẩm nhập", DataGridViewContentAlignment.MiddleCenter) },
+            { "Quantity", ("Số lượng|Số lượng sản phẩm nhập", DataGridViewContentAlignment.MiddleRight) },
             { "RangeTotal", ("Giá tiền|Khoảng giá từ cấu hình thấp đến cao nhất", DataGridViewContentAlignment.MiddleRight) }};
         #endregion
 
@@ -242,12 +242,11 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     string headerText = itemTranslater.Item1;
                     string[] split = headerText.Split('|');
                     column.HeaderText = split[0];
+                    column.CellTemplate.Style.Alignment = itemTranslater.Item2;
                     if (split.Length > 1)
                     {
                         column.ToolTipText = split[1];
                     }
-                    //not alignment yet
-                    //column.DefaultCellStyle.Alignment = itemTranslater.Item2;
                 }
                 else
                 {
