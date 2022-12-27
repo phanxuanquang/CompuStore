@@ -40,11 +40,11 @@ namespace CompuStore.GUI.Tab
                 chartGrossRevenue.Series[0].XValueMember = "Date";
                 chartGrossRevenue.Series[0].YValueMembers = "TotalAmount";
                 chartGrossRevenue.DataBind();
-                /*chartTopProducts.DataSource = model.TopProductsList;
+                chartTopProducts.DataSource = model.TopProductsList;
                 chartTopProducts.Series[0].XValueMember = "Key";
                 chartTopProducts.Series[0].YValueMembers = "Value";
                 chartTopProducts.DataBind();
-                dgvUnderstock.DataSource = model.UnderstockList;
+               /* dgvUnderstock.DataSource = model.UnderstockList;
                 dgvUnderstock.Columns[0].HeaderText = "Item";
                 dgvUnderstock.Columns[1].HeaderText = "Units";*/
                 Console.WriteLine("Loaded view :)");

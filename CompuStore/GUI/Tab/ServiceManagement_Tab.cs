@@ -151,13 +151,21 @@ namespace CompuStore
                 {
 
                     row.Cells["CusName"].Value = selected.INVOICE.CUSTOMER.INFOR.NAME;
+                    row.Cells["CusName"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["PhoneNum"].Value = selected.INVOICE.CUSTOMER.INFOR.PHONE_NUMBER;
+                    row.Cells["PhoneNum"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["Product"].Value = selected.PRODUCT.DETAIL_SPECS.COMMON_SPECS.NAME;
+                    row.Cells["Product"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["ProductSerial"].Value = selected.PRODUCT.SERIAL_ID;
+                    row.Cells["ProductSerial"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["Date"].Value = selected.RECEIVE_DATE;
+                    row.Cells["Date"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["DateRe"].Value = selected.RETURN_DATE;
+                    row.Cells["DateRe"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["Id"].Value = selected.STAFF.NAME_ID;
+                    row.Cells["Id"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["Status"].Value = selected.STATUS_WARRANTY == 0 ? "Đang xử lý" : "Đã xử lý";
+                    row.Cells["Status"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
             }
         }
@@ -172,13 +180,21 @@ namespace CompuStore
                 if (selected != null)
                 {
                     row.Cells["CusName"].Value = selected.INVOICE.CUSTOMER.INFOR.NAME;
+                    row.Cells["CusName"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["PhoneNum"].Value = selected.INVOICE.CUSTOMER.INFOR.PHONE_NUMBER;
+                    row.Cells["PhoneNum"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["Product"].Value = selected.PRODUCT.DETAIL_SPECS.COMMON_SPECS.NAME;
+                    row.Cells["Product"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["ProductSerial"].Value = selected.PRODUCT.SERIAL_ID;
+                    row.Cells["ProductSerial"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["ProductRe"].Value = selected.PRODUCT1.DETAIL_SPECS.COMMON_SPECS.NAME;
+                    row.Cells["ProductRe"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["ProductSerialRe"].Value = selected.PRODUCT1.SERIAL_ID;
+                    row.Cells["ProductSerialRe"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["DateRe"].Value = selected.RETURN_DATE;
+                    row.Cells["DateRe"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["Id"].Value = selected.STAFF.NAME_ID;
+                    row.Cells["Id"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
             }
         }
