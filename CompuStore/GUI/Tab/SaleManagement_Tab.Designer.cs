@@ -180,7 +180,6 @@
             this.VGA_ComboBox.BackColor = System.Drawing.Color.Transparent;
             this.VGA_ComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.VGA_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.VGA_ComboBox.Enabled = false;
             this.VGA_ComboBox.FocusedColor = System.Drawing.Color.Empty;
             this.VGA_ComboBox.FocusedState.Parent = this.VGA_ComboBox;
             this.VGA_ComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -323,7 +322,6 @@
             // PriceLimit_TrackBar
             // 
             this.PriceLimit_TrackBar.BackColor = System.Drawing.Color.Transparent;
-            this.PriceLimit_TrackBar.Enabled = false;
             this.PriceLimit_TrackBar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
             this.PriceLimit_TrackBar.HoverState.Parent = this.PriceLimit_TrackBar;
             this.PriceLimit_TrackBar.Location = new System.Drawing.Point(25, 65);

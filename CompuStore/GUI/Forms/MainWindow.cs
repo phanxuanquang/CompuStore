@@ -103,6 +103,16 @@ namespace CompuStore.GUI
             LoadTab(statistics_Tab);
         }
 
+        private void Statistics_Button_MouseEnter(object sender, EventArgs e)
+        {
+            MenuPanel.Height = DeviceDpi > 96 ? 225 : 120;
+        }
+
+        private void Statistics_Button_MouseLeave(object sender, EventArgs e)
+        {
+            MenuPanel.Height = DeviceDpi > 96 ? 225 : 120;
+        }
+
         private void Exit_Button_Click(object sender, EventArgs e)
         {
             Application.Exit();

@@ -27,6 +27,7 @@ namespace CompuStore
         {
             
             InitializeComponent();
+            guna2ShadowForm1.SetShadowForm(this);
             this.DataTable.AutoGenerateColumns = false;
             this.DataTable.DataSource = iNVOICEBindingSource;
             this.Load += InvoiceList_Form_Load;

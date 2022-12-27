@@ -26,6 +26,7 @@ namespace CompuStore
                 warrantyCurrent = warrantyD as RECEIVE_WARRANTY;
             }
             InitializeComponent();
+            guna2ShadowForm1.SetShadowForm(this);
             ItemSerial_Box.ReadOnly = Identity_Box.ReadOnly = Name_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = WarrantyReason.ReadOnly = true;
             WarrantyDoneDate_Picker.Enabled= Status_ComboBox.Enabled = false;
             this.Load += WarrantyDetail_Form_Load;

@@ -89,6 +89,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         public BaseDetailInvoiceImportWarehouse_Form()
         {
             InitializeComponent();
+            guna2ShadowForm1.SetShadowForm(this);
             if (DeviceDpi > 96)
             {
                 TableData_DataGridView.ColumnHeadersHeight = 48;

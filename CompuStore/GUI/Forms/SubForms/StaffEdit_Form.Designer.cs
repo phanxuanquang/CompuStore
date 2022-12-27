@@ -69,7 +69,7 @@
             // 
             // PhoneNumber_Box
             // 
-            this.PhoneNumber_Box.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.PhoneNumber_Box.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PhoneNumber_Box.Animated = true;
             this.PhoneNumber_Box.BackColor = System.Drawing.Color.Transparent;
             this.PhoneNumber_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -93,7 +93,7 @@
             this.PhoneNumber_Box.HoverState.Parent = this.PhoneNumber_Box;
             this.PhoneNumber_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.PhoneNumber_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.PhoneNumber_Box.Location = new System.Drawing.Point(265, 145);
+            this.PhoneNumber_Box.Location = new System.Drawing.Point(265, 111);
             this.PhoneNumber_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PhoneNumber_Box.Name = "PhoneNumber_Box";
             this.PhoneNumber_Box.PasswordChar = '\0';
@@ -112,7 +112,7 @@
             // 
             // Identity_Box
             // 
-            this.Identity_Box.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Identity_Box.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Identity_Box.Animated = true;
             this.Identity_Box.BackColor = System.Drawing.Color.Transparent;
             this.Identity_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -136,7 +136,7 @@
             this.Identity_Box.HoverState.Parent = this.Identity_Box;
             this.Identity_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Identity_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Identity_Box.Location = new System.Drawing.Point(42, 145);
+            this.Identity_Box.Location = new System.Drawing.Point(42, 111);
             this.Identity_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Identity_Box.Name = "Identity_Box";
             this.Identity_Box.PasswordChar = '\0';
@@ -151,7 +151,7 @@
             // 
             // Email_Box
             // 
-            this.Email_Box.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Email_Box.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Email_Box.Animated = true;
             this.Email_Box.BackColor = System.Drawing.Color.Transparent;
             this.Email_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -175,7 +175,7 @@
             this.Email_Box.HoverState.Parent = this.Email_Box;
             this.Email_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Email_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Email_Box.Location = new System.Drawing.Point(42, 188);
+            this.Email_Box.Location = new System.Drawing.Point(42, 154);
             this.Email_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Email_Box.Name = "Email_Box";
             this.Email_Box.PasswordChar = '\0';
@@ -190,7 +190,7 @@
             // 
             // Address_Box
             // 
-            this.Address_Box.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Address_Box.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Address_Box.Animated = true;
             this.Address_Box.BackColor = System.Drawing.Color.Transparent;
             this.Address_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -214,7 +214,7 @@
             this.Address_Box.HoverState.Parent = this.Address_Box;
             this.Address_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Address_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Address_Box.Location = new System.Drawing.Point(42, 231);
+            this.Address_Box.Location = new System.Drawing.Point(42, 197);
             this.Address_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Address_Box.Name = "Address_Box";
             this.Address_Box.PasswordChar = '\0';
@@ -233,7 +233,7 @@
             // 
             // Name_Box
             // 
-            this.Name_Box.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Name_Box.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Name_Box.Animated = true;
             this.Name_Box.BackColor = System.Drawing.Color.Transparent;
             this.Name_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -257,7 +257,7 @@
             this.Name_Box.HoverState.Parent = this.Name_Box;
             this.Name_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Name_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Name_Box.Location = new System.Drawing.Point(42, 102);
+            this.Name_Box.Location = new System.Drawing.Point(42, 68);
             this.Name_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name_Box.Name = "Name_Box";
             this.Name_Box.PasswordChar = '\0';
@@ -272,7 +272,7 @@
             // 
             // Apartment_ComboBox
             // 
-            this.Apartment_ComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Apartment_ComboBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Apartment_ComboBox.Animated = true;
             this.Apartment_ComboBox.BackColor = System.Drawing.Color.Transparent;
             this.Apartment_ComboBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -298,7 +298,7 @@
             this.Apartment_ComboBox.HoverState.Parent = this.Apartment_ComboBox;
             this.Apartment_ComboBox.ItemHeight = 32;
             this.Apartment_ComboBox.ItemsAppearance.Parent = this.Apartment_ComboBox;
-            this.Apartment_ComboBox.Location = new System.Drawing.Point(42, 277);
+            this.Apartment_ComboBox.Location = new System.Drawing.Point(42, 243);
             this.Apartment_ComboBox.Margin = new System.Windows.Forms.Padding(0);
             this.Apartment_ComboBox.Name = "Apartment_ComboBox";
             this.Apartment_ComboBox.ShadowDecoration.Parent = this.Apartment_ComboBox;
@@ -344,7 +344,7 @@
             // 
             // DateTimeImportWarehouse_DateTimePicker
             // 
-            this.DateTimeImportWarehouse_DateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.DateTimeImportWarehouse_DateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.DateTimeImportWarehouse_DateTimePicker.Animated = true;
             this.DateTimeImportWarehouse_DateTimePicker.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
             this.DateTimeImportWarehouse_DateTimePicker.CheckedState.Parent = this.DateTimeImportWarehouse_DateTimePicker;
@@ -357,7 +357,7 @@
             this.DateTimeImportWarehouse_DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.DateTimeImportWarehouse_DateTimePicker.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
             this.DateTimeImportWarehouse_DateTimePicker.HoverState.Parent = this.DateTimeImportWarehouse_DateTimePicker;
-            this.DateTimeImportWarehouse_DateTimePicker.Location = new System.Drawing.Point(265, 188);
+            this.DateTimeImportWarehouse_DateTimePicker.Location = new System.Drawing.Point(265, 154);
             this.DateTimeImportWarehouse_DateTimePicker.Margin = new System.Windows.Forms.Padding(0);
             this.DateTimeImportWarehouse_DateTimePicker.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.DateTimeImportWarehouse_DateTimePicker.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -374,7 +374,7 @@
             // 
             // Edit_Button
             // 
-            this.Edit_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Edit_Button.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Edit_Button.Animated = true;
             this.Edit_Button.BorderRadius = 8;
             this.Edit_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
@@ -385,7 +385,7 @@
             this.Edit_Button.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Edit_Button.ForeColor = System.Drawing.Color.White;
             this.Edit_Button.HoverState.Parent = this.Edit_Button;
-            this.Edit_Button.Location = new System.Drawing.Point(42, 377);
+            this.Edit_Button.Location = new System.Drawing.Point(42, 343);
             this.Edit_Button.Name = "Edit_Button";
             this.Edit_Button.PressedDepth = 5;
             this.Edit_Button.ShadowDecoration.Parent = this.Edit_Button;
@@ -397,7 +397,7 @@
             // 
             // Status_ComboBox
             // 
-            this.Status_ComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Status_ComboBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Status_ComboBox.Animated = true;
             this.Status_ComboBox.BackColor = System.Drawing.Color.Transparent;
             this.Status_ComboBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -423,7 +423,7 @@
             this.Status_ComboBox.HoverState.Parent = this.Status_ComboBox;
             this.Status_ComboBox.ItemHeight = 32;
             this.Status_ComboBox.ItemsAppearance.Parent = this.Status_ComboBox;
-            this.Status_ComboBox.Location = new System.Drawing.Point(42, 325);
+            this.Status_ComboBox.Location = new System.Drawing.Point(42, 291);
             this.Status_ComboBox.Margin = new System.Windows.Forms.Padding(0);
             this.Status_ComboBox.Name = "Status_ComboBox";
             this.Status_ComboBox.ShadowDecoration.Parent = this.Status_ComboBox;
@@ -439,7 +439,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(525, 472);
+            this.ClientSize = new System.Drawing.Size(525, 441);
             this.Controls.Add(this.Status_ComboBox);
             this.Controls.Add(this.DateTimeImportWarehouse_DateTimePicker);
             this.Controls.Add(this.Edit_Button);

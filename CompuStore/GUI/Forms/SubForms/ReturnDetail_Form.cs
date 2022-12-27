@@ -15,6 +15,7 @@ namespace CompuStore
         public ReturnDetail_Form(object returnD)
         {
             InitializeComponent();
+            guna2ShadowForm1.SetShadowForm(this);
         }
 
         private void Exit_Button_Click(object sender, EventArgs e)

@@ -59,6 +59,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.LineUp_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.NameProduct_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.Manufacturer_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.TableData_DataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
@@ -539,5 +540,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         private System.Windows.Forms.FlowLayoutPanel Filter_FlowLayoutPanel;
         protected Guna.UI2.WinForms.Guna2Button ResetFilter;
         private System.Windows.Forms.PictureBox HeaderIcon;
+        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
     }
 }
