@@ -85,6 +85,8 @@
             this.Statistics_Button.TabIndex = 7;
             this.Statistics_Button.Text = "THỐNG KÊ";
             this.Statistics_Button.Click += new System.EventHandler(this.Statistics_Button_Click);
+            this.Statistics_Button.MouseEnter += new System.EventHandler(this.Statistics_Button_MouseEnter);
+            this.Statistics_Button.MouseLeave += new System.EventHandler(this.Statistics_Button_MouseLeave);
             // 
             // ServiceManage_Button
             // 
