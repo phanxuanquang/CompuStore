@@ -19,17 +19,17 @@
                      <div style="font-weight: bold; font-size: 2rem;">
                         {{ data.name }}
                      </div>
-                     {{ for keyValue in data.properties }}
                      <table class="w-100">
                         <tr style="background-color: orange;">
                            <th colspan="2">Thông tin sản phẩm</th>
                         </tr>
+                        {{ for keyValue in data.properties }}
                         <tr>
                            <td>{{ keyValue.key }}</td>
                            <td>{{ keyValue.value }}</td>
                         </tr>
+                        {{ end }}
                      </table>
-                     {{ end }}
                      <div>
                         <p style="font-weight: bold; font-size: 2rem;">{{data.price}}</p>
                      </div>
