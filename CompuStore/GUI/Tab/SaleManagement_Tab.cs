@@ -234,6 +234,7 @@ namespace CompuStore.Tab
             string ram = RAM_ComboBox.SelectedIndex == 0 ? ram = string.Empty : RAM_ComboBox.Text;
             string storage = Storage_ComboBox.SelectedIndex == 0 ? storage = string.Empty : Storage_ComboBox.Text;
             int priceLimit = PriceLimit_TrackBar.Value * 10000000;
+            
             try
             {
                 CurrencyManager cm = (CurrencyManager)BindingContext[GridDataTable.DataSource];
@@ -241,6 +242,18 @@ namespace CompuStore.Tab
 
                 foreach (DataGridViewRow row in GridDataTable.Rows)
                 {
+                    bool isVGAValid()
+                    {
+                        if(row.Cells["GPU"].Value != null)
+                        {
+                            if ((row.Cells["GPU"].Value.ToString().Contains(vga))){
+                                {
+                                    return true;
+                                }
+                            }
+                        }
+                        return false;
+                    }
                     if (row.Cells["Name"].Value.ToString().ToLower().Contains(SearchBox.Text.ToLower()) &&
                         row.Cells["Color"].Value.ToString().ToLower().Contains(ColorSearch_Box.Text.ToLower()) &&
                         row.Cells["Size"].Value.ToString().Contains(size) &&
@@ -248,8 +261,8 @@ namespace CompuStore.Tab
                         row.Cells["CPU"].Value.ToString().Contains(cpu) &&
                         row.Cells["RAMString"].Value.ToString().Trim().Contains(ram) &&
                         row.Cells["StorageCapacity"].Value.ToString().Contains(storage)
-                    // && int.Parse(row.Cells["Price"].Value.ToString().Trim()) <= (PriceLimit_TrackBar.Value * 10000000);
-                    // && (row.Cells["GPU"].Value.ToString().Contains(vga) && row.Cells["GPU"].Value != null)
+                        && isVGAValid()
+                     && double.Parse(row.Cells["Price"].Value.ToString().Trim()) <= (PriceLimit_TrackBar.Value * 10000000)
                     )
                     {
                         row.Visible = true;
@@ -309,7 +322,8 @@ namespace CompuStore.Tab
 
         private void PriceLimit_TrackBar_ValueChanged(object sender, EventArgs e)
         {
-            Search();
+            PriceLimit_Label.Text = (PriceLimit_TrackBar.Value * 1000000).ToString();
+            Search(); 
         }
     }
 }
