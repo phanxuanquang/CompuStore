@@ -98,7 +98,7 @@ namespace CompuStore.Tab
                     row.Cells["Role"].Value = selected.STAFFROLE.ROLE;
                     row.Cells["Role"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["Status"].Value = selected.WORKING_STATUS == 0 ? "Đã nghỉ việc" : "Đang làm việc";
-                    row.Cells["Status"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    row.Cells["Status"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 }
             }
         }

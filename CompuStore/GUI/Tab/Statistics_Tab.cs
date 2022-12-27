@@ -31,8 +31,8 @@ namespace CompuStore.GUI.Tab
             if (refreshData == true)
             {
                 lblNumOrders.Text = model.NumOrders.ToString();
-                lblTotalRevenue.Text = model.TotalRevenue.ToString() + "VND";
-                lblTotalProfit.Text = model.TotalProfit.ToString() + "VND";
+                lblTotalRevenue.Text =  String.Format("{0:0,0}", model.TotalRevenue) + "VND";
+                lblTotalProfit.Text = String.Format("{0:0,0}", model.TotalProfit) + "VND";
                 lblNumCustomers.Text = model.NumCustomers.ToString();
                 lblNumSuppliers.Text = model.NumSuppliers.ToString();
                 lblNumProducts.Text = model.NumProducts.ToString();

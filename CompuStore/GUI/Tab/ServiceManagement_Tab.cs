@@ -165,7 +165,7 @@ namespace CompuStore
                     row.Cells["Id"].Value = selected.STAFF.NAME_ID;
                     row.Cells["Id"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["Status"].Value = selected.STATUS_WARRANTY == 0 ? "Đang xử lý" : "Đã xử lý";
-                    row.Cells["Status"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    row.Cells["Status"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 }
             }
         }
