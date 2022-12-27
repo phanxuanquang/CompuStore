@@ -254,10 +254,10 @@ namespace CompuStore
         {
             //MessageBox.Show("Không tim thấy máy in. Vui lòng thử lại sau.", "Không tìm thấy máy in", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-            foreach (var item in addedProduct)
-            {
-                productList.Add(Database.DataProvider.Instance.Database.PRODUCTs.Where(prod => prod.SERIAL_ID == item).FirstOrDefault());
-            }
+            //foreach (var item in addedProduct)
+            //{
+            //    productList.Add(Database.DataProvider.Instance.Database.PRODUCTs.Where(prod => prod.SERIAL_ID == item).FirstOrDefault());
+            //}
             List<CUSTOMER> listCus = new List<CUSTOMER>();
 
             {
@@ -269,17 +269,24 @@ namespace CompuStore
                     string iden = "1093412" + i * 10 + 34;
                     string address = "Thủ Đức, TP HCM";
                     customer = CustomerServices.Instance.SaveCustomerToDB(name, phoneNumber, email, iden, address);
-                    listCus.Add(customer);
+                    if (customer != null)
+                        listCus.Add(customer);
                 }
             }
             Exception res = new Exception();
             try
             {
+                List<PRODUCT> lp = Database.DataProvider.Instance.Database.PRODUCTs.Select(item => item).ToList();
+                productList.Clear();
                 foreach (var item in listCus)
                 {
                     for (int i = 1; i < 32; i++)
                     {
                         DateTime x = new DateTime(2022, 12, i, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+                        for (int j = i + 3; j < i + 8; j++)
+                        {
+                            productList.Add(lp[j]);
+                        }
                         res = InvoiceServices.Instance.SaveInvoiceToDB(productList, item.ID, currentStaff.ID, x, 10);
                     }
                 }
