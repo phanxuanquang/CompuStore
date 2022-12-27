@@ -64,9 +64,6 @@ namespace CompuStore
             }
         }
 
- 
-
-
         public Task LoadDB(IProgress<bool> progress)
         {
             return Task.Factory.StartNew(() =>
@@ -129,7 +126,16 @@ namespace CompuStore
 
         private void ViewDetail_Button_Click(object sender, EventArgs e)
         {
-
+            if (DataTable.SelectedRows.Count > 0)
+            {
+                string id = DataTable.SelectedRows[0].Cells["Id"].Value.ToString();
+                InvoiceDetail_Form invoiceDetail = new InvoiceDetail_Form(id);
+                invoiceDetail.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn hóa đơn");
+            }
         }
     }
 }

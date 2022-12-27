@@ -195,6 +195,12 @@
     <Compile Include="Database\Services\ChangeOrRefundProductServices.cs" />
     <Compile Include="Database\Services\DetailInvoiceServices.cs" />
     <Compile Include="Database\Services\WarrantyServices.cs" />
+    <Compile Include="GUI\Forms\SubForms\InvoiceDetail_Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Forms\SubForms\InvoiceDetail_Form.Designer.cs">
+      <DependentUpon>InvoiceDetail_Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Forms\SubForms\AddReturn_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -355,6 +361,9 @@
     <Compile Include="Utilities\ExportPDF\ExportPDF.cs" />
     <Compile Include="Utilities\ExportPDF\IDataExport.cs" />
     <Compile Include="Utilities\ExportPDF\ProductPDF.cs" />
+    <EmbeddedResource Include="GUI\Forms\SubForms\InvoiceDetail_Form.resx">
+      <DependentUpon>InvoiceDetail_Form.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Forms\SubForms\AddReturn_Form.resx">
       <DependentUpon>AddReturn_Form.cs</DependentUpon>
     </EmbeddedResource>
