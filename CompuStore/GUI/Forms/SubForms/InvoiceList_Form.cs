@@ -27,6 +27,8 @@ namespace CompuStore
         {
             
             InitializeComponent();
+            this.Icon = Properties.Resources.Icon;
+            this.ShowInTaskbar = false;
             guna2ShadowForm1.SetShadowForm(this);
             this.DataTable.AutoGenerateColumns = false;
             this.DataTable.DataSource = iNVOICEBindingSource;
@@ -136,6 +138,32 @@ namespace CompuStore
             else
             {
                 MessageBox.Show("Vui lòng chọn hóa đơn");
+            }
+        }
+
+        private void SearchBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                CurrencyManager cm = (CurrencyManager)BindingContext[DataTable.DataSource];
+                cm.SuspendBinding();
+
+                foreach (DataGridViewRow row in DataTable.Rows)
+                {
+                    if (row.Cells["PhoneNum"].Value.ToString().ToLower().Contains(SearchBox.Text.ToLower()))
+                    {
+                        row.Visible = true;
+                    }
+                    else
+                    {
+                        row.Visible = false;
+                    }
+                }
+                cm.ResumeBinding();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

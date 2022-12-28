@@ -525,6 +525,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddInvoice_Form";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddInvoice_Form";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddInvoice_Form_FormClosing);

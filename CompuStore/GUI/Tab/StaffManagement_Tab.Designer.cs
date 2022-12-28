@@ -88,9 +88,11 @@
             this.Button_3.HoverState.Parent = this.Button_3;
             this.Button_3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Button_3.ShadowDecoration.Parent = this.Button_3;
-            this.Button_3.Text = "Thu hồi quyền";
+            this.Button_3.Text = "Sa thải nhân viên";
             this.Button_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Button_3.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
+            this.Button_3.Visible = false;
+            this.Button_3.Click += new System.EventHandler(this.Button_3_Click);
             // 
             // sTAFFBindingSource
             // 

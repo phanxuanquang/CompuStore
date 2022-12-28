@@ -167,5 +167,18 @@ namespace CompuStore.Tab
         {
             
         }
+
+        private void Button_3_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn sa thải nhân viên này?", "Sa thải nhân viên", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (dialogResult == DialogResult.Yes)
+            {
+                // Sa thải
+            }
+            else
+            {
+                return;
+            }
+        }
     }
 }

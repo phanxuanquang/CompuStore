@@ -78,6 +78,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
         {
             InitializeComponent();
             AddInitializeComponent();
+            this.Icon = Properties.Resources.Icon;
+            this.ShowInTaskbar = false;
             if (DeviceDpi > 96)
             {
                 Ports_DataGridView.ColumnHeadersHeight = 48;

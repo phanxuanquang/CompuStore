@@ -26,6 +26,8 @@ namespace CompuStore.GUI.Forms
                 staffCurrent = staff as STAFF;
             }
             InitializeComponent();
+            this.Icon = Properties.Resources.Icon;
+            this.ShowInTaskbar = false;
             ShadowForm.SetShadowForm(this);
             Name_Box.ReadOnly = Identity_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = !notReadOnly;
             DateTimeImportWarehouse_DateTimePicker.Enabled = notReadOnly;

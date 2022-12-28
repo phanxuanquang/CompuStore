@@ -25,6 +25,8 @@ namespace CompuStore
                 warrantyCurrent = warrantyD as RECEIVE_WARRANTY;
             }
             InitializeComponent();
+            this.Icon = Properties.Resources.Icon;
+            this.ShowInTaskbar = false;
             guna2ShadowForm1.SetShadowForm(this);
             OldItemSerial_Box.ReadOnly = Identity_Box.ReadOnly = Name_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = NewItemSerial_Box.ReadOnly= ReturnReason.ReadOnly = NewItemSerial_Box.ReadOnly = true;
          

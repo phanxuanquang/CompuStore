@@ -41,6 +41,7 @@
             this.ContainerPanel = new System.Windows.Forms.Panel();
             this.HeaderIcon = new System.Windows.Forms.PictureBox();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
@@ -72,9 +73,9 @@
             this.Statistics_Button.ForeColor = System.Drawing.Color.Black;
             this.Statistics_Button.HoverState.FillColor = System.Drawing.Color.White;
             this.Statistics_Button.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Statistics_Button.HoverState.Image = global::CompuStore.Properties.Resources.Storage___Hover;
+            this.Statistics_Button.HoverState.Image = global::CompuStore.Properties.Resources.Statistics___Hover;
             this.Statistics_Button.HoverState.Parent = this.Statistics_Button;
-            this.Statistics_Button.Image = ((System.Drawing.Image)(resources.GetObject("Statistics_Button.Image")));
+            this.Statistics_Button.Image = global::CompuStore.Properties.Resources.Storage;
             this.Statistics_Button.ImageOffset = new System.Drawing.Point(0, 8);
             this.Statistics_Button.ImageSize = new System.Drawing.Size(50, 50);
             this.Statistics_Button.Location = new System.Drawing.Point(1362, -1);
@@ -293,5 +294,6 @@
         private Guna.UI2.WinForms.Guna2DragControl DragControl;
         private System.Windows.Forms.Panel ContainerPanel;
         private Guna.UI2.WinForms.Guna2TileButton Statistics_Button;
+        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
     }
 }

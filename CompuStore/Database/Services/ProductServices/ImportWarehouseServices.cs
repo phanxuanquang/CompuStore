@@ -49,7 +49,7 @@ namespace CompuStore.Database.Services.ProductServices
 
         public async Task<(IMPORT_WAREHOUSE, List<ModelProduct>)> Import(ModelProduct[] products, STORE store, STAFF staff, DISTRIBUTOR distributor, DateTime? importDate)
         {
-            if (products == null) throw new ArgumentNullException();
+            if (products == null || store == null || staff == null || distributor == null || importDate == null) throw new ArgumentNullException();
 
             IMPORT_WAREHOUSE invoice = await CreateInvoiceImportWareHouse(store, staff, distributor, importDate);
             List<ModelProduct> errorImport = new List<ModelProduct>();
@@ -58,11 +58,8 @@ namespace CompuStore.Database.Services.ProductServices
             {
                 try
                 {
-                    await ProductServices.Instance.ImportProduct(products[index]).ContinueWith((import) =>
-                    {
-                        PRODUCT model = import.Result;
-                        DetailImportWarehouseServices.Instance.CreateDetailImportWarehouse(invoice, model, products[index].Price).Wait();
-                    });
+                    PRODUCT model = await ProductServices.Instance.ImportProduct(products[index]);
+                    await DetailImportWarehouseServices.Instance.CreateDetailImportWarehouse(invoice, model, products[index].Price);
                 }
                 catch (AggregateException)
                 {
