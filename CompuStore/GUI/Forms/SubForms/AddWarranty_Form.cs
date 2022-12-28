@@ -40,7 +40,6 @@ namespace CompuStore
         {
             currentStaff = LoginServices.Instance.CurrentStaff;
             lbStaffName.Text += " " + currentStaff.INFOR.NAME;
-            lbDate.Text += " " + DateTime.Now.Date;
             WarrantyDoneDate_Picker.Value = DateTime.Now.Date.AddDays(7);
         }
 
@@ -97,7 +96,7 @@ namespace CompuStore
                 MessageBox.Show(err.Message, "File Missing", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-            AddAutoCompleteCource(ItemSerial_Box, arrayOfWowrds1.Select(item => item.PRODUCT.SERIAL_ID).ToArray());
+            AddAutoCompleteCource(ItemSerial_Box, arrayOfWowrds1.Where(pro => pro.PRODUCT.IN_WAREHOUSE == false).Select(item => item.PRODUCT.SERIAL_ID).ToArray());
         }
 
         public void AddAutoCompleteCource(Guna2TextBox textBox, string[] strings)

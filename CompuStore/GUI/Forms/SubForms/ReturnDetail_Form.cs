@@ -15,14 +15,14 @@ namespace CompuStore
 {
     public partial class ReturnDetail_Form : Form
     {
-        RECEIVE_WARRANTY warrantyCurrent;
+        CHANGE_OR_REFUND_PRODUCT warrantyCurrent;
         DETAIL_INVOICE detail;
         CUSTOMER customer;
         public ReturnDetail_Form(object warrantyD)
         {
             if (warrantyD != null)
             {
-                warrantyCurrent = warrantyD as RECEIVE_WARRANTY;
+                warrantyCurrent = warrantyD as CHANGE_OR_REFUND_PRODUCT;
             }
             InitializeComponent();
             this.Icon = Properties.Resources.Icon;
@@ -41,7 +41,7 @@ namespace CompuStore
                 iNFORBindingSource.DataSource = warrantyCurrent.INVOICE.CUSTOMER.INFOR;
                 pRODUCTBindingSource.DataSource = warrantyCurrent.PRODUCT;
                 lbStaffName.Text += " " + warrantyCurrent.STAFF.INFOR.NAME;
-                lbDate.Text += " " + warrantyCurrent.RECEIVE_DATE.ToString();
+                lbDate.Text += " " + warrantyCurrent.RETURN_DATE.ToString();
             }
            
             TurnOnAutocomplete();
@@ -52,37 +52,7 @@ namespace CompuStore
             this.Close();
         }
 
-        private void EditAndSave_Button_Click(object sender, EventArgs e)
-        {
-            if (EditAndSave_Button.Text == "SỬA HÓA ĐƠN")
-            {
-                OldItemSerial_Box.Width = 406;
-                ReturnReason.ReadOnly = false;
-      
-                EditAndSave_Button.Text = "LƯU THÔNG TIN";
-            }
-            else
-            {
-
-
-                try
-                {
-                   
-                    Database.DataProvider.Instance.Database.SaveChanges();
-                    MessageBox.Show("Chỉnh sửa thông tin thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("Có lỗi xảy ra. Vui lòng thử lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                this.Close();
-
-                OldItemSerial_Box.Width = 548;
-                OldItemSerial_Box.ReadOnly = Identity_Box.ReadOnly = Name_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = ReturnReason.ReadOnly = true;
-                EditAndSave_Button.Text = "SỬA HÓA ĐƠN";
-            }
-        }
-
+        
         private bool isValidSerialID(DETAIL_INVOICE detail)
         {
             if (detail == null)

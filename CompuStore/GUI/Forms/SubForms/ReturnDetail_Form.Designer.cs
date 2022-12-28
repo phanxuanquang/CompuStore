@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.Header = new System.Windows.Forms.Label();
-            this.EditAndSave_Button = new Guna.UI2.WinForms.Guna2Button();
+            this.Print_Button = new Guna.UI2.WinForms.Guna2Button();
             this.HeaderIcon = new System.Windows.Forms.PictureBox();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.ReturnReason = new Guna.UI2.WinForms.Guna2TextBox();
@@ -69,28 +69,28 @@
             this.Header.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Header.UseCompatibleTextRendering = true;
             // 
-            // EditAndSave_Button
+            // Print_Button
             // 
-            this.EditAndSave_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.EditAndSave_Button.Animated = true;
-            this.EditAndSave_Button.BorderRadius = 3;
-            this.EditAndSave_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.EditAndSave_Button.CheckedState.Parent = this.EditAndSave_Button;
-            this.EditAndSave_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.EditAndSave_Button.CustomImages.Parent = this.EditAndSave_Button;
-            this.EditAndSave_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.EditAndSave_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.EditAndSave_Button.ForeColor = System.Drawing.Color.White;
-            this.EditAndSave_Button.HoverState.Parent = this.EditAndSave_Button;
-            this.EditAndSave_Button.Location = new System.Drawing.Point(38, 406);
-            this.EditAndSave_Button.Name = "EditAndSave_Button";
-            this.EditAndSave_Button.PressedDepth = 5;
-            this.EditAndSave_Button.ShadowDecoration.Parent = this.EditAndSave_Button;
-            this.EditAndSave_Button.Size = new System.Drawing.Size(549, 57);
-            this.EditAndSave_Button.TabIndex = 91;
-            this.EditAndSave_Button.Text = "SỬA HÓA ĐƠN";
-            this.EditAndSave_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            this.EditAndSave_Button.Click += new System.EventHandler(this.EditAndSave_Button_Click);
+            this.Print_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Print_Button.Animated = true;
+            this.Print_Button.BorderRadius = 3;
+            this.Print_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Print_Button.CheckedState.Parent = this.Print_Button;
+            this.Print_Button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Print_Button.CustomImages.Parent = this.Print_Button;
+            this.Print_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Print_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Print_Button.ForeColor = System.Drawing.Color.White;
+            this.Print_Button.HoverState.Parent = this.Print_Button;
+            this.Print_Button.Location = new System.Drawing.Point(38, 419);
+            this.Print_Button.Name = "Print_Button";
+            this.Print_Button.PressedDepth = 5;
+            this.Print_Button.ShadowDecoration.Parent = this.Print_Button;
+            this.Print_Button.Size = new System.Drawing.Size(549, 57);
+            this.Print_Button.TabIndex = 84;
+            this.Print_Button.Text = "IN HÓA ĐƠN";
+            this.Print_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.Print_Button.Click += new System.EventHandler(this.Print_Button_Click);
             // 
             // HeaderIcon
             // 
@@ -130,7 +130,7 @@
             this.ReturnReason.BorderRadius = 8;
             this.ReturnReason.BorderThickness = 2;
             this.ReturnReason.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.ReturnReason.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.cHANGEORREFUNDPRODUCTBindingSource, "REASON", true));
+            this.ReturnReason.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cHANGEORREFUNDPRODUCTBindingSource, "REASON", true));
             this.ReturnReason.DefaultText = "";
             this.ReturnReason.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.ReturnReason.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -173,7 +173,7 @@
             this.NewItemSerial_Box.BorderRadius = 8;
             this.NewItemSerial_Box.BorderThickness = 2;
             this.NewItemSerial_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.NewItemSerial_Box.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.pRODUCTBindingSource, "SERIAL_ID", true));
+            this.NewItemSerial_Box.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUCTBindingSource, "SERIAL_ID", true));
             this.NewItemSerial_Box.DefaultText = "";
             this.NewItemSerial_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.NewItemSerial_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -216,7 +216,7 @@
             this.OldItemSerial_Box.BorderRadius = 8;
             this.OldItemSerial_Box.BorderThickness = 2;
             this.OldItemSerial_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.OldItemSerial_Box.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.pRODUCTBindingSource, "SERIAL_ID", true));
+            this.OldItemSerial_Box.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUCTBindingSource, "SERIAL_ID", true));
             this.OldItemSerial_Box.DefaultText = "";
             this.OldItemSerial_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.OldItemSerial_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -268,7 +268,7 @@
             this.Email_Box.BorderRadius = 8;
             this.Email_Box.BorderThickness = 2;
             this.Email_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Email_Box.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.iNFORBindingSource, "EMAIL", true));
+            this.Email_Box.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.iNFORBindingSource, "EMAIL", true));
             this.Email_Box.DefaultText = "";
             this.Email_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.Email_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -312,7 +312,7 @@
             this.Name_Box.BorderRadius = 8;
             this.Name_Box.BorderThickness = 2;
             this.Name_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Name_Box.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.iNFORBindingSource, "NAME", true));
+            this.Name_Box.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.iNFORBindingSource, "NAME", true));
             this.Name_Box.DefaultText = "";
             this.Name_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.Name_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -365,7 +365,7 @@
             this.PhoneNumber_Box.BorderRadius = 8;
             this.PhoneNumber_Box.BorderThickness = 2;
             this.PhoneNumber_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.PhoneNumber_Box.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.iNFORBindingSource, "PHONE_NUMBER", true));
+            this.PhoneNumber_Box.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.iNFORBindingSource, "PHONE_NUMBER", true));
             this.PhoneNumber_Box.DefaultText = "";
             this.PhoneNumber_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.PhoneNumber_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -405,7 +405,7 @@
             this.Identity_Box.BorderRadius = 8;
             this.Identity_Box.BorderThickness = 2;
             this.Identity_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.Identity_Box.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.iNFORBindingSource, "IDENTITY_CODE", true));
+            this.Identity_Box.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.iNFORBindingSource, "IDENTITY_CODE", true));
             this.Identity_Box.DefaultText = "";
             this.Identity_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.Identity_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -477,7 +477,7 @@
             this.Controls.Add(this.PhoneNumber_Box);
             this.Controls.Add(this.Identity_Box);
             this.Controls.Add(this.AddInfor_Button);
-            this.Controls.Add(this.EditAndSave_Button);
+            this.Controls.Add(this.Print_Button);
             this.Controls.Add(this.HeaderIcon);
             this.Controls.Add(this.Exit_Button);
             this.Controls.Add(this.Header);
@@ -499,7 +499,7 @@
         private System.Windows.Forms.PictureBox HeaderIcon;
         private Guna.UI2.WinForms.Guna2ImageButton Exit_Button;
         private System.Windows.Forms.Label Header;
-        private Guna.UI2.WinForms.Guna2Button EditAndSave_Button;
+        private Guna.UI2.WinForms.Guna2Button Print_Button;
         private Guna.UI2.WinForms.Guna2TextBox ReturnReason;
         private Guna.UI2.WinForms.Guna2TextBox NewItemSerial_Box;
         private Guna.UI2.WinForms.Guna2TextBox OldItemSerial_Box;

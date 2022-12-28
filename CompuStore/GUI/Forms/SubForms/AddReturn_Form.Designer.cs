@@ -32,7 +32,6 @@
             this.Header = new System.Windows.Forms.Label();
             this.HeaderIcon = new System.Windows.Forms.PictureBox();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.NewItemSerial_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.OldItemSerial_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbDate = new System.Windows.Forms.Label();
             this.Print_Button = new Guna.UI2.WinForms.Guna2Button();
@@ -48,6 +47,8 @@
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.CreateDate_Picker = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.NameProduct_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.Serial_ComboBox = new CompuStore.Control.ComboBoxCustom();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,44 +95,6 @@
             this.Exit_Button.Size = new System.Drawing.Size(40, 40);
             this.Exit_Button.TabIndex = 91;
             this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
-            // 
-            // NewItemSerial_Box
-            // 
-            this.NewItemSerial_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.NewItemSerial_Box.Animated = true;
-            this.NewItemSerial_Box.BackColor = System.Drawing.Color.Transparent;
-            this.NewItemSerial_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
-            this.NewItemSerial_Box.BorderRadius = 8;
-            this.NewItemSerial_Box.BorderThickness = 2;
-            this.NewItemSerial_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.NewItemSerial_Box.DefaultText = "";
-            this.NewItemSerial_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.NewItemSerial_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.NewItemSerial_Box.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.NewItemSerial_Box.DisabledState.Parent = this.NewItemSerial_Box;
-            this.NewItemSerial_Box.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.NewItemSerial_Box.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.NewItemSerial_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.NewItemSerial_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
-            this.NewItemSerial_Box.FocusedState.Parent = this.NewItemSerial_Box;
-            this.NewItemSerial_Box.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewItemSerial_Box.ForeColor = System.Drawing.Color.Black;
-            this.NewItemSerial_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
-            this.NewItemSerial_Box.HoverState.Parent = this.NewItemSerial_Box;
-            this.NewItemSerial_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
-            this.NewItemSerial_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.NewItemSerial_Box.Location = new System.Drawing.Point(30, 228);
-            this.NewItemSerial_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.NewItemSerial_Box.Name = "NewItemSerial_Box";
-            this.NewItemSerial_Box.PasswordChar = '\0';
-            this.NewItemSerial_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.NewItemSerial_Box.PlaceholderText = "Mã se-ri sản phẩm đổi mới";
-            this.NewItemSerial_Box.SelectedText = "";
-            this.NewItemSerial_Box.ShadowDecoration.Parent = this.NewItemSerial_Box;
-            this.NewItemSerial_Box.Size = new System.Drawing.Size(550, 37);
-            this.NewItemSerial_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.NewItemSerial_Box.TabIndex = 135;
-            this.NewItemSerial_Box.TextOffset = new System.Drawing.Point(5, 0);
             // 
             // OldItemSerial_Box
             // 
@@ -490,14 +453,46 @@
             this.CreateDate_Picker.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.CreateDate_Picker.Value = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
             // 
+            // NameProduct_ComboBox
+            // 
+            this.NameProduct_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.NameProduct_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.NameProduct_ComboBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.NameProduct_ComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.NameProduct_ComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameProduct_ComboBox.FormattingEnabled = true;
+            this.NameProduct_ComboBox.ItemHeight = 15;
+            this.NameProduct_ComboBox.Location = new System.Drawing.Point(30, 231);
+            this.NameProduct_ComboBox.Margin = new System.Windows.Forms.Padding(0);
+            this.NameProduct_ComboBox.Name = "NameProduct_ComboBox";
+            this.NameProduct_ComboBox.Size = new System.Drawing.Size(274, 23);
+            this.NameProduct_ComboBox.TabIndex = 141;
+            // 
+            // Serial_ComboBox
+            // 
+            this.Serial_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.Serial_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.Serial_ComboBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Serial_ComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.Serial_ComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Serial_ComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Serial_ComboBox.FormattingEnabled = true;
+            this.Serial_ComboBox.ItemHeight = 29;
+            this.Serial_ComboBox.Location = new System.Drawing.Point(309, 231);
+            this.Serial_ComboBox.Margin = new System.Windows.Forms.Padding(0);
+            this.Serial_ComboBox.Name = "Serial_ComboBox";
+            this.Serial_ComboBox.Size = new System.Drawing.Size(152, 35);
+            this.Serial_ComboBox.TabIndex = 140;
+            // 
             // AddReturn_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 539);
+            this.Controls.Add(this.NameProduct_ComboBox);
+            this.Controls.Add(this.Serial_ComboBox);
             this.Controls.Add(this.CreateDate_Picker);
             this.Controls.Add(this.ReturnReason);
-            this.Controls.Add(this.NewItemSerial_Box);
             this.Controls.Add(this.OldItemSerial_Box);
             this.Controls.Add(this.lbDate);
             this.Controls.Add(this.Print_Button);
@@ -525,7 +520,6 @@
         private System.Windows.Forms.PictureBox HeaderIcon;
         private Guna.UI2.WinForms.Guna2ImageButton Exit_Button;
         private System.Windows.Forms.Label Header;
-        private Guna.UI2.WinForms.Guna2TextBox NewItemSerial_Box;
         private Guna.UI2.WinForms.Guna2TextBox OldItemSerial_Box;
         private System.Windows.Forms.Label lbDate;
         private Guna.UI2.WinForms.Guna2Button Print_Button;
@@ -541,5 +535,7 @@
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
         private Guna.UI2.WinForms.Guna2DateTimePicker CreateDate_Picker;
         private System.Windows.Forms.ToolTip toolTip1;
+        private Control.ComboBoxCustom NameProduct_ComboBox;
+        private Control.ComboBoxCustom Serial_ComboBox;
     }
 }

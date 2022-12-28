@@ -30,6 +30,17 @@ namespace CompuStore.Database.Services
                 REASON = reason,
                 RETURN_DATE = returnDate,
             };
+            PRODUCT pro = Database.DataProvider.Instance.Database.PRODUCTs.Where(item => item.PRODUCT_ID == productID).FirstOrDefault();
+            if (pro != null)
+            {
+                pro.IN_WAREHOUSE = true;
+            }
+            PRODUCT proRe = Database.DataProvider.Instance.Database.PRODUCTs.Where(item => item.PRODUCT_ID == productRe).FirstOrDefault();
+            if (proRe != null)
+            {
+                proRe.IN_WAREHOUSE = false;
+            }
+
             Database.DataProvider.Instance.Database.CHANGE_OR_REFUND_PRODUCT.Add(receive);
             try
             {
