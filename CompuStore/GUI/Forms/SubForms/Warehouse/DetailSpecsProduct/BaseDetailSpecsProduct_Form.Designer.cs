@@ -343,7 +343,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(0, 80);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -383,9 +383,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.iGPU_ComboBox);
             this.tabPage1.Location = new System.Drawing.Point(8, 46);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(1280, 908);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Thông tin cơ bản";
@@ -394,7 +394,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             // PlaceHolder_Panel
             // 
             this.PlaceHolder_Panel.Location = new System.Drawing.Point(36, 80);
-            this.PlaceHolder_Panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PlaceHolder_Panel.Margin = new System.Windows.Forms.Padding(4);
             this.PlaceHolder_Panel.Name = "PlaceHolder_Panel";
             this.PlaceHolder_Panel.Size = new System.Drawing.Size(1210, 120);
             this.PlaceHolder_Panel.TabIndex = 140;
@@ -434,10 +434,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.SizePanel_Overview_ComboBox.ForeColor = System.Drawing.Color.Black;
             this.SizePanel_Overview_ComboBox.FormattingEnabled = true;
             this.SizePanel_Overview_ComboBox.Location = new System.Drawing.Point(300, 680);
-            this.SizePanel_Overview_ComboBox.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.SizePanel_Overview_ComboBox.Margin = new System.Windows.Forms.Padding(10);
             this.SizePanel_Overview_ComboBox.Name = "SizePanel_Overview_ComboBox";
             this.SizePanel_Overview_ComboBox.Size = new System.Drawing.Size(266, 40);
-            this.SizePanel_Overview_ComboBox.TabIndex = 137;
+            this.SizePanel_Overview_ComboBox.TabIndex = 12;
             this.SizePanel_Overview_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.SizePanel_Overview_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -476,10 +476,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.RefreshRate_Overview_ComboBox.ForeColor = System.Drawing.Color.Black;
             this.RefreshRate_Overview_ComboBox.FormattingEnabled = true;
             this.RefreshRate_Overview_ComboBox.Location = new System.Drawing.Point(300, 756);
-            this.RefreshRate_Overview_ComboBox.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.RefreshRate_Overview_ComboBox.Margin = new System.Windows.Forms.Padding(10);
             this.RefreshRate_Overview_ComboBox.Name = "RefreshRate_Overview_ComboBox";
             this.RefreshRate_Overview_ComboBox.Size = new System.Drawing.Size(266, 40);
-            this.RefreshRate_Overview_ComboBox.TabIndex = 134;
+            this.RefreshRate_Overview_ComboBox.TabIndex = 13;
             this.RefreshRate_Overview_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.RefreshRate_Overview_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -494,10 +494,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.Y_Pixel_Overview_ComboBox.ForeColor = System.Drawing.Color.Black;
             this.Y_Pixel_Overview_ComboBox.FormattingEnabled = true;
             this.Y_Pixel_Overview_ComboBox.Location = new System.Drawing.Point(624, 528);
-            this.Y_Pixel_Overview_ComboBox.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.Y_Pixel_Overview_ComboBox.Margin = new System.Windows.Forms.Padding(10);
             this.Y_Pixel_Overview_ComboBox.Name = "Y_Pixel_Overview_ComboBox";
             this.Y_Pixel_Overview_ComboBox.Size = new System.Drawing.Size(266, 40);
-            this.Y_Pixel_Overview_ComboBox.TabIndex = 133;
+            this.Y_Pixel_Overview_ComboBox.TabIndex = 10;
             this.Y_Pixel_Overview_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.Y_Pixel_Overview_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -524,10 +524,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.X_Pixel_Overview_ComboBox.ForeColor = System.Drawing.Color.Black;
             this.X_Pixel_Overview_ComboBox.FormattingEnabled = true;
             this.X_Pixel_Overview_ComboBox.Location = new System.Drawing.Point(300, 528);
-            this.X_Pixel_Overview_ComboBox.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.X_Pixel_Overview_ComboBox.Margin = new System.Windows.Forms.Padding(10);
             this.X_Pixel_Overview_ComboBox.Name = "X_Pixel_Overview_ComboBox";
             this.X_Pixel_Overview_ComboBox.Size = new System.Drawing.Size(266, 40);
-            this.X_Pixel_Overview_ComboBox.TabIndex = 129;
+            this.X_Pixel_Overview_ComboBox.TabIndex = 9;
             this.X_Pixel_Overview_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.X_Pixel_Overview_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -569,7 +569,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.StorageCapacity_Overview_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.StorageCapacity_Overview_ComboBox.Name = "StorageCapacity_Overview_ComboBox";
             this.StorageCapacity_Overview_ComboBox.Size = new System.Drawing.Size(266, 40);
-            this.StorageCapacity_Overview_ComboBox.TabIndex = 103;
+            this.StorageCapacity_Overview_ComboBox.TabIndex = 11;
             this.StorageCapacity_Overview_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.StorageCapacity_Overview_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -585,7 +585,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.CPU_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.CPU_ComboBox.Name = "CPU_ComboBox";
             this.CPU_ComboBox.Size = new System.Drawing.Size(878, 40);
-            this.CPU_ComboBox.TabIndex = 33;
+            this.CPU_ComboBox.TabIndex = 3;
             this.CPU_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.CPU_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -601,7 +601,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.BusRAM_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.BusRAM_ComboBox.Name = "BusRAM_ComboBox";
             this.BusRAM_ComboBox.Size = new System.Drawing.Size(342, 40);
-            this.BusRAM_ComboBox.TabIndex = 37;
+            this.BusRAM_ComboBox.TabIndex = 6;
             this.BusRAM_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.BusRAM_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -617,7 +617,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.TypeRAM_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.TypeRAM_ComboBox.Name = "TypeRAM_ComboBox";
             this.TypeRAM_ComboBox.Size = new System.Drawing.Size(270, 40);
-            this.TypeRAM_ComboBox.TabIndex = 36;
+            this.TypeRAM_ComboBox.TabIndex = 5;
             this.TypeRAM_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.TypeRAM_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -633,7 +633,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.Capacity_RAM_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.Capacity_RAM_ComboBox.Name = "Capacity_RAM_ComboBox";
             this.Capacity_RAM_ComboBox.Size = new System.Drawing.Size(168, 40);
-            this.Capacity_RAM_ComboBox.TabIndex = 35;
+            this.Capacity_RAM_ComboBox.TabIndex = 4;
             this.Capacity_RAM_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.Capacity_RAM_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -649,7 +649,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.GPU_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.GPU_ComboBox.Name = "GPU_ComboBox";
             this.GPU_ComboBox.Size = new System.Drawing.Size(882, 40);
-            this.GPU_ComboBox.TabIndex = 41;
+            this.GPU_ComboBox.TabIndex = 7;
             this.GPU_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.GPU_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -665,7 +665,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.iGPU_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.iGPU_ComboBox.Name = "iGPU_ComboBox";
             this.iGPU_ComboBox.Size = new System.Drawing.Size(880, 40);
-            this.iGPU_ComboBox.TabIndex = 39;
+            this.iGPU_ComboBox.TabIndex = 8;
             this.iGPU_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.iGPU_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -695,11 +695,11 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.tabPage2.Controls.Add(this.OS_ComboBox);
             this.tabPage2.Controls.Add(this.Webcam_ComboBox);
             this.tabPage2.Controls.Add(this.Material_ComboBox);
-            this.tabPage2.Location = new System.Drawing.Point(8, 84);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Location = new System.Drawing.Point(8, 46);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPage2.Size = new System.Drawing.Size(1280, 870);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
+            this.tabPage2.Size = new System.Drawing.Size(1280, 908);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Thông tin chi tiết";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -751,7 +751,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.BatteryCapacity_TextBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.BatteryCapacity_TextBox.Name = "BatteryCapacity_TextBox";
             this.BatteryCapacity_TextBox.Size = new System.Drawing.Size(212, 39);
-            this.BatteryCapacity_TextBox.TabIndex = 154;
+            this.BatteryCapacity_TextBox.TabIndex = 11;
             // 
             // label3
             // 
@@ -770,7 +770,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.Z_Dimension_TextBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.Z_Dimension_TextBox.Name = "Z_Dimension_TextBox";
             this.Z_Dimension_TextBox.Size = new System.Drawing.Size(212, 39);
-            this.Z_Dimension_TextBox.TabIndex = 153;
+            this.Z_Dimension_TextBox.TabIndex = 7;
             // 
             // Y_Dimension_TextBox
             // 
@@ -779,7 +779,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.Y_Dimension_TextBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.Y_Dimension_TextBox.Name = "Y_Dimension_TextBox";
             this.Y_Dimension_TextBox.Size = new System.Drawing.Size(212, 39);
-            this.Y_Dimension_TextBox.TabIndex = 152;
+            this.Y_Dimension_TextBox.TabIndex = 6;
             // 
             // X_Dimension_TextBox
             // 
@@ -788,7 +788,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.X_Dimension_TextBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.X_Dimension_TextBox.Name = "X_Dimension_TextBox";
             this.X_Dimension_TextBox.Size = new System.Drawing.Size(212, 39);
-            this.X_Dimension_TextBox.TabIndex = 151;
+            this.X_Dimension_TextBox.TabIndex = 5;
             // 
             // label16
             // 
@@ -807,7 +807,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.Weight_TextBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.Weight_TextBox.Name = "Weight_TextBox";
             this.Weight_TextBox.Size = new System.Drawing.Size(212, 39);
-            this.Weight_TextBox.TabIndex = 139;
+            this.Weight_TextBox.TabIndex = 4;
             // 
             // label15
             // 
@@ -891,7 +891,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.Lineup_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.Lineup_ComboBox.Name = "Lineup_ComboBox";
             this.Lineup_ComboBox.Size = new System.Drawing.Size(750, 40);
-            this.Lineup_ComboBox.TabIndex = 134;
+            this.Lineup_ComboBox.TabIndex = 1;
             this.Lineup_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.Lineup_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -907,7 +907,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.Manufacturer_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.Manufacturer_ComboBox.Name = "Manufacturer_ComboBox";
             this.Manufacturer_ComboBox.Size = new System.Drawing.Size(750, 40);
-            this.Manufacturer_ComboBox.TabIndex = 136;
+            this.Manufacturer_ComboBox.TabIndex = 2;
             this.Manufacturer_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.Manufacturer_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -923,7 +923,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.Country_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.Country_ComboBox.Name = "Country_ComboBox";
             this.Country_ComboBox.Size = new System.Drawing.Size(750, 40);
-            this.Country_ComboBox.TabIndex = 138;
+            this.Country_ComboBox.TabIndex = 3;
             this.Country_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.Country_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -939,7 +939,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.OS_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.OS_ComboBox.Name = "OS_ComboBox";
             this.OS_ComboBox.Size = new System.Drawing.Size(750, 40);
-            this.OS_ComboBox.TabIndex = 150;
+            this.OS_ComboBox.TabIndex = 10;
             this.OS_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.OS_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -955,7 +955,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.Webcam_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.Webcam_ComboBox.Name = "Webcam_ComboBox";
             this.Webcam_ComboBox.Size = new System.Drawing.Size(750, 40);
-            this.Webcam_ComboBox.TabIndex = 148;
+            this.Webcam_ComboBox.TabIndex = 9;
             this.Webcam_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.Webcam_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -971,7 +971,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.Material_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.Material_ComboBox.Name = "Material_ComboBox";
             this.Material_ComboBox.Size = new System.Drawing.Size(750, 40);
-            this.Material_ComboBox.TabIndex = 146;
+            this.Material_ComboBox.TabIndex = 8;
             this.Material_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.Material_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -1009,10 +1009,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.tabPage3.Controls.Add(this.TypePanel_ComboBox);
             this.tabPage3.Controls.Add(this.Y_Pixel_ComboBox);
             this.tabPage3.Controls.Add(this.X_Pixel_ComboBox);
-            this.tabPage3.Location = new System.Drawing.Point(8, 84);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage3.Location = new System.Drawing.Point(8, 46);
+            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1280, 870);
+            this.tabPage3.Size = new System.Drawing.Size(1280, 908);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Thông tin màn hình";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1039,7 +1039,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.TouchScreen_CheckBox.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.TouchScreen_CheckBox.Name = "TouchScreen_CheckBox";
             this.TouchScreen_CheckBox.Size = new System.Drawing.Size(143, 36);
-            this.TouchScreen_CheckBox.TabIndex = 163;
+            this.TouchScreen_CheckBox.TabIndex = 5;
             this.TouchScreen_CheckBox.Text = "Cảm ứng";
             this.TouchScreen_CheckBox.UseVisualStyleBackColor = true;
             // 
@@ -1049,10 +1049,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.ColorSpace_DCIP3_TextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ColorSpace_DCIP3_TextBox.ForeColor = System.Drawing.Color.Black;
             this.ColorSpace_DCIP3_TextBox.Location = new System.Drawing.Point(300, 792);
-            this.ColorSpace_DCIP3_TextBox.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.ColorSpace_DCIP3_TextBox.Margin = new System.Windows.Forms.Padding(10);
             this.ColorSpace_DCIP3_TextBox.Name = "ColorSpace_DCIP3_TextBox";
             this.ColorSpace_DCIP3_TextBox.Size = new System.Drawing.Size(266, 39);
-            this.ColorSpace_DCIP3_TextBox.TabIndex = 161;
+            this.ColorSpace_DCIP3_TextBox.TabIndex = 14;
             // 
             // ColorSpace_AdobeRGB_TextBox
             // 
@@ -1060,10 +1060,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.ColorSpace_AdobeRGB_TextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ColorSpace_AdobeRGB_TextBox.ForeColor = System.Drawing.Color.Black;
             this.ColorSpace_AdobeRGB_TextBox.Location = new System.Drawing.Point(300, 736);
-            this.ColorSpace_AdobeRGB_TextBox.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.ColorSpace_AdobeRGB_TextBox.Margin = new System.Windows.Forms.Padding(10);
             this.ColorSpace_AdobeRGB_TextBox.Name = "ColorSpace_AdobeRGB_TextBox";
             this.ColorSpace_AdobeRGB_TextBox.Size = new System.Drawing.Size(266, 39);
-            this.ColorSpace_AdobeRGB_TextBox.TabIndex = 160;
+            this.ColorSpace_AdobeRGB_TextBox.TabIndex = 13;
             // 
             // ColorSpace_sRGB_TextBox
             // 
@@ -1071,10 +1071,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.ColorSpace_sRGB_TextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ColorSpace_sRGB_TextBox.ForeColor = System.Drawing.Color.Black;
             this.ColorSpace_sRGB_TextBox.Location = new System.Drawing.Point(300, 676);
-            this.ColorSpace_sRGB_TextBox.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.ColorSpace_sRGB_TextBox.Margin = new System.Windows.Forms.Padding(10);
             this.ColorSpace_sRGB_TextBox.Name = "ColorSpace_sRGB_TextBox";
             this.ColorSpace_sRGB_TextBox.Size = new System.Drawing.Size(266, 39);
-            this.ColorSpace_sRGB_TextBox.TabIndex = 159;
+            this.ColorSpace_sRGB_TextBox.TabIndex = 12;
             // 
             // HasCodeDisplay_CheckBox
             // 
@@ -1241,10 +1241,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.Brightness_TextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Brightness_TextBox.ForeColor = System.Drawing.Color.Black;
             this.Brightness_TextBox.Location = new System.Drawing.Point(300, 440);
-            this.Brightness_TextBox.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.Brightness_TextBox.Margin = new System.Windows.Forms.Padding(10);
             this.Brightness_TextBox.Name = "Brightness_TextBox";
             this.Brightness_TextBox.Size = new System.Drawing.Size(266, 39);
-            this.Brightness_TextBox.TabIndex = 133;
+            this.Brightness_TextBox.TabIndex = 9;
             // 
             // label52
             // 
@@ -1305,10 +1305,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.CodeDisplay_ComboBox.ForeColor = System.Drawing.Color.Black;
             this.CodeDisplay_ComboBox.FormattingEnabled = true;
             this.CodeDisplay_ComboBox.Location = new System.Drawing.Point(300, 56);
-            this.CodeDisplay_ComboBox.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.CodeDisplay_ComboBox.Margin = new System.Windows.Forms.Padding(6);
             this.CodeDisplay_ComboBox.Name = "CodeDisplay_ComboBox";
             this.CodeDisplay_ComboBox.Size = new System.Drawing.Size(596, 40);
-            this.CodeDisplay_ComboBox.TabIndex = 162;
+            this.CodeDisplay_ComboBox.TabIndex = 1;
             this.CodeDisplay_ComboBox.SelectedIndexChanged += new System.EventHandler(this.CodeDisplay_ComboBox_SelectedIndexChanged);
             // 
             // TypeScreen_ComboBox
@@ -1322,10 +1322,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.TypeScreen_ComboBox.ForeColor = System.Drawing.Color.Black;
             this.TypeScreen_ComboBox.FormattingEnabled = true;
             this.TypeScreen_ComboBox.Location = new System.Drawing.Point(300, 212);
-            this.TypeScreen_ComboBox.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.TypeScreen_ComboBox.Margin = new System.Windows.Forms.Padding(10);
             this.TypeScreen_ComboBox.Name = "TypeScreen_ComboBox";
             this.TypeScreen_ComboBox.Size = new System.Drawing.Size(430, 40);
-            this.TypeScreen_ComboBox.TabIndex = 152;
+            this.TypeScreen_ComboBox.TabIndex = 4;
             this.TypeScreen_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.TypeScreen_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -1340,10 +1340,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.Y_Ratio_ComboBox.ForeColor = System.Drawing.Color.Black;
             this.Y_Ratio_ComboBox.FormattingEnabled = true;
             this.Y_Ratio_ComboBox.Location = new System.Drawing.Point(632, 136);
-            this.Y_Ratio_ComboBox.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.Y_Ratio_ComboBox.Margin = new System.Windows.Forms.Padding(10);
             this.Y_Ratio_ComboBox.Name = "Y_Ratio_ComboBox";
             this.Y_Ratio_ComboBox.Size = new System.Drawing.Size(266, 40);
-            this.Y_Ratio_ComboBox.TabIndex = 151;
+            this.Y_Ratio_ComboBox.TabIndex = 3;
             this.Y_Ratio_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.Y_Ratio_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -1358,10 +1358,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.X_Ratio_ComboBox.ForeColor = System.Drawing.Color.Black;
             this.X_Ratio_ComboBox.FormattingEnabled = true;
             this.X_Ratio_ComboBox.Location = new System.Drawing.Point(300, 136);
-            this.X_Ratio_ComboBox.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.X_Ratio_ComboBox.Margin = new System.Windows.Forms.Padding(10);
             this.X_Ratio_ComboBox.Name = "X_Ratio_ComboBox";
             this.X_Ratio_ComboBox.Size = new System.Drawing.Size(266, 40);
-            this.X_Ratio_ComboBox.TabIndex = 148;
+            this.X_Ratio_ComboBox.TabIndex = 2;
             this.X_Ratio_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.X_Ratio_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -1376,10 +1376,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.SizePanel_ComboBox.ForeColor = System.Drawing.Color.Black;
             this.SizePanel_ComboBox.FormattingEnabled = true;
             this.SizePanel_ComboBox.Location = new System.Drawing.Point(300, 516);
-            this.SizePanel_ComboBox.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.SizePanel_ComboBox.Margin = new System.Windows.Forms.Padding(10);
             this.SizePanel_ComboBox.Name = "SizePanel_ComboBox";
             this.SizePanel_ComboBox.Size = new System.Drawing.Size(266, 40);
-            this.SizePanel_ComboBox.TabIndex = 145;
+            this.SizePanel_ComboBox.TabIndex = 10;
             this.SizePanel_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.SizePanel_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -1394,10 +1394,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.RefreshRate_ComboBox.ForeColor = System.Drawing.Color.Black;
             this.RefreshRate_ComboBox.FormattingEnabled = true;
             this.RefreshRate_ComboBox.Location = new System.Drawing.Point(300, 592);
-            this.RefreshRate_ComboBox.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.RefreshRate_ComboBox.Margin = new System.Windows.Forms.Padding(10);
             this.RefreshRate_ComboBox.Name = "RefreshRate_ComboBox";
             this.RefreshRate_ComboBox.Size = new System.Drawing.Size(266, 40);
-            this.RefreshRate_ComboBox.TabIndex = 142;
+            this.RefreshRate_ComboBox.TabIndex = 11;
             this.RefreshRate_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.RefreshRate_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -1412,10 +1412,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.TypePanel_ComboBox.ForeColor = System.Drawing.Color.Black;
             this.TypePanel_ComboBox.FormattingEnabled = true;
             this.TypePanel_ComboBox.Location = new System.Drawing.Point(300, 364);
-            this.TypePanel_ComboBox.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.TypePanel_ComboBox.Margin = new System.Windows.Forms.Padding(10);
             this.TypePanel_ComboBox.Name = "TypePanel_ComboBox";
             this.TypePanel_ComboBox.Size = new System.Drawing.Size(266, 40);
-            this.TypePanel_ComboBox.TabIndex = 140;
+            this.TypePanel_ComboBox.TabIndex = 8;
             this.TypePanel_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.TypePanel_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -1430,10 +1430,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.Y_Pixel_ComboBox.ForeColor = System.Drawing.Color.Black;
             this.Y_Pixel_ComboBox.FormattingEnabled = true;
             this.Y_Pixel_ComboBox.Location = new System.Drawing.Point(632, 288);
-            this.Y_Pixel_ComboBox.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.Y_Pixel_ComboBox.Margin = new System.Windows.Forms.Padding(10);
             this.Y_Pixel_ComboBox.Name = "Y_Pixel_ComboBox";
             this.Y_Pixel_ComboBox.Size = new System.Drawing.Size(266, 40);
-            this.Y_Pixel_ComboBox.TabIndex = 139;
+            this.Y_Pixel_ComboBox.TabIndex = 7;
             this.Y_Pixel_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.Y_Pixel_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -1448,20 +1448,20 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.X_Pixel_ComboBox.ForeColor = System.Drawing.Color.Black;
             this.X_Pixel_ComboBox.FormattingEnabled = true;
             this.X_Pixel_ComboBox.Location = new System.Drawing.Point(300, 288);
-            this.X_Pixel_ComboBox.Margin = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.X_Pixel_ComboBox.Margin = new System.Windows.Forms.Padding(10);
             this.X_Pixel_ComboBox.Name = "X_Pixel_ComboBox";
             this.X_Pixel_ComboBox.Size = new System.Drawing.Size(266, 40);
-            this.X_Pixel_ComboBox.TabIndex = 132;
+            this.X_Pixel_ComboBox.TabIndex = 6;
             this.X_Pixel_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.X_Pixel_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.Ports_DataGridView);
-            this.tabPage5.Location = new System.Drawing.Point(8, 84);
-            this.tabPage5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage5.Location = new System.Drawing.Point(8, 46);
+            this.tabPage5.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1280, 870);
+            this.tabPage5.Size = new System.Drawing.Size(1280, 908);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Thông tin cổng kết nối";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -1530,7 +1530,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.Ports_DataGridView.RowTemplate.Height = 30;
             this.Ports_DataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Ports_DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.Ports_DataGridView.Size = new System.Drawing.Size(1280, 870);
+            this.Ports_DataGridView.Size = new System.Drawing.Size(1280, 908);
             this.Ports_DataGridView.TabIndex = 65;
             this.Ports_DataGridView.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.Ports_DataGridView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -1561,10 +1561,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.tabPage4.Controls.Add(this.guna2GroupBox2);
             this.tabPage4.Controls.Add(this.guna2GroupBox3);
             this.tabPage4.Controls.Add(this.guna2GroupBox1);
-            this.tabPage4.Location = new System.Drawing.Point(8, 84);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage4.Location = new System.Drawing.Point(8, 46);
+            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1280, 870);
+            this.tabPage4.Size = new System.Drawing.Size(1280, 908);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Thông tin khác";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1621,7 +1621,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.BluetoothStandard_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.BluetoothStandard_ComboBox.Name = "BluetoothStandard_ComboBox";
             this.BluetoothStandard_ComboBox.Size = new System.Drawing.Size(340, 40);
-            this.BluetoothStandard_ComboBox.TabIndex = 103;
+            this.BluetoothStandard_ComboBox.TabIndex = 2;
             this.BluetoothStandard_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.BluetoothStandard_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -1653,7 +1653,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.WifiStandard_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.WifiStandard_ComboBox.Name = "WifiStandard_ComboBox";
             this.WifiStandard_ComboBox.Size = new System.Drawing.Size(340, 40);
-            this.WifiStandard_ComboBox.TabIndex = 87;
+            this.WifiStandard_ComboBox.TabIndex = 1;
             this.WifiStandard_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.WifiStandard_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -1706,7 +1706,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.NameColor_TextBox.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.NameColor_TextBox.Name = "NameColor_TextBox";
             this.NameColor_TextBox.Size = new System.Drawing.Size(288, 39);
-            this.NameColor_TextBox.TabIndex = 105;
+            this.NameColor_TextBox.TabIndex = 5;
             // 
             // label26
             // 
@@ -1798,7 +1798,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.StorageCapacity_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.StorageCapacity_ComboBox.Name = "StorageCapacity_ComboBox";
             this.StorageCapacity_ComboBox.Size = new System.Drawing.Size(250, 40);
-            this.StorageCapacity_ComboBox.TabIndex = 103;
+            this.StorageCapacity_ComboBox.TabIndex = 4;
             this.StorageCapacity_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.StorageCapacity_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
@@ -1830,7 +1830,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             this.TypeStorage_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.TypeStorage_ComboBox.Name = "TypeStorage_ComboBox";
             this.TypeStorage_ComboBox.Size = new System.Drawing.Size(310, 40);
-            this.TypeStorage_ComboBox.TabIndex = 87;
+            this.TypeStorage_ComboBox.TabIndex = 3;
             this.TypeStorage_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.AddNewItemToComboBox);
             this.TypeStorage_ComboBox.Leave += new System.EventHandler(this.ValidationComboBox);
             // 
