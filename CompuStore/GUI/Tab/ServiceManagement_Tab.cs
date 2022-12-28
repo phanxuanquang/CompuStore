@@ -129,7 +129,7 @@ namespace CompuStore
             listItemViews.Add("ProductSerial", "Mã sản phẩm hoàn trả");
             listItemViews.Add("ProductRe", "Tên sản phẩm");
             listItemViews.Add("ProductSerialRe", "Mã sản phẩm đổi");
-            listItemViews.Add("DateRe", "Ngày hẹn trả");
+            listItemViews.Add("DateRe", "Ngày đổi trả");
             listItemViews.Add("Id", "Mã nhân viên phụ trách");
             
             foreach (var item in listItemViews)
