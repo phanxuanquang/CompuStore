@@ -304,7 +304,7 @@ namespace CompuStore.Tab
             bool hasChanged = import.ShowDialog(this, null, false);
             if (hasChanged)
             {
-                await Task.Delay(TimeSpan.FromSeconds(5));
+                await Controller.Instance.Reload(DataProvider.Instance.Database.IMPORT_WAREHOUSE.Last());
                 Warehouse_UC_Load(null, null);
             }
         }
@@ -341,6 +341,7 @@ namespace CompuStore.Tab
             if (e.RowIndex > -1)
             {
                 bool hasChanged = false;
+                IMPORT_WAREHOUSE importWarehouse = null;
                 switch (seeWhat)
                 {
                     case SEE_WHAT.COMMON_SPECS:
@@ -354,7 +355,7 @@ namespace CompuStore.Tab
                         break;
                     case SEE_WHAT.IMPORT_WAREHOUSE:
                         ImportWarehouseCustom selectedImport = (sender as DataGridView).Rows[e.RowIndex].DataBoundItem as ImportWarehouseCustom;
-                        IMPORT_WAREHOUSE importWarehouse = ImportWarehouseServices.Instance.GetImportWarehouseByNameID(selectedImport.NameID);
+                        importWarehouse = ImportWarehouseServices.Instance.GetImportWarehouseByNameID(selectedImport.NameID);
                         if (importWarehouse != null)
                         {
                             BaseInvoiceImportWarehouse_Form form = new EditInvoiceImportWarehouse_Form();
@@ -365,7 +366,7 @@ namespace CompuStore.Tab
 
                 if (hasChanged)
                 {
-                    await Task.Delay(TimeSpan.FromSeconds(5));
+                    await Controller.Instance.Reload(importWarehouse);
                     Warehouse_UC_Load(null, null);
                 }
             }

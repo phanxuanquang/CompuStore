@@ -175,7 +175,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         BaseDetailInvoiceImportWarehouse_Form.ResultDetailInvoiceImportWarehouse resultChanged;
         ImportWarehouseCustom convertImportWarehouse = null;
         List<ModelProduct> initProducts;
-        IMPORT_WAREHOUSE importWarehouse;
         Timer timerUpdateImportDate = null;
         #endregion
 
@@ -489,7 +488,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
         public override bool ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, bool edit = true)
         {
-            this.importWarehouse = importWarehouse;
             return base.ShowDialog(owner, importWarehouse, edit);
         }
 
@@ -532,78 +530,88 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                             return;
                     }
 
-                    if (resultChanged.NewProduct != null && resultChanged.NewProduct.Count > 0 && LoginServices.Instance.CurrentStaff != null)
+                    Waiting_Form waiting = new Waiting_Form();
+
+                    Task task = Task.Factory.StartNew(async () =>
                     {
-                        int? storeIDSelected = ImportToStore_ComboBox.SelectedValue as int?;
-                        int? distributorID = Distributor_ComboBox.SelectedValue as int?;
-                        STORE store = storeIDSelected != null ? StoreServices.Instance.GetStoreByID(storeIDSelected.Value) : null;
-                        DISTRIBUTOR distributor = distributorID != null ? DistributorServices.Instance.GetDistributorByID(distributorID.Value) : null;
-                        if (store == null)
+                        if (resultChanged.NewProduct != null && resultChanged.NewProduct.Count > 0 && LoginServices.Instance.CurrentStaff != null)
                         {
-                            store = new STORE { NAME = ImportToStore_ComboBox.Text };
-                            store = await StoreServices.Instance.GetStore(store);
+                            int? storeIDSelected = ImportToStore_ComboBox.SelectedValue as int?;
+                            int? distributorID = Distributor_ComboBox.SelectedValue as int?;
+                            STORE store = storeIDSelected != null ? StoreServices.Instance.GetStoreByID(storeIDSelected.Value) : null;
+                            DISTRIBUTOR distributor = distributorID != null ? DistributorServices.Instance.GetDistributorByID(distributorID.Value) : null;
+                            if (store == null)
+                            {
+                                store = new STORE { NAME = ImportToStore_ComboBox.Text };
+                                store = await StoreServices.Instance.GetStore(store);
+                            }
+
+                            if (distributor == null)
+                            {
+                                distributor = new DISTRIBUTOR { NAME = Distributor_ComboBox.Text };
+                                distributor = await DistributorServices.Instance.GetDistributor(distributor);
+                            }
+
+                            //new invoice import warehouse
+                            STAFF staff = LoginServices.Instance.CurrentStaff;
+
+                            ModelProduct[] products = resultChanged.NewProduct.ToArray();
+
+                            DateTime importDate = DateTimeImportWarehouse_DateTimePicker.Value;
+                            if (store != null && distributor != null)
+                            {
+                                (IMPORT_WAREHOUSE, List<ModelProduct>) respone = await ImportWarehouseServices.Instance.Import(products, store, staff, distributor, importDate);
+                                MessageBox.Show(string.Format("Chấp nhận nhập {0}/{1}", products.Length - respone.Item2.Count, products.Length));
+                            }
                         }
-                            
-                        if (distributor == null)
+
+                        if (resultChanged.Remove != null && resultChanged.Remove.Count > 0)
                         {
-                            distributor = new DISTRIBUTOR { NAME = Distributor_ComboBox.Text };
-                            distributor = await DistributorServices.Instance.GetDistributor(distributor);
+                            IList<ModelProduct> errorProduct = new List<ModelProduct>();
+                            IList<ModelProduct> saledProduct = new List<ModelProduct>();
+                            foreach (ModelProduct product in resultChanged.Remove)
+                            {
+                                bool? result = await ProductServices.Instance.RemoveProduct(product);
+                                if (result == null)
+                                    saledProduct.Add(product);
+                                else if (result == false)
+                                    errorProduct.Add(product);
+                            }
+                            if (saledProduct.Count == 0 && errorProduct.Count == 0)
+                                await ImportWarehouseServices.Instance.Delete(this.importWarehouse);
+                            if (saledProduct.Count > 0)
+                                MessageBox.Show(string.Format("Có {0} sản phẩm đã bán nên không thể thay đổi thông tin:\n{1}", saledProduct.Count, string.Join("\n", saledProduct.Select(item => item.ID))));
+                            if (errorProduct.Count > 0)
+                                MessageBox.Show(string.Format("Đã xảy ra {0} lỗi khi xóa các sản phẩm:\n{1}", errorProduct.Count, string.Join("\n", errorProduct.Select(item => item.ID))));
+                            else
+                                MessageBox.Show("Đã xóa thành công!");
                         }
 
-                        //new invoice import warehouse
-                        STAFF staff = LoginServices.Instance.CurrentStaff;
-
-                        ModelProduct[] products = resultChanged.NewProduct.ToArray();
-
-                        DateTime importDate = DateTimeImportWarehouse_DateTimePicker.Value;
-                        if (store != null && distributor != null)
+                        if (resultChanged.SpecsChanged != null && resultChanged.SpecsChanged.Count > 0)
                         {
-                            (IMPORT_WAREHOUSE, List<ModelProduct>) respone = await ImportWarehouseServices.Instance.Import(products, store, staff, distributor, importDate);
-                            MessageBox.Show(string.Format("Chấp nhận nhập {0}/{1}", products.Length - respone.Item2.Count, products.Length));
+                            IList<ModelProduct> errorProduct = new List<ModelProduct>();
+                            IList<ModelProduct> saledProduct = new List<ModelProduct>();
+                            foreach (KeyValuePair<ModelProduct, ModelProduct> product in resultChanged.SpecsChanged)
+                            {
+                                bool? result = await ProductServices.Instance.ChangeInfo(product);
+                                if (result == null)
+                                    saledProduct.Add(product.Key);
+                                else if (result == false)
+                                    errorProduct.Add(product.Key);
+                            }
+                            if (saledProduct.Count > 0)
+                                MessageBox.Show(string.Format("Có {0} sản phẩm đã bán nên không thể thay đổi thông tin:\n{1}", saledProduct.Count, string.Join("\n", saledProduct.Select(item => item.ID))));
+                            if (errorProduct.Count > 0)
+                                MessageBox.Show(string.Format("Đã xảy ra lỗi khi xóa các sản phẩm:\n{0}", string.Join("\n", errorProduct.Select(item => item.ID))));
+                            else
+                                MessageBox.Show("Đã cập nhật thành công!");
                         }
-                    }
-
-                    if (resultChanged.Remove != null && resultChanged.Remove.Count > 0)
+                    });
+                    task.GetAwaiter().OnCompleted(() =>
                     {
-                        IList<ModelProduct> errorProduct = new List<ModelProduct>();
-                        IList<ModelProduct> saledProduct = new List<ModelProduct>();
-                        foreach (ModelProduct product in resultChanged.Remove)
-                        {
-                            bool? result = await ProductServices.Instance.RemoveProduct(product);
-                            if (result == null)
-                                saledProduct.Add(product);
-                            else if (result == false)
-                                errorProduct.Add(product);
-                        }
-                        if (saledProduct.Count == 0 && errorProduct.Count == 0)
-                            await ImportWarehouseServices.Instance.Delete(this.importWarehouse);
-                        if (saledProduct.Count > 0)
-                            MessageBox.Show(string.Format("Có {0} sản phẩm đã bán nên không thể thay đổi thông tin:\n{1}", saledProduct.Count, string.Join("\n", saledProduct.Select(item => item.ID))));
-                        if (errorProduct.Count > 0)
-                            MessageBox.Show(string.Format("Đã xảy ra {0} lỗi khi xóa các sản phẩm:\n{1}", errorProduct.Count, string.Join("\n", errorProduct.Select(item => item.ID))));
-                        else
-                            MessageBox.Show("Đã xóa thành công!");
-                    }
-
-                    if (resultChanged.SpecsChanged != null && resultChanged.SpecsChanged.Count > 0)
-                    {
-                        IList<ModelProduct> errorProduct = new List<ModelProduct>();
-                        IList<ModelProduct> saledProduct = new List<ModelProduct>();
-                        foreach (KeyValuePair<ModelProduct, ModelProduct> product in resultChanged.SpecsChanged)
-                        {
-                            bool? result = await ProductServices.Instance.ChangeInfo(product);
-                            if (result == null)
-                                saledProduct.Add(product.Key);
-                            else if (result == false)
-                                errorProduct.Add(product.Key);
-                        }
-                        if (saledProduct.Count > 0)
-                            MessageBox.Show(string.Format("Có {0} sản phẩm đã bán nên không thể thay đổi thông tin:\n{1}", saledProduct.Count, string.Join("\n", saledProduct.Select(item => item.ID))));
-                        if (errorProduct.Count > 0)
-                            MessageBox.Show(string.Format("Đã xảy ra lỗi khi xóa các sản phẩm:\n{0}", string.Join("\n", errorProduct.Select(item => item.ID))));
-                        else
-                            MessageBox.Show("Đã cập nhật thành công!");
-                    }
+                        waiting.Close();
+                    });
+                    waiting.ShowDialog(this);
 
                     base.Exit_Clicked(sender, e);
                     hasChanged = true;

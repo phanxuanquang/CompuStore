@@ -326,7 +326,7 @@ namespace CompuStore
                 lastInvoice = result;
                 MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            Database.Services.InvoiceServices.Instance.ReloadInvoiceTable(lastInvoice);
+            await Controller.Instance.Reload(lastInvoice);
             //this.Close();
         }
 

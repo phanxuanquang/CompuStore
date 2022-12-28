@@ -33,5 +33,10 @@ namespace CompuStore.Database.Services.ProductServices
 
             return find;
         }
+
+        public Task Reload<TEntity>(TEntity entity) where TEntity : class
+        {
+            return DataProvider.Instance.Database.Entry<TEntity>(entity).ReloadAsync();
+        }
     }
 }

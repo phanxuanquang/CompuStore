@@ -98,6 +98,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         #region Variable
         private BindingList<ComboBoxBinding> bindingDistributor = null;
         private BindingList<ComboBoxBinding> bindingStore = null;
+        protected IMPORT_WAREHOUSE importWarehouse = null;
         #endregion
 
         #region Translater
@@ -211,7 +212,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 ImportToStore_ComboBox.DisplayMember = "Value";
                 SetDefaultComboBox(ImportToStore_ComboBox, null);
 
-                StaffImport_Value.Text = string.Format("{0} | {1}", LoginServices.Instance.CurrentStaff.INFOR.NAME, LoginServices.Instance.CurrentStaff.NAME_ID);
+                StaffImport_Value.Text = importWarehouse == null
+                ? string.Format("{0} | {1}", LoginServices.Instance.CurrentStaff?.INFOR.NAME, LoginServices.Instance.CurrentStaff?.NAME_ID)
+                : string.Format("{0} | {1}", importWarehouse.STAFF.INFOR.NAME, importWarehouse.STAFF.NAME_ID);
             };
 
             runLoading.GetAwaiter().OnCompleted(() => waiting.Close());
@@ -322,6 +325,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         protected bool hasChanged = false;
         public virtual bool ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, bool edit)
         {
+            this.importWarehouse = importWarehouse;
             if ((edit && this is AddInvoiceImportWarehouse_Form) || !edit)
             {
                 base.ShowDialog();
