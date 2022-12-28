@@ -134,6 +134,7 @@ namespace CompuStore
                 string id = DataTable.SelectedRows[0].Cells["Id"].Value.ToString();
                 InvoiceDetail_Form invoiceDetail = new InvoiceDetail_Form(id);
                 invoiceDetail.ShowDialog();
+                View(GetListView());
             }
             else
             {

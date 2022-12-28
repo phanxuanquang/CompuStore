@@ -63,7 +63,7 @@ namespace CompuStore
                     MessageBox.Show("Không tìm thấy sản phẩm mới trong kho.", "Không tìm thấy sản phẩm", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                Exception res = ChangeOrRefundProductServices.Instance.SaveCOrreFundToDB(detail.ID_INVOICE, currentStaff.ID, Database.DataProvider.Instance.Database.PRODUCTs.FirstOrDefault(item => item.SERIAL_ID == OldItemSerial_Box.Text).PRODUCT_ID, Database.DataProvider.Instance.Database.PRODUCTs.FirstOrDefault(item => item.SERIAL_ID == NewItemSerial_Box.Text).PRODUCT_ID, ReturnReason.Text, DateTime.Now);
+                Exception res = ChangeOrRefundProductServices.Instance.SaveCOrreFundToDB(detail.ID_INVOICE, currentStaff.ID, Database.DataProvider.Instance.Database.PRODUCTs.FirstOrDefault(item => item.SERIAL_ID == OldItemSerial_Box.Text).PRODUCT_ID, Database.DataProvider.Instance.Database.PRODUCTs.FirstOrDefault(item => item.SERIAL_ID == NewItemSerial_Box.Text).PRODUCT_ID, ReturnReason.Text, CreateDate_Picker.Value);
                 if (res.Message == "done")
                 {
                     MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
