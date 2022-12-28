@@ -6,7 +6,6 @@
     <edmx:Diagrams>
       <Diagram DiagramId="2cb2edea77f8430f9e1f9cbad9456311" Name="Diagram1" ZoomLevel="74">
         <EntityTypeShape EntityType="CompuStoreDBModel.COLOR" Width="1.5" PointX="6" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="CompuStoreDBModel.COMMON_SPECS" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CompuStoreDBModel.COMMON_USER" Width="1.5" PointX="8.25" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CompuStoreDBModel.CUSTOMER" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CompuStoreDBModel.CHANGE_OR_REFUND_PRODUCT" Width="1.5" PointX="12.75" PointY="10.25" IsExpanded="true" />
@@ -25,11 +24,8 @@
         <EntityTypeShape EntityType="CompuStoreDBModel.STAFF" Width="1.5" PointX="6" PointY="11.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CompuStoreDBModel.STAFFROLE" Width="1.5" PointX="3.75" PointY="9.25" IsExpanded="true" />
         <EntityTypeShape EntityType="CompuStoreDBModel.STORE" Width="1.5" PointX="8.25" PointY="19.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="CompuStoreDBModel.UNIQUE_SPECS" Width="1.5" PointX="6" PointY="23.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CompuStoreDBModel.USERROLE" Width="1.5" PointX="6" PointY="8.25" IsExpanded="true" />
         <AssociationConnector Association="CompuStoreDBModel.FK__DETAIL_SP__COLOR__01142BA1" ManuallyRouted="false" />
-        <AssociationConnector Association="CompuStoreDBModel.FK__COMMON_SP__ID_LI__787EE5A0" ManuallyRouted="false" />
-        <AssociationConnector Association="CompuStoreDBModel.FK__DETAIL_SP__ID_CO__02084FDA" ManuallyRouted="false" />
         <AssociationConnector Association="CompuStoreDBModel.FK__COMMON_US__ID_ST__797309D9" ManuallyRouted="false" />
         <AssociationConnector Association="CompuStoreDBModel.FK__COMMON_US__ID_US__7A672E12" ManuallyRouted="false" />
         <AssociationConnector Association="CompuStoreDBModel.FK__CUSTOMER__ID_INF__7B5B524B" ManuallyRouted="false" />
@@ -43,9 +39,7 @@
         <AssociationConnector Association="CompuStoreDBModel.FK__DETAIL_IM__PRODU__7E37BEF6" ManuallyRouted="false" />
         <AssociationConnector Association="CompuStoreDBModel.FK__DETAIL_IN__ID_IN__7F2BE32F" ManuallyRouted="false" />
         <AssociationConnector Association="CompuStoreDBModel.FK__DETAIL_IN__PRODU__00200768" ManuallyRouted="false" />
-        <AssociationConnector Association="CompuStoreDBModel.FK__DETAIL_SP__ID_UN__02FC7413" ManuallyRouted="false" />
         <AssociationConnector Association="CompuStoreDBModel.FK__PRODUCT__ID_DETA__09A971A2" ManuallyRouted="false" />
-        <AssociationConnector Association="CompuStoreDBModel.FK__UNIQUE_SP__ID_DI__10566F31" ManuallyRouted="false" />
         <AssociationConnector Association="CompuStoreDBModel.FK__IMPORT_WA__ID_DI__03F0984C" ManuallyRouted="false" />
         <AssociationConnector Association="CompuStoreDBModel.FK__IMPORT_WA__ID_ST__04E4BC85" ManuallyRouted="false" />
         <AssociationConnector Association="CompuStoreDBModel.FK__IMPORT_WA__ID_ST__05D8E0BE" ManuallyRouted="false" />
@@ -57,6 +51,13 @@
         <AssociationConnector Association="CompuStoreDBModel.FK__RECEIVE_W__ID_ST__0B91BA14" ManuallyRouted="false" />
         <AssociationConnector Association="CompuStoreDBModel.FK__STAFF__ID_STAFFR__0E6E26BF" ManuallyRouted="false" />
         <AssociationConnector Association="CompuStoreDBModel.FK__STORE__ID_STAFF___0F624AF8" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CompuStoreDBModel.COMMON_SPECS" Width="1.5" PointX="6.375" PointY="0.75" />
+        <EntityTypeShape EntityType="CompuStoreDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="CompuStoreDBModel.UNIQUE_SPECS" Width="1.5" PointX="6.375" PointY="23.875" />
+        <AssociationConnector Association="CompuStoreDBModel.FK__COMMON_SP__ID_LI__1F98B2C1" />
+        <AssociationConnector Association="CompuStoreDBModel.FK__DETAIL_SP__ID_CO__29221CFB" />
+        <AssociationConnector Association="CompuStoreDBModel.FK__DETAIL_SP__ID_UN__2A164134" />
+        <AssociationConnector Association="CompuStoreDBModel.FK__UNIQUE_SP__ID_DI__37703C52" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

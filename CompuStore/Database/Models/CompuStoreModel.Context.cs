@@ -26,7 +26,6 @@ namespace CompuStore.Database.Models
         }
     
         public virtual DbSet<COLOR> COLORs { get; set; }
-        public virtual DbSet<COMMON_SPECS> COMMON_SPECS { get; set; }
         public virtual DbSet<COMMON_USER> COMMON_USER { get; set; }
         public virtual DbSet<CUSTOMER> CUSTOMERs { get; set; }
         public virtual DbSet<CHANGE_OR_REFUND_PRODUCT> CHANGE_OR_REFUND_PRODUCT { get; set; }
@@ -45,7 +44,9 @@ namespace CompuStore.Database.Models
         public virtual DbSet<STAFF> STAFFs { get; set; }
         public virtual DbSet<STAFFROLE> STAFFROLEs { get; set; }
         public virtual DbSet<STORE> STOREs { get; set; }
-        public virtual DbSet<UNIQUE_SPECS> UNIQUE_SPECS { get; set; }
         public virtual DbSet<USERROLE> USERROLEs { get; set; }
+        public virtual DbSet<COMMON_SPECS> COMMON_SPECS { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<UNIQUE_SPECS> UNIQUE_SPECS { get; set; }
     }
 }
