@@ -62,7 +62,6 @@ namespace CompuStore
         {
             currentStaff = LoginServices.Instance.CurrentStaff;
             lbStaffName.Text += " " + currentStaff.INFOR.NAME;
-            lbDate.Text += " " + DateTime.Now.ToLongDateString();
         }
 
         protected override CreateParams CreateParams
@@ -305,29 +304,24 @@ namespace CompuStore
         #region Button
         private async void Save_Button_Click(object sender, EventArgs e)
         {
-            await Task.Factory.StartNew(() =>
+            foreach (var item in addedProduct)
             {
-                int[] id = { 7, 8, 9 };
+                productList.Add(Database.DataProvider.Instance.Database.PRODUCTs.Where(prod => prod.SERIAL_ID == item).FirstOrDefault());
+            }
 
-                string message = string.Empty;
-                DateTime now = new DateTime(2022, 12, 1);
-                for (int index = 0; index < 10; index++)
-                {
-                    List<PRODUCT> items = Database.DataProvider.Instance.Database.PRODUCTs.Where(item => item.IN_WAREHOUSE == true).Take(1).ToList();
-                    for (int i = 1; i < 32; i++)
-                    {
-                        now = now.AddDays(1);
-                        try
-                        {
-                            InvoiceServices.Instance.SaveInvoiceToDB(items, id[id.Length % 3], currentStaff.ID, now, 10);
-                        }
-                        catch (Exception ex)
-                        {
-                            message += ex;
-                        }
-                    }
-                }
-            });
+            if (customer == null)
+            {
+                customer = CustomerServices.Instance.SaveCustomerToDB(Name_Box.Text, PhoneNumber_Box.Text, Email_Box.Text, Identity_Box.Text, Address_Box.Text);
+            }
+            Exception res = InvoiceServices.Instance.SaveInvoiceToDB(productList, customer.ID, currentStaff.ID, dateTimePicker.Value, 10);
+            if (res.Message == "done")
+            {
+                MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show(res.Message);
+            }
             this.Close();
         }
 
