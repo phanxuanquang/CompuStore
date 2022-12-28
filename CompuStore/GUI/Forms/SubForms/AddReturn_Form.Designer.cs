@@ -46,6 +46,8 @@
             this.AddInfor_Button = new Guna.UI2.WinForms.Guna2Button();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.CreateDate_Picker = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -168,6 +170,7 @@
             this.OldItemSerial_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.OldItemSerial_Box.TabIndex = 134;
             this.OldItemSerial_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.toolTip1.SetToolTip(this.OldItemSerial_Box, "Mã se-ri sản phẩm trả lại");
             // 
             // lbDate
             // 
@@ -462,11 +465,37 @@
             // 
             this.guna2DragControl1.TargetControl = this.Header;
             // 
+            // CreateDate_Picker
+            // 
+            this.CreateDate_Picker.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.CreateDate_Picker.Animated = true;
+            this.CreateDate_Picker.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.CreateDate_Picker.CheckedState.Parent = this.CreateDate_Picker;
+            this.CreateDate_Picker.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CreateDate_Picker.CustomFormat = " dd/MM/yyyy";
+            this.CreateDate_Picker.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.CreateDate_Picker.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateDate_Picker.ForeColor = System.Drawing.Color.Black;
+            this.CreateDate_Picker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.CreateDate_Picker.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.CreateDate_Picker.HoverState.Parent = this.CreateDate_Picker;
+            this.CreateDate_Picker.Location = new System.Drawing.Point(212, 351);
+            this.CreateDate_Picker.Margin = new System.Windows.Forms.Padding(0);
+            this.CreateDate_Picker.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.CreateDate_Picker.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.CreateDate_Picker.Name = "CreateDate_Picker";
+            this.CreateDate_Picker.ShadowDecoration.Parent = this.CreateDate_Picker;
+            this.CreateDate_Picker.Size = new System.Drawing.Size(368, 24);
+            this.CreateDate_Picker.TabIndex = 138;
+            this.CreateDate_Picker.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.CreateDate_Picker.Value = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
+            // 
             // AddReturn_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(607, 539);
+            this.Controls.Add(this.CreateDate_Picker);
             this.Controls.Add(this.ReturnReason);
             this.Controls.Add(this.NewItemSerial_Box);
             this.Controls.Add(this.OldItemSerial_Box);
@@ -510,5 +539,7 @@
         private Guna.UI2.WinForms.Guna2Button AddInfor_Button;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
+        private Guna.UI2.WinForms.Guna2DateTimePicker CreateDate_Picker;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

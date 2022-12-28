@@ -46,13 +46,13 @@
             this.AddInfor_Button = new Guna.UI2.WinForms.Guna2Button();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.cHANGEORREFUNDPRODUCTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pRODUCTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.iNFORBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cHANGEORREFUNDPRODUCTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cHANGEORREFUNDPRODUCTBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUCTBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iNFORBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cHANGEORREFUNDPRODUCTBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // Header
@@ -165,13 +165,13 @@
             this.ReturnReason.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.ReturnReason.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.ReturnReason.FocusedState.Parent = this.ReturnReason;
-            this.ReturnReason.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.ReturnReason.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.ReturnReason.ForeColor = System.Drawing.Color.Black;
             this.ReturnReason.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.ReturnReason.HoverState.Parent = this.ReturnReason;
             this.ReturnReason.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.ReturnReason.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.ReturnReason.Location = new System.Drawing.Point(38, 287);
+            this.ReturnReason.Location = new System.Drawing.Point(38, 285);
             this.ReturnReason.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ReturnReason.Name = "ReturnReason";
             this.ReturnReason.PasswordChar = '\0';
@@ -204,13 +204,13 @@
             this.NewItemSerial_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.NewItemSerial_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.NewItemSerial_Box.FocusedState.Parent = this.NewItemSerial_Box;
-            this.NewItemSerial_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.NewItemSerial_Box.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.NewItemSerial_Box.ForeColor = System.Drawing.Color.Black;
             this.NewItemSerial_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.NewItemSerial_Box.HoverState.Parent = this.NewItemSerial_Box;
             this.NewItemSerial_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.NewItemSerial_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.NewItemSerial_Box.Location = new System.Drawing.Point(38, 243);
+            this.NewItemSerial_Box.Location = new System.Drawing.Point(38, 241);
             this.NewItemSerial_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.NewItemSerial_Box.Name = "NewItemSerial_Box";
             this.NewItemSerial_Box.PasswordChar = '\0';
@@ -243,13 +243,13 @@
             this.OldItemSerial_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.OldItemSerial_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.OldItemSerial_Box.FocusedState.Parent = this.OldItemSerial_Box;
-            this.OldItemSerial_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.OldItemSerial_Box.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.OldItemSerial_Box.ForeColor = System.Drawing.Color.Black;
             this.OldItemSerial_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.OldItemSerial_Box.HoverState.Parent = this.OldItemSerial_Box;
             this.OldItemSerial_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.OldItemSerial_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.OldItemSerial_Box.Location = new System.Drawing.Point(38, 76);
+            this.OldItemSerial_Box.Location = new System.Drawing.Point(38, 65);
             this.OldItemSerial_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.OldItemSerial_Box.Name = "OldItemSerial_Box";
             this.OldItemSerial_Box.PasswordChar = '\0';
@@ -257,7 +257,7 @@
             this.OldItemSerial_Box.PlaceholderText = "Mã se-ri sản phẩm trả lại";
             this.OldItemSerial_Box.SelectedText = "";
             this.OldItemSerial_Box.ShadowDecoration.Parent = this.OldItemSerial_Box;
-            this.OldItemSerial_Box.Size = new System.Drawing.Size(550, 37);
+            this.OldItemSerial_Box.Size = new System.Drawing.Size(549, 37);
             this.OldItemSerial_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.OldItemSerial_Box.TabIndex = 144;
             this.OldItemSerial_Box.TextOffset = new System.Drawing.Point(5, 0);
@@ -295,13 +295,13 @@
             this.Email_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Email_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Email_Box.FocusedState.Parent = this.Email_Box;
-            this.Email_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Email_Box.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Email_Box.ForeColor = System.Drawing.Color.Black;
             this.Email_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.Email_Box.HoverState.Parent = this.Email_Box;
             this.Email_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Email_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Email_Box.Location = new System.Drawing.Point(38, 203);
+            this.Email_Box.Location = new System.Drawing.Point(38, 197);
             this.Email_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Email_Box.Name = "Email_Box";
             this.Email_Box.PasswordChar = '\0';
@@ -335,13 +335,13 @@
             this.Name_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Name_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Name_Box.FocusedState.Parent = this.Name_Box;
-            this.Name_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Name_Box.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Name_Box.ForeColor = System.Drawing.Color.Black;
             this.Name_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.Name_Box.HoverState.Parent = this.Name_Box;
             this.Name_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Name_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Name_Box.Location = new System.Drawing.Point(38, 160);
+            this.Name_Box.Location = new System.Drawing.Point(38, 153);
             this.Name_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name_Box.Name = "Name_Box";
             this.Name_Box.PasswordChar = '\0';
@@ -388,13 +388,13 @@
             this.PhoneNumber_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.PhoneNumber_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.PhoneNumber_Box.FocusedState.Parent = this.PhoneNumber_Box;
-            this.PhoneNumber_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.PhoneNumber_Box.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.PhoneNumber_Box.ForeColor = System.Drawing.Color.Black;
             this.PhoneNumber_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.PhoneNumber_Box.HoverState.Parent = this.PhoneNumber_Box;
             this.PhoneNumber_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.PhoneNumber_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.PhoneNumber_Box.Location = new System.Drawing.Point(356, 160);
+            this.PhoneNumber_Box.Location = new System.Drawing.Point(355, 153);
             this.PhoneNumber_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PhoneNumber_Box.Name = "PhoneNumber_Box";
             this.PhoneNumber_Box.PasswordChar = '\0';
@@ -428,13 +428,13 @@
             this.Identity_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Identity_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Identity_Box.FocusedState.Parent = this.Identity_Box;
-            this.Identity_Box.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.Identity_Box.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Identity_Box.ForeColor = System.Drawing.Color.Black;
             this.Identity_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.Identity_Box.HoverState.Parent = this.Identity_Box;
             this.Identity_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Identity_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Identity_Box.Location = new System.Drawing.Point(38, 117);
+            this.Identity_Box.Location = new System.Drawing.Point(38, 109);
             this.Identity_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Identity_Box.Name = "Identity_Box";
             this.Identity_Box.PasswordChar = '\0';
@@ -458,10 +458,10 @@
             this.AddInfor_Button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AddInfor_Button.CustomImages.Parent = this.AddInfor_Button;
             this.AddInfor_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.AddInfor_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.AddInfor_Button.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.AddInfor_Button.ForeColor = System.Drawing.Color.White;
             this.AddInfor_Button.HoverState.Parent = this.AddInfor_Button;
-            this.AddInfor_Button.Location = new System.Drawing.Point(452, 76);
+            this.AddInfor_Button.Location = new System.Drawing.Point(451, 65);
             this.AddInfor_Button.Name = "AddInfor_Button";
             this.AddInfor_Button.PressedDepth = 5;
             this.AddInfor_Button.ShadowDecoration.Parent = this.AddInfor_Button;
@@ -474,6 +474,10 @@
             // 
             this.guna2DragControl1.TargetControl = this.Header;
             // 
+            // cHANGEORREFUNDPRODUCTBindingSource
+            // 
+            this.cHANGEORREFUNDPRODUCTBindingSource.DataSource = typeof(CompuStore.Database.Models.CHANGE_OR_REFUND_PRODUCT);
+            // 
             // pRODUCTBindingSource
             // 
             this.pRODUCTBindingSource.DataSource = typeof(CompuStore.Database.Models.PRODUCT);
@@ -481,10 +485,6 @@
             // iNFORBindingSource
             // 
             this.iNFORBindingSource.DataSource = typeof(CompuStore.Database.Models.INFOR);
-            // 
-            // cHANGEORREFUNDPRODUCTBindingSource
-            // 
-            this.cHANGEORREFUNDPRODUCTBindingSource.DataSource = typeof(CompuStore.Database.Models.CHANGE_OR_REFUND_PRODUCT);
             // 
             // ReturnDetail_Form
             // 
@@ -512,9 +512,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddWarranty_Form";
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cHANGEORREFUNDPRODUCTBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUCTBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iNFORBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cHANGEORREFUNDPRODUCTBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
