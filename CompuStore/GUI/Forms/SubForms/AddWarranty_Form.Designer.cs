@@ -47,6 +47,7 @@
             this.AddInfor_Button = new Guna.UI2.WinForms.Guna2Button();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.CreateDate_Picker = new Guna.UI2.WinForms.Guna2DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -101,7 +102,7 @@
             this.label1.Location = new System.Drawing.Point(35, 278);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(229, 24);
+            this.label1.Size = new System.Drawing.Size(184, 24);
             this.label1.TabIndex = 89;
             this.label1.Text = "Ngày hẹn trả bảo hành:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -117,16 +118,16 @@
             this.WarrantyDoneDate_Picker.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.WarrantyDoneDate_Picker.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WarrantyDoneDate_Picker.ForeColor = System.Drawing.Color.Black;
-            this.WarrantyDoneDate_Picker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.WarrantyDoneDate_Picker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.WarrantyDoneDate_Picker.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
             this.WarrantyDoneDate_Picker.HoverState.Parent = this.WarrantyDoneDate_Picker;
-            this.WarrantyDoneDate_Picker.Location = new System.Drawing.Point(266, 281);
+            this.WarrantyDoneDate_Picker.Location = new System.Drawing.Point(221, 281);
             this.WarrantyDoneDate_Picker.Margin = new System.Windows.Forms.Padding(0);
             this.WarrantyDoneDate_Picker.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.WarrantyDoneDate_Picker.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.WarrantyDoneDate_Picker.Name = "WarrantyDoneDate_Picker";
             this.WarrantyDoneDate_Picker.ShadowDecoration.Parent = this.WarrantyDoneDate_Picker;
-            this.WarrantyDoneDate_Picker.Size = new System.Drawing.Size(323, 24);
+            this.WarrantyDoneDate_Picker.Size = new System.Drawing.Size(368, 24);
             this.WarrantyDoneDate_Picker.TabIndex = 88;
             this.WarrantyDoneDate_Picker.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.WarrantyDoneDate_Picker.Value = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
@@ -462,11 +463,37 @@
             // 
             this.guna2DragControl1.TargetControl = this.Header;
             // 
+            // CreateDate_Picker
+            // 
+            this.CreateDate_Picker.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.CreateDate_Picker.Animated = true;
+            this.CreateDate_Picker.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.CreateDate_Picker.CheckedState.Parent = this.CreateDate_Picker;
+            this.CreateDate_Picker.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.CreateDate_Picker.CustomFormat = " dd/MM/yyyy";
+            this.CreateDate_Picker.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
+            this.CreateDate_Picker.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateDate_Picker.ForeColor = System.Drawing.Color.Black;
+            this.CreateDate_Picker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.CreateDate_Picker.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.CreateDate_Picker.HoverState.Parent = this.CreateDate_Picker;
+            this.CreateDate_Picker.Location = new System.Drawing.Point(221, 343);
+            this.CreateDate_Picker.Margin = new System.Windows.Forms.Padding(0);
+            this.CreateDate_Picker.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.CreateDate_Picker.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.CreateDate_Picker.Name = "CreateDate_Picker";
+            this.CreateDate_Picker.ShadowDecoration.Parent = this.CreateDate_Picker;
+            this.CreateDate_Picker.Size = new System.Drawing.Size(368, 24);
+            this.CreateDate_Picker.TabIndex = 92;
+            this.CreateDate_Picker.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.CreateDate_Picker.Value = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
+            // 
             // AddWarranty_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 537);
+            this.Controls.Add(this.CreateDate_Picker);
             this.Controls.Add(this.AddInfor_Button);
             this.Controls.Add(this.WarrantyReason);
             this.Controls.Add(this.label1);
@@ -514,5 +541,6 @@
         private Guna.UI2.WinForms.Guna2Button AddInfor_Button;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
+        private Guna.UI2.WinForms.Guna2DateTimePicker CreateDate_Picker;
     }
 }

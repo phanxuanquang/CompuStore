@@ -65,6 +65,7 @@
             // 
             this.Statistics_Button.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Statistics_Button.Animated = true;
+            this.Statistics_Button.BackgroundImage = global::CompuStore.Properties.Resources.Statistics;
             this.Statistics_Button.CheckedState.FillColor = System.Drawing.Color.White;
             this.Statistics_Button.CheckedState.Parent = this.Statistics_Button;
             this.Statistics_Button.CustomImages.Parent = this.Statistics_Button;
@@ -75,7 +76,7 @@
             this.Statistics_Button.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
             this.Statistics_Button.HoverState.Image = global::CompuStore.Properties.Resources.Statistics___Hover;
             this.Statistics_Button.HoverState.Parent = this.Statistics_Button;
-            this.Statistics_Button.Image = global::CompuStore.Properties.Resources.Storage;
+            this.Statistics_Button.Image = global::CompuStore.Properties.Resources.Statistics;
             this.Statistics_Button.ImageOffset = new System.Drawing.Point(0, 8);
             this.Statistics_Button.ImageSize = new System.Drawing.Size(50, 50);
             this.Statistics_Button.Location = new System.Drawing.Point(1362, -1);
@@ -187,7 +188,7 @@
             this.StorageManage_Button.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
             this.StorageManage_Button.HoverState.Image = global::CompuStore.Properties.Resources.Storage___Hover;
             this.StorageManage_Button.HoverState.Parent = this.StorageManage_Button;
-            this.StorageManage_Button.Image = ((System.Drawing.Image)(resources.GetObject("StorageManage_Button.Image")));
+            this.StorageManage_Button.Image = global::CompuStore.Properties.Resources.Storage;
             this.StorageManage_Button.ImageOffset = new System.Drawing.Point(0, 8);
             this.StorageManage_Button.ImageSize = new System.Drawing.Size(50, 50);
             this.StorageManage_Button.Location = new System.Drawing.Point(1022, -1);
