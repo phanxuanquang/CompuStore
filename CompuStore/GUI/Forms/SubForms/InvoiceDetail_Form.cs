@@ -18,10 +18,9 @@ namespace CompuStore
     public partial class InvoiceDetail_Form : Form
     {
        
-        CUSTOMER customer;
+        CUSTOMER customer = new CUSTOMER();
         List<string> addedProduct = new List<string>();
         List<PRODUCT> productList = new List<PRODUCT>();
-        STAFF currentStaff;
         DataTable adjustmentTable;
         INVOICE invoice;
         string id;
@@ -34,6 +33,7 @@ namespace CompuStore
             this.ShowInTaskbar = false;
             guna2ShadowForm1.SetShadowForm(this);
             this.Load += AddInvoice_Form_Load;
+            this.Identity_Box.KeyPress += Identity_Box_KeyPress;
         }
 
         private void AddInvoice_Form_Load(object sender, EventArgs e)
@@ -80,13 +80,12 @@ namespace CompuStore
 
         private void LoadCustomer()
         {
-            CUSTOMER customer = Database.DataProvider.Instance.Database.CUSTOMERs.Where(item => item.ID == invoice.ID_CUSTOMER).FirstOrDefault();
+            customer = Database.DataProvider.Instance.Database.CUSTOMERs.Where(item => item.ID == invoice.ID_CUSTOMER).FirstOrDefault();
             Identity_Box.Text = customer.INFOR.IDENTITY_CODE;
             Name_Box.Text = customer.INFOR.NAME;
             PhoneNumber_Box.Text = customer.INFOR.PHONE_NUMBER;
             Email_Box.Text = customer.INFOR.EMAIL;
             Address_Box.Text = customer.INFOR.ADDRESS;
-            Name_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = true;
         }
 
         protected override CreateParams CreateParams
@@ -110,16 +109,6 @@ namespace CompuStore
             dataColumn = new DataColumn("Giá tiền", typeof(double));
             adjustmentTable.Columns.Add(dataColumn);
             ItemTable.DataSource = adjustmentTable;
-            ItemTable.CellDoubleClick += ItemTable_CellDoubleClick;
-        }
-
-        private void ItemTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                ItemTable.Rows.RemoveAt(e.RowIndex);
-                addedProduct.RemoveAt(e.RowIndex);
-            }    
         }
 
         private void Exit_Button_Click(object sender, EventArgs e)
@@ -129,27 +118,46 @@ namespace CompuStore
 
         private async void Print_Button_Click(object sender, EventArgs e)
         {
-            await Task.Factory.StartNew(() =>
-            {
-                int[] id = { 7, 8, 9 };
+            this.Close();
+        }
 
-                string message = string.Empty;
-                DateTime now = new DateTime(2022, 12, 1);
-                for (int index = 0; index < 10; index++)
+        private void Save_Button_Click(object sender, EventArgs e)
+        {
+            customer.INFOR.IDENTITY_CODE = Identity_Box.Text;
+            customer.INFOR.NAME = Name_Box.Text;
+            customer.INFOR.PHONE_NUMBER = PhoneNumber_Box.Text;
+            customer.INFOR.EMAIL = Email_Box.Text;
+            customer.INFOR.ADDRESS = Address_Box.Text;
+            invoice.ID_CUSTOMER = customer.ID;
+            try
+            {
+                Database.DataProvider.Instance.Database.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            MessageBox.Show("Lưu thành công");
+        }
+
+        private void Identity_Box_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (customer.INFOR.IDENTITY_CODE != Identity_Box.Text)
+            {
+                CUSTOMER cus = CustomerServices.Instance.GetCustomerByIDCode(Identity_Box.Text);
+                if (cus != null)
                 {
-                    List<PRODUCT> items = Database.DataProvider.Instance.Database.PRODUCTs.Where(item => item.IN_WAREHOUSE == true && item.DETAIL_SPECS.COMMON_SPECS.NAME == "Apple MacBook Pro 15 (2018)").Take(1).ToList();
-                    now = now.AddDays(1);
-                    try
+                    DialogResult dialogResult = MessageBox.Show("Khách hàng có số CMND/CCCD này đã tồn tại trong hệ thống.\nBạn có muốn cập nhật sang khách hàng đó?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (dialogResult == DialogResult.Yes)
                     {
-                        InvoiceServices.Instance.SaveInvoiceToDB(items, id[id.Length % 3], currentStaff.ID, now, 10);
-                    }
-                    catch (Exception ex)
-                    {
-                        message += ex;
+                        customer = cus;
+                        Name_Box.Text = cus.INFOR.NAME;
+                        PhoneNumber_Box.Text = cus.INFOR.PHONE_NUMBER;
+                        Email_Box.Text = cus.INFOR.EMAIL;
+                        Address_Box.Text = cus.INFOR.ADDRESS;
                     }
                 }
-            });
-            this.Close();
+            }
         }
     }
 }
