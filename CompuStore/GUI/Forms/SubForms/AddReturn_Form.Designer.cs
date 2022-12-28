@@ -161,7 +161,7 @@
             this.Print_Button.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Print_Button.ForeColor = System.Drawing.Color.White;
             this.Print_Button.HoverState.Parent = this.Print_Button;
-            this.Print_Button.Location = new System.Drawing.Point(30, 386);
+            this.Print_Button.Location = new System.Drawing.Point(30, 390);
             this.Print_Button.Name = "Print_Button";
             this.Print_Button.PressedDepth = 5;
             this.Print_Button.ShadowDecoration.Parent = this.Print_Button;

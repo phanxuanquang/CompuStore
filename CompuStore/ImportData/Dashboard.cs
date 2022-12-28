@@ -44,7 +44,7 @@ namespace CompuStore.ImportData
             NumProducts = Database.DataProvider.Instance.Database.PRODUCTs.Count();
             NumOrders = Database.DataProvider.Instance.Database.INVOICEs.Where(item => item.INVOICE_DATE >= startDate && item.INVOICE_DATE <= endDate).Count();
 
-            var list2 = Database.DataProvider.Instance.Database.PRODUCTs.GroupBy(item => item.DETAIL_SPECS.COMMON_SPECS.NAME).Select(g => new
+            var list2 = Database.DataProvider.Instance.Database.PRODUCTs.Where(pro => pro.IN_WAREHOUSE == true).GroupBy(item => item.DETAIL_SPECS.COMMON_SPECS.NAME).Select(g => new
             {
                 NAME = g.Key,
                 Quanlity = g.Count()
