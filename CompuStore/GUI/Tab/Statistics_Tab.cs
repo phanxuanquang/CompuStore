@@ -23,6 +23,12 @@ namespace CompuStore.GUI.Tab
             btnLast7Days.Select();
             model = new Dashboard();
             LoadData();
+            this.Load += Statistics_Tab_Load;
+        }
+
+        private void Statistics_Tab_Load(object sender, EventArgs e)
+        {
+            dgvUnderstock.Columns[1].Width = 100;
         }
 
         private void LoadData()
@@ -44,9 +50,9 @@ namespace CompuStore.GUI.Tab
                 chartTopProducts.Series[0].XValueMember = "Key";
                 chartTopProducts.Series[0].YValueMembers = "Value";
                 chartTopProducts.DataBind();
-               /* dgvUnderstock.DataSource = model.UnderstockList;
-                dgvUnderstock.Columns[0].HeaderText = "Item";
-                dgvUnderstock.Columns[1].HeaderText = "Units";*/
+                dgvUnderstock.DataSource = model.UnderstockList;
+                dgvUnderstock.Columns[0].HeaderText = "Sản phẩm";
+                dgvUnderstock.Columns[1].HeaderText = "Số lượng";
                 Console.WriteLine("Loaded view :)");
             }
             else Console.WriteLine("View not loaded, same query");
@@ -75,7 +81,7 @@ namespace CompuStore.GUI.Tab
             DisableCustomDates();
         }
 
-        private async void btnLast30Days_Click(object sender, EventArgs e)
+        private void btnLast30Days_Click(object sender, EventArgs e)
         {
             dtpStartDate.Value = DateTime.Today.AddDays(-30);
             dtpEndDate.Value = DateTime.Now;

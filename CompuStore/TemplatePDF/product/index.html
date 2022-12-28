@@ -4,26 +4,47 @@
 <head>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
    <div class="container d-flex justify-content-center">
-      <div class="card border rounded w-75">
+      <div class="card border rounded w-100">
          <div class="card-body container">
             <div class="d-flex justify-content-center">
-               <div class="card-img">
-                  <img src="C:\Users\Thiet\Pictures\cat magic.jpg" class="img-fluid" />
+               <div class="card-img ">
+                  <img src="../product/2108_man-hinh-laptop-lenovo.jpg" style="border-radius: 10px; object-fit: cover;" class="h-100 img-fluid" alt="ads"/>
                </div>
                <div class="container">
                   <div class="col" style="text-align: center;">
                      <div style="font-weight: bold; font-size: 2rem;">
                         {{ data.name }}
                      </div>
-                     <table class="w-100">
-                        <tr style="background-color: orange;">
-                           <th colspan="2">Thông tin sản phẩm</th>
+                     <table class="w-100 table table-striped table-hover">
+                        <tr style="background-color: #ffd400;">
+                           <th colspan="2" scope="col" class="">Thông tin sản phẩm</th>
                         </tr>
                         {{ for keyValue in data.properties }}
+                        <tr>
+                           <td>{{ keyValue.key }}</td>
+                           <td>{{ keyValue.value }}</td>
+                        </tr>
+                        <tr>
+                           <td>{{ keyValue.key }}</td>
+                           <td>{{ keyValue.value }}</td>
+                        </tr>
+                        <tr>
+                           <td>{{ keyValue.key }}</td>
+                           <td>{{ keyValue.value }}</td>
+                        </tr>
+                        <tr>
+                           <td>{{ keyValue.key }}</td>
+                           <td>{{ keyValue.value }}</td>
+                        </tr>
+                        <tr>
+                           <td>{{ keyValue.key }}</td>
+                           <td>{{ keyValue.value }}</td>
+                        </tr>
                         <tr>
                            <td>{{ keyValue.key }}</td>
                            <td>{{ keyValue.value }}</td>

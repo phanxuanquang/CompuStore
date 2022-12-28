@@ -38,16 +38,28 @@ namespace CompuStore.ImportData
         }
         private void GetNumberItems()
         {
+            UnderstockList = new List<KeyValuePair<string, int>>();
             NumCustomers = Database.DataProvider.Instance.Database.CUSTOMERs.Count();
             NumSuppliers = Database.DataProvider.Instance.Database.DISTRIBUTORs.Count();
             NumProducts = Database.DataProvider.Instance.Database.PRODUCTs.Count();
             NumOrders = Database.DataProvider.Instance.Database.INVOICEs.Where(item => item.INVOICE_DATE >= startDate && item.INVOICE_DATE <= endDate).Count();
+
+            var list2 = Database.DataProvider.Instance.Database.PRODUCTs.GroupBy(item => item.DETAIL_SPECS.COMMON_SPECS.NAME).Select(g => new
+            {
+                NAME = g.Key,
+                Quanlity = g.Count()
+            });
+            foreach (var item in list2)
+            {
+                UnderstockList.Add(
+                            new KeyValuePair<string, int>(item.NAME, item.Quanlity));
+            }
         }
 
         private void GetProductAnalisys()
         {
             TopProductsList = new List<KeyValuePair<string, int>>();
-            UnderstockList = new List<KeyValuePair<string, int>>();
+           
 
             //Get Top 5 products
             var list = Database.DataProvider.Instance.Database.DETAIL_INVOICE.Where(item => item.INVOICE.INVOICE_DATE >= startDate && item.INVOICE.INVOICE_DATE <= endDate).GroupBy(product => product.PRODUCT.DETAIL_SPECS.COMMON_SPECS.NAME).Select(g => new
@@ -90,7 +102,8 @@ namespace CompuStore.ImportData
                 TotalRevenue += (decimal)item.TotalAmount;
                 
             }
-            
+
+
             //Group by Hours
             if (numberDays <= 1)
             {

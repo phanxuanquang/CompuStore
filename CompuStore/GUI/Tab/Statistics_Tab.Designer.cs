@@ -36,6 +36,9 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCustom = new Guna.UI2.WinForms.Guna2Button();
             this.btnToday = new Guna.UI2.WinForms.Guna2Button();
             this.btnLast7Days = new Guna.UI2.WinForms.Guna2Button();
@@ -204,7 +207,7 @@
             this.dtpStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dtpStartDate.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
             this.dtpStartDate.HoverState.Parent = this.dtpStartDate;
-            this.dtpStartDate.Location = new System.Drawing.Point(142, 192);
+            this.dtpStartDate.Location = new System.Drawing.Point(146, 18);
             this.dtpStartDate.Margin = new System.Windows.Forms.Padding(0);
             this.dtpStartDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpStartDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -229,7 +232,7 @@
             this.dtpEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Long;
             this.dtpEndDate.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
             this.dtpEndDate.HoverState.Parent = this.dtpEndDate;
-            this.dtpEndDate.Location = new System.Drawing.Point(363, 192);
+            this.dtpEndDate.Location = new System.Drawing.Point(363, 18);
             this.dtpEndDate.Margin = new System.Windows.Forms.Padding(0);
             this.dtpEndDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpEndDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
@@ -541,9 +544,43 @@
             // 
             // dgvUnderstock
             // 
+            this.dgvUnderstock.AllowUserToResizeRows = false;
+            this.dgvUnderstock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvUnderstock.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dgvUnderstock.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvUnderstock.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvUnderstock.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUnderstock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUnderstock.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvUnderstock.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvUnderstock.EnableHeadersVisualStyles = false;
             this.dgvUnderstock.Location = new System.Drawing.Point(13, 50);
             this.dgvUnderstock.Name = "dgvUnderstock";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvUnderstock.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvUnderstock.RowHeadersVisible = false;
+            this.dgvUnderstock.RowTemplate.Height = 35;
+            this.dgvUnderstock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvUnderstock.Size = new System.Drawing.Size(843, 183);
             this.dgvUnderstock.TabIndex = 146;
             // 
@@ -555,9 +592,9 @@
             this.label14.Location = new System.Drawing.Point(8, 14);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(202, 29);
+            this.label14.Size = new System.Drawing.Size(221, 29);
             this.label14.TabIndex = 145;
-            this.label14.Text = "Sản phẩm dự trữ";
+            this.label14.Text = "Sản phẩm tồn kho";
             this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Statistics_Tab
