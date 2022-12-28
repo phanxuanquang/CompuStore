@@ -32,13 +32,9 @@
             this.Header = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.WarrantyDoneDate_Picker = new Guna.UI2.WinForms.Guna2DateTimePicker();
-            this.warrantyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ItemSerial_Box = new Guna.UI2.WinForms.Guna2TextBox();
-            this.pRODUCTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lbDate = new System.Windows.Forms.Label();
-            this.Print_Button = new Guna.UI2.WinForms.Guna2Button();
             this.Email_Box = new Guna.UI2.WinForms.Guna2TextBox();
-            this.iNFORBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Name_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbStaffName = new System.Windows.Forms.Label();
             this.PhoneNumber_Box = new Guna.UI2.WinForms.Guna2TextBox();
@@ -51,10 +47,13 @@
             this.Status_ComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.warrantyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pRODUCTBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iNFORBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.warrantyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUCTBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iNFORBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // Header
@@ -110,10 +109,6 @@
             this.WarrantyDoneDate_Picker.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.WarrantyDoneDate_Picker.Value = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
             // 
-            // warrantyBindingSource
-            // 
-            this.warrantyBindingSource.DataSource = typeof(CompuStore.Database.Models.RECEIVE_WARRANTY);
-            // 
             // ItemSerial_Box
             // 
             this.ItemSerial_Box.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -155,10 +150,6 @@
             this.ItemSerial_Box.TextOffset = new System.Drawing.Point(5, 0);
             this.toolTip1.SetToolTip(this.ItemSerial_Box, "Mã se-ri sản phẩm bảo hành");
             // 
-            // pRODUCTBindingSource
-            // 
-            this.pRODUCTBindingSource.DataSource = typeof(CompuStore.Database.Models.PRODUCT);
-            // 
             // lbDate
             // 
             this.lbDate.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -171,29 +162,6 @@
             this.lbDate.TabIndex = 86;
             this.lbDate.Text = "Ngày lập:";
             this.lbDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // Print_Button
-            // 
-            this.Print_Button.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Print_Button.Animated = true;
-            this.Print_Button.BorderRadius = 3;
-            this.Print_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Print_Button.CheckedState.Parent = this.Print_Button;
-            this.Print_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Print_Button.CustomImages.Parent = this.Print_Button;
-            this.Print_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Print_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.Print_Button.ForeColor = System.Drawing.Color.White;
-            this.Print_Button.HoverState.Parent = this.Print_Button;
-            this.Print_Button.Location = new System.Drawing.Point(36, 343);
-            this.Print_Button.Name = "Print_Button";
-            this.Print_Button.PressedDepth = 5;
-            this.Print_Button.ShadowDecoration.Parent = this.Print_Button;
-            this.Print_Button.Size = new System.Drawing.Size(270, 57);
-            this.Print_Button.TabIndex = 84;
-            this.Print_Button.Text = "IN HÓA ĐƠN";
-            this.Print_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            this.Print_Button.Click += new System.EventHandler(this.Print_Button_Click);
             // 
             // Email_Box
             // 
@@ -235,10 +203,6 @@
             this.Email_Box.TabIndex = 81;
             this.Email_Box.TextOffset = new System.Drawing.Point(5, 0);
             this.toolTip1.SetToolTip(this.Email_Box, "E-mail");
-            // 
-            // iNFORBindingSource
-            // 
-            this.iNFORBindingSource.DataSource = typeof(CompuStore.Database.Models.INFOR);
             // 
             // Name_Box
             // 
@@ -430,11 +394,11 @@
             this.EditAndSave_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.EditAndSave_Button.ForeColor = System.Drawing.Color.White;
             this.EditAndSave_Button.HoverState.Parent = this.EditAndSave_Button;
-            this.EditAndSave_Button.Location = new System.Drawing.Point(317, 343);
+            this.EditAndSave_Button.Location = new System.Drawing.Point(39, 343);
             this.EditAndSave_Button.Name = "EditAndSave_Button";
             this.EditAndSave_Button.PressedDepth = 5;
             this.EditAndSave_Button.ShadowDecoration.Parent = this.EditAndSave_Button;
-            this.EditAndSave_Button.Size = new System.Drawing.Size(270, 57);
+            this.EditAndSave_Button.Size = new System.Drawing.Size(548, 57);
             this.EditAndSave_Button.TabIndex = 91;
             this.EditAndSave_Button.Text = "SỬA HÓA ĐƠN";
             this.EditAndSave_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -512,6 +476,18 @@
             this.Status_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.Status_ComboBox.ValueMember = "ID";
             // 
+            // warrantyBindingSource
+            // 
+            this.warrantyBindingSource.DataSource = typeof(CompuStore.Database.Models.RECEIVE_WARRANTY);
+            // 
+            // pRODUCTBindingSource
+            // 
+            this.pRODUCTBindingSource.DataSource = typeof(CompuStore.Database.Models.PRODUCT);
+            // 
+            // iNFORBindingSource
+            // 
+            this.iNFORBindingSource.DataSource = typeof(CompuStore.Database.Models.INFOR);
+            // 
             // WarrantyDetail_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -524,7 +500,6 @@
             this.Controls.Add(this.WarrantyDoneDate_Picker);
             this.Controls.Add(this.ItemSerial_Box);
             this.Controls.Add(this.lbDate);
-            this.Controls.Add(this.Print_Button);
             this.Controls.Add(this.Email_Box);
             this.Controls.Add(this.Name_Box);
             this.Controls.Add(this.lbStaffName);
@@ -538,10 +513,10 @@
             this.Name = "WarrantyDetail_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddWarranty_Form";
+            ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.warrantyBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUCTBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iNFORBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -555,7 +530,6 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker WarrantyDoneDate_Picker;
         private Guna.UI2.WinForms.Guna2TextBox ItemSerial_Box;
         private System.Windows.Forms.Label lbDate;
-        private Guna.UI2.WinForms.Guna2Button Print_Button;
         private Guna.UI2.WinForms.Guna2TextBox Email_Box;
         private Guna.UI2.WinForms.Guna2TextBox Name_Box;
         private System.Windows.Forms.Label lbStaffName;

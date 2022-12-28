@@ -30,15 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             this.Header = new System.Windows.Forms.Label();
-            this.Print_Button = new Guna.UI2.WinForms.Guna2Button();
             this.EditAndSave_Button = new Guna.UI2.WinForms.Guna2Button();
             this.HeaderIcon = new System.Windows.Forms.PictureBox();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.ReturnReason = new Guna.UI2.WinForms.Guna2TextBox();
+            this.cHANGEORREFUNDPRODUCTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.NewItemSerial_Box = new Guna.UI2.WinForms.Guna2TextBox();
+            this.pRODUCTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.OldItemSerial_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbDate = new System.Windows.Forms.Label();
             this.Email_Box = new Guna.UI2.WinForms.Guna2TextBox();
+            this.iNFORBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Name_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.lbStaffName = new System.Windows.Forms.Label();
             this.PhoneNumber_Box = new Guna.UI2.WinForms.Guna2TextBox();
@@ -46,9 +48,6 @@
             this.AddInfor_Button = new Guna.UI2.WinForms.Guna2Button();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
-            this.cHANGEORREFUNDPRODUCTBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pRODUCTBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.iNFORBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cHANGEORREFUNDPRODUCTBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUCTBindingSource)).BeginInit();
@@ -70,29 +69,6 @@
             this.Header.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Header.UseCompatibleTextRendering = true;
             // 
-            // Print_Button
-            // 
-            this.Print_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Print_Button.Animated = true;
-            this.Print_Button.BorderRadius = 3;
-            this.Print_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Print_Button.CheckedState.Parent = this.Print_Button;
-            this.Print_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Print_Button.CustomImages.Parent = this.Print_Button;
-            this.Print_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Print_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.Print_Button.ForeColor = System.Drawing.Color.White;
-            this.Print_Button.HoverState.Parent = this.Print_Button;
-            this.Print_Button.Location = new System.Drawing.Point(36, 406);
-            this.Print_Button.Name = "Print_Button";
-            this.Print_Button.PressedDepth = 5;
-            this.Print_Button.ShadowDecoration.Parent = this.Print_Button;
-            this.Print_Button.Size = new System.Drawing.Size(270, 57);
-            this.Print_Button.TabIndex = 84;
-            this.Print_Button.Text = "IN HÓA ĐƠN";
-            this.Print_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            this.Print_Button.Click += new System.EventHandler(this.Print_Button_Click);
-            // 
             // EditAndSave_Button
             // 
             this.EditAndSave_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -106,11 +82,11 @@
             this.EditAndSave_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.EditAndSave_Button.ForeColor = System.Drawing.Color.White;
             this.EditAndSave_Button.HoverState.Parent = this.EditAndSave_Button;
-            this.EditAndSave_Button.Location = new System.Drawing.Point(317, 406);
+            this.EditAndSave_Button.Location = new System.Drawing.Point(38, 406);
             this.EditAndSave_Button.Name = "EditAndSave_Button";
             this.EditAndSave_Button.PressedDepth = 5;
             this.EditAndSave_Button.ShadowDecoration.Parent = this.EditAndSave_Button;
-            this.EditAndSave_Button.Size = new System.Drawing.Size(270, 57);
+            this.EditAndSave_Button.Size = new System.Drawing.Size(549, 57);
             this.EditAndSave_Button.TabIndex = 91;
             this.EditAndSave_Button.Text = "SỬA HÓA ĐƠN";
             this.EditAndSave_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -184,6 +160,10 @@
             this.ReturnReason.TabIndex = 146;
             this.ReturnReason.TextOffset = new System.Drawing.Point(5, 0);
             // 
+            // cHANGEORREFUNDPRODUCTBindingSource
+            // 
+            this.cHANGEORREFUNDPRODUCTBindingSource.DataSource = typeof(CompuStore.Database.Models.CHANGE_OR_REFUND_PRODUCT);
+            // 
             // NewItemSerial_Box
             // 
             this.NewItemSerial_Box.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -222,6 +202,10 @@
             this.NewItemSerial_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.NewItemSerial_Box.TabIndex = 145;
             this.NewItemSerial_Box.TextOffset = new System.Drawing.Point(5, 0);
+            // 
+            // pRODUCTBindingSource
+            // 
+            this.pRODUCTBindingSource.DataSource = typeof(CompuStore.Database.Models.PRODUCT);
             // 
             // OldItemSerial_Box
             // 
@@ -314,6 +298,10 @@
             this.Email_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Email_Box.TabIndex = 140;
             this.Email_Box.TextOffset = new System.Drawing.Point(5, 0);
+            // 
+            // iNFORBindingSource
+            // 
+            this.iNFORBindingSource.DataSource = typeof(CompuStore.Database.Models.INFOR);
             // 
             // Name_Box
             // 
@@ -474,18 +462,6 @@
             // 
             this.guna2DragControl1.TargetControl = this.Header;
             // 
-            // cHANGEORREFUNDPRODUCTBindingSource
-            // 
-            this.cHANGEORREFUNDPRODUCTBindingSource.DataSource = typeof(CompuStore.Database.Models.CHANGE_OR_REFUND_PRODUCT);
-            // 
-            // pRODUCTBindingSource
-            // 
-            this.pRODUCTBindingSource.DataSource = typeof(CompuStore.Database.Models.PRODUCT);
-            // 
-            // iNFORBindingSource
-            // 
-            this.iNFORBindingSource.DataSource = typeof(CompuStore.Database.Models.INFOR);
-            // 
             // ReturnDetail_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -502,7 +478,6 @@
             this.Controls.Add(this.Identity_Box);
             this.Controls.Add(this.AddInfor_Button);
             this.Controls.Add(this.EditAndSave_Button);
-            this.Controls.Add(this.Print_Button);
             this.Controls.Add(this.HeaderIcon);
             this.Controls.Add(this.Exit_Button);
             this.Controls.Add(this.Header);
@@ -524,7 +499,6 @@
         private System.Windows.Forms.PictureBox HeaderIcon;
         private Guna.UI2.WinForms.Guna2ImageButton Exit_Button;
         private System.Windows.Forms.Label Header;
-        private Guna.UI2.WinForms.Guna2Button Print_Button;
         private Guna.UI2.WinForms.Guna2Button EditAndSave_Button;
         private Guna.UI2.WinForms.Guna2TextBox ReturnReason;
         private Guna.UI2.WinForms.Guna2TextBox NewItemSerial_Box;
