@@ -12,6 +12,8 @@ using System.Windows.Forms;
 using Guna.UI2.WinForms;
 using CompuStore.Database.Services.ProductServices;
 using CompuStore.ImportData;
+using CompuStore.Utilities.ExportPDF;
+using System.IO;
 
 namespace CompuStore
 {
@@ -118,7 +120,31 @@ namespace CompuStore
 
         private async void Print_Button_Click(object sender, EventArgs e)
         {
-            this.Close();
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            if (dialog.ShowDialog() != DialogResult.OK)
+                return;
+            ExportPDF export = new ExportPDF();
+            IDataExport data = new InvoicePDF
+            {
+                ExportPath = Path.Combine(dialog.SelectedPath, "export.html"),
+                DataBindingTemplate = new
+                {
+                    data = new
+                    {
+                        id_invoice = invoice.NAME_ID,
+                        date = invoice.INVOICE_DATE,
+                        customer_name = invoice.CUSTOMER.INFOR.NAME,
+                        phone_customer = invoice.CUSTOMER.INFOR.PHONE_NUMBER,
+                        company = "XL COMPANY",
+                        address = "123 KTX KHU A",
+                        phone_company = "382765235",
+                        total = invoice.TOTAL,
+                        products = invoice.DETAIL_INVOICE.Select(item => new { name = item.PRODUCT.DETAIL_SPECS.COMMON_SPECS.NAME, price = item.PRICE_PER_UNIT })
+                    }
+                }
+            };
+            bool result = await export.RunExport(data);
+            MessageBox.Show(result ? "Xuất thành công" : "Xuất thất bại");
         }
 
         private void Save_Button_Click(object sender, EventArgs e)

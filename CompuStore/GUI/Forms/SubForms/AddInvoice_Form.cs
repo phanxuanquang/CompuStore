@@ -326,6 +326,7 @@ namespace CompuStore
                 lastInvoice = result;
                 MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            Database.Services.InvoiceServices.Instance.ReloadInvoiceTable(lastInvoice);
             //this.Close();
         }
 
@@ -351,7 +352,7 @@ namespace CompuStore
                         company = "XL COMPANY",
                         address = "123 KTX KHU A",
                         phone_company = "382765235",
-                        total = lastInvoice.TOTAL,
+                        total = lastInvoice.DETAIL_INVOICE.Select(item => item.PRICE_PER_UNIT).Sum(),
                         products = lastInvoice.DETAIL_INVOICE.Select(item => new { name = item.PRODUCT.DETAIL_SPECS.COMMON_SPECS.NAME, price = item.PRICE_PER_UNIT })
                     }
                 }

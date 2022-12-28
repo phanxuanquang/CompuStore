@@ -35,6 +35,11 @@ namespace CompuStore.Database.Services
             return Database.DataProvider.Instance.Database.INVOICEs.Where(item => item.ID == id).FirstOrDefault();
         }
 
+        public void ReloadInvoiceTable(INVOICE invoice)
+        {
+            Database.DataProvider.Instance.Database.Entry<INVOICE>(invoice).Reload();
+        }
+
         public async Task<dynamic> SaveInvoiceToDB(List<PRODUCT> listProduct, int idCustomer, int idStaff, DateTime invoiceDate, double vat, string idStore = null)
         {
             INVOICE invoice = new INVOICE()

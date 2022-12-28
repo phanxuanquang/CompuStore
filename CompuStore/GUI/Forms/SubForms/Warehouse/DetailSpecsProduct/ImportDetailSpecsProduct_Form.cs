@@ -45,7 +45,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Serial_Label.Location = new System.Drawing.Point(253, 13);
             this.Serial_Label.Name = "Serial_Label";
             this.Serial_Label.Size = new System.Drawing.Size(124, 32);
-            this.Serial_Label.TabIndex = 0;
             this.Serial_Label.Text = "Serial máy";
             // 
             // Price_Label
@@ -54,7 +53,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Price_Label.Location = new System.Drawing.Point(281, 70);
             this.Price_Label.Name = "Price_Label";
             this.Price_Label.Size = new System.Drawing.Size(96, 32);
-            this.Price_Label.TabIndex = 1;
             this.Price_Label.Text = "Giá tiền";
             // 
             // UnitPrice_Label
@@ -63,7 +61,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.UnitPrice_Label.Location = new System.Drawing.Point(786, 73);
             this.UnitPrice_Label.Name = "UnitPrice_Label";
             this.UnitPrice_Label.Size = new System.Drawing.Size(64, 32);
-            this.UnitPrice_Label.TabIndex = 2;
             this.UnitPrice_Label.Text = "VND";
             // 
             // Serial_TextBox
@@ -71,7 +68,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Serial_TextBox.Location = new System.Drawing.Point(456, 13);
             this.Serial_TextBox.Name = "Serial_TextBox";
             this.Serial_TextBox.Size = new System.Drawing.Size(324, 39);
-            this.Serial_TextBox.TabIndex = 3;
+            this.Serial_TextBox.TabIndex = 0;
             this.Serial_TextBox.Enabled = false;
             // 
             // Price_TextBox
@@ -79,7 +76,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Price_TextBox.Location = new System.Drawing.Point(456, 70);
             this.Price_TextBox.Name = "Price_TextBox";
             this.Price_TextBox.Size = new System.Drawing.Size(324, 39);
-            this.Price_TextBox.TabIndex = 4;
+            this.Price_TextBox.TabIndex = 1;
             this.Price_TextBox.Enter += Price_TextBox_Enter;
             this.Price_TextBox.Leave += Price_TextBox_Leave;
             this.Price_TextBox.Enabled = false;

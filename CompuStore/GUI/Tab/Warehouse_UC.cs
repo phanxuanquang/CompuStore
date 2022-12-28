@@ -251,7 +251,7 @@ namespace CompuStore.Tab
                     {
                         column.DefaultCellStyle.Format = "yyyy";
                     }
-                    if(column.Name == "Total")
+                    if (column.Name == "Total")
                     {
                         column.DefaultCellStyle.Format = "#,#";
                     }

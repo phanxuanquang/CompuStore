@@ -22,7 +22,7 @@ namespace CompuStore.GUI
         {
             public int ID { get; set; }
             public string Value { get; set; }
-            public string ConnectionString;
+            public string ConnectionString; 
         }
 
         public Login_Form()
@@ -84,8 +84,8 @@ namespace CompuStore.GUI
 
         private async void Login_Button_Click(object sender, EventArgs e)
         {
-            Username_Box.Text = "20998983223";
-            Password_Box.Text = "20998983223";
+            //Username_Box.Text = "20998983223";
+            //Password_Box.Text = "20998983223";
             if (Username_Box.Text == String.Empty || Password_Box.Text == String.Empty)
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin đăng nhập.", "Đăng nhập thất bại", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -110,12 +110,7 @@ namespace CompuStore.GUI
                     this.Hide();
                     this.ShowIcon = this.ShowInTaskbar = false;
 
-                    switch (loginVerification.Item2)
-                    {
-
-                    }
-
-                    MainWindow mainWindow = new MainWindow();
+                    MainWindow mainWindow = new MainWindow(loginVerification.Item2);
                     mainWindow.ShowDialog();
                 }
                 else
@@ -183,137 +178,9 @@ namespace CompuStore.GUI
             RememberAccount_CheckBox.Checked = !RememberAccount_CheckBox.Checked;
         }
 
-        private async void Exit_Button_Click_1(object sender, EventArgs e)
+        private void Exit_Button_Click_1(object sender, EventArgs e)
         {
-            /*Application.Exit();*/
-            ExportPDF export = new ExportPDF();
-            IDataExport data = new ProductPDF
-            {
-                ExportPath = "./export.html",
-                DataBindingTemplate = new
-                {
-                    data = new
-                    {
-                        name = "Dell Precision 7770",
-                        price = "21.000.000",
-                        properties = new Object[]
-                        {
-                            new
-                            {
-                                key = "CPU",
-                                value = "Intel Core i9-12950H"
-                            },
-                            new
-                            {
-                                key = "RAM",
-                                value = "16GB DDR5 5200MHz"
-                            }
-                        }
-                    }
-                }
-            };
-            /*IDataExport data = new InvoicePDF
-            {
-                ExportPath = "./export.html",
-                DataBindingTemplate = new
-                {
-                    data = new
-                    {
-                        id_invoice = "INVOICE#1123",
-                        date = DateTime.Now,
-                        customer_name = "Tran Van A",
-                        phone_customer = "0944837525",
-                        company = "XL COMPANY",
-                        address = "123 KTX KHU A",
-                        phone_company = "382765235",
-                        total = "43874632552",
-                        products = new Object[]
-                        {
-                            new
-                            {
-                                name = "CPU",
-                                price = "Intel Core i9-12950H"
-                            },
-                            new
-                            {
-                                name = "RAM",
-                                price = "16GB DDR5 5200MHz"
-                            },
-                            new
-                            {
-                                name = "CPU",
-                                price = "Intel Core i9-12950H"
-                            },
-                            new
-                            {
-                                name = "RAM",
-                                price = "16GB DDR5 5200MHz"
-                            },
-                            new
-                            {
-                                name = "CPU",
-                                price = "Intel Core i9-12950H"
-                            },
-                            new
-                            {
-                                name = "RAM",
-                                price = "16GB DDR5 5200MHz"
-                            },
-                            new
-                            {
-                                name = "CPU",
-                                price = "Intel Core i9-12950H"
-                            },
-                            new
-                            {
-                                name = "RAM",
-                                price = "16GB DDR5 5200MHz"
-                            },
-                            new
-                            {
-                                name = "CPU",
-                                price = "Intel Core i9-12950H"
-                            },
-                            new
-                            {
-                                name = "RAM",
-                                price = "16GB DDR5 5200MHz"
-                            },
-                            new
-                            {
-                                name = "CPU",
-                                price = "Intel Core i9-12950H"
-                            },
-                            new
-                            {
-                                name = "RAM",
-                                price = "16GB DDR5 5200MHz"
-                            },
-                        }
-                    }
-                }
-            };*/
-            await export.RunExport(data);
-            /*await Task.Factory.StartNew(() =>
-            {
-                int[] id = { 7, 8, 9 };
-
-                string message = string.Empty;
-                DateTime now = new DateTime(2022, 12, 23);
-                for (int index = 0; index < 10; index++)
-                {
-                    List<PRODUCT> items = Database.DataProvider.Instance.Database.PRODUCTs.Where(item => item.IN_WAREHOUSE == true && item.DETAIL_SPECS.COMMON_SPECS.NAME == "LG Gram 17 (2022)").Take(1).ToList();
-                    now = now.AddDays(1);
-                    try
-                    {
-                        InvoiceServices.Instance.SaveInvoiceToDB(items, id[id.Length % 3], 5, now, 10);
-                    }
-                    catch (Exception ex)
-                    {
-                        message += ex;
-                    }
-                }
-            });*/
+            Application.Exit();
         }
     }
 }
