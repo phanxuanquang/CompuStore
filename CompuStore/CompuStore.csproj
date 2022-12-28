@@ -521,7 +521,6 @@
     <None Include="Resources\Password.png" />
     <None Include="Resources\Username.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Database\Models\CompuStoreModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

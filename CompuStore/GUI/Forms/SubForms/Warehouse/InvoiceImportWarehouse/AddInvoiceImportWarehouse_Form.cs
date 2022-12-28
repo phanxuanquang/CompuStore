@@ -561,13 +561,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                         foreach (ModelProduct product in resultChanged.Remove)
                         {
                             bool? result = await ProductServices.Instance.RemoveProduct(product);
-                            if (result != null)
-                            {
-                                if (result == false)
-                                    errorProduct.Add(product);
-                            }
-                            else
+                            if (result == null)
                                 saledProduct.Add(product);
+                            else if (result == false)
+                                errorProduct.Add(product);
                         }
                         if (saledProduct.Count > 0)
                             MessageBox.Show(string.Format("Có {0} sản phẩm đã bán nên không thể thay đổi thông tin:\n{1}", saledProduct.Count, string.Join("\n", saledProduct.Select(item => item.ID))));
@@ -578,17 +575,17 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     if (resultChanged.SpecsChanged != null)
                     {
                         IList<ModelProduct> errorProduct = new List<ModelProduct>();
+                        IList<ModelProduct> saledProduct = new List<ModelProduct>();
                         foreach (KeyValuePair<ModelProduct, ModelProduct> product in resultChanged.SpecsChanged)
                         {
-                            try
-                            {
-                                await ProductServices.Instance.ChangeInfo(product);
-                            }
-                            catch
-                            {
-                                errorProduct.Add(product);
-                            }
+                            bool? result = await ProductServices.Instance.ChangeInfo(product);
+                            if (result == null)
+                                saledProduct.Add(product.Key);
+                            else if (result == false)
+                                errorProduct.Add(product.Key);
                         }
+                        if (saledProduct.Count > 0)
+                            MessageBox.Show(string.Format("Có {0} sản phẩm đã bán nên không thể thay đổi thông tin:\n{1}", saledProduct.Count, string.Join("\n", saledProduct.Select(item => item.ID))));
                         if (errorProduct.Count > 0)
                             MessageBox.Show(string.Format("Đã xảy ra lỗi khi xóa các sản phẩm:\n{0}", string.Join("\n", errorProduct.Select(item => item.ID))));
                     }

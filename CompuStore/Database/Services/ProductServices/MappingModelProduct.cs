@@ -62,7 +62,6 @@ namespace CompuStore.Database.Services.ProductServices
                 PORT = product.PortString,
                 WEBCAM = product.Webcam,
                 DIMENSIONS = product.SizeProductString,
-                OS = product.OS,
                 WIFI = product.Wifi,
                 BLUETOOTH = product.Bluetooth,
                 QUANTITY = 0

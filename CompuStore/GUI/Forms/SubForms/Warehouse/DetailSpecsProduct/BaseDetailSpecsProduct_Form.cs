@@ -342,7 +342,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
                     storageCapacity = new BindingList<string>(GetDistinctValue(uniqueSpecsQueryable, item => item.STORAGE_CAPACITY.ToString())),
                     material = new BindingList<string>(GetDistinctValue(commonSpecsQueryable, item => item.CASE_MATERIAL)),
                     webcam = new BindingList<string>(GetDistinctValue(commonSpecsQueryable, item => item.WEBCAM)),
-                    os = new BindingList<string>(GetDistinctValue(commonSpecsQueryable, item => item.OS)),
+                    os = new BindingList<string>(GetDistinctValue(uniqueSpecsQueryable, item => item.OS)),
                     wifi = new BindingList<string>(GetDistinctValue(commonSpecsQueryable, item => item.WIFI)),
                     bluetooth = new BindingList<string>(GetDistinctValue(commonSpecsQueryable, item => item.BLUETOOTH)),
                     refreshRate = new BindingList<string>(GetDistinctValue(displaySpecsQueryable, item => item.REFRESH_RATE.ToString())),

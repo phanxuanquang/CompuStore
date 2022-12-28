@@ -89,28 +89,21 @@ namespace CompuStore.Database.Services.ProductServices
                 if (current.IN_WAREHOUSE == false)
                     return null;
                 ModelProduct update = product.Value;
-                COLOR colorUpdate = await ColorServices.Instance.GetColor(update);
-                DISPLAY_SPECS displaySpecsUpdate = await DisplaySpecsServices.Instance.GetDislaySpecs(update);
-                LINE_UP lineupUpdate = await LineUpServices.Instance.GetLineUp(update);
 
                 DETAIL_IMPORT_WAREHOUSE detailImport = DetailImportWarehouseServices.Instance.GetDetailImportWarehouseByProduct(current.PRODUCT_ID);
-                DETAIL_SPECS detailSpecs = current.DETAIL_SPECS;
-                UNIQUE_SPECS uniqueSpecs =  detailSpecs.UNIQUE_SPECS;
-                COMMON_SPECS commonSpecs =  detailSpecs.COMMON_SPECS;
 
+                LINE_UP lineup = await LineUpServices.Instance.GetLineUp(update);
+                DISPLAY_SPECS displaySpecs = await DisplaySpecsServices.Instance.GetDislaySpecs(update);
+                COLOR color = await ColorServices.Instance.GetColor(update);
+                COMMON_SPECS commonSpecs = await CommonSpecsServices.Instance.GetCommonSpecs(update, lineup);
+                UNIQUE_SPECS uniqueSpecs = await UniqueSpecsServices.Instance.GetUniqueSpecs(update, displaySpecs);
+                DETAIL_SPECS detailSpecs = await DetailSpecsServices.Instance.GetDetailSpecs(update, commonSpecs, uniqueSpecs, color);
+
+                current.ID_DETAIL_SPECS = detailSpecs.ID;
                 current.SERIAL_ID = update.Serial;
+                detailImport.PRICE_PER_UNIT = update.Price;
 
-                detailSpecs.COLOR_CODE = colorUpdate.COLOR_CODE;
-                uniqueSpecs.ID_DISPLAY_SPECS = displaySpecsUpdate.ID;
-                uniqueSpecs.WEIGHT = update.Weight;
-                uniqueSpecs.BATTERY_CAPACITY = update.BatteryCapacity;
-                uniqueSpecs.CPU = update.CPU;
-                uniqueSpecs.GPU = update.GPUString;
-                uniqueSpecs.IGPU = update.iGPU;
-                uniqueSpecs.RAM = update.RAMString;
-                uniqueSpecs.TYPE_STORAGE = update.TypeStorage;
-                uniqueSpecs.STORAGE_CAPACITY = update.StorageCapacity;
-                uniqueSpecs.OS
+                return true;
             }
             catch
             {

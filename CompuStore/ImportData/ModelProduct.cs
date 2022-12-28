@@ -640,7 +640,7 @@ namespace CompuStore.ImportData
                 PortString = commonSpecs.PORT,
                 Webcam = commonSpecs.WEBCAM,
                 SizeProductString = commonSpecs.DIMENSIONS,
-                OS = commonSpecs.OS,
+                OS = uniqueSpecs.OS,
                 Wifi = commonSpecs.WIFI,
                 Bluetooth = commonSpecs.BLUETOOTH,
                 ColorCode = color.COLOR_CODE,

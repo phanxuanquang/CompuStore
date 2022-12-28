@@ -40,7 +40,6 @@ namespace CompuStore.Database.Services
                 item.PORT == model.PORT && 
                 item.WEBCAM == model.WEBCAM &&
                 item.DIMENSIONS == model.DIMENSIONS && 
-                item.OS == model.OS &&
                 item.WIFI == model.WIFI &&
                 item.BLUETOOTH == model.BLUETOOTH,
                 model
