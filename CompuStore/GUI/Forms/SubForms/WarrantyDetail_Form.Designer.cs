@@ -47,10 +47,10 @@
             this.EditAndSave_Button = new Guna.UI2.WinForms.Guna2Button();
             this.HeaderIcon = new System.Windows.Forms.PictureBox();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.AddInfor_Button = new Guna.UI2.WinForms.Guna2Button();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.Status_ComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.warrantyBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUCTBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iNFORBindingSource)).BeginInit();
@@ -74,9 +74,9 @@
             // 
             // label1
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(35, 281);
+            this.label1.Location = new System.Drawing.Point(35, 242);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(181, 24);
@@ -86,7 +86,7 @@
             // 
             // WarrantyDoneDate_Picker
             // 
-            this.WarrantyDoneDate_Picker.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.WarrantyDoneDate_Picker.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.WarrantyDoneDate_Picker.Animated = true;
             this.WarrantyDoneDate_Picker.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
             this.WarrantyDoneDate_Picker.CheckedState.Parent = this.WarrantyDoneDate_Picker;
@@ -99,13 +99,13 @@
             this.WarrantyDoneDate_Picker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.WarrantyDoneDate_Picker.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
             this.WarrantyDoneDate_Picker.HoverState.Parent = this.WarrantyDoneDate_Picker;
-            this.WarrantyDoneDate_Picker.Location = new System.Drawing.Point(218, 276);
+            this.WarrantyDoneDate_Picker.Location = new System.Drawing.Point(218, 237);
             this.WarrantyDoneDate_Picker.Margin = new System.Windows.Forms.Padding(0);
             this.WarrantyDoneDate_Picker.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.WarrantyDoneDate_Picker.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.WarrantyDoneDate_Picker.Name = "WarrantyDoneDate_Picker";
             this.WarrantyDoneDate_Picker.ShadowDecoration.Parent = this.WarrantyDoneDate_Picker;
-            this.WarrantyDoneDate_Picker.Size = new System.Drawing.Size(370, 34);
+            this.WarrantyDoneDate_Picker.Size = new System.Drawing.Size(167, 38);
             this.WarrantyDoneDate_Picker.TabIndex = 88;
             this.WarrantyDoneDate_Picker.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.WarrantyDoneDate_Picker.Value = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
@@ -116,7 +116,7 @@
             // 
             // ItemSerial_Box
             // 
-            this.ItemSerial_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ItemSerial_Box.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.ItemSerial_Box.Animated = true;
             this.ItemSerial_Box.BackColor = System.Drawing.Color.Transparent;
             this.ItemSerial_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -140,7 +140,7 @@
             this.ItemSerial_Box.HoverState.Parent = this.ItemSerial_Box;
             this.ItemSerial_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.ItemSerial_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.ItemSerial_Box.Location = new System.Drawing.Point(39, 67);
+            this.ItemSerial_Box.Location = new System.Drawing.Point(36, 67);
             this.ItemSerial_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ItemSerial_Box.Name = "ItemSerial_Box";
             this.ItemSerial_Box.PasswordChar = '\0';
@@ -149,10 +149,11 @@
             this.ItemSerial_Box.ReadOnly = true;
             this.ItemSerial_Box.SelectedText = "";
             this.ItemSerial_Box.ShadowDecoration.Parent = this.ItemSerial_Box;
-            this.ItemSerial_Box.Size = new System.Drawing.Size(548, 37);
+            this.ItemSerial_Box.Size = new System.Drawing.Size(551, 37);
             this.ItemSerial_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.ItemSerial_Box.TabIndex = 87;
             this.ItemSerial_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.toolTip1.SetToolTip(this.ItemSerial_Box, "Mã se-ri sản phẩm bảo hành");
             // 
             // pRODUCTBindingSource
             // 
@@ -160,10 +161,10 @@
             // 
             // lbDate
             // 
-            this.lbDate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbDate.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbDate.AutoSize = true;
             this.lbDate.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDate.Location = new System.Drawing.Point(34, 348);
+            this.lbDate.Location = new System.Drawing.Point(34, 309);
             this.lbDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDate.Name = "lbDate";
             this.lbDate.Size = new System.Drawing.Size(75, 20);
@@ -173,7 +174,7 @@
             // 
             // Print_Button
             // 
-            this.Print_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Print_Button.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Print_Button.Animated = true;
             this.Print_Button.BorderRadius = 3;
             this.Print_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
@@ -184,7 +185,7 @@
             this.Print_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Print_Button.ForeColor = System.Drawing.Color.White;
             this.Print_Button.HoverState.Parent = this.Print_Button;
-            this.Print_Button.Location = new System.Drawing.Point(36, 382);
+            this.Print_Button.Location = new System.Drawing.Point(36, 343);
             this.Print_Button.Name = "Print_Button";
             this.Print_Button.PressedDepth = 5;
             this.Print_Button.ShadowDecoration.Parent = this.Print_Button;
@@ -196,7 +197,7 @@
             // 
             // Email_Box
             // 
-            this.Email_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.Email_Box.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Email_Box.Animated = true;
             this.Email_Box.BackColor = System.Drawing.Color.Transparent;
             this.Email_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -220,7 +221,7 @@
             this.Email_Box.HoverState.Parent = this.Email_Box;
             this.Email_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Email_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Email_Box.Location = new System.Drawing.Point(39, 190);
+            this.Email_Box.Location = new System.Drawing.Point(357, 149);
             this.Email_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Email_Box.Name = "Email_Box";
             this.Email_Box.PasswordChar = '\0';
@@ -229,10 +230,11 @@
             this.Email_Box.ReadOnly = true;
             this.Email_Box.SelectedText = "";
             this.Email_Box.ShadowDecoration.Parent = this.Email_Box;
-            this.Email_Box.Size = new System.Drawing.Size(550, 37);
+            this.Email_Box.Size = new System.Drawing.Size(230, 37);
             this.Email_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Email_Box.TabIndex = 81;
             this.Email_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.toolTip1.SetToolTip(this.Email_Box, "E-mail");
             // 
             // iNFORBindingSource
             // 
@@ -240,7 +242,7 @@
             // 
             // Name_Box
             // 
-            this.Name_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.Name_Box.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Name_Box.Animated = true;
             this.Name_Box.BackColor = System.Drawing.Color.Transparent;
             this.Name_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -264,7 +266,7 @@
             this.Name_Box.HoverState.Parent = this.Name_Box;
             this.Name_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Name_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Name_Box.Location = new System.Drawing.Point(39, 149);
+            this.Name_Box.Location = new System.Drawing.Point(36, 149);
             this.Name_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name_Box.Name = "Name_Box";
             this.Name_Box.PasswordChar = '\0';
@@ -277,13 +279,14 @@
             this.Name_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Name_Box.TabIndex = 80;
             this.Name_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.toolTip1.SetToolTip(this.Name_Box, "Họ và tên khách hàng");
             // 
             // lbStaffName
             // 
-            this.lbStaffName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbStaffName.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbStaffName.AutoSize = true;
             this.lbStaffName.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStaffName.Location = new System.Drawing.Point(35, 314);
+            this.lbStaffName.Location = new System.Drawing.Point(35, 275);
             this.lbStaffName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbStaffName.Name = "lbStaffName";
             this.lbStaffName.Size = new System.Drawing.Size(81, 20);
@@ -293,7 +296,7 @@
             // 
             // PhoneNumber_Box
             // 
-            this.PhoneNumber_Box.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.PhoneNumber_Box.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PhoneNumber_Box.Animated = true;
             this.PhoneNumber_Box.BackColor = System.Drawing.Color.Transparent;
             this.PhoneNumber_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -317,7 +320,7 @@
             this.PhoneNumber_Box.HoverState.Parent = this.PhoneNumber_Box;
             this.PhoneNumber_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.PhoneNumber_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.PhoneNumber_Box.Location = new System.Drawing.Point(356, 149);
+            this.PhoneNumber_Box.Location = new System.Drawing.Point(355, 108);
             this.PhoneNumber_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PhoneNumber_Box.Name = "PhoneNumber_Box";
             this.PhoneNumber_Box.PasswordChar = '\0';
@@ -330,10 +333,11 @@
             this.PhoneNumber_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.PhoneNumber_Box.TabIndex = 79;
             this.PhoneNumber_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.toolTip1.SetToolTip(this.PhoneNumber_Box, "Số điện thoại");
             // 
             // Identity_Box
             // 
-            this.Identity_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.Identity_Box.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Identity_Box.Animated = true;
             this.Identity_Box.BackColor = System.Drawing.Color.Transparent;
             this.Identity_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -357,7 +361,7 @@
             this.Identity_Box.HoverState.Parent = this.Identity_Box;
             this.Identity_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Identity_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Identity_Box.Location = new System.Drawing.Point(38, 108);
+            this.Identity_Box.Location = new System.Drawing.Point(36, 108);
             this.Identity_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Identity_Box.Name = "Identity_Box";
             this.Identity_Box.PasswordChar = '\0';
@@ -366,14 +370,15 @@
             this.Identity_Box.ReadOnly = true;
             this.Identity_Box.SelectedText = "";
             this.Identity_Box.ShadowDecoration.Parent = this.Identity_Box;
-            this.Identity_Box.Size = new System.Drawing.Size(550, 37);
+            this.Identity_Box.Size = new System.Drawing.Size(313, 37);
             this.Identity_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Identity_Box.TabIndex = 82;
             this.Identity_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.toolTip1.SetToolTip(this.Identity_Box, "CMND/CCCD của khách hàng");
             // 
             // WarrantyReason
             // 
-            this.WarrantyReason.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.WarrantyReason.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.WarrantyReason.Animated = true;
             this.WarrantyReason.BackColor = System.Drawing.Color.Transparent;
             this.WarrantyReason.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -397,7 +402,7 @@
             this.WarrantyReason.HoverState.Parent = this.WarrantyReason;
             this.WarrantyReason.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.WarrantyReason.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.WarrantyReason.Location = new System.Drawing.Point(38, 231);
+            this.WarrantyReason.Location = new System.Drawing.Point(36, 190);
             this.WarrantyReason.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.WarrantyReason.Name = "WarrantyReason";
             this.WarrantyReason.PasswordChar = '\0';
@@ -406,14 +411,15 @@
             this.WarrantyReason.ReadOnly = true;
             this.WarrantyReason.SelectedText = "";
             this.WarrantyReason.ShadowDecoration.Parent = this.WarrantyReason;
-            this.WarrantyReason.Size = new System.Drawing.Size(313, 37);
+            this.WarrantyReason.Size = new System.Drawing.Size(551, 37);
             this.WarrantyReason.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.WarrantyReason.TabIndex = 90;
             this.WarrantyReason.TextOffset = new System.Drawing.Point(5, 0);
+            this.toolTip1.SetToolTip(this.WarrantyReason, "Lý do bảo hành");
             // 
             // EditAndSave_Button
             // 
-            this.EditAndSave_Button.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.EditAndSave_Button.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.EditAndSave_Button.Animated = true;
             this.EditAndSave_Button.BorderRadius = 3;
             this.EditAndSave_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
@@ -424,7 +430,7 @@
             this.EditAndSave_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.EditAndSave_Button.ForeColor = System.Drawing.Color.White;
             this.EditAndSave_Button.HoverState.Parent = this.EditAndSave_Button;
-            this.EditAndSave_Button.Location = new System.Drawing.Point(317, 382);
+            this.EditAndSave_Button.Location = new System.Drawing.Point(317, 343);
             this.EditAndSave_Button.Name = "EditAndSave_Button";
             this.EditAndSave_Button.PressedDepth = 5;
             this.EditAndSave_Button.ShadowDecoration.Parent = this.EditAndSave_Button;
@@ -463,35 +469,13 @@
             this.Exit_Button.TabIndex = 42;
             this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
             // 
-            // AddInfor_Button
-            // 
-            this.AddInfor_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.AddInfor_Button.Animated = true;
-            this.AddInfor_Button.BorderRadius = 3;
-            this.AddInfor_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.AddInfor_Button.CheckedState.Parent = this.AddInfor_Button;
-            this.AddInfor_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AddInfor_Button.CustomImages.Parent = this.AddInfor_Button;
-            this.AddInfor_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.AddInfor_Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.AddInfor_Button.ForeColor = System.Drawing.Color.White;
-            this.AddInfor_Button.HoverState.Parent = this.AddInfor_Button;
-            this.AddInfor_Button.Location = new System.Drawing.Point(451, 67);
-            this.AddInfor_Button.Name = "AddInfor_Button";
-            this.AddInfor_Button.PressedDepth = 5;
-            this.AddInfor_Button.ShadowDecoration.Parent = this.AddInfor_Button;
-            this.AddInfor_Button.Size = new System.Drawing.Size(136, 36);
-            this.AddInfor_Button.TabIndex = 138;
-            this.AddInfor_Button.Text = "Thêm thông tin";
-            this.AddInfor_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            // 
             // guna2DragControl1
             // 
             this.guna2DragControl1.TargetControl = this.Header;
             // 
             // Status_ComboBox
             // 
-            this.Status_ComboBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Status_ComboBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Status_ComboBox.Animated = true;
             this.Status_ComboBox.BackColor = System.Drawing.Color.Transparent;
             this.Status_ComboBox.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -517,11 +501,11 @@
             this.Status_ComboBox.HoverState.Parent = this.Status_ComboBox;
             this.Status_ComboBox.ItemHeight = 32;
             this.Status_ComboBox.ItemsAppearance.Parent = this.Status_ComboBox;
-            this.Status_ComboBox.Location = new System.Drawing.Point(356, 229);
+            this.Status_ComboBox.Location = new System.Drawing.Point(394, 237);
             this.Status_ComboBox.Margin = new System.Windows.Forms.Padding(0);
             this.Status_ComboBox.Name = "Status_ComboBox";
             this.Status_ComboBox.ShadowDecoration.Parent = this.Status_ComboBox;
-            this.Status_ComboBox.Size = new System.Drawing.Size(231, 38);
+            this.Status_ComboBox.Size = new System.Drawing.Size(193, 38);
             this.Status_ComboBox.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Status_ComboBox.TabIndex = 139;
             this.Status_ComboBox.TextOffset = new System.Drawing.Point(5, 0);
@@ -532,7 +516,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 468);
+            this.ClientSize = new System.Drawing.Size(623, 430);
             this.Controls.Add(this.Status_ComboBox);
             this.Controls.Add(this.EditAndSave_Button);
             this.Controls.Add(this.WarrantyReason);
@@ -549,7 +533,6 @@
             this.Controls.Add(this.HeaderIcon);
             this.Controls.Add(this.Exit_Button);
             this.Controls.Add(this.Header);
-            this.Controls.Add(this.AddInfor_Button);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "WarrantyDetail_Form";
@@ -580,12 +563,12 @@
         private Guna.UI2.WinForms.Guna2TextBox Identity_Box;
         private Guna.UI2.WinForms.Guna2TextBox WarrantyReason;
         private Guna.UI2.WinForms.Guna2Button EditAndSave_Button;
-        private Guna.UI2.WinForms.Guna2Button AddInfor_Button;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private System.Windows.Forms.BindingSource warrantyBindingSource;
         private System.Windows.Forms.BindingSource pRODUCTBindingSource;
         private System.Windows.Forms.BindingSource iNFORBindingSource;
         private Guna.UI2.WinForms.Guna2ComboBox Status_ComboBox;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
