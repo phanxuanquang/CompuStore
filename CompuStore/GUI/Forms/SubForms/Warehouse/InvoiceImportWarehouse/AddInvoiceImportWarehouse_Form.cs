@@ -512,11 +512,11 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 else
                 {
                     CheckChange(extract);
-                    switch (MessageBox.Show($"Xác nhận trước khi thay đổi:\n" +
-                        $"{resultChanged.NewProduct.Count} sản phẩm thêm mới.\n" +
-                        $"{resultChanged.NoChanged.Count} sản phẩm không thay đổi.\n" +
-                        $"{resultChanged.SpecsChanged.Count} sản phẩm thay đổi cấp hình.\n" +
-                        $"{resultChanged.Remove.Count} sản phẩm bị xóa.",
+                    switch (MessageBox.Show("Xác nhận trước khi thay đổi:\n" +
+                        (resultChanged.NewProduct == null ? "" : $"{resultChanged.NewProduct.Count} sản phẩm thêm mới.\n") +
+                        (resultChanged.NoChanged == null ? "" : $"{resultChanged.NoChanged.Count} sản phẩm không thay đổi.\n") +
+                        (resultChanged.SpecsChanged == null ? "" : $"{resultChanged.SpecsChanged.Count} sản phẩm thay đổi cấp hình.\n") +
+                        (resultChanged.Remove == null ? "" : $"{resultChanged.Remove.Count} sản phẩm bị xóa."),
                         "Xác nhận",
                         MessageBoxButtons.YesNoCancel))
                     {
@@ -531,29 +531,67 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                             return;
                     }
 
-                    int? storeIDSelected = ImportToStore_ComboBox.SelectedValue as int?;
-                    int? distributorID = Distributor_ComboBox.SelectedValue as int?;
-
-                    //new invoice import warehouse
-                    if (storeIDSelected != null && distributorID != null)
+                    if (resultChanged.NewProduct != null && LoginServices.Instance.CurrentStaff != null)
                     {
-                        STORE store = StoreServices.Instance.GetStoreByID(storeIDSelected.Value);
-                        DISTRIBUTOR distributor = DistributorServices.Instance.GetDistributorByID(distributorID.Value);
-                        STAFF staff = LoginServices.Instance.CurrentStaff;
+                        int? storeIDSelected = ImportToStore_ComboBox.SelectedValue as int?;
+                        int? distributorID = Distributor_ComboBox.SelectedValue as int?;
 
-                        ModelProduct[] products = resultChanged.NewProduct.ToArray();
-                        if (resultChanged.NewProduct != null && LoginServices.Instance.CurrentStaff != null)
+                        //new invoice import warehouse
+                        if (storeIDSelected != null && distributorID != null)
                         {
+                            STORE store = StoreServices.Instance.GetStoreByID(storeIDSelected.Value);
+                            DISTRIBUTOR distributor = DistributorServices.Instance.GetDistributorByID(distributorID.Value);
+                            STAFF staff = LoginServices.Instance.CurrentStaff;
+
+                            ModelProduct[] products = resultChanged.NewProduct.ToArray();
+
                             DateTime importDate = DateTimeImportWarehouse_DateTimePicker.Value;
                             if (store != null && distributor != null)
                             {
                                 (IMPORT_WAREHOUSE, List<ModelProduct>) respone = await ImportWarehouseServices.Instance.Import(products, store, staff, distributor, importDate);
-                                MessageBox.Show(string.Format("Chấp nhận {0}/{1}", products.Length - respone.Item2.Count, products.Length));
+                                MessageBox.Show(string.Format("Chấp nhận nhập {0}/{1}", products.Length - respone.Item2.Count, products.Length));
                             }
                         }
                     }
 
-                    
+                    if (resultChanged.Remove != null)
+                    {
+                        IList<ModelProduct> errorProduct = new List<ModelProduct>();
+                        IList<ModelProduct> saledProduct = new List<ModelProduct>();
+                        foreach (ModelProduct product in resultChanged.Remove)
+                        {
+                            bool? result = await ProductServices.Instance.RemoveProduct(product);
+                            if (result != null)
+                            {
+                                if (result == false)
+                                    errorProduct.Add(product);
+                            }
+                            else
+                                saledProduct.Add(product);
+                        }
+                        if (saledProduct.Count > 0)
+                            MessageBox.Show(string.Format("Có {0} sản phẩm đã bán nên không thể thay đổi thông tin:\n{1}", saledProduct.Count, string.Join("\n", saledProduct.Select(item => item.ID))));
+                        if (errorProduct.Count > 0)
+                            MessageBox.Show(string.Format("Đã xảy ra {0} lỗi khi xóa các sản phẩm:\n{1}", errorProduct.Count, string.Join("\n", errorProduct.Select(item => item.ID))));
+                    }
+
+                    if (resultChanged.SpecsChanged != null)
+                    {
+                        IList<ModelProduct> errorProduct = new List<ModelProduct>();
+                        foreach (KeyValuePair<ModelProduct, ModelProduct> product in resultChanged.SpecsChanged)
+                        {
+                            try
+                            {
+                                await ProductServices.Instance.ChangeInfo(product);
+                            }
+                            catch
+                            {
+                                errorProduct.Add(product);
+                            }
+                        }
+                        if (errorProduct.Count > 0)
+                            MessageBox.Show(string.Format("Đã xảy ra lỗi khi xóa các sản phẩm:\n{0}", string.Join("\n", errorProduct.Select(item => item.ID))));
+                    }
 
                     base.Exit_Clicked(sender, e);
                     hasChanged = true;

@@ -186,6 +186,9 @@
     <Compile Include="Database\Models\STORE.cs">
       <DependentUpon>CompuStoreModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\Models\sysdiagram.cs">
+      <DependentUpon>CompuStoreModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\Models\UNIQUE_SPECS.cs">
       <DependentUpon>CompuStoreModel.tt</DependentUpon>
     </Compile>
@@ -511,6 +514,15 @@
     <None Include="assets\Icons\Menu\Statistics - Hover.png" />
     <None Include="assets\Icons\Menu\Statistics.png" />
     <None Include="assets\Icons\Menu\Statistics - Header.png" />
+    <None Include="Resources\Icon.ico" />
+    <None Include="Resources\Search_Icon.png" />
+    <None Include="Resources\Search.png" />
+    <None Include="Resources\Background-01.png" />
+    <None Include="Resources\Password.png" />
+    <None Include="Resources\Username.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
     <Content Include="Database\Models\CompuStoreModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CompuStoreModel.edmx</DependentUpon>
@@ -521,14 +533,7 @@
       <DependentUpon>CompuStoreModel.edmx</DependentUpon>
       <LastGenOutput>CompuStoreModel.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\Icon.ico" />
-    <None Include="Resources\Search_Icon.png" />
-    <None Include="Resources\Search.png" />
-    <None Include="Resources\Background-01.png" />
-    <None Include="Resources\Password.png" />
-    <None Include="Resources\Username.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

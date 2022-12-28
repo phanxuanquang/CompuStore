@@ -187,7 +187,32 @@ namespace CompuStore.GUI
         {
             /*Application.Exit();*/
             ExportPDF export = new ExportPDF();
-            IDataExport data = new InvoicePDF
+            IDataExport data = new ProductPDF
+            {
+                ExportPath = "./export.html",
+                DataBindingTemplate = new
+                {
+                    data = new
+                    {
+                        name = "Dell Precision 7770",
+                        price = "21.000.000",
+                        properties = new Object[]
+                        {
+                            new
+                            {
+                                key = "CPU",
+                                value = "Intel Core i9-12950H"
+                            },
+                            new
+                            {
+                                key = "RAM",
+                                value = "16GB DDR5 5200MHz"
+                            }
+                        }
+                    }
+                }
+            };
+            /*IDataExport data = new InvoicePDF
             {
                 ExportPath = "./export.html",
                 DataBindingTemplate = new
@@ -267,7 +292,7 @@ namespace CompuStore.GUI
                         }
                     }
                 }
-            };
+            };*/
             await export.RunExport(data);
             /*await Task.Factory.StartNew(() =>
             {

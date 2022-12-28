@@ -137,10 +137,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             {
                 control.Text = value.ToString();
             }
-            else
-            {
-                MessageBox.Show("Tiền tệ yêu cầu số thực");
-            }
         }
         #endregion
 

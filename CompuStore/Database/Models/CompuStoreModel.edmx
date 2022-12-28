@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CompuStoreDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CompuStoreDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="COLOR">
           <Key>
             <PropertyRef Name="COLOR_CODE" />
@@ -231,6 +231,16 @@
           <Property Name="ID_STAFF_MANAGER" Type="int" />
           <Property Name="NAME" Type="nvarchar" MaxLength="50" />
           <Property Name="ADDRESS" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="UNIQUE_SPECS">
           <Key>
@@ -637,6 +647,7 @@
           <EntitySet Name="STAFF" EntityType="Self.STAFF" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STAFFROLE" EntityType="Self.STAFFROLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STORE" EntityType="Self.STORE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UNIQUE_SPECS" EntityType="Self.UNIQUE_SPECS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERROLE" EntityType="Self.USERROLE" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__COMMON_SP__ID_LI__787EE5A0" Association="Self.FK__COMMON_SP__ID_LI__787EE5A0">
@@ -760,8 +771,7 @@
             <End Role="UNIQUE_SPECS" EntitySet="UNIQUE_SPECS" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CompuStoreDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -772,26 +782,6 @@
           <Property Name="COLOR_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="COLOR_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DETAIL_SPECS" Relationship="Self.FK__DETAIL_SP__COLOR__01142BA1" FromRole="COLOR" ToRole="DETAIL_SPECS" />
-        </EntityType>
-        <EntityType Name="COMMON_SPECS">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NAME_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="ID_LINE_UP" Type="Int32" Nullable="false" />
-          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="QUANTITY" Type="Int32" />
-          <Property Name="RELEASED_YEAR" Type="DateTime" Precision="0" />
-          <Property Name="CASE_MATERIAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PORT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="WEBCAM" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="DIMENSIONS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="OS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="WIFI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <Property Name="BLUETOOTH" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="LINE_UP" Relationship="Self.FK__COMMON_SP__ID_LI__787EE5A0" FromRole="COMMON_SPECS" ToRole="LINE_UP" />
-          <NavigationProperty Name="DETAIL_SPECS" Relationship="Self.FK__DETAIL_SP__ID_CO__02084FDA" FromRole="COMMON_SPECS" ToRole="DETAIL_SPECS" />
         </EntityType>
         <EntityType Name="COMMON_USER">
           <Key>
@@ -872,9 +862,9 @@
           <Property Name="QUANTITY" Type="Int32" />
           <Property Name="PRICE" Type="Double" />
           <NavigationProperty Name="COLOR" Relationship="Self.FK__DETAIL_SP__COLOR__01142BA1" FromRole="DETAIL_SPECS" ToRole="COLOR" />
-          <NavigationProperty Name="COMMON_SPECS" Relationship="Self.FK__DETAIL_SP__ID_CO__02084FDA" FromRole="DETAIL_SPECS" ToRole="COMMON_SPECS" />
-          <NavigationProperty Name="UNIQUE_SPECS" Relationship="Self.FK__DETAIL_SP__ID_UN__02FC7413" FromRole="DETAIL_SPECS" ToRole="UNIQUE_SPECS" />
           <NavigationProperty Name="PRODUCTs" Relationship="Self.FK__PRODUCT__ID_DETA__09A971A2" FromRole="DETAIL_SPECS" ToRole="PRODUCT" />
+          <NavigationProperty Name="COMMON_SPECS" Relationship="CompuStoreDBModel.FK__DETAIL_SP__ID_CO__02084FDA" FromRole="DETAIL_SPECS" ToRole="COMMON_SPECS" />
+          <NavigationProperty Name="UNIQUE_SPECS" Relationship="CompuStoreDBModel.FK__DETAIL_SP__ID_UN__02FC7413" FromRole="DETAIL_SPECS" ToRole="UNIQUE_SPECS" />
         </EntityType>
         <EntityType Name="DISPLAY_SPECS">
           <Key>
@@ -892,7 +882,7 @@
           <Property Name="IS_TOUCH_PANEL" Type="Boolean" />
           <Property Name="SCREEN_TYPE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="RATIO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="UNIQUE_SPECS" Relationship="Self.FK__UNIQUE_SP__ID_DI__10566F31" FromRole="DISPLAY_SPECS" ToRole="UNIQUE_SPECS" />
+          <NavigationProperty Name="UNIQUE_SPECS" Relationship="CompuStoreDBModel.FK__UNIQUE_SP__ID_DI__10566F31" FromRole="DISPLAY_SPECS" ToRole="UNIQUE_SPECS" />
         </EntityType>
         <EntityType Name="DISTRIBUTOR">
           <Key>
@@ -965,7 +955,7 @@
           <Property Name="MANUFACTURER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="COUNTRY" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="PROFIT_RATIO" Type="Double" />
-          <NavigationProperty Name="COMMON_SPECS" Relationship="Self.FK__COMMON_SP__ID_LI__787EE5A0" FromRole="LINE_UP" ToRole="COMMON_SPECS" />
+          <NavigationProperty Name="COMMON_SPECS" Relationship="CompuStoreDBModel.FK__COMMON_SP__ID_LI__787EE5A0" FromRole="LINE_UP" ToRole="COMMON_SPECS" />
         </EntityType>
         <EntityType Name="PRODUCT">
           <Key>
@@ -1049,23 +1039,15 @@
           <NavigationProperty Name="INVOICEs" Relationship="Self.FK__INVOICE__ID_STOR__08B54D69" FromRole="STORE" ToRole="INVOICE" />
           <NavigationProperty Name="STAFF" Relationship="Self.FK__STORE__ID_STAFF___0F624AF8" FromRole="STORE" ToRole="STAFF" />
         </EntityType>
-        <EntityType Name="UNIQUE_SPECS">
+        <EntityType Name="sysdiagram">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NAME_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="ID_DISPLAY_SPECS" Type="Int32" Nullable="false" />
-          <Property Name="CPU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="IGPU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="RAM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="TYPE_STORAGE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="STORAGE_CAPACITY" Type="Int32" />
-          <Property Name="GPU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BATTERY_CAPACITY" Type="Double" />
-          <Property Name="WEIGHT" Type="Double" />
-          <NavigationProperty Name="DETAIL_SPECS" Relationship="Self.FK__DETAIL_SP__ID_UN__02FC7413" FromRole="UNIQUE_SPECS" ToRole="DETAIL_SPECS" />
-          <NavigationProperty Name="DISPLAY_SPECS" Relationship="Self.FK__UNIQUE_SP__ID_DI__10566F31" FromRole="UNIQUE_SPECS" ToRole="DISPLAY_SPECS" />
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="USERROLE">
           <Key>
@@ -1085,30 +1067,6 @@
             </Principal>
             <Dependent Role="DETAIL_SPECS">
               <PropertyRef Name="COLOR_CODE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__COMMON_SP__ID_LI__787EE5A0">
-          <End Role="LINE_UP" Type="Self.LINE_UP" Multiplicity="1" />
-          <End Role="COMMON_SPECS" Type="Self.COMMON_SPECS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LINE_UP">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="COMMON_SPECS">
-              <PropertyRef Name="ID_LINE_UP" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DETAIL_SP__ID_CO__02084FDA">
-          <End Role="COMMON_SPECS" Type="Self.COMMON_SPECS" Multiplicity="1" />
-          <End Role="DETAIL_SPECS" Type="Self.DETAIL_SPECS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="COMMON_SPECS">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="DETAIL_SPECS">
-              <PropertyRef Name="ID_COMMON_SPECS" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1268,18 +1226,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETAIL_SP__ID_UN__02FC7413">
-          <End Role="UNIQUE_SPECS" Type="Self.UNIQUE_SPECS" Multiplicity="1" />
-          <End Role="DETAIL_SPECS" Type="Self.DETAIL_SPECS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UNIQUE_SPECS">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="DETAIL_SPECS">
-              <PropertyRef Name="ID_UNIQUE_SPECS" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__PRODUCT__ID_DETA__09A971A2">
           <End Role="DETAIL_SPECS" Type="Self.DETAIL_SPECS" Multiplicity="1" />
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
@@ -1289,18 +1235,6 @@
             </Principal>
             <Dependent Role="PRODUCT">
               <PropertyRef Name="ID_DETAIL_SPECS" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UNIQUE_SP__ID_DI__10566F31">
-          <End Role="DISPLAY_SPECS" Type="Self.DISPLAY_SPECS" Multiplicity="1" />
-          <End Role="UNIQUE_SPECS" Type="Self.UNIQUE_SPECS" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DISPLAY_SPECS">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="UNIQUE_SPECS">
-              <PropertyRef Name="ID_DISPLAY_SPECS" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1438,7 +1372,6 @@
         </Association>
         <EntityContainer Name="CompuStoreDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="COLORs" EntityType="Self.COLOR" />
-          <EntitySet Name="COMMON_SPECS" EntityType="Self.COMMON_SPECS" />
           <EntitySet Name="COMMON_USER" EntityType="Self.COMMON_USER" />
           <EntitySet Name="CUSTOMERs" EntityType="Self.CUSTOMER" />
           <EntitySet Name="CHANGE_OR_REFUND_PRODUCT" EntityType="Self.CHANGE_OR_REFUND_PRODUCT" />
@@ -1457,18 +1390,10 @@
           <EntitySet Name="STAFFs" EntityType="Self.STAFF" />
           <EntitySet Name="STAFFROLEs" EntityType="Self.STAFFROLE" />
           <EntitySet Name="STOREs" EntityType="Self.STORE" />
-          <EntitySet Name="UNIQUE_SPECS" EntityType="Self.UNIQUE_SPECS" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="USERROLEs" EntityType="Self.USERROLE" />
           <AssociationSet Name="FK__DETAIL_SP__COLOR__01142BA1" Association="Self.FK__DETAIL_SP__COLOR__01142BA1">
             <End Role="COLOR" EntitySet="COLORs" />
-            <End Role="DETAIL_SPECS" EntitySet="DETAIL_SPECS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__COMMON_SP__ID_LI__787EE5A0" Association="Self.FK__COMMON_SP__ID_LI__787EE5A0">
-            <End Role="LINE_UP" EntitySet="LINE_UP" />
-            <End Role="COMMON_SPECS" EntitySet="COMMON_SPECS" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DETAIL_SP__ID_CO__02084FDA" Association="Self.FK__DETAIL_SP__ID_CO__02084FDA">
-            <End Role="COMMON_SPECS" EntitySet="COMMON_SPECS" />
             <End Role="DETAIL_SPECS" EntitySet="DETAIL_SPECS" />
           </AssociationSet>
           <AssociationSet Name="FK__COMMON_US__ID_ST__797309D9" Association="Self.FK__COMMON_US__ID_ST__797309D9">
@@ -1523,17 +1448,9 @@
             <End Role="PRODUCT" EntitySet="PRODUCTs" />
             <End Role="DETAIL_INVOICE" EntitySet="DETAIL_INVOICE" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETAIL_SP__ID_UN__02FC7413" Association="Self.FK__DETAIL_SP__ID_UN__02FC7413">
-            <End Role="UNIQUE_SPECS" EntitySet="UNIQUE_SPECS" />
-            <End Role="DETAIL_SPECS" EntitySet="DETAIL_SPECS" />
-          </AssociationSet>
           <AssociationSet Name="FK__PRODUCT__ID_DETA__09A971A2" Association="Self.FK__PRODUCT__ID_DETA__09A971A2">
             <End Role="DETAIL_SPECS" EntitySet="DETAIL_SPECS" />
             <End Role="PRODUCT" EntitySet="PRODUCTs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UNIQUE_SP__ID_DI__10566F31" Association="Self.FK__UNIQUE_SP__ID_DI__10566F31">
-            <End Role="DISPLAY_SPECS" EntitySet="DISPLAY_SPECS" />
-            <End Role="UNIQUE_SPECS" EntitySet="UNIQUE_SPECS" />
           </AssociationSet>
           <AssociationSet Name="FK__IMPORT_WA__ID_DI__03F0984C" Association="Self.FK__IMPORT_WA__ID_DI__03F0984C">
             <End Role="DISTRIBUTOR" EntitySet="DISTRIBUTORs" />
@@ -1579,7 +1496,111 @@
             <End Role="STAFF" EntitySet="STAFFs" />
             <End Role="STORE" EntitySet="STOREs" />
           </AssociationSet>
+          <EntitySet Name="COMMON_SPECS" EntityType="CompuStoreDBModel.COMMON_SPECS" />
+          <EntitySet Name="UNIQUE_SPECS" EntityType="CompuStoreDBModel.UNIQUE_SPECS" />
+          <AssociationSet Name="FK__COMMON_SP__ID_LI__787EE5A0" Association="CompuStoreDBModel.FK__COMMON_SP__ID_LI__787EE5A0">
+            <End Role="LINE_UP" EntitySet="LINE_UP" />
+            <End Role="COMMON_SPECS" EntitySet="COMMON_SPECS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETAIL_SP__ID_CO__02084FDA" Association="CompuStoreDBModel.FK__DETAIL_SP__ID_CO__02084FDA">
+            <End Role="COMMON_SPECS" EntitySet="COMMON_SPECS" />
+            <End Role="DETAIL_SPECS" EntitySet="DETAIL_SPECS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__DETAIL_SP__ID_UN__02FC7413" Association="CompuStoreDBModel.FK__DETAIL_SP__ID_UN__02FC7413">
+            <End Role="UNIQUE_SPECS" EntitySet="UNIQUE_SPECS" />
+            <End Role="DETAIL_SPECS" EntitySet="DETAIL_SPECS" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UNIQUE_SP__ID_DI__10566F31" Association="CompuStoreDBModel.FK__UNIQUE_SP__ID_DI__10566F31">
+            <End Role="DISPLAY_SPECS" EntitySet="DISPLAY_SPECS" />
+            <End Role="UNIQUE_SPECS" EntitySet="UNIQUE_SPECS" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="COMMON_SPECS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ID_LINE_UP" Type="Int32" Nullable="false" />
+          <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="QUANTITY" Type="Int32" />
+          <Property Name="RELEASED_YEAR" Type="DateTime" Precision="0" />
+          <Property Name="CASE_MATERIAL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PORT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="WEBCAM" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="DIMENSIONS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="WIFI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="BLUETOOTH" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="LINE_UP" Relationship="CompuStoreDBModel.FK__COMMON_SP__ID_LI__787EE5A0" FromRole="COMMON_SPECS" ToRole="LINE_UP" />
+          <NavigationProperty Name="DETAIL_SPECS" Relationship="CompuStoreDBModel.FK__DETAIL_SP__ID_CO__02084FDA" FromRole="COMMON_SPECS" ToRole="DETAIL_SPECS" />
+        </EntityType>
+        <EntityType Name="UNIQUE_SPECS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NAME_ID" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="ID_DISPLAY_SPECS" Type="Int32" Nullable="false" />
+          <Property Name="CPU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IGPU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RAM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TYPE_STORAGE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STORAGE_CAPACITY" Type="Int32" />
+          <Property Name="GPU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BATTERY_CAPACITY" Type="Double" />
+          <Property Name="WEIGHT" Type="Double" />
+          <NavigationProperty Name="DETAIL_SPECS" Relationship="CompuStoreDBModel.FK__DETAIL_SP__ID_UN__02FC7413" FromRole="UNIQUE_SPECS" ToRole="DETAIL_SPECS" />
+          <NavigationProperty Name="DISPLAY_SPECS" Relationship="CompuStoreDBModel.FK__UNIQUE_SP__ID_DI__10566F31" FromRole="UNIQUE_SPECS" ToRole="DISPLAY_SPECS" />
+        </EntityType>
+        <Association Name="FK__COMMON_SP__ID_LI__787EE5A0">
+          <End Type="CompuStoreDBModel.LINE_UP" Role="LINE_UP" Multiplicity="1" />
+          <End Type="CompuStoreDBModel.COMMON_SPECS" Role="COMMON_SPECS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LINE_UP">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMMON_SPECS">
+              <PropertyRef Name="ID_LINE_UP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETAIL_SP__ID_CO__02084FDA">
+          <End Type="CompuStoreDBModel.COMMON_SPECS" Role="COMMON_SPECS" Multiplicity="1" />
+          <End Type="CompuStoreDBModel.DETAIL_SPECS" Role="DETAIL_SPECS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COMMON_SPECS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DETAIL_SPECS">
+              <PropertyRef Name="ID_COMMON_SPECS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__DETAIL_SP__ID_UN__02FC7413">
+          <End Type="CompuStoreDBModel.UNIQUE_SPECS" Role="UNIQUE_SPECS" Multiplicity="1" />
+          <End Type="CompuStoreDBModel.DETAIL_SPECS" Role="DETAIL_SPECS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UNIQUE_SPECS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="DETAIL_SPECS">
+              <PropertyRef Name="ID_UNIQUE_SPECS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UNIQUE_SP__ID_DI__10566F31">
+          <End Type="CompuStoreDBModel.DISPLAY_SPECS" Role="DISPLAY_SPECS" Multiplicity="1" />
+          <End Type="CompuStoreDBModel.UNIQUE_SPECS" Role="UNIQUE_SPECS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DISPLAY_SPECS">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UNIQUE_SPECS">
+              <PropertyRef Name="ID_DISPLAY_SPECS" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1591,25 +1612,6 @@
               <MappingFragment StoreEntitySet="COLOR">
                 <ScalarProperty Name="COLOR_CODE" ColumnName="COLOR_CODE" />
                 <ScalarProperty Name="COLOR_NAME" ColumnName="COLOR_NAME" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="COMMON_SPECS">
-            <EntityTypeMapping TypeName="CompuStoreDBModel.COMMON_SPECS">
-              <MappingFragment StoreEntitySet="COMMON_SPECS">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NAME_ID" ColumnName="NAME_ID" />
-                <ScalarProperty Name="ID_LINE_UP" ColumnName="ID_LINE_UP" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
-                <ScalarProperty Name="RELEASED_YEAR" ColumnName="RELEASED_YEAR" />
-                <ScalarProperty Name="CASE_MATERIAL" ColumnName="CASE_MATERIAL" />
-                <ScalarProperty Name="PORT" ColumnName="PORT" />
-                <ScalarProperty Name="WEBCAM" ColumnName="WEBCAM" />
-                <ScalarProperty Name="DIMENSIONS" ColumnName="DIMENSIONS" />
-                <ScalarProperty Name="OS" ColumnName="OS" />
-                <ScalarProperty Name="WIFI" ColumnName="WIFI" />
-                <ScalarProperty Name="BLUETOOTH" ColumnName="BLUETOOTH" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1831,20 +1833,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UNIQUE_SPECS">
-            <EntityTypeMapping TypeName="CompuStoreDBModel.UNIQUE_SPECS">
-              <MappingFragment StoreEntitySet="UNIQUE_SPECS">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NAME_ID" ColumnName="NAME_ID" />
-                <ScalarProperty Name="ID_DISPLAY_SPECS" ColumnName="ID_DISPLAY_SPECS" />
-                <ScalarProperty Name="CPU" ColumnName="CPU" />
-                <ScalarProperty Name="IGPU" ColumnName="IGPU" />
-                <ScalarProperty Name="RAM" ColumnName="RAM" />
-                <ScalarProperty Name="TYPE_STORAGE" ColumnName="TYPE_STORAGE" />
-                <ScalarProperty Name="STORAGE_CAPACITY" ColumnName="STORAGE_CAPACITY" />
-                <ScalarProperty Name="GPU" ColumnName="GPU" />
-                <ScalarProperty Name="BATTERY_CAPACITY" ColumnName="BATTERY_CAPACITY" />
-                <ScalarProperty Name="WEIGHT" ColumnName="WEIGHT" />
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CompuStoreDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1854,6 +1850,42 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NAME_ID" ColumnName="NAME_ID" />
                 <ScalarProperty Name="ROLE" ColumnName="ROLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMON_SPECS">
+            <EntityTypeMapping TypeName="CompuStoreDBModel.COMMON_SPECS">
+              <MappingFragment StoreEntitySet="COMMON_SPECS">
+                <ScalarProperty Name="BLUETOOTH" ColumnName="BLUETOOTH" />
+                <ScalarProperty Name="WIFI" ColumnName="WIFI" />
+                <ScalarProperty Name="OS" ColumnName="OS" />
+                <ScalarProperty Name="DIMENSIONS" ColumnName="DIMENSIONS" />
+                <ScalarProperty Name="WEBCAM" ColumnName="WEBCAM" />
+                <ScalarProperty Name="PORT" ColumnName="PORT" />
+                <ScalarProperty Name="CASE_MATERIAL" ColumnName="CASE_MATERIAL" />
+                <ScalarProperty Name="RELEASED_YEAR" ColumnName="RELEASED_YEAR" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID_LINE_UP" ColumnName="ID_LINE_UP" />
+                <ScalarProperty Name="NAME_ID" ColumnName="NAME_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UNIQUE_SPECS">
+            <EntityTypeMapping TypeName="CompuStoreDBModel.UNIQUE_SPECS">
+              <MappingFragment StoreEntitySet="UNIQUE_SPECS">
+                <ScalarProperty Name="WEIGHT" ColumnName="WEIGHT" />
+                <ScalarProperty Name="BATTERY_CAPACITY" ColumnName="BATTERY_CAPACITY" />
+                <ScalarProperty Name="GPU" ColumnName="GPU" />
+                <ScalarProperty Name="STORAGE_CAPACITY" ColumnName="STORAGE_CAPACITY" />
+                <ScalarProperty Name="TYPE_STORAGE" ColumnName="TYPE_STORAGE" />
+                <ScalarProperty Name="RAM" ColumnName="RAM" />
+                <ScalarProperty Name="IGPU" ColumnName="IGPU" />
+                <ScalarProperty Name="CPU" ColumnName="CPU" />
+                <ScalarProperty Name="ID_DISPLAY_SPECS" ColumnName="ID_DISPLAY_SPECS" />
+                <ScalarProperty Name="NAME_ID" ColumnName="NAME_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
