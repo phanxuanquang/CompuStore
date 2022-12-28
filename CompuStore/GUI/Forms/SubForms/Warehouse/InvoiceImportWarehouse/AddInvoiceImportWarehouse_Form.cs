@@ -512,18 +512,38 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 else
                 {
                     CheckChange(extract);
-
-                    if (initProducts == null)
+                    switch (MessageBox.Show($"Xác nhận trước khi thay đổi:\n" +
+                        $"{resultChanged.NewProduct.Count} sản phẩm thêm mới.\n" +
+                        $"{resultChanged.NoChanged.Count} sản phẩm không thay đổi.\n" +
+                        $"{resultChanged.SpecsChanged.Count} sản phẩm thay đổi cấp hình.\n" +
+                        $"{resultChanged.Remove.Count} sản phẩm bị xóa.",
+                        "Xác nhận",
+                        MessageBoxButtons.YesNoCancel))
                     {
-                        //new invoice import warehouse
-                        int? storeIDSelected = ImportToStore_ComboBox.SelectedValue as int?;
-                        int? distributorID = Distributor_ComboBox.SelectedValue as int?;
+                        case DialogResult.Yes:
+                            break;
+                        case DialogResult.No:
+                            hasChanged = false;
+                            base.Exit_Clicked(sender, e);
+                            return;
+                        default:
+                            resultChanged = null;
+                            return;
+                    }
+
+                    int? storeIDSelected = ImportToStore_ComboBox.SelectedValue as int?;
+                    int? distributorID = Distributor_ComboBox.SelectedValue as int?;
+
+                    //new invoice import warehouse
+                    if (storeIDSelected != null && distributorID != null)
+                    {
+                        STORE store = StoreServices.Instance.GetStoreByID(storeIDSelected.Value);
+                        DISTRIBUTOR distributor = DistributorServices.Instance.GetDistributorByID(distributorID.Value);
+                        STAFF staff = LoginServices.Instance.CurrentStaff;
+
                         ModelProduct[] products = resultChanged.NewProduct.ToArray();
-                        if (resultChanged.NewProduct != null && storeIDSelected != null && LoginServices.Instance.CurrentStaff != null && distributorID != null)
+                        if (resultChanged.NewProduct != null && LoginServices.Instance.CurrentStaff != null)
                         {
-                            STORE store = StoreServices.Instance.GetStoreByID(storeIDSelected.Value);
-                            STAFF staff = LoginServices.Instance.CurrentStaff;
-                            DISTRIBUTOR distributor = DistributorServices.Instance.GetDistributorByID(distributorID.Value);
                             DateTime importDate = DateTimeImportWarehouse_DateTimePicker.Value;
                             if (store != null && distributor != null)
                             {
@@ -532,20 +552,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                             }
                         }
                     }
-                    else
-                    {
-                        //update invoice import warehouse
-                    }
-                    /*if (importWarehouse != null)
-                    {
-                        int? storeIDSelected = ImportToStore_ComboBox.SelectedValue as int?;
-                        int? distributorID = Distributor_ComboBox.SelectedValue as int?;
-                        STORE store = StoreServices.Instance.GetStoreByID(storeIDSelected.Value);
-                        STAFF staff = LoginServices.Instance.CurrentStaff;
-                        DISTRIBUTOR distributor = DistributorServices.Instance.GetDistributorByID(distributorID.Value);
-                        DateTime importDate = DateTimeImportWarehouse_DateTimePicker.Value;
-                        await ImportWarehouseServices.Instance.UpdateImportWarehouse(importWarehouse, store, staff, distributor, importDate);
-                    }*/
+
+                    
+
                     base.Exit_Clicked(sender, e);
                     hasChanged = true;
                 }
