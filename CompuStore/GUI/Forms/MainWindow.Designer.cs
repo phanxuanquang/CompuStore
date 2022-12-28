@@ -41,6 +41,7 @@
             this.ContainerPanel = new System.Windows.Forms.Panel();
             this.HeaderIcon = new System.Windows.Forms.PictureBox();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
@@ -293,5 +294,6 @@
         private Guna.UI2.WinForms.Guna2DragControl DragControl;
         private System.Windows.Forms.Panel ContainerPanel;
         private Guna.UI2.WinForms.Guna2TileButton Statistics_Button;
+        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
     }
 }

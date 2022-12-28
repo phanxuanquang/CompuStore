@@ -46,8 +46,6 @@
             this.lbStaffName = new System.Windows.Forms.Label();
             this.lbDate = new System.Windows.Forms.Label();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.Print_Button = new Guna.UI2.WinForms.Guna2Button();
-            this.Save_Button = new Guna.UI2.WinForms.Guna2Button();
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemTable)).BeginInit();
@@ -394,56 +392,11 @@
             // 
             this.guna2DragControl1.TargetControl = this.Header;
             // 
-            // Print_Button
-            // 
-            this.Print_Button.Animated = true;
-            this.Print_Button.BorderRadius = 3;
-            this.Print_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Print_Button.CheckedState.Parent = this.Print_Button;
-            this.Print_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Print_Button.CustomImages.Parent = this.Print_Button;
-            this.Print_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Print_Button.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Print_Button.ForeColor = System.Drawing.Color.White;
-            this.Print_Button.HoverState.Parent = this.Print_Button;
-            this.Print_Button.Location = new System.Drawing.Point(36, 491);
-            this.Print_Button.Name = "Print_Button";
-            this.Print_Button.PressedDepth = 5;
-            this.Print_Button.ShadowDecoration.Parent = this.Print_Button;
-            this.Print_Button.Size = new System.Drawing.Size(550, 57);
-            this.Print_Button.TabIndex = 85;
-            this.Print_Button.Text = "IN HÓA ĐƠN";
-            this.Print_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            // 
-            // Save_Button
-            // 
-            this.Save_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Save_Button.Animated = true;
-            this.Save_Button.BorderRadius = 3;
-            this.Save_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Save_Button.CheckedState.Parent = this.Save_Button;
-            this.Save_Button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Save_Button.CustomImages.Parent = this.Save_Button;
-            this.Save_Button.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.Save_Button.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Save_Button.ForeColor = System.Drawing.Color.White;
-            this.Save_Button.HoverState.Parent = this.Save_Button;
-            this.Save_Button.Location = new System.Drawing.Point(36, 554);
-            this.Save_Button.Name = "Save_Button";
-            this.Save_Button.PressedDepth = 5;
-            this.Save_Button.ShadowDecoration.Parent = this.Save_Button;
-            this.Save_Button.Size = new System.Drawing.Size(550, 53);
-            this.Save_Button.TabIndex = 86;
-            this.Save_Button.Text = "LƯU";
-            this.Save_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
-            // 
             // InvoiceDetail_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 628);
-            this.Controls.Add(this.Save_Button);
-            this.Controls.Add(this.Print_Button);
+            this.ClientSize = new System.Drawing.Size(623, 509);
             this.Controls.Add(this.lbDate);
             this.Controls.Add(this.lbStaffName);
             this.Controls.Add(this.ItemTable);
@@ -481,8 +434,6 @@
         private System.Windows.Forms.Label lbStaffName;
         private System.Windows.Forms.Label lbDate;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
-        private Guna.UI2.WinForms.Guna2Button Print_Button;
-        private Guna.UI2.WinForms.Guna2Button Save_Button;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
     }
 }

@@ -64,10 +64,10 @@ namespace CompuStore.Tab
             this.GridDataTable.CellDoubleClick += DataTable_CellDoubleClick;
             this.GridDataTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             this.Load += SaleManagement_Tab_Load;
-            this.GridDataTable.Height = 690;
+            this.GridDataTable.Height = 840;
             this.GridDataTable.Dock = DockStyle.Bottom;
             PriceLimit_TrackBar.Value = PriceLimit_TrackBar.Maximum;
-            PriceLimit_Label.Text = PriceLimit_TrackBar.Value.ToString() + "0.000.000";
+            PriceLimit_Label.Text = PriceLimit_TrackBar.Value.ToString() + "0000000";
         }
 
         private void DataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

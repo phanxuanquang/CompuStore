@@ -24,6 +24,7 @@ namespace CompuStore.GUI
             serviceManage_Tab = null;
             warehouseManage_Tab = null;
             statistics_Tab = null;
+            guna2ShadowForm1.SetShadowForm(this);
 
             SetHeaderState_From(SaleManage_Button);
         }
@@ -110,7 +111,7 @@ namespace CompuStore.GUI
 
         private void Statistics_Button_MouseLeave(object sender, EventArgs e)
         {
-            MenuPanel.Height = DeviceDpi > 96 ? 225 : 120;
+            MenuPanel.Height = DeviceDpi > 96 ? 20 : 10;
         }
 
         private void Exit_Button_Click(object sender, EventArgs e)
