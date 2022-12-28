@@ -76,13 +76,13 @@
             this.PhoneNumber_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.PhoneNumber_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.PhoneNumber_Box.FocusedState.Parent = this.PhoneNumber_Box;
-            this.PhoneNumber_Box.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PhoneNumber_Box.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PhoneNumber_Box.ForeColor = System.Drawing.Color.Black;
             this.PhoneNumber_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.PhoneNumber_Box.HoverState.Parent = this.PhoneNumber_Box;
             this.PhoneNumber_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.PhoneNumber_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.PhoneNumber_Box.Location = new System.Drawing.Point(464, 108);
+            this.PhoneNumber_Box.Location = new System.Drawing.Point(415, 65);
             this.PhoneNumber_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.PhoneNumber_Box.Name = "PhoneNumber_Box";
             this.PhoneNumber_Box.PasswordChar = '\0';
@@ -90,7 +90,7 @@
             this.PhoneNumber_Box.PlaceholderText = "Số điện thoại";
             this.PhoneNumber_Box.SelectedText = "";
             this.PhoneNumber_Box.ShadowDecoration.Parent = this.PhoneNumber_Box;
-            this.PhoneNumber_Box.Size = new System.Drawing.Size(122, 37);
+            this.PhoneNumber_Box.Size = new System.Drawing.Size(171, 37);
             this.PhoneNumber_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.PhoneNumber_Box.TabIndex = 28;
             this.PhoneNumber_Box.TextOffset = new System.Drawing.Point(5, 0);
@@ -128,13 +128,13 @@
             this.Identity_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Identity_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Identity_Box.FocusedState.Parent = this.Identity_Box;
-            this.Identity_Box.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Identity_Box.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Identity_Box.ForeColor = System.Drawing.Color.Black;
             this.Identity_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.Identity_Box.HoverState.Parent = this.Identity_Box;
             this.Identity_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Identity_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Identity_Box.Location = new System.Drawing.Point(167, 65);
+            this.Identity_Box.Location = new System.Drawing.Point(128, 65);
             this.Identity_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Identity_Box.Name = "Identity_Box";
             this.Identity_Box.PasswordChar = '\0';
@@ -142,7 +142,7 @@
             this.Identity_Box.PlaceholderText = "CMND/CCCD của khách hàng";
             this.Identity_Box.SelectedText = "";
             this.Identity_Box.ShadowDecoration.Parent = this.Identity_Box;
-            this.Identity_Box.Size = new System.Drawing.Size(419, 37);
+            this.Identity_Box.Size = new System.Drawing.Size(240, 37);
             this.Identity_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Identity_Box.TabIndex = 32;
             this.Identity_Box.TextOffset = new System.Drawing.Point(5, 0);
@@ -274,13 +274,13 @@
             this.Email_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Email_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Email_Box.FocusedState.Parent = this.Email_Box;
-            this.Email_Box.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Email_Box.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Email_Box.ForeColor = System.Drawing.Color.Black;
             this.Email_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.Email_Box.HoverState.Parent = this.Email_Box;
             this.Email_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Email_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Email_Box.Location = new System.Drawing.Point(167, 151);
+            this.Email_Box.Location = new System.Drawing.Point(128, 151);
             this.Email_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Email_Box.Name = "Email_Box";
             this.Email_Box.PasswordChar = '\0';
@@ -288,7 +288,7 @@
             this.Email_Box.PlaceholderText = "E-mail";
             this.Email_Box.SelectedText = "";
             this.Email_Box.ShadowDecoration.Parent = this.Email_Box;
-            this.Email_Box.Size = new System.Drawing.Size(419, 37);
+            this.Email_Box.Size = new System.Drawing.Size(458, 37);
             this.Email_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Email_Box.TabIndex = 30;
             this.Email_Box.TextOffset = new System.Drawing.Point(5, 0);
@@ -311,13 +311,13 @@
             this.Address_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Address_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Address_Box.FocusedState.Parent = this.Address_Box;
-            this.Address_Box.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Address_Box.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Address_Box.ForeColor = System.Drawing.Color.Black;
             this.Address_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.Address_Box.HoverState.Parent = this.Address_Box;
             this.Address_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Address_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Address_Box.Location = new System.Drawing.Point(167, 194);
+            this.Address_Box.Location = new System.Drawing.Point(128, 194);
             this.Address_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Address_Box.Name = "Address_Box";
             this.Address_Box.PasswordChar = '\0';
@@ -325,7 +325,7 @@
             this.Address_Box.PlaceholderText = "Địa chỉ";
             this.Address_Box.SelectedText = "";
             this.Address_Box.ShadowDecoration.Parent = this.Address_Box;
-            this.Address_Box.Size = new System.Drawing.Size(419, 37);
+            this.Address_Box.Size = new System.Drawing.Size(458, 37);
             this.Address_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Address_Box.TabIndex = 31;
             this.Address_Box.TextOffset = new System.Drawing.Point(5, 0);
@@ -348,13 +348,13 @@
             this.Name_Box.FocusedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.Name_Box.FocusedState.ForeColor = System.Drawing.Color.Black;
             this.Name_Box.FocusedState.Parent = this.Name_Box;
-            this.Name_Box.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Name_Box.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name_Box.ForeColor = System.Drawing.Color.Black;
             this.Name_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(168)))), ((int)(((byte)(168)))));
             this.Name_Box.HoverState.Parent = this.Name_Box;
             this.Name_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
             this.Name_Box.IconLeftSize = new System.Drawing.Size(30, 30);
-            this.Name_Box.Location = new System.Drawing.Point(167, 106);
+            this.Name_Box.Location = new System.Drawing.Point(128, 106);
             this.Name_Box.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name_Box.Name = "Name_Box";
             this.Name_Box.PasswordChar = '\0';
@@ -362,7 +362,7 @@
             this.Name_Box.PlaceholderText = "Họ và tên khách hàng";
             this.Name_Box.SelectedText = "";
             this.Name_Box.ShadowDecoration.Parent = this.Name_Box;
-            this.Name_Box.Size = new System.Drawing.Size(235, 37);
+            this.Name_Box.Size = new System.Drawing.Size(458, 37);
             this.Name_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Name_Box.TabIndex = 29;
             this.Name_Box.TextOffset = new System.Drawing.Point(5, 0);
@@ -444,11 +444,11 @@
             // lb_Iden
             // 
             this.lb_Iden.AutoSize = true;
-            this.lb_Iden.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Iden.Location = new System.Drawing.Point(33, 71);
+            this.lb_Iden.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Iden.Location = new System.Drawing.Point(31, 71);
             this.lb_Iden.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_Iden.Name = "lb_Iden";
-            this.lb_Iden.Size = new System.Drawing.Size(113, 21);
+            this.lb_Iden.Size = new System.Drawing.Size(92, 17);
             this.lb_Iden.TabIndex = 134;
             this.lb_Iden.Text = "CMND/CCCD:";
             this.lb_Iden.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -456,11 +456,11 @@
             // lb_phone
             // 
             this.lb_phone.AutoSize = true;
-            this.lb_phone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_phone.Location = new System.Drawing.Point(407, 116);
+            this.lb_phone.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_phone.Location = new System.Drawing.Point(373, 71);
             this.lb_phone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_phone.Name = "lb_phone";
-            this.lb_phone.Size = new System.Drawing.Size(44, 21);
+            this.lb_phone.Size = new System.Drawing.Size(37, 17);
             this.lb_phone.TabIndex = 135;
             this.lb_phone.Text = "SĐT:";
             this.lb_phone.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -468,11 +468,11 @@
             // lb_Name
             // 
             this.lb_Name.AutoSize = true;
-            this.lb_Name.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Name.Location = new System.Drawing.Point(58, 116);
+            this.lb_Name.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Name.Location = new System.Drawing.Point(51, 116);
             this.lb_Name.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_Name.Name = "lb_Name";
-            this.lb_Name.Size = new System.Drawing.Size(87, 21);
+            this.lb_Name.Size = new System.Drawing.Size(72, 17);
             this.lb_Name.TabIndex = 136;
             this.lb_Name.Text = "Họ và tên:";
             this.lb_Name.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -480,11 +480,11 @@
             // lb_Email
             // 
             this.lb_Email.AutoSize = true;
-            this.lb_Email.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Email.Location = new System.Drawing.Point(88, 159);
+            this.lb_Email.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Email.Location = new System.Drawing.Point(77, 159);
             this.lb_Email.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_Email.Name = "lb_Email";
-            this.lb_Email.Size = new System.Drawing.Size(57, 21);
+            this.lb_Email.Size = new System.Drawing.Size(46, 17);
             this.lb_Email.TabIndex = 137;
             this.lb_Email.Text = "Email:";
             this.lb_Email.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -492,11 +492,11 @@
             // lb_Address
             // 
             this.lb_Address.AutoSize = true;
-            this.lb_Address.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lb_Address.Location = new System.Drawing.Point(81, 201);
+            this.lb_Address.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_Address.Location = new System.Drawing.Point(68, 201);
             this.lb_Address.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_Address.Name = "lb_Address";
-            this.lb_Address.Size = new System.Drawing.Size(67, 21);
+            this.lb_Address.Size = new System.Drawing.Size(55, 17);
             this.lb_Address.TabIndex = 138;
             this.lb_Address.Text = "Địa chỉ:";
             this.lb_Address.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

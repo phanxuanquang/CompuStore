@@ -137,7 +137,8 @@ namespace CompuStore
             {
                 MessageBox.Show(ex.Message);
             }
-            MessageBox.Show("Lưu thành công");
+            MessageBox.Show("Lưu thông tin hóa đơn thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
         }
 
         private void Identity_Box_KeyPress(object sender, KeyPressEventArgs e)

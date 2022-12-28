@@ -75,11 +75,11 @@
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(35, 276);
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(35, 281);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(229, 24);
+            this.label1.Size = new System.Drawing.Size(181, 24);
             this.label1.TabIndex = 89;
             this.label1.Text = "Ngày hẹn trả bảo hành:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -94,18 +94,18 @@
             this.WarrantyDoneDate_Picker.CustomFormat = " dd/MM/yyyy";
             this.WarrantyDoneDate_Picker.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.warrantyBindingSource, "RETURN_DATE", true));
             this.WarrantyDoneDate_Picker.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.WarrantyDoneDate_Picker.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.WarrantyDoneDate_Picker.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.WarrantyDoneDate_Picker.ForeColor = System.Drawing.Color.Black;
-            this.WarrantyDoneDate_Picker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.WarrantyDoneDate_Picker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.WarrantyDoneDate_Picker.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
             this.WarrantyDoneDate_Picker.HoverState.Parent = this.WarrantyDoneDate_Picker;
-            this.WarrantyDoneDate_Picker.Location = new System.Drawing.Point(265, 276);
+            this.WarrantyDoneDate_Picker.Location = new System.Drawing.Point(218, 276);
             this.WarrantyDoneDate_Picker.Margin = new System.Windows.Forms.Padding(0);
             this.WarrantyDoneDate_Picker.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.WarrantyDoneDate_Picker.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.WarrantyDoneDate_Picker.Name = "WarrantyDoneDate_Picker";
             this.WarrantyDoneDate_Picker.ShadowDecoration.Parent = this.WarrantyDoneDate_Picker;
-            this.WarrantyDoneDate_Picker.Size = new System.Drawing.Size(323, 24);
+            this.WarrantyDoneDate_Picker.Size = new System.Drawing.Size(370, 34);
             this.WarrantyDoneDate_Picker.TabIndex = 88;
             this.WarrantyDoneDate_Picker.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.WarrantyDoneDate_Picker.Value = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
@@ -162,11 +162,11 @@
             // 
             this.lbDate.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbDate.AutoSize = true;
-            this.lbDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbDate.Location = new System.Drawing.Point(34, 349);
+            this.lbDate.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDate.Location = new System.Drawing.Point(34, 348);
             this.lbDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDate.Name = "lbDate";
-            this.lbDate.Size = new System.Drawing.Size(83, 20);
+            this.lbDate.Size = new System.Drawing.Size(75, 20);
             this.lbDate.TabIndex = 86;
             this.lbDate.Text = "Ngày lập:";
             this.lbDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -282,11 +282,11 @@
             // 
             this.lbStaffName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbStaffName.AutoSize = true;
-            this.lbStaffName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.lbStaffName.Location = new System.Drawing.Point(34, 313);
+            this.lbStaffName.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbStaffName.Location = new System.Drawing.Point(35, 314);
             this.lbStaffName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbStaffName.Name = "lbStaffName";
-            this.lbStaffName.Size = new System.Drawing.Size(89, 20);
+            this.lbStaffName.Size = new System.Drawing.Size(81, 20);
             this.lbStaffName.TabIndex = 85;
             this.lbStaffName.Text = "Người lập:";
             this.lbStaffName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

@@ -78,6 +78,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
         protected BaseDetailSpecsProduct_Form()
         {
             InitializeComponent();
+            guna2ShadowForm1.SetShadowForm(this);
+            this.ShowInTaskbar = false;
             AddInitializeComponent();
             this.Icon = Properties.Resources.Icon;
             this.ShowInTaskbar = false;

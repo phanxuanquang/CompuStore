@@ -46,6 +46,7 @@
             this.SearchBox.HoverState.Parent = this.SearchBox;
             this.SearchBox.PlaceholderText = "Tìm kiếm nhân viên theo mã, họ và tên hoặc số điện thoại";
             this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
+            this.SearchBox.Size = new System.Drawing.Size(1230, 37);
             this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             // 
             // Button_2
@@ -57,6 +58,7 @@
             this.Button_2.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Button_2.HoverState.Parent = this.Button_2;
             this.Button_2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Button_2.Location = new System.Drawing.Point(1473, 19);
             this.Button_2.ShadowDecoration.Parent = this.Button_2;
             this.Button_2.Text = "Xem thông tin";
             this.Button_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -72,6 +74,7 @@
             this.Bottom_1.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Bottom_1.HoverState.Parent = this.Bottom_1;
             this.Bottom_1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Bottom_1.Location = new System.Drawing.Point(1264, 19);
             this.Bottom_1.ShadowDecoration.Parent = this.Bottom_1;
             this.Bottom_1.Text = "Thêm nhân viên";
             this.Bottom_1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
