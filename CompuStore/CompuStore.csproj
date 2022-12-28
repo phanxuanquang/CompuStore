@@ -522,6 +522,7 @@
     <None Include="Resources\Username.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="assets\Icons\Logout.png" />
     <Content Include="Database\Models\CompuStoreModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CompuStoreModel.edmx</DependentUpon>
