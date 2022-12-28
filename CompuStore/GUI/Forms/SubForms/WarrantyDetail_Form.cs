@@ -57,15 +57,12 @@ namespace CompuStore
         {
             if(EditAndSave_Button.Text == "SỬA HÓA ĐƠN")
             {
-                ItemSerial_Box.Width = 406;
                 WarrantyReason.ReadOnly = false;
                 WarrantyDoneDate_Picker.Enabled  =  Status_ComboBox.Enabled = true;
                 EditAndSave_Button.Text = "LƯU THÔNG TIN";
             }
             else
             {
-             
-                    
                     try
                     {
                         warrantyCurrent.STATUS_WARRANTY = (int?)Status_ComboBox.SelectedValue;
@@ -77,8 +74,6 @@ namespace CompuStore
                         MessageBox.Show("Có lỗi xảy ra. Vui lòng thử lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     this.Close();
-                
-                    ItemSerial_Box.Width = 548;
                 ItemSerial_Box.ReadOnly = Identity_Box.ReadOnly = Name_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = WarrantyReason.ReadOnly = true;
                 EditAndSave_Button.Text = "SỬA HÓA ĐƠN";
             }
