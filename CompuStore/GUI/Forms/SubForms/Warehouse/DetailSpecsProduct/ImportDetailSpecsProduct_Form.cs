@@ -110,9 +110,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         #endregion
 
         #region Show handle
-        public override ResultDetailSpecsProduct ShowDialog(IWin32Window owner, IList<ModelProduct> payload, bool editable = true)
+        public override ResultDetailSpecsProduct ShowDialog(IWin32Window owner, IList<ModelProduct> payload, bool editable = true, bool editStatus = false)
         {
-            return base.ShowDialog(owner, payload, editable);
+            return base.ShowDialog(owner, payload, editable, editStatus);
         }
         #endregion
 

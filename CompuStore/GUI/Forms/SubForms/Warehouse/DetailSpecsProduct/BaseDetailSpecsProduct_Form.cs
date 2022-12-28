@@ -58,7 +58,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
 
         #region Variable
         protected ModelProduct product;
-        protected bool editable = true;
+        protected bool editStatus = true;
+        private bool editable = false;
         protected BindingList<ModelProduct.Port> bindingPorts;
         protected ResultDetailSpecsProduct resultChanged;
         private BindingList<DISPLAY_SPECS> bindingCodeDisplay = null;
@@ -94,6 +95,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
                 {RefreshRate_ComboBox, RefreshRate_Overview_ComboBox },
                 {ColorPicker_Button, ColorPicker_Overview_Button },
             };
+            Edit_Button.Visible = editable;
         }
 
         protected override CreateParams CreateParams
@@ -107,50 +109,50 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
         }
 
         #region Set Editable
-        protected virtual void SetEditable(bool editable)
+        protected virtual void SetEditable(bool editStatus)
         {
-            Lineup_ComboBox.Enabled = editable;
-            Manufacturer_ComboBox.Enabled = editable;
-            Country_ComboBox.Enabled = editable;
-            CPU_ComboBox.Enabled = editable;
-            Capacity_RAM_ComboBox.Enabled = editable;
-            BusRAM_ComboBox.Enabled = editable;
-            TypeRAM_ComboBox.Enabled = editable;
-            iGPU_ComboBox.Enabled = editable;
-            GPU_ComboBox.Enabled = editable;
-            Weight_TextBox.Enabled = editable;
-            X_Dimension_TextBox.Enabled = editable;
-            Y_Dimension_TextBox.Enabled = editable;
-            Z_Dimension_TextBox.Enabled = editable;
-            Material_ComboBox.Enabled = editable;
-            Webcam_ComboBox.Enabled = editable;
-            OS_ComboBox.Enabled = editable;
-            X_Pixel_ComboBox.Enabled = editable;
-            X_Pixel_Overview_ComboBox.Enabled = editable;
-            Y_Pixel_ComboBox.Enabled = editable;
-            Y_Pixel_Overview_ComboBox.Enabled = editable;
-            RefreshRate_ComboBox.Enabled = editable;
-            RefreshRate_Overview_ComboBox.Enabled = editable;
-            SizePanel_ComboBox.Enabled = editable;
-            SizePanel_Overview_ComboBox.Enabled = editable;
-            ColorSpace_sRGB_TextBox.Enabled = editable;
-            ColorSpace_AdobeRGB_TextBox.Enabled = editable;
-            ColorSpace_DCIP3_TextBox.Enabled = editable;
-            TypePanel_ComboBox.Enabled = editable;
-            Brightness_TextBox.Enabled = editable;
-            X_Ratio_ComboBox.Enabled = editable;
-            Y_Ratio_ComboBox.Enabled = editable;
-            TypeScreen_ComboBox.Enabled = editable;
-            TouchScreen_CheckBox.Enabled = editable;
-            HasCodeDisplay_CheckBox.Enabled = editable;
-            CodeDisplay_ComboBox.Enabled = editable;
-            TypeStorage_ComboBox.Enabled = editable;
-            StorageCapacity_ComboBox.Enabled = editable;
-            StorageCapacity_Overview_ComboBox.Enabled = editable;
-            WifiStandard_ComboBox.Enabled = editable;
-            BluetoothStandard_ComboBox.Enabled = editable;
-            BatteryCapacity_TextBox.Enabled = editable;
-            if (editable)
+            Lineup_ComboBox.Enabled = editStatus;
+            Manufacturer_ComboBox.Enabled = editStatus;
+            Country_ComboBox.Enabled = editStatus;
+            CPU_ComboBox.Enabled = editStatus;
+            Capacity_RAM_ComboBox.Enabled = editStatus;
+            BusRAM_ComboBox.Enabled = editStatus;
+            TypeRAM_ComboBox.Enabled = editStatus;
+            iGPU_ComboBox.Enabled = editStatus;
+            GPU_ComboBox.Enabled = editStatus;
+            Weight_TextBox.Enabled = editStatus;
+            X_Dimension_TextBox.Enabled = editStatus;
+            Y_Dimension_TextBox.Enabled = editStatus;
+            Z_Dimension_TextBox.Enabled = editStatus;
+            Material_ComboBox.Enabled = editStatus;
+            Webcam_ComboBox.Enabled = editStatus;
+            OS_ComboBox.Enabled = editStatus;
+            X_Pixel_ComboBox.Enabled = editStatus;
+            X_Pixel_Overview_ComboBox.Enabled = editStatus;
+            Y_Pixel_ComboBox.Enabled = editStatus;
+            Y_Pixel_Overview_ComboBox.Enabled = editStatus;
+            RefreshRate_ComboBox.Enabled = editStatus;
+            RefreshRate_Overview_ComboBox.Enabled = editStatus;
+            SizePanel_ComboBox.Enabled = editStatus;
+            SizePanel_Overview_ComboBox.Enabled = editStatus;
+            ColorSpace_sRGB_TextBox.Enabled = editStatus;
+            ColorSpace_AdobeRGB_TextBox.Enabled = editStatus;
+            ColorSpace_DCIP3_TextBox.Enabled = editStatus;
+            TypePanel_ComboBox.Enabled = editStatus;
+            Brightness_TextBox.Enabled = editStatus;
+            X_Ratio_ComboBox.Enabled = editStatus;
+            Y_Ratio_ComboBox.Enabled = editStatus;
+            TypeScreen_ComboBox.Enabled = editStatus;
+            TouchScreen_CheckBox.Enabled = editStatus;
+            HasCodeDisplay_CheckBox.Enabled = editStatus;
+            CodeDisplay_ComboBox.Enabled = editStatus;
+            TypeStorage_ComboBox.Enabled = editStatus;
+            StorageCapacity_ComboBox.Enabled = editStatus;
+            StorageCapacity_Overview_ComboBox.Enabled = editStatus;
+            WifiStandard_ComboBox.Enabled = editStatus;
+            BluetoothStandard_ComboBox.Enabled = editStatus;
+            BatteryCapacity_TextBox.Enabled = editStatus;
+            if (editStatus)
             {
                 ColorPicker_Overview_Button.Click += ColorPicker_Button_Click;
                 ColorPicker_Button.Click += ColorPicker_Button_Click;
@@ -160,8 +162,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
                 ColorPicker_Overview_Button.Click -= ColorPicker_Button_Click;
                 ColorPicker_Button.Click -= ColorPicker_Button_Click;
             }
-            NameColor_TextBox.Enabled = editable;
-            Ports_DataGridView.ReadOnly = !editable;
+            NameColor_TextBox.Enabled = editStatus;
+            Ports_DataGridView.ReadOnly = !editStatus;
         }
         #endregion
 
@@ -423,10 +425,12 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
         #endregion
 
         #region IO Handle
-        public virtual ResultDetailSpecsProduct ShowDialog(IWin32Window owner, IList<ModelProduct> payload, bool editable = true)
+        public virtual ResultDetailSpecsProduct ShowDialog(IWin32Window owner, IList<ModelProduct> payload, bool editable = true, bool editStatus = false)
         {
+
             resultChanged = new ResultDetailSpecsProduct();
             this.editable = editable;
+            this.editStatus = editStatus;
             product = payload.First();
             base.ShowDialog();
             return resultChanged;
@@ -452,7 +456,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
         {
             bindingPorts = new BindingList<ModelProduct.Port>();
             Ports_DataGridView.DataSource = bindingPorts;
-            Edit_Button.Visible = this.editable;
+            Edit_Button.Visible = this.editStatus;
             HasCodeDisplay_CheckBox.Checked = false;
             await LoadingData();
             SetDefaultData();
@@ -464,8 +468,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
 
         private void Edit_Button_Click(object sender, EventArgs e)
         {
-            SetEditable(editable);
-            editable = !editable;
+            SetEditable(editStatus);
+            editStatus = !editStatus;
         }
 
         private void AddNewItemToComboBox(object sender, string value)
