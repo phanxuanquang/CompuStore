@@ -68,11 +68,12 @@
             this.Button_2.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Button_2.HoverState.Parent = this.Button_2;
             this.Button_2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Button_2.Location = new System.Drawing.Point(1256, 19);
+            this.Button_2.Location = new System.Drawing.Point(1469, 19);
             this.Button_2.ShadowDecoration.Parent = this.Button_2;
             this.Button_2.Text = "Xem cấu hình";
             this.Button_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Button_2.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
+            this.Button_2.Visible = false;
             this.Button_2.Click += new System.EventHandler(this.ViewDetail_Button_Click);
             // 
             // Bottom_1
@@ -101,7 +102,7 @@
             this.Button_3.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Button_3.HoverState.Parent = this.Button_3;
             this.Button_3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Button_3.Location = new System.Drawing.Point(1465, 19);
+            this.Button_3.Location = new System.Drawing.Point(1260, 19);
             this.Button_3.ShadowDecoration.Parent = this.Button_3;
             this.Button_3.Text = "Danh sách đơn hàng";
             this.Button_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
