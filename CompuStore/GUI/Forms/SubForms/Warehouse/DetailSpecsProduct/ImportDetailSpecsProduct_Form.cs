@@ -28,74 +28,64 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.UnitPrice_Label = new System.Windows.Forms.Label();
             this.Price_Label = new System.Windows.Forms.Label();
             this.Price_TextBox = new System.Windows.Forms.TextBox();
-            this.Placeholder_FlowLayoutPanel.SuspendLayout();
+            this.PlaceHolder_Panel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Placeholder_FlowLayoutPanel
+            // PlaceHolder_Panel
             // 
-            this.Placeholder_FlowLayoutPanel.Controls.Add(this.Serial_Label);
-            this.Placeholder_FlowLayoutPanel.Controls.Add(this.Serial_TextBox);
-            this.Placeholder_FlowLayoutPanel.Controls.Add(this.Price_Label);
-            this.Placeholder_FlowLayoutPanel.Controls.Add(this.Price_TextBox);
-            this.Placeholder_FlowLayoutPanel.Controls.Add(this.UnitPrice_Label);
-            this.Placeholder_FlowLayoutPanel.Margin = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.Placeholder_FlowLayoutPanel.Name = "Placeholder_FlowLayoutPanel";
-            this.Placeholder_FlowLayoutPanel.Size = new System.Drawing.Size(this.Size.Width, 70);
-            this.Placeholder_FlowLayoutPanel.TabIndex = 134;
-            // 
-            // Serial_TextBox
-            // 
-            this.Serial_TextBox.Enabled = false;
-            this.Serial_TextBox.Margin = new System.Windows.Forms.Padding(5 * DeviceDpi / 96);
-            this.Serial_TextBox.Name = "Serial_TextBox";
-            this.Serial_TextBox.Size = new System.Drawing.Size(232 * DeviceDpi / 96, 39);
-            this.Serial_TextBox.TabIndex = 133;
+            this.PlaceHolder_Panel.Controls.Add(this.Price_TextBox);
+            this.PlaceHolder_Panel.Controls.Add(this.Serial_TextBox);
+            this.PlaceHolder_Panel.Controls.Add(this.UnitPrice_Label);
+            this.PlaceHolder_Panel.Controls.Add(this.Price_Label);
+            this.PlaceHolder_Panel.Controls.Add(this.Serial_Label);
             // 
             // Serial_Label
             // 
             this.Serial_Label.AutoSize = true;
-            this.Serial_Label.Margin = new System.Windows.Forms.Padding(150 * DeviceDpi / 96, 3 * DeviceDpi / 96, 10 * DeviceDpi / 96, 3 * DeviceDpi / 96);
-            this.Serial_Label.Padding = new Padding(5 * DeviceDpi / 96);
+            this.Serial_Label.Location = new System.Drawing.Point(253, 13);
             this.Serial_Label.Name = "Serial_Label";
-            this.Serial_Label.Size = new System.Drawing.Size(124 * DeviceDpi / 96, 32);
-            this.Serial_Label.TabIndex = 134;
+            this.Serial_Label.Size = new System.Drawing.Size(124, 32);
+            this.Serial_Label.TabIndex = 0;
             this.Serial_Label.Text = "Serial máy";
-            // 
-            // UnitPrice_Label
-            // 
-            this.UnitPrice_Label.AutoSize = true;
-            this.UnitPrice_Label.ForeColor = System.Drawing.Color.Black;
-            this.UnitPrice_Label.Margin = new System.Windows.Forms.Padding(0, 3 * DeviceDpi / 96, 0, 3 * DeviceDpi / 96);
-            this.UnitPrice_Label.Padding = new Padding(5 * DeviceDpi / 96);
-            this.UnitPrice_Label.Name = "UnitPrice_Label";
-            this.UnitPrice_Label.Size = new System.Drawing.Size(64 * DeviceDpi / 96, 32);
-            this.UnitPrice_Label.TabIndex = 134;
-            this.UnitPrice_Label.Text = "VNĐ";
             // 
             // Price_Label
             // 
             this.Price_Label.AutoSize = true;
-            this.Price_Label.ForeColor = System.Drawing.Color.Black;
-            this.Price_Label.Margin = new System.Windows.Forms.Padding(450 * DeviceDpi / 96, 3 * DeviceDpi / 96, 10 * DeviceDpi / 96, 3 * DeviceDpi / 96);
-            this.Price_Label.Padding = new Padding(5 * DeviceDpi / 96);
+            this.Price_Label.Location = new System.Drawing.Point(281, 70);
             this.Price_Label.Name = "Price_Label";
-            this.Price_Label.Size = new System.Drawing.Size(96 * DeviceDpi / 96, 32);
-            this.Price_Label.TabIndex = 133;
+            this.Price_Label.Size = new System.Drawing.Size(96, 32);
+            this.Price_Label.TabIndex = 1;
             this.Price_Label.Text = "Giá tiền";
+            // 
+            // UnitPrice_Label
+            // 
+            this.UnitPrice_Label.AutoSize = true;
+            this.UnitPrice_Label.Location = new System.Drawing.Point(786, 73);
+            this.UnitPrice_Label.Name = "UnitPrice_Label";
+            this.UnitPrice_Label.Size = new System.Drawing.Size(64, 32);
+            this.UnitPrice_Label.TabIndex = 2;
+            this.UnitPrice_Label.Text = "VND";
+            // 
+            // Serial_TextBox
+            // 
+            this.Serial_TextBox.Location = new System.Drawing.Point(456, 13);
+            this.Serial_TextBox.Name = "Serial_TextBox";
+            this.Serial_TextBox.Size = new System.Drawing.Size(324, 39);
+            this.Serial_TextBox.TabIndex = 3;
+            this.Serial_TextBox.Enabled = false;
             // 
             // Price_TextBox
             // 
-            this.Price_TextBox.Enabled = false;
-            this.Price_TextBox.ForeColor = System.Drawing.Color.Black;
-            this.Price_TextBox.Margin = new System.Windows.Forms.Padding(5 * DeviceDpi / 96);
+            this.Price_TextBox.Location = new System.Drawing.Point(456, 70);
             this.Price_TextBox.Name = "Price_TextBox";
-            this.Price_TextBox.Size = new System.Drawing.Size(259 * DeviceDpi / 96, 39);
-            this.Price_TextBox.TabIndex = 132;
+            this.Price_TextBox.Size = new System.Drawing.Size(324, 39);
+            this.Price_TextBox.TabIndex = 4;
             this.Price_TextBox.Enter += Price_TextBox_Enter;
             this.Price_TextBox.Leave += Price_TextBox_Leave;
-            this.Size = new Size(this.Size.Width, this.Size.Height + 70);
-            this.Placeholder_FlowLayoutPanel.ResumeLayout(false);
-            this.Placeholder_FlowLayoutPanel.PerformLayout();
+            this.Price_TextBox.Enabled = false;
+
+            this.PlaceHolder_Panel.ResumeLayout(false);
+            this.PlaceHolder_Panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
