@@ -108,7 +108,7 @@
             this.CheckBox_Panel.Margin = new System.Windows.Forms.Padding(2);
             this.CheckBox_Panel.Name = "CheckBox_Panel";
             this.CheckBox_Panel.Size = new System.Drawing.Size(134, 30);
-            this.CheckBox_Panel.TabIndex = 9;
+            this.CheckBox_Panel.TabIndex = 4;
             this.CheckBox_Panel.Click += new System.EventHandler(this.CheckBox_Panel_Click);
             // 
             // label1
