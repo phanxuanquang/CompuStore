@@ -379,7 +379,7 @@
             chartArea1.AxisX.IsMarginVisible = false;
             chartArea1.AxisX.MajorGrid.LineWidth = 0;
             chartArea1.AxisX.MajorTickMark.Size = 3F;
-            chartArea1.AxisY.LabelStyle.Format = "{0:0,}M";
+            chartArea1.AxisY.LabelStyle.Format = "{0:0,,}M";
             chartArea1.AxisY.LineWidth = 0;
             chartArea1.Name = "ChartArea1";
             this.chartGrossRevenue.ChartAreas.Add(chartArea1);
