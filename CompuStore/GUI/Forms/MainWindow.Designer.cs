@@ -42,6 +42,7 @@
             this.HeaderIcon = new System.Windows.Forms.PictureBox();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.Logout_Button = new Guna.UI2.WinForms.Guna2ImageButton();
             this.MenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
@@ -84,7 +85,7 @@
             this.Statistics_Button.Name = "Statistics_Button";
             this.Statistics_Button.ShadowDecoration.Parent = this.Statistics_Button;
             this.Statistics_Button.Size = new System.Drawing.Size(340, 120);
-            this.Statistics_Button.TabIndex = 7;
+            this.Statistics_Button.TabIndex = 8;
             this.Statistics_Button.Text = "THỐNG KÊ";
             this.Statistics_Button.Click += new System.EventHandler(this.Statistics_Button_Click);
             this.Statistics_Button.MouseEnter += new System.EventHandler(this.Statistics_Button_MouseEnter);
@@ -196,7 +197,7 @@
             this.StorageManage_Button.Name = "StorageManage_Button";
             this.StorageManage_Button.ShadowDecoration.Parent = this.StorageManage_Button;
             this.StorageManage_Button.Size = new System.Drawing.Size(340, 120);
-            this.StorageManage_Button.TabIndex = 3;
+            this.StorageManage_Button.TabIndex = 7;
             this.StorageManage_Button.Text = "KHO VẬN";
             this.StorageManage_Button.Click += new System.EventHandler(this.StorageManage_Button_Click);
             this.StorageManage_Button.MouseEnter += new System.EventHandler(this.StaffManage_Button_MouseEnter);
@@ -259,12 +260,31 @@
             this.Exit_Button.TabIndex = 5;
             this.Exit_Button.Click += new System.EventHandler(this.Exit_Button_Click);
             // 
+            // Logout_Button
+            // 
+            this.Logout_Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.Logout_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
+            this.Logout_Button.CheckedState.ImageSize = new System.Drawing.Size(25, 25);
+            this.Logout_Button.CheckedState.Parent = this.Logout_Button;
+            this.Logout_Button.HoverState.ImageSize = new System.Drawing.Size(25, 25);
+            this.Logout_Button.HoverState.Parent = this.Logout_Button;
+            this.Logout_Button.Image = global::CompuStore.Properties.Resources.Logout;
+            this.Logout_Button.ImageSize = new System.Drawing.Size(27, 27);
+            this.Logout_Button.Location = new System.Drawing.Point(1623, 0);
+            this.Logout_Button.Margin = new System.Windows.Forms.Padding(6);
+            this.Logout_Button.Name = "Logout_Button";
+            this.Logout_Button.PressedState.Parent = this.Logout_Button;
+            this.Logout_Button.Size = new System.Drawing.Size(40, 40);
+            this.Logout_Button.TabIndex = 8;
+            this.Logout_Button.Click += new System.EventHandler(this.Logout_Button_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1700, 1000);
+            this.Controls.Add(this.Logout_Button);
             this.Controls.Add(this.Exit_Button);
             this.Controls.Add(this.ContainerPanel);
             this.Controls.Add(this.HeaderIcon);
@@ -296,5 +316,6 @@
         private System.Windows.Forms.Panel ContainerPanel;
         private Guna.UI2.WinForms.Guna2TileButton Statistics_Button;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
+        private Guna.UI2.WinForms.Guna2ImageButton Logout_Button;
     }
 }

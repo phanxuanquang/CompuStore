@@ -15,18 +15,54 @@ namespace CompuStore.GUI
     public partial class MainWindow : Form
     {
         UserControl staffManage_Tab, salesManage_Tab, serviceManage_Tab, warehouseManage_Tab, statistics_Tab;
-        public MainWindow()
+        public MainWindow(string role)
         {
             InitializeComponent();
-            this.Icon = Properties.Resources.Icon;
             staffManage_Tab = null;
             salesManage_Tab = null;
             serviceManage_Tab = null;
             warehouseManage_Tab = null;
             statistics_Tab = null;
             guna2ShadowForm1.SetShadowForm(this);
-
-            SetHeaderState_From(SaleManage_Button, Properties.Resources.Staff___Header);
+            this.Icon = Properties.Resources.Icon;
+            switch (role)
+            {
+                case "Chủ cửa hàng":
+                    SetHeaderState_From(StaffManage_Button, Properties.Resources.Staff___Header);
+                    if (staffManage_Tab == null)
+                    {
+                        staffManage_Tab = new StaffManagement_Tab();
+                    }
+                    LoadTab(staffManage_Tab);
+                    return;
+                case "Nhân viên quản lý bán hàng":
+                    SetHeaderState_From(SaleManage_Button, Properties.Resources.Sale___Header);
+                    if (salesManage_Tab == null)
+                    {
+                        salesManage_Tab = new SaleManagement_Tab();
+                    }
+                    LoadTab(salesManage_Tab);
+                    MenuPanel.Visible = false;
+                    return;
+                case "Nhân viên quản lý kho":
+                    SetHeaderState_From(StorageManage_Button, Properties.Resources.Storage___Header);
+                    if (warehouseManage_Tab == null)
+                    {
+                        warehouseManage_Tab = new Warehouse_UC();
+                    }
+                    LoadTab(warehouseManage_Tab);
+                    MenuPanel.Visible = false;
+                    return;
+                case "Quản lý CSKH":
+                    SetHeaderState_From(ServiceManage_Button, Properties.Resources.Service___Header);
+                    if (serviceManage_Tab == null)
+                    {
+                        serviceManage_Tab = new ServiceManagement_Tab();
+                    }
+                    LoadTab(serviceManage_Tab);
+                    MenuPanel.Visible = false;
+                    return;
+            }
         }
 
         protected override CreateParams CreateParams
@@ -115,6 +151,13 @@ namespace CompuStore.GUI
             MenuPanel.Height = DeviceDpi > 96 ? 20 : 10;
         }
 
+        private void Logout_Button_Click(object sender, EventArgs e)
+        {
+            Login_Form login_Form = new Login_Form();
+            login_Form.Show();
+            this.Close();
+        }
+
         private void Exit_Button_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -122,7 +165,7 @@ namespace CompuStore.GUI
 
         private void MainWindow_Shown(object sender, EventArgs e)
         {
-            StaffManage_Button_Click(null,null);
+            //StaffManage_Button_Click(null,null);
         }
 
         private void StaffManage_Button_MouseEnter(object sender, EventArgs e)
