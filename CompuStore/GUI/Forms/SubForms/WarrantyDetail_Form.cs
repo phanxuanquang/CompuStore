@@ -43,6 +43,7 @@ namespace CompuStore
                 lbDate.Text += " " + warrantyCurrent.RECEIVE_DATE.ToString();
             }
             SetupCombobox();
+            TurnOnAutocomplete();
         }
 
         private void Exit_Button_Click(object sender, EventArgs e)

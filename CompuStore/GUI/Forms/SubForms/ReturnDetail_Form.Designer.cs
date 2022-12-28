@@ -46,7 +46,13 @@
             this.AddInfor_Button = new Guna.UI2.WinForms.Guna2Button();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.pRODUCTBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iNFORBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cHANGEORREFUNDPRODUCTBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pRODUCTBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iNFORBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cHANGEORREFUNDPRODUCTBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // Header
@@ -148,6 +154,7 @@
             this.ReturnReason.BorderRadius = 8;
             this.ReturnReason.BorderThickness = 2;
             this.ReturnReason.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.ReturnReason.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.cHANGEORREFUNDPRODUCTBindingSource, "REASON", true));
             this.ReturnReason.DefaultText = "";
             this.ReturnReason.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.ReturnReason.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -186,6 +193,7 @@
             this.NewItemSerial_Box.BorderRadius = 8;
             this.NewItemSerial_Box.BorderThickness = 2;
             this.NewItemSerial_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.NewItemSerial_Box.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.pRODUCTBindingSource, "SERIAL_ID", true));
             this.NewItemSerial_Box.DefaultText = "";
             this.NewItemSerial_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.NewItemSerial_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -224,6 +232,7 @@
             this.OldItemSerial_Box.BorderRadius = 8;
             this.OldItemSerial_Box.BorderThickness = 2;
             this.OldItemSerial_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.OldItemSerial_Box.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.pRODUCTBindingSource, "SERIAL_ID", true));
             this.OldItemSerial_Box.DefaultText = "";
             this.OldItemSerial_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.OldItemSerial_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -275,6 +284,7 @@
             this.Email_Box.BorderRadius = 8;
             this.Email_Box.BorderThickness = 2;
             this.Email_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Email_Box.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.iNFORBindingSource, "EMAIL", true));
             this.Email_Box.DefaultText = "";
             this.Email_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.Email_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -314,6 +324,7 @@
             this.Name_Box.BorderRadius = 8;
             this.Name_Box.BorderThickness = 2;
             this.Name_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Name_Box.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.iNFORBindingSource, "NAME", true));
             this.Name_Box.DefaultText = "";
             this.Name_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.Name_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -366,6 +377,7 @@
             this.PhoneNumber_Box.BorderRadius = 8;
             this.PhoneNumber_Box.BorderThickness = 2;
             this.PhoneNumber_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.PhoneNumber_Box.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.iNFORBindingSource, "PHONE_NUMBER", true));
             this.PhoneNumber_Box.DefaultText = "";
             this.PhoneNumber_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.PhoneNumber_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -405,6 +417,7 @@
             this.Identity_Box.BorderRadius = 8;
             this.Identity_Box.BorderThickness = 2;
             this.Identity_Box.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.Identity_Box.DataBindings.Add(new System.Windows.Forms.Binding("Tag", this.iNFORBindingSource, "IDENTITY_CODE", true));
             this.Identity_Box.DefaultText = "";
             this.Identity_Box.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.Identity_Box.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -461,6 +474,18 @@
             // 
             this.guna2DragControl1.TargetControl = this.Header;
             // 
+            // pRODUCTBindingSource
+            // 
+            this.pRODUCTBindingSource.DataSource = typeof(CompuStore.Database.Models.PRODUCT);
+            // 
+            // iNFORBindingSource
+            // 
+            this.iNFORBindingSource.DataSource = typeof(CompuStore.Database.Models.INFOR);
+            // 
+            // cHANGEORREFUNDPRODUCTBindingSource
+            // 
+            this.cHANGEORREFUNDPRODUCTBindingSource.DataSource = typeof(CompuStore.Database.Models.CHANGE_OR_REFUND_PRODUCT);
+            // 
             // ReturnDetail_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -487,6 +512,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddWarranty_Form";
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pRODUCTBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iNFORBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cHANGEORREFUNDPRODUCTBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -510,5 +538,8 @@
         private Guna.UI2.WinForms.Guna2Button AddInfor_Button;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
+        private System.Windows.Forms.BindingSource cHANGEORREFUNDPRODUCTBindingSource;
+        private System.Windows.Forms.BindingSource pRODUCTBindingSource;
+        private System.Windows.Forms.BindingSource iNFORBindingSource;
     }
 }

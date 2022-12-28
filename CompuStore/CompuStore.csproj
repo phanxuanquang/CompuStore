@@ -437,6 +437,7 @@
       <DependentUpon>CompuStoreModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\CompuStore.Database.Models.CHANGE_OR_REFUND_PRODUCT.datasource" />
     <None Include="Properties\DataSources\CompuStore.Database.Models.INFOR.datasource" />
     <None Include="Properties\DataSources\CompuStore.Database.Models.INVOICE.datasource" />
     <None Include="Properties\DataSources\CompuStore.Database.Models.PRODUCT.datasource" />
