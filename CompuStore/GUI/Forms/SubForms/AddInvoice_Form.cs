@@ -57,6 +57,7 @@ namespace CompuStore
             LoadLabel();
         }
 
+        #region Biding
         private void LoadLabel()
         {
             currentStaff = LoginServices.Instance.CurrentStaff;
@@ -88,32 +89,26 @@ namespace CompuStore
             ItemTable.CellDoubleClick += ItemTable_CellDoubleClick;
         }
 
-        private void ItemTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                ItemTable.Rows.RemoveAt(e.RowIndex);
-                addedProduct.RemoveAt(e.RowIndex);
-            }    
-        }
 
-        private void Exit_Button_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         bool isValidCustomer(CUSTOMER customer)
         {
             if (customer == null)
             {
                 return false;
-            }    
+            }
             return true;
         }
 
         private void LoadData()
         {
             ItemTable.DataSource = GetAdjustmentTable();
+            foreach (DataGridViewRow row in ItemTable.Rows)
+            {
+                row.Cells["Số se-ri"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                row.Cells["Tên sản phẩm"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                row.Cells["Giá tiền"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
 
         private DataTable GetAdjustmentTable()
@@ -141,9 +136,22 @@ namespace CompuStore
             else
             {
                 MessageBox.Show("Sản phẩm đã được thêm");
-            }    
+            }
             return adjustmentTable;
         }
+        #endregion
+
+        #region Event
+
+        private void ItemTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                ItemTable.Rows.RemoveAt(e.RowIndex);
+                addedProduct.RemoveAt(e.RowIndex);
+            }
+        }
+
 
         private void Identity_Box_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -177,70 +185,7 @@ namespace CompuStore
             }
         }
 
-        private async void Save_Button_Click(object sender, EventArgs e)
-        {
-            await Task.Factory.StartNew(() =>
-            {
-                int[] id = { 7, 8, 9 };
-
-                string message = string.Empty;
-                DateTime now = new DateTime(2022, 12, 1);
-                for (int index = 0; index < 10; index++)
-                {
-                    List<PRODUCT> items = Database.DataProvider.Instance.Database.PRODUCTs.Where(item => item.IN_WAREHOUSE == true).Take(1).ToList();
-                    for (int i = 1; i < 32; i++)
-                    {
-                        now = now.AddDays(1);
-                        try
-                        {
-                            InvoiceServices.Instance.SaveInvoiceToDB(items, id[id.Length % 3], currentStaff.ID, now, 10);
-                        }
-                        catch (Exception ex)
-                        {
-                            message += ex;
-                        }
-                    }
-                }
-            });
-            /*foreach (var item in addedProduct)
-            {
-                productList.Add(Database.DataProvider.Instance.Database.PRODUCTs.Where(prod => prod.SERIAL_ID == item).FirstOrDefault());
-            }
-            List<CUSTOMER> listCus = new List<CUSTOMER>();
-
-            {
-                for (int i = 1; i < 4; i++)
-                {
-                    string name = "Nguyen Van" + ((int)'A' + i).ToString();
-                    string phoneNumber = "0101020203";
-                    string email = "abc@gmail.com";
-                    string iden = "1093412" + i * 10 + 34;
-                    string address = "Thủ Đức, TP HCM";
-                    customer = CustomerServices.Instance.SaveCustomerToDB(name, phoneNumber, email, iden, address);
-                    listCus.Add(customer);
-                }
-
-            }
-            Exception res = new Exception();
-            foreach (var item in listCus)
-            {
-                for (int i = 1; i < 32; i++)
-                {
-                    DateTime x = new DateTime(2022, 12, i, DateTime.Now.Hour, DateTime.Now.Minute + i, DateTime.Now.Second);
-                    res = InvoiceServices.Instance.SaveInvoiceToDB(productList, item.ID, currentStaff.ID, x, 10);
-                }    
-            }    
-            if (res.Message == "done")
-            {
-                MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show(res.Message);
-            }*/
-            this.Close();
-        }
-
+        
         private void AddInvoice_Form_FormClosing(object sender, FormClosingEventArgs e)
         {
             CompuStore.Tab.SaleManagement_Tab.nameIdCommonSpecs = null;
@@ -275,81 +220,7 @@ namespace CompuStore
             NameProduct_ComboBox.DisplayMember = "NAME";
         }
 
-        private async void Print_Button_Click(object sender, EventArgs e)
-        {
-            //MessageBox.Show("Không tim thấy máy in. Vui lòng thử lại sau.", "Không tìm thấy máy in", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-            //foreach (var item in addedProduct)
-            //{
-            //    productList.Add(Database.DataProvider.Instance.Database.PRODUCTs.Where(prod => prod.SERIAL_ID == item).FirstOrDefault());
-            //}
-            /*List<CUSTOMER> listCus = new List<CUSTOMER>();
-
-            {
-                for (int i = 1; i < 4; i++)
-                {
-                    string name = "Nguyen Van" + ((int)'A' + i).ToString();
-                    string phoneNumber = "0101020203";
-                    string email = "abc@gmail.com";
-                    string iden = "1093412" + i * 10 + 34;
-                    string address = "Thủ Đức, TP HCM";
-                    customer = CustomerServices.Instance.SaveCustomerToDB(name, phoneNumber, email, iden, address);
-                    if (customer != null)
-                        listCus.Add(customer);
-                }
-            }
-            Exception res = new Exception();
-            try
-            {
-                List<PRODUCT> lp = Database.DataProvider.Instance.Database.PRODUCTs.Select(item => item).ToList();
-                productList.Clear();
-                foreach (var item in listCus)
-                {
-                    for (int i = 1; i < 32; i++)
-                    {
-                        DateTime x = new DateTime(2022, 12, i, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
-                        for (int j = i + 3; j < i + 8; j++)
-                        {
-                            productList.Add(lp[j]);
-                        }
-                        res = InvoiceServices.Instance.SaveInvoiceToDB(productList, item.ID, currentStaff.ID, x, 10);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            if (res.Message == "done")
-            {
-                MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show(res.Message);
-            }*/
-            await Task.Factory.StartNew(() =>
-            {
-                int[] id = { 7, 8, 9 };
-
-                string message = string.Empty;
-                DateTime now = new DateTime(2022, 12, 1);
-                for (int index = 0; index < 10; index++)
-                {
-                    List<PRODUCT> items = Database.DataProvider.Instance.Database.PRODUCTs.Where(item => item.IN_WAREHOUSE == true && item.DETAIL_SPECS.COMMON_SPECS.NAME == "Apple MacBook Pro 15 (2018)").Take(1).ToList();
-                    now = now.AddDays(1);
-                    try
-                    {
-                        InvoiceServices.Instance.SaveInvoiceToDB(items, id[id.Length % 3], currentStaff.ID, now, 10);
-                    }
-                    catch (Exception ex)
-                    {
-                        message += ex;
-                    }
-                }
-            });
-            this.Close();
-        }
+        
 
         private void NameProduct_ComboBox_Leave(object sender, EventArgs e)
         {
@@ -423,5 +294,67 @@ namespace CompuStore
         {
             LoadData();
         }
+
+        private void Exit_Button_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #endregion
+
+        #region Button
+        private async void Save_Button_Click(object sender, EventArgs e)
+        {
+            await Task.Factory.StartNew(() =>
+            {
+                int[] id = { 7, 8, 9 };
+
+                string message = string.Empty;
+                DateTime now = new DateTime(2022, 12, 1);
+                for (int index = 0; index < 10; index++)
+                {
+                    List<PRODUCT> items = Database.DataProvider.Instance.Database.PRODUCTs.Where(item => item.IN_WAREHOUSE == true).Take(1).ToList();
+                    for (int i = 1; i < 32; i++)
+                    {
+                        now = now.AddDays(1);
+                        try
+                        {
+                            InvoiceServices.Instance.SaveInvoiceToDB(items, id[id.Length % 3], currentStaff.ID, now, 10);
+                        }
+                        catch (Exception ex)
+                        {
+                            message += ex;
+                        }
+                    }
+                }
+            });
+            this.Close();
+        }
+
+        private async void Print_Button_Click(object sender, EventArgs e)
+        {
+            await Task.Factory.StartNew(() =>
+            {
+                int[] id = { 7, 8, 9 };
+
+                string message = string.Empty;
+                DateTime now = new DateTime(2022, 12, 1);
+                for (int index = 0; index < 10; index++)
+                {
+                    List<PRODUCT> items = Database.DataProvider.Instance.Database.PRODUCTs.Where(item => item.IN_WAREHOUSE == true && item.DETAIL_SPECS.COMMON_SPECS.NAME == "Apple MacBook Pro 15 (2018)").Take(1).ToList();
+                    now = now.AddDays(1);
+                    try
+                    {
+                        InvoiceServices.Instance.SaveInvoiceToDB(items, id[id.Length % 3], currentStaff.ID, now, 10);
+                    }
+                    catch (Exception ex)
+                    {
+                        message += ex;
+                    }
+                }
+            });
+            this.Close();
+        }
+        #endregion
     }
 }
