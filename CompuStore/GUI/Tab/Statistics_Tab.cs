@@ -81,7 +81,7 @@ namespace CompuStore.GUI.Tab
             DisableCustomDates();
         }
 
-        private async void btnLast30Days_Click(object sender, EventArgs e)
+        private void btnLast30Days_Click(object sender, EventArgs e)
         {
             dtpStartDate.Value = DateTime.Today.AddDays(-30);
             dtpEndDate.Value = DateTime.Now;

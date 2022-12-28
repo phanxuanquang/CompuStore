@@ -257,12 +257,14 @@ namespace CompuStore
         {
             AddWarranty_Form addWarranty_Form = new AddWarranty_Form();
             addWarranty_Form.ShowDialog();
+            LoadWarranty();
         }
 
         private void Button_2_Click(object sender, EventArgs e)
         {
             AddReturn_Form addReturn_Form = new AddReturn_Form();
             addReturn_Form.ShowDialog();
+            LoadCOrRefund();
         }
 
         private void SearchBox_TextChanged(object sender, EventArgs e)
