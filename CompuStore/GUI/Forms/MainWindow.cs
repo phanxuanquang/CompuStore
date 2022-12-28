@@ -18,7 +18,7 @@ namespace CompuStore.GUI
         public MainWindow()
         {
             InitializeComponent();
-
+            this.Icon = Properties.Resources.Icon;
             staffManage_Tab = null;
             salesManage_Tab = null;
             serviceManage_Tab = null;
@@ -26,7 +26,7 @@ namespace CompuStore.GUI
             statistics_Tab = null;
             guna2ShadowForm1.SetShadowForm(this);
 
-            SetHeaderState_From(SaleManage_Button);
+            SetHeaderState_From(SaleManage_Button, Properties.Resources.Staff___Header);
         }
 
         protected override CreateParams CreateParams
@@ -39,10 +39,11 @@ namespace CompuStore.GUI
             }
         }
 
-        void SetHeaderState_From(Guna.UI2.WinForms.Guna2TileButton button)
+        void SetHeaderState_From(Guna.UI2.WinForms.Guna2TileButton button, Image img)
         {
             Header.Text = "QUẢN LÝ " + button.Text;
-            HeaderIcon.BackgroundImage = button.Image;
+            //HeaderIcon.BackgroundImage = button.Image;
+            HeaderIcon.BackgroundImage = img;
         }
 
         void LoadTab(UserControl tab)
@@ -56,7 +57,7 @@ namespace CompuStore.GUI
 
         private void StaffManage_Button_Click(object sender, EventArgs e)
         {
-            SetHeaderState_From(StaffManage_Button);
+            SetHeaderState_From(StaffManage_Button, Properties.Resources.Staff___Header);
             if(staffManage_Tab == null)
             {
                 staffManage_Tab = new StaffManagement_Tab();
@@ -66,7 +67,7 @@ namespace CompuStore.GUI
 
         private void SaleManage_Button_Click(object sender, EventArgs e)
         {
-            SetHeaderState_From(SaleManage_Button);
+            SetHeaderState_From(SaleManage_Button, Properties.Resources.Staff___Header);
             if (salesManage_Tab == null)
             {
                 salesManage_Tab = new SaleManagement_Tab();
@@ -76,7 +77,7 @@ namespace CompuStore.GUI
 
         private void ServiceManage_Button_Click(object sender, EventArgs e)
         {
-            SetHeaderState_From(ServiceManage_Button);
+            SetHeaderState_From(ServiceManage_Button, Properties.Resources.Service___Header);
             if (serviceManage_Tab == null)
             {
                 serviceManage_Tab = new ServiceManagement_Tab();
@@ -86,7 +87,7 @@ namespace CompuStore.GUI
 
         private void StorageManage_Button_Click(object sender, EventArgs e)
         {
-            SetHeaderState_From(StorageManage_Button);
+            SetHeaderState_From(StorageManage_Button, Properties.Resources.Storage___Header);
             if (warehouseManage_Tab == null)
             {
                 warehouseManage_Tab = new Warehouse_UC();
@@ -96,7 +97,7 @@ namespace CompuStore.GUI
 
         private void Statistics_Button_Click(object sender, EventArgs e)
         {
-            SetHeaderState_From(StorageManage_Button);
+            SetHeaderState_From(Statistics_Button, Properties.Resources.Statistics___Header);
             if (statistics_Tab == null)
             {
                 statistics_Tab = new Statistics_Tab();

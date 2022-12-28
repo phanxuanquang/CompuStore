@@ -30,6 +30,8 @@ namespace CompuStore
         {
             this.id = id;
             InitializeComponent();
+            this.Icon = Properties.Resources.Icon;
+            this.ShowInTaskbar = false;
             guna2ShadowForm1.SetShadowForm(this);
             this.Load += AddInvoice_Form_Load;
         }
@@ -125,5 +127,29 @@ namespace CompuStore
             this.Close();
         }
 
+        private async void Print_Button_Click(object sender, EventArgs e)
+        {
+            await Task.Factory.StartNew(() =>
+            {
+                int[] id = { 7, 8, 9 };
+
+                string message = string.Empty;
+                DateTime now = new DateTime(2022, 12, 1);
+                for (int index = 0; index < 10; index++)
+                {
+                    List<PRODUCT> items = Database.DataProvider.Instance.Database.PRODUCTs.Where(item => item.IN_WAREHOUSE == true && item.DETAIL_SPECS.COMMON_SPECS.NAME == "Apple MacBook Pro 15 (2018)").Take(1).ToList();
+                    now = now.AddDays(1);
+                    try
+                    {
+                        InvoiceServices.Instance.SaveInvoiceToDB(items, id[id.Length % 3], currentStaff.ID, now, 10);
+                    }
+                    catch (Exception ex)
+                    {
+                        message += ex;
+                    }
+                }
+            });
+            this.Close();
+        }
     }
 }

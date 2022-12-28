@@ -24,6 +24,8 @@ namespace CompuStore
         {
             InitializeComponent();
             guna2ShadowForm1.SetShadowForm(this);
+            this.Icon = Properties.Resources.Icon;
+            this.ShowInTaskbar = false;
             this.Load += AddWarranty_Form_Load;
             
         }

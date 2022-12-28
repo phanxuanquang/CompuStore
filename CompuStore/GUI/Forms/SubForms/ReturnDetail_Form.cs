@@ -15,6 +15,8 @@ namespace CompuStore
         public ReturnDetail_Form(object returnD)
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.Icon;
+            this.ShowInTaskbar = false;
             guna2ShadowForm1.SetShadowForm(this);
         }
 

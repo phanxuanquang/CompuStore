@@ -89,6 +89,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         public BaseDetailInvoiceImportWarehouse_Form()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.Icon;
+            this.ShowInTaskbar = false;
             guna2ShadowForm1.SetShadowForm(this);
             if (DeviceDpi > 96)
             {

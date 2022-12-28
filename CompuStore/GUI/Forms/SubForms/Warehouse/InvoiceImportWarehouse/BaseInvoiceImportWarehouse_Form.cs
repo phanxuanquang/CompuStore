@@ -142,6 +142,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         protected BaseInvoiceImportWarehouse_Form()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.Icon;
+            this.ShowInTaskbar = false;
             if (DeviceDpi > 96)
             {
                 TableData_DataGridView.ColumnHeadersHeight = 48;

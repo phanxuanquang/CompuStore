@@ -28,6 +28,7 @@ namespace CompuStore.GUI
         public Login_Form()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.Icon;
             BindingList<ServerComboBoxBinding> binding = new BindingList<ServerComboBoxBinding>();
             binding.Add(new ServerComboBoxBinding { ID = 1, Value = "Server chính - kitaz.database.windows.net", ConnectionString = "CompuStoreDBEntities" });
             binding.Add(new ServerComboBoxBinding { ID = 2, Value = "Server backup - Local", ConnectionString = "CompuStoreDBEntities_Backup" });

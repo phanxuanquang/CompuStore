@@ -45,6 +45,7 @@ namespace CompuStore
         public AddInvoice_Form()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.Icon;
             guna2ShadowForm1.SetShadowForm(this);
             this.Load += AddInvoice_Form_Load;
         }

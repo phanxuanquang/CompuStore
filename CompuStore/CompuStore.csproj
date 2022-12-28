@@ -507,6 +507,9 @@
     <None Include="assets\Icons\Menu\Service - Header.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="assets\Icons\Menu\Statistics - Hover.png" />
+    <None Include="assets\Icons\Menu\Statistics.png" />
+    <None Include="assets\Icons\Menu\Statistics - Header.png" />
     <Content Include="Database\Models\CompuStoreModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CompuStoreModel.edmx</DependentUpon>
@@ -517,6 +520,7 @@
       <DependentUpon>CompuStoreModel.edmx</DependentUpon>
       <LastGenOutput>CompuStoreModel.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\Icon.ico" />
     <None Include="Resources\Search_Icon.png" />
     <None Include="Resources\Search.png" />
     <None Include="Resources\Background-01.png" />
