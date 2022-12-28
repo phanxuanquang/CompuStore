@@ -1,10 +1,12 @@
 ﻿using CompuStore.Database.Models;
 using CompuStore.ImportData;
+using CompuStore.Utilities.ExportPDF;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -59,7 +61,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
         #region Variable
         protected ModelProduct product;
         protected bool editStatus = true;
-        private bool editable = false;
         protected BindingList<ModelProduct.Port> bindingPorts;
         protected ResultDetailSpecsProduct resultChanged;
         private BindingList<DISPLAY_SPECS> bindingCodeDisplay = null;
@@ -97,7 +98,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
                 {RefreshRate_ComboBox, RefreshRate_Overview_ComboBox },
                 {ColorPicker_Button, ColorPicker_Overview_Button },
             };
-            Edit_Button.Visible = editable;
         }
 
         protected override CreateParams CreateParams
@@ -429,10 +429,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
         #region IO Handle
         public virtual ResultDetailSpecsProduct ShowDialog(IWin32Window owner, IList<ModelProduct> payload, bool editable = true, bool editStatus = false)
         {
-
             resultChanged = new ResultDetailSpecsProduct();
-            this.editable = editable;
             this.editStatus = editStatus;
+            Edit_Button.Visible = editable;
             product = payload.First();
             base.ShowDialog();
             return resultChanged;
@@ -458,7 +457,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
         {
             bindingPorts = new BindingList<ModelProduct.Port>();
             Ports_DataGridView.DataSource = bindingPorts;
-            Edit_Button.Visible = this.editStatus;
             HasCodeDisplay_CheckBox.Checked = false;
             await LoadingData();
             SetDefaultData();
@@ -680,5 +678,55 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
             return result;
         }
         #endregion
+
+        private async void Print_Button_Click(object sender, EventArgs e)
+        {
+            if (product == null)
+            {
+                MessageBox.Show("Sản phẩm rỗng");
+                return;
+            }
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            if (dialog.ShowDialog() != DialogResult.OK)
+                return;
+            ExportPDF export = new ExportPDF();
+            IDataExport data = new ProductPDF
+            {
+                ExportPath = Path.Combine(dialog.SelectedPath, "export.html"),
+                DataBindingTemplate = new
+                {
+                    data = new
+                    {
+                        name = product.NameProduct,
+                        price = string.Format("{0:0,0} ₫", product.Price),
+                        properties = new Object[]
+                        {
+                            new
+                            {
+                                key = "CPU",
+                                value = product.CPU
+                            },
+                            new
+                            {
+                                key = "RAM",
+                                value = product.RAMString
+                            },
+                            new
+                            {
+                                key = "GPU",
+                                value = product.GPUString
+                            },
+                            new
+                            {
+                                key = "Màn hình",
+                                value = string.Format("{0} inch, {1} pixel", product.SizePanel, product.ResolutionString)
+                            }
+                        }
+                    }
+                }
+            };
+            bool result = await export.RunExport(data);
+            MessageBox.Show(result ? "Xuất thành công" : "Xuất thất bại");
+        }
     }
 }

@@ -81,7 +81,8 @@ namespace CompuStore.Database.Services.ProductServices
                 STORAGE_CAPACITY = product.StorageCapacity,
                 GPU = product.GPUString,
                 BATTERY_CAPACITY = product.BatteryCapacity,
-                WEIGHT = product.Weight
+                WEIGHT = product.Weight,
+                OS = product.OS
             };
         }
 

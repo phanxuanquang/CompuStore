@@ -59,7 +59,7 @@ namespace CompuStore.ImportData
         private void GetProductAnalisys()
         {
             TopProductsList = new List<KeyValuePair<string, int>>();
-           
+
 
             //Get Top 5 products
             var list = Database.DataProvider.Instance.Database.DETAIL_INVOICE.Where(item => item.INVOICE.INVOICE_DATE >= startDate && item.INVOICE.INVOICE_DATE <= endDate).GroupBy(product => product.PRODUCT.DETAIL_SPECS.COMMON_SPECS.NAME).Select(g => new
@@ -71,12 +71,12 @@ namespace CompuStore.ImportData
             {
                 TopProductsList.Add(
                             new KeyValuePair<string, int>(item.PRODUCT_NAME.ToString(), item.Quanlity));
-             
+
             }
             //Get Understock
 
         }
-            private void GetOrderAnalisys()
+        private void GetOrderAnalisys()
         {
             GrossRevenueList = new List<RevenueByDate>();
             TotalProfit = 0;
@@ -86,12 +86,12 @@ namespace CompuStore.ImportData
             {
                 INVOICE_DATE = g.Key,
                 TotalAmount = g.Sum(gg => gg.TOTAL)
-              
+
             });
             var listd = Database.DataProvider.Instance.Database.DETAIL_INVOICE.Where(item => item.INVOICE.INVOICE_DATE >= startDate && item.INVOICE.INVOICE_DATE <= endDate);
             foreach (var item in listd)
             {
-                TotalProfit +=  (decimal)item.PRICE_PER_UNIT * (decimal)item.PRODUCT.DETAIL_SPECS.COMMON_SPECS.LINE_UP.PROFIT_RATIO;
+                TotalProfit += (decimal)item.PRICE_PER_UNIT * (decimal)item.PRODUCT.DETAIL_SPECS.COMMON_SPECS.LINE_UP.PROFIT_RATIO;
             }
             var resultTable = new List<KeyValuePair<DateTime, decimal>>();
             foreach (var item in list)
@@ -100,7 +100,7 @@ namespace CompuStore.ImportData
                            new KeyValuePair<DateTime, decimal>((DateTime)item.INVOICE_DATE, (decimal)item.TotalAmount)
                            );
                 TotalRevenue += (decimal)item.TotalAmount;
-                
+
             }
 
 
@@ -181,5 +181,5 @@ namespace CompuStore.ImportData
             GetOrderAnalisys();
             return true;
         }
-    }   
+    }
 }

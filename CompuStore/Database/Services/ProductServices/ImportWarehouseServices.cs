@@ -69,5 +69,20 @@ namespace CompuStore.Database.Services.ProductServices
 
             return (invoice, errorImport);
         }
+
+        public async Task<bool?> Delete(IMPORT_WAREHOUSE target)
+        {
+            if (target == null) throw new ArgumentNullException();
+            try
+            {
+                DataProvider.Instance.Database.IMPORT_WAREHOUSE.Remove(target);
+                await DataProvider.Instance.Database.SaveChangesAsync();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

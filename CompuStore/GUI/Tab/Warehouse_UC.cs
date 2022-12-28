@@ -216,9 +216,9 @@ namespace CompuStore.Tab
         {
             Progress<int> progress = new Progress<int>();
             Waiting_Form waiting = new Waiting_Form();
-            Task runLoading = LoadingData(progress);
             importWarehouseBinding = new BindingList<ImportWarehouseCustom>();
             commonSpecsBinding = new BindingList<CommonSpecsCustom>();
+            Task runLoading = LoadingData(progress);
 
             const int stopWaitingCounter = 1;
 
@@ -298,12 +298,15 @@ namespace CompuStore.Tab
             }
         }
 
-        protected void ImportWarehouse_Click(object sender, EventArgs e)
+        protected async void ImportWarehouse_Click(object sender, EventArgs e)
         {
             BaseInvoiceImportWarehouse_Form import = new AddInvoiceImportWarehouse_Form();
             bool hasChanged = import.ShowDialog(this, null, false);
             if (hasChanged)
+            {
+                await Task.Delay(TimeSpan.FromSeconds(5));
                 Warehouse_UC_Load(null, null);
+            }
         }
 
         protected void SeeProduct_Click(object sender, EventArgs e)
@@ -333,10 +336,11 @@ namespace CompuStore.Tab
             }
         }
 
-        protected void GridDataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        protected async void GridDataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex > -1)
             {
+                bool hasChanged = false;
                 switch (seeWhat)
                 {
                     case SEE_WHAT.COMMON_SPECS:
@@ -354,9 +358,15 @@ namespace CompuStore.Tab
                         if (importWarehouse != null)
                         {
                             BaseInvoiceImportWarehouse_Form form = new EditInvoiceImportWarehouse_Form();
-                            form.ShowDialog(this, importWarehouse, false);
+                            hasChanged = form.ShowDialog(this, importWarehouse, false);
                         }
                         break;
+                }
+
+                if (hasChanged)
+                {
+                    await Task.Delay(TimeSpan.FromSeconds(5));
+                    Warehouse_UC_Load(null, null);
                 }
             }
         }

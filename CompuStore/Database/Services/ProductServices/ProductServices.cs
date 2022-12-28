@@ -103,6 +103,8 @@ namespace CompuStore.Database.Services.ProductServices
                 current.SERIAL_ID = update.Serial;
                 detailImport.PRICE_PER_UNIT = update.Price;
 
+                await DataProvider.Instance.Database.SaveChangesAsync();
+
                 return true;
             }
             catch

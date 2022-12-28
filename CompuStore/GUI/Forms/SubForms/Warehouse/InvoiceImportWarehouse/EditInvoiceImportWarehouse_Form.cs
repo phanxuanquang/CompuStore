@@ -215,6 +215,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         {
             BaseInvoiceImportWarehouse_Form editInvoice = new AddInvoiceImportWarehouse_Form();
             hasChanged = editInvoice.ShowDialog(this, importWarehouse, true);
+            this.Close();
         }
         #endregion
 
