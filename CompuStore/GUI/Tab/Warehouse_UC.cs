@@ -304,7 +304,9 @@ namespace CompuStore.Tab
             bool hasChanged = import.ShowDialog(this, null, false);
             if (hasChanged)
             {
-                await Controller.Instance.Reload(DataProvider.Instance.Database.IMPORT_WAREHOUSE.Last());
+                IMPORT_WAREHOUSE newest = DataProvider.Instance.Database.IMPORT_WAREHOUSE.OrderByDescending(item => item.IMPORT_DATE).Take(1).FirstOrDefault();
+                if (newest != null)
+                    await Controller.Instance.Reload(newest);
                 Warehouse_UC_Load(null, null);
             }
         }
