@@ -161,7 +161,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                         detailSpecs = new ImportDetailSpecsProduct_Form();
                         models.Add(model);
                     }
-                    detailSpecs.ShowDialog(this, models);
+                    detailSpecs.ShowDialog(this, models, importWarehouse == null ? false : true);
                 }
             }
         }

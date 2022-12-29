@@ -30,7 +30,6 @@ namespace CompuStore.Database.Models
         public string PORT { get; set; }
         public string WEBCAM { get; set; }
         public string DIMENSIONS { get; set; }
-        public string OS { get; set; }
         public string WIFI { get; set; }
         public string BLUETOOTH { get; set; }
     

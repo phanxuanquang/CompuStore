@@ -23,6 +23,9 @@ namespace CompuStore
         public AddWarranty_Form()
         {
             InitializeComponent();
+            guna2ShadowForm1.SetShadowForm(this);
+            this.Icon = Properties.Resources.Icon;
+            this.ShowInTaskbar = false;
             this.Load += AddWarranty_Form_Load;
             
         }
@@ -37,7 +40,6 @@ namespace CompuStore
         {
             currentStaff = LoginServices.Instance.CurrentStaff;
             lbStaffName.Text += " " + currentStaff.INFOR.NAME;
-            lbDate.Text += " " + DateTime.Now.Date;
             WarrantyDoneDate_Picker.Value = DateTime.Now.Date.AddDays(7);
         }
 
@@ -59,7 +61,7 @@ namespace CompuStore
         {
             if (isValidSerialID(detail))
             {
-                Exception res =  WarrantyServices.Instance.SaveWarrantyToDB(detail.ID_INVOICE, currentStaff.ID, Database.DataProvider.Instance.Database.PRODUCTs.FirstOrDefault(item => item.SERIAL_ID == ItemSerial_Box.Text).PRODUCT_ID, null, DateTime.Now, WarrantyDoneDate_Picker.Value, 0);
+                Exception res =  WarrantyServices.Instance.SaveWarrantyToDB(detail.ID_INVOICE, currentStaff.ID, Database.DataProvider.Instance.Database.PRODUCTs.FirstOrDefault(item => item.SERIAL_ID == ItemSerial_Box.Text).PRODUCT_ID, WarrantyReason.Text, CreateDate_Picker.Value, WarrantyDoneDate_Picker.Value, 0);
                 if (res.Message == "done")
                 {
                     MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -94,7 +96,7 @@ namespace CompuStore
                 MessageBox.Show(err.Message, "File Missing", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-            AddAutoCompleteCource(ItemSerial_Box, arrayOfWowrds1.Select(item => item.PRODUCT.SERIAL_ID).ToArray());
+            AddAutoCompleteCource(ItemSerial_Box, arrayOfWowrds1.Where(pro => pro.PRODUCT.IN_WAREHOUSE == false).Select(item => item.PRODUCT.SERIAL_ID).ToArray());
         }
 
         public void AddAutoCompleteCource(Guna2TextBox textBox, string[] strings)

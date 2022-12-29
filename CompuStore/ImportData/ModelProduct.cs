@@ -1,5 +1,4 @@
 ﻿using CompuStore.Database.Models;
-using Microsoft.VisualBasic.Devices;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Drawing2D;
@@ -641,7 +640,7 @@ namespace CompuStore.ImportData
                 PortString = commonSpecs.PORT,
                 Webcam = commonSpecs.WEBCAM,
                 SizeProductString = commonSpecs.DIMENSIONS,
-                OS = commonSpecs.OS,
+                OS = uniqueSpecs.OS,
                 Wifi = commonSpecs.WIFI,
                 Bluetooth = commonSpecs.BLUETOOTH,
                 ColorCode = color.COLOR_CODE,

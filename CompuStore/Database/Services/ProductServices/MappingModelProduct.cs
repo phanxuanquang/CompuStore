@@ -62,7 +62,6 @@ namespace CompuStore.Database.Services.ProductServices
                 PORT = product.PortString,
                 WEBCAM = product.Webcam,
                 DIMENSIONS = product.SizeProductString,
-                OS = product.OS,
                 WIFI = product.Wifi,
                 BLUETOOTH = product.Bluetooth,
                 QUANTITY = 0
@@ -82,7 +81,8 @@ namespace CompuStore.Database.Services.ProductServices
                 STORAGE_CAPACITY = product.StorageCapacity,
                 GPU = product.GPUString,
                 BATTERY_CAPACITY = product.BatteryCapacity,
-                WEIGHT = product.Weight
+                WEIGHT = product.Weight,
+                OS = product.OS
             };
         }
 

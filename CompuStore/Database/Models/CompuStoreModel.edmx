@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CompuStoreDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CompuStoreDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="COLOR">
           <Key>
             <PropertyRef Name="COLOR_CODE" />
@@ -26,7 +26,6 @@
           <Property Name="PORT" Type="varchar" MaxLength="300" />
           <Property Name="WEBCAM" Type="varchar" MaxLength="30" />
           <Property Name="DIMENSIONS" Type="varchar" MaxLength="100" />
-          <Property Name="OS" Type="varchar" MaxLength="30" />
           <Property Name="WIFI" Type="varchar" MaxLength="30" />
           <Property Name="BLUETOOTH" Type="varchar" MaxLength="30" />
         </EntityType>
@@ -232,6 +231,16 @@
           <Property Name="NAME" Type="nvarchar" MaxLength="50" />
           <Property Name="ADDRESS" Type="nvarchar" MaxLength="200" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="UNIQUE_SPECS">
           <Key>
             <PropertyRef Name="ID" />
@@ -247,6 +256,7 @@
           <Property Name="GPU" Type="varchar" MaxLength="50" />
           <Property Name="BATTERY_CAPACITY" Type="float" />
           <Property Name="WEIGHT" Type="float" />
+          <Property Name="OS" Type="varchar" MaxLength="30" />
         </EntityType>
         <EntityType Name="USERROLE">
           <Key>
@@ -256,7 +266,7 @@
           <Property Name="NAME_ID" Type="varchar" MaxLength="30" StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="ROLE" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK__COMMON_SP__ID_LI__787EE5A0">
+        <Association Name="FK__COMMON_SP__ID_LI__1F98B2C1">
           <End Role="LINE_UP" Type="Self.LINE_UP" Multiplicity="1" />
           <End Role="COMMON_SPECS" Type="Self.COMMON_SPECS" Multiplicity="*" />
           <ReferentialConstraint>
@@ -268,7 +278,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COMMON_US__ID_ST__797309D9">
+        <Association Name="FK__COMMON_US__ID_ST__208CD6FA">
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1" />
           <End Role="COMMON_USER" Type="Self.COMMON_USER" Multiplicity="*" />
           <ReferentialConstraint>
@@ -280,7 +290,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COMMON_US__ID_US__7A672E12">
+        <Association Name="FK__COMMON_US__ID_US__2180FB33">
           <End Role="USERROLE" Type="Self.USERROLE" Multiplicity="1" />
           <End Role="COMMON_USER" Type="Self.COMMON_USER" Multiplicity="*" />
           <ReferentialConstraint>
@@ -292,7 +302,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CUSTOMER__ID_INF__7B5B524B">
+        <Association Name="FK__CUSTOMER__ID_INF__22751F6C">
           <End Role="INFOR" Type="Self.INFOR" Multiplicity="0..1" />
           <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
           <ReferentialConstraint>
@@ -304,7 +314,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CUSTOMER__ID_RAN__7C4F7684">
+        <Association Name="FK__CUSTOMER__ID_RAN__236943A5">
           <End Role="RANK" Type="Self.RANK" Multiplicity="0..1" />
           <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
           <ReferentialConstraint>
@@ -316,7 +326,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHANGE_OR__ID_HA__74AE54BC">
+        <Association Name="FK__CHANGE_OR__ID_HA__503BEA1C">
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
           <End Role="CHANGE_OR_REFUND_PRODUCT" Type="Self.CHANGE_OR_REFUND_PRODUCT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -328,7 +338,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHANGE_OR__ID_IN__75A278F5">
+        <Association Name="FK__CHANGE_OR__ID_IN__51300E55">
           <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="1" />
           <End Role="CHANGE_OR_REFUND_PRODUCT" Type="Self.CHANGE_OR_REFUND_PRODUCT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -340,7 +350,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHANGE_OR__PRODU__76969D2E">
+        <Association Name="FK__CHANGE_OR__PRODU__5224328E">
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
           <End Role="CHANGE_OR_REFUND_PRODUCT" Type="Self.CHANGE_OR_REFUND_PRODUCT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -352,7 +362,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHANGE_OR__PRODU__778AC167">
+        <Association Name="FK__CHANGE_OR__PRODU__531856C7">
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
           <End Role="CHANGE_OR_REFUND_PRODUCT" Type="Self.CHANGE_OR_REFUND_PRODUCT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -364,7 +374,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETAIL_IM__ID_IM__7D439ABD">
+        <Association Name="FK__DETAIL_IM__ID_IM__245D67DE">
           <End Role="IMPORT_WAREHOUSE" Type="Self.IMPORT_WAREHOUSE" Multiplicity="1" />
           <End Role="DETAIL_IMPORT_WAREHOUSE" Type="Self.DETAIL_IMPORT_WAREHOUSE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -376,7 +386,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETAIL_IM__PRODU__7E37BEF6">
+        <Association Name="FK__DETAIL_IM__PRODU__25518C17">
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
           <End Role="DETAIL_IMPORT_WAREHOUSE" Type="Self.DETAIL_IMPORT_WAREHOUSE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -388,7 +398,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETAIL_IN__ID_IN__7F2BE32F">
+        <Association Name="FK__DETAIL_IN__ID_IN__2645B050">
           <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="1" />
           <End Role="DETAIL_INVOICE" Type="Self.DETAIL_INVOICE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -400,7 +410,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETAIL_IN__PRODU__00200768">
+        <Association Name="FK__DETAIL_IN__PRODU__2739D489">
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
           <End Role="DETAIL_INVOICE" Type="Self.DETAIL_INVOICE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -412,7 +422,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETAIL_SP__COLOR__01142BA1">
+        <Association Name="FK__DETAIL_SP__COLOR__282DF8C2">
           <End Role="COLOR" Type="Self.COLOR" Multiplicity="1" />
           <End Role="DETAIL_SPECS" Type="Self.DETAIL_SPECS" Multiplicity="*" />
           <ReferentialConstraint>
@@ -424,7 +434,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETAIL_SP__ID_CO__02084FDA">
+        <Association Name="FK__DETAIL_SP__ID_CO__29221CFB">
           <End Role="COMMON_SPECS" Type="Self.COMMON_SPECS" Multiplicity="1" />
           <End Role="DETAIL_SPECS" Type="Self.DETAIL_SPECS" Multiplicity="*" />
           <ReferentialConstraint>
@@ -436,7 +446,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETAIL_SP__ID_UN__02FC7413">
+        <Association Name="FK__DETAIL_SP__ID_UN__2A164134">
           <End Role="UNIQUE_SPECS" Type="Self.UNIQUE_SPECS" Multiplicity="1" />
           <End Role="DETAIL_SPECS" Type="Self.DETAIL_SPECS" Multiplicity="*" />
           <ReferentialConstraint>
@@ -448,7 +458,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__IMPORT_WA__ID_DI__03F0984C">
+        <Association Name="FK__IMPORT_WA__ID_DI__2B0A656D">
           <End Role="DISTRIBUTOR" Type="Self.DISTRIBUTOR" Multiplicity="1" />
           <End Role="IMPORT_WAREHOUSE" Type="Self.IMPORT_WAREHOUSE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -460,7 +470,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__IMPORT_WA__ID_ST__04E4BC85">
+        <Association Name="FK__IMPORT_WA__ID_ST__2BFE89A6">
           <End Role="STORE" Type="Self.STORE" Multiplicity="1" />
           <End Role="IMPORT_WAREHOUSE" Type="Self.IMPORT_WAREHOUSE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -472,7 +482,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__IMPORT_WA__ID_ST__05D8E0BE">
+        <Association Name="FK__IMPORT_WA__ID_ST__2CF2ADDF">
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
           <End Role="IMPORT_WAREHOUSE" Type="Self.IMPORT_WAREHOUSE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -484,7 +494,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__INVOICE__ID_CUST__06CD04F7">
+        <Association Name="FK__INVOICE__ID_CUST__2DE6D218">
           <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
           <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -496,7 +506,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__INVOICE__ID_STAF__07C12930">
+        <Association Name="FK__INVOICE__ID_STAF__2EDAF651">
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1" />
           <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -508,7 +518,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__INVOICE__ID_STOR__08B54D69">
+        <Association Name="FK__INVOICE__ID_STOR__2FCF1A8A">
           <End Role="STORE" Type="Self.STORE" Multiplicity="0..1" />
           <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -520,7 +530,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PRODUCT__ID_DETA__09A971A2">
+        <Association Name="FK__PRODUCT__ID_DETA__30C33EC3">
           <End Role="DETAIL_SPECS" Type="Self.DETAIL_SPECS" Multiplicity="1" />
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -532,7 +542,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RECEIVE_W__ID_IN__0A9D95DB">
+        <Association Name="FK__RECEIVE_W__ID_IN__31B762FC">
           <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="1" />
           <End Role="RECEIVE_WARRANTY" Type="Self.RECEIVE_WARRANTY" Multiplicity="*" />
           <ReferentialConstraint>
@@ -544,7 +554,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RECEIVE_W__ID_ST__0B91BA14">
+        <Association Name="FK__RECEIVE_W__ID_ST__32AB8735">
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
           <End Role="RECEIVE_WARRANTY" Type="Self.RECEIVE_WARRANTY" Multiplicity="*" />
           <ReferentialConstraint>
@@ -556,7 +566,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RECEIVE_W__PRODU__0C85DE4D">
+        <Association Name="FK__RECEIVE_W__PRODU__339FAB6E">
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
           <End Role="RECEIVE_WARRANTY" Type="Self.RECEIVE_WARRANTY" Multiplicity="*" />
           <ReferentialConstraint>
@@ -568,7 +578,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__STAFF__ID_INFOR__0D7A0286">
+        <Association Name="FK__STAFF__ID_INFOR__3493CFA7">
           <End Role="INFOR" Type="Self.INFOR" Multiplicity="1" />
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
           <ReferentialConstraint>
@@ -580,7 +590,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__STAFF__ID_STAFFR__0E6E26BF">
+        <Association Name="FK__STAFF__ID_STAFFR__3587F3E0">
           <End Role="STAFFROLE" Type="Self.STAFFROLE" Multiplicity="0..1" />
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
           <ReferentialConstraint>
@@ -592,7 +602,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__STORE__ID_STAFF___0F624AF8">
+        <Association Name="FK__STORE__ID_STAFF___367C1819">
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1" />
           <End Role="STORE" Type="Self.STORE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -604,7 +614,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UNIQUE_SP__ID_DI__10566F31">
+        <Association Name="FK__UNIQUE_SP__ID_DI__37703C52">
           <End Role="DISPLAY_SPECS" Type="Self.DISPLAY_SPECS" Multiplicity="1" />
           <End Role="UNIQUE_SPECS" Type="Self.UNIQUE_SPECS" Multiplicity="*" />
           <ReferentialConstraint>
@@ -637,125 +647,126 @@
           <EntitySet Name="STAFF" EntityType="Self.STAFF" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STAFFROLE" EntityType="Self.STAFFROLE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="STORE" EntityType="Self.STORE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UNIQUE_SPECS" EntityType="Self.UNIQUE_SPECS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="USERROLE" EntityType="Self.USERROLE" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__COMMON_SP__ID_LI__787EE5A0" Association="Self.FK__COMMON_SP__ID_LI__787EE5A0">
+          <AssociationSet Name="FK__COMMON_SP__ID_LI__1F98B2C1" Association="Self.FK__COMMON_SP__ID_LI__1F98B2C1">
             <End Role="LINE_UP" EntitySet="LINE_UP" />
             <End Role="COMMON_SPECS" EntitySet="COMMON_SPECS" />
           </AssociationSet>
-          <AssociationSet Name="FK__COMMON_US__ID_ST__797309D9" Association="Self.FK__COMMON_US__ID_ST__797309D9">
+          <AssociationSet Name="FK__COMMON_US__ID_ST__208CD6FA" Association="Self.FK__COMMON_US__ID_ST__208CD6FA">
             <End Role="STAFF" EntitySet="STAFF" />
             <End Role="COMMON_USER" EntitySet="COMMON_USER" />
           </AssociationSet>
-          <AssociationSet Name="FK__COMMON_US__ID_US__7A672E12" Association="Self.FK__COMMON_US__ID_US__7A672E12">
+          <AssociationSet Name="FK__COMMON_US__ID_US__2180FB33" Association="Self.FK__COMMON_US__ID_US__2180FB33">
             <End Role="USERROLE" EntitySet="USERROLE" />
             <End Role="COMMON_USER" EntitySet="COMMON_USER" />
           </AssociationSet>
-          <AssociationSet Name="FK__CUSTOMER__ID_INF__7B5B524B" Association="Self.FK__CUSTOMER__ID_INF__7B5B524B">
+          <AssociationSet Name="FK__CUSTOMER__ID_INF__22751F6C" Association="Self.FK__CUSTOMER__ID_INF__22751F6C">
             <End Role="INFOR" EntitySet="INFOR" />
             <End Role="CUSTOMER" EntitySet="CUSTOMER" />
           </AssociationSet>
-          <AssociationSet Name="FK__CUSTOMER__ID_RAN__7C4F7684" Association="Self.FK__CUSTOMER__ID_RAN__7C4F7684">
+          <AssociationSet Name="FK__CUSTOMER__ID_RAN__236943A5" Association="Self.FK__CUSTOMER__ID_RAN__236943A5">
             <End Role="RANK" EntitySet="RANK" />
             <End Role="CUSTOMER" EntitySet="CUSTOMER" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHANGE_OR__ID_HA__74AE54BC" Association="Self.FK__CHANGE_OR__ID_HA__74AE54BC">
+          <AssociationSet Name="FK__CHANGE_OR__ID_HA__503BEA1C" Association="Self.FK__CHANGE_OR__ID_HA__503BEA1C">
             <End Role="STAFF" EntitySet="STAFF" />
             <End Role="CHANGE_OR_REFUND_PRODUCT" EntitySet="CHANGE_OR_REFUND_PRODUCT" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHANGE_OR__ID_IN__75A278F5" Association="Self.FK__CHANGE_OR__ID_IN__75A278F5">
+          <AssociationSet Name="FK__CHANGE_OR__ID_IN__51300E55" Association="Self.FK__CHANGE_OR__ID_IN__51300E55">
             <End Role="INVOICE" EntitySet="INVOICE" />
             <End Role="CHANGE_OR_REFUND_PRODUCT" EntitySet="CHANGE_OR_REFUND_PRODUCT" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHANGE_OR__PRODU__76969D2E" Association="Self.FK__CHANGE_OR__PRODU__76969D2E">
+          <AssociationSet Name="FK__CHANGE_OR__PRODU__5224328E" Association="Self.FK__CHANGE_OR__PRODU__5224328E">
             <End Role="PRODUCT" EntitySet="PRODUCT" />
             <End Role="CHANGE_OR_REFUND_PRODUCT" EntitySet="CHANGE_OR_REFUND_PRODUCT" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHANGE_OR__PRODU__778AC167" Association="Self.FK__CHANGE_OR__PRODU__778AC167">
+          <AssociationSet Name="FK__CHANGE_OR__PRODU__531856C7" Association="Self.FK__CHANGE_OR__PRODU__531856C7">
             <End Role="PRODUCT" EntitySet="PRODUCT" />
             <End Role="CHANGE_OR_REFUND_PRODUCT" EntitySet="CHANGE_OR_REFUND_PRODUCT" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETAIL_IM__ID_IM__7D439ABD" Association="Self.FK__DETAIL_IM__ID_IM__7D439ABD">
+          <AssociationSet Name="FK__DETAIL_IM__ID_IM__245D67DE" Association="Self.FK__DETAIL_IM__ID_IM__245D67DE">
             <End Role="IMPORT_WAREHOUSE" EntitySet="IMPORT_WAREHOUSE" />
             <End Role="DETAIL_IMPORT_WAREHOUSE" EntitySet="DETAIL_IMPORT_WAREHOUSE" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETAIL_IM__PRODU__7E37BEF6" Association="Self.FK__DETAIL_IM__PRODU__7E37BEF6">
+          <AssociationSet Name="FK__DETAIL_IM__PRODU__25518C17" Association="Self.FK__DETAIL_IM__PRODU__25518C17">
             <End Role="PRODUCT" EntitySet="PRODUCT" />
             <End Role="DETAIL_IMPORT_WAREHOUSE" EntitySet="DETAIL_IMPORT_WAREHOUSE" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETAIL_IN__ID_IN__7F2BE32F" Association="Self.FK__DETAIL_IN__ID_IN__7F2BE32F">
+          <AssociationSet Name="FK__DETAIL_IN__ID_IN__2645B050" Association="Self.FK__DETAIL_IN__ID_IN__2645B050">
             <End Role="INVOICE" EntitySet="INVOICE" />
             <End Role="DETAIL_INVOICE" EntitySet="DETAIL_INVOICE" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETAIL_IN__PRODU__00200768" Association="Self.FK__DETAIL_IN__PRODU__00200768">
+          <AssociationSet Name="FK__DETAIL_IN__PRODU__2739D489" Association="Self.FK__DETAIL_IN__PRODU__2739D489">
             <End Role="PRODUCT" EntitySet="PRODUCT" />
             <End Role="DETAIL_INVOICE" EntitySet="DETAIL_INVOICE" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETAIL_SP__COLOR__01142BA1" Association="Self.FK__DETAIL_SP__COLOR__01142BA1">
+          <AssociationSet Name="FK__DETAIL_SP__COLOR__282DF8C2" Association="Self.FK__DETAIL_SP__COLOR__282DF8C2">
             <End Role="COLOR" EntitySet="COLOR" />
             <End Role="DETAIL_SPECS" EntitySet="DETAIL_SPECS" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETAIL_SP__ID_CO__02084FDA" Association="Self.FK__DETAIL_SP__ID_CO__02084FDA">
+          <AssociationSet Name="FK__DETAIL_SP__ID_CO__29221CFB" Association="Self.FK__DETAIL_SP__ID_CO__29221CFB">
             <End Role="COMMON_SPECS" EntitySet="COMMON_SPECS" />
             <End Role="DETAIL_SPECS" EntitySet="DETAIL_SPECS" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETAIL_SP__ID_UN__02FC7413" Association="Self.FK__DETAIL_SP__ID_UN__02FC7413">
+          <AssociationSet Name="FK__DETAIL_SP__ID_UN__2A164134" Association="Self.FK__DETAIL_SP__ID_UN__2A164134">
             <End Role="UNIQUE_SPECS" EntitySet="UNIQUE_SPECS" />
             <End Role="DETAIL_SPECS" EntitySet="DETAIL_SPECS" />
           </AssociationSet>
-          <AssociationSet Name="FK__IMPORT_WA__ID_DI__03F0984C" Association="Self.FK__IMPORT_WA__ID_DI__03F0984C">
+          <AssociationSet Name="FK__IMPORT_WA__ID_DI__2B0A656D" Association="Self.FK__IMPORT_WA__ID_DI__2B0A656D">
             <End Role="DISTRIBUTOR" EntitySet="DISTRIBUTOR" />
             <End Role="IMPORT_WAREHOUSE" EntitySet="IMPORT_WAREHOUSE" />
           </AssociationSet>
-          <AssociationSet Name="FK__IMPORT_WA__ID_ST__04E4BC85" Association="Self.FK__IMPORT_WA__ID_ST__04E4BC85">
+          <AssociationSet Name="FK__IMPORT_WA__ID_ST__2BFE89A6" Association="Self.FK__IMPORT_WA__ID_ST__2BFE89A6">
             <End Role="STORE" EntitySet="STORE" />
             <End Role="IMPORT_WAREHOUSE" EntitySet="IMPORT_WAREHOUSE" />
           </AssociationSet>
-          <AssociationSet Name="FK__IMPORT_WA__ID_ST__05D8E0BE" Association="Self.FK__IMPORT_WA__ID_ST__05D8E0BE">
+          <AssociationSet Name="FK__IMPORT_WA__ID_ST__2CF2ADDF" Association="Self.FK__IMPORT_WA__ID_ST__2CF2ADDF">
             <End Role="STAFF" EntitySet="STAFF" />
             <End Role="IMPORT_WAREHOUSE" EntitySet="IMPORT_WAREHOUSE" />
           </AssociationSet>
-          <AssociationSet Name="FK__INVOICE__ID_CUST__06CD04F7" Association="Self.FK__INVOICE__ID_CUST__06CD04F7">
+          <AssociationSet Name="FK__INVOICE__ID_CUST__2DE6D218" Association="Self.FK__INVOICE__ID_CUST__2DE6D218">
             <End Role="CUSTOMER" EntitySet="CUSTOMER" />
             <End Role="INVOICE" EntitySet="INVOICE" />
           </AssociationSet>
-          <AssociationSet Name="FK__INVOICE__ID_STAF__07C12930" Association="Self.FK__INVOICE__ID_STAF__07C12930">
+          <AssociationSet Name="FK__INVOICE__ID_STAF__2EDAF651" Association="Self.FK__INVOICE__ID_STAF__2EDAF651">
             <End Role="STAFF" EntitySet="STAFF" />
             <End Role="INVOICE" EntitySet="INVOICE" />
           </AssociationSet>
-          <AssociationSet Name="FK__INVOICE__ID_STOR__08B54D69" Association="Self.FK__INVOICE__ID_STOR__08B54D69">
+          <AssociationSet Name="FK__INVOICE__ID_STOR__2FCF1A8A" Association="Self.FK__INVOICE__ID_STOR__2FCF1A8A">
             <End Role="STORE" EntitySet="STORE" />
             <End Role="INVOICE" EntitySet="INVOICE" />
           </AssociationSet>
-          <AssociationSet Name="FK__PRODUCT__ID_DETA__09A971A2" Association="Self.FK__PRODUCT__ID_DETA__09A971A2">
+          <AssociationSet Name="FK__PRODUCT__ID_DETA__30C33EC3" Association="Self.FK__PRODUCT__ID_DETA__30C33EC3">
             <End Role="DETAIL_SPECS" EntitySet="DETAIL_SPECS" />
             <End Role="PRODUCT" EntitySet="PRODUCT" />
           </AssociationSet>
-          <AssociationSet Name="FK__RECEIVE_W__ID_IN__0A9D95DB" Association="Self.FK__RECEIVE_W__ID_IN__0A9D95DB">
+          <AssociationSet Name="FK__RECEIVE_W__ID_IN__31B762FC" Association="Self.FK__RECEIVE_W__ID_IN__31B762FC">
             <End Role="INVOICE" EntitySet="INVOICE" />
             <End Role="RECEIVE_WARRANTY" EntitySet="RECEIVE_WARRANTY" />
           </AssociationSet>
-          <AssociationSet Name="FK__RECEIVE_W__ID_ST__0B91BA14" Association="Self.FK__RECEIVE_W__ID_ST__0B91BA14">
+          <AssociationSet Name="FK__RECEIVE_W__ID_ST__32AB8735" Association="Self.FK__RECEIVE_W__ID_ST__32AB8735">
             <End Role="STAFF" EntitySet="STAFF" />
             <End Role="RECEIVE_WARRANTY" EntitySet="RECEIVE_WARRANTY" />
           </AssociationSet>
-          <AssociationSet Name="FK__RECEIVE_W__PRODU__0C85DE4D" Association="Self.FK__RECEIVE_W__PRODU__0C85DE4D">
+          <AssociationSet Name="FK__RECEIVE_W__PRODU__339FAB6E" Association="Self.FK__RECEIVE_W__PRODU__339FAB6E">
             <End Role="PRODUCT" EntitySet="PRODUCT" />
             <End Role="RECEIVE_WARRANTY" EntitySet="RECEIVE_WARRANTY" />
           </AssociationSet>
-          <AssociationSet Name="FK__STAFF__ID_INFOR__0D7A0286" Association="Self.FK__STAFF__ID_INFOR__0D7A0286">
+          <AssociationSet Name="FK__STAFF__ID_INFOR__3493CFA7" Association="Self.FK__STAFF__ID_INFOR__3493CFA7">
             <End Role="INFOR" EntitySet="INFOR" />
             <End Role="STAFF" EntitySet="STAFF" />
           </AssociationSet>
-          <AssociationSet Name="FK__STAFF__ID_STAFFR__0E6E26BF" Association="Self.FK__STAFF__ID_STAFFR__0E6E26BF">
+          <AssociationSet Name="FK__STAFF__ID_STAFFR__3587F3E0" Association="Self.FK__STAFF__ID_STAFFR__3587F3E0">
             <End Role="STAFFROLE" EntitySet="STAFFROLE" />
             <End Role="STAFF" EntitySet="STAFF" />
           </AssociationSet>
-          <AssociationSet Name="FK__STORE__ID_STAFF___0F624AF8" Association="Self.FK__STORE__ID_STAFF___0F624AF8">
+          <AssociationSet Name="FK__STORE__ID_STAFF___367C1819" Association="Self.FK__STORE__ID_STAFF___367C1819">
             <End Role="STAFF" EntitySet="STAFF" />
             <End Role="STORE" EntitySet="STORE" />
           </AssociationSet>
-          <AssociationSet Name="FK__UNIQUE_SP__ID_DI__10566F31" Association="Self.FK__UNIQUE_SP__ID_DI__10566F31">
+          <AssociationSet Name="FK__UNIQUE_SP__ID_DI__37703C52" Association="Self.FK__UNIQUE_SP__ID_DI__37703C52">
             <End Role="DISPLAY_SPECS" EntitySet="DISPLAY_SPECS" />
             <End Role="UNIQUE_SPECS" EntitySet="UNIQUE_SPECS" />
           </AssociationSet>
@@ -771,7 +782,7 @@
           </Key>
           <Property Name="COLOR_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="COLOR_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="DETAIL_SPECS" Relationship="Self.FK__DETAIL_SP__COLOR__01142BA1" FromRole="COLOR" ToRole="DETAIL_SPECS" />
+          <NavigationProperty Name="DETAIL_SPECS" Relationship="Self.FK__DETAIL_SP__COLOR__282DF8C2" FromRole="COLOR" ToRole="DETAIL_SPECS" />
         </EntityType>
         <EntityType Name="COMMON_SPECS">
           <Key>
@@ -787,11 +798,10 @@
           <Property Name="PORT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="WEBCAM" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="DIMENSIONS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="OS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="WIFI" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="BLUETOOTH" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="LINE_UP" Relationship="Self.FK__COMMON_SP__ID_LI__787EE5A0" FromRole="COMMON_SPECS" ToRole="LINE_UP" />
-          <NavigationProperty Name="DETAIL_SPECS" Relationship="Self.FK__DETAIL_SP__ID_CO__02084FDA" FromRole="COMMON_SPECS" ToRole="DETAIL_SPECS" />
+          <NavigationProperty Name="LINE_UP" Relationship="Self.FK__COMMON_SP__ID_LI__1F98B2C1" FromRole="COMMON_SPECS" ToRole="LINE_UP" />
+          <NavigationProperty Name="DETAIL_SPECS" Relationship="Self.FK__DETAIL_SP__ID_CO__29221CFB" FromRole="COMMON_SPECS" ToRole="DETAIL_SPECS" />
         </EntityType>
         <EntityType Name="COMMON_USER">
           <Key>
@@ -805,8 +815,8 @@
           <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DISPLAYNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="HAS_AUTHORITY" Type="Boolean" />
-          <NavigationProperty Name="STAFF" Relationship="Self.FK__COMMON_US__ID_ST__797309D9" FromRole="COMMON_USER" ToRole="STAFF" />
-          <NavigationProperty Name="USERROLE" Relationship="Self.FK__COMMON_US__ID_US__7A672E12" FromRole="COMMON_USER" ToRole="USERROLE" />
+          <NavigationProperty Name="STAFF" Relationship="Self.FK__COMMON_US__ID_ST__208CD6FA" FromRole="COMMON_USER" ToRole="STAFF" />
+          <NavigationProperty Name="USERROLE" Relationship="Self.FK__COMMON_US__ID_US__2180FB33" FromRole="COMMON_USER" ToRole="USERROLE" />
         </EntityType>
         <EntityType Name="CUSTOMER">
           <Key>
@@ -817,9 +827,9 @@
           <Property Name="ID_INFOR" Type="Int32" />
           <Property Name="ID_RANK" Type="Int32" />
           <Property Name="PURCHASED_QUANTITY" Type="Int32" />
-          <NavigationProperty Name="INFOR" Relationship="Self.FK__CUSTOMER__ID_INF__7B5B524B" FromRole="CUSTOMER" ToRole="INFOR" />
-          <NavigationProperty Name="RANK" Relationship="Self.FK__CUSTOMER__ID_RAN__7C4F7684" FromRole="CUSTOMER" ToRole="RANK" />
-          <NavigationProperty Name="INVOICEs" Relationship="Self.FK__INVOICE__ID_CUST__06CD04F7" FromRole="CUSTOMER" ToRole="INVOICE" />
+          <NavigationProperty Name="INFOR" Relationship="Self.FK__CUSTOMER__ID_INF__22751F6C" FromRole="CUSTOMER" ToRole="INFOR" />
+          <NavigationProperty Name="RANK" Relationship="Self.FK__CUSTOMER__ID_RAN__236943A5" FromRole="CUSTOMER" ToRole="RANK" />
+          <NavigationProperty Name="INVOICEs" Relationship="Self.FK__INVOICE__ID_CUST__2DE6D218" FromRole="CUSTOMER" ToRole="INVOICE" />
         </EntityType>
         <EntityType Name="CHANGE_OR_REFUND_PRODUCT">
           <Key>
@@ -833,10 +843,10 @@
           <Property Name="REASON" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="RETURN_DATE" Type="DateTime" Precision="3" />
           <Property Name="PRODUCT_ID_RE" Type="Int32" />
-          <NavigationProperty Name="STAFF" Relationship="Self.FK__CHANGE_OR__ID_HA__74AE54BC" FromRole="CHANGE_OR_REFUND_PRODUCT" ToRole="STAFF" />
-          <NavigationProperty Name="INVOICE" Relationship="Self.FK__CHANGE_OR__ID_IN__75A278F5" FromRole="CHANGE_OR_REFUND_PRODUCT" ToRole="INVOICE" />
-          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__CHANGE_OR__PRODU__76969D2E" FromRole="CHANGE_OR_REFUND_PRODUCT" ToRole="PRODUCT" />
-          <NavigationProperty Name="PRODUCT1" Relationship="Self.FK__CHANGE_OR__PRODU__778AC167" FromRole="CHANGE_OR_REFUND_PRODUCT" ToRole="PRODUCT" />
+          <NavigationProperty Name="STAFF" Relationship="Self.FK__CHANGE_OR__ID_HA__503BEA1C" FromRole="CHANGE_OR_REFUND_PRODUCT" ToRole="STAFF" />
+          <NavigationProperty Name="INVOICE" Relationship="Self.FK__CHANGE_OR__ID_IN__51300E55" FromRole="CHANGE_OR_REFUND_PRODUCT" ToRole="INVOICE" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__CHANGE_OR__PRODU__5224328E" FromRole="CHANGE_OR_REFUND_PRODUCT" ToRole="PRODUCT" />
+          <NavigationProperty Name="PRODUCT1" Relationship="Self.FK__CHANGE_OR__PRODU__531856C7" FromRole="CHANGE_OR_REFUND_PRODUCT" ToRole="PRODUCT" />
         </EntityType>
         <EntityType Name="DETAIL_IMPORT_WAREHOUSE">
           <Key>
@@ -846,8 +856,8 @@
           <Property Name="ID_IMPORT_WAREHOUSE" Type="Int32" Nullable="false" />
           <Property Name="PRODUCT_ID" Type="Int32" Nullable="false" />
           <Property Name="PRICE_PER_UNIT" Type="Double" />
-          <NavigationProperty Name="IMPORT_WAREHOUSE" Relationship="Self.FK__DETAIL_IM__ID_IM__7D439ABD" FromRole="DETAIL_IMPORT_WAREHOUSE" ToRole="IMPORT_WAREHOUSE" />
-          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__DETAIL_IM__PRODU__7E37BEF6" FromRole="DETAIL_IMPORT_WAREHOUSE" ToRole="PRODUCT" />
+          <NavigationProperty Name="IMPORT_WAREHOUSE" Relationship="Self.FK__DETAIL_IM__ID_IM__245D67DE" FromRole="DETAIL_IMPORT_WAREHOUSE" ToRole="IMPORT_WAREHOUSE" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__DETAIL_IM__PRODU__25518C17" FromRole="DETAIL_IMPORT_WAREHOUSE" ToRole="PRODUCT" />
         </EntityType>
         <EntityType Name="DETAIL_INVOICE">
           <Key>
@@ -857,8 +867,8 @@
           <Property Name="ID_INVOICE" Type="Int32" Nullable="false" />
           <Property Name="PRODUCT_ID" Type="Int32" Nullable="false" />
           <Property Name="PRICE_PER_UNIT" Type="Double" Nullable="false" />
-          <NavigationProperty Name="INVOICE" Relationship="Self.FK__DETAIL_IN__ID_IN__7F2BE32F" FromRole="DETAIL_INVOICE" ToRole="INVOICE" />
-          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__DETAIL_IN__PRODU__00200768" FromRole="DETAIL_INVOICE" ToRole="PRODUCT" />
+          <NavigationProperty Name="INVOICE" Relationship="Self.FK__DETAIL_IN__ID_IN__2645B050" FromRole="DETAIL_INVOICE" ToRole="INVOICE" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__DETAIL_IN__PRODU__2739D489" FromRole="DETAIL_INVOICE" ToRole="PRODUCT" />
         </EntityType>
         <EntityType Name="DETAIL_SPECS">
           <Key>
@@ -871,10 +881,10 @@
           <Property Name="COLOR_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="QUANTITY" Type="Int32" />
           <Property Name="PRICE" Type="Double" />
-          <NavigationProperty Name="COLOR" Relationship="Self.FK__DETAIL_SP__COLOR__01142BA1" FromRole="DETAIL_SPECS" ToRole="COLOR" />
-          <NavigationProperty Name="COMMON_SPECS" Relationship="Self.FK__DETAIL_SP__ID_CO__02084FDA" FromRole="DETAIL_SPECS" ToRole="COMMON_SPECS" />
-          <NavigationProperty Name="UNIQUE_SPECS" Relationship="Self.FK__DETAIL_SP__ID_UN__02FC7413" FromRole="DETAIL_SPECS" ToRole="UNIQUE_SPECS" />
-          <NavigationProperty Name="PRODUCTs" Relationship="Self.FK__PRODUCT__ID_DETA__09A971A2" FromRole="DETAIL_SPECS" ToRole="PRODUCT" />
+          <NavigationProperty Name="COLOR" Relationship="Self.FK__DETAIL_SP__COLOR__282DF8C2" FromRole="DETAIL_SPECS" ToRole="COLOR" />
+          <NavigationProperty Name="COMMON_SPECS" Relationship="Self.FK__DETAIL_SP__ID_CO__29221CFB" FromRole="DETAIL_SPECS" ToRole="COMMON_SPECS" />
+          <NavigationProperty Name="UNIQUE_SPECS" Relationship="Self.FK__DETAIL_SP__ID_UN__2A164134" FromRole="DETAIL_SPECS" ToRole="UNIQUE_SPECS" />
+          <NavigationProperty Name="PRODUCTs" Relationship="Self.FK__PRODUCT__ID_DETA__30C33EC3" FromRole="DETAIL_SPECS" ToRole="PRODUCT" />
         </EntityType>
         <EntityType Name="DISPLAY_SPECS">
           <Key>
@@ -892,7 +902,7 @@
           <Property Name="IS_TOUCH_PANEL" Type="Boolean" />
           <Property Name="SCREEN_TYPE" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Name="RATIO" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="UNIQUE_SPECS" Relationship="Self.FK__UNIQUE_SP__ID_DI__10566F31" FromRole="DISPLAY_SPECS" ToRole="UNIQUE_SPECS" />
+          <NavigationProperty Name="UNIQUE_SPECS" Relationship="Self.FK__UNIQUE_SP__ID_DI__37703C52" FromRole="DISPLAY_SPECS" ToRole="UNIQUE_SPECS" />
         </EntityType>
         <EntityType Name="DISTRIBUTOR">
           <Key>
@@ -903,7 +913,7 @@
           <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ADDRESS" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="PHONE_NUMBER" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="IMPORT_WAREHOUSE" Relationship="Self.FK__IMPORT_WA__ID_DI__03F0984C" FromRole="DISTRIBUTOR" ToRole="IMPORT_WAREHOUSE" />
+          <NavigationProperty Name="IMPORT_WAREHOUSE" Relationship="Self.FK__IMPORT_WA__ID_DI__2B0A656D" FromRole="DISTRIBUTOR" ToRole="IMPORT_WAREHOUSE" />
         </EntityType>
         <EntityType Name="IMPORT_WAREHOUSE">
           <Key>
@@ -916,10 +926,10 @@
           <Property Name="ID_DISTRIBUTOR" Type="Int32" Nullable="false" />
           <Property Name="TOTAL" Type="Double" Nullable="false" />
           <Property Name="IMPORT_DATE" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="DETAIL_IMPORT_WAREHOUSE" Relationship="Self.FK__DETAIL_IM__ID_IM__7D439ABD" FromRole="IMPORT_WAREHOUSE" ToRole="DETAIL_IMPORT_WAREHOUSE" />
-          <NavigationProperty Name="DISTRIBUTOR" Relationship="Self.FK__IMPORT_WA__ID_DI__03F0984C" FromRole="IMPORT_WAREHOUSE" ToRole="DISTRIBUTOR" />
-          <NavigationProperty Name="STORE" Relationship="Self.FK__IMPORT_WA__ID_ST__04E4BC85" FromRole="IMPORT_WAREHOUSE" ToRole="STORE" />
-          <NavigationProperty Name="STAFF" Relationship="Self.FK__IMPORT_WA__ID_ST__05D8E0BE" FromRole="IMPORT_WAREHOUSE" ToRole="STAFF" />
+          <NavigationProperty Name="DETAIL_IMPORT_WAREHOUSE" Relationship="Self.FK__DETAIL_IM__ID_IM__245D67DE" FromRole="IMPORT_WAREHOUSE" ToRole="DETAIL_IMPORT_WAREHOUSE" />
+          <NavigationProperty Name="DISTRIBUTOR" Relationship="Self.FK__IMPORT_WA__ID_DI__2B0A656D" FromRole="IMPORT_WAREHOUSE" ToRole="DISTRIBUTOR" />
+          <NavigationProperty Name="STORE" Relationship="Self.FK__IMPORT_WA__ID_ST__2BFE89A6" FromRole="IMPORT_WAREHOUSE" ToRole="STORE" />
+          <NavigationProperty Name="STAFF" Relationship="Self.FK__IMPORT_WA__ID_ST__2CF2ADDF" FromRole="IMPORT_WAREHOUSE" ToRole="STAFF" />
         </EntityType>
         <EntityType Name="INFOR">
           <Key>
@@ -933,8 +943,8 @@
           <Property Name="IDENTITY_CODE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="ADDRESS" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CUSTOMERs" Relationship="Self.FK__CUSTOMER__ID_INF__7B5B524B" FromRole="INFOR" ToRole="CUSTOMER" />
-          <NavigationProperty Name="STAFFs" Relationship="Self.FK__STAFF__ID_INFOR__0D7A0286" FromRole="INFOR" ToRole="STAFF" />
+          <NavigationProperty Name="CUSTOMERs" Relationship="Self.FK__CUSTOMER__ID_INF__22751F6C" FromRole="INFOR" ToRole="CUSTOMER" />
+          <NavigationProperty Name="STAFFs" Relationship="Self.FK__STAFF__ID_INFOR__3493CFA7" FromRole="INFOR" ToRole="STAFF" />
         </EntityType>
         <EntityType Name="INVOICE">
           <Key>
@@ -948,12 +958,12 @@
           <Property Name="TOTAL" Type="Double" Nullable="false" />
           <Property Name="INVOICE_DATE" Type="DateTime" Precision="3" />
           <Property Name="VAT" Type="Double" />
-          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK__INVOICE__ID_CUST__06CD04F7" FromRole="INVOICE" ToRole="CUSTOMER" />
-          <NavigationProperty Name="CHANGE_OR_REFUND_PRODUCT" Relationship="Self.FK__CHANGE_OR__ID_IN__75A278F5" FromRole="INVOICE" ToRole="CHANGE_OR_REFUND_PRODUCT" />
-          <NavigationProperty Name="DETAIL_INVOICE" Relationship="Self.FK__DETAIL_IN__ID_IN__7F2BE32F" FromRole="INVOICE" ToRole="DETAIL_INVOICE" />
-          <NavigationProperty Name="STAFF" Relationship="Self.FK__INVOICE__ID_STAF__07C12930" FromRole="INVOICE" ToRole="STAFF" />
-          <NavigationProperty Name="STORE" Relationship="Self.FK__INVOICE__ID_STOR__08B54D69" FromRole="INVOICE" ToRole="STORE" />
-          <NavigationProperty Name="RECEIVE_WARRANTY" Relationship="Self.FK__RECEIVE_W__ID_IN__0A9D95DB" FromRole="INVOICE" ToRole="RECEIVE_WARRANTY" />
+          <NavigationProperty Name="CUSTOMER" Relationship="Self.FK__INVOICE__ID_CUST__2DE6D218" FromRole="INVOICE" ToRole="CUSTOMER" />
+          <NavigationProperty Name="CHANGE_OR_REFUND_PRODUCT" Relationship="Self.FK__CHANGE_OR__ID_IN__51300E55" FromRole="INVOICE" ToRole="CHANGE_OR_REFUND_PRODUCT" />
+          <NavigationProperty Name="DETAIL_INVOICE" Relationship="Self.FK__DETAIL_IN__ID_IN__2645B050" FromRole="INVOICE" ToRole="DETAIL_INVOICE" />
+          <NavigationProperty Name="STAFF" Relationship="Self.FK__INVOICE__ID_STAF__2EDAF651" FromRole="INVOICE" ToRole="STAFF" />
+          <NavigationProperty Name="STORE" Relationship="Self.FK__INVOICE__ID_STOR__2FCF1A8A" FromRole="INVOICE" ToRole="STORE" />
+          <NavigationProperty Name="RECEIVE_WARRANTY" Relationship="Self.FK__RECEIVE_W__ID_IN__31B762FC" FromRole="INVOICE" ToRole="RECEIVE_WARRANTY" />
         </EntityType>
         <EntityType Name="LINE_UP">
           <Key>
@@ -965,7 +975,7 @@
           <Property Name="MANUFACTURER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="COUNTRY" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="PROFIT_RATIO" Type="Double" />
-          <NavigationProperty Name="COMMON_SPECS" Relationship="Self.FK__COMMON_SP__ID_LI__787EE5A0" FromRole="LINE_UP" ToRole="COMMON_SPECS" />
+          <NavigationProperty Name="COMMON_SPECS" Relationship="Self.FK__COMMON_SP__ID_LI__1F98B2C1" FromRole="LINE_UP" ToRole="COMMON_SPECS" />
         </EntityType>
         <EntityType Name="PRODUCT">
           <Key>
@@ -975,12 +985,12 @@
           <Property Name="SERIAL_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ID_DETAIL_SPECS" Type="Int32" Nullable="false" />
           <Property Name="IN_WAREHOUSE" Type="Boolean" />
-          <NavigationProperty Name="CHANGE_OR_REFUND_PRODUCT" Relationship="Self.FK__CHANGE_OR__PRODU__76969D2E" FromRole="PRODUCT" ToRole="CHANGE_OR_REFUND_PRODUCT" />
-          <NavigationProperty Name="CHANGE_OR_REFUND_PRODUCT1" Relationship="Self.FK__CHANGE_OR__PRODU__778AC167" FromRole="PRODUCT" ToRole="CHANGE_OR_REFUND_PRODUCT" />
-          <NavigationProperty Name="DETAIL_IMPORT_WAREHOUSE" Relationship="Self.FK__DETAIL_IM__PRODU__7E37BEF6" FromRole="PRODUCT" ToRole="DETAIL_IMPORT_WAREHOUSE" />
-          <NavigationProperty Name="DETAIL_INVOICE" Relationship="Self.FK__DETAIL_IN__PRODU__00200768" FromRole="PRODUCT" ToRole="DETAIL_INVOICE" />
-          <NavigationProperty Name="DETAIL_SPECS" Relationship="Self.FK__PRODUCT__ID_DETA__09A971A2" FromRole="PRODUCT" ToRole="DETAIL_SPECS" />
-          <NavigationProperty Name="RECEIVE_WARRANTY" Relationship="Self.FK__RECEIVE_W__PRODU__0C85DE4D" FromRole="PRODUCT" ToRole="RECEIVE_WARRANTY" />
+          <NavigationProperty Name="CHANGE_OR_REFUND_PRODUCT" Relationship="Self.FK__CHANGE_OR__PRODU__5224328E" FromRole="PRODUCT" ToRole="CHANGE_OR_REFUND_PRODUCT" />
+          <NavigationProperty Name="CHANGE_OR_REFUND_PRODUCT1" Relationship="Self.FK__CHANGE_OR__PRODU__531856C7" FromRole="PRODUCT" ToRole="CHANGE_OR_REFUND_PRODUCT" />
+          <NavigationProperty Name="DETAIL_IMPORT_WAREHOUSE" Relationship="Self.FK__DETAIL_IM__PRODU__25518C17" FromRole="PRODUCT" ToRole="DETAIL_IMPORT_WAREHOUSE" />
+          <NavigationProperty Name="DETAIL_INVOICE" Relationship="Self.FK__DETAIL_IN__PRODU__2739D489" FromRole="PRODUCT" ToRole="DETAIL_INVOICE" />
+          <NavigationProperty Name="DETAIL_SPECS" Relationship="Self.FK__PRODUCT__ID_DETA__30C33EC3" FromRole="PRODUCT" ToRole="DETAIL_SPECS" />
+          <NavigationProperty Name="RECEIVE_WARRANTY" Relationship="Self.FK__RECEIVE_W__PRODU__339FAB6E" FromRole="PRODUCT" ToRole="RECEIVE_WARRANTY" />
         </EntityType>
         <EntityType Name="RANK">
           <Key>
@@ -989,7 +999,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAME_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CUSTOMERs" Relationship="Self.FK__CUSTOMER__ID_RAN__7C4F7684" FromRole="RANK" ToRole="CUSTOMER" />
+          <NavigationProperty Name="CUSTOMERs" Relationship="Self.FK__CUSTOMER__ID_RAN__236943A5" FromRole="RANK" ToRole="CUSTOMER" />
         </EntityType>
         <EntityType Name="RECEIVE_WARRANTY">
           <Key>
@@ -1004,9 +1014,9 @@
           <Property Name="RECEIVE_DATE" Type="DateTime" Precision="3" />
           <Property Name="RETURN_DATE" Type="DateTime" Precision="3" />
           <Property Name="STATUS_WARRANTY" Type="Int32" />
-          <NavigationProperty Name="INVOICE" Relationship="Self.FK__RECEIVE_W__ID_IN__0A9D95DB" FromRole="RECEIVE_WARRANTY" ToRole="INVOICE" />
-          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__RECEIVE_W__PRODU__0C85DE4D" FromRole="RECEIVE_WARRANTY" ToRole="PRODUCT" />
-          <NavigationProperty Name="STAFF" Relationship="Self.FK__RECEIVE_W__ID_ST__0B91BA14" FromRole="RECEIVE_WARRANTY" ToRole="STAFF" />
+          <NavigationProperty Name="INVOICE" Relationship="Self.FK__RECEIVE_W__ID_IN__31B762FC" FromRole="RECEIVE_WARRANTY" ToRole="INVOICE" />
+          <NavigationProperty Name="PRODUCT" Relationship="Self.FK__RECEIVE_W__PRODU__339FAB6E" FromRole="RECEIVE_WARRANTY" ToRole="PRODUCT" />
+          <NavigationProperty Name="STAFF" Relationship="Self.FK__RECEIVE_W__ID_ST__32AB8735" FromRole="RECEIVE_WARRANTY" ToRole="STAFF" />
         </EntityType>
         <EntityType Name="STAFF">
           <Key>
@@ -1018,14 +1028,14 @@
           <Property Name="ID_STAFFROLE" Type="Int32" />
           <Property Name="WORKING_STATUS" Type="Int32" />
           <Property Name="STAFFDATE" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="COMMON_USER" Relationship="Self.FK__COMMON_US__ID_ST__797309D9" FromRole="STAFF" ToRole="COMMON_USER" />
-          <NavigationProperty Name="CHANGE_OR_REFUND_PRODUCT" Relationship="Self.FK__CHANGE_OR__ID_HA__74AE54BC" FromRole="STAFF" ToRole="CHANGE_OR_REFUND_PRODUCT" />
-          <NavigationProperty Name="IMPORT_WAREHOUSE" Relationship="Self.FK__IMPORT_WA__ID_ST__05D8E0BE" FromRole="STAFF" ToRole="IMPORT_WAREHOUSE" />
-          <NavigationProperty Name="INFOR" Relationship="Self.FK__STAFF__ID_INFOR__0D7A0286" FromRole="STAFF" ToRole="INFOR" />
-          <NavigationProperty Name="INVOICEs" Relationship="Self.FK__INVOICE__ID_STAF__07C12930" FromRole="STAFF" ToRole="INVOICE" />
-          <NavigationProperty Name="RECEIVE_WARRANTY" Relationship="Self.FK__RECEIVE_W__ID_ST__0B91BA14" FromRole="STAFF" ToRole="RECEIVE_WARRANTY" />
-          <NavigationProperty Name="STAFFROLE" Relationship="Self.FK__STAFF__ID_STAFFR__0E6E26BF" FromRole="STAFF" ToRole="STAFFROLE" />
-          <NavigationProperty Name="STOREs" Relationship="Self.FK__STORE__ID_STAFF___0F624AF8" FromRole="STAFF" ToRole="STORE" />
+          <NavigationProperty Name="COMMON_USER" Relationship="Self.FK__COMMON_US__ID_ST__208CD6FA" FromRole="STAFF" ToRole="COMMON_USER" />
+          <NavigationProperty Name="CHANGE_OR_REFUND_PRODUCT" Relationship="Self.FK__CHANGE_OR__ID_HA__503BEA1C" FromRole="STAFF" ToRole="CHANGE_OR_REFUND_PRODUCT" />
+          <NavigationProperty Name="IMPORT_WAREHOUSE" Relationship="Self.FK__IMPORT_WA__ID_ST__2CF2ADDF" FromRole="STAFF" ToRole="IMPORT_WAREHOUSE" />
+          <NavigationProperty Name="INFOR" Relationship="Self.FK__STAFF__ID_INFOR__3493CFA7" FromRole="STAFF" ToRole="INFOR" />
+          <NavigationProperty Name="INVOICEs" Relationship="Self.FK__INVOICE__ID_STAF__2EDAF651" FromRole="STAFF" ToRole="INVOICE" />
+          <NavigationProperty Name="RECEIVE_WARRANTY" Relationship="Self.FK__RECEIVE_W__ID_ST__32AB8735" FromRole="STAFF" ToRole="RECEIVE_WARRANTY" />
+          <NavigationProperty Name="STAFFROLE" Relationship="Self.FK__STAFF__ID_STAFFR__3587F3E0" FromRole="STAFF" ToRole="STAFFROLE" />
+          <NavigationProperty Name="STOREs" Relationship="Self.FK__STORE__ID_STAFF___367C1819" FromRole="STAFF" ToRole="STORE" />
         </EntityType>
         <EntityType Name="STAFFROLE">
           <Key>
@@ -1034,7 +1044,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAME_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="ROLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="STAFFs" Relationship="Self.FK__STAFF__ID_STAFFR__0E6E26BF" FromRole="STAFFROLE" ToRole="STAFF" />
+          <NavigationProperty Name="STAFFs" Relationship="Self.FK__STAFF__ID_STAFFR__3587F3E0" FromRole="STAFFROLE" ToRole="STAFF" />
         </EntityType>
         <EntityType Name="STORE">
           <Key>
@@ -1045,9 +1055,19 @@
           <Property Name="ID_STAFF_MANAGER" Type="Int32" />
           <Property Name="NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ADDRESS" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="IMPORT_WAREHOUSE" Relationship="Self.FK__IMPORT_WA__ID_ST__04E4BC85" FromRole="STORE" ToRole="IMPORT_WAREHOUSE" />
-          <NavigationProperty Name="INVOICEs" Relationship="Self.FK__INVOICE__ID_STOR__08B54D69" FromRole="STORE" ToRole="INVOICE" />
-          <NavigationProperty Name="STAFF" Relationship="Self.FK__STORE__ID_STAFF___0F624AF8" FromRole="STORE" ToRole="STAFF" />
+          <NavigationProperty Name="IMPORT_WAREHOUSE" Relationship="Self.FK__IMPORT_WA__ID_ST__2BFE89A6" FromRole="STORE" ToRole="IMPORT_WAREHOUSE" />
+          <NavigationProperty Name="INVOICEs" Relationship="Self.FK__INVOICE__ID_STOR__2FCF1A8A" FromRole="STORE" ToRole="INVOICE" />
+          <NavigationProperty Name="STAFF" Relationship="Self.FK__STORE__ID_STAFF___367C1819" FromRole="STORE" ToRole="STAFF" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="UNIQUE_SPECS">
           <Key>
@@ -1064,8 +1084,9 @@
           <Property Name="GPU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="BATTERY_CAPACITY" Type="Double" />
           <Property Name="WEIGHT" Type="Double" />
-          <NavigationProperty Name="DETAIL_SPECS" Relationship="Self.FK__DETAIL_SP__ID_UN__02FC7413" FromRole="UNIQUE_SPECS" ToRole="DETAIL_SPECS" />
-          <NavigationProperty Name="DISPLAY_SPECS" Relationship="Self.FK__UNIQUE_SP__ID_DI__10566F31" FromRole="UNIQUE_SPECS" ToRole="DISPLAY_SPECS" />
+          <Property Name="OS" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DETAIL_SPECS" Relationship="Self.FK__DETAIL_SP__ID_UN__2A164134" FromRole="UNIQUE_SPECS" ToRole="DETAIL_SPECS" />
+          <NavigationProperty Name="DISPLAY_SPECS" Relationship="Self.FK__UNIQUE_SP__ID_DI__37703C52" FromRole="UNIQUE_SPECS" ToRole="DISPLAY_SPECS" />
         </EntityType>
         <EntityType Name="USERROLE">
           <Key>
@@ -1074,9 +1095,9 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAME_ID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
           <Property Name="ROLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="COMMON_USER" Relationship="Self.FK__COMMON_US__ID_US__7A672E12" FromRole="USERROLE" ToRole="COMMON_USER" />
+          <NavigationProperty Name="COMMON_USER" Relationship="Self.FK__COMMON_US__ID_US__2180FB33" FromRole="USERROLE" ToRole="COMMON_USER" />
         </EntityType>
-        <Association Name="FK__DETAIL_SP__COLOR__01142BA1">
+        <Association Name="FK__DETAIL_SP__COLOR__282DF8C2">
           <End Role="COLOR" Type="Self.COLOR" Multiplicity="1" />
           <End Role="DETAIL_SPECS" Type="Self.DETAIL_SPECS" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1088,7 +1109,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COMMON_SP__ID_LI__787EE5A0">
+        <Association Name="FK__COMMON_SP__ID_LI__1F98B2C1">
           <End Role="LINE_UP" Type="Self.LINE_UP" Multiplicity="1" />
           <End Role="COMMON_SPECS" Type="Self.COMMON_SPECS" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1100,7 +1121,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETAIL_SP__ID_CO__02084FDA">
+        <Association Name="FK__DETAIL_SP__ID_CO__29221CFB">
           <End Role="COMMON_SPECS" Type="Self.COMMON_SPECS" Multiplicity="1" />
           <End Role="DETAIL_SPECS" Type="Self.DETAIL_SPECS" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1112,7 +1133,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COMMON_US__ID_ST__797309D9">
+        <Association Name="FK__COMMON_US__ID_ST__208CD6FA">
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1" />
           <End Role="COMMON_USER" Type="Self.COMMON_USER" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1124,7 +1145,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__COMMON_US__ID_US__7A672E12">
+        <Association Name="FK__COMMON_US__ID_US__2180FB33">
           <End Role="USERROLE" Type="Self.USERROLE" Multiplicity="1" />
           <End Role="COMMON_USER" Type="Self.COMMON_USER" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1136,7 +1157,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CUSTOMER__ID_INF__7B5B524B">
+        <Association Name="FK__CUSTOMER__ID_INF__22751F6C">
           <End Role="INFOR" Type="Self.INFOR" Multiplicity="0..1" />
           <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1148,7 +1169,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CUSTOMER__ID_RAN__7C4F7684">
+        <Association Name="FK__CUSTOMER__ID_RAN__236943A5">
           <End Role="RANK" Type="Self.RANK" Multiplicity="0..1" />
           <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1160,7 +1181,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__INVOICE__ID_CUST__06CD04F7">
+        <Association Name="FK__INVOICE__ID_CUST__2DE6D218">
           <End Role="CUSTOMER" Type="Self.CUSTOMER" Multiplicity="1" />
           <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1172,7 +1193,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHANGE_OR__ID_HA__74AE54BC">
+        <Association Name="FK__CHANGE_OR__ID_HA__503BEA1C">
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
           <End Role="CHANGE_OR_REFUND_PRODUCT" Type="Self.CHANGE_OR_REFUND_PRODUCT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1184,7 +1205,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHANGE_OR__ID_IN__75A278F5">
+        <Association Name="FK__CHANGE_OR__ID_IN__51300E55">
           <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="1" />
           <End Role="CHANGE_OR_REFUND_PRODUCT" Type="Self.CHANGE_OR_REFUND_PRODUCT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1196,7 +1217,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHANGE_OR__PRODU__76969D2E">
+        <Association Name="FK__CHANGE_OR__PRODU__5224328E">
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
           <End Role="CHANGE_OR_REFUND_PRODUCT" Type="Self.CHANGE_OR_REFUND_PRODUCT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1208,7 +1229,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CHANGE_OR__PRODU__778AC167">
+        <Association Name="FK__CHANGE_OR__PRODU__531856C7">
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="0..1" />
           <End Role="CHANGE_OR_REFUND_PRODUCT" Type="Self.CHANGE_OR_REFUND_PRODUCT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1220,7 +1241,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETAIL_IM__ID_IM__7D439ABD">
+        <Association Name="FK__DETAIL_IM__ID_IM__245D67DE">
           <End Role="IMPORT_WAREHOUSE" Type="Self.IMPORT_WAREHOUSE" Multiplicity="1" />
           <End Role="DETAIL_IMPORT_WAREHOUSE" Type="Self.DETAIL_IMPORT_WAREHOUSE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1232,7 +1253,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETAIL_IM__PRODU__7E37BEF6">
+        <Association Name="FK__DETAIL_IM__PRODU__25518C17">
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
           <End Role="DETAIL_IMPORT_WAREHOUSE" Type="Self.DETAIL_IMPORT_WAREHOUSE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1244,7 +1265,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETAIL_IN__ID_IN__7F2BE32F">
+        <Association Name="FK__DETAIL_IN__ID_IN__2645B050">
           <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="1" />
           <End Role="DETAIL_INVOICE" Type="Self.DETAIL_INVOICE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1256,7 +1277,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETAIL_IN__PRODU__00200768">
+        <Association Name="FK__DETAIL_IN__PRODU__2739D489">
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
           <End Role="DETAIL_INVOICE" Type="Self.DETAIL_INVOICE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1268,7 +1289,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DETAIL_SP__ID_UN__02FC7413">
+        <Association Name="FK__DETAIL_SP__ID_UN__2A164134">
           <End Role="UNIQUE_SPECS" Type="Self.UNIQUE_SPECS" Multiplicity="1" />
           <End Role="DETAIL_SPECS" Type="Self.DETAIL_SPECS" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1280,7 +1301,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PRODUCT__ID_DETA__09A971A2">
+        <Association Name="FK__PRODUCT__ID_DETA__30C33EC3">
           <End Role="DETAIL_SPECS" Type="Self.DETAIL_SPECS" Multiplicity="1" />
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1292,7 +1313,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UNIQUE_SP__ID_DI__10566F31">
+        <Association Name="FK__UNIQUE_SP__ID_DI__37703C52">
           <End Role="DISPLAY_SPECS" Type="Self.DISPLAY_SPECS" Multiplicity="1" />
           <End Role="UNIQUE_SPECS" Type="Self.UNIQUE_SPECS" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1304,7 +1325,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__IMPORT_WA__ID_DI__03F0984C">
+        <Association Name="FK__IMPORT_WA__ID_DI__2B0A656D">
           <End Role="DISTRIBUTOR" Type="Self.DISTRIBUTOR" Multiplicity="1" />
           <End Role="IMPORT_WAREHOUSE" Type="Self.IMPORT_WAREHOUSE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1316,7 +1337,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__IMPORT_WA__ID_ST__04E4BC85">
+        <Association Name="FK__IMPORT_WA__ID_ST__2BFE89A6">
           <End Role="STORE" Type="Self.STORE" Multiplicity="1" />
           <End Role="IMPORT_WAREHOUSE" Type="Self.IMPORT_WAREHOUSE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1328,7 +1349,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__IMPORT_WA__ID_ST__05D8E0BE">
+        <Association Name="FK__IMPORT_WA__ID_ST__2CF2ADDF">
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
           <End Role="IMPORT_WAREHOUSE" Type="Self.IMPORT_WAREHOUSE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1340,7 +1361,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__STAFF__ID_INFOR__0D7A0286">
+        <Association Name="FK__STAFF__ID_INFOR__3493CFA7">
           <End Role="INFOR" Type="Self.INFOR" Multiplicity="1" />
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1352,7 +1373,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__INVOICE__ID_STAF__07C12930">
+        <Association Name="FK__INVOICE__ID_STAF__2EDAF651">
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1" />
           <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1364,7 +1385,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__INVOICE__ID_STOR__08B54D69">
+        <Association Name="FK__INVOICE__ID_STOR__2FCF1A8A">
           <End Role="STORE" Type="Self.STORE" Multiplicity="0..1" />
           <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1376,7 +1397,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RECEIVE_W__ID_IN__0A9D95DB">
+        <Association Name="FK__RECEIVE_W__ID_IN__31B762FC">
           <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="1" />
           <End Role="RECEIVE_WARRANTY" Type="Self.RECEIVE_WARRANTY" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1388,7 +1409,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RECEIVE_W__PRODU__0C85DE4D">
+        <Association Name="FK__RECEIVE_W__PRODU__339FAB6E">
           <End Role="PRODUCT" Type="Self.PRODUCT" Multiplicity="1" />
           <End Role="RECEIVE_WARRANTY" Type="Self.RECEIVE_WARRANTY" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1400,7 +1421,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RECEIVE_W__ID_ST__0B91BA14">
+        <Association Name="FK__RECEIVE_W__ID_ST__32AB8735">
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="1" />
           <End Role="RECEIVE_WARRANTY" Type="Self.RECEIVE_WARRANTY" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1412,7 +1433,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__STAFF__ID_STAFFR__0E6E26BF">
+        <Association Name="FK__STAFF__ID_STAFFR__3587F3E0">
           <End Role="STAFFROLE" Type="Self.STAFFROLE" Multiplicity="0..1" />
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1424,7 +1445,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__STORE__ID_STAFF___0F624AF8">
+        <Association Name="FK__STORE__ID_STAFF___367C1819">
           <End Role="STAFF" Type="Self.STAFF" Multiplicity="0..1" />
           <End Role="STORE" Type="Self.STORE" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1457,125 +1478,126 @@
           <EntitySet Name="STAFFs" EntityType="Self.STAFF" />
           <EntitySet Name="STAFFROLEs" EntityType="Self.STAFFROLE" />
           <EntitySet Name="STOREs" EntityType="Self.STORE" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="UNIQUE_SPECS" EntityType="Self.UNIQUE_SPECS" />
           <EntitySet Name="USERROLEs" EntityType="Self.USERROLE" />
-          <AssociationSet Name="FK__DETAIL_SP__COLOR__01142BA1" Association="Self.FK__DETAIL_SP__COLOR__01142BA1">
+          <AssociationSet Name="FK__DETAIL_SP__COLOR__282DF8C2" Association="Self.FK__DETAIL_SP__COLOR__282DF8C2">
             <End Role="COLOR" EntitySet="COLORs" />
             <End Role="DETAIL_SPECS" EntitySet="DETAIL_SPECS" />
           </AssociationSet>
-          <AssociationSet Name="FK__COMMON_SP__ID_LI__787EE5A0" Association="Self.FK__COMMON_SP__ID_LI__787EE5A0">
+          <AssociationSet Name="FK__COMMON_SP__ID_LI__1F98B2C1" Association="Self.FK__COMMON_SP__ID_LI__1F98B2C1">
             <End Role="LINE_UP" EntitySet="LINE_UP" />
             <End Role="COMMON_SPECS" EntitySet="COMMON_SPECS" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETAIL_SP__ID_CO__02084FDA" Association="Self.FK__DETAIL_SP__ID_CO__02084FDA">
+          <AssociationSet Name="FK__DETAIL_SP__ID_CO__29221CFB" Association="Self.FK__DETAIL_SP__ID_CO__29221CFB">
             <End Role="COMMON_SPECS" EntitySet="COMMON_SPECS" />
             <End Role="DETAIL_SPECS" EntitySet="DETAIL_SPECS" />
           </AssociationSet>
-          <AssociationSet Name="FK__COMMON_US__ID_ST__797309D9" Association="Self.FK__COMMON_US__ID_ST__797309D9">
+          <AssociationSet Name="FK__COMMON_US__ID_ST__208CD6FA" Association="Self.FK__COMMON_US__ID_ST__208CD6FA">
             <End Role="STAFF" EntitySet="STAFFs" />
             <End Role="COMMON_USER" EntitySet="COMMON_USER" />
           </AssociationSet>
-          <AssociationSet Name="FK__COMMON_US__ID_US__7A672E12" Association="Self.FK__COMMON_US__ID_US__7A672E12">
+          <AssociationSet Name="FK__COMMON_US__ID_US__2180FB33" Association="Self.FK__COMMON_US__ID_US__2180FB33">
             <End Role="USERROLE" EntitySet="USERROLEs" />
             <End Role="COMMON_USER" EntitySet="COMMON_USER" />
           </AssociationSet>
-          <AssociationSet Name="FK__CUSTOMER__ID_INF__7B5B524B" Association="Self.FK__CUSTOMER__ID_INF__7B5B524B">
+          <AssociationSet Name="FK__CUSTOMER__ID_INF__22751F6C" Association="Self.FK__CUSTOMER__ID_INF__22751F6C">
             <End Role="INFOR" EntitySet="INFORs" />
             <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CUSTOMER__ID_RAN__7C4F7684" Association="Self.FK__CUSTOMER__ID_RAN__7C4F7684">
+          <AssociationSet Name="FK__CUSTOMER__ID_RAN__236943A5" Association="Self.FK__CUSTOMER__ID_RAN__236943A5">
             <End Role="RANK" EntitySet="RANKs" />
             <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
           </AssociationSet>
-          <AssociationSet Name="FK__INVOICE__ID_CUST__06CD04F7" Association="Self.FK__INVOICE__ID_CUST__06CD04F7">
+          <AssociationSet Name="FK__INVOICE__ID_CUST__2DE6D218" Association="Self.FK__INVOICE__ID_CUST__2DE6D218">
             <End Role="CUSTOMER" EntitySet="CUSTOMERs" />
             <End Role="INVOICE" EntitySet="INVOICEs" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHANGE_OR__ID_HA__74AE54BC" Association="Self.FK__CHANGE_OR__ID_HA__74AE54BC">
+          <AssociationSet Name="FK__CHANGE_OR__ID_HA__503BEA1C" Association="Self.FK__CHANGE_OR__ID_HA__503BEA1C">
             <End Role="STAFF" EntitySet="STAFFs" />
             <End Role="CHANGE_OR_REFUND_PRODUCT" EntitySet="CHANGE_OR_REFUND_PRODUCT" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHANGE_OR__ID_IN__75A278F5" Association="Self.FK__CHANGE_OR__ID_IN__75A278F5">
+          <AssociationSet Name="FK__CHANGE_OR__ID_IN__51300E55" Association="Self.FK__CHANGE_OR__ID_IN__51300E55">
             <End Role="INVOICE" EntitySet="INVOICEs" />
             <End Role="CHANGE_OR_REFUND_PRODUCT" EntitySet="CHANGE_OR_REFUND_PRODUCT" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHANGE_OR__PRODU__76969D2E" Association="Self.FK__CHANGE_OR__PRODU__76969D2E">
+          <AssociationSet Name="FK__CHANGE_OR__PRODU__5224328E" Association="Self.FK__CHANGE_OR__PRODU__5224328E">
             <End Role="PRODUCT" EntitySet="PRODUCTs" />
             <End Role="CHANGE_OR_REFUND_PRODUCT" EntitySet="CHANGE_OR_REFUND_PRODUCT" />
           </AssociationSet>
-          <AssociationSet Name="FK__CHANGE_OR__PRODU__778AC167" Association="Self.FK__CHANGE_OR__PRODU__778AC167">
+          <AssociationSet Name="FK__CHANGE_OR__PRODU__531856C7" Association="Self.FK__CHANGE_OR__PRODU__531856C7">
             <End Role="PRODUCT" EntitySet="PRODUCTs" />
             <End Role="CHANGE_OR_REFUND_PRODUCT" EntitySet="CHANGE_OR_REFUND_PRODUCT" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETAIL_IM__ID_IM__7D439ABD" Association="Self.FK__DETAIL_IM__ID_IM__7D439ABD">
+          <AssociationSet Name="FK__DETAIL_IM__ID_IM__245D67DE" Association="Self.FK__DETAIL_IM__ID_IM__245D67DE">
             <End Role="IMPORT_WAREHOUSE" EntitySet="IMPORT_WAREHOUSE" />
             <End Role="DETAIL_IMPORT_WAREHOUSE" EntitySet="DETAIL_IMPORT_WAREHOUSE" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETAIL_IM__PRODU__7E37BEF6" Association="Self.FK__DETAIL_IM__PRODU__7E37BEF6">
+          <AssociationSet Name="FK__DETAIL_IM__PRODU__25518C17" Association="Self.FK__DETAIL_IM__PRODU__25518C17">
             <End Role="PRODUCT" EntitySet="PRODUCTs" />
             <End Role="DETAIL_IMPORT_WAREHOUSE" EntitySet="DETAIL_IMPORT_WAREHOUSE" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETAIL_IN__ID_IN__7F2BE32F" Association="Self.FK__DETAIL_IN__ID_IN__7F2BE32F">
+          <AssociationSet Name="FK__DETAIL_IN__ID_IN__2645B050" Association="Self.FK__DETAIL_IN__ID_IN__2645B050">
             <End Role="INVOICE" EntitySet="INVOICEs" />
             <End Role="DETAIL_INVOICE" EntitySet="DETAIL_INVOICE" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETAIL_IN__PRODU__00200768" Association="Self.FK__DETAIL_IN__PRODU__00200768">
+          <AssociationSet Name="FK__DETAIL_IN__PRODU__2739D489" Association="Self.FK__DETAIL_IN__PRODU__2739D489">
             <End Role="PRODUCT" EntitySet="PRODUCTs" />
             <End Role="DETAIL_INVOICE" EntitySet="DETAIL_INVOICE" />
           </AssociationSet>
-          <AssociationSet Name="FK__DETAIL_SP__ID_UN__02FC7413" Association="Self.FK__DETAIL_SP__ID_UN__02FC7413">
+          <AssociationSet Name="FK__DETAIL_SP__ID_UN__2A164134" Association="Self.FK__DETAIL_SP__ID_UN__2A164134">
             <End Role="UNIQUE_SPECS" EntitySet="UNIQUE_SPECS" />
             <End Role="DETAIL_SPECS" EntitySet="DETAIL_SPECS" />
           </AssociationSet>
-          <AssociationSet Name="FK__PRODUCT__ID_DETA__09A971A2" Association="Self.FK__PRODUCT__ID_DETA__09A971A2">
+          <AssociationSet Name="FK__PRODUCT__ID_DETA__30C33EC3" Association="Self.FK__PRODUCT__ID_DETA__30C33EC3">
             <End Role="DETAIL_SPECS" EntitySet="DETAIL_SPECS" />
             <End Role="PRODUCT" EntitySet="PRODUCTs" />
           </AssociationSet>
-          <AssociationSet Name="FK__UNIQUE_SP__ID_DI__10566F31" Association="Self.FK__UNIQUE_SP__ID_DI__10566F31">
+          <AssociationSet Name="FK__UNIQUE_SP__ID_DI__37703C52" Association="Self.FK__UNIQUE_SP__ID_DI__37703C52">
             <End Role="DISPLAY_SPECS" EntitySet="DISPLAY_SPECS" />
             <End Role="UNIQUE_SPECS" EntitySet="UNIQUE_SPECS" />
           </AssociationSet>
-          <AssociationSet Name="FK__IMPORT_WA__ID_DI__03F0984C" Association="Self.FK__IMPORT_WA__ID_DI__03F0984C">
+          <AssociationSet Name="FK__IMPORT_WA__ID_DI__2B0A656D" Association="Self.FK__IMPORT_WA__ID_DI__2B0A656D">
             <End Role="DISTRIBUTOR" EntitySet="DISTRIBUTORs" />
             <End Role="IMPORT_WAREHOUSE" EntitySet="IMPORT_WAREHOUSE" />
           </AssociationSet>
-          <AssociationSet Name="FK__IMPORT_WA__ID_ST__04E4BC85" Association="Self.FK__IMPORT_WA__ID_ST__04E4BC85">
+          <AssociationSet Name="FK__IMPORT_WA__ID_ST__2BFE89A6" Association="Self.FK__IMPORT_WA__ID_ST__2BFE89A6">
             <End Role="STORE" EntitySet="STOREs" />
             <End Role="IMPORT_WAREHOUSE" EntitySet="IMPORT_WAREHOUSE" />
           </AssociationSet>
-          <AssociationSet Name="FK__IMPORT_WA__ID_ST__05D8E0BE" Association="Self.FK__IMPORT_WA__ID_ST__05D8E0BE">
+          <AssociationSet Name="FK__IMPORT_WA__ID_ST__2CF2ADDF" Association="Self.FK__IMPORT_WA__ID_ST__2CF2ADDF">
             <End Role="STAFF" EntitySet="STAFFs" />
             <End Role="IMPORT_WAREHOUSE" EntitySet="IMPORT_WAREHOUSE" />
           </AssociationSet>
-          <AssociationSet Name="FK__STAFF__ID_INFOR__0D7A0286" Association="Self.FK__STAFF__ID_INFOR__0D7A0286">
+          <AssociationSet Name="FK__STAFF__ID_INFOR__3493CFA7" Association="Self.FK__STAFF__ID_INFOR__3493CFA7">
             <End Role="INFOR" EntitySet="INFORs" />
             <End Role="STAFF" EntitySet="STAFFs" />
           </AssociationSet>
-          <AssociationSet Name="FK__INVOICE__ID_STAF__07C12930" Association="Self.FK__INVOICE__ID_STAF__07C12930">
+          <AssociationSet Name="FK__INVOICE__ID_STAF__2EDAF651" Association="Self.FK__INVOICE__ID_STAF__2EDAF651">
             <End Role="STAFF" EntitySet="STAFFs" />
             <End Role="INVOICE" EntitySet="INVOICEs" />
           </AssociationSet>
-          <AssociationSet Name="FK__INVOICE__ID_STOR__08B54D69" Association="Self.FK__INVOICE__ID_STOR__08B54D69">
+          <AssociationSet Name="FK__INVOICE__ID_STOR__2FCF1A8A" Association="Self.FK__INVOICE__ID_STOR__2FCF1A8A">
             <End Role="STORE" EntitySet="STOREs" />
             <End Role="INVOICE" EntitySet="INVOICEs" />
           </AssociationSet>
-          <AssociationSet Name="FK__RECEIVE_W__ID_IN__0A9D95DB" Association="Self.FK__RECEIVE_W__ID_IN__0A9D95DB">
+          <AssociationSet Name="FK__RECEIVE_W__ID_IN__31B762FC" Association="Self.FK__RECEIVE_W__ID_IN__31B762FC">
             <End Role="INVOICE" EntitySet="INVOICEs" />
             <End Role="RECEIVE_WARRANTY" EntitySet="RECEIVE_WARRANTY" />
           </AssociationSet>
-          <AssociationSet Name="FK__RECEIVE_W__PRODU__0C85DE4D" Association="Self.FK__RECEIVE_W__PRODU__0C85DE4D">
+          <AssociationSet Name="FK__RECEIVE_W__PRODU__339FAB6E" Association="Self.FK__RECEIVE_W__PRODU__339FAB6E">
             <End Role="PRODUCT" EntitySet="PRODUCTs" />
             <End Role="RECEIVE_WARRANTY" EntitySet="RECEIVE_WARRANTY" />
           </AssociationSet>
-          <AssociationSet Name="FK__RECEIVE_W__ID_ST__0B91BA14" Association="Self.FK__RECEIVE_W__ID_ST__0B91BA14">
+          <AssociationSet Name="FK__RECEIVE_W__ID_ST__32AB8735" Association="Self.FK__RECEIVE_W__ID_ST__32AB8735">
             <End Role="STAFF" EntitySet="STAFFs" />
             <End Role="RECEIVE_WARRANTY" EntitySet="RECEIVE_WARRANTY" />
           </AssociationSet>
-          <AssociationSet Name="FK__STAFF__ID_STAFFR__0E6E26BF" Association="Self.FK__STAFF__ID_STAFFR__0E6E26BF">
+          <AssociationSet Name="FK__STAFF__ID_STAFFR__3587F3E0" Association="Self.FK__STAFF__ID_STAFFR__3587F3E0">
             <End Role="STAFFROLE" EntitySet="STAFFROLEs" />
             <End Role="STAFF" EntitySet="STAFFs" />
           </AssociationSet>
-          <AssociationSet Name="FK__STORE__ID_STAFF___0F624AF8" Association="Self.FK__STORE__ID_STAFF___0F624AF8">
+          <AssociationSet Name="FK__STORE__ID_STAFF___367C1819" Association="Self.FK__STORE__ID_STAFF___367C1819">
             <End Role="STAFF" EntitySet="STAFFs" />
             <End Role="STORE" EntitySet="STOREs" />
           </AssociationSet>
@@ -1607,7 +1629,6 @@
                 <ScalarProperty Name="PORT" ColumnName="PORT" />
                 <ScalarProperty Name="WEBCAM" ColumnName="WEBCAM" />
                 <ScalarProperty Name="DIMENSIONS" ColumnName="DIMENSIONS" />
-                <ScalarProperty Name="OS" ColumnName="OS" />
                 <ScalarProperty Name="WIFI" ColumnName="WIFI" />
                 <ScalarProperty Name="BLUETOOTH" ColumnName="BLUETOOTH" />
               </MappingFragment>
@@ -1831,6 +1852,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CompuStoreDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="UNIQUE_SPECS">
             <EntityTypeMapping TypeName="CompuStoreDBModel.UNIQUE_SPECS">
               <MappingFragment StoreEntitySet="UNIQUE_SPECS">
@@ -1845,6 +1877,7 @@
                 <ScalarProperty Name="GPU" ColumnName="GPU" />
                 <ScalarProperty Name="BATTERY_CAPACITY" ColumnName="BATTERY_CAPACITY" />
                 <ScalarProperty Name="WEIGHT" ColumnName="WEIGHT" />
+                <ScalarProperty Name="OS" ColumnName="OS" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

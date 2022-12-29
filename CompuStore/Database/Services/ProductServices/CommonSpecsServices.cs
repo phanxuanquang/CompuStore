@@ -37,10 +37,9 @@ namespace CompuStore.Database.Services
                 item.NAME == model.NAME && 
                 item.RELEASED_YEAR == model.RELEASED_YEAR &&
                 item.CASE_MATERIAL == model.CASE_MATERIAL &&
-                item.PORT == model.PORT &&
+                item.PORT == model.PORT && 
                 item.WEBCAM == model.WEBCAM &&
                 item.DIMENSIONS == model.DIMENSIONS && 
-                item.OS == model.OS &&
                 item.WIFI == model.WIFI &&
                 item.BLUETOOTH == model.BLUETOOTH,
                 model

@@ -44,5 +44,14 @@ namespace CompuStore.Database.Services.ProductServices
                 return null;
             }
         }
+
+        public async Task<bool> DeleteDetailImportWarehouse(DETAIL_IMPORT_WAREHOUSE target)
+        {
+            if (target == null)
+                throw new ArgumentNullException();
+            DataProvider.Instance.Database.DETAIL_IMPORT_WAREHOUSE.Remove(target);
+            await DataProvider.Instance.Database.SaveChangesAsync();
+            return true;
+        }
     }
 }

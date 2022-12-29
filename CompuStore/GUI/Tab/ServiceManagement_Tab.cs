@@ -13,6 +13,8 @@ using System.Windows.Forms;
 
 namespace CompuStore
 {
+    using CompuStore.Database.Services.ProductServices;
+    using CompuStore.GUI.Forms.SubForms.Warehouse;
     using Database.Models;
     using System.Security.Cryptography.Pkcs;
 
@@ -23,6 +25,7 @@ namespace CompuStore
             this.GridDataTable.AutoGenerateColumns = false;
             InitializeComponent();
             this.GridDataTable.DataSource = warrantyBindingSource;
+            GridDataTable.CellDoubleClick += GridDataTable_CellDoubleClick;
             this.Load += ServiceManagement_Tab_Load;
         }
 
@@ -126,7 +129,7 @@ namespace CompuStore
             listItemViews.Add("ProductSerial", "Mã sản phẩm hoàn trả");
             listItemViews.Add("ProductRe", "Tên sản phẩm");
             listItemViews.Add("ProductSerialRe", "Mã sản phẩm đổi");
-            listItemViews.Add("DateRe", "Ngày hẹn trả");
+            listItemViews.Add("DateRe", "Ngày đổi trả");
             listItemViews.Add("Id", "Mã nhân viên phụ trách");
             
             foreach (var item in listItemViews)
@@ -148,13 +151,21 @@ namespace CompuStore
                 {
 
                     row.Cells["CusName"].Value = selected.INVOICE.CUSTOMER.INFOR.NAME;
+                    row.Cells["CusName"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["PhoneNum"].Value = selected.INVOICE.CUSTOMER.INFOR.PHONE_NUMBER;
+                    row.Cells["PhoneNum"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["Product"].Value = selected.PRODUCT.DETAIL_SPECS.COMMON_SPECS.NAME;
+                    row.Cells["Product"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["ProductSerial"].Value = selected.PRODUCT.SERIAL_ID;
+                    row.Cells["ProductSerial"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["Date"].Value = selected.RECEIVE_DATE;
+                    row.Cells["Date"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["DateRe"].Value = selected.RETURN_DATE;
+                    row.Cells["DateRe"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["Id"].Value = selected.STAFF.NAME_ID;
+                    row.Cells["Id"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["Status"].Value = selected.STATUS_WARRANTY == 0 ? "Đang xử lý" : "Đã xử lý";
+                    row.Cells["Status"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 }
             }
         }
@@ -169,13 +180,21 @@ namespace CompuStore
                 if (selected != null)
                 {
                     row.Cells["CusName"].Value = selected.INVOICE.CUSTOMER.INFOR.NAME;
+                    row.Cells["CusName"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["PhoneNum"].Value = selected.INVOICE.CUSTOMER.INFOR.PHONE_NUMBER;
+                    row.Cells["PhoneNum"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["Product"].Value = selected.PRODUCT.DETAIL_SPECS.COMMON_SPECS.NAME;
+                    row.Cells["Product"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["ProductSerial"].Value = selected.PRODUCT.SERIAL_ID;
+                    row.Cells["ProductSerial"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["ProductRe"].Value = selected.PRODUCT1.DETAIL_SPECS.COMMON_SPECS.NAME;
+                    row.Cells["ProductRe"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["ProductSerialRe"].Value = selected.PRODUCT1.SERIAL_ID;
+                    row.Cells["ProductSerialRe"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["DateRe"].Value = selected.RETURN_DATE;
+                    row.Cells["DateRe"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["Id"].Value = selected.STAFF.NAME_ID;
+                    row.Cells["Id"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 }
             }
         }
@@ -238,12 +257,14 @@ namespace CompuStore
         {
             AddWarranty_Form addWarranty_Form = new AddWarranty_Form();
             addWarranty_Form.ShowDialog();
+            LoadWarranty();
         }
 
         private void Button_2_Click(object sender, EventArgs e)
         {
             AddReturn_Form addReturn_Form = new AddReturn_Form();
             addReturn_Form.ShowDialog();
+            LoadCOrRefund();
         }
 
         private void SearchBox_TextChanged(object sender, EventArgs e)
@@ -289,6 +310,24 @@ namespace CompuStore
             }
 
             currencyManager1.ResumeBinding();
+        }
+        protected void GridDataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                if (Button_3.Text == "Danh sách đổi trả")
+                {
+                    WarrantyDetail_Form warrantyDetail_Form = new WarrantyDetail_Form(warrantyBindingSource.Current);
+                    warrantyDetail_Form.ShowDialog();
+                    LoadWarranty();
+                }
+                else
+                {
+                    ReturnDetail_Form returnDetail_Form = new ReturnDetail_Form(warrantyBindingSource.Current);
+                    returnDetail_Form.ShowDialog();
+                    LoadCOrRefund();
+                }
+            }
         }
     }
 }

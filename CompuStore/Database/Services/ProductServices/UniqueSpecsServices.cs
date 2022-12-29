@@ -32,6 +32,7 @@ namespace CompuStore.Database.Services.ProductServices
                 item.TYPE_STORAGE == model.TYPE_STORAGE &&
                 item.STORAGE_CAPACITY == model.STORAGE_CAPACITY &&
                 item.GPU == model.GPU &&
+                item.OS == model.OS &&
                 item.BATTERY_CAPACITY == model.BATTERY_CAPACITY &&
                 item.WEIGHT == model.WEIGHT,
                 model

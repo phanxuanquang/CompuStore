@@ -90,10 +90,15 @@ namespace CompuStore.Tab
                 if (selected != null)
                 {
                     row.Cells["Id"].Value = selected.NAME_ID;
+                    row.Cells["Id"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["StaffName"].Value = selected.INFOR.NAME;
+                    row.Cells["StaffName"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["PhoneNum"].Value = selected.INFOR.PHONE_NUMBER;
+                    row.Cells["PhoneNum"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["Role"].Value = selected.STAFFROLE.ROLE;
+                    row.Cells["Role"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["Status"].Value = selected.WORKING_STATUS == 0 ? "Đã nghỉ việc" : "Đang làm việc";
+                    row.Cells["Status"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 }
             }
         }
@@ -156,6 +161,24 @@ namespace CompuStore.Tab
                 }
             }
             currencyManager1.ResumeBinding();
+        }
+
+        protected void GridDataTable_DataSourceChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Button_3_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc chắn muốn sa thải nhân viên này?", "Sa thải nhân viên", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (dialogResult == DialogResult.Yes)
+            {
+                // Sa thải
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

@@ -49,6 +49,8 @@
             this.lbDate = new System.Windows.Forms.Label();
             this.AddItemToTable_Button = new Guna.UI2.WinForms.Guna2Button();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
+            this.dateTimePicker = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.NameProduct_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.Serial_ComboBox = new CompuStore.Control.ComboBoxCustom();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
@@ -57,7 +59,6 @@
             // 
             // PhoneNumber_Box
             // 
-            this.PhoneNumber_Box.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.PhoneNumber_Box.Animated = true;
             this.PhoneNumber_Box.BackColor = System.Drawing.Color.Transparent;
             this.PhoneNumber_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -111,7 +112,6 @@
             // 
             // Identity_Box
             // 
-            this.Identity_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.Identity_Box.Animated = true;
             this.Identity_Box.BackColor = System.Drawing.Color.Transparent;
             this.Identity_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -190,7 +190,7 @@
             this.Save_Button.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Save_Button.ForeColor = System.Drawing.Color.White;
             this.Save_Button.HoverState.Parent = this.Save_Button;
-            this.Save_Button.Location = new System.Drawing.Point(36, 600);
+            this.Save_Button.Location = new System.Drawing.Point(37, 619);
             this.Save_Button.Name = "Save_Button";
             this.Save_Button.PressedDepth = 5;
             this.Save_Button.ShadowDecoration.Parent = this.Save_Button;
@@ -208,7 +208,6 @@
             this.ItemTable.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.ItemTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.ItemTable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ItemTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ItemTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.ItemTable.BackgroundColor = System.Drawing.Color.White;
@@ -283,7 +282,6 @@
             // 
             // Print_Button
             // 
-            this.Print_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.Print_Button.Animated = true;
             this.Print_Button.BorderRadius = 3;
             this.Print_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
@@ -294,7 +292,7 @@
             this.Print_Button.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Print_Button.ForeColor = System.Drawing.Color.White;
             this.Print_Button.HoverState.Parent = this.Print_Button;
-            this.Print_Button.Location = new System.Drawing.Point(36, 537);
+            this.Print_Button.Location = new System.Drawing.Point(36, 550);
             this.Print_Button.Name = "Print_Button";
             this.Print_Button.PressedDepth = 5;
             this.Print_Button.ShadowDecoration.Parent = this.Print_Button;
@@ -306,7 +304,6 @@
             // 
             // Email_Box
             // 
-            this.Email_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.Email_Box.Animated = true;
             this.Email_Box.BackColor = System.Drawing.Color.Transparent;
             this.Email_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -345,7 +342,6 @@
             // 
             // Address_Box
             // 
-            this.Address_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.Address_Box.Animated = true;
             this.Address_Box.BackColor = System.Drawing.Color.Transparent;
             this.Address_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -384,7 +380,6 @@
             // 
             // Name_Box
             // 
-            this.Name_Box.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.Name_Box.Animated = true;
             this.Name_Box.BackColor = System.Drawing.Color.Transparent;
             this.Name_Box.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
@@ -412,7 +407,7 @@
             this.Name_Box.Name = "Name_Box";
             this.Name_Box.PasswordChar = '\0';
             this.Name_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.Name_Box.PlaceholderText = "Họ và tên khách hàng";
+            this.Name_Box.PlaceholderText = "Họ tên khách hàng";
             this.Name_Box.ReadOnly = true;
             this.Name_Box.SelectedText = "";
             this.Name_Box.ShadowDecoration.Parent = this.Name_Box;
@@ -423,10 +418,9 @@
             // 
             // lbStaffName
             // 
-            this.lbStaffName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbStaffName.AutoSize = true;
             this.lbStaffName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStaffName.Location = new System.Drawing.Point(32, 475);
+            this.lbStaffName.Location = new System.Drawing.Point(32, 478);
             this.lbStaffName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbStaffName.Name = "lbStaffName";
             this.lbStaffName.Size = new System.Drawing.Size(91, 21);
@@ -436,10 +430,9 @@
             // 
             // lbDate
             // 
-            this.lbDate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbDate.AutoSize = true;
             this.lbDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDate.Location = new System.Drawing.Point(32, 502);
+            this.lbDate.Location = new System.Drawing.Point(33, 508);
             this.lbDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDate.Name = "lbDate";
             this.lbDate.Size = new System.Drawing.Size(83, 21);
@@ -449,7 +442,6 @@
             // 
             // AddItemToTable_Button
             // 
-            this.AddItemToTable_Button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.AddItemToTable_Button.Animated = true;
             this.AddItemToTable_Button.BorderRadius = 3;
             this.AddItemToTable_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
@@ -473,6 +465,33 @@
             // guna2DragControl1
             // 
             this.guna2DragControl1.TargetControl = this.Header;
+            // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.dateTimePicker.Animated = true;
+            this.dateTimePicker.BackColor = System.Drawing.Color.Transparent;
+            this.dateTimePicker.BorderRadius = 3;
+            this.dateTimePicker.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.dateTimePicker.CheckedState.Parent = this.dateTimePicker;
+            this.dateTimePicker.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dateTimePicker.CustomFormat = " dd/MM/yyyy";
+            this.dateTimePicker.FillColor = System.Drawing.Color.White;
+            this.dateTimePicker.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker.ForeColor = System.Drawing.Color.Black;
+            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.dateTimePicker.HoverState.Parent = this.dateTimePicker;
+            this.dateTimePicker.Location = new System.Drawing.Point(132, 504);
+            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(0);
+            this.dateTimePicker.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dateTimePicker.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.ShadowDecoration.Parent = this.dateTimePicker;
+            this.dateTimePicker.Size = new System.Drawing.Size(216, 29);
+            this.dateTimePicker.TabIndex = 90;
+            this.dateTimePicker.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.dateTimePicker.Value = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
             // 
             // NameProduct_ComboBox
             // 
@@ -514,7 +533,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 572);
+            this.ClientSize = new System.Drawing.Size(623, 689);
+            this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.NameProduct_ComboBox);
             this.Controls.Add(this.Serial_ComboBox);
             this.Controls.Add(this.AddItemToTable_Button);
@@ -534,6 +554,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AddInvoice_Form";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddInvoice_Form";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddInvoice_Form_FormClosing);
@@ -563,5 +584,7 @@
         private Control.ComboBoxCustom Serial_ComboBox;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Control.ComboBoxCustom NameProduct_ComboBox;
+        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dateTimePicker;
     }
 }

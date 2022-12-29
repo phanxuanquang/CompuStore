@@ -1,5 +1,7 @@
-﻿using CompuStore.Database.Services;
+﻿using CompuStore.Database.Models;
+using CompuStore.Database.Services;
 using CompuStore.GUI;
+using CompuStore.Utilities.ExportPDF;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,12 +22,13 @@ namespace CompuStore.GUI
         {
             public int ID { get; set; }
             public string Value { get; set; }
-            public string ConnectionString;
+            public string ConnectionString; 
         }
 
         public Login_Form()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.Icon;
             BindingList<ServerComboBoxBinding> binding = new BindingList<ServerComboBoxBinding>();
             binding.Add(new ServerComboBoxBinding { ID = 1, Value = "Server chính - kitaz.database.windows.net", ConnectionString = "CompuStoreDBEntities" });
             binding.Add(new ServerComboBoxBinding { ID = 2, Value = "Server backup - Local", ConnectionString = "CompuStoreDBEntities_Backup" });
@@ -81,8 +84,8 @@ namespace CompuStore.GUI
 
         private async void Login_Button_Click(object sender, EventArgs e)
         {
-            Username_Box.Text = "20998983223";
-            Password_Box.Text = "20998983223";
+            //Username_Box.Text = "20998983223";
+            //Password_Box.Text = "20998983223";
             if (Username_Box.Text == String.Empty || Password_Box.Text == String.Empty)
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin đăng nhập.", "Đăng nhập thất bại", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -107,12 +110,7 @@ namespace CompuStore.GUI
                     this.Hide();
                     this.ShowIcon = this.ShowInTaskbar = false;
 
-                    switch (loginVerification.Item2)
-                    {
-
-                    }
-
-                    MainWindow mainWindow = new MainWindow();
+                    MainWindow mainWindow = new MainWindow(loginVerification.Item2);
                     mainWindow.ShowDialog();
                 }
                 else

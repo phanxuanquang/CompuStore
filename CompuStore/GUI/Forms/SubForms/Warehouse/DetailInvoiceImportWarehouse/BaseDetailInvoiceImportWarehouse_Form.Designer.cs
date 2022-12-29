@@ -59,6 +59,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.LineUp_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.NameProduct_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.Manufacturer_ComboBox = new CompuStore.Control.ComboBoxCustom();
+            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.TableData_DataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             this.SuspendLayout();
@@ -70,10 +71,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Header.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Header.ForeColor = System.Drawing.Color.White;
             this.Header.Location = new System.Drawing.Point(0, 0);
-            this.Header.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.Header.Margin = new System.Windows.Forms.Padding(12, 0, 12, 0);
             this.Header.Name = "Header";
-            this.Header.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
-            this.Header.Size = new System.Drawing.Size(1427, 40);
+            this.Header.Padding = new System.Windows.Forms.Padding(70, 0, 0, 0);
+            this.Header.Size = new System.Drawing.Size(2854, 80);
             this.Header.TabIndex = 5;
             this.Header.Text = "Chi tiết nhập sản phẩm";
             this.Header.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -87,11 +88,11 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Exit_Button.HoverState.Parent = this.Exit_Button;
             this.Exit_Button.Image = global::CompuStore.Properties.Resources.Close;
             this.Exit_Button.ImageSize = new System.Drawing.Size(27, 27);
-            this.Exit_Button.Location = new System.Drawing.Point(1387, 0);
-            this.Exit_Button.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.Exit_Button.Location = new System.Drawing.Point(2774, 0);
+            this.Exit_Button.Margin = new System.Windows.Forms.Padding(12, 16, 12, 16);
             this.Exit_Button.Name = "Exit_Button";
             this.Exit_Button.PressedState.Parent = this.Exit_Button;
-            this.Exit_Button.Size = new System.Drawing.Size(40, 40);
+            this.Exit_Button.Size = new System.Drawing.Size(80, 80);
             this.Exit_Button.TabIndex = 6;
             this.Exit_Button.Click += new System.EventHandler(this.Exit_Clicked);
             // 
@@ -103,10 +104,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             // 
             this.Manufacturer.AutoSize = true;
             this.Manufacturer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Manufacturer.Location = new System.Drawing.Point(93, 136);
-            this.Manufacturer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Manufacturer.Location = new System.Drawing.Point(186, 272);
+            this.Manufacturer.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.Manufacturer.Name = "Manufacturer";
-            this.Manufacturer.Size = new System.Drawing.Size(76, 15);
+            this.Manufacturer.Size = new System.Drawing.Size(153, 32);
             this.Manufacturer.TabIndex = 7;
             this.Manufacturer.Text = "Nhà sản xuất";
             // 
@@ -114,10 +115,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             // 
             this.ReleaseDate_Label.AutoSize = true;
             this.ReleaseDate_Label.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ReleaseDate_Label.Location = new System.Drawing.Point(97, 206);
-            this.ReleaseDate_Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.ReleaseDate_Label.Location = new System.Drawing.Point(194, 412);
+            this.ReleaseDate_Label.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.ReleaseDate_Label.Name = "ReleaseDate_Label";
-            this.ReleaseDate_Label.Size = new System.Drawing.Size(72, 15);
+            this.ReleaseDate_Label.Size = new System.Drawing.Size(145, 32);
             this.ReleaseDate_Label.TabIndex = 8;
             this.ReleaseDate_Label.Text = "Ngày ra mắt";
             // 
@@ -125,10 +126,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             // 
             this.NameProduct.AutoSize = true;
             this.NameProduct.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NameProduct.Location = new System.Drawing.Point(89, 102);
-            this.NameProduct.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.NameProduct.Location = new System.Drawing.Point(178, 204);
+            this.NameProduct.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.NameProduct.Name = "NameProduct";
-            this.NameProduct.Size = new System.Drawing.Size(80, 15);
+            this.NameProduct.Size = new System.Drawing.Size(163, 32);
             this.NameProduct.TabIndex = 9;
             this.NameProduct.Text = "Tên sản phẩm";
             // 
@@ -136,10 +137,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             // 
             this.TotalImportWarehouse.AutoSize = true;
             this.TotalImportWarehouse.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalImportWarehouse.Location = new System.Drawing.Point(102, 241);
-            this.TotalImportWarehouse.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.TotalImportWarehouse.Location = new System.Drawing.Point(204, 482);
+            this.TotalImportWarehouse.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.TotalImportWarehouse.Name = "TotalImportWarehouse";
-            this.TotalImportWarehouse.Size = new System.Drawing.Size(67, 15);
+            this.TotalImportWarehouse.Size = new System.Drawing.Size(137, 32);
             this.TotalImportWarehouse.TabIndex = 10;
             this.TotalImportWarehouse.Text = "Tổng giá trị";
             // 
@@ -147,10 +148,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             // 
             this.TotalImportWarehouse_Label.AutoSize = true;
             this.TotalImportWarehouse_Label.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TotalImportWarehouse_Label.Location = new System.Drawing.Point(217, 241);
-            this.TotalImportWarehouse_Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.TotalImportWarehouse_Label.Location = new System.Drawing.Point(434, 482);
+            this.TotalImportWarehouse_Label.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.TotalImportWarehouse_Label.Name = "TotalImportWarehouse_Label";
-            this.TotalImportWarehouse_Label.Size = new System.Drawing.Size(105, 15);
+            this.TotalImportWarehouse_Label.Size = new System.Drawing.Size(216, 32);
             this.TotalImportWarehouse_Label.TabIndex = 15;
             this.TotalImportWarehouse_Label.Text = "1000 củ khoai lang";
             // 
@@ -166,12 +167,13 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.AddProduct_Button.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddProduct_Button.ForeColor = System.Drawing.Color.White;
             this.AddProduct_Button.HoverState.Parent = this.AddProduct_Button;
-            this.AddProduct_Button.Location = new System.Drawing.Point(1124, 157);
+            this.AddProduct_Button.Location = new System.Drawing.Point(2248, 314);
+            this.AddProduct_Button.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.AddProduct_Button.Name = "AddProduct_Button";
             this.AddProduct_Button.PressedDepth = 5;
             this.AddProduct_Button.ShadowDecoration.Parent = this.AddProduct_Button;
-            this.AddProduct_Button.Size = new System.Drawing.Size(75, 52);
-            this.AddProduct_Button.TabIndex = 19;
+            this.AddProduct_Button.Size = new System.Drawing.Size(150, 104);
+            this.AddProduct_Button.TabIndex = 6;
             this.AddProduct_Button.Text = "Thêm";
             this.AddProduct_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.AddProduct_Button.Visible = false;
@@ -188,12 +190,13 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.DeleteProduct_Button.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DeleteProduct_Button.ForeColor = System.Drawing.Color.White;
             this.DeleteProduct_Button.HoverState.Parent = this.DeleteProduct_Button;
-            this.DeleteProduct_Button.Location = new System.Drawing.Point(1205, 157);
+            this.DeleteProduct_Button.Location = new System.Drawing.Point(2410, 314);
+            this.DeleteProduct_Button.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.DeleteProduct_Button.Name = "DeleteProduct_Button";
             this.DeleteProduct_Button.PressedDepth = 5;
             this.DeleteProduct_Button.ShadowDecoration.Parent = this.DeleteProduct_Button;
-            this.DeleteProduct_Button.Size = new System.Drawing.Size(75, 52);
-            this.DeleteProduct_Button.TabIndex = 18;
+            this.DeleteProduct_Button.Size = new System.Drawing.Size(150, 104);
+            this.DeleteProduct_Button.TabIndex = 7;
             this.DeleteProduct_Button.Text = "Xóa";
             this.DeleteProduct_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.DeleteProduct_Button.Visible = false;
@@ -210,12 +213,13 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.AddProductByExcel_Button.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddProductByExcel_Button.ForeColor = System.Drawing.Color.White;
             this.AddProductByExcel_Button.HoverState.Parent = this.AddProductByExcel_Button;
-            this.AddProductByExcel_Button.Location = new System.Drawing.Point(1125, 99);
+            this.AddProductByExcel_Button.Location = new System.Drawing.Point(2250, 198);
+            this.AddProductByExcel_Button.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.AddProductByExcel_Button.Name = "AddProductByExcel_Button";
             this.AddProductByExcel_Button.PressedDepth = 5;
             this.AddProductByExcel_Button.ShadowDecoration.Parent = this.AddProductByExcel_Button;
-            this.AddProductByExcel_Button.Size = new System.Drawing.Size(155, 52);
-            this.AddProductByExcel_Button.TabIndex = 17;
+            this.AddProductByExcel_Button.Size = new System.Drawing.Size(310, 104);
+            this.AddProductByExcel_Button.TabIndex = 5;
             this.AddProductByExcel_Button.Text = "Nhập bằng Excel";
             this.AddProductByExcel_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.AddProductByExcel_Button.Visible = false;
@@ -257,8 +261,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.TableData_DataGridView.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.TableData_DataGridView.EnableHeadersVisualStyles = false;
             this.TableData_DataGridView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.TableData_DataGridView.Location = new System.Drawing.Point(0, 327);
-            this.TableData_DataGridView.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.TableData_DataGridView.Location = new System.Drawing.Point(0, 654);
+            this.TableData_DataGridView.Margin = new System.Windows.Forms.Padding(12, 16, 12, 16);
             this.TableData_DataGridView.MultiSelect = false;
             this.TableData_DataGridView.Name = "TableData_DataGridView";
             this.TableData_DataGridView.ReadOnly = true;
@@ -283,7 +287,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.TableData_DataGridView.RowTemplate.Height = 30;
             this.TableData_DataGridView.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.TableData_DataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.TableData_DataGridView.Size = new System.Drawing.Size(1427, 451);
+            this.TableData_DataGridView.Size = new System.Drawing.Size(2854, 902);
             this.TableData_DataGridView.TabIndex = 20;
             this.TableData_DataGridView.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.TableData_DataGridView.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -315,10 +319,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             // 
             this.IDImportWarehouse_Value.AutoSize = true;
             this.IDImportWarehouse_Value.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IDImportWarehouse_Value.Location = new System.Drawing.Point(216, 66);
-            this.IDImportWarehouse_Value.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.IDImportWarehouse_Value.Location = new System.Drawing.Point(432, 132);
+            this.IDImportWarehouse_Value.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.IDImportWarehouse_Value.Name = "IDImportWarehouse_Value";
-            this.IDImportWarehouse_Value.Size = new System.Drawing.Size(134, 21);
+            this.IDImportWarehouse_Value.Size = new System.Drawing.Size(268, 45);
             this.IDImportWarehouse_Value.TabIndex = 25;
             this.IDImportWarehouse_Value.Text = "IMPORT_SV0823";
             // 
@@ -326,10 +330,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             // 
             this.IDImportWarehouse_Label.AutoSize = true;
             this.IDImportWarehouse_Label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.IDImportWarehouse_Label.Location = new System.Drawing.Point(49, 64);
-            this.IDImportWarehouse_Label.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.IDImportWarehouse_Label.Location = new System.Drawing.Point(98, 128);
+            this.IDImportWarehouse_Label.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.IDImportWarehouse_Label.Name = "IDImportWarehouse_Label";
-            this.IDImportWarehouse_Label.Size = new System.Drawing.Size(120, 21);
+            this.IDImportWarehouse_Label.Size = new System.Drawing.Size(236, 45);
             this.IDImportWarehouse_Label.TabIndex = 24;
             this.IDImportWarehouse_Label.Text = "Mã nhập hàng";
             // 
@@ -345,12 +349,13 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Finish_Button.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Finish_Button.ForeColor = System.Drawing.Color.White;
             this.Finish_Button.HoverState.Parent = this.Finish_Button;
-            this.Finish_Button.Location = new System.Drawing.Point(1286, 99);
+            this.Finish_Button.Location = new System.Drawing.Point(2572, 198);
+            this.Finish_Button.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Finish_Button.Name = "Finish_Button";
             this.Finish_Button.PressedDepth = 5;
             this.Finish_Button.ShadowDecoration.Parent = this.Finish_Button;
-            this.Finish_Button.Size = new System.Drawing.Size(83, 110);
-            this.Finish_Button.TabIndex = 27;
+            this.Finish_Button.Size = new System.Drawing.Size(166, 220);
+            this.Finish_Button.TabIndex = 8;
             this.Finish_Button.Text = "Hoàn tất";
             this.Finish_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.Finish_Button.Visible = false;
@@ -360,10 +365,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             // 
             this.LineUp.AutoSize = true;
             this.LineUp.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LineUp.Location = new System.Drawing.Point(78, 171);
-            this.LineUp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LineUp.Location = new System.Drawing.Point(156, 342);
+            this.LineUp.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.LineUp.Name = "LineUp";
-            this.LineUp.Size = new System.Drawing.Size(91, 15);
+            this.LineUp.Size = new System.Drawing.Size(184, 32);
             this.LineUp.TabIndex = 28;
             this.LineUp.Text = "Dòng sản phẩm";
             // 
@@ -372,11 +377,12 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.ReleaseDate_DateTimePicker.CustomFormat = "h:mm tt dd/MM/yyyy";
             this.ReleaseDate_DateTimePicker.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReleaseDate_DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.ReleaseDate_DateTimePicker.Location = new System.Drawing.Point(220, 200);
+            this.ReleaseDate_DateTimePicker.Location = new System.Drawing.Point(440, 400);
+            this.ReleaseDate_DateTimePicker.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.ReleaseDate_DateTimePicker.MinDate = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             this.ReleaseDate_DateTimePicker.Name = "ReleaseDate_DateTimePicker";
-            this.ReleaseDate_DateTimePicker.Size = new System.Drawing.Size(250, 23);
-            this.ReleaseDate_DateTimePicker.TabIndex = 30;
+            this.ReleaseDate_DateTimePicker.Size = new System.Drawing.Size(496, 39);
+            this.ReleaseDate_DateTimePicker.TabIndex = 4;
             this.ReleaseDate_DateTimePicker.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             // 
             // Filter_FlowLayoutPanel
@@ -384,9 +390,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Filter_FlowLayoutPanel.AutoScroll = true;
             this.Filter_FlowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.Filter_FlowLayoutPanel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Filter_FlowLayoutPanel.Location = new System.Drawing.Point(0, 276);
+            this.Filter_FlowLayoutPanel.Location = new System.Drawing.Point(0, 552);
+            this.Filter_FlowLayoutPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Filter_FlowLayoutPanel.Name = "Filter_FlowLayoutPanel";
-            this.Filter_FlowLayoutPanel.Size = new System.Drawing.Size(1268, 40);
+            this.Filter_FlowLayoutPanel.Size = new System.Drawing.Size(2536, 80);
             this.Filter_FlowLayoutPanel.TabIndex = 31;
             // 
             // ResetFilter
@@ -401,13 +408,13 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.ResetFilter.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ResetFilter.ForeColor = System.Drawing.Color.White;
             this.ResetFilter.HoverState.Parent = this.ResetFilter;
-            this.ResetFilter.Location = new System.Drawing.Point(1276, 276);
-            this.ResetFilter.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.ResetFilter.Location = new System.Drawing.Point(2552, 552);
+            this.ResetFilter.Margin = new System.Windows.Forms.Padding(10, 12, 10, 12);
             this.ResetFilter.Name = "ResetFilter";
             this.ResetFilter.PressedDepth = 5;
             this.ResetFilter.ShadowDecoration.Parent = this.ResetFilter;
-            this.ResetFilter.Size = new System.Drawing.Size(139, 40);
-            this.ResetFilter.TabIndex = 32;
+            this.ResetFilter.Size = new System.Drawing.Size(278, 80);
+            this.ResetFilter.TabIndex = 9;
             this.ResetFilter.Text = "Đặt lại bộ lọc";
             this.ResetFilter.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.ResetFilter.Click += new System.EventHandler(this.ResetFilter_Click);
@@ -417,10 +424,10 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.HeaderIcon.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
             this.HeaderIcon.BackgroundImage = global::CompuStore.Properties.Resources.Storage___Header;
             this.HeaderIcon.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.HeaderIcon.Location = new System.Drawing.Point(9, 7);
+            this.HeaderIcon.Location = new System.Drawing.Point(18, 14);
             this.HeaderIcon.Margin = new System.Windows.Forms.Padding(0);
             this.HeaderIcon.Name = "HeaderIcon";
-            this.HeaderIcon.Size = new System.Drawing.Size(25, 25);
+            this.HeaderIcon.Size = new System.Drawing.Size(50, 50);
             this.HeaderIcon.TabIndex = 44;
             this.HeaderIcon.TabStop = false;
             // 
@@ -432,11 +439,11 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.LineUp_ComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LineUp_ComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LineUp_ComboBox.FormattingEnabled = true;
-            this.LineUp_ComboBox.Location = new System.Drawing.Point(220, 168);
-            this.LineUp_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.LineUp_ComboBox.Location = new System.Drawing.Point(440, 336);
+            this.LineUp_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.LineUp_ComboBox.Name = "LineUp_ComboBox";
-            this.LineUp_ComboBox.Size = new System.Drawing.Size(250, 23);
-            this.LineUp_ComboBox.TabIndex = 29;
+            this.LineUp_ComboBox.Size = new System.Drawing.Size(496, 40);
+            this.LineUp_ComboBox.TabIndex = 3;
             this.LineUp_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.NameProduct_ComboBox_InsertKeyPressed);
             this.LineUp_ComboBox.Leave += new System.EventHandler(this.NameProduct_ComboBox_Leave);
             // 
@@ -448,11 +455,11 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.NameProduct_ComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NameProduct_ComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NameProduct_ComboBox.FormattingEnabled = true;
-            this.NameProduct_ComboBox.Location = new System.Drawing.Point(220, 99);
-            this.NameProduct_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.NameProduct_ComboBox.Location = new System.Drawing.Point(440, 198);
+            this.NameProduct_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.NameProduct_ComboBox.Name = "NameProduct_ComboBox";
-            this.NameProduct_ComboBox.Size = new System.Drawing.Size(250, 23);
-            this.NameProduct_ComboBox.TabIndex = 14;
+            this.NameProduct_ComboBox.Size = new System.Drawing.Size(496, 40);
+            this.NameProduct_ComboBox.TabIndex = 1;
             this.NameProduct_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.NameProduct_ComboBox_InsertKeyPressed);
             this.NameProduct_ComboBox.Leave += new System.EventHandler(this.NameProduct_ComboBox_Leave);
             // 
@@ -464,20 +471,20 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Manufacturer_ComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Manufacturer_ComboBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Manufacturer_ComboBox.FormattingEnabled = true;
-            this.Manufacturer_ComboBox.Location = new System.Drawing.Point(220, 133);
-            this.Manufacturer_ComboBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Manufacturer_ComboBox.Location = new System.Drawing.Point(440, 266);
+            this.Manufacturer_ComboBox.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.Manufacturer_ComboBox.Name = "Manufacturer_ComboBox";
-            this.Manufacturer_ComboBox.Size = new System.Drawing.Size(250, 23);
-            this.Manufacturer_ComboBox.TabIndex = 11;
+            this.Manufacturer_ComboBox.Size = new System.Drawing.Size(496, 40);
+            this.Manufacturer_ComboBox.TabIndex = 2;
             this.Manufacturer_ComboBox.InsertKeyPressed += new CompuStore.Control.ComboBoxCustom.InsertKeyEvent(this.NameProduct_ComboBox_InsertKeyPressed);
             this.Manufacturer_ComboBox.Leave += new System.EventHandler(this.NameProduct_ComboBox_Leave);
             // 
             // BaseDetailInvoiceImportWarehouse_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1427, 778);
+            this.ClientSize = new System.Drawing.Size(2854, 1556);
             this.Controls.Add(this.HeaderIcon);
             this.Controls.Add(this.ResetFilter);
             this.Controls.Add(this.Filter_FlowLayoutPanel);
@@ -502,7 +509,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             this.Controls.Add(this.Header);
             this.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Margin = new System.Windows.Forms.Padding(8, 10, 8, 10);
             this.Name = "BaseDetailInvoiceImportWarehouse_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "DetailInvoiceImportWarehouse";
@@ -539,5 +546,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         private System.Windows.Forms.FlowLayoutPanel Filter_FlowLayoutPanel;
         protected Guna.UI2.WinForms.Guna2Button ResetFilter;
         private System.Windows.Forms.PictureBox HeaderIcon;
+        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
     }
 }

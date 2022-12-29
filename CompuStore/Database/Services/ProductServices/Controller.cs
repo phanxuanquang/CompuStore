@@ -21,6 +21,7 @@ namespace CompuStore.Database.Services.ProductServices
             Expression<Func<TEntity, bool>> whereQuery, TEntity entity) where TEntity : class
         {
             TEntity find = tableTarget.Where(whereQuery).FirstOrDefault();
+            List<TEntity> get = tableTarget.ToList();
 
             if (find == null)
             {
@@ -31,6 +32,11 @@ namespace CompuStore.Database.Services.ProductServices
             }
 
             return find;
+        }
+
+        public Task Reload<TEntity>(TEntity entity) where TEntity : class
+        {
+            return DataProvider.Instance.Database.Entry<TEntity>(entity).ReloadAsync();
         }
     }
 }

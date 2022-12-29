@@ -98,6 +98,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         #region Variable
         private BindingList<ComboBoxBinding> bindingDistributor = null;
         private BindingList<ComboBoxBinding> bindingStore = null;
+        protected IMPORT_WAREHOUSE importWarehouse = null;
         #endregion
 
         #region Translater
@@ -106,7 +107,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             { "LineUp", ("Dòng sản phẩm", DataGridViewContentAlignment.MiddleLeft) },
             { "Manufacturer", ("Nhà sản xuất", DataGridViewContentAlignment.MiddleLeft) },
             { "ReleaseDate", ("Năm ra mắt", DataGridViewContentAlignment.MiddleCenter) },
-            { "Quantity", ("Số lượng|Số lượng sản phẩm nhập", DataGridViewContentAlignment.MiddleCenter) },
+            { "Quantity", ("Số lượng|Số lượng sản phẩm nhập", DataGridViewContentAlignment.MiddleRight) },
             { "RangeTotal", ("Giá tiền|Khoảng giá từ cấu hình thấp đến cao nhất", DataGridViewContentAlignment.MiddleRight) }};
         #endregion
 
@@ -142,6 +143,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         protected BaseInvoiceImportWarehouse_Form()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.Icon;
+            this.ShowInTaskbar = false;
             if (DeviceDpi > 96)
             {
                 TableData_DataGridView.ColumnHeadersHeight = 48;
@@ -209,7 +212,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 ImportToStore_ComboBox.DisplayMember = "Value";
                 SetDefaultComboBox(ImportToStore_ComboBox, null);
 
-                StaffImport_Value.Text = string.Format("{0} | {1}", LoginServices.Instance.CurrentStaff.INFOR.NAME, LoginServices.Instance.CurrentStaff.NAME_ID);
+                StaffImport_Value.Text = importWarehouse == null
+                ? string.Format("{0} | {1}", LoginServices.Instance.CurrentStaff?.INFOR.NAME, LoginServices.Instance.CurrentStaff?.NAME_ID)
+                : string.Format("{0} | {1}", importWarehouse.STAFF.INFOR.NAME, importWarehouse.STAFF.NAME_ID);
             };
 
             runLoading.GetAwaiter().OnCompleted(() => waiting.Close());
@@ -242,12 +247,11 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     string headerText = itemTranslater.Item1;
                     string[] split = headerText.Split('|');
                     column.HeaderText = split[0];
+                    column.CellTemplate.Style.Alignment = itemTranslater.Item2;
                     if (split.Length > 1)
                     {
                         column.ToolTipText = split[1];
                     }
-                    //not alignment yet
-                    //column.DefaultCellStyle.Alignment = itemTranslater.Item2;
                 }
                 else
                 {
@@ -321,6 +325,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         protected bool hasChanged = false;
         public virtual bool ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, bool edit)
         {
+            this.importWarehouse = importWarehouse;
             if ((edit && this is AddInvoiceImportWarehouse_Form) || !edit)
             {
                 base.ShowDialog();

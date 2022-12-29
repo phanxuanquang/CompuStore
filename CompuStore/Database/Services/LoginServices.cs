@@ -69,6 +69,8 @@ namespace CompuStore.Database.Services
             switch (currentUser.USERROLE.ROLE)
             {
                 case "Nhân viên":
+                    //Chủ cửa hàng là role đăng biệt
+                case "Chủ cửa hàng":
                     currentStaff = StaffServices.Instance.GetStaffByUsername(userName);
                     break;
             }

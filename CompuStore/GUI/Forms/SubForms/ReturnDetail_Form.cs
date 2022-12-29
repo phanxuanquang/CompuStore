@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CompuStore.Database.Models;
+using CompuStore.Database.Services;
+using Guna.UI2.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +15,36 @@ namespace CompuStore
 {
     public partial class ReturnDetail_Form : Form
     {
-        public ReturnDetail_Form()
+        CHANGE_OR_REFUND_PRODUCT warrantyCurrent;
+        DETAIL_INVOICE detail;
+        CUSTOMER customer;
+        public ReturnDetail_Form(object warrantyD)
         {
+            if (warrantyD != null)
+            {
+                warrantyCurrent = warrantyD as CHANGE_OR_REFUND_PRODUCT;
+            }
             InitializeComponent();
+            this.Icon = Properties.Resources.Icon;
+            this.ShowInTaskbar = false;
+            guna2ShadowForm1.SetShadowForm(this);
+            OldItemSerial_Box.ReadOnly = Identity_Box.ReadOnly = Name_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = NewItemSerial_Box.ReadOnly= ReturnReason.ReadOnly = NewItemSerial_Box.ReadOnly = true;
+         
+            this.Load += WarrantyDetail_Form_Load;
+        }
+
+        private void WarrantyDetail_Form_Load(object sender, EventArgs e)
+        {
+            if (warrantyCurrent != null)
+            {
+                cHANGEORREFUNDPRODUCTBindingSource.DataSource = warrantyCurrent;
+                iNFORBindingSource.DataSource = warrantyCurrent.INVOICE.CUSTOMER.INFOR;
+                pRODUCTBindingSource.DataSource = warrantyCurrent.PRODUCT;
+                lbStaffName.Text += " " + warrantyCurrent.STAFF.INFOR.NAME;
+                lbDate.Text += " " + warrantyCurrent.RETURN_DATE.ToString();
+            }
+           
+            TurnOnAutocomplete();
         }
 
         private void Exit_Button_Click(object sender, EventArgs e)
@@ -22,20 +52,56 @@ namespace CompuStore
             this.Close();
         }
 
-        private void EditAndSave_Button_Click(object sender, EventArgs e)
+        
+        private bool isValidSerialID(DETAIL_INVOICE detail)
         {
-            if (EditAndSave_Button.Text == "SỬA HÓA ĐƠN")
+            if (detail == null)
             {
-                OldItemSerial_Box.Width = 406;
-                OldItemSerial_Box.ReadOnly = NewItemSerial_Box.ReadOnly = Identity_Box.ReadOnly = Name_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = ReturnReason.ReadOnly = false;
-                EditAndSave_Button.Text = "LƯU THÔNG TIN";
+                return false;
+            }
+            return true;
+        }
+
+        private void TurnOnAutocomplete()
+        {
+            List<DETAIL_INVOICE> arrayOfWowrds1 = new List<DETAIL_INVOICE>();
+            try
+            {
+                //Read in data Autocomplete list to a string[]
+                arrayOfWowrds1 = DetailInvoiceServices.Instance.GetDETAIL_INVOICEs();
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "File Missing", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+            AddAutoCompleteCource(OldItemSerial_Box, arrayOfWowrds1.Select(item => item.PRODUCT.SERIAL_ID).ToArray());
+        }
+
+        public void AddAutoCompleteCource(Guna2TextBox textBox, string[] strings)
+        {
+            textBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            textBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            AutoCompleteStringCollection collection = new AutoCompleteStringCollection();
+            collection.AddRange(strings);
+            textBox.AutoCompleteCustomSource = collection;
+        }
+
+
+        private void AddInfor_Button_Click(object sender, EventArgs e)
+        {
+            detail = InvoiceServices.Instance.GetDetailBySerialID((OldItemSerial_Box.Text));
+            if (!isValidSerialID(detail))
+            {
+                MessageBox.Show("Không tìm thấy hóa đơn bán sản phẩm này.", "Không tìm thấy", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                // lưu lại thông tin
-                OldItemSerial_Box.Width = 548;
-                OldItemSerial_Box.ReadOnly = NewItemSerial_Box.ReadOnly = Identity_Box.ReadOnly = Name_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = ReturnReason.ReadOnly = true;
-                EditAndSave_Button.Text = "SỬA HÓA ĐƠN";
+                customer = detail.INVOICE.CUSTOMER;
+                Identity_Box.Text = customer.INFOR.IDENTITY_CODE;
+                Name_Box.Text = customer.INFOR.NAME;
+                PhoneNumber_Box.Text = customer.INFOR.PHONE_NUMBER;
+                Email_Box.Text = customer.INFOR.EMAIL;
             }
         }
 
@@ -43,5 +109,7 @@ namespace CompuStore
         {
             MessageBox.Show("Không tim thấy máy in. Vui lòng thử lại sau.", "Không tìm thấy máy in", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
+
+       
     }
 }

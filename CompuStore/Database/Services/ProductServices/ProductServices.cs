@@ -27,6 +27,15 @@ namespace CompuStore.Database.Services.ProductServices
 
         public PRODUCT GetProductBySerial(string serial) => DataProvider.Instance.Database.PRODUCTs.Where(item => item.SERIAL_ID == serial).FirstOrDefault();
 
+        protected async Task<bool> DeleteProduct(PRODUCT target)
+        {
+            if (target == null)
+                throw new ArgumentNullException();
+            DataProvider.Instance.Database.PRODUCTs.Remove(target);
+            await DataProvider.Instance.Database.SaveChangesAsync();
+            return true;
+        }
+
         public async Task<PRODUCT> ImportProduct(ModelProduct product)
         {
             if (product == null) return null;
@@ -48,6 +57,60 @@ namespace CompuStore.Database.Services.ProductServices
             await DataProvider.Instance.Database.SaveChangesAsync();
 
             return dbProduct;
+        }
+
+        public async Task<bool?> RemoveProduct(ModelProduct model)
+        {
+            if (model == null)
+                throw new ArgumentNullException();
+            try
+            {
+                PRODUCT product = GetProductBySerial(model.Serial);
+                if (product.IN_WAREHOUSE == false)
+                    return null;
+                DETAIL_IMPORT_WAREHOUSE detail = DetailImportWarehouseServices.Instance.GetDetailImportWarehouseByProduct(product.PRODUCT_ID);
+                await DetailImportWarehouseServices.Instance.DeleteDetailImportWarehouse(detail);
+                await DeleteProduct(product);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool?> ChangeInfo(KeyValuePair<ModelProduct, ModelProduct> product)
+        {
+            if (product.Key == null || product.Value == null)
+                throw new ArgumentNullException();
+            try
+            {
+                PRODUCT current = GetProductBySerial(product.Key.Serial);
+                if (current.IN_WAREHOUSE == false)
+                    return null;
+                ModelProduct update = product.Value;
+
+                DETAIL_IMPORT_WAREHOUSE detailImport = DetailImportWarehouseServices.Instance.GetDetailImportWarehouseByProduct(current.PRODUCT_ID);
+
+                LINE_UP lineup = await LineUpServices.Instance.GetLineUp(update);
+                DISPLAY_SPECS displaySpecs = await DisplaySpecsServices.Instance.GetDislaySpecs(update);
+                COLOR color = await ColorServices.Instance.GetColor(update);
+                COMMON_SPECS commonSpecs = await CommonSpecsServices.Instance.GetCommonSpecs(update, lineup);
+                UNIQUE_SPECS uniqueSpecs = await UniqueSpecsServices.Instance.GetUniqueSpecs(update, displaySpecs);
+                DETAIL_SPECS detailSpecs = await DetailSpecsServices.Instance.GetDetailSpecs(update, commonSpecs, uniqueSpecs, color);
+
+                current.ID_DETAIL_SPECS = detailSpecs.ID;
+                current.SERIAL_ID = update.Serial;
+                detailImport.PRICE_PER_UNIT = update.Price;
+
+                await DataProvider.Instance.Database.SaveChangesAsync();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

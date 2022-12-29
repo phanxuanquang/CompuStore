@@ -42,6 +42,7 @@
             this.Header = new System.Windows.Forms.Label();
             this.iNVOICEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.DataTable)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iNVOICEBindingSource)).BeginInit();
@@ -154,6 +155,7 @@
             this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
             this.SearchBox.Size = new System.Drawing.Size(959, 37);
             this.SearchBox.TabIndex = 15;
+            this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             // 
             // ViewDetail_Button
             // 
@@ -261,5 +263,6 @@
         private System.Windows.Forms.Label Header;
         private System.Windows.Forms.BindingSource iNVOICEBindingSource;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
     }
 }

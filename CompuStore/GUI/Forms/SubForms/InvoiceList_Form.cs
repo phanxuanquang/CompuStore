@@ -27,6 +27,9 @@ namespace CompuStore
         {
             
             InitializeComponent();
+            this.Icon = Properties.Resources.Icon;
+            this.ShowInTaskbar = false;
+            guna2ShadowForm1.SetShadowForm(this);
             this.DataTable.AutoGenerateColumns = false;
             this.DataTable.DataSource = iNVOICEBindingSource;
             this.Load += InvoiceList_Form_Load;
@@ -63,9 +66,6 @@ namespace CompuStore
                 return handleParam;
             }
         }
-
- 
-
 
         public Task LoadDB(IProgress<bool> progress)
         {
@@ -129,7 +129,43 @@ namespace CompuStore
 
         private void ViewDetail_Button_Click(object sender, EventArgs e)
         {
+            if (DataTable.SelectedRows.Count > 0)
+            {
+                string id = DataTable.SelectedRows[0].Cells["Id"].Value.ToString();
+                InvoiceDetail_Form invoiceDetail = new InvoiceDetail_Form(id);
+                invoiceDetail.ShowDialog();
+                View(GetListView());
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn hóa đơn");
+            }
+        }
 
+        private void SearchBox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                CurrencyManager cm = (CurrencyManager)BindingContext[DataTable.DataSource];
+                cm.SuspendBinding();
+
+                foreach (DataGridViewRow row in DataTable.Rows)
+                {
+                    if (row.Cells["PhoneNum"].Value.ToString().ToLower().Contains(SearchBox.Text.ToLower()))
+                    {
+                        row.Visible = true;
+                    }
+                    else
+                    {
+                        row.Visible = false;
+                    }
+                }
+                cm.ResumeBinding();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

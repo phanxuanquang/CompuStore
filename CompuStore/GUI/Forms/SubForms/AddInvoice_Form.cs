@@ -12,6 +12,8 @@ using System.Windows.Forms;
 using Guna.UI2.WinForms;
 using CompuStore.Database.Services.ProductServices;
 using CompuStore.ImportData;
+using CompuStore.Utilities.ExportPDF;
+using System.IO;
 
 namespace CompuStore
 {
@@ -41,10 +43,13 @@ namespace CompuStore
         List<PRODUCT> productList = new List<PRODUCT>();
         STAFF currentStaff;
         DataTable adjustmentTable;
+        INVOICE lastInvoice = null;
 
         public AddInvoice_Form()
         {
             InitializeComponent();
+            this.Icon = Properties.Resources.Icon;
+            guna2ShadowForm1.SetShadowForm(this);
             this.Load += AddInvoice_Form_Load;
         }
 
@@ -55,11 +60,11 @@ namespace CompuStore
             LoadLabel();
         }
 
+        #region Biding
         private void LoadLabel()
         {
             currentStaff = LoginServices.Instance.CurrentStaff;
             lbStaffName.Text += " " + currentStaff.INFOR.NAME;
-            lbDate.Text += " " + DateTime.Now.ToLongDateString();
         }
 
         protected override CreateParams CreateParams
@@ -86,32 +91,26 @@ namespace CompuStore
             ItemTable.CellDoubleClick += ItemTable_CellDoubleClick;
         }
 
-        private void ItemTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                ItemTable.Rows.RemoveAt(e.RowIndex);
-                addedProduct.RemoveAt(e.RowIndex);
-            }    
-        }
 
-        private void Exit_Button_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         bool isValidCustomer(CUSTOMER customer)
         {
             if (customer == null)
             {
                 return false;
-            }    
+            }
             return true;
         }
 
         private void LoadData()
         {
             ItemTable.DataSource = GetAdjustmentTable();
+            foreach (DataGridViewRow row in ItemTable.Rows)
+            {
+                row.Cells["Số se-ri"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                row.Cells["Tên sản phẩm"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                row.Cells["Giá tiền"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
         }
 
         private DataTable GetAdjustmentTable()
@@ -139,9 +138,22 @@ namespace CompuStore
             else
             {
                 MessageBox.Show("Sản phẩm đã được thêm");
-            }    
+            }
             return adjustmentTable;
         }
+        #endregion
+
+        #region Event
+
+        private void ItemTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                ItemTable.Rows.RemoveAt(e.RowIndex);
+                addedProduct.RemoveAt(e.RowIndex);
+            }
+        }
+
 
         private void Identity_Box_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -175,29 +187,7 @@ namespace CompuStore
             }
         }
 
-        private void Save_Button_Click(object sender, EventArgs e)
-        {
-            foreach (var item in addedProduct)
-            {
-                productList.Add(Database.DataProvider.Instance.Database.PRODUCTs.Where(prod => prod.SERIAL_ID == item).FirstOrDefault());
-            }    
-
-            if (customer == null)
-            {
-                customer = CustomerServices.Instance.SaveCustomerToDB(Name_Box.Text, PhoneNumber_Box.Text, Email_Box.Text, Identity_Box.Text, Address_Box.Text);
-            }
-            Exception res = InvoiceServices.Instance.SaveInvoiceToDB(productList, customer.ID, currentStaff.ID, DateTime.Now, 10);
-            if (res.Message == "done")
-            {
-                MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show(res.Message);
-            }
-            this.Close();
-        }
-
+        
         private void AddInvoice_Form_FormClosing(object sender, FormClosingEventArgs e)
         {
             CompuStore.Tab.SaleManagement_Tab.nameIdCommonSpecs = null;
@@ -232,30 +222,7 @@ namespace CompuStore
             NameProduct_ComboBox.DisplayMember = "NAME";
         }
 
-        private void Print_Button_Click(object sender, EventArgs e)
-        {
-            //MessageBox.Show("Không tim thấy máy in. Vui lòng thử lại sau.", "Không tìm thấy máy in", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-
-            foreach (var item in addedProduct)
-            {
-                productList.Add(Database.DataProvider.Instance.Database.PRODUCTs.Where(prod => prod.SERIAL_ID == item).FirstOrDefault());
-            }
-
-            if (customer == null)
-            {
-                customer = CustomerServices.Instance.SaveCustomerToDB(Name_Box.Text, PhoneNumber_Box.Text, Email_Box.Text, Identity_Box.Text, Address_Box.Text);
-            }
-            Exception res = InvoiceServices.Instance.SaveInvoiceToDB(productList, customer.ID, currentStaff.ID, DateTime.Now, 10);
-            if (res.Message == "done")
-            {
-                MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show(res.Message);
-            }
-            this.Close();
-        }
+        
 
         private void NameProduct_ComboBox_Leave(object sender, EventArgs e)
         {
@@ -329,5 +296,93 @@ namespace CompuStore
         {
             LoadData();
         }
+
+        private void Exit_Button_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        #endregion
+
+        #region Button
+        private async void Save_Button_Click(object sender, EventArgs e)
+        {
+            foreach (var item in addedProduct)
+            {
+                productList.Add(Database.DataProvider.Instance.Database.PRODUCTs.Where(prod => prod.SERIAL_ID == item).FirstOrDefault());
+            }
+
+            if (customer == null)
+            {
+                customer = CustomerServices.Instance.SaveCustomerToDB(Name_Box.Text, PhoneNumber_Box.Text, Email_Box.Text, Identity_Box.Text, Address_Box.Text);
+            }
+            dynamic result = await InvoiceServices.Instance.SaveInvoiceToDB(productList, customer.ID, currentStaff.ID, dateTimePicker.Value, 10);
+            if (result is Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            else
+            {
+                lastInvoice = result;
+                MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            await Controller.Instance.Reload(lastInvoice);
+            //this.Close();
+        }
+
+        private async void Print_Button_Click(object sender, EventArgs e)
+        {
+            if (lastInvoice == null)
+                return;
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            if (dialog.ShowDialog() != DialogResult.OK)
+                return;
+            ExportPDF export = new ExportPDF();
+            IDataExport data = new InvoicePDF
+            {
+                ExportPath = Path.Combine(dialog.SelectedPath, "export.html"),
+                DataBindingTemplate = new
+                {
+                    data = new
+                    {
+                        id_invoice = lastInvoice.NAME_ID,
+                        date = lastInvoice.INVOICE_DATE,
+                        customer_name = lastInvoice.CUSTOMER.INFOR.NAME,
+                        phone_customer = lastInvoice.CUSTOMER.INFOR.PHONE_NUMBER,
+                        company = "XL COMPANY",
+                        address = "123 KTX KHU A",
+                        phone_company = "382765235",
+                        total = lastInvoice.DETAIL_INVOICE.Select(item => item.PRICE_PER_UNIT).Sum(),
+                        products = lastInvoice.DETAIL_INVOICE.Select(item => new { name = item.PRODUCT.DETAIL_SPECS.COMMON_SPECS.NAME, price = item.PRICE_PER_UNIT })
+                    }
+                }
+            };
+            bool result = await export.RunExport(data);
+            MessageBox.Show(result ? "Xuất thành công" : "Xuất thất bại");
+            //fake invoice
+            /*await Task.Factory.StartNew(() =>
+            {
+                int[] id = { 7, 8, 9 };
+
+                string message = string.Empty;
+                DateTime now = new DateTime(2022, 12, 1);
+                for (int index = 0; index < 10; index++)
+                {
+                    List<PRODUCT> items = Database.DataProvider.Instance.Database.PRODUCTs.Where(item => item.IN_WAREHOUSE == true && item.DETAIL_SPECS.COMMON_SPECS.NAME == "Apple MacBook Pro 15 (2018)").Take(1).ToList();
+                    now = now.AddDays(1);
+                    try
+                    {
+                        InvoiceServices.Instance.SaveInvoiceToDB(items, id[id.Length % 3], currentStaff.ID, now, 10);
+                    }
+                    catch (Exception ex)
+                    {
+                        message += ex;
+                    }
+                }
+            });
+            this.Close();*/
+        }
+        #endregion
+
     }
 }

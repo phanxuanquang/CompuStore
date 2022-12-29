@@ -76,7 +76,7 @@
             this.GridDataTable.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.GridDataTable.EnableHeadersVisualStyles = false;
             this.GridDataTable.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.GridDataTable.Location = new System.Drawing.Point(0, 78);
+            this.GridDataTable.Location = new System.Drawing.Point(0, 80);
             this.GridDataTable.MultiSelect = false;
             this.GridDataTable.Name = "GridDataTable";
             this.GridDataTable.ReadOnly = true;
@@ -96,7 +96,7 @@
             this.GridDataTable.RowTemplate.ReadOnly = true;
             this.GridDataTable.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.GridDataTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.GridDataTable.Size = new System.Drawing.Size(1700, 722);
+            this.GridDataTable.Size = new System.Drawing.Size(1700, 870);
             this.GridDataTable.TabIndex = 1;
             this.GridDataTable.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Default;
             this.GridDataTable.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -202,6 +202,7 @@
             this.SearchBox.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.SearchBox.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.SearchBox.FocusedState.Parent = this.SearchBox;
+            this.SearchBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SearchBox.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.SearchBox.HoverState.Parent = this.SearchBox;
             this.SearchBox.IconLeft = global::CompuStore.Properties.Resources.Search_Icon;
@@ -229,7 +230,7 @@
             this.Controls.Add(this.GridDataTable);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "BaseTab";
-            this.Size = new System.Drawing.Size(1700, 800);
+            this.Size = new System.Drawing.Size(1700, 950);
             ((System.ComponentModel.ISupportInitialize)(this.GridDataTable)).EndInit();
             this.ResumeLayout(false);
 

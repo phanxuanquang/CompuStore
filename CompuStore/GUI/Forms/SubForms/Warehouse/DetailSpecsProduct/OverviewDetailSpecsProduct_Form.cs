@@ -270,7 +270,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         #endregion
 
         #region Show handle
-        public override ResultDetailSpecsProduct ShowDialog(IWin32Window owner, IList<ModelProduct> payload, bool editable = true)
+        public override ResultDetailSpecsProduct ShowDialog(IWin32Window owner, IList<ModelProduct> payload, bool editable = true, bool editStatus = false)
         {
             products = payload;
             return base.ShowDialog(owner, payload, false);

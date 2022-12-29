@@ -64,10 +64,10 @@ namespace CompuStore.Tab
             this.GridDataTable.CellDoubleClick += DataTable_CellDoubleClick;
             this.GridDataTable.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             this.Load += SaleManagement_Tab_Load;
-            this.GridDataTable.Height = 690;
+            this.GridDataTable.Height = 840;
             this.GridDataTable.Dock = DockStyle.Bottom;
             PriceLimit_TrackBar.Value = PriceLimit_TrackBar.Maximum;
-            PriceLimit_Label.Text = PriceLimit_TrackBar.Value.ToString() + "0.000.000";
+            PriceLimit_Label.Text = PriceLimit_TrackBar.Value.ToString() + "0000000";
         }
 
         private void DataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -78,8 +78,8 @@ namespace CompuStore.Tab
                 PRODUCT pro = ProductServices.Instance.GetProductBySerial(serialID);
                 ModelProduct model = ModelProduct.DatabaseToModel(pro, Database.DataProvider.Instance.Database.DETAIL_IMPORT_WAREHOUSE.FirstOrDefault(item => item.PRODUCT_ID == pro.PRODUCT_ID), pro.DETAIL_SPECS.COMMON_SPECS.LINE_UP, pro.DETAIL_SPECS.UNIQUE_SPECS.DISPLAY_SPECS, pro.DETAIL_SPECS.UNIQUE_SPECS, pro.DETAIL_SPECS.COMMON_SPECS, pro.DETAIL_SPECS.COLOR);
                 BaseDetailSpecsProduct_Form detailSpecs = null;
-                detailSpecs = new OverviewDetailSpecsProduct_Form();
-                detailSpecs.ShowDialog(this, model.ToList());
+                detailSpecs = new ImportDetailSpecsProduct_Form();
+                detailSpecs.ShowDialog(this, model.ToList(), false);
             }
         }
 
@@ -234,6 +234,7 @@ namespace CompuStore.Tab
             string ram = RAM_ComboBox.SelectedIndex == 0 ? ram = string.Empty : RAM_ComboBox.Text;
             string storage = Storage_ComboBox.SelectedIndex == 0 ? storage = string.Empty : Storage_ComboBox.Text;
             int priceLimit = PriceLimit_TrackBar.Value * 10000000;
+            
             try
             {
                 CurrencyManager cm = (CurrencyManager)BindingContext[GridDataTable.DataSource];
@@ -241,6 +242,18 @@ namespace CompuStore.Tab
 
                 foreach (DataGridViewRow row in GridDataTable.Rows)
                 {
+                    bool isVGAValid()
+                    {
+                        if(row.Cells["GPU"].Value != null)
+                        {
+                            if ((row.Cells["GPU"].Value.ToString().Contains(vga))){
+                                {
+                                    return true;
+                                }
+                            }
+                        }
+                        return false;
+                    }
                     if (row.Cells["Name"].Value.ToString().ToLower().Contains(SearchBox.Text.ToLower()) &&
                         row.Cells["Color"].Value.ToString().ToLower().Contains(ColorSearch_Box.Text.ToLower()) &&
                         row.Cells["Size"].Value.ToString().Contains(size) &&
@@ -248,8 +261,8 @@ namespace CompuStore.Tab
                         row.Cells["CPU"].Value.ToString().Contains(cpu) &&
                         row.Cells["RAMString"].Value.ToString().Trim().Contains(ram) &&
                         row.Cells["StorageCapacity"].Value.ToString().Contains(storage)
-                    // && int.Parse(row.Cells["Price"].Value.ToString().Trim()) <= (PriceLimit_TrackBar.Value * 10000000);
-                    // && (row.Cells["GPU"].Value.ToString().Contains(vga) && row.Cells["GPU"].Value != null)
+                        && isVGAValid()
+                     && double.Parse(row.Cells["Price"].Value.ToString().Trim()) <= (PriceLimit_TrackBar.Value * 10000000)
                     )
                     {
                         row.Visible = true;
@@ -309,7 +322,8 @@ namespace CompuStore.Tab
 
         private void PriceLimit_TrackBar_ValueChanged(object sender, EventArgs e)
         {
-            Search();
+            PriceLimit_Label.Text = (PriceLimit_TrackBar.Value * 1000000).ToString();
+            Search(); 
         }
     }
 }

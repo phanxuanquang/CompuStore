@@ -56,7 +56,7 @@
             this.SearchBox.Location = new System.Drawing.Point(33, 19);
             this.SearchBox.PlaceholderText = "Tìm kiếm sản phẩm theo mã hoặc tên";
             this.SearchBox.ShadowDecoration.Parent = this.SearchBox;
-            this.SearchBox.Size = new System.Drawing.Size(1004, 37);
+            this.SearchBox.Size = new System.Drawing.Size(1213, 37);
             this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             // 
             // Button_2
@@ -68,11 +68,12 @@
             this.Button_2.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Button_2.HoverState.Parent = this.Button_2;
             this.Button_2.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Button_2.Location = new System.Drawing.Point(1256, 19);
+            this.Button_2.Location = new System.Drawing.Point(1469, 19);
             this.Button_2.ShadowDecoration.Parent = this.Button_2;
             this.Button_2.Text = "Xem cấu hình";
             this.Button_2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.Button_2.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.None;
+            this.Button_2.Visible = false;
             this.Button_2.Click += new System.EventHandler(this.ViewDetail_Button_Click);
             // 
             // Bottom_1
@@ -84,7 +85,7 @@
             this.Bottom_1.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Bottom_1.HoverState.Parent = this.Bottom_1;
             this.Bottom_1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Bottom_1.Location = new System.Drawing.Point(1047, 19);
+            this.Bottom_1.Location = new System.Drawing.Point(1256, 19);
             this.Bottom_1.Margin = new System.Windows.Forms.Padding(4);
             this.Bottom_1.ShadowDecoration.Parent = this.Bottom_1;
             this.Bottom_1.Text = "Tạo đơn hàng";
@@ -101,7 +102,7 @@
             this.Button_3.DialogResult = System.Windows.Forms.DialogResult.None;
             this.Button_3.HoverState.Parent = this.Button_3;
             this.Button_3.ImageAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.Button_3.Location = new System.Drawing.Point(1465, 19);
+            this.Button_3.Location = new System.Drawing.Point(1469, 19);
             this.Button_3.ShadowDecoration.Parent = this.Button_3;
             this.Button_3.Text = "Danh sách đơn hàng";
             this.Button_3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -130,7 +131,7 @@
             "16",
             "17"});
             this.Size_ComboBox.ItemsAppearance.Parent = this.Size_ComboBox;
-            this.Size_ComboBox.Location = new System.Drawing.Point(470, 63);
+            this.Size_ComboBox.Location = new System.Drawing.Point(640, 63);
             this.Size_ComboBox.Name = "Size_ComboBox";
             this.Size_ComboBox.ShadowDecoration.Parent = this.Size_ComboBox;
             this.Size_ComboBox.Size = new System.Drawing.Size(152, 36);
@@ -165,7 +166,7 @@
             "Ryzen 7",
             "Ryzen 9"});
             this.CPU_ComboBox.ItemsAppearance.Parent = this.CPU_ComboBox;
-            this.CPU_ComboBox.Location = new System.Drawing.Point(628, 63);
+            this.CPU_ComboBox.Location = new System.Drawing.Point(798, 63);
             this.CPU_ComboBox.Name = "CPU_ComboBox";
             this.CPU_ComboBox.ShadowDecoration.Parent = this.CPU_ComboBox;
             this.CPU_ComboBox.Size = new System.Drawing.Size(152, 36);
@@ -180,7 +181,6 @@
             this.VGA_ComboBox.BackColor = System.Drawing.Color.Transparent;
             this.VGA_ComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.VGA_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.VGA_ComboBox.Enabled = false;
             this.VGA_ComboBox.FocusedColor = System.Drawing.Color.Empty;
             this.VGA_ComboBox.FocusedState.Parent = this.VGA_ComboBox;
             this.VGA_ComboBox.Font = new System.Drawing.Font("Segoe UI", 10F);
@@ -196,7 +196,7 @@
             "RTX",
             "GTX"});
             this.VGA_ComboBox.ItemsAppearance.Parent = this.VGA_ComboBox;
-            this.VGA_ComboBox.Location = new System.Drawing.Point(786, 63);
+            this.VGA_ComboBox.Location = new System.Drawing.Point(956, 63);
             this.VGA_ComboBox.Name = "VGA_ComboBox";
             this.VGA_ComboBox.ShadowDecoration.Parent = this.VGA_ComboBox;
             this.VGA_ComboBox.Size = new System.Drawing.Size(152, 36);
@@ -225,7 +225,7 @@
             "16GB",
             "32GB"});
             this.RAM_ComboBox.ItemsAppearance.Parent = this.RAM_ComboBox;
-            this.RAM_ComboBox.Location = new System.Drawing.Point(944, 63);
+            this.RAM_ComboBox.Location = new System.Drawing.Point(1114, 63);
             this.RAM_ComboBox.Name = "RAM_ComboBox";
             this.RAM_ComboBox.ShadowDecoration.Parent = this.RAM_ComboBox;
             this.RAM_ComboBox.Size = new System.Drawing.Size(152, 36);
@@ -255,7 +255,7 @@
             "1024",
             "2048"});
             this.Storage_ComboBox.ItemsAppearance.Parent = this.Storage_ComboBox;
-            this.Storage_ComboBox.Location = new System.Drawing.Point(1102, 63);
+            this.Storage_ComboBox.Location = new System.Drawing.Point(1272, 63);
             this.Storage_ComboBox.Name = "Storage_ComboBox";
             this.Storage_ComboBox.ShadowDecoration.Parent = this.Storage_ComboBox;
             this.Storage_ComboBox.Size = new System.Drawing.Size(152, 36);
@@ -283,7 +283,7 @@
             "1920",
             "2560"});
             this.Resolution_ComboBox.ItemsAppearance.Parent = this.Resolution_ComboBox;
-            this.Resolution_ComboBox.Location = new System.Drawing.Point(1260, 63);
+            this.Resolution_ComboBox.Location = new System.Drawing.Point(1430, 63);
             this.Resolution_ComboBox.Name = "Resolution_ComboBox";
             this.Resolution_ComboBox.ShadowDecoration.Parent = this.Resolution_ComboBox;
             this.Resolution_ComboBox.Size = new System.Drawing.Size(152, 36);
@@ -309,7 +309,7 @@
             this.ColorSearch_Box.FocusedState.Parent = this.ColorSearch_Box;
             this.ColorSearch_Box.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.ColorSearch_Box.HoverState.Parent = this.ColorSearch_Box;
-            this.ColorSearch_Box.Location = new System.Drawing.Point(305, 63);
+            this.ColorSearch_Box.Location = new System.Drawing.Point(475, 63);
             this.ColorSearch_Box.Margin = new System.Windows.Forms.Padding(6);
             this.ColorSearch_Box.Name = "ColorSearch_Box";
             this.ColorSearch_Box.PasswordChar = '\0';
@@ -323,15 +323,14 @@
             // PriceLimit_TrackBar
             // 
             this.PriceLimit_TrackBar.BackColor = System.Drawing.Color.Transparent;
-            this.PriceLimit_TrackBar.Enabled = false;
             this.PriceLimit_TrackBar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(200)))), ((int)(((byte)(207)))));
             this.PriceLimit_TrackBar.HoverState.Parent = this.PriceLimit_TrackBar;
-            this.PriceLimit_TrackBar.Location = new System.Drawing.Point(25, 65);
+            this.PriceLimit_TrackBar.Location = new System.Drawing.Point(119, 65);
             this.PriceLimit_TrackBar.Maximum = 20;
             this.PriceLimit_TrackBar.Minimum = 1;
             this.PriceLimit_TrackBar.MouseWheelBarPartitions = 1;
             this.PriceLimit_TrackBar.Name = "PriceLimit_TrackBar";
-            this.PriceLimit_TrackBar.Size = new System.Drawing.Size(182, 34);
+            this.PriceLimit_TrackBar.Size = new System.Drawing.Size(258, 34);
             this.PriceLimit_TrackBar.TabIndex = 5;
             this.PriceLimit_TrackBar.ThumbColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
             this.PriceLimit_TrackBar.Value = 10;
@@ -342,11 +341,11 @@
             this.PriceLimit_Label.Enabled = false;
             this.PriceLimit_Label.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.PriceLimit_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
-            this.PriceLimit_Label.Location = new System.Drawing.Point(213, 65);
+            this.PriceLimit_Label.Location = new System.Drawing.Point(383, 65);
             this.PriceLimit_Label.Name = "PriceLimit_Label";
             this.PriceLimit_Label.Size = new System.Drawing.Size(83, 34);
             this.PriceLimit_Label.TabIndex = 50;
-            this.PriceLimit_Label.Text = "200.000.000";
+            this.PriceLimit_Label.Text = "200000000";
             this.PriceLimit_Label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // SaleManagement_Tab
@@ -363,9 +362,7 @@
             this.Controls.Add(this.Size_ComboBox);
             this.Controls.Add(this.ColorSearch_Box);
             this.Name = "SaleManagement_Tab";
-            this.Controls.SetChildIndex(this.Button_3, 0);
             this.Controls.SetChildIndex(this.Button_2, 0);
-            this.Controls.SetChildIndex(this.Bottom_1, 0);
             this.Controls.SetChildIndex(this.SearchBox, 0);
             this.Controls.SetChildIndex(this.ColorSearch_Box, 0);
             this.Controls.SetChildIndex(this.Size_ComboBox, 0);
@@ -376,6 +373,8 @@
             this.Controls.SetChildIndex(this.Resolution_ComboBox, 0);
             this.Controls.SetChildIndex(this.PriceLimit_Label, 0);
             this.Controls.SetChildIndex(this.PriceLimit_TrackBar, 0);
+            this.Controls.SetChildIndex(this.Button_3, 0);
+            this.Controls.SetChildIndex(this.Bottom_1, 0);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
 

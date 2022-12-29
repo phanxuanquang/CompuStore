@@ -30,7 +30,12 @@ namespace CompuStore.Database.Services
             return Database.DataProvider.Instance.Database.DETAIL_INVOICE.Where(detail => detail.PRODUCT.SERIAL_ID == serialID).FirstOrDefault();
         }
 
-        public Exception SaveInvoiceToDB(List<PRODUCT> listProduct, int idCustomer, int idStaff, DateTime invoiceDate, double vat, string idStore = null)
+        public INVOICE GetInvoiceById(int id)
+        {
+            return Database.DataProvider.Instance.Database.INVOICEs.Where(item => item.ID == id).FirstOrDefault();
+        }
+
+        public async Task<dynamic> SaveInvoiceToDB(List<PRODUCT> listProduct, int idCustomer, int idStaff, DateTime invoiceDate, double vat, string idStore = null)
         {
             INVOICE invoice = new INVOICE()
             {
@@ -42,23 +47,29 @@ namespace CompuStore.Database.Services
             Database.DataProvider.Instance.Database.INVOICEs.Add(invoice);
             foreach(var product in listProduct)
             {
+                double? price = product.DETAIL_SPECS.PRICE;
+                if (price == null)
+                {
+                    price = 1000000;
+                }
                 DETAIL_INVOICE detail = new DETAIL_INVOICE()
                 {
                     ID_INVOICE = invoice.ID,
                     PRODUCT_ID = product.PRODUCT_ID,
-                    PRICE_PER_UNIT = 100000
+                    PRICE_PER_UNIT = (double)price
                 };
                 Database.DataProvider.Instance.Database.DETAIL_INVOICE.Add(detail);
+                product.IN_WAREHOUSE = false;
             }
             try
             {
-                Database.DataProvider.Instance.Database.SaveChanges();
+                await DataProvider.Instance.Database.SaveChangesAsync();
+                return invoice;
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 return ex;
             }
-            return new Exception("done");
         }
     }
 }
