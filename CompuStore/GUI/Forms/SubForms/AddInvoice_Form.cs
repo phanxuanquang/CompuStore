@@ -12,6 +12,8 @@ using System.Windows.Forms;
 using Guna.UI2.WinForms;
 using CompuStore.Database.Services.ProductServices;
 using CompuStore.ImportData;
+using CompuStore.Utilities.ExportPDF;
+using System.IO;
 
 namespace CompuStore
 {
@@ -41,6 +43,7 @@ namespace CompuStore
         List<PRODUCT> productList = new List<PRODUCT>();
         STAFF currentStaff;
         DataTable adjustmentTable;
+        INVOICE lastInvoice = null;
 
         public AddInvoice_Form()
         {
@@ -313,21 +316,51 @@ namespace CompuStore
             {
                 customer = CustomerServices.Instance.SaveCustomerToDB(Name_Box.Text, PhoneNumber_Box.Text, Email_Box.Text, Identity_Box.Text, Address_Box.Text);
             }
-            Exception res = InvoiceServices.Instance.SaveInvoiceToDB(productList, customer.ID, currentStaff.ID, dateTimePicker.Value, 10);
-            if (res.Message == "done")
+            dynamic result = await InvoiceServices.Instance.SaveInvoiceToDB(productList, customer.ID, currentStaff.ID, dateTimePicker.Value, 10);
+            if (result is Exception ex)
             {
-                MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message);
             }
             else
             {
-                MessageBox.Show(res.Message);
+                lastInvoice = result;
+                MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            this.Close();
+            await Controller.Instance.Reload(lastInvoice);
+            //this.Close();
         }
 
         private async void Print_Button_Click(object sender, EventArgs e)
         {
-            await Task.Factory.StartNew(() =>
+            if (lastInvoice == null)
+                return;
+            FolderBrowserDialog dialog = new FolderBrowserDialog();
+            if (dialog.ShowDialog() != DialogResult.OK)
+                return;
+            ExportPDF export = new ExportPDF();
+            IDataExport data = new InvoicePDF
+            {
+                ExportPath = Path.Combine(dialog.SelectedPath, "export.html"),
+                DataBindingTemplate = new
+                {
+                    data = new
+                    {
+                        id_invoice = lastInvoice.NAME_ID,
+                        date = lastInvoice.INVOICE_DATE,
+                        customer_name = lastInvoice.CUSTOMER.INFOR.NAME,
+                        phone_customer = lastInvoice.CUSTOMER.INFOR.PHONE_NUMBER,
+                        company = "XL COMPANY",
+                        address = "123 KTX KHU A",
+                        phone_company = "382765235",
+                        total = lastInvoice.DETAIL_INVOICE.Select(item => item.PRICE_PER_UNIT).Sum(),
+                        products = lastInvoice.DETAIL_INVOICE.Select(item => new { name = item.PRODUCT.DETAIL_SPECS.COMMON_SPECS.NAME, price = item.PRICE_PER_UNIT })
+                    }
+                }
+            };
+            bool result = await export.RunExport(data);
+            MessageBox.Show(result ? "Xuất thành công" : "Xuất thất bại");
+            //fake invoice
+            /*await Task.Factory.StartNew(() =>
             {
                 int[] id = { 7, 8, 9 };
 
@@ -347,8 +380,9 @@ namespace CompuStore
                     }
                 }
             });
-            this.Close();
+            this.Close();*/
         }
         #endregion
+
     }
 }

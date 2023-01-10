@@ -50,7 +50,7 @@
             this.AddItemToTable_Button = new Guna.UI2.WinForms.Guna2Button();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.NameProduct_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.Serial_ComboBox = new CompuStore.Control.ComboBoxCustom();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
@@ -190,7 +190,7 @@
             this.Save_Button.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Save_Button.ForeColor = System.Drawing.Color.White;
             this.Save_Button.HoverState.Parent = this.Save_Button;
-            this.Save_Button.Location = new System.Drawing.Point(36, 606);
+            this.Save_Button.Location = new System.Drawing.Point(37, 619);
             this.Save_Button.Name = "Save_Button";
             this.Save_Button.PressedDepth = 5;
             this.Save_Button.ShadowDecoration.Parent = this.Save_Button;
@@ -292,7 +292,7 @@
             this.Print_Button.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Print_Button.ForeColor = System.Drawing.Color.White;
             this.Print_Button.HoverState.Parent = this.Print_Button;
-            this.Print_Button.Location = new System.Drawing.Point(36, 537);
+            this.Print_Button.Location = new System.Drawing.Point(36, 550);
             this.Print_Button.Name = "Print_Button";
             this.Print_Button.PressedDepth = 5;
             this.Print_Button.ShadowDecoration.Parent = this.Print_Button;
@@ -407,7 +407,7 @@
             this.Name_Box.Name = "Name_Box";
             this.Name_Box.PasswordChar = '\0';
             this.Name_Box.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
-            this.Name_Box.PlaceholderText = "Họ và tên khách hàng";
+            this.Name_Box.PlaceholderText = "Họ tên khách hàng";
             this.Name_Box.ReadOnly = true;
             this.Name_Box.SelectedText = "";
             this.Name_Box.ShadowDecoration.Parent = this.Name_Box;
@@ -420,7 +420,7 @@
             // 
             this.lbStaffName.AutoSize = true;
             this.lbStaffName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStaffName.Location = new System.Drawing.Point(32, 475);
+            this.lbStaffName.Location = new System.Drawing.Point(32, 478);
             this.lbStaffName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbStaffName.Name = "lbStaffName";
             this.lbStaffName.Size = new System.Drawing.Size(91, 21);
@@ -432,7 +432,7 @@
             // 
             this.lbDate.AutoSize = true;
             this.lbDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDate.Location = new System.Drawing.Point(32, 502);
+            this.lbDate.Location = new System.Drawing.Point(33, 508);
             this.lbDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDate.Name = "lbDate";
             this.lbDate.Size = new System.Drawing.Size(83, 21);
@@ -468,10 +468,30 @@
             // 
             // dateTimePicker
             // 
-            this.dateTimePicker.Location = new System.Drawing.Point(119, 505);
+            this.dateTimePicker.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.dateTimePicker.Animated = true;
+            this.dateTimePicker.BackColor = System.Drawing.Color.Transparent;
+            this.dateTimePicker.BorderRadius = 3;
+            this.dateTimePicker.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.dateTimePicker.CheckedState.Parent = this.dateTimePicker;
+            this.dateTimePicker.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dateTimePicker.CustomFormat = " dd/MM/yyyy";
+            this.dateTimePicker.FillColor = System.Drawing.Color.White;
+            this.dateTimePicker.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker.ForeColor = System.Drawing.Color.Black;
+            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
+            this.dateTimePicker.HoverState.Parent = this.dateTimePicker;
+            this.dateTimePicker.Location = new System.Drawing.Point(132, 504);
+            this.dateTimePicker.Margin = new System.Windows.Forms.Padding(0);
+            this.dateTimePicker.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
+            this.dateTimePicker.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker.TabIndex = 45;
+            this.dateTimePicker.ShadowDecoration.Parent = this.dateTimePicker;
+            this.dateTimePicker.Size = new System.Drawing.Size(216, 29);
+            this.dateTimePicker.TabIndex = 90;
+            this.dateTimePicker.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.dateTimePicker.Value = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
             // 
             // NameProduct_ComboBox
             // 
@@ -565,6 +585,6 @@
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
         private Control.ComboBoxCustom NameProduct_ComboBox;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private Guna.UI2.WinForms.Guna2DateTimePicker dateTimePicker;
     }
 }

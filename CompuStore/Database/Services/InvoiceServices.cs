@@ -30,7 +30,12 @@ namespace CompuStore.Database.Services
             return Database.DataProvider.Instance.Database.DETAIL_INVOICE.Where(detail => detail.PRODUCT.SERIAL_ID == serialID).FirstOrDefault();
         }
 
-        public Exception SaveInvoiceToDB(List<PRODUCT> listProduct, int idCustomer, int idStaff, DateTime invoiceDate, double vat, string idStore = null)
+        public INVOICE GetInvoiceById(int id)
+        {
+            return Database.DataProvider.Instance.Database.INVOICEs.Where(item => item.ID == id).FirstOrDefault();
+        }
+
+        public async Task<dynamic> SaveInvoiceToDB(List<PRODUCT> listProduct, int idCustomer, int idStaff, DateTime invoiceDate, double vat, string idStore = null)
         {
             INVOICE invoice = new INVOICE()
             {
@@ -58,13 +63,13 @@ namespace CompuStore.Database.Services
             }
             try
             {
-                Database.DataProvider.Instance.Database.SaveChanges();
+                await DataProvider.Instance.Database.SaveChangesAsync();
+                return invoice;
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 return ex;
             }
-            return new Exception("done");
         }
     }
 }

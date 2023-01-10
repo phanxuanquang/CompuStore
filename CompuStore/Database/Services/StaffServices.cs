@@ -23,7 +23,7 @@ namespace CompuStore.Database.Services
 
         public List<STAFF> GetStaffs()
         {
-            return DataProvider.Instance.Database.STAFFs.Select(Staff => Staff).ToList();
+            return DataProvider.Instance.Database.STAFFs.Where(staff => staff.STAFFROLE != null).Select(Staff => Staff).ToList();
         }
 
         public STAFF GetFirstStaff()

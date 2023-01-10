@@ -18,6 +18,7 @@ namespace CompuStore.GUI.Tab
         public Statistics_Tab()
         {
             InitializeComponent();
+            dtpStartDate.Visible = dtpEndDate.Visible = btnOkCustomDate.Visible = false;
             dtpStartDate.Value = DateTime.Today.AddDays(-7);
             dtpEndDate.Value = DateTime.Now;
             btnLast7Days.Select();
@@ -60,8 +61,8 @@ namespace CompuStore.GUI.Tab
 
         private void DisableCustomDates()
         {
-            dtpStartDate.Enabled = false;
-            dtpEndDate.Enabled = false;
+            dtpStartDate.Visible = false;
+            dtpEndDate.Visible = false;
             btnOkCustomDate.Visible = false;
         }
 
@@ -99,8 +100,8 @@ namespace CompuStore.GUI.Tab
 
         private void btnCustom_Click(object sender, EventArgs e)
         {
-            dtpStartDate.Enabled = true;
-            dtpEndDate.Enabled = true;
+            dtpStartDate.Visible = true;
+            dtpEndDate.Visible = true;
             btnOkCustomDate.Visible = true;
         }
 

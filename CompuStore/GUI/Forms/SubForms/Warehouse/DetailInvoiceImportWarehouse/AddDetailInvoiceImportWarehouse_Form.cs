@@ -95,7 +95,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 {
                     ModelProduct[] parameter = new ModelProduct[] { model };
                     BaseDetailSpecsProduct_Form detailSpecs = new ImportDetailSpecsProduct_Form();
-                    BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct afterEdit = detailSpecs.ShowDialog(this, parameter.ToList());
+                    BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct afterEdit = detailSpecs.ShowDialog(this, parameter.ToList(), true);
                     Thread.Sleep(1000);
                     bool reload = true;
                     switch (afterEdit.typeReturn)
@@ -124,31 +124,37 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         }
         #endregion
 
-        /*protected override void CheckChange()
+        protected override void CheckChange()
         {
+            if (resultChanged != null)
+            {
+                resultChanged.ResetField(true);
+            }
+            else
+                resultChanged = new BaseDetailInvoiceImportWarehouse_Form.ResultDetailInvoiceImportWarehouse();
             if (initProduct == null)
             {
                 resultChanged.NoChanged = null;
                 resultChanged.SpecsChanged = null;
-                resultChanged.RemoveOrSerialChanged = null;
+                resultChanged.Remove = null;
                 resultChanged.NewProduct = productList.ToList();
             }
             else
             {
                 resultChanged.NoChanged = initProduct.Where(item => productList.FirstOrDefault(item2 => item2.CompareProduct(item)) != null).ToList();
-                resultChanged.NewProduct = productList.Where(item => initProduct.FirstOrDefault(item2 => item2.Serial == item.Serial) == null).ToList();
-                resultChanged.RemoveOrSerialChanged = initProduct.Where(item => productList.FirstOrDefault(item2 => item2.Serial == item.Serial) == null).ToList();
+                resultChanged.NewProduct = productList.Where(item => item.TypeProduct == ModelProduct.TypeModel.New && initProduct.FirstOrDefault(item2 => item2.Serial == item.Serial) == null).ToList();
+                resultChanged.Remove = initProduct.Where(item => productList.FirstOrDefault(item2 => item2.TypeProduct == ModelProduct.TypeModel.New ? item2.Serial == item.Serial : item2.ID == item.ID) == null).ToList();
                 resultChanged.SpecsChanged = new Dictionary<ModelProduct, ModelProduct>();
                 foreach (ModelProduct product in initProduct)
                 {
-                    ModelProduct after = productList.FirstOrDefault(item => item.Serial == product.Serial);
-                    if (after != null && !product.StrictCompareSpecs(after))
+                    ModelProduct after = product.TypeProduct == ModelProduct.TypeModel.Exist ? productList.FirstOrDefault(item => item.ID == product.ID) : productList.FirstOrDefault(item => item.Serial == product.Serial);
+                    if (after != null && (product.TypeProduct == ModelProduct.TypeModel.Exist ? !product.CompareProduct(after) : !product.CompareSpecs(after)))
                     {
                         resultChanged.SpecsChanged.Add(product, after);
                     }
                 }
             }
-        }*/
+        }
 
         #region IO Handle
         public override ResultDetailInvoiceImportWarehouse ShowDialog(IWin32Window owner, List<ModelProduct> products)

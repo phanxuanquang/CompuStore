@@ -107,7 +107,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         #endregion
 
         #region Variable
-        private IMPORT_WAREHOUSE importWarehouse = null;
         BindingList<ICommonSpecsCustom> bindingTable = null;
         ImportWarehouseCustom convertImportWarehouse = null;
         List<ICommonSpecsGroup<DETAIL_IMPORT_WAREHOUSE>> commonSpecsGroups = null;
@@ -215,13 +214,13 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         {
             BaseInvoiceImportWarehouse_Form editInvoice = new AddInvoiceImportWarehouse_Form();
             hasChanged = editInvoice.ShowDialog(this, importWarehouse, true);
+            this.Close();
         }
         #endregion
 
         #region IO Handle
         public override bool ShowDialog(IWin32Window owner, IMPORT_WAREHOUSE importWarehouse, bool edit = false)
         {
-            this.importWarehouse = importWarehouse;
             return base.ShowDialog(owner, importWarehouse, false) || hasChanged;
         }
         #endregion

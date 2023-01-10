@@ -46,6 +46,7 @@
             this.sTAFFBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Edit_Button = new Guna.UI2.WinForms.Guna2Button();
             this.Status_ComboBox = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.iNFORBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sTAFFROLEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
@@ -105,6 +106,7 @@
             this.PhoneNumber_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.PhoneNumber_Box.TabIndex = 11;
             this.PhoneNumber_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.toolTip1.SetToolTip(this.PhoneNumber_Box, "Số điện thoại");
             // 
             // iNFORBindingSource
             // 
@@ -148,6 +150,7 @@
             this.Identity_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Identity_Box.TabIndex = 12;
             this.Identity_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.toolTip1.SetToolTip(this.Identity_Box, "CCCD/CMND");
             // 
             // Email_Box
             // 
@@ -187,6 +190,7 @@
             this.Email_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Email_Box.TabIndex = 13;
             this.Email_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.toolTip1.SetToolTip(this.Email_Box, "E-mail");
             // 
             // Address_Box
             // 
@@ -226,6 +230,7 @@
             this.Address_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Address_Box.TabIndex = 14;
             this.Address_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.toolTip1.SetToolTip(this.Address_Box, "Địa chỉ");
             // 
             // DragControl
             // 
@@ -269,6 +274,7 @@
             this.Name_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Name_Box.TabIndex = 17;
             this.Name_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.toolTip1.SetToolTip(this.Name_Box, "Họ và tên");
             // 
             // Apartment_ComboBox
             // 
@@ -307,6 +313,7 @@
             this.Apartment_ComboBox.TabIndex = 19;
             this.Apartment_ComboBox.TextOffset = new System.Drawing.Point(5, 0);
             this.Apartment_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.toolTip1.SetToolTip(this.Apartment_ComboBox, "Phòng ban");
             this.Apartment_ComboBox.ValueMember = "ID";
             // 
             // sTAFFROLEBindingSource
@@ -354,7 +361,7 @@
             this.DateTimeImportWarehouse_DateTimePicker.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(230)))), ((int)(((byte)(235)))));
             this.DateTimeImportWarehouse_DateTimePicker.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateTimeImportWarehouse_DateTimePicker.ForeColor = System.Drawing.Color.Black;
-            this.DateTimeImportWarehouse_DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Long;
+            this.DateTimeImportWarehouse_DateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.DateTimeImportWarehouse_DateTimePicker.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
             this.DateTimeImportWarehouse_DateTimePicker.HoverState.Parent = this.DateTimeImportWarehouse_DateTimePicker;
             this.DateTimeImportWarehouse_DateTimePicker.Location = new System.Drawing.Point(265, 154);
@@ -366,6 +373,7 @@
             this.DateTimeImportWarehouse_DateTimePicker.Size = new System.Drawing.Size(217, 37);
             this.DateTimeImportWarehouse_DateTimePicker.TabIndex = 24;
             this.DateTimeImportWarehouse_DateTimePicker.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.toolTip1.SetToolTip(this.DateTimeImportWarehouse_DateTimePicker, "Ngày vào làm");
             this.DateTimeImportWarehouse_DateTimePicker.Value = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
             // 
             // sTAFFBindingSource
@@ -432,6 +440,7 @@
             this.Status_ComboBox.TabIndex = 25;
             this.Status_ComboBox.TextOffset = new System.Drawing.Point(5, 0);
             this.Status_ComboBox.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
+            this.toolTip1.SetToolTip(this.Status_ComboBox, "Tình trạng làm việc");
             this.Status_ComboBox.ValueMember = "ID";
             // 
             // StaffEdit_Form
@@ -484,5 +493,6 @@
         private System.Windows.Forms.BindingSource iNFORBindingSource;
         private System.Windows.Forms.BindingSource sTAFFBindingSource;
         private Guna.UI2.WinForms.Guna2ComboBox Status_ComboBox;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

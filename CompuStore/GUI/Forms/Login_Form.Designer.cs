@@ -38,11 +38,11 @@
             this.MainPanel = new System.Windows.Forms.Panel();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2Button();
             this.Welcome_Label = new System.Windows.Forms.Label();
+            this.ServerDatabase_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.Password_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Username_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Background = new System.Windows.Forms.Panel();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.ServerDatabase_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.CheckBox_Panel.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.SuspendLayout();
@@ -67,7 +67,7 @@
             this.Login_Button.PressedDepth = 10;
             this.Login_Button.ShadowDecoration.Parent = this.Login_Button;
             this.Login_Button.Size = new System.Drawing.Size(390, 49);
-            this.Login_Button.TabIndex = 4;
+            this.Login_Button.TabIndex = 5;
             this.Login_Button.Text = "ĐĂNG NHẬP";
             this.Login_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.Login_Button.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
@@ -108,7 +108,7 @@
             this.CheckBox_Panel.Margin = new System.Windows.Forms.Padding(2);
             this.CheckBox_Panel.Name = "CheckBox_Panel";
             this.CheckBox_Panel.Size = new System.Drawing.Size(134, 30);
-            this.CheckBox_Panel.TabIndex = 9;
+            this.CheckBox_Panel.TabIndex = 4;
             this.CheckBox_Panel.Click += new System.EventHandler(this.CheckBox_Panel_Click);
             // 
             // label1
@@ -119,7 +119,7 @@
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 15);
-            this.label1.TabIndex = 9;
+            this.label1.TabIndex = 4;
             this.label1.Text = "Ghi nhớ mật khẩu";
             this.label1.Click += new System.EventHandler(this.CheckBox_Panel_Click);
             // 
@@ -158,7 +158,7 @@
             this.Exit_Button.PressedDepth = 10;
             this.Exit_Button.ShadowDecoration.Parent = this.Exit_Button;
             this.Exit_Button.Size = new System.Drawing.Size(390, 49);
-            this.Exit_Button.TabIndex = 11;
+            this.Exit_Button.TabIndex = 6;
             this.Exit_Button.Text = "THOÁT";
             this.Exit_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.Exit_Button.TextTransform = Guna.UI2.WinForms.Enums.TextTransform.UpperCase;
@@ -175,6 +175,21 @@
             this.Welcome_Label.TabIndex = 10;
             this.Welcome_Label.Text = "CHÀO MỪNG";
             this.Welcome_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ServerDatabase_ComboBox
+            // 
+            this.ServerDatabase_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.ServerDatabase_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ServerDatabase_ComboBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ServerDatabase_ComboBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ServerDatabase_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ServerDatabase_ComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ServerDatabase_ComboBox.FormattingEnabled = true;
+            this.ServerDatabase_ComboBox.Location = new System.Drawing.Point(0, 389);
+            this.ServerDatabase_ComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.ServerDatabase_ComboBox.Name = "ServerDatabase_ComboBox";
+            this.ServerDatabase_ComboBox.Size = new System.Drawing.Size(600, 23);
+            this.ServerDatabase_ComboBox.TabIndex = 7;
             // 
             // Password_Box
             // 
@@ -212,7 +227,7 @@
             this.Password_Box.SelectedText = "";
             this.Password_Box.ShadowDecoration.Parent = this.Password_Box;
             this.Password_Box.Size = new System.Drawing.Size(390, 40);
-            this.Password_Box.TabIndex = 6;
+            this.Password_Box.TabIndex = 3;
             this.Password_Box.TextOffset = new System.Drawing.Point(10, 0);
             this.Password_Box.UseSystemPasswordChar = true;
             // 
@@ -268,21 +283,6 @@
             // guna2DragControl1
             // 
             this.guna2DragControl1.TargetControl = this.Background;
-            // 
-            // ServerDatabase_ComboBox
-            // 
-            this.ServerDatabase_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.ServerDatabase_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.ServerDatabase_ComboBox.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ServerDatabase_ComboBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ServerDatabase_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ServerDatabase_ComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ServerDatabase_ComboBox.FormattingEnabled = true;
-            this.ServerDatabase_ComboBox.Location = new System.Drawing.Point(0, 389);
-            this.ServerDatabase_ComboBox.Margin = new System.Windows.Forms.Padding(2);
-            this.ServerDatabase_ComboBox.Name = "ServerDatabase_ComboBox";
-            this.ServerDatabase_ComboBox.Size = new System.Drawing.Size(600, 23);
-            this.ServerDatabase_ComboBox.TabIndex = 7;
             // 
             // Login_Form
             // 

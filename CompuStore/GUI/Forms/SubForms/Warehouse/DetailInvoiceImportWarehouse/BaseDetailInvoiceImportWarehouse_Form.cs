@@ -183,7 +183,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     Wifi = productList?.FirstOrDefault()?.Wifi,
                     Bluetooth = productList?.FirstOrDefault()?.Bluetooth,
                 });
-                BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct afterEdit = importManual.ShowDialog(this, temp);
+                BaseDetailSpecsProduct_Form.ResultDetailSpecsProduct afterEdit = importManual.ShowDialog(this, temp, true, true);
                 Thread.Sleep(1000);
                 bool reload = true;
                 switch (afterEdit.typeReturn)
