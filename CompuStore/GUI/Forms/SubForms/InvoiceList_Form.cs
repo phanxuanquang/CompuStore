@@ -17,6 +17,7 @@ namespace CompuStore
     {
         protected Dictionary<string, string> listItemViews = new Dictionary<string, string>()
         {
+            { "STT", "Số thứ tự"},
             { "Id", "Mã đơn hàng" },
             { "CusName", "Họ và tên" },
             { "PhoneNum", "Số điện thoại" },
@@ -91,16 +92,23 @@ namespace CompuStore
         {
             iNVOICEBindingSource.ResetBindings(true);
             iNVOICEBindingSource.DataSource = iNVOICEs;
+            int stt = 0;
             foreach (DataGridViewRow row in DataTable.Rows)
             {
                 INVOICE selected = row.DataBoundItem as INVOICE;
                 if (selected != null)
                 {
+                    row.Cells["STT"].Value = ++stt;
                     row.Cells["Id"].Value = selected.NAME_ID;
+                    row.Cells["Id"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["CusName"].Value = selected.CUSTOMER.INFOR.NAME;
+                    row.Cells["CusName"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["PhoneNum"].Value = selected.CUSTOMER.INFOR.PHONE_NUMBER;
+                    row.Cells["PhoneNum"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["Date"].Value = selected.INVOICE_DATE;
+                    row.Cells["Date"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["TPrice"].Value = selected.TOTAL;
+                    row.Cells["TPrice"].Style.Alignment = DataGridViewContentAlignment.MiddleRight;
                 }
             }
         }

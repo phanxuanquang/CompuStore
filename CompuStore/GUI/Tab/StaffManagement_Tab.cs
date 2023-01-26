@@ -67,6 +67,7 @@ namespace CompuStore.Tab
         }
         private void LoadView()
         {
+            listItemViews.Add("STT", "Số thứ tự");
             listItemViews.Add("Id", "Mã nhân viên");
             listItemViews.Add("StaffName", "Họ và tên");
             listItemViews.Add("PhoneNum", "Số điện thoại");
@@ -84,11 +85,13 @@ namespace CompuStore.Tab
         {
             sTAFFBindingSource.ResetBindings(true);
             sTAFFBindingSource.DataSource = sTAFFs;
+            int stt = 0;
             foreach (DataGridViewRow row in GridDataTable.Rows)
             {
                 STAFF selected = row.DataBoundItem as STAFF;
                 if (selected != null)
                 {
+                    row.Cells["STT"].Value = ++stt;
                     row.Cells["Id"].Value = selected.NAME_ID;
                     row.Cells["Id"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["StaffName"].Value = selected.INFOR.NAME;
