@@ -107,6 +107,7 @@
             this.PhoneNumber_Box.TabIndex = 11;
             this.PhoneNumber_Box.TextOffset = new System.Drawing.Point(5, 0);
             this.toolTip1.SetToolTip(this.PhoneNumber_Box, "Số điện thoại");
+            this.PhoneNumber_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneNumber_Box_KeyPress);
             // 
             // iNFORBindingSource
             // 
@@ -151,6 +152,7 @@
             this.Identity_Box.TabIndex = 12;
             this.Identity_Box.TextOffset = new System.Drawing.Point(5, 0);
             this.toolTip1.SetToolTip(this.Identity_Box, "CCCD/CMND");
+            this.Identity_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Identity_Box_KeyPress);
             // 
             // Email_Box
             // 
@@ -191,6 +193,7 @@
             this.Email_Box.TabIndex = 13;
             this.Email_Box.TextOffset = new System.Drawing.Point(5, 0);
             this.toolTip1.SetToolTip(this.Email_Box, "E-mail");
+            this.Email_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Email_Box_KeyPress);
             // 
             // Address_Box
             // 
@@ -375,6 +378,7 @@
             this.DateTimeImportWarehouse_DateTimePicker.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.toolTip1.SetToolTip(this.DateTimeImportWarehouse_DateTimePicker, "Ngày vào làm");
             this.DateTimeImportWarehouse_DateTimePicker.Value = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
+            this.DateTimeImportWarehouse_DateTimePicker.ValueChanged += new System.EventHandler(this.DateTimeImportWarehouse_DateTimePicker_ValueChanged);
             // 
             // sTAFFBindingSource
             // 

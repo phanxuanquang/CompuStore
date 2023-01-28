@@ -244,6 +244,7 @@
             this.Email_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Email_Box.TabIndex = 81;
             this.Email_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.Email_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Email_Box_KeyPress);
             // 
             // Name_Box
             // 
@@ -335,6 +336,7 @@
             this.PhoneNumber_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.PhoneNumber_Box.TabIndex = 79;
             this.PhoneNumber_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.PhoneNumber_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneNumber_Box_KeyPress);
             // 
             // Identity_Box
             // 
@@ -374,6 +376,7 @@
             this.Identity_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Identity_Box.TabIndex = 82;
             this.Identity_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.Identity_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Identity_Box_KeyPress);
             // 
             // Save_Button
             // 

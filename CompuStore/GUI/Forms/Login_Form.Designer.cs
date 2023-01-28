@@ -190,6 +190,7 @@
             this.ServerDatabase_ComboBox.Name = "ServerDatabase_ComboBox";
             this.ServerDatabase_ComboBox.Size = new System.Drawing.Size(600, 23);
             this.ServerDatabase_ComboBox.TabIndex = 7;
+            this.ServerDatabase_ComboBox.Visible = false;
             // 
             // Password_Box
             // 
