@@ -14,6 +14,7 @@ using CompuStore.Database.Services.ProductServices;
 using CompuStore.ImportData;
 using CompuStore.Utilities.ExportPDF;
 using System.IO;
+using System.Globalization;
 
 namespace CompuStore
 {
@@ -37,13 +38,15 @@ namespace CompuStore
                 return 0;
             }
         }
-
+        CultureInfo ci = new CultureInfo("vi-vn");
         CUSTOMER customer;
         List<string> addedProduct = new List<string>();
         List<PRODUCT> productList = new List<PRODUCT>();
         STAFF currentStaff;
         DataTable adjustmentTable;
         INVOICE lastInvoice = null;
+        int stt = 0;
+        long sumM = 0;
 
         public AddInvoice_Form()
         {
@@ -55,6 +58,7 @@ namespace CompuStore
 
         private void AddInvoice_Form_Load(object sender, EventArgs e)
         {
+            this.dateTimePicker.Value = DateTime.Now;
             InitDGV();
             TurnOnAutocomplete();
             LoadLabel();
@@ -81,11 +85,13 @@ namespace CompuStore
         {
             adjustmentTable = new DataTable();
             DataColumn dataColumn = new DataColumn();
+            dataColumn = new DataColumn("Số thứ tự", typeof(int));
+            adjustmentTable.Columns.Add(dataColumn);
             dataColumn = new DataColumn("Số se-ri", typeof(string));
             adjustmentTable.Columns.Add(dataColumn);
             dataColumn = new DataColumn("Tên sản phẩm", typeof(string));
             adjustmentTable.Columns.Add(dataColumn);
-            dataColumn = new DataColumn("Giá tiền", typeof(double));
+            dataColumn = new DataColumn("Giá tiền (VNĐ)", typeof(double));
             adjustmentTable.Columns.Add(dataColumn);
             ItemTable.DataSource = adjustmentTable;
             ItemTable.CellDoubleClick += ItemTable_CellDoubleClick;
@@ -107,9 +113,10 @@ namespace CompuStore
             ItemTable.DataSource = GetAdjustmentTable();
             foreach (DataGridViewRow row in ItemTable.Rows)
             {
+                row.Cells["Số thứ tự"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 row.Cells["Số se-ri"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 row.Cells["Tên sản phẩm"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                row.Cells["Giá tiền"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                row.Cells["Giá tiền (VNĐ)"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
             }
         }
 
@@ -120,18 +127,20 @@ namespace CompuStore
             {
                 addedProduct.Add(serial);
                 DataRow dataRow = adjustmentTable.NewRow();
-                dataRow[0] = serial;
+                dataRow[0] = ++stt;
+                dataRow[1] = serial;
                 BindingSerialModel selectedItem = NameProduct_ComboBox.SelectedItem as BindingSerialModel;
-                dataRow[1] = selectedItem.NAME;
+                dataRow[2] = selectedItem.NAME;
                 PRODUCT product = Database.DataProvider.Instance.Database.PRODUCTs.Where(item => item.SERIAL_ID == serial).FirstOrDefault();
                 if (product.DETAIL_SPECS.PRICE != null)
                 {
-                    dataRow[2] = product.DETAIL_SPECS.PRICE;
+                    dataRow[3] = product.DETAIL_SPECS.PRICE.ToString();
                 }
                 else
                 {
-                    dataRow[2] = 10000000;
+                    dataRow[3] = 10000000;
                 }
+                sumM += long.Parse(dataRow[3].ToString());
                 int insertPosition = adjustmentTable.Rows.Count;
                 adjustmentTable.Rows.InsertAt(dataRow, insertPosition);
             }
@@ -139,6 +148,7 @@ namespace CompuStore
             {
                 MessageBox.Show("Sản phẩm đã được thêm");
             }
+            this.label2.Text = sumM.ToString("N03", ci) + " VNĐ";
             return adjustmentTable;
         }
         #endregion
@@ -149,8 +159,21 @@ namespace CompuStore
         {
             if (e.RowIndex >= 0)
             {
+                sumM -= long.Parse(ItemTable.Rows[e.RowIndex].Cells[3].Value.ToString());
                 ItemTable.Rows.RemoveAt(e.RowIndex);
                 addedProduct.RemoveAt(e.RowIndex);
+                int length = adjustmentTable.Rows.Count;
+                int stt2 = 0;
+                foreach (DataRow data in adjustmentTable.Rows)
+                {
+                    if (stt2 < length)
+                    {
+                        data[0] = ++stt2;
+                    }
+                }
+                ItemTable.DataSource = adjustmentTable;
+                stt--;
+                this.label2.Text = sumM.ToString("N03", ci) + " VNĐ";
             }
         }
 
@@ -322,7 +345,7 @@ namespace CompuStore
             {
                 customer = CustomerServices.Instance.SaveCustomerToDB(Name_Box.Text, PhoneNumber_Box.Text, Email_Box.Text, Identity_Box.Text, Address_Box.Text);
             }
-            dynamic result = await InvoiceServices.Instance.SaveInvoiceToDB(productList, customer.ID, currentStaff.ID, dateTimePicker.Value, 10);
+            dynamic result = await InvoiceServices.Instance.SaveInvoiceToDB(productList, customer.ID, currentStaff.ID, new DateTime(dateTimePicker.Value.Year, dateTimePicker.Value.Month, dateTimePicker.Value.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second), 10);
             if (result is Exception ex)
             {
                 MessageBox.Show(ex.Message);
