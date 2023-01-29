@@ -14,6 +14,7 @@ using CompuStore.Database.Services.ProductServices;
 using CompuStore.ImportData;
 using CompuStore.Utilities.ExportPDF;
 using System.IO;
+using System.Globalization;
 
 namespace CompuStore
 {
@@ -26,6 +27,9 @@ namespace CompuStore
         DataTable adjustmentTable;
         INVOICE invoice;
         string id;
+        CultureInfo ci = new CultureInfo("vi-vn");
+        int stt = 0;
+        long sumM = 0;
 
         public InvoiceDetail_Form(string id)
         {
@@ -64,19 +68,22 @@ namespace CompuStore
             foreach (DETAIL_INVOICE item in listInvoice)
             {
                 DataRow dataRow = adjustmentTable.NewRow();
-                dataRow[0] = item.PRODUCT.SERIAL_ID;
-                dataRow[1] = item.PRODUCT.DETAIL_SPECS.COMMON_SPECS.NAME;
+                dataRow[0] = ++stt;
+                dataRow[1] = item.PRODUCT.SERIAL_ID;
+                dataRow[2] = item.PRODUCT.DETAIL_SPECS.COMMON_SPECS.NAME;
                 if (item.PRODUCT.DETAIL_SPECS.PRICE != null)
                 {
-                    dataRow[2] = item.PRODUCT.DETAIL_SPECS.PRICE;
+                    dataRow[3] = item.PRODUCT.DETAIL_SPECS.PRICE;
                 }
                 else
                 {
-                    dataRow[2] = 10000000;
+                    dataRow[3] = 10000000;
                 }
+                sumM += long.Parse(dataRow[3].ToString());
                 int insertPosition = adjustmentTable.Rows.Count;
                 adjustmentTable.Rows.InsertAt(dataRow, insertPosition);
             }
+            this.label2.Text = sumM.ToString("N03", ci) + " VNĐ";
             return adjustmentTable;
         }
 
@@ -104,11 +111,13 @@ namespace CompuStore
         {
             adjustmentTable = new DataTable();
             DataColumn dataColumn = new DataColumn();
+            dataColumn = new DataColumn("Số thứ tự", typeof(int));
+            adjustmentTable.Columns.Add(dataColumn);
             dataColumn = new DataColumn("Số se-ri", typeof(string));
             adjustmentTable.Columns.Add(dataColumn);
             dataColumn = new DataColumn("Tên sản phẩm", typeof(string));
             adjustmentTable.Columns.Add(dataColumn);
-            dataColumn = new DataColumn("Giá tiền", typeof(double));
+            dataColumn = new DataColumn("Giá tiền (VNĐ)", typeof(double));
             adjustmentTable.Columns.Add(dataColumn);
             ItemTable.DataSource = adjustmentTable;
         }

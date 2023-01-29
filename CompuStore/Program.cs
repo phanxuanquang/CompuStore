@@ -25,7 +25,7 @@ namespace CompuStore
             switch (informationType)
             {
                 case "IDcard":
-                    if (information.Length != 9 || information.Length != 12)
+                    if (information.Length != 9 && information.Length != 12)
                         return false;
                     else return Regex.Match(information, @"^(\+[0-9]{9})$").Success;
                     break;
