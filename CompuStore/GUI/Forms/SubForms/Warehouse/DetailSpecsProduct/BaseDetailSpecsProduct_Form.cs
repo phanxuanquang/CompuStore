@@ -69,6 +69,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
 
         #region Translater
         protected static readonly Dictionary<string, (string, DataGridViewContentAlignment)> portTranslater = new Dictionary<string, (string, DataGridViewContentAlignment)> {
+            { "N0", ("STT", DataGridViewContentAlignment.MiddleLeft) },
             { "PortPhysic", ("Chuẩn giao tiếp", DataGridViewContentAlignment.MiddleLeft) },
             { "PortProtocol", ("Chuẩn vật lý", DataGridViewContentAlignment.MiddleLeft) },
             { "Quantity", ("Số lượng", DataGridViewContentAlignment.MiddleRight)}};
@@ -410,6 +411,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
                     string[] split = keyValue.Item1.Split('|');
                     column.HeaderText = split[0];
                     column.CellTemplate.Style.Alignment = keyValue.Item2;
+                    if (column.Name == "N0")
+                        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                     if (split.Length > 1)
                     {
                         column.ToolTipText = split[1];

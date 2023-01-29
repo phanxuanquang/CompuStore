@@ -27,6 +27,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         {
             int? ID { get; set; }
 
+            int? N0 { get; set; }
+
             string NameID { get; set; }
 
             string NameCommonSpecs { get; set; }
@@ -103,6 +105,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
         #region Translater
         private static readonly Dictionary<string, (string, DataGridViewContentAlignment)> translater = new Dictionary<string, (string, DataGridViewContentAlignment)> {
+            { "N0", ("STT", DataGridViewContentAlignment.MiddleLeft) },
             { "NameCommonSpecs", ("Tên sản phẩm", DataGridViewContentAlignment.MiddleLeft) },
             { "LineUp", ("Dòng sản phẩm", DataGridViewContentAlignment.MiddleLeft) },
             { "Manufacturer", ("Nhà sản xuất", DataGridViewContentAlignment.MiddleLeft) },
@@ -252,6 +255,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     {
                         column.ToolTipText = split[1];
                     }
+                    if (column.Name == "N0")
+                        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 }
                 else
                 {

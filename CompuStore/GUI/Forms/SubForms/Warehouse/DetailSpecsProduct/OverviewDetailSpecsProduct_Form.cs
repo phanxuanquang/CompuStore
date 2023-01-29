@@ -19,7 +19,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         #region Class
         private class SerialBinding
         {
-            public int STT { get; set; }
+            public int N0 { get; set; }
             public string Serial { get; set; }
             public string NameIDImportWarehouse { get; set; }
             public DateTime? ImportDate { get; set; }
@@ -36,7 +36,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
         #region Translater
         protected static readonly Dictionary<string, string> serialTranslater = new Dictionary<string, string> {
-            { "STT", "STT" },
+            { "N0", "STT" },
             { "Serial", "Serial máy|Mỗi máy có một số định danh duy nhất được nhán ở đáy máy" },
             { "NameIDImportWarehouse", "Mã nhập hàng|Sản phẩm được nhập ở lần nhập có mã nhập hàng" },
             { "ImportDate", "Ngày nhập hàng" },
@@ -194,7 +194,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     column.HeaderText = split[0];
                     if (split.Length > 1)
                         column.ToolTipText = split[1];
-                    if (column.Name == "STT")
+                    if (column.Name == "N0")
                         column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                     else if (column.Name == "Price")
                         column.DefaultCellStyle.Format = "#,# VND";
@@ -226,12 +226,12 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                             {
                                 Serial_DataGridView.Invoke(new Action(() =>
                                 {
-                                    binding.Add(new SerialBinding { STT = index + 1, Serial = products[index].Serial, Price = detail.PRICE_PER_UNIT, ImportDate = import.IMPORT_DATE, NameIDImportWarehouse = import.NAME_ID });
+                                    binding.Add(new SerialBinding { N0 = index + 1, Serial = products[index].Serial, Price = detail.PRICE_PER_UNIT, ImportDate = import.IMPORT_DATE, NameIDImportWarehouse = import.NAME_ID });
                                 }));
                             }
                             else
                             {
-                                binding.Add(new SerialBinding { STT = index + 1, Serial = products[index].Serial, Price = detail.PRICE_PER_UNIT, ImportDate = import.IMPORT_DATE, NameIDImportWarehouse = import.NAME_ID });
+                                binding.Add(new SerialBinding { N0 = index + 1, Serial = products[index].Serial, Price = detail.PRICE_PER_UNIT, ImportDate = import.IMPORT_DATE, NameIDImportWarehouse = import.NAME_ID });
                             }
                             progress.Report(++counter);
                         }

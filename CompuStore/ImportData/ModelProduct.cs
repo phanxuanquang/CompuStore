@@ -13,6 +13,7 @@ namespace CompuStore.ImportData
     {
         public class Port
         {
+            public int? N0 { get; set; }
             public string PortProtocol { get; set; }
             public string PortPhysic { get; set; }
             public string Quantity { get; set; }
@@ -297,7 +298,7 @@ namespace CompuStore.ImportData
                         }
                         if (int.TryParse(portProtocol, out int numberic))
                             portProtocol = portPhysic;
-                        models.Add(new Port { PortPhysic = portPhysic, PortProtocol = portProtocol, Quantity = quantityPort });
+                        models.Add(new Port { N0 = index + 1, PortPhysic = portPhysic, PortProtocol = portProtocol, Quantity = quantityPort });
                     }
                     Ports = models.ToArray();
                 }

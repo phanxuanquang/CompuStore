@@ -52,7 +52,7 @@
             this.Login_Button.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Login_Button.Animated = true;
             this.Login_Button.AutoRoundedCorners = true;
-            this.Login_Button.BorderRadius = 23;
+            this.Login_Button.BorderRadius = 48;
             this.Login_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
             this.Login_Button.CheckedState.Parent = this.Login_Button;
             this.Login_Button.CustomImages.Parent = this.Login_Button;
@@ -61,12 +61,12 @@
             this.Login_Button.ForeColor = System.Drawing.Color.White;
             this.Login_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
             this.Login_Button.HoverState.Parent = this.Login_Button;
-            this.Login_Button.Location = new System.Drawing.Point(105, 246);
-            this.Login_Button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Login_Button.Location = new System.Drawing.Point(210, 492);
+            this.Login_Button.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Login_Button.Name = "Login_Button";
             this.Login_Button.PressedDepth = 10;
             this.Login_Button.ShadowDecoration.Parent = this.Login_Button;
-            this.Login_Button.Size = new System.Drawing.Size(390, 49);
+            this.Login_Button.Size = new System.Drawing.Size(780, 98);
             this.Login_Button.TabIndex = 5;
             this.Login_Button.Text = "ĐĂNG NHẬP";
             this.Login_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -86,11 +86,11 @@
             this.RememberAccount_CheckBox.CheckedState.BorderThickness = 0;
             this.RememberAccount_CheckBox.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.RememberAccount_CheckBox.CheckedState.Parent = this.RememberAccount_CheckBox;
-            this.RememberAccount_CheckBox.Location = new System.Drawing.Point(8, 7);
-            this.RememberAccount_CheckBox.Margin = new System.Windows.Forms.Padding(2);
+            this.RememberAccount_CheckBox.Location = new System.Drawing.Point(16, 14);
+            this.RememberAccount_CheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.RememberAccount_CheckBox.Name = "RememberAccount_CheckBox";
             this.RememberAccount_CheckBox.ShadowDecoration.Parent = this.RememberAccount_CheckBox;
-            this.RememberAccount_CheckBox.Size = new System.Drawing.Size(15, 15);
+            this.RememberAccount_CheckBox.Size = new System.Drawing.Size(30, 30);
             this.RememberAccount_CheckBox.TabIndex = 8;
             this.RememberAccount_CheckBox.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.RememberAccount_CheckBox.UncheckedState.BorderRadius = 5;
@@ -104,10 +104,10 @@
             this.CheckBox_Panel.BackColor = System.Drawing.Color.Transparent;
             this.CheckBox_Panel.Controls.Add(this.label1);
             this.CheckBox_Panel.Controls.Add(this.RememberAccount_CheckBox);
-            this.CheckBox_Panel.Location = new System.Drawing.Point(105, 192);
-            this.CheckBox_Panel.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox_Panel.Location = new System.Drawing.Point(210, 384);
+            this.CheckBox_Panel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CheckBox_Panel.Name = "CheckBox_Panel";
-            this.CheckBox_Panel.Size = new System.Drawing.Size(134, 30);
+            this.CheckBox_Panel.Size = new System.Drawing.Size(268, 60);
             this.CheckBox_Panel.TabIndex = 4;
             this.CheckBox_Panel.Click += new System.EventHandler(this.CheckBox_Panel_Click);
             // 
@@ -115,10 +115,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(26, 7);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(52, 14);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 15);
+            this.label1.Size = new System.Drawing.Size(212, 32);
             this.label1.TabIndex = 4;
             this.label1.Text = "Ghi nhớ mật khẩu";
             this.label1.Click += new System.EventHandler(this.CheckBox_Panel_Click);
@@ -133,9 +133,10 @@
             this.MainPanel.Controls.Add(this.Password_Box);
             this.MainPanel.Controls.Add(this.Username_Box);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.MainPanel.Location = new System.Drawing.Point(0, 415);
+            this.MainPanel.Location = new System.Drawing.Point(0, 830);
+            this.MainPanel.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(600, 412);
+            this.MainPanel.Size = new System.Drawing.Size(1200, 824);
             this.MainPanel.TabIndex = 10;
             // 
             // Exit_Button
@@ -143,7 +144,7 @@
             this.Exit_Button.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Exit_Button.Animated = true;
             this.Exit_Button.AutoRoundedCorners = true;
-            this.Exit_Button.BorderRadius = 23;
+            this.Exit_Button.BorderRadius = 48;
             this.Exit_Button.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(84)))), ((int)(((byte)(133)))), ((int)(((byte)(251)))));
             this.Exit_Button.CheckedState.Parent = this.Exit_Button;
             this.Exit_Button.CustomImages.Parent = this.Exit_Button;
@@ -152,12 +153,12 @@
             this.Exit_Button.ForeColor = System.Drawing.Color.White;
             this.Exit_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
             this.Exit_Button.HoverState.Parent = this.Exit_Button;
-            this.Exit_Button.Location = new System.Drawing.Point(105, 304);
-            this.Exit_Button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Exit_Button.Location = new System.Drawing.Point(210, 608);
+            this.Exit_Button.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Exit_Button.Name = "Exit_Button";
             this.Exit_Button.PressedDepth = 10;
             this.Exit_Button.ShadowDecoration.Parent = this.Exit_Button;
-            this.Exit_Button.Size = new System.Drawing.Size(390, 49);
+            this.Exit_Button.Size = new System.Drawing.Size(780, 98);
             this.Exit_Button.TabIndex = 6;
             this.Exit_Button.Text = "THOÁT";
             this.Exit_Button.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
@@ -170,8 +171,9 @@
             this.Welcome_Label.Font = new System.Drawing.Font("Arial", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.Welcome_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(79)))), ((int)(((byte)(180)))));
             this.Welcome_Label.Location = new System.Drawing.Point(0, 0);
+            this.Welcome_Label.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.Welcome_Label.Name = "Welcome_Label";
-            this.Welcome_Label.Size = new System.Drawing.Size(600, 89);
+            this.Welcome_Label.Size = new System.Drawing.Size(1200, 178);
             this.Welcome_Label.TabIndex = 10;
             this.Welcome_Label.Text = "CHÀO MỪNG";
             this.Welcome_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -185,12 +187,11 @@
             this.ServerDatabase_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ServerDatabase_ComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ServerDatabase_ComboBox.FormattingEnabled = true;
-            this.ServerDatabase_ComboBox.Location = new System.Drawing.Point(0, 389);
-            this.ServerDatabase_ComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.ServerDatabase_ComboBox.Location = new System.Drawing.Point(0, 784);
+            this.ServerDatabase_ComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ServerDatabase_ComboBox.Name = "ServerDatabase_ComboBox";
-            this.ServerDatabase_ComboBox.Size = new System.Drawing.Size(600, 23);
+            this.ServerDatabase_ComboBox.Size = new System.Drawing.Size(1200, 40);
             this.ServerDatabase_ComboBox.TabIndex = 7;
-            this.ServerDatabase_ComboBox.Visible = false;
             // 
             // Password_Box
             // 
@@ -219,15 +220,15 @@
             this.Password_Box.HoverState.Parent = this.Password_Box;
             this.Password_Box.IconLeft = global::CompuStore.Properties.Resources.Password;
             this.Password_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
-            this.Password_Box.Location = new System.Drawing.Point(105, 152);
-            this.Password_Box.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Password_Box.Location = new System.Drawing.Point(210, 304);
+            this.Password_Box.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.Password_Box.Name = "Password_Box";
             this.Password_Box.PasswordChar = '\0';
             this.Password_Box.PlaceholderForeColor = System.Drawing.Color.White;
             this.Password_Box.PlaceholderText = "Mật khẩu";
             this.Password_Box.SelectedText = "";
             this.Password_Box.ShadowDecoration.Parent = this.Password_Box;
-            this.Password_Box.Size = new System.Drawing.Size(390, 40);
+            this.Password_Box.Size = new System.Drawing.Size(780, 80);
             this.Password_Box.TabIndex = 3;
             this.Password_Box.TextOffset = new System.Drawing.Point(10, 0);
             this.Password_Box.UseSystemPasswordChar = true;
@@ -259,15 +260,15 @@
             this.Username_Box.HoverState.Parent = this.Username_Box;
             this.Username_Box.IconLeft = global::CompuStore.Properties.Resources.Username;
             this.Username_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
-            this.Username_Box.Location = new System.Drawing.Point(105, 92);
-            this.Username_Box.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Username_Box.Location = new System.Drawing.Point(210, 184);
+            this.Username_Box.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
             this.Username_Box.Name = "Username_Box";
             this.Username_Box.PasswordChar = '\0';
             this.Username_Box.PlaceholderForeColor = System.Drawing.Color.White;
             this.Username_Box.PlaceholderText = "Tên đăng nhập";
             this.Username_Box.SelectedText = "";
             this.Username_Box.ShadowDecoration.Parent = this.Username_Box;
-            this.Username_Box.Size = new System.Drawing.Size(390, 40);
+            this.Username_Box.Size = new System.Drawing.Size(780, 80);
             this.Username_Box.TabIndex = 2;
             this.Username_Box.TextOffset = new System.Drawing.Point(10, 0);
             // 
@@ -277,8 +278,9 @@
             this.Background.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Background.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Background.Location = new System.Drawing.Point(0, 0);
+            this.Background.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Background.Name = "Background";
-            this.Background.Size = new System.Drawing.Size(600, 415);
+            this.Background.Size = new System.Drawing.Size(1200, 830);
             this.Background.TabIndex = 11;
             // 
             // guna2DragControl1
@@ -287,15 +289,15 @@
             // 
             // Login_Form
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(600, 827);
+            this.ClientSize = new System.Drawing.Size(1200, 1654);
             this.Controls.Add(this.Background);
             this.Controls.Add(this.MainPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.Name = "Login_Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";
