@@ -77,7 +77,7 @@ namespace CompuStore.GUI
 
         void SetHeaderState_From(Guna.UI2.WinForms.Guna2TileButton button, Image img)
         {
-            Header.Text = "QUẢN LÝ " + button.Text;
+            Header.Text = "COMPUSTORE - QUẢN LÝ " + button.Text;
             //HeaderIcon.BackgroundImage = button.Image;
             HeaderIcon.BackgroundImage = img;
         }
