@@ -210,7 +210,6 @@ namespace CompuStore.GUI.Forms
             {
                 if (!Program.isValidInformation("IDcard", Identity_Box.Text))
                 {
-                    PhoneNumber_Box.Text = String.Empty;
                     MessageBox.Show("Định dạng CCCD/CMND không hợp lệ. Vui lòng nhập lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
@@ -223,7 +222,6 @@ namespace CompuStore.GUI.Forms
             {
                 if (!Program.isValidInformation("phoneNum", PhoneNumber_Box.Text))
                 {
-                    PhoneNumber_Box.Text = String.Empty;
                     MessageBox.Show("Định dạng số điện thoại không hợp lệ. Vui lòng nhập lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -235,7 +233,6 @@ namespace CompuStore.GUI.Forms
             {
                 if (!Program.isValidInformation("email", Email_Box.Text))
                 {
-                    PhoneNumber_Box.Text = String.Empty;
                     MessageBox.Show("Định dạng email không hợp lệ. Vui lòng nhập lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -246,7 +243,6 @@ namespace CompuStore.GUI.Forms
             if(DateTimeImportWarehouse_DateTimePicker.Value > DateTime.Now)
             {
                 MessageBox.Show("Ngày không hợp lệ. Vui lòng chọn lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                DateTimeImportWarehouse_DateTimePicker.Value = DateTime.Now;
             }
         }
     }
