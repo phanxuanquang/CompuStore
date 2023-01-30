@@ -175,7 +175,7 @@
             this.lbDate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbDate.AutoSize = true;
             this.lbDate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDate.Location = new System.Drawing.Point(34, 347);
+            this.lbDate.Location = new System.Drawing.Point(132, 347);
             this.lbDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDate.Name = "lbDate";
             this.lbDate.Size = new System.Drawing.Size(75, 20);
@@ -290,7 +290,7 @@
             this.lbStaffName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbStaffName.AutoSize = true;
             this.lbStaffName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStaffName.Location = new System.Drawing.Point(34, 315);
+            this.lbStaffName.Location = new System.Drawing.Point(125, 317);
             this.lbStaffName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbStaffName.Name = "lbStaffName";
             this.lbStaffName.Size = new System.Drawing.Size(82, 20);

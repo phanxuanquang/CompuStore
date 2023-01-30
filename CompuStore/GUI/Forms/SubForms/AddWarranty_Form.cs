@@ -39,8 +39,9 @@ namespace CompuStore
         private void LoadLabel()
         {
             currentStaff = LoginServices.Instance.CurrentStaff;
-            lbStaffName.Text += " " + currentStaff.INFOR.NAME;
+            lbStaffName.Text += "     " + currentStaff.INFOR.NAME;
             WarrantyDoneDate_Picker.Value = DateTime.Now.Date.AddDays(7);
+            CreateDate_Picker.Value = DateTime.Now;
         }
 
         protected override CreateParams CreateParams
@@ -61,7 +62,14 @@ namespace CompuStore
         {
             if (isValidSerialID(detail))
             {
-                Exception res =  WarrantyServices.Instance.SaveWarrantyToDB(detail.ID_INVOICE, currentStaff.ID, Database.DataProvider.Instance.Database.PRODUCTs.FirstOrDefault(item => item.SERIAL_ID == ItemSerial_Box.Text).PRODUCT_ID, WarrantyReason.Text, CreateDate_Picker.Value, WarrantyDoneDate_Picker.Value, 0);
+                DateTime create = new DateTime(CreateDate_Picker.Value.Year, CreateDate_Picker.Value.Month, CreateDate_Picker.Value.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+                DateTime done = new DateTime(WarrantyDoneDate_Picker.Value.Year, WarrantyDoneDate_Picker.Value.Month, WarrantyDoneDate_Picker.Value.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+                if (DateTime.Compare(create, done) >= 0)
+                {
+                    MessageBox.Show("Ngày lập phải sớm hơn ngày hẹn trả");
+                    return;
+                }
+                Exception res =  WarrantyServices.Instance.SaveWarrantyToDB(detail.ID_INVOICE, currentStaff.ID, Database.DataProvider.Instance.Database.PRODUCTs.FirstOrDefault(item => item.SERIAL_ID == ItemSerial_Box.Text).PRODUCT_ID, WarrantyReason.Text, create, done, 0);
                 if (res.Message == "done")
                 {
                     MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
