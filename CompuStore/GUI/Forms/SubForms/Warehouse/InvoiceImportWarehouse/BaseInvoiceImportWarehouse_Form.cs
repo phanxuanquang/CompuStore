@@ -105,7 +105,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
         #region Translater
         private static readonly Dictionary<string, (string, DataGridViewContentAlignment)> translater = new Dictionary<string, (string, DataGridViewContentAlignment)> {
-            { "N0", ("STT", DataGridViewContentAlignment.MiddleLeft) },
+            { "N0", ("STT", DataGridViewContentAlignment.MiddleCenter) },
             { "NameCommonSpecs", ("Tên sản phẩm", DataGridViewContentAlignment.MiddleLeft) },
             { "LineUp", ("Dòng sản phẩm", DataGridViewContentAlignment.MiddleLeft) },
             { "Manufacturer", ("Nhà sản xuất", DataGridViewContentAlignment.MiddleLeft) },

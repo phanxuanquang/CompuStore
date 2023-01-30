@@ -69,7 +69,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
 
         #region Translater
         protected static readonly Dictionary<string, (string, DataGridViewContentAlignment)> portTranslater = new Dictionary<string, (string, DataGridViewContentAlignment)> {
-            { "N0", ("STT", DataGridViewContentAlignment.MiddleLeft) },
+            { "N0", ("STT", DataGridViewContentAlignment.MiddleCenter) },
             { "PortPhysic", ("Chuẩn giao tiếp", DataGridViewContentAlignment.MiddleLeft) },
             { "PortProtocol", ("Chuẩn vật lý", DataGridViewContentAlignment.MiddleLeft) },
             { "Quantity", ("Số lượng", DataGridViewContentAlignment.MiddleRight)}};
