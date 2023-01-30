@@ -157,7 +157,7 @@ namespace CompuStore.Tab
 
         #region Translater
         protected static readonly Dictionary<string, (string, DataGridViewContentAlignment)> columnVisibleImportWarehouse = new Dictionary<string, (string, DataGridViewContentAlignment)> {
-            { "N0", ("STT", DataGridViewContentAlignment.MiddleLeft) },
+            { "N0", ("STT", DataGridViewContentAlignment.MiddleCenter) },
             { "NameID", ("Mã nhập hàng", DataGridViewContentAlignment.MiddleCenter) },
             { "ImportDate", ("Ngày nhập hàng", DataGridViewContentAlignment.MiddleCenter) },
             { "Total", ("Tổng giá trị", DataGridViewContentAlignment.MiddleRight) },
@@ -165,7 +165,7 @@ namespace CompuStore.Tab
             { "DistributorName", ("Nhà phân phối", DataGridViewContentAlignment.MiddleLeft) } };
         protected static readonly Dictionary<string, (string, DataGridViewContentAlignment)> columnVisibleCommonSpecs = new Dictionary<string, (string, DataGridViewContentAlignment)> {
             //{ "NAME_ID", "Mã sản phẩm" },
-            { "N0", ("STT", DataGridViewContentAlignment.MiddleLeft) },
+            { "N0", ("STT", DataGridViewContentAlignment.MiddleCenter) },
             { "NAME", ("Tên sản phẩm" , DataGridViewContentAlignment.MiddleLeft)},
             { "NAME_LINE_UP", ("Dòng sản phẩm", DataGridViewContentAlignment.MiddleLeft) },
             { "MANUFACTURER", ("Nhà sản xuất", DataGridViewContentAlignment.MiddleLeft) },
