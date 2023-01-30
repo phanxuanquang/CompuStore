@@ -649,8 +649,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
                 result.Add("Chưa chọn vật liệu máy");
             if (Webcam_ComboBox.SelectedIndex < 0)
                 result.Add("Chưa chọn Webcam");
-            if (OS_ComboBox.SelectedIndex < 0)
-                result.Add("Chưa chọn hệ điều hành");
+            //Có một số máy không có hệ điều hành
+            /*if (OS_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn hệ điều hành");*/
             if (X_Pixel_ComboBox.SelectedIndex < 0)
                 result.Add("Chưa chọn chiều ngang màn hình");
             if (Y_Pixel_ComboBox.SelectedIndex < 0)
