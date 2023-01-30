@@ -28,8 +28,19 @@ namespace CompuStore.Tab
             InitializeComponent();
             this.GridDataTable.DataSource = sTAFFBindingSource;
             this.Load += StaffManagement_Tab_Load;
+            this.GridDataTable.CellDoubleClick += GridDataTable_CellDoubleClick;
 
 
+        }
+
+        private void GridDataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                StaffEdit_Form staffEdit_Form = new StaffEdit_Form(false, "THÔNG TIN NHÂN VIÊN", sTAFFBindingSource.Current);
+                staffEdit_Form.ShowDialog();
+                Run(GetListView());
+            }
         }
 
         private void StaffManagement_Tab_Load(object sender, EventArgs e)

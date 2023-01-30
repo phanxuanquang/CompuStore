@@ -50,6 +50,7 @@ namespace CompuStore
 
         private void AddReturn_Form_Load(object sender, EventArgs e)
         {
+            this.CreateDate_Picker.Value = DateTime.Now;
             TurnOnAutocomplete();
             LoadLabel();
         }
@@ -165,7 +166,7 @@ namespace CompuStore
         private void LoadLabel()
         {
             currentStaff = LoginServices.Instance.CurrentStaff;
-            lbStaffName.Text += " " + currentStaff.INFOR.NAME;
+            lbStaffName.Text += "   " + currentStaff.INFOR.NAME;
         }
         private void Exit_Button_Click(object sender, EventArgs e)
         {

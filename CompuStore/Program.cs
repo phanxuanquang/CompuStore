@@ -22,17 +22,27 @@ namespace CompuStore
         }
         static public bool isValidInformation(string informationType, string information)
         {
+            bool areNumber()
+            {
+                string numbers = "0123456789";
+                for (int i = 0; i < information.Length; i++)
+                {
+                    if (!numbers.Contains(information[i]))
+                        return false;
+                }
+                return true;
+            }
             switch (informationType)
             {
                 case "IDcard":
                     if (information.Length != 9 && information.Length != 12)
                         return false;
-                    else return Regex.Match(information, @"^(\+[0-9]{9})$").Success;
+                    else return areNumber();
                     break;
                 case "phoneNum":
-                    if (information[0] != '0' || information.Length != 10)
+                    if (information[0] != '0' && information.Length != 10)
                         return false;
-                    else return Regex.Match(information, @"^(\+[0-9]{9})$").Success;
+                    else return areNumber();
                     break;
                 case "email":
                     var trimmedEmail = information.Trim();

@@ -68,7 +68,7 @@ namespace CompuStore
         private void LoadLabel()
         {
             currentStaff = LoginServices.Instance.CurrentStaff;
-            lbStaffName.Text += " " + currentStaff.INFOR.NAME;
+            lbStaffName.Text += "    " + currentStaff.INFOR.NAME;
         }
 
         protected override CreateParams CreateParams
@@ -85,7 +85,7 @@ namespace CompuStore
         {
             adjustmentTable = new DataTable();
             DataColumn dataColumn = new DataColumn();
-            dataColumn = new DataColumn("Số thứ tự", typeof(int));
+            dataColumn = new DataColumn("STT", typeof(int));
             adjustmentTable.Columns.Add(dataColumn);
             dataColumn = new DataColumn("Số se-ri", typeof(string));
             adjustmentTable.Columns.Add(dataColumn);
@@ -113,7 +113,7 @@ namespace CompuStore
             ItemTable.DataSource = GetAdjustmentTable();
             foreach (DataGridViewRow row in ItemTable.Rows)
             {
-                row.Cells["Số thứ tự"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                row.Cells["STT"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 row.Cells["Số se-ri"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 row.Cells["Tên sản phẩm"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 row.Cells["Giá tiền (VNĐ)"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -191,8 +191,8 @@ namespace CompuStore
                 customer = CustomerServices.Instance.GetCustomerByIDCode(Identity_Box.Text);
                 if (!isValidCustomer(customer))
                 {
-                    DialogResult dialogResult = MessageBox.Show("CMND/CCCD của khách hàng này không tồn tại.\nBạn có muốn thêm khách hàng mới?", "CMND/CCCD không tồn tại", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-                    if (dialogResult == DialogResult.Yes)
+                    //DialogResult dialogResult = MessageBox.Show("CMND/CCCD của khách hàng này không tồn tại.\nBạn có muốn thêm khách hàng mới?", "CMND/CCCD không tồn tại", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    //if (dialogResult == DialogResult.Yes)
                     {
                         Name_Box.ReadOnly = PhoneNumber_Box.ReadOnly = Email_Box.ReadOnly = Address_Box.ReadOnly = false;
                         Name_Box.Clear();
@@ -200,10 +200,10 @@ namespace CompuStore
                         Email_Box.Clear();
                         Address_Box.Clear();
                     }
-                    else if (dialogResult == DialogResult.No)
-                    {
-                        return;
-                    }
+                    //else if (dialogResult == DialogResult.No)
+                    //{
+                    //    return;
+                    //}
                 }
                 else
                 {
@@ -336,6 +336,7 @@ namespace CompuStore
         #region Button
         private async void Save_Button_Click(object sender, EventArgs e)
         {
+
             foreach (var item in addedProduct)
             {
                 productList.Add(Database.DataProvider.Instance.Database.PRODUCTs.Where(prod => prod.SERIAL_ID == item).FirstOrDefault());
