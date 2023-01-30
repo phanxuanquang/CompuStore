@@ -336,6 +336,7 @@ namespace CompuStore
         #region Button
         private async void Save_Button_Click(object sender, EventArgs e)
         {
+
             foreach (var item in addedProduct)
             {
                 productList.Add(Database.DataProvider.Instance.Database.PRODUCTs.Where(prod => prod.SERIAL_ID == item).FirstOrDefault());
