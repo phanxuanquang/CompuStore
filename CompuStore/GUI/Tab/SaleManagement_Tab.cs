@@ -22,8 +22,10 @@ namespace CompuStore.Tab
     {
         public static string nameIdCommonSpecs;
         BindingList<ModelSale> productList;
+        int stt = 0;
         protected Dictionary<string, string> listItemViews = new Dictionary<string, string>()
         {
+            {"STT", "Số thứ tự" },
            { "Name", "Tên sản phẩm" },
            { "Price", "Giá bán" },
             {"Color", "Màu sắc" },
@@ -124,6 +126,7 @@ namespace CompuStore.Tab
                 ModelSale selected = row.DataBoundItem as ModelSale;
                 if (selected != null)
                 {
+                    row.Cells["STT"].Value = ++stt;
                     row.Cells["Name"].Value = selected.name;
                     row.Cells["Price"].Value = selected.price;
                     row.Cells["Size"].Value = selected.sizePanel + " inch";

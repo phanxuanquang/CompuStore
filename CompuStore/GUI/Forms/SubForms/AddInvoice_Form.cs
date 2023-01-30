@@ -68,7 +68,7 @@ namespace CompuStore
         private void LoadLabel()
         {
             currentStaff = LoginServices.Instance.CurrentStaff;
-            lbStaffName.Text += " " + currentStaff.INFOR.NAME;
+            lbStaffName.Text += "    " + currentStaff.INFOR.NAME;
         }
 
         protected override CreateParams CreateParams
