@@ -38,11 +38,11 @@
             this.MainPanel = new System.Windows.Forms.Panel();
             this.Exit_Button = new Guna.UI2.WinForms.Guna2Button();
             this.Welcome_Label = new System.Windows.Forms.Label();
-            this.ServerDatabase_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.Password_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Username_Box = new Guna.UI2.WinForms.Guna2TextBox();
             this.Background = new System.Windows.Forms.Panel();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
+            this.ServerDatabase_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.CheckBox_Panel.SuspendLayout();
             this.MainPanel.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +61,7 @@
             this.Login_Button.ForeColor = System.Drawing.Color.White;
             this.Login_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
             this.Login_Button.HoverState.Parent = this.Login_Button;
-            this.Login_Button.Location = new System.Drawing.Point(105, 246);
+            this.Login_Button.Location = new System.Drawing.Point(78, 246);
             this.Login_Button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Login_Button.Name = "Login_Button";
             this.Login_Button.PressedDepth = 10;
@@ -87,7 +87,7 @@
             this.RememberAccount_CheckBox.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.RememberAccount_CheckBox.CheckedState.Parent = this.RememberAccount_CheckBox;
             this.RememberAccount_CheckBox.Location = new System.Drawing.Point(8, 7);
-            this.RememberAccount_CheckBox.Margin = new System.Windows.Forms.Padding(2);
+            this.RememberAccount_CheckBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.RememberAccount_CheckBox.Name = "RememberAccount_CheckBox";
             this.RememberAccount_CheckBox.ShadowDecoration.Parent = this.RememberAccount_CheckBox;
             this.RememberAccount_CheckBox.Size = new System.Drawing.Size(15, 15);
@@ -104,8 +104,8 @@
             this.CheckBox_Panel.BackColor = System.Drawing.Color.Transparent;
             this.CheckBox_Panel.Controls.Add(this.label1);
             this.CheckBox_Panel.Controls.Add(this.RememberAccount_CheckBox);
-            this.CheckBox_Panel.Location = new System.Drawing.Point(105, 192);
-            this.CheckBox_Panel.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox_Panel.Location = new System.Drawing.Point(78, 192);
+            this.CheckBox_Panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.CheckBox_Panel.Name = "CheckBox_Panel";
             this.CheckBox_Panel.Size = new System.Drawing.Size(134, 30);
             this.CheckBox_Panel.TabIndex = 4;
@@ -133,9 +133,9 @@
             this.MainPanel.Controls.Add(this.Password_Box);
             this.MainPanel.Controls.Add(this.Username_Box);
             this.MainPanel.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.MainPanel.Location = new System.Drawing.Point(0, 415);
+            this.MainPanel.Location = new System.Drawing.Point(0, 358);
             this.MainPanel.Name = "MainPanel";
-            this.MainPanel.Size = new System.Drawing.Size(600, 412);
+            this.MainPanel.Size = new System.Drawing.Size(547, 412);
             this.MainPanel.TabIndex = 10;
             // 
             // Exit_Button
@@ -152,7 +152,7 @@
             this.Exit_Button.ForeColor = System.Drawing.Color.White;
             this.Exit_Button.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(82)))), ((int)(((byte)(132)))), ((int)(((byte)(255)))));
             this.Exit_Button.HoverState.Parent = this.Exit_Button;
-            this.Exit_Button.Location = new System.Drawing.Point(105, 304);
+            this.Exit_Button.Location = new System.Drawing.Point(78, 304);
             this.Exit_Button.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Exit_Button.Name = "Exit_Button";
             this.Exit_Button.PressedDepth = 10;
@@ -171,25 +171,10 @@
             this.Welcome_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(9)))), ((int)(((byte)(79)))), ((int)(((byte)(180)))));
             this.Welcome_Label.Location = new System.Drawing.Point(0, 0);
             this.Welcome_Label.Name = "Welcome_Label";
-            this.Welcome_Label.Size = new System.Drawing.Size(600, 89);
+            this.Welcome_Label.Size = new System.Drawing.Size(547, 89);
             this.Welcome_Label.TabIndex = 10;
             this.Welcome_Label.Text = "CHÀO MỪNG";
             this.Welcome_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ServerDatabase_ComboBox
-            // 
-            this.ServerDatabase_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.ServerDatabase_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.ServerDatabase_ComboBox.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ServerDatabase_ComboBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ServerDatabase_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ServerDatabase_ComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ServerDatabase_ComboBox.FormattingEnabled = true;
-            this.ServerDatabase_ComboBox.Location = new System.Drawing.Point(0, 389);
-            this.ServerDatabase_ComboBox.Margin = new System.Windows.Forms.Padding(2);
-            this.ServerDatabase_ComboBox.Name = "ServerDatabase_ComboBox";
-            this.ServerDatabase_ComboBox.Size = new System.Drawing.Size(600, 23);
-            this.ServerDatabase_ComboBox.TabIndex = 7;
             // 
             // Password_Box
             // 
@@ -218,7 +203,7 @@
             this.Password_Box.HoverState.Parent = this.Password_Box;
             this.Password_Box.IconLeft = global::CompuStore.Properties.Resources.Password;
             this.Password_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
-            this.Password_Box.Location = new System.Drawing.Point(105, 152);
+            this.Password_Box.Location = new System.Drawing.Point(78, 152);
             this.Password_Box.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Password_Box.Name = "Password_Box";
             this.Password_Box.PasswordChar = '\0';
@@ -258,7 +243,7 @@
             this.Username_Box.HoverState.Parent = this.Username_Box;
             this.Username_Box.IconLeft = global::CompuStore.Properties.Resources.Username;
             this.Username_Box.IconLeftOffset = new System.Drawing.Point(9, 0);
-            this.Username_Box.Location = new System.Drawing.Point(105, 92);
+            this.Username_Box.Location = new System.Drawing.Point(78, 92);
             this.Username_Box.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Username_Box.Name = "Username_Box";
             this.Username_Box.PasswordChar = '\0';
@@ -273,23 +258,38 @@
             // Background
             // 
             this.Background.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("Background.BackgroundImage")));
-            this.Background.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Background.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Background.Dock = System.Windows.Forms.DockStyle.Fill;
             this.Background.Location = new System.Drawing.Point(0, 0);
             this.Background.Name = "Background";
-            this.Background.Size = new System.Drawing.Size(600, 415);
+            this.Background.Size = new System.Drawing.Size(547, 358);
             this.Background.TabIndex = 11;
             // 
             // guna2DragControl1
             // 
             this.guna2DragControl1.TargetControl = this.Background;
             // 
+            // ServerDatabase_ComboBox
+            // 
+            this.ServerDatabase_ComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.ServerDatabase_ComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ServerDatabase_ComboBox.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ServerDatabase_ComboBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ServerDatabase_ComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ServerDatabase_ComboBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ServerDatabase_ComboBox.FormattingEnabled = true;
+            this.ServerDatabase_ComboBox.Location = new System.Drawing.Point(0, 389);
+            this.ServerDatabase_ComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.ServerDatabase_ComboBox.Name = "ServerDatabase_ComboBox";
+            this.ServerDatabase_ComboBox.Size = new System.Drawing.Size(547, 23);
+            this.ServerDatabase_ComboBox.TabIndex = 7;
+            // 
             // Login_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(600, 827);
+            this.ClientSize = new System.Drawing.Size(547, 770);
             this.Controls.Add(this.Background);
             this.Controls.Add(this.MainPanel);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

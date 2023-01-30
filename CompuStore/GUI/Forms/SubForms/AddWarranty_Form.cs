@@ -39,8 +39,9 @@ namespace CompuStore
         private void LoadLabel()
         {
             currentStaff = LoginServices.Instance.CurrentStaff;
-            lbStaffName.Text += " " + currentStaff.INFOR.NAME;
+            lbStaffName.Text += "     " + currentStaff.INFOR.NAME;
             WarrantyDoneDate_Picker.Value = DateTime.Now.Date.AddDays(7);
+            CreateDate_Picker.Value = DateTime.Now;
         }
 
         protected override CreateParams CreateParams
@@ -61,7 +62,14 @@ namespace CompuStore
         {
             if (isValidSerialID(detail))
             {
-                Exception res =  WarrantyServices.Instance.SaveWarrantyToDB(detail.ID_INVOICE, currentStaff.ID, Database.DataProvider.Instance.Database.PRODUCTs.FirstOrDefault(item => item.SERIAL_ID == ItemSerial_Box.Text).PRODUCT_ID, WarrantyReason.Text, CreateDate_Picker.Value, WarrantyDoneDate_Picker.Value, 0);
+                DateTime create = new DateTime(CreateDate_Picker.Value.Year, CreateDate_Picker.Value.Month, CreateDate_Picker.Value.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+                DateTime done = new DateTime(WarrantyDoneDate_Picker.Value.Year, WarrantyDoneDate_Picker.Value.Month, WarrantyDoneDate_Picker.Value.Day, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+                if (DateTime.Compare(create, done) >= 0)
+                {
+                    MessageBox.Show("Ngày lập phải sớm hơn ngày hẹn trả");
+                    return;
+                }
+                Exception res =  WarrantyServices.Instance.SaveWarrantyToDB(detail.ID_INVOICE, currentStaff.ID, Database.DataProvider.Instance.Database.PRODUCTs.FirstOrDefault(item => item.SERIAL_ID == ItemSerial_Box.Text).PRODUCT_ID, WarrantyReason.Text, create, done, 0);
                 if (res.Message == "done")
                 {
                     MessageBox.Show("Lưu thành công.", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -129,6 +137,40 @@ namespace CompuStore
         private void Print_Button_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Không tim thấy máy in. Vui lòng thử lại sau.", "Không tìm thấy máy in", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private void Identity_Box_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                if (!Program.isValidInformation("IDcard", Identity_Box.Text))
+                {
+                    MessageBox.Show("Định dạng CCCD/CMND không hợp lệ. Vui lòng nhập lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+        }
+
+        private void PhoneNumber_Box_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                if (!Program.isValidInformation("phoneNum", PhoneNumber_Box.Text))
+                {
+                    MessageBox.Show("Định dạng số điện thoại không hợp lệ. Vui lòng nhập lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void Email_Box_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                if (!Program.isValidInformation("email", Email_Box.Text))
+                {
+                    MessageBox.Show("Định dạng email không hợp lệ. Vui lòng nhập lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

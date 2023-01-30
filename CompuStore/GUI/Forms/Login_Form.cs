@@ -42,7 +42,7 @@ namespace CompuStore.GUI
         {
             get
             {
-                CreateParams handleParam = base.CreateParams;
+                CreateParams handleParam = base.CreateParams; 
                 handleParam.ExStyle |= 0x02000000;   // WS_EX_COMPOSITED       
                 return handleParam;
             }

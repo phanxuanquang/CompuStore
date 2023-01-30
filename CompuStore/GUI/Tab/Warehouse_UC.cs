@@ -23,6 +23,8 @@ namespace CompuStore.Tab
         {
             public int id;
 
+            public int? N0 { get; set; }
+
             public string NameID { get; set; }
 
             public DateTime? ImportDate { get; set; }
@@ -51,7 +53,7 @@ namespace CompuStore.Tab
                 }
             }
 
-            public static ImportWarehouseCustom Convert(IMPORT_WAREHOUSE model)
+            public static ImportWarehouseCustom Convert(IMPORT_WAREHOUSE model, int? n0)
             {
                 ImportWarehouseCustom result = null;
                 if (model != null)
@@ -63,6 +65,7 @@ namespace CompuStore.Tab
                     result.Total = model.TOTAL;
                     result.id = model.ID;
                     result.Quantity = model.DETAIL_IMPORT_WAREHOUSE.Count;
+                    result.N0 = n0;
                 }
                 return result;
             }
@@ -85,6 +88,8 @@ namespace CompuStore.Tab
                     lineupManufacturer = value.MANUFACTURER;
                 }
             }
+
+            public int? N0 { get; set; }
 
             public string NAME_ID { get; set; }
 
@@ -122,7 +127,7 @@ namespace CompuStore.Tab
                 }
             }
 
-            public static CommonSpecsCustom Convert(COMMON_SPECS model)
+            public static CommonSpecsCustom Convert(COMMON_SPECS model, int? n0)
             {
                 CommonSpecsCustom result = null;
                 if (model != null)
@@ -133,6 +138,7 @@ namespace CompuStore.Tab
                     result.NAME_ID = model.NAME_ID;
                     result.id = model.ID;
                     result.RELEASED_YEAR = model.RELEASED_YEAR;
+                    result.N0 = n0;
                 }
                 return result;
             }
@@ -151,6 +157,7 @@ namespace CompuStore.Tab
 
         #region Translater
         protected static readonly Dictionary<string, (string, DataGridViewContentAlignment)> columnVisibleImportWarehouse = new Dictionary<string, (string, DataGridViewContentAlignment)> {
+            { "N0", ("STT", DataGridViewContentAlignment.MiddleCenter) },
             { "NameID", ("Mã nhập hàng", DataGridViewContentAlignment.MiddleCenter) },
             { "ImportDate", ("Ngày nhập hàng", DataGridViewContentAlignment.MiddleCenter) },
             { "Total", ("Tổng giá trị", DataGridViewContentAlignment.MiddleRight) },
@@ -158,6 +165,7 @@ namespace CompuStore.Tab
             { "DistributorName", ("Nhà phân phối", DataGridViewContentAlignment.MiddleLeft) } };
         protected static readonly Dictionary<string, (string, DataGridViewContentAlignment)> columnVisibleCommonSpecs = new Dictionary<string, (string, DataGridViewContentAlignment)> {
             //{ "NAME_ID", "Mã sản phẩm" },
+            { "N0", ("STT", DataGridViewContentAlignment.MiddleCenter) },
             { "NAME", ("Tên sản phẩm" , DataGridViewContentAlignment.MiddleLeft)},
             { "NAME_LINE_UP", ("Dòng sản phẩm", DataGridViewContentAlignment.MiddleLeft) },
             { "MANUFACTURER", ("Nhà sản xuất", DataGridViewContentAlignment.MiddleLeft) },
@@ -185,21 +193,23 @@ namespace CompuStore.Tab
             {
                 try
                 {
+                    int index = 1;
                     IQueryable<IMPORT_WAREHOUSE> importWarehouseQueryable = Database.DataProvider.Instance.Database.IMPORT_WAREHOUSE;
                     foreach (IMPORT_WAREHOUSE model in importWarehouseQueryable)
                     {
                         if (importWarehouseBinding != null)
                         {
-                            importWarehouseBinding.Add(ImportWarehouseCustom.Convert(model));
+                            importWarehouseBinding.Add(ImportWarehouseCustom.Convert(model, index++));
                         }
                     }
                     progress.Report(0);
+                    index = 1;
                     IQueryable<COMMON_SPECS> commonSpecsQueryable = Database.DataProvider.Instance.Database.COMMON_SPECS;
                     foreach (COMMON_SPECS model in commonSpecsQueryable)
                     {
                         if (commonSpecsBinding != null)
                         {
-                            commonSpecsBinding.Add(CommonSpecsCustom.Convert(model));
+                            commonSpecsBinding.Add(CommonSpecsCustom.Convert(model, index++));
                         }
                     }
                     progress.Report(1);
@@ -258,6 +268,8 @@ namespace CompuStore.Tab
                     (string, DataGridViewContentAlignment) translater = columnVisible[column.Name];
                     column.HeaderText = translater.Item1;
                     column.DefaultCellStyle.Alignment = translater.Item2;
+                    if (column.Name == "N0")
+                        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                 }
                 else
                 {

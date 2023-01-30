@@ -51,6 +51,8 @@
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
             this.guna2ShadowForm1 = new Guna.UI2.WinForms.Guna2ShadowForm(this.components);
             this.dateTimePicker = new Guna.UI2.WinForms.Guna2DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.NameProduct_ComboBox = new CompuStore.Control.ComboBoxCustom();
             this.Serial_ComboBox = new CompuStore.Control.ComboBoxCustom();
             ((System.ComponentModel.ISupportInitialize)(this.HeaderIcon)).BeginInit();
@@ -94,6 +96,7 @@
             this.PhoneNumber_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.PhoneNumber_Box.TabIndex = 28;
             this.PhoneNumber_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.PhoneNumber_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneNumber_Box_KeyPress);
             // 
             // Header
             // 
@@ -207,6 +210,7 @@
             this.ItemTable.AllowUserToResizeColumns = false;
             this.ItemTable.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ItemTable.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.ItemTable.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.ItemTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
@@ -221,7 +225,7 @@
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(151)))), ((int)(((byte)(232)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.ItemTable.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.ItemTable.ColumnHeadersHeight = 25;
             this.ItemTable.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -339,6 +343,7 @@
             this.Email_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Email_Box.TabIndex = 30;
             this.Email_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.Email_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Email_Box_KeyPress);
             // 
             // Address_Box
             // 
@@ -475,8 +480,8 @@
             this.dateTimePicker.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
             this.dateTimePicker.CheckedState.Parent = this.dateTimePicker;
             this.dateTimePicker.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dateTimePicker.CustomFormat = " dd/MM/yyyy";
-            this.dateTimePicker.FillColor = System.Drawing.Color.White;
+            this.dateTimePicker.CustomFormat = "hh:mm:ss dd:MM:yyyy";
+            this.dateTimePicker.FillColor = System.Drawing.SystemColors.Window;
             this.dateTimePicker.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker.ForeColor = System.Drawing.Color.Black;
             this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
@@ -488,10 +493,34 @@
             this.dateTimePicker.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker.Name = "dateTimePicker";
             this.dateTimePicker.ShadowDecoration.Parent = this.dateTimePicker;
-            this.dateTimePicker.Size = new System.Drawing.Size(216, 29);
+            this.dateTimePicker.Size = new System.Drawing.Size(124, 29);
             this.dateTimePicker.TabIndex = 90;
             this.dateTimePicker.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.dateTimePicker.Value = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(311, 478);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 21);
+            this.label1.TabIndex = 91;
+            this.label1.Text = "Tổng tiền:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(402, 478);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 21);
+            this.label2.TabIndex = 92;
+            this.label2.Text = "0 VNĐ";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // NameProduct_ComboBox
             // 
@@ -534,6 +563,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 689);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.NameProduct_ComboBox);
             this.Controls.Add(this.Serial_ComboBox);
@@ -586,5 +617,7 @@
         private Control.ComboBoxCustom NameProduct_ComboBox;
         private Guna.UI2.WinForms.Guna2ShadowForm guna2ShadowForm1;
         private Guna.UI2.WinForms.Guna2DateTimePicker dateTimePicker;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }

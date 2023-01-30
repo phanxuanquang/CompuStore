@@ -140,7 +140,7 @@
             this.lbDate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbDate.AutoSize = true;
             this.lbDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDate.Location = new System.Drawing.Point(26, 354);
+            this.lbDate.Location = new System.Drawing.Point(34, 354);
             this.lbDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDate.Name = "lbDate";
             this.lbDate.Size = new System.Drawing.Size(83, 21);
@@ -209,6 +209,7 @@
             this.Email_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Email_Box.TabIndex = 128;
             this.Email_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.Email_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Email_Box_KeyPress);
             // 
             // Name_Box
             // 
@@ -300,6 +301,7 @@
             this.PhoneNumber_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.PhoneNumber_Box.TabIndex = 126;
             this.PhoneNumber_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.PhoneNumber_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneNumber_Box_KeyPress);
             // 
             // Identity_Box
             // 
@@ -339,6 +341,7 @@
             this.Identity_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Identity_Box.TabIndex = 129;
             this.Identity_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.Identity_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Identity_Box_KeyPress);
             // 
             // Save_Button
             // 
@@ -442,13 +445,13 @@
             this.CreateDate_Picker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.CreateDate_Picker.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(185)))), ((int)(((byte)(189)))));
             this.CreateDate_Picker.HoverState.Parent = this.CreateDate_Picker;
-            this.CreateDate_Picker.Location = new System.Drawing.Point(212, 351);
+            this.CreateDate_Picker.Location = new System.Drawing.Point(120, 354);
             this.CreateDate_Picker.Margin = new System.Windows.Forms.Padding(0);
             this.CreateDate_Picker.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.CreateDate_Picker.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.CreateDate_Picker.Name = "CreateDate_Picker";
             this.CreateDate_Picker.ShadowDecoration.Parent = this.CreateDate_Picker;
-            this.CreateDate_Picker.Size = new System.Drawing.Size(368, 24);
+            this.CreateDate_Picker.Size = new System.Drawing.Size(130, 24);
             this.CreateDate_Picker.TabIndex = 138;
             this.CreateDate_Picker.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAliasGridFit;
             this.CreateDate_Picker.Value = new System.DateTime(2022, 10, 18, 0, 0, 0, 0);

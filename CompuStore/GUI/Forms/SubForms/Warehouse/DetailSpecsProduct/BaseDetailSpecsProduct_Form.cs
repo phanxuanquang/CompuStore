@@ -69,6 +69,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
 
         #region Translater
         protected static readonly Dictionary<string, (string, DataGridViewContentAlignment)> portTranslater = new Dictionary<string, (string, DataGridViewContentAlignment)> {
+            { "N0", ("STT", DataGridViewContentAlignment.MiddleCenter) },
             { "PortPhysic", ("Chuẩn giao tiếp", DataGridViewContentAlignment.MiddleLeft) },
             { "PortProtocol", ("Chuẩn vật lý", DataGridViewContentAlignment.MiddleLeft) },
             { "Quantity", ("Số lượng", DataGridViewContentAlignment.MiddleRight)}};
@@ -79,7 +80,6 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
         protected BaseDetailSpecsProduct_Form()
         {
             InitializeComponent();
-            guna2ShadowForm1.SetShadowForm(this);
             this.ShowInTaskbar = false;
             AddInitializeComponent();
             this.Icon = Properties.Resources.Icon;
@@ -411,6 +411,8 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
                     string[] split = keyValue.Item1.Split('|');
                     column.HeaderText = split[0];
                     column.CellTemplate.Style.Alignment = keyValue.Item2;
+                    if (column.Name == "N0")
+                        column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
                     if (split.Length > 1)
                     {
                         column.ToolTipText = split[1];
@@ -647,8 +649,9 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse.DetailSpecsProduct
                 result.Add("Chưa chọn vật liệu máy");
             if (Webcam_ComboBox.SelectedIndex < 0)
                 result.Add("Chưa chọn Webcam");
-            if (OS_ComboBox.SelectedIndex < 0)
-                result.Add("Chưa chọn hệ điều hành");
+            //Có một số máy không có hệ điều hành
+            /*if (OS_ComboBox.SelectedIndex < 0)
+                result.Add("Chưa chọn hệ điều hành");*/
             if (X_Pixel_ComboBox.SelectedIndex < 0)
                 result.Add("Chưa chọn chiều ngang màn hình");
             if (Y_Pixel_ComboBox.SelectedIndex < 0)

@@ -28,8 +28,19 @@ namespace CompuStore.Tab
             InitializeComponent();
             this.GridDataTable.DataSource = sTAFFBindingSource;
             this.Load += StaffManagement_Tab_Load;
+            this.GridDataTable.CellDoubleClick += GridDataTable_CellDoubleClick;
 
 
+        }
+
+        private void GridDataTable_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                StaffEdit_Form staffEdit_Form = new StaffEdit_Form(false, "THÔNG TIN NHÂN VIÊN", sTAFFBindingSource.Current);
+                staffEdit_Form.ShowDialog();
+                Run(GetListView());
+            }
         }
 
         private void StaffManagement_Tab_Load(object sender, EventArgs e)
@@ -67,6 +78,7 @@ namespace CompuStore.Tab
         }
         private void LoadView()
         {
+            listItemViews.Add("STT", "Số thứ tự");
             listItemViews.Add("Id", "Mã nhân viên");
             listItemViews.Add("StaffName", "Họ và tên");
             listItemViews.Add("PhoneNum", "Số điện thoại");
@@ -84,11 +96,13 @@ namespace CompuStore.Tab
         {
             sTAFFBindingSource.ResetBindings(true);
             sTAFFBindingSource.DataSource = sTAFFs;
+            int stt = 0;
             foreach (DataGridViewRow row in GridDataTable.Rows)
             {
                 STAFF selected = row.DataBoundItem as STAFF;
                 if (selected != null)
                 {
+                    row.Cells["STT"].Value = ++stt;
                     row.Cells["Id"].Value = selected.NAME_ID;
                     row.Cells["Id"].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     row.Cells["StaffName"].Value = selected.INFOR.NAME;

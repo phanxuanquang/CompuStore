@@ -203,5 +203,47 @@ namespace CompuStore.GUI.Forms
             
 
         }
+
+        private void Identity_Box_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                if (!Program.isValidInformation("IDcard", Identity_Box.Text))
+                {
+                    MessageBox.Show("Định dạng CCCD/CMND không hợp lệ. Vui lòng nhập lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+        }
+
+        private void PhoneNumber_Box_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                if (!Program.isValidInformation("phoneNum", PhoneNumber_Box.Text))
+                {
+                    MessageBox.Show("Định dạng số điện thoại không hợp lệ. Vui lòng nhập lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void Email_Box_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                if (!Program.isValidInformation("email", Email_Box.Text))
+                {
+                    MessageBox.Show("Định dạng email không hợp lệ. Vui lòng nhập lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void DateTimeImportWarehouse_DateTimePicker_ValueChanged(object sender, EventArgs e)
+        {
+            if(DateTimeImportWarehouse_DateTimePicker.Value > DateTime.Now)
+            {
+                MessageBox.Show("Ngày không hợp lệ. Vui lòng chọn lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

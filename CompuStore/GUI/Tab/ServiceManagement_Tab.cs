@@ -102,6 +102,7 @@ namespace CompuStore
         {
             listItemViews.Clear();
             GridDataTable.Columns.Clear();
+            listItemViews.Add("STT", "Số thứ tự");
             listItemViews.Add("CusName", "Họ và tên");
             listItemViews.Add("PhoneNum", "Số điện thoại");
             listItemViews.Add("Product", "Tên sản phẩm");
@@ -123,6 +124,7 @@ namespace CompuStore
         {
             listItemViews.Clear();
             GridDataTable.Columns.Clear();
+            listItemViews.Add("STT", "Số thứ tự");
             listItemViews.Add("CusName", "Họ và tên");
             listItemViews.Add("PhoneNum", "Số điện thoại");
             listItemViews.Add("Product", "Tên sản phẩm");
@@ -144,12 +146,13 @@ namespace CompuStore
         {
             warrantyBindingSource.ResetBindings(true);
             warrantyBindingSource.DataSource = wARRANTies;
+            int stt = 0;
             foreach (DataGridViewRow row in GridDataTable.Rows)
             {
                 RECEIVE_WARRANTY selected = row.DataBoundItem as RECEIVE_WARRANTY;
                 if (selected != null)
                 {
-
+                    row.Cells["STT"].Value = ++stt;
                     row.Cells["CusName"].Value = selected.INVOICE.CUSTOMER.INFOR.NAME;
                     row.Cells["CusName"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["PhoneNum"].Value = selected.INVOICE.CUSTOMER.INFOR.PHONE_NUMBER;
@@ -174,11 +177,13 @@ namespace CompuStore
         {
             warrantyBindingSource.ResetBindings(true);
             warrantyBindingSource.DataSource = cHANGE_OR_REFUND_PRODUCTs;
+            int stt = 0;
             foreach (DataGridViewRow row in GridDataTable.Rows)
             {
                 CHANGE_OR_REFUND_PRODUCT selected = row.DataBoundItem as CHANGE_OR_REFUND_PRODUCT;
                 if (selected != null)
                 {
+                    row.Cells["STT"].Value = ++stt;
                     row.Cells["CusName"].Value = selected.INVOICE.CUSTOMER.INFOR.NAME;
                     row.Cells["CusName"].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
                     row.Cells["PhoneNum"].Value = selected.INVOICE.CUSTOMER.INFOR.PHONE_NUMBER;

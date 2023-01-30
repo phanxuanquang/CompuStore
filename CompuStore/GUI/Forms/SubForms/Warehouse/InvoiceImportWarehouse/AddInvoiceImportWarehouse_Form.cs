@@ -77,6 +77,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
         private class AddInvoiceCommonSpecs : ICommonSpecsCustom
         {
             public int? ID { get; set; }
+            public int? N0 { get; set; }
             public string NameID { get; set; }
             public string NameCommonSpecs { get; set; }
             public string LineUp { get; set; }
@@ -85,7 +86,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             public int? Quantity { get; set; }
             public string RangeTotal { get; set; }
 
-            public AddInvoiceCommonSpecs(ICommonSpecsGroup<ModelProduct> group)
+            public AddInvoiceCommonSpecs(ICommonSpecsGroup<ModelProduct> group, int? n0)
             {
                 if (group != null)
                 {
@@ -94,6 +95,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     {
                         //set serial is represent of group in item
                         ID = null;
+                        N0 = n0;
                         NameID = product.TypeProduct == ModelProduct.TypeModel.New ? product.Serial : product.ID.ToString();
                         LineUp = product.LineUp;
                         Manufacturer = product.Manufacturer;
@@ -437,18 +439,20 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                 TableData_DataGridView.Invoke(new Action(() =>
                 {
                     bindingTable.Clear();
+                    int index = 1;
                     foreach (KeyValuePair<ModelProductGroupBy, ICommonSpecsGroup<ModelProduct>> group in sortBinding)
                     {
-                        bindingTable.Add(new AddInvoiceCommonSpecs(group.Value));
+                        bindingTable.Add(new AddInvoiceCommonSpecs(group.Value, index++));
                     }
                 }));
             }
             else
             {
                 bindingTable.Clear();
+                int index = 1;
                 foreach (KeyValuePair<ModelProductGroupBy, ICommonSpecsGroup<ModelProduct>> group in sortBinding)
                 {
-                    bindingTable.Add(new AddInvoiceCommonSpecs(group.Value));
+                    bindingTable.Add(new AddInvoiceCommonSpecs(group.Value, index++));
                 }
             }
         }

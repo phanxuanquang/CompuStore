@@ -50,6 +50,7 @@ namespace CompuStore
 
         private void AddReturn_Form_Load(object sender, EventArgs e)
         {
+            this.CreateDate_Picker.Value = DateTime.Now;
             TurnOnAutocomplete();
             LoadLabel();
         }
@@ -165,7 +166,7 @@ namespace CompuStore
         private void LoadLabel()
         {
             currentStaff = LoginServices.Instance.CurrentStaff;
-            lbStaffName.Text += " " + currentStaff.INFOR.NAME;
+            lbStaffName.Text += "   " + currentStaff.INFOR.NAME;
         }
         private void Exit_Button_Click(object sender, EventArgs e)
         {
@@ -251,6 +252,40 @@ namespace CompuStore
         private void Print_Button_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Không tim thấy máy in. Vui lòng thử lại sau.", "Không tìm thấy máy in", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+        }
+
+        private void Identity_Box_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                if (!Program.isValidInformation("IDcard", Identity_Box.Text))
+                {
+                    MessageBox.Show("Định dạng CCCD/CMND không hợp lệ. Vui lòng nhập lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+        }
+
+        private void PhoneNumber_Box_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                if (!Program.isValidInformation("phoneNum", PhoneNumber_Box.Text))
+                {
+                    MessageBox.Show("Định dạng số điện thoại không hợp lệ. Vui lòng nhập lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void Email_Box_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                if (!Program.isValidInformation("email", Email_Box.Text))
+                {
+                    MessageBox.Show("Định dạng email không hợp lệ. Vui lòng nhập lại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

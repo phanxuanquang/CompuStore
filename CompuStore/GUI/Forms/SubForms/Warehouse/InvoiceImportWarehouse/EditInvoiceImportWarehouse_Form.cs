@@ -71,7 +71,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
 
         private class EditInvoiceCommonSpecs : ICommonSpecsCustom
         {
-            public EditInvoiceCommonSpecs(ICommonSpecsGroup<DETAIL_IMPORT_WAREHOUSE> group)
+            public EditInvoiceCommonSpecs(ICommonSpecsGroup<DETAIL_IMPORT_WAREHOUSE> group, int? n0)
             {
                 if (group != null)
                 {
@@ -79,6 +79,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     if (common != null)
                     {
                         ID = common.ID;
+                        N0 = n0;
                         NameID = common.NAME_ID;
                         LINE_UP lineup = common.LINE_UP;
                         LineUp = lineup.NAME;
@@ -96,6 +97,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             }
 
             public int? ID { get; set; }
+            public int? N0 { get; set; }
             public string NameID { get; set; }
             public string NameCommonSpecs { get; set; }
             public string LineUp { get; set; }
@@ -144,7 +146,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                     foreach(IGrouping<int, DETAIL_IMPORT_WAREHOUSE> item in groups)
                     {
                         ICommonSpecsGroup<DETAIL_IMPORT_WAREHOUSE> commonSpecsGroup = new EditInvoiceCommonSpecsGroup(item.ToList());
-                        ICommonSpecsCustom commonSpecsCustom = new EditInvoiceCommonSpecs(commonSpecsGroup);
+                        ICommonSpecsCustom commonSpecsCustom = new EditInvoiceCommonSpecs(commonSpecsGroup, ++counter);
                         commonSpecsGroups.Add(commonSpecsGroup);
                         if (TableData_DataGridView.InvokeRequired)
                         {
@@ -154,7 +156,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
                         {
                             bindingTable.Add(commonSpecsCustom);
                         }
-                        progress.Report(++counter);
+                        progress.Report(counter);
                     }
                 }
             });

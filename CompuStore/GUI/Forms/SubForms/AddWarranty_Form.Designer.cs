@@ -175,7 +175,7 @@
             this.lbDate.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbDate.AutoSize = true;
             this.lbDate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDate.Location = new System.Drawing.Point(34, 347);
+            this.lbDate.Location = new System.Drawing.Point(132, 347);
             this.lbDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDate.Name = "lbDate";
             this.lbDate.Size = new System.Drawing.Size(75, 20);
@@ -244,6 +244,7 @@
             this.Email_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Email_Box.TabIndex = 81;
             this.Email_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.Email_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Email_Box_KeyPress);
             // 
             // Name_Box
             // 
@@ -289,7 +290,7 @@
             this.lbStaffName.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lbStaffName.AutoSize = true;
             this.lbStaffName.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStaffName.Location = new System.Drawing.Point(34, 315);
+            this.lbStaffName.Location = new System.Drawing.Point(125, 317);
             this.lbStaffName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbStaffName.Name = "lbStaffName";
             this.lbStaffName.Size = new System.Drawing.Size(82, 20);
@@ -335,6 +336,7 @@
             this.PhoneNumber_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.PhoneNumber_Box.TabIndex = 79;
             this.PhoneNumber_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.PhoneNumber_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.PhoneNumber_Box_KeyPress);
             // 
             // Identity_Box
             // 
@@ -374,6 +376,7 @@
             this.Identity_Box.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.Identity_Box.TabIndex = 82;
             this.Identity_Box.TextOffset = new System.Drawing.Point(5, 0);
+            this.Identity_Box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Identity_Box_KeyPress);
             // 
             // Save_Button
             // 
