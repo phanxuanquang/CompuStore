@@ -148,6 +148,7 @@ namespace CompuStore.GUI.Forms.SubForms.Warehouse
             InitializeComponent();
             this.Icon = Properties.Resources.Icon;
             this.ShowInTaskbar = false;
+            guna2ShadowForm1.SetShadowForm(this);
             if (DeviceDpi > 96)
             {
                 TableData_DataGridView.ColumnHeadersHeight = 48;
